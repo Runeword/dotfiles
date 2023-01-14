@@ -1,0 +1,8 @@
+# ___________________________________________ BINDINGS
+bind -x '"\C-n":"nvim"'
+for i in "-" {0..9}; do bind -r "\e$i"; done
+
+# ___________________________________________ OPTIONS
+stty -ixon # Disable Ctrl-S
+
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases

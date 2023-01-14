@@ -19,6 +19,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  fonts.fontconfig.enable = true;
+
   home.packages = with pkgs; [
     git
     htop
@@ -27,5 +29,6 @@
     alacritty
     bitwarden-cli
     google-chrome
+    (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 }

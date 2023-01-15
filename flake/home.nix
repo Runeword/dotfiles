@@ -25,7 +25,12 @@
     git
     htop
     wget
+    ripgrep
+    fd
+    vifm
+    xclip
     chezmoi
+    bat
     alacritty
     bitwarden-cli
     google-chrome

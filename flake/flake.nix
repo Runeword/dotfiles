@@ -1,47 +1,25 @@
 {
-  description = "A very basic flake";
+  inputs.home-manager.url = "github:nix-community/home-manager";
+  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+  inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+  outputs = { self, ... }@inputs: {
+    homeConfigurations.charles = inputs.home-manager.lib.homeManagerConfiguration {
+
+      pkgs = import inputs.nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+        overlays = [
+          inputs.neovim-nightly-overlay.overlay
+        ];
+      };
+
+      modules = [
+        ./home.nix
+      ];
     };
   };
-
-  outputs = { self, nixpkgs, home-manager, ... }:
-    # let
-    #   system = "x86_64-linux";
-    #   pkgs = import nixpkgs {
-    #     inherit system;
-    #     config = { allowUnfree = true; };
-    #   };
-    # in {
-    #   defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-    #   homeConfigurations = {
-    #     charles = home-manager.lib.homeManagerConfiguration {
-    #       inherit pkgs;
-    #       modules = [ ./home.nix ];
-    #     };
-    #   };
-    # };
-
-     let 
-       system = "x86_64-linux";
-       # pkgs = import nixpkgs.legacyPackages.x86_64-linux {
-       pkgs = import nixpkgs {
-         config = { allowUnfree = true; };
-         inherit system;
-       };
-     in {
-       defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
-       homeConfigurations = {
-         charles = home-manager.lib.homeManagerConfiguration rec {
-           inherit pkgs;
-           modules = [
-             ./home.nix
-           ];
-         };
-       };
-     };
 }

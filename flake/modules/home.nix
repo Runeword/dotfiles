@@ -34,7 +34,7 @@
     alacritty
     bitwarden-cli
     google-chrome
-    # neovim-nightly
+    neovim-nightly
     (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 

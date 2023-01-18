@@ -31,6 +31,8 @@
     xclip
     chezmoi
     bat
+    gcc
+    python311
     alacritty
     bitwarden-cli
     google-chrome
@@ -43,7 +45,7 @@
   programs.fzf.fileWidgetCommand = "fd --hidden --follow --no-ignore --max-depth 1 --exclude .git --exclude node_modules";
   programs.fzf.defaultOptions = [ "--no-separator" ];
 
-  # home.shellAliases = import config/shellAliases.nix
+  # home.shellAliases = import ./shellAliases.nix
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
 }

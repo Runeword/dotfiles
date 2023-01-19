@@ -33,6 +33,7 @@
     bat
     gcc
     python311
+    nodejs-19_x
     alacritty
     bitwarden-cli
     google-chrome
@@ -40,12 +41,13 @@
     (nerdfonts.override { fonts = [ "Hack" ]; })
   ];
 
+  # home.shellAliases = import ./shellAliases.nix
+
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.fileWidgetCommand = "fd --hidden --follow --no-ignore --max-depth 1 --exclude .git --exclude node_modules";
   programs.fzf.defaultOptions = [ "--no-separator" ];
 
-  # home.shellAliases = import ./shellAliases.nix
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
 }

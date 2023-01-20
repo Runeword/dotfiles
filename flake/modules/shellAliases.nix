@@ -41,9 +41,9 @@
   tns="tmux new -s";
   tks="tmux kill-session";
   trs="tmux rename-session";
-  tnc="tmux switch-client -n";
-  tpc="tmux switch-client -p";
-  tlc="tmux switch-client -l";
+  # tnc="tmux switch-client -n";
+  # tpc="tmux switch-client -p";
+  # tlc="tmux switch-client -l";
   tkk="tmux kill-server";
   tss="$HOME/.config/tmux/plugins/tmux-resurrect/scripts/save.sh";
   trr="[[ '$TERM_PROGRAM' == 'tmux' ]] && $HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh";

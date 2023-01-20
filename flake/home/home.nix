@@ -37,7 +37,8 @@
     ];
   
     programs.home-manager.enable = true;
-  
+
+    # programs.readline.enable = import programs/readline.nix;
     programs.readline.enable = true;
     programs.readline.includeSystemConfig = false;
     programs.readline.variables = {

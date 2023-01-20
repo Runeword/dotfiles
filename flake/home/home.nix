@@ -38,29 +38,7 @@
   
     programs.home-manager.enable = true;
 
-    # programs.readline.enable = import programs/readline.nix;
-    programs.readline.enable = true;
-    programs.readline.includeSystemConfig = false;
-    programs.readline.variables = {
-      # override default readline bindings
-      bind-tty-special-chars = false;
-    };
-    programs.readline.bindings = {
-      "\\C-u" = "kill-whole-line";
-      "\\C-\\b" = "backward-kill-word";
-
-      # unmap page up and page down
-      "\\e[6~" = "";
-      "\\e[5~" = "";
-
-      # map history search to arrow
-      "\\e[A" = "history-search-backward";
-      "\\e[B" = "history-search-forward";
-      
-      # map history search to ctrl + arrow
-      # "\e[1;5B"= "history-search-forward";
-      # "\e[1;5A"= "history-search-backward";
-    };
+    programs.readline = import programs/readline.nix;
 
     programs.fzf.enable = true;
     programs.fzf.enableBashIntegration = true;

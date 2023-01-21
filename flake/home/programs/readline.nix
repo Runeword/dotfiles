@@ -1,9 +1,10 @@
-{
-  enable = true;
-  includeSystemConfig = false;
-  variables.bind-tty-special-chars = false; # override default readline bindings
+{ config, pkgs, lib, ... }: {
 
-  bindings = {
+  programs.readline.enable = true;
+  programs.readline.includeSystemConfig = false;
+  programs.readline.variables.bind-tty-special-chars = false; # override default readline bindings
+
+  programs.readline.bindings = {
     "\\C-u" = "kill-whole-line"; # ctrl + u
     "\\C-\\b" = "backward-kill-word"; # ctrl + backspace
     "\\e[A" = "history-search-backward"; # arrow up

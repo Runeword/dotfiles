@@ -1,7 +1,26 @@
 {
   home.shellAliases = {
+    shn="shutdown now";
+    chrome="google-chrome-stable";
+    pick="colorpicker";
+    slg="$HOME/.screenlayout/single.sh && feh --bg-fill ~/.config/Skin\ The\ Remixes.png";
+    dual="$HOME/.screenlayout/dual.sh";
     hsf="home-manager switch --flake ~/flake";
 
+    # ______________________________________QMK
+    qc="qmk compile -kb ferris/sweep -km runeword";
+    qfl="qmk flash -kb ferris/sweep -km runeword -bl dfu-split-left";
+    qfr="qmk flash -kb ferris/sweep -km runeword -bl dfu-split-right";
+    qj="qmk json2c -o _keymap.c";
+
+    # ______________________________________ARCH
+    pa="sudo pacman -Syyu";
+    par="pacman -R";
+    pas="pacman -S";
+    pass="pacman -Ss";
+    ya="yay -Syyu";
+
+    # ______________________________________NPM
     nl="npm ls --depth=0";
     nlg="npm ls -g --depth=0";
     nup="npm run use:prod";
@@ -9,29 +28,11 @@
     nd="npm run dev";
     ni="npm i";
 
-    qc="qmk compile -kb ferris/sweep -km runeword";
-    qfl="qmk flash -kb ferris/sweep -km runeword -bl dfu-split-left";
-    qfr="qmk flash -kb ferris/sweep -km runeword -bl dfu-split-right";
-    qj="qmk json2c -o _keymap.c";
-
-    chrome="google-chrome-stable";
-    shn="shutdown now";
-    s="source";
-    pick="colorpicker";
-
-    pa="sudo pacman -Syyu";
-    par="pacman -R";
-    pas="pacman -S";
-    pass="pacman -Ss";
-    ya="yay -Syyu";
-
+    # ______________________________________CHEZMOI
     chd="chezmoi diff";
     cha="chezmoi add";
     chy="chezmoi apply";
     chf="chezmoi forget";
-
-    slg="$HOME/.screenlayout/single.sh && feh --bg-fill ~/.config/Skin\ The\ Remixes.png";
-    dual="$HOME/.screenlayout/dual.sh";
 
     # ______________________________________TMUX
     t="tmux";
@@ -44,9 +45,6 @@
     tns="tmux new -s";
     tks="tmux kill-session";
     trs="tmux rename-session";
-    # tnc="tmux switch-client -n";
-    # tpc="tmux switch-client -p";
-    # tlc="tmux switch-client -l";
     tkk="tmux kill-server";
     tss="$HOME/.config/tmux/plugins/tmux-resurrect/scripts/save.sh";
     trr="[[ '$TERM_PROGRAM' == 'tmux' ]] && $HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh";

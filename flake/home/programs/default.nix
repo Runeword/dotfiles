@@ -23,6 +23,10 @@
 
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
+  programs.bash.bashrcExtra = ''
+    bind -x '"\C-n":"nvim"'
+    stty -ixon # unbind ctrl-s and ctrl-q (terminal scroll lock)
+  '';
 
   # programs.neovim.enable = true;
   # programs.neovim.defaultEditor = true;

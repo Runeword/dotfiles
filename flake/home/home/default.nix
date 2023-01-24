@@ -13,10 +13,10 @@
     xclip
     chezmoi
     bat
+    peek
     gcc
     python311
     nodejs-19_x
-    alacritty
     neovim-nightly
     bitwarden-cli
     google-chrome

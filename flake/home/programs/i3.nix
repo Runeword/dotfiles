@@ -45,6 +45,17 @@
       "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
       "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
       "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";
+      # Multimedia
+      # "${mod}+XF86AudioNext" = "exec playerctl position 5+";
+      # "${mod}+XF86AudioPrev" = "exec playerctl position 5-";
+      # "XF86AudioPlay" = "exec playerctl play-pause";
+      # "XF86AudioNext" = "exec playerctl next";
+      # "XF86AudioPrev" = "exec playerctl previous";
+      # "XF86MonBrightnessUp" = "exec xbacklight +1";
+      # "XF86MonBrightnessDown" = "exec xbacklight -1";
+      # "XF86AudioRaiseVolume" = "exec amixer -D pulse sset Master 5%+";
+      # "XF86AudioLowerVolume" = "exec amixer -D pulse sset Master 5%-";
+      # "XF86AudioMute" = "exec amixer -D pulse sset Master toggle";
     };
   };
   xsession.windowManager.i3.extraConfig = ''

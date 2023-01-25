@@ -15,6 +15,7 @@
     bat
     peek
     gcc
+    slack
     python311
     nodejs-19_x
     neovim-nightly

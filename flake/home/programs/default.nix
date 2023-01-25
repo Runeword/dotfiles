@@ -13,6 +13,7 @@
   imports = [
     ./readline.nix
     ./alacritty.nix
+    ./i3.nix
   ];
 
   programs.home-manager.enable = true;

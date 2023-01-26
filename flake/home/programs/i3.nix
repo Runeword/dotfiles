@@ -41,7 +41,7 @@
       "${mod}+8" = "workspace 8";
       "${mod}+9" = "workspace 9";
       # Applications
-      "${mod}+h" = "exec (i4-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";
+      "${mod}+h" = "exec (i3-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";
       "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
       "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
       "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";

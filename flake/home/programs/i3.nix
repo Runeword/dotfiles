@@ -10,6 +10,30 @@
       names = [ "Noto Sans Regular" ];
       size = 20.0;
     };
+    bars = [{
+      position = "top";
+      command = "i3bar --transparency";
+      trayOutput = "primary";
+      fonts = {
+        size = 11.0;
+      };
+      colors.focusedWorkspace = {
+        background = "#00000000";
+        border = "#00000000";
+        text = "#ffffff";
+      };
+      colors.inactiveWorkspace = {
+        background = "#00000000";
+        border = "#00000000";
+        text = "#7a7c9e";
+      };
+      colors.urgentWorkspace = {
+        background = "#00000000";
+        border = "#5294E2";
+        text = "#ffffff";
+      };
+      # extraConfig = "tray_padding 5px";
+    }];
     colors.focused = {
       background = "#00000000";
       border = "#00000000";
@@ -45,6 +69,7 @@
       "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
       "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
       "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";
+      "${mod}+d" = "exec rofi -modi drun -show drun"; # -config ~/.config/rofi/rofidmenu.rasi
       # Multimedia
       # "${mod}+XF86AudioNext" = "exec playerctl position 5+";
       # "${mod}+XF86AudioPrev" = "exec playerctl position 5-";

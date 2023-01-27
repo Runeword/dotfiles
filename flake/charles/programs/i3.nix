@@ -10,26 +10,36 @@
 
     fonts = {
       names = [ "Noto Sans Regular" ];
-      size = 20.0;
+      size = 16.0;
     };
 
     bars = [{
       position = "top";
       command = "i3bar --transparency";
       trayOutput = "primary";
+      extraConfig = ''
+      tray_padding 6px
+      workspace_min_width 30
+      strip_workspace_numbers yes
+      '';
+
       fonts = {
-        size = 11.0;
+        names = [ "Noto Sans Regular" ];
+        size = 16.0;
       };
+
       colors.focusedWorkspace = {
         background = "#00000000";
         border = "#00000000";
         text = "#ffffff";
       };
+
       colors.inactiveWorkspace = {
         background = "#00000000";
         border = "#00000000";
         text = "#7a7c9e";
       };
+
       colors.urgentWorkspace = {
         background = "#00000000";
         border = "#5294E2";
@@ -60,6 +70,7 @@
       "${mod}+q" = "kill";
       "${mod}+space" = "floating toggle";
       "${mod}+u" = "exec warpd --grid";
+
       # Focus workspace
       "${mod}+1" = "workspace 1";
       "${mod}+2" = "workspace 2";
@@ -70,12 +81,14 @@
       "${mod}+7" = "workspace 7";
       "${mod}+8" = "workspace 8";
       "${mod}+9" = "workspace 9";
+
       # Applications
       "${mod}+h" = "exec (i3-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";
       "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
       "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
       "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";
       "${mod}+d" = "exec rofi -modi drun -show drun"; # -config ~/.config/rofi/rofidmenu.rasi
+
       # Multimedia
       # "${mod}+XF86AudioNext" = "exec playerctl position 5+";
       # "${mod}+XF86AudioPrev" = "exec playerctl position 5-";

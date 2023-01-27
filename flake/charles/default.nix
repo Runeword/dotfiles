@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./programs ./home ];
+  imports = [ ./programs ./home ./services ];
 
   fonts.fontconfig.enable = true;
 }

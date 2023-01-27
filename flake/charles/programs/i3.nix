@@ -8,6 +8,10 @@
     window.hideEdgeBorders = "smart";
     focus.newWindow = "focus";
 
+    startup = [
+      { command = "feh --bg-fill ~/.config/Skin\ The\ Remixes.png"; notification = false; }
+    ];
+
     fonts = {
       names = [ "Noto Sans Regular" ];
       size = 16.0;

@@ -1,15 +1,18 @@
 { config, pkgs, lib, ... }: {
   xsession.windowManager.i3.enable = true;
+
   xsession.windowManager.i3.config = {
     modifier = "Mod4";
     floating.modifier = "Mod4";
     terminal = "alacritty";
     window.hideEdgeBorders = "smart";
     focus.newWindow = "focus";
+
     fonts = {
       names = [ "Noto Sans Regular" ];
       size = 20.0;
     };
+
     bars = [{
       position = "top";
       command = "i3bar --transparency";
@@ -34,6 +37,7 @@
       };
       # extraConfig = "tray_padding 5px";
     }];
+
     colors.focused = {
       background = "#00000000";
       border = "#00000000";
@@ -41,11 +45,13 @@
       indicator = "#e345ff";
       text = "#ffffff";
     };
+
     assigns = {
       "1" = [{ class = "Alacritty"; }];
       "2" = [{ class = "Google-chrome"; }];
       "4" = [{ class = "Slack"; }];
     };
+
     keybindings =
     let
       mod = config.xsession.windowManager.i3.config.modifier;
@@ -83,6 +89,7 @@
       # "XF86AudioMute" = "exec amixer -D pulse sset Master toggle";
     };
   };
+
   xsession.windowManager.i3.extraConfig = ''
   for_window [class=.*] border pixel 6, focus
   '';

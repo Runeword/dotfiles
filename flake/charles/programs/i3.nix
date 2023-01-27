@@ -28,6 +28,8 @@
         size = 16.0;
       };
 
+      colors.background = "#00000000";
+
       colors.focusedWorkspace = {
         background = "#00000000";
         border = "#00000000";
@@ -47,14 +49,6 @@
       };
       # extraConfig = "tray_padding 5px";
     }];
-
-    colors.focused = {
-      background = "#00000000";
-      border = "#00000000";
-      childBorder = "#0080ff60";
-      indicator = "#e345ff";
-      text = "#ffffff";
-    };
 
     assigns = {
       "1" = [{ class = "Alacritty"; }];

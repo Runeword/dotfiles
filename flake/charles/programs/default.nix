@@ -14,6 +14,7 @@
     ./readline.nix
     ./alacritty.nix
     ./i3.nix
+    ./feh.nix
   ];
 
   programs.home-manager.enable = true;
@@ -24,79 +25,6 @@
   programs.fzf.defaultOptions = [ "--no-separator" ];
 
   programs.rofi.enable = true;
-
-  programs.feh.enable = true;
-  programs.feh.buttons = {
-    reload = null;
-    pan = 1;
-    zoom = null;
-    toggle_menu = 3;
-    prev_img = null;
-    next_img = null;
-    blur = null;
-    rotate = null;
-    zoom_in = 4;
-    zoom_out = 5;
-    orient_1 = 2;
-  };
-  programs.feh.keybindings = {
-    toggle_actions = null;
-    toggle_aliasing = null;
-    toggle_caption = null;
-    toggle_filenames = null;
-    toggle_exif = null;
-    toggle_fullscreen = "f";
-    toggle_fixed_geometry = null;
-    toggle_pause = null;
-    toggle_info = "i";
-    toggle_keep_vp = null;
-    save_filelist = null;
-    toggle_menu = "l";
-    next_img = "Right";
-    toggle_pointer = null;
-    prev_img = "Left";
-    quit = "q";
-    reload_image = null;
-    save_image = "s";
-    size_to_image = null;
-    close = null;
-    jump_random = null;
-    toggle_auto_zoom = null;
-    prev_dir = null;
-    next_dir = null;
-    orient_3 = null;
-    orient_1 = null;
-    flip = null;
-    mirror = null;
-    jump_first = null;
-    jump_last = null;
-    jump_fwd = null;
-    jump_back = null;
-    reload_plus = null;
-    reload_minus = null;
-    remove = null;
-    delete = "d";
-    scroll_left = null;
-    scroll_right = null;
-    scroll_up = null;
-    scroll_down = null;
-    scroll_left_page = null;
-    scroll_right_page = null;
-    scroll_up_page = null;
-    scroll_down_page = null;
-    render = null;
-    zoom_in = "equal";
-    zoom_out = "minus";
-    zoom_default = null;
-    zoom_fit = null;
-    zoom_fill = null;
-    menu_close = "q";
-    menu_up = "k";
-    menu_down = "j";
-    menu_parent = "h";
-    menu_child = "l";
-    menu_select = "Return";
-  };
 
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;

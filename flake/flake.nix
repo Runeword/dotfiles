@@ -19,7 +19,7 @@
     homeConfigurations.charles = inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
-        ./home
+        ./charles
       ];
     };
   };

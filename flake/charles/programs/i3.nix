@@ -63,7 +63,6 @@
     let
       mod = config.xsession.windowManager.i3.config.modifier;
     in {
-      # Keybindings
       "${mod}+q" = "kill";
       "${mod}+space" = "floating toggle";
       "${mod}+u" = "exec warpd --grid";
@@ -78,6 +77,17 @@
       "${mod}+7" = "workspace 7";
       "${mod}+8" = "workspace 8";
       "${mod}+9" = "workspace 9";
+
+      # Move window to workspace
+      "${mod}+Shift+1" = "move container to workspace 1; workspace 1";
+      "${mod}+Shift+2" = "move container to workspace 2; workspace 2";
+      "${mod}+Shift+3" = "move container to workspace 3; workspace 3";
+      "${mod}+Shift+4" = "move container to workspace 4; workspace 4";
+      "${mod}+Shift+5" = "move container to workspace 5; workspace 5";
+      "${mod}+Shift+6" = "move container to workspace 6; workspace 6";
+      "${mod}+Shift+7" = "move container to workspace 7; workspace 7";
+      "${mod}+Shift+8" = "move container to workspace 8; workspace 8";
+      "${mod}+Shift+9" = "move container to workspace 9; workspace 9";
 
       # Applications
       "${mod}+h" = "exec (i3-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";

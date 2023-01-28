@@ -12,22 +12,6 @@
       { command = "feh --bg-fill ~/.config/Skin\\ The\\ Remixes.png"; always = false; notification = false; }
     ];
 
-    colors.focused = {
-      background = "#00000000";
-      border = "#00000000";
-      indicator = "#e345ff";
-      childBorder = "#0080ff60";
-      text = "#ffffff";
-    };
-
-    colors.unfocused = {
-      background = "#00000000";
-      border = "#00000000";
-      indicator = "#e345ff";
-      childBorder = "#00000000";
-      text = "#ffffff";
-    };
-
     fonts = {
       names = [ "Noto Sans Regular" ];
       size = 16.0;
@@ -39,6 +23,40 @@
       "4" = [{ class = "Slack"; }];
     };
 
+  };
+
+  xsession.windowManager.i3.config.colors = {
+    focused = {
+      background = "#00000000";
+      border = "#00000000";
+      indicator = "#e345ff";
+      childBorder = "#0080ff60";
+      text = "#ffffff";
+    };
+
+    unfocused = {
+      background = "#00000000";
+      border = "#00000000";
+      indicator = "#e345ff";
+      childBorder = "#00000000";
+      text = "#ffffff";
+    };
+
+    focusedInactive = {
+      background = "#00000000";
+      border = "#00000000";
+      indicator = "#e345ff";
+      childBorder = "#00000000";
+      text = "#ffffff";
+    };
+
+    urgent = {
+      background = "#00000000";
+      border = "#00000000";
+      indicator = "#e345ff";
+      childBorder = "#00000000";
+      text = "#ffffff";
+    };
   };
 
   xsession.windowManager.i3.config.keybindings =

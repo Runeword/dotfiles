@@ -9,7 +9,7 @@
     focus.newWindow = "focus";
 
     startup = [
-      { command = "feh --bg-fill ~/.config/Skin\ The\ Remixes.png"; notification = false; }
+      { command = "feh --bg-fill ~/.config/Skin\\ The\\ Remixes.png"; always = false; notification = false; }
     ];
 
     fonts = {
@@ -51,7 +51,6 @@
         border = "#5294E2";
         text = "#ffffff";
       };
-      # extraConfig = "tray_padding 5px";
     }];
 
     assigns = {

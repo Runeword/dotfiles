@@ -126,24 +126,26 @@
       size = 16.0;
     };
 
-    colors.background = "#00000000";
-
-    colors.focusedWorkspace = {
+    colors = {
       background = "#00000000";
-      border = "#00000000";
-      text = "#ffffff";
-    };
 
-    colors.inactiveWorkspace = {
-      background = "#00000000";
-      border = "#00000000";
-      text = "#7a7c9e";
-    };
+      focusedWorkspace = {
+        background = "#00000000";
+        border = "#00000000";
+        text = "#ffffff";
+      };
 
-    colors.urgentWorkspace = {
-      background = "#00000000";
-      border = "#5294E2";
-      text = "#ffffff";
+      inactiveWorkspace = {
+        background = "#00000000";
+        border = "#00000000";
+        text = "#7a7c9e";
+      };
+
+      urgentWorkspace = {
+        background = "#00000000";
+        border = "#5294E2";
+        text = "#ffffff";
+      };
     };
   }];
 

@@ -67,16 +67,17 @@
       "${mod}+space" = "floating toggle";
       "${mod}+u" = "exec warpd --grid";
 
-      # Focus workspace
-      "${mod}+1" = "workspace 1";
-      "${mod}+2" = "workspace 2";
-      "${mod}+3" = "workspace 3";
-      "${mod}+4" = "workspace 4";
-      "${mod}+5" = "workspace 5";
-      "${mod}+6" = "workspace 6";
-      "${mod}+7" = "workspace 7";
-      "${mod}+8" = "workspace 8";
-      "${mod}+9" = "workspace 9";
+      # Focus window
+      "${mod}+Right" = "focus right";
+      "${mod}+Left" = "focus left";
+      "${mod}+Up" = "focus up";
+      "${mod}+Down" = "focus down";
+
+      # Move window
+      "${mod}+Shift+Right" = "move right";
+      "${mod}+Shift+Left" = "move left";
+      "${mod}+Shift+Up" = "move up";
+      "${mod}+Shift+Down" = "move down";
 
       # Move window to workspace
       "${mod}+Shift+1" = "move container to workspace 1; workspace 1";
@@ -89,24 +90,25 @@
       "${mod}+Shift+8" = "move container to workspace 8; workspace 8";
       "${mod}+Shift+9" = "move container to workspace 9; workspace 9";
 
-      # Applications
+      # Focus workspace
+      "${mod}+Tab" = "workspace next";
+      "${mod}+Shift+Tab" = "workspace prev";
+      "${mod}+1" = "workspace 1";
+      "${mod}+2" = "workspace 2";
+      "${mod}+3" = "workspace 3";
+      "${mod}+4" = "workspace 4";
+      "${mod}+5" = "workspace 5";
+      "${mod}+6" = "workspace 6";
+      "${mod}+7" = "workspace 7";
+      "${mod}+8" = "workspace 8";
+      "${mod}+9" = "workspace 9";
+
+      # Run program
       "${mod}+h" = "exec (i3-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";
       "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
       "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
       "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";
       "${mod}+d" = "exec rofi -modi drun -show drun"; # -config ~/.config/rofi/rofidmenu.rasi
-
-      # Multimedia
-      # "${mod}+XF86AudioNext" = "exec playerctl position 5+";
-      # "${mod}+XF86AudioPrev" = "exec playerctl position 5-";
-      # "XF86AudioPlay" = "exec playerctl play-pause";
-      # "XF86AudioNext" = "exec playerctl next";
-      # "XF86AudioPrev" = "exec playerctl previous";
-      # "XF86MonBrightnessUp" = "exec xbacklight +1";
-      # "XF86MonBrightnessDown" = "exec xbacklight -1";
-      # "XF86AudioRaiseVolume" = "exec amixer -D pulse sset Master 5%+";
-      # "XF86AudioLowerVolume" = "exec amixer -D pulse sset Master 5%-";
-      # "XF86AudioMute" = "exec amixer -D pulse sset Master toggle";
     };
   };
 

@@ -34,6 +34,8 @@
     cha="chezmoi add";
     chy="chezmoi apply";
     chf="chezmoi forget";
+    chi="chezmoi ignored";
+    chc="chezmoi cd";
 
     # ______________________________________TMUX
     t="tmux";

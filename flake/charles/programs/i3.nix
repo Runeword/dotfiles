@@ -65,7 +65,6 @@
   in {
     "${mod}+q" = "kill";
     "${mod}+space" = "floating toggle";
-    "${mod}+u" = "exec warpd --grid";
 
     # Focus window
     "${mod}+Right" = "focus right";
@@ -103,12 +102,18 @@
     "${mod}+8" = "workspace 8";
     "${mod}+9" = "workspace 9";
 
+
     # Run program
+    "${mod}+d" = "exec rofi -modi drun -show drun"; # -config ~/.config/rofi/rofidmenu.rasi
+    "${mod}+Shift+h" = "exec alacritty";
+    "${mod}+Shift+t" = "exec google-chrome-stable";
+    "${mod}+Shift+n" = "exec thunar";
+
+    # Focus or run program
     "${mod}+h" = "exec (i3-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";
     "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
     "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
     "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";
-    "${mod}+d" = "exec rofi -modi drun -show drun"; # -config ~/.config/rofi/rofidmenu.rasi
   };
 
   xsession.windowManager.i3.config.bars = [{

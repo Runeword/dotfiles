@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''

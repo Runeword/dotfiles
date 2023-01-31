@@ -6,7 +6,7 @@
     slg="$HOME/.screenlayout/single.sh && feh --bg-fill ~/.config/Skin\ The\ Remixes.png";
     dual="$HOME/.screenlayout/dual.sh";
     hsf="home-manager switch --flake ~/flake";
-    nrs="sudo nixos-rebuild switch --flake ~/flake#charles"
+    nrs="sudo nixos-rebuild switch --flake ~/flake#charles";
 
     # ______________________________________QMK
     qc="qmk compile -kb ferris/sweep -km runeword";

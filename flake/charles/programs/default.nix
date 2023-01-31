@@ -15,6 +15,7 @@
     ./alacritty.nix
     ./i3.nix
     ./feh.nix
+    ./ssh.nix
   ];
 
   programs.home-manager.enable = true;

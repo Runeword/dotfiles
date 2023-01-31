@@ -5,6 +5,7 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   outputs = { self, ... }@inputs:
@@ -18,7 +19,10 @@
   in {
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      modules = [ nixos/configuration.nix ];
+      modules = [
+        inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+        nixos/configuration.nix
+      ];
     };
 
     homeConfigurations.charles = inputs.home-manager.lib.homeManagerConfiguration {

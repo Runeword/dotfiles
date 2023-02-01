@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }: {
   xsession.windowManager.i3.enable = true;
+  programs.i3status.enable = true;
+  programs.i3status.enableDefault = false;
 
   xsession.windowManager.i3.config = {
     modifier = "Mod4";
@@ -11,11 +13,6 @@
     startup = [
       { command = "feh --bg-fill ~/.config/Skin\\ The\\ Remixes.png"; always = false; notification = false; }
     ];
-
-    fonts = {
-      names = [ "Noto Sans Regular" ];
-      size = 16.0;
-    };
 
     assigns = {
       "1" = [{ class = "Alacritty"; }];
@@ -119,17 +116,14 @@
   xsession.windowManager.i3.config.bars = [{
     position = "top";
     command = "i3bar --transparency";
+    statusCommand = "i3status";
     trayOutput = "primary";
     extraConfig = ''
     tray_padding 6px
     workspace_min_width 30
     strip_workspace_numbers yes
+    font pango:Noto Sans Regular 18px
     '';
-
-    fonts = {
-      names = [ "Noto Sans Regular" ];
-      size = 16.0;
-    };
 
     colors = {
       background = "#00000000";
@@ -157,4 +151,60 @@
   xsession.windowManager.i3.extraConfig = ''
   for_window [class=.*] border pixel 6, focus
   '';
+
+  programs.i3status.general = {
+    color_good = "#7a7c9e";
+    color_degraded = "#5294e2";
+    color_bad = "#5294e2";
+    interval = 1;
+  };
+
+  programs.i3status.modules = {
+    cpu_usage = {
+      position = 1;
+      settings = {
+        format = " %usage";
+        separator = false;
+        separator_block_width = 40;
+      };
+    };
+
+    memory = {
+      position = 2;
+      settings = {
+        format = "﬙ %percentage_used";
+        separator = false;
+        separator_block_width = 40;
+      };
+    };
+
+    "volume master" = {
+      position = 3;
+      settings = {
+        format = "墳 %volume";
+        format_muted = "婢 %volume";
+        device = "pulse";
+        separator = false;
+        separator_block_width = 40;
+      };
+    };
+
+    "tztime hour" = {
+      position = 4;
+      settings = {
+        format = "%H:%M";
+        separator = false;
+        separator_block_width = 40;
+      };
+    };
+
+    "tztime day" = {
+      position = 5;
+      settings = {
+        format = "%a%d-%m   ";
+        separator = false;
+        separator_block_width = 40;
+      };
+    };
+  };
 }

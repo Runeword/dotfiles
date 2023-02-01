@@ -16,6 +16,7 @@
       inputs.neovim-nightly-overlay.overlay
     ];
   };
+
   in {
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

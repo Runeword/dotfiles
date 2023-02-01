@@ -1,4 +1,4 @@
-{
+{ config, pkgs, lib, ... }: {
   programs.tmux.enable = true;
 
   programs.tmux.terminal = "tmux-256color";

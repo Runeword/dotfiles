@@ -16,6 +16,7 @@
     ./i3.nix
     ./feh.nix
     ./ssh.nix
+    ./tmux.nix
   ];
 
   programs.home-manager.enable = true;
@@ -33,12 +34,6 @@
     bind -x '"\C-n":"nvim"'
     stty -ixon # unbind ctrl-s and ctrl-q (terminal scroll lock)
   '';
-
-  programs.tmux.enable = true;
-  programs.tmux.baseIndex = 1;
-  programs.tmux.disableConfirmationPrompt = true;
-  programs.tmux.escapeTime = 0;
-  # programs.tmux.extraConfig;
 
   # programs.neovim.enable = true;
   # programs.neovim.defaultEditor = true;

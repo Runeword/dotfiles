@@ -44,10 +44,10 @@
     td="tmux detach";
     tnw="tmux new-window -n";
     tkw="tmux kill-window";
-    trw="tmux rename-window";
+    trw="read -p 'Window name: ' name && tmux rename-window $name";
     tns="tmux new -s";
     tks="tmux kill-session";
-    trs="tmux rename-session";
+    trs="read -p 'Session name: ' name && tmux rename-session $name";
     tkk="tmux kill-server";
     tss="$HOME/.config/tmux/plugins/tmux-resurrect/scripts/save.sh";
     trr="[[ '$TERM_PROGRAM' == 'tmux' ]] && $HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh";

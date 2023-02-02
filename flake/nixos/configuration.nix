@@ -10,6 +10,7 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    xfce.xfce4-pulseaudio-plugin
     vim
   ];
 

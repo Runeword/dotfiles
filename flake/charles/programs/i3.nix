@@ -10,6 +10,11 @@
     window.hideEdgeBorders = "smart";
     focus.newWindow = "focus";
 
+    fonts = {
+      names = [ "DroidSansMono Nerd Font" ];
+      size = 15.0;
+    };
+
     startup = [
       { command = "feh --bg-fill ~/.config/Skin\\ The\\ Remixes.png"; always = false; notification = false; }
     ];
@@ -60,6 +65,7 @@
   let
     mod = config.xsession.windowManager.i3.config.modifier;
   in {
+    "${mod}+r" = "reload";
     "${mod}+q" = "kill";
     "${mod}+space" = "floating toggle";
 
@@ -122,8 +128,12 @@
     tray_padding 6px
     workspace_min_width 30
     strip_workspace_numbers yes
-    font pango:Noto Sans Regular 18px
     '';
+
+    fonts = {
+      names = [ "DroidSansMono Nerd Font" ];
+      size = 15.0;
+    };
 
     colors = {
       background = "#00000000";

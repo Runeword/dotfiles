@@ -173,7 +173,7 @@
     cpu_usage = {
       position = 1;
       settings = {
-        format = " %usage";
+        format = "%usage";
         separator = false;
         separator_block_width = 40;
       };
@@ -182,25 +182,14 @@
     memory = {
       position = 2;
       settings = {
-        format = "﬙ %used";
-        separator = false;
-        separator_block_width = 40;
-      };
-    };
-
-    "volume master" = {
-      position = 3;
-      settings = {
-        format = "墳 %volume";
-        format_muted = "婢 %volume";
-        device = "pulse";
+        format = "%used";
         separator = false;
         separator_block_width = 40;
       };
     };
 
     "tztime hour" = {
-      position = 4;
+      position = 3;
       settings = {
         format = "%H:%M";
         separator = false;
@@ -209,9 +198,20 @@
     };
 
     "tztime day" = {
+      position = 4;
+      settings = {
+        format = "%a%d-%m";
+        separator = false;
+        separator_block_width = 40;
+      };
+    };
+
+    "volume master" = {
       position = 5;
       settings = {
-        format = "%a%d-%m   ";
+        format = "%volume 墳";
+        format_muted = "婢 %volume ";
+        device = "pulse";
         separator = false;
         separator_block_width = 40;
       };

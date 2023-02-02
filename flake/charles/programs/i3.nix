@@ -172,7 +172,7 @@
     memory = {
       position = 2;
       settings = {
-        format = "﬙ %percentage_used";
+        format = "﬙ %used";
         separator = false;
         separator_block_width = 40;
       };

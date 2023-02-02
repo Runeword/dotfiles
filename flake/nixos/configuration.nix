@@ -58,8 +58,8 @@
     enable = true;
     layout = "us";
     xkbVariant = "altgr-intl";
-    autoRepeatInterval = 150;
-    autoRepeatDelay = 25;
+    # autoRepeatInterval = 150;
+    # autoRepeatDelay = 25;
     windowManager.i3.enable = true;
     displayManager.lightdm.enable = true;
     displayManager.defaultSession = "xfce+i3";

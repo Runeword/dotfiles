@@ -22,6 +22,6 @@
     neovim-nightly
     bitwarden-cli
     google-chrome
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
   ];
 }

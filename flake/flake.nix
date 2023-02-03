@@ -22,6 +22,7 @@
       system = "x86_64-linux";
       modules = [
         inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
+        nixos/hardware-configuration.nix
         nixos/configuration.nix
       ];
     };

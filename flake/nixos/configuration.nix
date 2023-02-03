@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
@@ -18,12 +22,14 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     loader.efi.efiSysMountPoint = "/boot/efi";
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [
-      "mem_sleep_default=deep"
-      "nvme.noacpi=1"
-      "i915.enable_psr=1"
-    ];
+
+    # kernelPackages = pkgs.linuxPackages_latest;
+    # kernelParams = [
+    #   "mem_sleep_default=deep"
+    #   "nvme.noacpi=1"
+    #   "i915.enable_psr=1"
+    # ];
+
     # Setup keyfile
     initrd.secrets = {
       "/crypto_keyfile.bin" = null;
@@ -31,7 +37,23 @@
     # Enable swap on luks
     initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".device = "/dev/disk/by-uuid/4609397c-29de-4fbc-88d8-e42b0736ec6e";
     initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".keyFile = "/crypto_keyfile.bin";
+    initrd.luks.devices."luks-e7b38457-61ac-441d-ab46-db469f456336".device = "/dev/disk/by-uuid/e7b38457-61ac-441d-ab46-db469f456336";
+
   };
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/febf3a5b-22df-4c5b-9a8f-2a52133e40dc";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/A7CB-42E9";
+      fsType = "vfat";
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/35362b83-6c2d-4749-90e2-116c3f06f450"; }
+    ];
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -71,7 +93,6 @@
       enableXfwm = false;
     };
   };
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

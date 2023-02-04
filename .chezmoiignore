@@ -2,3 +2,4 @@
 
 !.config
 !flake
+!qmk_firmware/keyboards/ferris/keymaps/Runeword

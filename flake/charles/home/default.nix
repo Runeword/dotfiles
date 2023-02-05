@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     git
     htop
+    qmk
     wget
     ripgrep
     fd

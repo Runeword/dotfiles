@@ -9,9 +9,9 @@
     nrs="sudo nixos-rebuild switch --flake ~/flake#charles";
 
     # ______________________________________QMK
-    qc="qmk compile -kb ferris/sweep -km runeword";
-    qfl="qmk flash -kb ferris/sweep -km runeword -bl dfu-split-left";
-    qfr="qmk flash -kb ferris/sweep -km runeword -bl dfu-split-right";
+    qc="qmk compile -kb ferris/sweep -km Runeword";
+    qfl="qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left";
+    qfr="qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right";
     qj="qmk json2c -o _keymap.c";
 
     # ______________________________________ARCH
@@ -54,9 +54,9 @@
 
     # ______________________________________GIT
     gs="git status";
-    gst="git stash";
-    gstl="git stash list";
-    gsta="git stash apply";
+    gt="git stash";
+    gtl="git stash list";
+    gty="git stash apply";
     gpl="git pull";
     gp="git push";
     gpo="git push origin";

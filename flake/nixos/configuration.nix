@@ -8,8 +8,13 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    xfce.xfce4-pulseaudio-plugin
+    xfce.xfce4-volumed-pulse
     vim
+  ];
+
+  services.udev.enable = true;
+  services.udev.packages = with pkgs; [
+    qmk-udev-rules
   ];
 
   boot.loader.systemd-boot.enable = true;

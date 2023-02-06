@@ -8,7 +8,9 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    xfce.xfce4-volumed-pulse
+    # xfce.xfce4-volumed-pulse
+    gnome.gnome-disk-utility
+    gparted
     vim
   ];
 

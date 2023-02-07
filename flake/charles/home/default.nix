@@ -7,6 +7,7 @@
     git
     htop
     qmk
+    xarchiver
     wget
     ripgrep
     fd

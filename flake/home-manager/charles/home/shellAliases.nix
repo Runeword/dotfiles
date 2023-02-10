@@ -7,7 +7,7 @@
     dual="$HOME/.screenlayout/dual.sh";
     hsf="home-manager switch --flake ~/flake";
     nrs="sudo nixos-rebuild switch --flake ~/flake#charles";
-    nd="nix develop ~/flake"
+    nxd="read -p 'nix develop ~/flake#' devShell && nix develop ~/flake#$devShell";
 
     # ______________________________________QMK
     qc="qmk compile -kb ferris/sweep -km Runeword";
@@ -21,14 +21,6 @@
     pas="pacman -S";
     pass="pacman -Ss";
     ya="yay -Syyu";
-
-    # ______________________________________NPM
-    nl="npm ls --depth=0";
-    nlg="npm ls -g --depth=0";
-    nup="npm run use:prod";
-    nud="npm run use:dev";
-    nd="npm run dev";
-    ni="npm i";
 
     # ______________________________________CHEZMOI
     chd="chezmoi diff";

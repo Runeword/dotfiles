@@ -7,6 +7,7 @@
     dual="$HOME/.screenlayout/dual.sh";
     hsf="home-manager switch --flake ~/flake";
     nrs="sudo nixos-rebuild switch --flake ~/flake#charles";
+    nd="nix develop ~/flake"
 
     # ______________________________________QMK
     qc="qmk compile -kb ferris/sweep -km Runeword";

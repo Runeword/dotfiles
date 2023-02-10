@@ -34,10 +34,24 @@
       ];
     };
 
-    devShell.x86_64-linux = pkgs.mkShell {
-      packages = [
-        pkgs.nodejs-19_x
-      ];
+    devShells.x86_64-linux = {
+      default = pkgs.mkShell {
+        packages = [
+          pkgs.nodejs-19_x
+        ];
+      };
+
+      js = pkgs.mkShell {
+        packages = [
+          pkgs.nodejs-19_x
+        ];
+        shellHook = ''
+        nl="npm ls --depth=0";
+        nlg="npm ls -g --depth=0";
+        nd="npm run dev";
+        ni="npm i";
+        ''
+      };
     };
   };
 }

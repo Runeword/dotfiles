@@ -50,7 +50,7 @@
         nlg="npm ls -g --depth=0";
         nd="npm run dev";
         ni="npm i";
-        ''
+        '';
       };
     };
   };

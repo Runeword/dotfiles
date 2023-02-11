@@ -31,10 +31,15 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
   programs.bash.bashrcExtra = ''
+    # bind ctrl-n to neovim
     bind -x '"\C-n":"nvim"'
-    stty -ixon # unbind ctrl-s and ctrl-q (terminal scroll lock)
 
-    # ___________________________________________ SSH-AGENT
+    # unbind alt-number
+    for i in "-" {0..9}; do bind -r "\e$i"; done
+
+    # unbind ctrl-s and ctrl-q (terminal scroll lock)
+    stty -ixon
+
     if ! pgrep -u "$USER" ssh-agent > /dev/null; then
         ssh-agent -t 2h > "$XDG_RUNTIME_DIR/ssh-agent.env"
     fi

@@ -33,6 +33,14 @@
   programs.bash.bashrcExtra = ''
     bind -x '"\C-n":"nvim"'
     stty -ixon # unbind ctrl-s and ctrl-q (terminal scroll lock)
+
+    # ___________________________________________ SSH-AGENT
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        ssh-agent -t 2h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    fi
+    if [[ ! "$SSH_AUTH_SOCK" ]]; then
+        source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+    fi
   '';
 
   # programs.neovim.enable = true;

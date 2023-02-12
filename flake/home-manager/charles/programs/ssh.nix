@@ -13,4 +13,12 @@
     extraOptions.UpdateHostKeys = "no";
     extraOptions.PreferredAuthentications = "publickey";
   };
+
+  programs.ssh.matchBlocks.gitlab = {
+    host = "gitlab.com";
+    hostname = "gitlab.com";
+    identityFile = "~/.ssh/id_ed25519_home";
+    extraOptions.UpdateHostKeys = "no";
+    extraOptions.PreferredAuthentications = "publickey";
+  };
 }

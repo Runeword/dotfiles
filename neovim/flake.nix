@@ -5,14 +5,22 @@
   inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
   outputs = { self, ... }@inputs:
-  let pkgs = import inputs.nixpkgs {
+  let
+  pkgs = import inputs.nixpkgs {
     system = "x86_64-linux";
     overlays = [
       inputs.neovim-nightly-overlay.overlay
     ];
   };
+  nvim = pkgs.wrapNeovim pkgs.neovim-nightly {
+    extraMakeWrapperArgs = ''--prefix PATH : "${pkgs.lib.makeBinPath [pkgs.fzf]}"'';
+    configure = {
+      customRC = "set relativenumber";
+    };
+  };
 
   in {
-    packages.x86_64-linux.default = pkgs.neovim-nightly;
+    packages.x86_64-linux.default = nvim;
+    apps.x86_64-linux.default = { type = "app"; program = "${nvim}/bin/nvim"; };
   };
 }

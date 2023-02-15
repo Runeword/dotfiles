@@ -13,9 +13,14 @@
     ];
   };
   nvim = pkgs.wrapNeovim pkgs.neovim-nightly {
-    extraMakeWrapperArgs = ''--prefix PATH : "${pkgs.lib.makeBinPath [pkgs.fzf]}"'';
+    # extraMakeWrapperArgs = ''--prefix PATH : "${pkgs.lib.makeBinPath [pkgs.fzf]}"'';
     configure = {
-      customRC = "set relativenumber";
+      # customRC = "set relativenumber";
+      customRC = ''
+      lua << EOF
+      ${builtins.readFile ~/flake/config/nvim/init.lua}
+      EOF
+    '';
     };
   };
 

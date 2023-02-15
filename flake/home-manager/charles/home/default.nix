@@ -20,7 +20,7 @@
     slack
     python311
     # nodejs-19_x
-    # neovim-nightly
+    neovim-nightly
     bitwarden-cli
     google-chrome
     (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })

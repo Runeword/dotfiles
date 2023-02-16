@@ -48,10 +48,10 @@
     fi
   '';
 
-  # programs.neovim.enable = true;
-  # programs.neovim.defaultEditor = true;
-  # programs.neovim.viAlias = true;
-  # programs.neovim.package = pkgs.neovim-nightly;
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
+  programs.neovim.viAlias = false;
+  programs.neovim.package = pkgs.neovim-nightly;
   # programs.neovim.extraConfig = "luafile ~/flake/config/nvim/init.lua";
 
   # programs.neovim.plugins = with pkgs.vimPlugins; [

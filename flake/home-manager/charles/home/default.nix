@@ -18,11 +18,11 @@
     peek
     gcc
     slack
-    python311
-    # nodejs-19_x
-    neovim-nightly
     bitwarden-cli
     google-chrome
     (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
+    neovim-nightly
+    # nodejs-19_x
+    # python311
   ];
 }

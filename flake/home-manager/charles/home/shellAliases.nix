@@ -6,8 +6,9 @@
     slg="$HOME/.screenlayout/single.sh && feh --bg-fill ~/.config/Skin\ The\ Remixes.png";
     dual="$HOME/.screenlayout/dual.sh";
     hsf="home-manager switch --flake ~/flake";
-    nrs="sudo nixos-rebuild switch --flake ~/flake#charles";
-    nxd="read -p 'nix develop ~/flake#' devShell && nix develop ~/flake#$devShell";
+    nsf="sudo nixos-rebuild switch --flake ~/flake#charles";
+    nfu="nix flake update ~/flake";
+    nd="read -p 'nix develop ~/flake#' devShell && nix develop ~/flake#$devShell";
 
     # ______________________________________QMK
     qc="qmk compile -kb ferris/sweep -km Runeword";

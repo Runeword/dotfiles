@@ -1,15 +1,4 @@
 { config, pkgs, libs, ... }: {
-  #let
-  #  fromGitHub = ref: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
-  #    pname = "${lib.strings.sanitizeDerivationName repo}";
-  #    version = ref;
-  #    src = builtins.fetchGit {
-  #      url = "https://github.com/${repo}.git";
-  #      ref = ref;
-  #    };
-  #  };
-  #in {
-
   imports = [
     ./readline.nix
     ./alacritty.nix
@@ -17,6 +6,7 @@
     ./feh.nix
     ./ssh.nix
     ./tmux.nix
+    ./neovim.nix
   ];
 
   programs.home-manager.enable = true;
@@ -47,36 +37,4 @@
         source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
     fi
   '';
-
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-  programs.neovim.viAlias = false;
-  programs.neovim.withNodeJs = true;
-  programs.neovim.withPython3 = true;
-  programs.neovim.package = pkgs.neovim-nightly;
-
-  # install language servers
-  programs.neovim.extraPackages = with pkgs; [
-  nodePackages.vls
-  nodePackages.typescript-language-server
-  nodePackages.eslint
-  nodePackages.vscode-langservers-extracted
-  nodePackages.bash-language-server
-  nodePackages.yaml-language-server
-  sumneko-lua-language-server
-  marksman
-  ];
-
-  # programs.neovim.extraConfig = "luafile ~/flake/config/nvim/init.lua";
-
-  # programs.neovim.plugins = with pkgs.vimPlugins; [
-  #   nvim-lspconfig
-  #   nvim-treesitter
-  #   plenary-nvim
-  #   (fromGitHub "HEAD" "itchyny/vim-cursorword")
-  #   (fromGitHub "HEAD" "windwp/nvim-ts-autotag")
-  #   (fromGitHub "HEAD" "tommcdo/vim-exchange")
-  #   (fromGitHub "HEAD" "kyazdani42/nvim-web-devicons")
-  #   (fromGitHub "HEAD" "kana/vim-arpeggio")
-  # ];
 }

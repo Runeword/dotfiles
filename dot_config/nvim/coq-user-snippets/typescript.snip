@@ -1,0 +1,138 @@
+# _______________________________ TS
+
+snippet f
+abbr function  () {  }
+ function ${1} (${2}) {
+   ${0}
+ }
+
+snippet ()
+abbr  (() => {  })
+ ${1} ((${2}) => {
+   ${0}
+ })
+
+snippet /
+abbr // ______ 
+ // ___________________________ ${0}
+
+snippet c
+abbr const  = 
+ const ${1} = ${0}
+
+snippet l
+abbr let  = 
+ let ${1} = ${0}
+
+snippet co
+abbr const  = () => {  }
+ const ${1} = (${2}) => {
+   ${0}
+ }
+
+snippet ()
+abbr () => {  }
+ (${1}) => {
+   ${0}
+ }
+
+snippet a
+abbr async () => {  }
+ async (${1}) => {
+   ${0}
+ }
+
+snippet im
+abbr import {  } from ''
+ import { ${1} } from '${0}'
+
+snippet imt
+abbr import type  {  } from ''
+ import type ${1} { ${2} } from '${0}'
+
+snippet cl
+abbr console.log()
+ console.log(${0})
+
+snippet cd
+abbr console.debug('')
+ console.debug(${0})
+
+snippet ex
+abbr export default function () {  }
+  export default function (${1}) {
+    ${0}
+  }
+
+snippet exp
+abbr export interface  {  }
+  export interface ${1} {
+    ${2}:${0}
+  }
+
+snippet i
+abbr if () 
+  if (${1}) ${0}
+
+snippet e
+abbr else 
+  else ${0}
+
+snippet if
+abbr if () {  } 
+  if (${1}) {
+    ${2}
+  } ${0}
+
+snippet el
+abbr else {  } 
+  else {
+    ${1}
+  } ${0}
+
+snippet fo
+abbr for ( of ) {  }
+  for (${1} of ${2}) {
+    ${0}
+  }
+
+snippet for
+abbr for (let i = 0; i < .lenght; i++) {  }
+  for (let i = 0; i < ${1}.length; i++) {
+    ${0}
+  }
+
+snippet ty
+abbr export type  {  }
+  export type ${1} = {
+    ${2}:${0}
+  }
+
+snippet ke
+abbr [key: string]: ,
+  [key: string]: ${0},
+
+snippet es
+abbr /* eslint-disable */
+  /* eslint-disable */
+
+# _______________________________ VUE
+
+snippet wa
+abbr watch(, newVal => {  })
+ watch(${1}, newVal => {
+   ${0}
+ })
+
+snippet st
+abbr defineStore('', {
+ import { defineStore } from 'pinia'
+
+ export default defineStore('${0}', {
+   state: () => ({
+   }),
+   getters: {
+   },
+   actions: {
+   }
+ })

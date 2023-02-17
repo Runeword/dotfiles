@@ -910,6 +910,9 @@ nvim flake.nix
 # Documentation
 man configuration.nix
 man home-configuration.nix
+
+# List installed packages
+ls /nix/store/ | grep "typescript"
 ```
 
 ## gcloud

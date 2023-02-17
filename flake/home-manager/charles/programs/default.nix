@@ -55,13 +55,11 @@
   programs.neovim.withPython3 = true;
   programs.neovim.package = pkgs.neovim-nightly;
   programs.neovim.extraPackages = with pkgs; [
-  nodePackages.npm
-  nodePackages.neovim
-  nodePackages.prettier
-  nodePackages.eslint
   nodePackages.typescript-language-server
+  nodePackages.eslint
   nodePackages.vscode-langservers-extracted
   sumneko-lua-language-server
+  marksman
   ];
 
   # programs.neovim.extraConfig = "luafile ~/flake/config/nvim/init.lua";

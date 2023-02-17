@@ -54,10 +54,15 @@
   programs.neovim.withNodeJs = true;
   programs.neovim.withPython3 = true;
   programs.neovim.package = pkgs.neovim-nightly;
+
+  # install language servers
   programs.neovim.extraPackages = with pkgs; [
+  nodePackages.vls
   nodePackages.typescript-language-server
   nodePackages.eslint
   nodePackages.vscode-langservers-extracted
+  nodePackages.bash-language-server
+  nodePackages.yaml-language-server
   sumneko-lua-language-server
   marksman
   ];

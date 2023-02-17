@@ -2,5 +2,4 @@
 
 !.config
 !flake
-!neovim
 !qmk_firmware

@@ -2,6 +2,7 @@
   programs.readline.enable = true;
   programs.readline.includeSystemConfig = false;
   programs.readline.variables.bind-tty-special-chars = false; # override default readline bindings
+  programs.readline.variables.show-all-if-ambiguous = true;
 
   programs.readline.bindings = {
     "\\C-u" = "kill-whole-line"; # ctrl + u

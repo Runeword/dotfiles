@@ -19,6 +19,12 @@
   nil
   ];
 
+  # programs.neovim.plugins = with pkgs; [
+  #   vimPlugins.nvim-treesitter
+  #   vimPlugins.nvim-treesitter.withAllGrammars
+  #   vimPlugins.nvim-treesitter-textobjects
+  # ];
+
   # programs.neovim.extraConfig = "luafile ~/flake/config/nvim/init.lua";
 
   # let

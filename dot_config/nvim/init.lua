@@ -367,37 +367,3 @@ local viewConfig = require("lazy.view.config")
 
 viewConfig.keys.details = "o"
 viewConfig.commands.build.key_plugin = "r"
-
--- use("p00f/nvim-ts-rainbow")
--- use("nvim-treesitter/playground")
--- use("m-demare/hlargs.nvim")
--- use("/home/charles/Documents/dev/plugins/blaster")
--- use("ryvnf/readline.vim")
--- use("Julian/vim-textobj-variable-segment")
--- use("skywind3000/asyncrun.vim")
--- use({
---   'sindrets/diffview.nvim',
---   requires = 'nvim-lua/plenary.nvim',
--- })
--- use({
---   "jonatan-branting/nvim-better-n",
---   config = function()
---     require("setup").bettern()
---     require("mappings").bettern()
---   end
--- })
--- use({
---   "ggandor/leap.nvim",
---   config = function()
---     require("setup").leap()
---     require("mappings").leap()
---   end
--- })
--- use({
---   "cshuaimin/ssr.nvim",
---   module = "ssr",
---   config = function()
---     require('setup').ssr()
---     require('mappings').ssr()
---   end
--- })

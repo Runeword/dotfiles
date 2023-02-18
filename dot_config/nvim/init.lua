@@ -108,7 +108,8 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
     init = function()
-      -- autocommand will have no effect on previously sourced colorschemes so it must be added before any colorscheme is sourced
+      -- autocommand will have no effect on previously sourced colorschemes
+      -- so it must be added before any colorscheme is sourced
       require('autocmd').bufferline()
       require('autocmd').sj()
       require('autocmd').matchup()
@@ -131,20 +132,6 @@ require("lazy").setup({
       vim.cmd('colorscheme moonlight')
     end
   },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   init = function()
-  --     -- autocommand will have no effect on previously sourced colorschemes so it must be added before any colorscheme is sourced
-  --     require('autocmd').bufferline()
-  --     require('autocmd').sj()
-  --     require('autocmd').matchup()
-  --   end,
-  --   config = function()
-  --     require('setup').tokyonight()
-  --   end,
-  -- },
   {
     "nvim-treesitter/nvim-treesitter",
     config = function()

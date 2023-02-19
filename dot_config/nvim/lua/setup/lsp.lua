@@ -88,7 +88,7 @@ return function()
   local lspconfig = require("lspconfig")
   local lsp_flags = { debounce_text_changes = 0 }
 
-  lspconfig['tsserver'].setup({
+  lspconfig.tsserver.setup({
     on_attach = on_attach_tsserver,
     autostart = true,
     -- cmd = {
@@ -97,51 +97,49 @@ return function()
     --   "--tsserver-path",
     --   "/nix/store/34pzigggq36pk9sz9a95bz53qlqx1mpx-typescript-4.9.4/lib/node_modules/typescript/lib/"
     -- },
-    settings = {
-      format = { enable = false },
-    },
+    ['settings.format.enable'] = false,
     flags = lsp_flags,
   })
 
   lspconfig['eslint'].setup({
     on_attach = on_attach_eslint,
-    settings = { format = { enable = true } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['lua_ls'].setup({
     on_attach = on_attach_lua_ls,
-    settings = { format = { enable = true } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['yamlls'].setup({
     on_attach = on_attach_yamlls,
-    settings = { format = { enable = true } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['bashls'].setup({
     on_attach = on_attach_bashls,
-    settings = { format = { enable = true } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['vuels'].setup({
     on_attach = on_attach_vuels,
-    settings = { format = { enable = false } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['nil_ls'].setup({
     on_attach = on_attach_nil_ls,
-    settings = { format = { enable = true } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['marksman'].setup({
     on_attach = on_attach_marksman,
-    settings = { format = { enable = true } },
+    ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 

@@ -178,7 +178,7 @@ require("lazy").setup({
   {
     enabled = true,
     "neovim/nvim-lspconfig",
-    -- config = require("setup.lsp")
+    config = require("setup.lsp")
   },
 
   {

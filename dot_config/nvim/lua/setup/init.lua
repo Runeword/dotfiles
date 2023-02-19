@@ -478,23 +478,6 @@ local function bettern()
   }
 end
 
--------------------- folke/tokyonight.nvim
-local function tokyonight()
-  require("tokyonight").setup({
-    style = "night",
-    transparent = true,
-    terminal_colors = true,
-    styles = {
-      sidebars = "transparent",
-      floats = "transparent",
-    },
-    on_colors = function(colors)
-      colors.green = "#FF9EFF"
-    end
-  })
-  cmd("colorscheme tokyonight")
-end
-
 -------------------- windwp/nvim-autopairs
 local function autopairs()
   local remap = vim.api.nvim_set_keymap
@@ -691,7 +674,6 @@ return {
   bettern = bettern,
   autopairs = autopairs,
   coq = coq,
-  tokyonight = tokyonight,
   dial = dial,
   livecommand = livecommand,
   stayinplace = stayinplace,

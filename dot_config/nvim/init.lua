@@ -142,7 +142,6 @@ require("lazy").setup({
     priority = 1000,
     init = function()
       require("setup").starry()
-      vim.cmd('colorscheme moonlight')
     end,
   },
 

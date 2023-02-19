@@ -139,6 +139,31 @@ local function wilder()
   }))
 end
 
+-------------------- ray-x/starry.nvim
+local function starry()
+  -- autocommand will have no effect on previously sourced colorschemes
+  -- so it must be added before any colorscheme is sourced
+  require('autocmd').bufferline()
+  require('autocmd').sj()
+  require('autocmd').matchup()
+
+  g.starry_italic_comments = false
+  g.starry_italic_string = false
+  g.starry_italic_keywords = true
+  g.starry_italic_functions = false
+  g.starry_italic_variables = false
+  g.starry_contrast = false
+  g.starry_borders = false
+  g.starry_disable_background = true
+  g.starry_style_fix = true
+  g.starry_darker_contrast = false
+  g.starry_deep_black = false
+  g.starry_set_hl = false
+  g.starry_daylight_switch = false
+
+  cmd('colorscheme moonlight')
+end
+
 -------------------- woosaaahh/sj.nvim
 local function sj()
   require("sj").setup({
@@ -691,4 +716,5 @@ return {
   varioustextobjs = varioustextobjs,
   printer = printer,
   textobjchainmember = textobjchainmember,
+  starry = starry
 }

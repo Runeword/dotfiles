@@ -10,7 +10,9 @@
     xarchiver
     wget
     ripgrep
+    shopify-cli
     fd
+    clifm
     vifm
     xclip
     chezmoi

@@ -11,6 +11,7 @@
     wget
     ripgrep
     shopify-cli
+    nodePackages.pnpm
     fd
     clifm
     vifm

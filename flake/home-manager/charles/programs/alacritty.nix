@@ -33,6 +33,25 @@
     opacity = 0.70;
   };
 
+  programs.alacritty.settings.key_bindings = [
+  { key = "PageUp"; mods = "Control|Shift"; command = { program = "tmux"; args = ["swap-window" "-t-1" "select-window" "-t-1"]; }; }
+  { key = "PageDown"; mods = "Control|Shift"; command = { program = "tmux"; args = ["swap-window" "-t+1" "select-window" "-t+1"]; }; }
+  { key = "PageUp"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t-1"]; }; }
+  { key = "PageDown"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t+1"]; }; }
+  { key = "Tab"; mods = "Control|Shift"; command = { program = "tmux"; args = ["select-window" "-t-1"]; }; }
+  { key = "Tab"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t+1"]; }; }
+  { key = "Key9"; mods = "Control"; command = { program = "tmux"; args = ["switch-client" "-p"]; }; }
+  { key = "Key0"; mods = "Control"; command = { program = "tmux"; args = ["switch-client" "-n"]; }; }
+  { key = "Key1"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t1"]; }; }
+  { key = "Key2"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t2"]; }; }
+  { key = "Key3"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t3"]; }; }
+  { key = "Key4"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t4"]; }; }
+  { key = "Key5"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t5"]; }; }
+  { key = "Key6"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t6"]; }; }
+  { key = "Key7"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t7"]; }; }
+  { key = "Key8"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t8"]; }; }
+  ];
+
   programs.alacritty.settings.colors = {
     primary = {
       background = "#000000";

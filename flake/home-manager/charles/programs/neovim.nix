@@ -16,6 +16,7 @@
   nodePackages.yaml-language-server
   sumneko-lua-language-server
   marksman
+  ccls
   nil
   ];
 

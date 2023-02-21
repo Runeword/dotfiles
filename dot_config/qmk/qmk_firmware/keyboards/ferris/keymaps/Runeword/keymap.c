@@ -19,6 +19,7 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+
     case L4LCTL :
         if (record->event.pressed) {
           layer_on(4);
@@ -49,49 +50,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case GRAVEA:
-        if (record->event.pressed) SEND_STRING(SS_RALT("`")"a");
-        break;
-
-    case GRAVEE:
-        if (record->event.pressed) SEND_STRING(SS_RALT("`")"e");
-        break;
-
-    case GRAVEU:
-        if (record->event.pressed) SEND_STRING(SS_RALT("`")"u");
-        break;
-
-    case CIRCUMFLEXA:
-        if (record->event.pressed) SEND_STRING(SS_RALT("6")"a");
-        break;
-
-    case CIRCUMFLEXO:
-        if (record->event.pressed) SEND_STRING(SS_RALT("6")"o");
-        break;
-
-    case CIRCUMFLEXE:
-        if (record->event.pressed) SEND_STRING(SS_RALT("6")"e");
-        break;
-
-    case CIRCUMFLEXU:
-        if (record->event.pressed) SEND_STRING(SS_RALT("6")"u");
-        break;
-
-    case CIRCUMFLEXI:
-        if (record->event.pressed) SEND_STRING(SS_RALT("6")"i");
-        break;
-
-    case TREMAE:
-        if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"e");
-        break;
-
-    case TREMAU:
-        if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"u");
-        break;
-
-    case TREMAI:
-        if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"i");
-        break;
+    case GRAVEA: if (record->event.pressed) SEND_STRING(SS_RALT("`")"a"); break;
+    case GRAVEE: if (record->event.pressed) SEND_STRING(SS_RALT("`")"e"); break;
+    case GRAVEU: if (record->event.pressed) SEND_STRING(SS_RALT("`")"u"); break;
+    case CIRCUMFLEXA: if (record->event.pressed) SEND_STRING(SS_RALT("6")"a"); break;
+    case CIRCUMFLEXO: if (record->event.pressed) SEND_STRING(SS_RALT("6")"o"); break;
+    case CIRCUMFLEXE: if (record->event.pressed) SEND_STRING(SS_RALT("6")"e"); break;
+    case CIRCUMFLEXU: if (record->event.pressed) SEND_STRING(SS_RALT("6")"u"); break;
+    case CIRCUMFLEXI: if (record->event.pressed) SEND_STRING(SS_RALT("6")"i"); break;
+    case TREMAE: if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"e"); break;
+    case TREMAU: if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"u"); break;
+    case TREMAI: if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"i"); break;
     }
     return true;
 };

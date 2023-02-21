@@ -3,18 +3,18 @@
     shn="shutdown now";
     chrome="google-chrome-stable";
     pick="colorpicker";
-    slg="$HOME/.screenlayout/single.sh && feh --bg-fill ~/.config/Skin\ The\ Remixes.png";
+    slg="$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     dual="$HOME/.screenlayout/dual.sh";
-    hsf="home-manager switch --flake ~/flake";
-    nsf="sudo nixos-rebuild switch --flake ~/flake#charles";
-    nfu="nix flake update ~/flake";
-    nd="read -p 'nix develop ~/flake#' devShell && nix develop ~/flake#$devShell";
+    hsf="home-manager switch --flake $HOME/flake";
+    nsf="sudo nixos-rebuild switch --flake $HOME/flake#charles";
+    nfu="nix flake update $HOME/flake";
+    nd="read -p 'nix develop $HOME/flake#' devShell && nix develop $HOME/flake#$devShell";
 
     # ______________________________________QMK
-    qc="qmk compile -kb ferris/sweep -km Runeword";
-    qfl="qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left";
-    qfr="qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right";
-    qj="qmk json2c -o _keymap.c";
+    qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
+    qfl="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)";
+    qfr="(cd $HOME/.config/qmk && flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
+    qj="(cd $HOME/.config/qmk && json2c -o _keymap.c)";
 
     # ______________________________________ARCH
     pa="sudo pacman -Syyu";

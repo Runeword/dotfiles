@@ -13,8 +13,8 @@
     # ______________________________________QMK
     qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
     qfl="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)";
-    qfr="(cd $HOME/.config/qmk && flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
-    qj="(cd $HOME/.config/qmk && json2c -o _keymap.c)";
+    qfr="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
+    qj="(cd $HOME/.config/qmk && qmk json2c -o _keymap.c)";
 
     # ______________________________________ARCH
     pa="sudo pacman -Syyu";

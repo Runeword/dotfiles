@@ -55,6 +55,11 @@ return function()
     on_attach(client, buffer)
   end
 
+  local function on_attach_ccls(client, buffer)
+    client.server_capabilities.documentFormattingProvider = true
+    on_attach(client, buffer)
+  end
+
   local function on_attach_nil_ls(client, buffer)
     client.server_capabilities.documentFormattingProvider = true
     on_attach(client, buffer)
@@ -121,6 +126,12 @@ return function()
 
   lspconfig['bashls'].setup({
     on_attach = on_attach_bashls,
+    ['settings.format.enable'] = true,
+    flags = lsp_flags,
+  })
+
+  lspconfig['ccls'].setup({
+    on_attach = on_attach_ccls,
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })

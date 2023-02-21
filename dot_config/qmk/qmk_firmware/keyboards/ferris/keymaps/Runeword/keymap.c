@@ -13,7 +13,8 @@ enum custom_keycodes {
     TREMAE,
     TREMAU,
     TREMAI,
-    L4LCTL
+    L4LCTL,
+    L4LCS
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -31,70 +32,65 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case GRAVEA:
+    case L4LCS :
         if (record->event.pressed) {
-        SEND_STRING(SS_RALT("`")"a");
+          layer_on(4);
+          // register_code(KC_LCTL|KC_LSFT);
+          // set_oneshot_mods(MOD_BIT(KC_LCTL)|MOD_BIT(KC_LSFT));
+          register_code(KC_LCTL);
+          register_code(KC_LSFT);
+          set_oneshot_mods(MOD_LCTL|MOD_LSFT);
+          return false;
+        } else {
+          layer_off(4);
+          unregister_code(KC_LCTL);
+          unregister_code(KC_LSFT);
+          return true;
         }
+        break;
+
+    case GRAVEA:
+        if (record->event.pressed) SEND_STRING(SS_RALT("`")"a");
         break;
 
     case GRAVEE:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("`")"e");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("`")"e");
         break;
 
     case GRAVEU:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("`")"u");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("`")"u");
         break;
 
     case CIRCUMFLEXA:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("6")"a");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("6")"a");
         break;
 
     case CIRCUMFLEXO:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("6")"o");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("6")"o");
         break;
 
     case CIRCUMFLEXE:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("6")"e");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("6")"e");
         break;
 
     case CIRCUMFLEXU:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("6")"u");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("6")"u");
         break;
 
     case CIRCUMFLEXI:
-        if (record->event.pressed) {
-        SEND_STRING(SS_RALT("6")"i");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT("6")"i");
         break;
 
     case TREMAE:
-        if (record->event.pressed) {
-          SEND_STRING(SS_RALT(SS_RSFT("\""))"e");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"e");
         break;
 
     case TREMAU:
-        if (record->event.pressed) {
-          SEND_STRING(SS_RALT(SS_RSFT("\""))"u");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"u");
         break;
 
     case TREMAI:
-        if (record->event.pressed) {
-          SEND_STRING(SS_RALT(SS_RSFT("\""))"i");
-        }
+        if (record->event.pressed) SEND_STRING(SS_RALT(SS_RSFT("\""))"i");
         break;
     }
     return true;
@@ -168,8 +164,9 @@ combo_t key_combos[COMBO_COUNT] = {
   [L1GUI] = COMBO(l1gui, OSM(MOD_LGUI)),
   [L1SFT] = COMBO(l1sft, OSM(MOD_LSFT)),
   [L2ALT] = COMBO(l2alt, OSM(MOD_RALT)),
-  [L2CS] = COMBO(l2cs, OSM(MOD_RCTL|MOD_RSFT)),
+  // [L2CS] = COMBO(l2cs, OSM(MOD_RCTL|MOD_RSFT)),
   // [L2CTL] = COMBO(l2ctl, OSM(MOD_RCTL)),
+  [L2CS] = COMBO(l2cs, L4LCS),
   [L2CTL] = COMBO(l2ctl, L4LCTL),
   [L2GS] = COMBO(l2gs, OSM(MOD_RGUI|MOD_RSFT)),
   [L2GUI] = COMBO(l2gui, OSM(MOD_RGUI)),

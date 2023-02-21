@@ -26,75 +26,18 @@ return function()
   })
 
   -------------------- neovim/nvim-lspconfig
-  local function on_attach(client, buffer)
-    require("mappings").lspconfig(buffer)
+  local function on_attach_server(documentFormattingProvider)
+    return function (client, buffer)
+      client.server_capabilities.documentFormattingProvider = documentFormattingProvider
+      require("mappings").lspconfig(buffer)
+    end
   end
-
-  local function on_attach_eslint(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_yamlls(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_tsserver(client, buffer)
-    client.server_capabilities.documentFormattingProvider = false
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_lua_ls(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_bashls(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_ccls(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_nil_ls(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_vuels(client, buffer)
-    client.server_capabilities.documentFormattingProvider = false
-    on_attach(client, buffer)
-  end
-
-  local function on_attach_marksman(client, buffer)
-    client.server_capabilities.documentFormattingProvider = true
-    on_attach(client, buffer)
-  end
-
-  -- local function on_attach_volar(client, buffer)
-  --   client.server_capabilities.documentFormattingProvider = false
-  --   on_attach(client, buffer)
-  -- end
-
-  -- local function on_attach_cssls(client, buffer)
-  --   client.server_capabilities.documentFormattingProvider = true
-  --   on_attach(client, buffer)
-  -- end
-
-  -- local function on_attach_html(client, buffer)
-  --   client.server_capabilities.documentFormattingProvider = true
-  --   on_attach(client, buffer)
-  -- end
 
   local lspconfig = require("lspconfig")
   local lsp_flags = { debounce_text_changes = 0 }
 
   lspconfig.tsserver.setup({
-    on_attach = on_attach_tsserver,
+    on_attach = on_attach_server(false),
     autostart = true,
     -- cmd = {
     --   "typescript-language-server",
@@ -107,70 +50,52 @@ return function()
   })
 
   lspconfig['eslint'].setup({
-    on_attach = on_attach_eslint,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['lua_ls'].setup({
-    on_attach = on_attach_lua_ls,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['yamlls'].setup({
-    on_attach = on_attach_yamlls,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['bashls'].setup({
-    on_attach = on_attach_bashls,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['ccls'].setup({
-    on_attach = on_attach_ccls,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['vuels'].setup({
-    on_attach = on_attach_vuels,
+    on_attach = on_attach_server(false),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['nil_ls'].setup({
-    on_attach = on_attach_nil_ls,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
 
   lspconfig['marksman'].setup({
-    on_attach = on_attach_marksman,
+    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })
-
-  -- lspconfig['volar'].setup({
-  --   on_attach = on_attach_volar,
-  --   settings = { format = { enable = false } },
-  --   flags = lsp_flags,
-  -- })
-
-  -- lspconfig['cssls'].setup {
-  --   on_attach = on_attach_cssls,
-  --   settings = { format = { enable = true } },
-  --   flags = lsp_flags,
-  -- }
-
-  -- lspconfig['html'].setup {
-  --   on_attach = on_attach_html,
-  --   settings = { format = { enable = true } },
-  --   flags = lsp_flags,
-  -- }
 end
 
 -- if server.name == "volar" then

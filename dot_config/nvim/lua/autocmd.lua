@@ -12,6 +12,7 @@ local function core()
   augroup("diagnostic", { clear = true })
   augroup("qf", { clear = true })
   augroup("disableAutoComment", { clear = true })
+  augroup("term", { clear = true })
   -- augroup("yank", { clear = true })
 
   -- autocmd("TextYankPost", {
@@ -19,6 +20,12 @@ local function core()
   --   pattern = "*",
   --   callback = function() pcall(highlight.on_yank, { higroup = "Yank", timeout = 150 }) end
   -- })
+
+  autocmd("TermOpen", {
+    group = "term",
+    pattern = "*",
+    command = "startinsert",
+  })
 
   autocmd("BufWritePost", {
     group = "chezmoi",

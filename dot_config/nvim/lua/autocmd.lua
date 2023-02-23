@@ -43,13 +43,11 @@ local function core()
       nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#001b47' })
       nvim_set_hl(0, 'Yank', { bg = '#00ffa2', fg = 'black' })
       nvim_set_hl(0, 'Pmenu', { bg = 'black', fg = '#7a7c9e' })
-      nvim_set_hl(0, 'PmenuSel', { bg = 'black', fg = 'white' })
-      nvim_set_hl(0, 'PmenuSbar', { bg = 'black', fg = 'white' })
-      nvim_set_hl(0, 'PmenuThumb', { bg = 'black', fg = 'white' })
+      nvim_set_hl(0, 'PmenuSel', { bg = '#1e2633', fg = 'white' })
+      nvim_set_hl(0, 'PmenuSbar', { bg = 'black' })
+      nvim_set_hl(0, 'PmenuThumb', { bg = '#1e2633' })
       -- nvim_set_hl(0, 'IncSearch', { bg = '#00ffa2', fg = 'black' })
-      -- highlight currentBuffer guifg=white guibg=#1e2633
-      -- highlight adjacentBuffers guifg=#7a7c9e
-      -- highlight buffersWindow guibg=#0a172e
+      -- #0a172e #1e2633 #7a7c9e
     end
   })
 

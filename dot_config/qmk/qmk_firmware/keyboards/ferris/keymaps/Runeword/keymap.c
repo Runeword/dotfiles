@@ -2,7 +2,7 @@
 
 enum custom_keycodes {
 
-    // US layout altgr-intl variant with french special characters
+    // french special characters
     GRAVEA = SAFE_RANGE,
     GRAVEE,
     GRAVEU,
@@ -15,16 +15,17 @@ enum custom_keycodes {
     TREMAU,
     TREMAI,
 
-    // Custom oneshot mods
-    L4LCTL,
-    L4LCS
+    // custom modifiers
+    L4C,
+    L4CS
 };
 
+// defines the behavior of custom keycodes
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-    // Custom oneshot mods
-    case L4LCTL :
+    // hold layer 4, hold control, hold control for one keypress
+    case L4C :
         if (record->event.pressed) {
           layer_on(4);
           register_code(KC_LCTL);
@@ -37,7 +38,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    case L4LCS :
+    // hold layer 4, hold control+shift, hold control+shift for one keypress
+    case L4CS :
         if (record->event.pressed) {
           layer_on(4);
           register_code(KC_LCTL);
@@ -52,7 +54,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    // US layout altgr-intl variant with french special characters
+    // Holding the right Alt Key while pressing another key on the US layout altgr-intl yields special characters
     case GRAVEA: if (record->event.pressed) SEND_STRING(SS_RALT("`")"a"); break;
     case GRAVEE: if (record->event.pressed) SEND_STRING(SS_RALT("`")"e"); break;
     case GRAVEU: if (record->event.pressed) SEND_STRING(SS_RALT("`")"u"); break;
@@ -100,9 +102,11 @@ enum combos {
   L3TREMAU,
 };
 
+// defines the behavior of each key release after a combo was activated
 bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key_index, uint16_t keycode) {
     switch (combo_index) {
 
+        // Disable control or shift keys depending on whether h or t keys of the L2CS combo are released
         case L2CS:
             switch(keycode) {
                 case KC_T:
@@ -114,6 +118,7 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key
             }
             return false;
 
+        // Disable control key when h key of the L2CS combo is released
         case L2C:
             switch(keycode) {
                 case KC_H:
@@ -121,6 +126,7 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key
                     break;
             }
             return false;
+
     }
     return false;
 }
@@ -165,8 +171,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [L2A] = COMBO(l2a, OSM(MOD_RALT)),
   // [L2CS] = COMBO(l2cs, OSM(MOD_RCTL|MOD_RSFT)),
   // [L2C] = COMBO(l2c, OSM(MOD_RCTL)),
-  [L2CS] = COMBO(l2cs, L4LCS),
-  [L2C] = COMBO(l2c, L4LCTL),
+  [L2CS] = COMBO(l2cs, L4CS),
+  [L2C] = COMBO(l2c, L4C),
   [L2GS] = COMBO(l2gs, OSM(MOD_RGUI|MOD_RSFT)),
   [L2G] = COMBO(l2g, OSM(MOD_RGUI)),
   [L2S] = COMBO(l2s, OSM(MOD_RSFT)),

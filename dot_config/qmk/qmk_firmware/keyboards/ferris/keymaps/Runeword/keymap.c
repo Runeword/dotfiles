@@ -40,8 +40,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case L4LCS :
         if (record->event.pressed) {
           layer_on(4);
-          // register_code(KC_LCTL|KC_LSFT);
-          // set_oneshot_mods(MOD_BIT(KC_LCTL)|MOD_BIT(KC_LSFT));
           register_code(KC_LCTL);
           register_code(KC_LSFT);
           set_oneshot_mods(MOD_LCTL|MOD_LSFT);
@@ -69,6 +67,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
+
 
 enum combos {
   L1ALT,
@@ -100,6 +99,22 @@ enum combos {
   L3TREMAI,
   L3TREMAU,
 };
+
+bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key_index, uint16_t keycode) {
+    switch (combo_index) {
+        case L2CS:
+            switch(keycode) {
+                case KC_T:
+                    unregister_code(KC_LSFT);
+                    break;
+                case KC_H:
+                    unregister_code(KC_LCTL);
+                    break;
+            }
+            return false; // do not release combo
+    }
+    return false;
+}
 
 const uint16_t PROGMEM l1alt[] = { LT(1,KC_TAB), KC_A, COMBO_END};
 const uint16_t PROGMEM l1cs[] = { LT(1,KC_TAB), KC_E, KC_U, COMBO_END};

@@ -3,27 +3,19 @@ local fn = vim.fn
 local highlight = vim.highlight
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local hi = vim.api.nvim_set_hl
+local nvim_set_hl = vim.api.nvim_set_hl
 
 local function core()
   augroup("chezmoi", { clear = true })
   augroup("tmux", { clear = true })
   augroup("bash", { clear = true })
   augroup("diagnostic", { clear = true })
-  augroup("qf", { clear = true })
+  augroup("quickfix", { clear = true })
   augroup("disableAutoComment", { clear = true })
   augroup("term", { clear = true })
-  -- augroup("yank", { clear = true })
-
-  -- autocmd("TextYankPost", {
-  --   group = "yank",
-  --   pattern = "*",
-  --   callback = function() pcall(highlight.on_yank, { higroup = "Yank", timeout = 150 }) end
-  -- })
 
   autocmd("TermOpen", {
     group = "term",
-    pattern = "*",
     command = "startinsert",
   })
 
@@ -39,31 +31,22 @@ local function core()
     command = "silent! !tmux source-file ~/.config/tmux/.tmux.conf",
   })
 
-  -- autocmd("BufWritePost", {
-  --   group = "bash",
-  --   pattern = "~/.bash_aliases",
-  --   command = "silent! source ~/.bash_aliases",
-  -- })
-
-  -- autocmd("BufWritePost", {
-  --   group = "bash",
-  --   pattern = "~/.bashrc",
-  --   command = "silent! source ~/.bashrc",
-  -- })
-
   autocmd("ColorScheme", {
     group = "diagnostic",
     pattern = "*",
     callback = function()
-      hi(0, 'DiagnosticFloatingError', { link = 'DiagnosticVirtualTextError' })
-      hi(0, 'DiagnosticFloatingHint', { link = 'DiagnosticVirtualTextHint' })
-      hi(0, 'DiagnosticFloatingInfo', { link = 'DiagnosticVirtualTextInfo' })
-      hi(0, 'DiagnosticFloatingWarn', { link = 'DiagnosticVirtualTextWarn' })
-      hi(0, 'NormalFloat', { bg = 'none' })
-      hi(0, 'FloatBorder', { bg = 'none', fg = '#001b47' })
-      hi(0, 'Yank', { bg = '#00ffa2', fg = 'black' })
-      -- hi(0, 'IncSearch', { bg = '#00ffa2', fg = 'black' })
-      -- hi(0, 'Pmenu', { bg = 'white', fg = 'black' })
+      nvim_set_hl(0, 'DiagnosticFloatingError', { link = 'DiagnosticVirtualTextError' })
+      nvim_set_hl(0, 'DiagnosticFloatingHint', { link = 'DiagnosticVirtualTextHint' })
+      nvim_set_hl(0, 'DiagnosticFloatingInfo', { link = 'DiagnosticVirtualTextInfo' })
+      nvim_set_hl(0, 'DiagnosticFloatingWarn', { link = 'DiagnosticVirtualTextWarn' })
+      nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+      nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#001b47' })
+      nvim_set_hl(0, 'Yank', { bg = '#00ffa2', fg = 'black' })
+      nvim_set_hl(0, 'Pmenu', { bg = 'black', fg = 'white' })
+      nvim_set_hl(0, 'PmenuSel', { bg = 'black', fg = 'white' })
+      nvim_set_hl(0, 'PmenuSbar', { bg = 'black', fg = 'white' })
+      nvim_set_hl(0, 'PmenuThumb', { bg = 'black', fg = 'white' })
+      -- nvim_set_hl(0, 'IncSearch', { bg = '#00ffa2', fg = 'black' })
     end
   })
 
@@ -75,14 +58,14 @@ local function core()
 
   -- Exclude quickfix buffer from the buffer list
   autocmd("FileType", {
-    group = "qf",
+    group = "quickfix",
     pattern = "qf",
     command = "set nobuflisted",
   })
 
   -- Automatically fitting a quickfix window to 10 lines max and 3 lines min height
   autocmd("FileType", {
-    group = "qf",
+    group = "quickfix",
     pattern = "qf",
     callback = function() cmd(math.max(math.min(fn.line("$"), 10), 3) .. "wincmd _") end,
   })
@@ -94,9 +77,9 @@ local function bufferline()
     group = "bufferline",
     pattern = "*",
     callback = function()
-      hi(0, 'BufferLineFill', { bg = 'none' })
-      hi(0, 'BufferLineBackground', { fg = '#7a7c9e' })
-      hi(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none' })
+      nvim_set_hl(0, 'BufferLineFill', { bg = 'none' })
+      nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e' })
+      nvim_set_hl(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none' })
     end
   })
 end
@@ -107,9 +90,9 @@ local function matchup()
     group = "matchup",
     pattern = "*",
     callback = function()
-      hi(0, 'MatchParen', { fg = '#7429ff', italic = true, bold = true })
-      hi(0, 'MatchWord', { fg = '#7429ff' })
-      hi(0, 'MatchBackground', { bg = '#222277'})
+      nvim_set_hl(0, 'MatchParen', { fg = '#7429ff', italic = true, bold = true })
+      nvim_set_hl(0, 'MatchWord', { fg = '#7429ff' })
+      nvim_set_hl(0, 'MatchBackground', { bg = '#222277'})
     end
   })
 end
@@ -150,30 +133,15 @@ local function indentscope()
   })
 end
 
--- local function leap()
---   augroup("leap", { clear = true })
---   autocmd("ColorScheme", {
---     group = "leap",
---     pattern = "*",
---     callback = function()
---       require('leap').init_highlight(true)
---       hi(0, 'LeapBackdrop', { bg = 'none', })
---       hi(0, 'LeapLabelPrimary', { bg = '#ccff88', fg = 'black' })
---       hi(0, 'LeapLabelSecondary', { fg = 'red', })
---       hi(0, 'LeapMatch', { bg = '#77aaff', fg = 'black' })
---     end
---   })
--- end
-
 local function sj()
   augroup("sj", { clear = true })
   autocmd("ColorScheme", {
     group = "sj",
     pattern = "*",
     callback = function()
-      hi(0, 'SjFocusedLabel', { bg = '#00fbff', fg = 'black' })
-      -- hi(0, 'SjLabel', { bg = '#ccff88', fg = 'black' })
-      -- hi(0, 'SjSearch', { bg = '#77aaff', fg = 'black' })
+      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#00fbff', fg = 'black' })
+      -- nvim_set_hl(0, 'SjLabel', { bg = '#ccff88', fg = 'black' })
+      -- nvim_set_hl(0, 'SjSearch', { bg = '#77aaff', fg = 'black' })
     end
   })
 end

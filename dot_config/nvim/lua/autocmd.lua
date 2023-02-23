@@ -40,12 +40,16 @@ local function core()
       nvim_set_hl(0, 'DiagnosticFloatingInfo', { link = 'DiagnosticVirtualTextInfo' })
       nvim_set_hl(0, 'DiagnosticFloatingWarn', { link = 'DiagnosticVirtualTextWarn' })
       nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-      nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#001b47' })
+      nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#1e2633' })
       nvim_set_hl(0, 'Yank', { bg = '#00ffa2', fg = 'black' })
       nvim_set_hl(0, 'Pmenu', { bg = 'black', fg = '#7a7c9e' })
       nvim_set_hl(0, 'PmenuSel', { bg = '#1e2633', fg = 'white' })
       nvim_set_hl(0, 'PmenuSbar', { bg = 'black' })
       nvim_set_hl(0, 'PmenuThumb', { bg = '#1e2633' })
+      nvim_set_hl(0, 'CursorLine', { bg = '#1e2633' })
+      nvim_set_hl(0, 'CursorColumn', { bg = '#1e2633' })
+      -- nvim_set_hl(0, 'VertSplit', { fg = '#292e42' })
+      -- nvim_set_hl(0, 'Hlargs', { fg = '#FAFF00' })
       -- nvim_set_hl(0, 'IncSearch', { bg = '#00ffa2', fg = 'black' })
       -- #0a172e #1e2633 #7a7c9e
     end
@@ -146,12 +150,6 @@ local function sj()
     end
   })
 end
-
--- cmd([[
--- autocmd ColorScheme * highlight CursorLine gui=bold guibg=none
--- autocmd ColorScheme * highlight VertSplit guifg=#292e42
--- autocmd ColorScheme * highlight Hlargs guifg=#FAFF00
--- ]])
 
 -- local function telescope()
 --   cmd([[autocmd ColorScheme * highlight TelescopeBorder guibg=none]])

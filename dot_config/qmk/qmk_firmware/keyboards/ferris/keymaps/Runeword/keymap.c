@@ -102,6 +102,7 @@ enum combos {
 
 bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key_index, uint16_t keycode) {
     switch (combo_index) {
+
         case L2CS:
             switch(keycode) {
                 case KC_T:
@@ -111,7 +112,15 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key
                     unregister_code(KC_LCTL);
                     break;
             }
-            return false; // do not release combo
+            return false;
+
+        case L2CTL:
+            switch(keycode) {
+                case KC_H:
+                    unregister_code(KC_LCTL);
+                    break;
+            }
+            return false;
     }
     return false;
 }

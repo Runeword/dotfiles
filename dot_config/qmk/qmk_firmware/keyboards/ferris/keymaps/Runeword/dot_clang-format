@@ -1,2 +1,4 @@
-IndentWidth: 2
+IndentWidth: 4
 AllowShortIfStatementsOnASingleLine: Always
+AllowShortCaseLabelsOnASingleLine: true
+AlignAfterOpenBracket: DontAlign

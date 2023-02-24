@@ -148,18 +148,21 @@ bool process_combo_key_release(
     return false;
 }
 
-const uint16_t PROGMEM l1a[]           = {LT(1, KC_TAB), KC_A, COMBO_END};
-const uint16_t PROGMEM l1cs[]          = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
-const uint16_t PROGMEM l1c[]           = {LT(1, KC_TAB), KC_U, COMBO_END};
-const uint16_t PROGMEM l1gs[]          = {LT(1, KC_TAB), KC_E, KC_O, COMBO_END};
-const uint16_t PROGMEM l1g[]           = {LT(1, KC_TAB), KC_O, COMBO_END};
-const uint16_t PROGMEM l1s[]           = {LT(1, KC_TAB), KC_E, COMBO_END};
+// home row combos
+const uint16_t PROGMEM l1_a[]           = {LT(1, KC_TAB), KC_A, COMBO_END};
+const uint16_t PROGMEM l1_o[]           = {LT(1, KC_TAB), KC_O, COMBO_END};
+const uint16_t PROGMEM l1_e[]           = {LT(1, KC_TAB), KC_E, COMBO_END};
+const uint16_t PROGMEM l1_u[]           = {LT(1, KC_TAB), KC_U, COMBO_END};
+const uint16_t PROGMEM l1_oe[]          = {LT(1, KC_TAB), KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM l1_eu[]          = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
 const uint16_t PROGMEM l2a[]           = {LT(2, KC_ENT), KC_S, COMBO_END};
 const uint16_t PROGMEM l2cs[]          = {LT(2, KC_ENT), KC_T, KC_H, COMBO_END};
 const uint16_t PROGMEM l2c[]           = {LT(2, KC_ENT), KC_H, COMBO_END};
 const uint16_t PROGMEM l2gs[]          = {LT(2, KC_ENT), KC_T, KC_N, COMBO_END};
 const uint16_t PROGMEM l2g[]           = {LT(2, KC_ENT), KC_N, COMBO_END};
 const uint16_t PROGMEM l2s[]           = {LT(2, KC_ENT), KC_T, COMBO_END};
+
+// special characters combos
 const uint16_t PROGMEM l2slsh[]        = {LT(2, KC_ENT), KC_R, COMBO_END};
 const uint16_t PROGMEM l2grv[]         = {LT(2, KC_ENT), KC_QUOT, COMBO_END};
 const uint16_t PROGMEM l2mins[]        = {LT(2, KC_ENT), KC_COMM, COMBO_END};
@@ -179,12 +182,12 @@ const uint16_t PROGMEM l3tremau[]      = {LT(3, KC_ESC), KC_K, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     // modifiers
-    [L1A]  = COMBO(l1a, OSM(MOD_LALT)),
-    [L1CS] = COMBO(l1cs, OSM(MOD_LCTL | MOD_LSFT)),
-    [L1C]  = COMBO(l1c, OSM(MOD_LCTL)),
-    [L1GS] = COMBO(l1gs, OSM(MOD_LGUI | MOD_LSFT)),
-    [L1G]  = COMBO(l1g, OSM(MOD_LGUI)),
-    [L1S]  = COMBO(l1s, OSM(MOD_LSFT)),
+    [L1A]  = COMBO(l1_a, OSM(MOD_LALT)),
+    [L1G]  = COMBO(l1_o, OSM(MOD_LGUI)),
+    [L1C]  = COMBO(l1_u, OSM(MOD_LCTL)),
+    [L1GS] = COMBO(l1_oe, OSM(MOD_LGUI | MOD_LSFT)),
+    [L1CS] = COMBO(l1_eu, OSM(MOD_LCTL | MOD_LSFT)),
+    [L1S]  = COMBO(l1_e, OSM(MOD_LSFT)),
     [L2A]  = COMBO(l2a, OSM(MOD_RALT)),
     // [L2CS] = COMBO(l2cs, OSM(MOD_RCTL|MOD_RSFT)),
     // [L2C] = COMBO(l2c, OSM(MOD_RCTL)),

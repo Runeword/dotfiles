@@ -148,23 +148,25 @@ bool process_combo_key_release(
     return false;
 }
 
-// left thumb + home row keys
-const uint16_t PROGMEM l_a[]  = {LT(1, KC_TAB), KC_A, COMBO_END};
-const uint16_t PROGMEM l_o[]  = {LT(1, KC_TAB), KC_O, COMBO_END};
-const uint16_t PROGMEM l_e[]  = {LT(1, KC_TAB), KC_E, COMBO_END};
-const uint16_t PROGMEM l_u[]  = {LT(1, KC_TAB), KC_U, COMBO_END};
-const uint16_t PROGMEM l_oe[] = {LT(1, KC_TAB), KC_O, KC_E, COMBO_END};
-const uint16_t PROGMEM l_eu[] = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
+// ________________________ define sequences of keys for combos
 
-// right thumb + home row keys
-const uint16_t PROGMEM r_h[]  = {LT(2, KC_ENT), KC_H, COMBO_END};
-const uint16_t PROGMEM r_t[]  = {LT(2, KC_ENT), KC_T, COMBO_END};
-const uint16_t PROGMEM r_n[]  = {LT(2, KC_ENT), KC_N, COMBO_END};
-const uint16_t PROGMEM r_s[]  = {LT(2, KC_ENT), KC_S, COMBO_END};
-const uint16_t PROGMEM r_ht[] = {LT(2, KC_ENT), KC_H, KC_T, COMBO_END};
-const uint16_t PROGMEM r_tn[] = {LT(2, KC_ENT), KC_T, KC_N, COMBO_END};
+// 1st left thumb + dvorak home row key(s)
+const uint16_t PROGMEM homerow_a[]  = {LT(1, KC_TAB), KC_A, COMBO_END};
+const uint16_t PROGMEM homerow_o[]  = {LT(1, KC_TAB), KC_O, COMBO_END};
+const uint16_t PROGMEM homerow_e[]  = {LT(1, KC_TAB), KC_E, COMBO_END};
+const uint16_t PROGMEM homerow_u[]  = {LT(1, KC_TAB), KC_U, COMBO_END};
+const uint16_t PROGMEM homerow_oe[] = {LT(1, KC_TAB), KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM homerow_eu[] = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
 
-// special characters combos
+// 1st right thumb + dvorak home row key(s)
+const uint16_t PROGMEM homerow_h[]  = {LT(2, KC_ENT), KC_H, COMBO_END};
+const uint16_t PROGMEM homerow_t[]  = {LT(2, KC_ENT), KC_T, COMBO_END};
+const uint16_t PROGMEM homerow_n[]  = {LT(2, KC_ENT), KC_N, COMBO_END};
+const uint16_t PROGMEM homerow_s[]  = {LT(2, KC_ENT), KC_S, COMBO_END};
+const uint16_t PROGMEM homerow_ht[] = {LT(2, KC_ENT), KC_H, KC_T, COMBO_END};
+const uint16_t PROGMEM homerow_tn[] = {LT(2, KC_ENT), KC_T, KC_N, COMBO_END};
+
+// 2nd left thumb + key
 const uint16_t PROGMEM l2slsh[]        = {LT(2, KC_ENT), KC_R, COMBO_END};
 const uint16_t PROGMEM l2grv[]         = {LT(2, KC_ENT), KC_QUOT, COMBO_END};
 const uint16_t PROGMEM l2mins[]        = {LT(2, KC_ENT), KC_COMM, COMBO_END};
@@ -184,21 +186,21 @@ const uint16_t PROGMEM l3tremau[]      = {LT(3, KC_ESC), KC_K, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
 
-    // left thumb + home row keys
-    [L1A]  = COMBO(l_a, OSM(MOD_LALT)),
-    [L1G]  = COMBO(l_o, OSM(MOD_LGUI)),
-    [L1S]  = COMBO(l_e, OSM(MOD_LSFT)),
-    [L1C]  = COMBO(l_u, OSM(MOD_LCTL)),
-    [L1GS] = COMBO(l_oe, OSM(MOD_LGUI | MOD_LSFT)),
-    [L1CS] = COMBO(l_eu, OSM(MOD_LCTL | MOD_LSFT)),
+    // left thumb key + dvorak home row key(s)
+    [L1A]  = COMBO(homerow_a, OSM(MOD_LALT)),
+    [L1G]  = COMBO(homerow_o, OSM(MOD_LGUI)),
+    [L1S]  = COMBO(homerow_e, OSM(MOD_LSFT)),
+    [L1C]  = COMBO(homerow_u, OSM(MOD_LCTL)),
+    [L1GS] = COMBO(homerow_oe, OSM(MOD_LGUI | MOD_LSFT)),
+    [L1CS] = COMBO(homerow_eu, OSM(MOD_LCTL | MOD_LSFT)),
 
-    // right thumb + home row keys
-    [L2C]  = COMBO(r_h, L4C),
-    [L2S]  = COMBO(r_t, OSM(MOD_RSFT)),
-    [L2G]  = COMBO(r_n, OSM(MOD_RGUI)),
-    [L2A]  = COMBO(r_s, OSM(MOD_RALT)),
-    [L2CS] = COMBO(r_ht, L4CS),
-    [L2GS] = COMBO(r_tn, OSM(MOD_RGUI | MOD_RSFT)),
+    // right thumb key + dvorak home row key(s)
+    [L2C]  = COMBO(homerow_h, L4C),
+    [L2S]  = COMBO(homerow_t, OSM(MOD_RSFT)),
+    [L2G]  = COMBO(homerow_n, OSM(MOD_RGUI)),
+    [L2A]  = COMBO(homerow_s, OSM(MOD_RALT)),
+    [L2CS] = COMBO(homerow_ht, L4CS),
+    [L2GS] = COMBO(homerow_tn, OSM(MOD_RGUI | MOD_RSFT)),
 
     // US layout altgr-intl variant with french special characters
     [L2SLSH]        = COMBO(l2slsh, KC_SLSH),

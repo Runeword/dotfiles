@@ -98,21 +98,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // ________________________ COMBOS ________________________
 
 enum combos {
-    L1A,
-    L1CS,
-    L1C,
-    L1GS,
-    L1G,
-    L1S,
-    L2A,
-    L2CS,
-    L2C,
-    L2GS,
-    L2G,
-    L2S,
-    L2SLSH,
-    L2GRV,
-    L2MINS,
+    MOD_LA,
+    MOD_LCS,
+    MOD_LC,
+    MOD_LGS,
+    MOD_LG,
+    MOD_LS,
+    MOD_RA,
+    MOD_RCS,
+    MOD_RC,
+    MOD_RGS,
+    MOD_RG,
+    MOD_RS,
     L3ACUTEE,
     L3CEDILLAC,
     L3CIRCUMFLEXA,
@@ -147,9 +144,6 @@ const uint16_t PROGMEM thumb2_ht[] = {LT(2, KC_ENT), KC_H, KC_T, COMBO_END};
 const uint16_t PROGMEM thumb2_tn[] = {LT(2, KC_ENT), KC_T, KC_N, COMBO_END};
 
 // other combinations : thumb + key
-const uint16_t PROGMEM thumb2_r[]    = {LT(2, KC_ENT), KC_R, COMBO_END};
-const uint16_t PROGMEM thumb2_quot[] = {LT(2, KC_ENT), KC_QUOT, COMBO_END};
-const uint16_t PROGMEM thumb2_comm[] = {LT(2, KC_ENT), KC_COMM, COMBO_END};
 const uint16_t PROGMEM thumb3_e[]    = {LT(3, KC_ESC), KC_E, COMBO_END};
 const uint16_t PROGMEM thumb3_c[]    = {LT(3, KC_ESC), KC_C, COMBO_END};
 const uint16_t PROGMEM thumb3_quot[] = {LT(3, KC_ESC), KC_QUOT, COMBO_END};
@@ -166,22 +160,21 @@ const uint16_t PROGMEM thumb3_k[]    = {LT(3, KC_ESC), KC_K, COMBO_END};
 
 // ________________________ list sequences of keys and their resulting action
 
-combo_t key_combos[COMBO_COUNT] = {
-    // [name] = COMBO(sequence , action)
+combo_t key_combos[COMBO_COUNT] = { // [name] = COMBO(sequence , action)
 
     // modifiers
-    [L1A]  = COMBO(thumb1_a, OSM(MOD_LALT)),
-    [L1G]  = COMBO(thumb1_o, OSM(MOD_LGUI)),
-    [L1S]  = COMBO(thumb1_e, OSM(MOD_LSFT)),
-    [L1C]  = COMBO(thumb1_u, OSM(MOD_LCTL)),
-    [L1GS] = COMBO(thumb1_oe, OSM(MOD_LGUI | MOD_LSFT)),
-    [L1CS] = COMBO(thumb1_eu, OSM(MOD_LCTL | MOD_LSFT)),
-    [L2C]  = COMBO(thumb2_h, right_ctrl),
-    [L2S]  = COMBO(thumb2_t, OSM(MOD_RSFT)),
-    [L2G]  = COMBO(thumb2_n, OSM(MOD_RGUI)),
-    [L2A]  = COMBO(thumb2_s, OSM(MOD_RALT)),
-    [L2CS] = COMBO(thumb2_ht, right_ctrl_shift),
-    [L2GS] = COMBO(thumb2_tn, OSM(MOD_RGUI | MOD_RSFT)),
+    [MOD_LA]  = COMBO(thumb1_a, OSM(MOD_LALT)),
+    [MOD_LG]  = COMBO(thumb1_o, OSM(MOD_LGUI)),
+    [MOD_LS]  = COMBO(thumb1_e, OSM(MOD_LSFT)),
+    [MOD_LC]  = COMBO(thumb1_u, OSM(MOD_LCTL)),
+    [MOD_LGS] = COMBO(thumb1_oe, OSM(MOD_LGUI | MOD_LSFT)),
+    [MOD_LCS] = COMBO(thumb1_eu, OSM(MOD_LCTL | MOD_LSFT)),
+    [MOD_RC]  = COMBO(thumb2_h, right_ctrl),
+    [MOD_RS]  = COMBO(thumb2_t, OSM(MOD_RSFT)),
+    [MOD_RG]  = COMBO(thumb2_n, OSM(MOD_RGUI)),
+    [MOD_RA]  = COMBO(thumb2_s, OSM(MOD_RALT)),
+    [MOD_RCS] = COMBO(thumb2_ht, right_ctrl_shift),
+    [MOD_RGS] = COMBO(thumb2_tn, OSM(MOD_RGUI | MOD_RSFT)),
 
     // french special characters
     [L3ACUTEE]      = COMBO(thumb3_e, RALT(KC_E)),
@@ -197,11 +190,6 @@ combo_t key_combos[COMBO_COUNT] = {
     [L3TREMAE]      = COMBO(thumb3_j, TREMAE),
     [L3TREMAI]      = COMBO(thumb3_x, TREMAI),
     [L3TREMAU]      = COMBO(thumb3_k, TREMAU),
-
-    // others
-    [L2SLSH] = COMBO(thumb2_r, KC_SLSH),
-    [L2GRV]  = COMBO(thumb2_quot, KC_GRV),
-    [L2MINS] = COMBO(thumb2_comm, KC_MINS),
 };
 
 // ________________________ define the behavior of each key release after a combo was activated
@@ -209,16 +197,16 @@ combo_t key_combos[COMBO_COUNT] = {
 bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key_index, uint16_t keycode) {
     switch (combo_index) {
 
-    // disable control or shift keys depending on whether h or t keys of the L2CS combo are released
-    case L2CS:
+    // disable control or shift keys depending on whether h or t keys of the MOD_RCS combo are released
+    case MOD_RCS:
         switch (keycode) {
         case KC_T: unregister_code(KC_LSFT); break;
         case KC_H: unregister_code(KC_LCTL); break;
         }
         return false;
 
-    // disable control key when h key of the L2CS combo is released
-    case L2C:
+    // disable control key when h key of the MOD_RC combo is released
+    case MOD_RC:
         switch (keycode) {
         case KC_H: unregister_code(KC_LCTL); break;
         }

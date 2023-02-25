@@ -3,3 +3,4 @@ AllowShortIfStatementsOnASingleLine: Always
 AllowShortCaseLabelsOnASingleLine: true
 AlignAfterOpenBracket: DontAlign
 AlignConsecutiveAssignments: Consecutive
+ColumnLimit: 120

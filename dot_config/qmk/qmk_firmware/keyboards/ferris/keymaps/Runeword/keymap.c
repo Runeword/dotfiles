@@ -27,7 +27,7 @@ enum custom_keycodes {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-    // hold layer 4, hold control, hold control for one keypress
+    // hold layer 4, control and control for one keypress
     case right_ctrl:
         if (record->event.pressed) {
             layer_on(4);
@@ -41,7 +41,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    // hold layer 4, hold control+shift, hold control+shift for one keypress
+    // hold layer 4, control+shift and control+shift for one keypress
     case right_ctrl_shift:
         if (record->event.pressed) {
             layer_on(4);
@@ -57,7 +57,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
-    // holding the right Alt key while pressing another key on the US layout altgr-intl yields special characters
+    // holding the right alt key while pressing another key on the US layout (altgr-intl) yields special characters
     case GRAVEA:
         if (record->event.pressed) SEND_STRING(SS_RALT("`") "a");
         break;
@@ -167,6 +167,7 @@ const uint16_t PROGMEM thumb3_k[]    = {LT(3, KC_ESC), KC_K, COMBO_END};
 // ________________________ list sequences of keys and their resulting action
 
 combo_t key_combos[COMBO_COUNT] = {
+    // [name] = COMBO(sequence , action)
 
     // modifiers
     [L1A]  = COMBO(thumb1_a, OSM(MOD_LALT)),
@@ -203,7 +204,8 @@ combo_t key_combos[COMBO_COUNT] = {
     [L2MINS] = COMBO(thumb2_comm, KC_MINS),
 };
 
-// define the behavior of each key release after a combo was activated
+// ________________________ define the behavior of each key release after a combo was activated
+
 bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key_index, uint16_t keycode) {
     switch (combo_index) {
 
@@ -247,7 +249,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [5] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LALT,
         KC_LGUI, KC_LSFT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_TRNS)};
-
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//   return update_tri_layer_state(state, 1, 2, 3);
-// }

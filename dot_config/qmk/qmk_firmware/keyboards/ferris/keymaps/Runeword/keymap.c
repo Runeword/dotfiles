@@ -150,21 +150,21 @@ bool process_combo_key_release(
 
 // ________________________ define sequences of keys for combos
 
-// 1st thumb + home row keys (left)
-const uint16_t PROGMEM homerow_a[]  = {LT(1, KC_TAB), KC_A, COMBO_END};
-const uint16_t PROGMEM homerow_o[]  = {LT(1, KC_TAB), KC_O, COMBO_END};
-const uint16_t PROGMEM homerow_e[]  = {LT(1, KC_TAB), KC_E, COMBO_END};
-const uint16_t PROGMEM homerow_u[]  = {LT(1, KC_TAB), KC_U, COMBO_END};
-const uint16_t PROGMEM homerow_oe[] = {LT(1, KC_TAB), KC_O, KC_E, COMBO_END};
-const uint16_t PROGMEM homerow_eu[] = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
+// left side homerow combinations : thumb + homerow key(s)
+const uint16_t PROGMEM thumb1_a[]  = {LT(1, KC_TAB), KC_A, COMBO_END};
+const uint16_t PROGMEM thumb1_o[]  = {LT(1, KC_TAB), KC_O, COMBO_END};
+const uint16_t PROGMEM thumb1_e[]  = {LT(1, KC_TAB), KC_E, COMBO_END};
+const uint16_t PROGMEM thumb1_u[]  = {LT(1, KC_TAB), KC_U, COMBO_END};
+const uint16_t PROGMEM thumb1_oe[] = {LT(1, KC_TAB), KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM thumb1_eu[] = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
 
-// 1st thumb + home row keys (right)
-const uint16_t PROGMEM homerow_h[]  = {LT(2, KC_ENT), KC_H, COMBO_END};
-const uint16_t PROGMEM homerow_t[]  = {LT(2, KC_ENT), KC_T, COMBO_END};
-const uint16_t PROGMEM homerow_n[]  = {LT(2, KC_ENT), KC_N, COMBO_END};
-const uint16_t PROGMEM homerow_s[]  = {LT(2, KC_ENT), KC_S, COMBO_END};
-const uint16_t PROGMEM homerow_ht[] = {LT(2, KC_ENT), KC_H, KC_T, COMBO_END};
-const uint16_t PROGMEM homerow_tn[] = {LT(2, KC_ENT), KC_T, KC_N, COMBO_END};
+// right side homerow combinations : thumb + homerow key(s)
+const uint16_t PROGMEM thumb2_h[]  = {LT(2, KC_ENT), KC_H, COMBO_END};
+const uint16_t PROGMEM thumb2_t[]  = {LT(2, KC_ENT), KC_T, COMBO_END};
+const uint16_t PROGMEM thumb2_n[]  = {LT(2, KC_ENT), KC_N, COMBO_END};
+const uint16_t PROGMEM thumb2_s[]  = {LT(2, KC_ENT), KC_S, COMBO_END};
+const uint16_t PROGMEM thumb2_ht[] = {LT(2, KC_ENT), KC_H, KC_T, COMBO_END};
+const uint16_t PROGMEM thumb2_tn[] = {LT(2, KC_ENT), KC_T, KC_N, COMBO_END};
 
 // 2nd left thumb + key
 const uint16_t PROGMEM l2slsh[]        = {LT(2, KC_ENT), KC_R, COMBO_END};
@@ -187,18 +187,18 @@ const uint16_t PROGMEM l3tremau[]      = {LT(3, KC_ESC), KC_K, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
 
     // one-shot modifiers
-    [L1A]  = COMBO(homerow_a, OSM(MOD_LALT)),
-    [L1G]  = COMBO(homerow_o, OSM(MOD_LGUI)),
-    [L1S]  = COMBO(homerow_e, OSM(MOD_LSFT)),
-    [L1C]  = COMBO(homerow_u, OSM(MOD_LCTL)),
-    [L1GS] = COMBO(homerow_oe, OSM(MOD_LGUI | MOD_LSFT)),
-    [L1CS] = COMBO(homerow_eu, OSM(MOD_LCTL | MOD_LSFT)),
-    [L2C]  = COMBO(homerow_h, right_ctrl),
-    [L2S]  = COMBO(homerow_t, OSM(MOD_RSFT)),
-    [L2G]  = COMBO(homerow_n, OSM(MOD_RGUI)),
-    [L2A]  = COMBO(homerow_s, OSM(MOD_RALT)),
-    [L2CS] = COMBO(homerow_ht, right_ctrl_shift),
-    [L2GS] = COMBO(homerow_tn, OSM(MOD_RGUI | MOD_RSFT)),
+    [L1A]  = COMBO(thumb1_a, OSM(MOD_LALT)),
+    [L1G]  = COMBO(thumb1_o, OSM(MOD_LGUI)),
+    [L1S]  = COMBO(thumb1_e, OSM(MOD_LSFT)),
+    [L1C]  = COMBO(thumb1_u, OSM(MOD_LCTL)),
+    [L1GS] = COMBO(thumb1_oe, OSM(MOD_LGUI | MOD_LSFT)),
+    [L1CS] = COMBO(thumb1_eu, OSM(MOD_LCTL | MOD_LSFT)),
+    [L2C]  = COMBO(thumb2_h, right_ctrl),
+    [L2S]  = COMBO(thumb2_t, OSM(MOD_RSFT)),
+    [L2G]  = COMBO(thumb2_n, OSM(MOD_RGUI)),
+    [L2A]  = COMBO(thumb2_s, OSM(MOD_RALT)),
+    [L2CS] = COMBO(thumb2_ht, right_ctrl_shift),
+    [L2GS] = COMBO(thumb2_tn, OSM(MOD_RGUI | MOD_RSFT)),
 
     // french special characters
     [L2SLSH]        = COMBO(l2slsh, KC_SLSH),

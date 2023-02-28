@@ -124,6 +124,7 @@ enum combos {
     SPE_TREMAI,
     SPE_TREMAU,
     ESC,
+    DEL,
     CAPS,
     COMBO_LENGTH
 };
@@ -164,6 +165,7 @@ const uint16_t PROGMEM thumb3_x[]    = {LT(3, KC_BSPC), KC_X, COMBO_END};
 const uint16_t PROGMEM thumb3_k[]    = {LT(3, KC_BSPC), KC_K, COMBO_END};
 
 const uint16_t PROGMEM eu[]  = {KC_E, KC_U, COMBO_END};
+const uint16_t PROGMEM htn[]  = {KC_H, KC_T, KC_N, COMBO_END};
 const uint16_t PROGMEM oeu[] = {KC_O, KC_E, KC_U, COMBO_END};
 
 // ________________________ list sequences of keys and their resulting action
@@ -201,6 +203,7 @@ combo_t key_combos[] = {
     [SPE_TREMAU]      = COMBO(thumb3_k, TREMAU),
 
     [ESC]  = COMBO(eu, KC_ESC),
+    [DEL]  = COMBO(htn, KC_DEL),
     [CAPS] = COMBO(oeu, KC_CAPS),
 };
 
@@ -208,6 +211,7 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
 
     switch (index) {
     case ESC: return 10;
+    case DEL: return 10;
     case CAPS: return 10;
     }
 

@@ -34,8 +34,8 @@
   };
 
   programs.alacritty.settings.key_bindings = [
-  { key = "PageUp"; mods = "Control|Shift"; command = { program = "tmux"; args = ["swap-window" "-t-1" "select-window" "-t-1"]; }; }
-  { key = "PageDown"; mods = "Control|Shift"; command = { program = "tmux"; args = ["swap-window" "-t+1" "select-window" "-t+1"]; }; }
+  { key = "PageUp"; mods = "Control|Shift"; command = { program = "tmux"; args = ["swap-window" "-t-1" ";" "select-window" "-t-1"]; }; }
+  { key = "PageDown"; mods = "Control|Shift"; command = { program = "tmux"; args = ["swap-window" "-t+1" ";" "select-window" "-t+1"]; }; }
   { key = "PageUp"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t-1"]; }; }
   { key = "PageDown"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t+1"]; }; }
   { key = "Tab"; mods = "Control|Shift"; command = { program = "tmux"; args = ["select-window" "-t-1"]; }; }

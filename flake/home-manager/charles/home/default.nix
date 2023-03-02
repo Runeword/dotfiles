@@ -20,9 +20,11 @@
     bat
     peek
     gcc
+    realesrgan-ncnn-vulkan
     slack
     bitwarden-cli
     google-chrome
+    firefox
     (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
     neovim-nightly
     # nodejs-19_x

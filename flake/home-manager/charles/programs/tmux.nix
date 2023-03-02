@@ -21,6 +21,13 @@
   set -g window-status-current-format "#[fg=#ffffff]#W"
   set -g window-status-format "#[fg=#7a7c9e]#W"
   set -g window-status-separator "  "
+
+  # _________________________________ Color sheme
+  set -g mode-style "fg=#7a7c9e,bg=default,italics"
+  set -g message-style "fg=#7a7c9e,bg=default"
+  set -g message-command-style "fg=#7a7c9e,bg=default"
+  set -g pane-border-style "fg=#2d324a"
+  set -g pane-active-border-style "fg=#7a7c9e"
   '';
 
   programs.tmux.plugins = [

@@ -126,6 +126,7 @@ enum combos {
     ESC,
     DEL,
     CAPS,
+    BOOT,
     COMBO_LENGTH
 };
 
@@ -169,6 +170,9 @@ const uint16_t PROGMEM eu[]  = {KC_E, KC_U, COMBO_END};
 const uint16_t PROGMEM htn[]  = {KC_H, KC_T, KC_N, COMBO_END};
 const uint16_t PROGMEM oeu[] = {KC_O, KC_E, KC_U, COMBO_END};
 
+// other combinations
+const uint16_t PROGMEM gcr[]  = {KC_G, KC_C, KC_R, COMBO_END};
+
 // ________________________ list sequences of keys and their resulting action
 
 combo_t key_combos[] = {
@@ -206,6 +210,7 @@ combo_t key_combos[] = {
     [ESC]  = COMBO(eu, KC_ESC),
     [DEL]  = COMBO(htn, KC_DEL),
     [CAPS] = COMBO(oeu, KC_CAPS),
+    [BOOT] = COMBO(gcr, QK_BOOT),
 };
 
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
@@ -214,6 +219,7 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     case ESC: return 10;
     case DEL: return 10;
     case CAPS: return 10;
+    case BOOT: return 10;
     }
 
     return COMBO_TERM;

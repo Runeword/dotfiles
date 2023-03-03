@@ -8,8 +8,10 @@
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    # xfce.xfce4-volumed-pulse
     # xfce.thunar-archive-plugin
+    xfce.xfce4-volumed-pulse
+    pavucontrol
+    pasystray
     gnome.gnome-disk-utility
     gparted
     vim

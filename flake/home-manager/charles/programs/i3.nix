@@ -200,21 +200,21 @@
     "tztime day" = {
       position = 4;
       settings = {
-        format = "%a%d-%m";
+        format = "%a%d-%m   ";
         separator = false;
         separator_block_width = 40;
       };
     };
 
-    "volume master" = {
-      position = 5;
-      settings = {
-        format = "%volume 墳";
-        format_muted = "婢 %volume ";
-        device = "pulse";
-        separator = false;
-        separator_block_width = 40;
-      };
-    };
+    # "volume master" = {
+    #   position = 5;
+    #   settings = {
+    #     format = "%volume 墳";
+    #     format_muted = "婢 %volume ";
+    #     device = "pulse";
+    #     separator = false;
+    #     separator_block_width = 40;
+    #   };
+    # };
   };
 }

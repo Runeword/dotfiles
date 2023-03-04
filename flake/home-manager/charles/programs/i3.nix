@@ -160,6 +160,7 @@
 
   xsession.windowManager.i3.extraConfig = ''
   for_window [class=.*] border pixel 6, focus
+  for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
   '';
 
   programs.i3status.general = {

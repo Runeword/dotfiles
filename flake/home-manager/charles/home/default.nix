@@ -13,6 +13,7 @@
     shopify-cli
     nodePackages.pnpm
     fd
+    thefuck
     inkscape
     clifm
     vifm

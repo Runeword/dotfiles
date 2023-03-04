@@ -11,7 +11,8 @@ local function core()
   -- o.scroll = 5
   -- opt.fillchars:append("horiz:.")
   -- g.mapleader = " "
-  cmd([[let mapleader = "\<enter>"]])
+  -- cmd([[let mapleader = "\<enter>"]])
+  cmd([[let mapleader = "\<BS>"]])
   o.mouse = "a" -- Enables mouse support
   o.cursorline = true
   o.cursorcolumn = true -- o.cursorline=true

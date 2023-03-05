@@ -41,9 +41,9 @@ local function core()
   map("i", "ù", "<Esc>`^u")
 
   -- Text objects
-  map({ 'x', 'o' }, "a<Enter>", "ap")
-  map({ 'x', 'o' }, "i<Enter>", "ip")
-  map({ 'o' }, "<Enter>", "ip")
+  map({ 'x', 'o' }, "a<Leader>", "ap")
+  map({ 'x', 'o' }, "i<Leader>", "ip")
+  map({ 'o' }, "<Leader>", "ip")
 
   map({ 'x', 'o' }, "q", "iq", remap)
   map({ 'x', 'o' }, "nq", "inq", remap)

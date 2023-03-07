@@ -177,7 +177,6 @@ local function sj()
     relative_labels = false,
     search_scope = "visible_lines",
     separator = "",
-    -- separator = "\r",
     update_search_register = false,
     use_last_pattern = false,
     use_overlay = false,

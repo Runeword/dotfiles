@@ -263,6 +263,8 @@ local function varioustextobjs()
   map({ "o", "x" }, "ik", function() require("various-textobjs").key(true) end)
   map({ "o", "x" }, "av", function() require("various-textobjs").value(false) end)
   map({ "o", "x" }, "iv", function() require("various-textobjs").value(true) end)
+  map({ "o", "x" }, "ad", function() require("various-textobjs").number(false) end)
+  map({ "o", "x" }, "id", function() require("various-textobjs").number(true) end)
 end
 
 -------------------- lewis6991/gitsigns.nvim

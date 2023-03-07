@@ -144,9 +144,9 @@ local function sj()
     group = "sj",
     pattern = "*",
     callback = function()
-      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#00fbff', fg = 'black' })
-      -- nvim_set_hl(0, 'SjLabel', { bg = '#ccff88', fg = 'black' })
-      -- nvim_set_hl(0, 'SjSearch', { bg = '#77aaff', fg = 'black' })
+      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#0dff00', fg = 'black' })
+      nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white' })
+      nvim_set_hl(0, 'SjMatches', { bg = '#3a0a8f', fg = 'white' })
     end
   })
 end

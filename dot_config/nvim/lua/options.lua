@@ -14,8 +14,9 @@ local function core()
   -- cmd([[let mapleader = "\<enter>"]])
   cmd([[let mapleader = "\<BS>"]])
   o.mouse = "a" -- Enables mouse support
-  o.cursorline = true
-  o.cursorcolumn = true -- o.cursorline=true
+  o.cursorline = false
+  o.cursorcolumn = true
+  o.statuscolumn='%s%=%l %C%#Yellow#%{v:relnum == 0 ? ">" : ""}%#IndentBlankLineChar#%{v:relnum == 0 ? "" : " "}'
   o.scrolloff = 5 -- Minimal number of screen lines to keep above and below the cursor
   o.foldenable = false -- All folds are open
   o.number = true -- Print the line number in front of each line

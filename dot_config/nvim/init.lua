@@ -64,7 +64,7 @@ local plugins = {
     end,
     config = function()
       require('mappings').tablemode()
-    end
+    end,
   },
 
   {
@@ -89,7 +89,7 @@ local plugins = {
     config = function()
       require('setup').sniprun()
       require('mappings').sniprun()
-    end
+    end,
   },
 
   {
@@ -98,7 +98,7 @@ local plugins = {
     config = function()
       require('setup').printer()
       require('mappings').printer()
-    end
+    end,
   },
 
   {
@@ -107,7 +107,7 @@ local plugins = {
     config = function()
       require('mappings').dap()
       require('setup.dap')
-    end
+    end,
   },
 
   {
@@ -116,7 +116,7 @@ local plugins = {
     config = function()
       require('mappings').bufferline()
       require('setup').bufferline()
-    end
+    end,
   },
 
   {
@@ -157,7 +157,7 @@ local plugins = {
   {
     enabled = true,
     'neovim/nvim-lspconfig',
-    config = require('setup.lsp')
+    config = require('setup.lsp'),
   },
 
   {
@@ -212,7 +212,7 @@ local plugins = {
     'gbprod/stay-in-place.nvim',
     config = function()
       require('setup').stayinplace()
-    end
+    end,
   },
 
   {
@@ -318,7 +318,7 @@ local plugins = {
     config = function()
       require('setup').lightbulb()
       require('autocmd').lightbulb()
-    end
+    end,
   },
 
   {
@@ -327,7 +327,7 @@ local plugins = {
     -- event = "VeryLazy",
     -- lazy = true,
     dependencies = { 'kyazdani42/nvim-web-devicons' },
-    config = require('setup.lualine')
+    config = require('setup.lualine'),
   },
 
   {
@@ -405,7 +405,7 @@ local plugins = {
     'kylechui/nvim-surround',
     config = function()
       require('setup').surround()
-    end
+    end,
   },
 
   {
@@ -420,12 +420,12 @@ local plugins = {
     config = function()
       require('mappings').putter()
     end,
-  }
+  },
 }
 require('lazy').setup(
   plugins,
   {
-    defaults = { lazy = false },
+    defaults = { lazy = false, },
     -- install = { colorscheme = { 'tokyonight', 'habamax' } },
     -- checker = { enabled = true },
     performance = {

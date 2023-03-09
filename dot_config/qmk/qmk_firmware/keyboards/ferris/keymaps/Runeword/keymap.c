@@ -28,35 +28,34 @@ enum custom_keycodes {
 
 // ________________________ define the behavior of custom keycodes
 
+bool custom_mod(int layer, bool pressed) {
+  if (pressed) {
+      layer_on(layer);
+      register_code(KC_LCTL);
+      set_oneshot_mods(MOD_BIT(KC_LCTL));
+      return false;
+  } else {
+      layer_off(layer);
+      unregister_code(KC_LCTL);
+      return true;
+  }
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-    // hold layer 4, control and control for one keypress
+    // hold layer, hold modifier + one shot modifier
     case right_ctrl:
-        if (record->event.pressed) {
-            layer_on(4);
-            register_code(KC_LCTL);
-            set_oneshot_mods(MOD_BIT(KC_LCTL));
-            return false;
-        } else {
-            layer_off(4);
-            unregister_code(KC_LCTL);
-            return true;
-        }
+        return custom_mod(4, record->event.pressed);
         break;
 
     case left_ctrl_3:
-    if (record->event.pressed) {
-        layer_on(3);
-        register_code(KC_LCTL);
-        set_oneshot_mods(MOD_BIT(KC_LCTL));
-        return false;
-    } else {
-        layer_off(3);
-        unregister_code(KC_LCTL);
-        return true;
-    }
-    break;
+        return custom_mod(3, record->event.pressed);
+        break;
+
+    case left_ctrl:
+        return custom_mod(5, record->event.pressed);
+        break;
 
     case left_gui_3:
     if (record->event.pressed) {
@@ -70,19 +69,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return true;
     }
     break;
-
-    case left_ctrl:
-        if (record->event.pressed) {
-            layer_on(5);
-            register_code(KC_LCTL);
-            set_oneshot_mods(MOD_BIT(KC_LCTL));
-            return false;
-        } else {
-            layer_off(5);
-            unregister_code(KC_LCTL);
-            return true;
-        }
-        break;
 
     // hold layer 4, control+shift and control+shift for one keypress
     case right_ctrl_shift:

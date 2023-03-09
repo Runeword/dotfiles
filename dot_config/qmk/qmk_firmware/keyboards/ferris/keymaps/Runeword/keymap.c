@@ -20,6 +20,8 @@ enum custom_keycodes {
     // custom modifiers
     right_ctrl,
     right_ctrl_shift,
+    left_ctrl,
+    left_ctrl_shift
 };
 
 // ________________________ define the behavior of custom keycodes
@@ -41,6 +43,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
 
+    case left_ctrl:
+        if (record->event.pressed) {
+            layer_on(5);
+            register_code(KC_LCTL);
+            set_oneshot_mods(MOD_BIT(KC_LCTL));
+            return false;
+        } else {
+            layer_off(5);
+            unregister_code(KC_LCTL);
+            return true;
+        }
+        break;
+
     // hold layer 4, control+shift and control+shift for one keypress
     case right_ctrl_shift:
         if (record->event.pressed) {
@@ -51,6 +66,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         } else {
             layer_off(4);
+            unregister_code(KC_LCTL);
+            unregister_code(KC_LSFT);
+            return true;
+        }
+        break;
+
+    case left_ctrl_shift:
+        if (record->event.pressed) {
+            layer_on(5);
+            register_code(KC_LCTL);
+            register_code(KC_LSFT);
+            set_oneshot_mods(MOD_LCTL | MOD_LSFT);
+            return false;
+        } else {
+            layer_off(5);
             unregister_code(KC_LCTL);
             unregister_code(KC_LSFT);
             return true;
@@ -135,20 +165,20 @@ uint16_t COMBO_LEN = COMBO_LENGTH;
 // ________________________ define sequences of keys for combos
 
 // thumb + homerow key(s) combinations (left side)
-const uint16_t PROGMEM thumb1_a[]  = {LT(1, KC_TAB), KC_A, COMBO_END};
-const uint16_t PROGMEM thumb1_o[]  = {LT(1, KC_TAB), KC_O, COMBO_END};
-const uint16_t PROGMEM thumb1_e[]  = {LT(1, KC_TAB), KC_E, COMBO_END};
-const uint16_t PROGMEM thumb1_u[]  = {LT(1, KC_TAB), KC_U, COMBO_END};
-const uint16_t PROGMEM thumb1_oe[] = {LT(1, KC_TAB), KC_O, KC_E, COMBO_END};
-const uint16_t PROGMEM thumb1_eu[] = {LT(1, KC_TAB), KC_E, KC_U, COMBO_END};
+const uint16_t PROGMEM thumb1_a[]  = {LT(1, KC_BSPC), KC_A, COMBO_END};
+const uint16_t PROGMEM thumb1_o[]  = {LT(1, KC_BSPC), KC_O, COMBO_END};
+const uint16_t PROGMEM thumb1_e[]  = {LT(1, KC_BSPC), KC_E, COMBO_END};
+const uint16_t PROGMEM thumb1_u[]  = {LT(1, KC_BSPC), KC_U, COMBO_END};
+const uint16_t PROGMEM thumb1_oe[] = {LT(1, KC_BSPC), KC_O, KC_E, COMBO_END};
+const uint16_t PROGMEM thumb1_eu[] = {LT(1, KC_BSPC), KC_E, KC_U, COMBO_END};
 
 // thumb + homerow key(s) combinations (right side)
-const uint16_t PROGMEM thumb2_h[]  = {LT(2, KC_BSPC), KC_H, COMBO_END};
-const uint16_t PROGMEM thumb2_t[]  = {LT(2, KC_BSPC), KC_T, COMBO_END};
-const uint16_t PROGMEM thumb2_n[]  = {LT(2, KC_BSPC), KC_N, COMBO_END};
-const uint16_t PROGMEM thumb2_s[]  = {LT(2, KC_BSPC), KC_S, COMBO_END};
-const uint16_t PROGMEM thumb2_ht[] = {LT(2, KC_BSPC), KC_H, KC_T, COMBO_END};
-const uint16_t PROGMEM thumb2_tn[] = {LT(2, KC_BSPC), KC_T, KC_N, COMBO_END};
+const uint16_t PROGMEM thumb2_h[]  = {LT(2, KC_TAB), KC_H, COMBO_END};
+const uint16_t PROGMEM thumb2_t[]  = {LT(2, KC_TAB), KC_T, COMBO_END};
+const uint16_t PROGMEM thumb2_n[]  = {LT(2, KC_TAB), KC_N, COMBO_END};
+const uint16_t PROGMEM thumb2_s[]  = {LT(2, KC_TAB), KC_S, COMBO_END};
+const uint16_t PROGMEM thumb2_ht[] = {LT(2, KC_TAB), KC_H, KC_T, COMBO_END};
+const uint16_t PROGMEM thumb2_tn[] = {LT(2, KC_TAB), KC_T, KC_N, COMBO_END};
 
 // thumb + key combinations
 const uint16_t PROGMEM thumb3_e[]    = {LT(3, KC_ENT), KC_E, COMBO_END};
@@ -182,9 +212,9 @@ combo_t key_combos[] = {
     [MOD_LA]  = COMBO(thumb1_a, OSM(MOD_LALT)),
     [MOD_LG]  = COMBO(thumb1_o, OSM(MOD_LGUI)),
     [MOD_LS]  = COMBO(thumb1_e, OSM(MOD_LSFT)),
-    [MOD_LC]  = COMBO(thumb1_u, OSM(MOD_LCTL)),
+    [MOD_LC]  = COMBO(thumb1_u, left_ctrl),
     [MOD_LGS] = COMBO(thumb1_oe, OSM(MOD_LGUI | MOD_LSFT)),
-    [MOD_LCS] = COMBO(thumb1_eu, OSM(MOD_LCTL | MOD_LSFT)),
+    [MOD_LCS] = COMBO(thumb1_eu, left_ctrl_shift),
     [MOD_RC]  = COMBO(thumb2_h, right_ctrl),
     [MOD_RS]  = COMBO(thumb2_t, OSM(MOD_RSFT)),
     [MOD_RG]  = COMBO(thumb2_n, OSM(MOD_RGUI)),
@@ -238,10 +268,23 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key
         }
         return false;
 
+    case MOD_LCS:
+        switch (keycode) {
+        case KC_E: unregister_code(KC_LSFT); break;
+        case KC_U: unregister_code(KC_LCTL); break;
+        }
+        return false;
+
     // disable control key when h key of the MOD_RC combo is released
     case MOD_RC:
         switch (keycode) {
         case KC_H: unregister_code(KC_LCTL); break;
+        }
+        return false;
+
+    case MOD_LC:
+        switch (keycode) {
+        case KC_U: unregister_code(KC_LCTL); break;
         }
         return false;
     }
@@ -255,24 +298,11 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key
 // ________________________ KEYMAPS ________________________
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [0] = LAYOUT_split_3x5_2(KC_QUOT, KC_COMM, KC_DOT, KC_P, KC_Y, KC_F, KC_G, KC_C, KC_R, KC_L, KC_A, KC_O, KC_E, KC_U,
-        KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_SCLN, KC_Q, KC_J, KC_K, KC_X, KC_B, KC_M, KC_W, KC_V, KC_Z,
-        LT(3, KC_ENT), LT(1, KC_TAB), LT(2, KC_BSPC), KC_SPC),
-    [1] = LAYOUT_split_3x5_2(KC_GRV, KC_MINS, KC_EQL, KC_PLUS, KC_NO, KC_AT, KC_LBRC, KC_RBRC, KC_SLSH, KC_BSLS,
-        KC_EXLM, KC_QUES, KC_HASH, KC_ASTR, KC_NO, KC_TILD, KC_LPRN, KC_RPRN, KC_CIRC, KC_DLR, KC_AMPR, KC_PIPE,
-        KC_UNDS, KC_PERC, KC_NO, KC_NO, KC_LCBR, KC_RCBR, KC_NO, KC_NO, KC_NO, KC_NO, KC_BSPC, KC_SPC),
-    [2] = LAYOUT_split_3x5_2(KC_HOME, KC_END, KC_PGDN, KC_PGUP, KC_INS, KC_NO, KC_MPRV, KC_MNXT, KC_MPLY, KC_MUTE,
-        KC_LEFT, KC_RGHT, KC_DOWN, KC_UP, KC_NO, KC_NO, KC_RCTL, KC_RSFT, KC_RGUI, KC_RALT, KC_WH_L, KC_WH_R, KC_WH_D,
-        KC_WH_U, KC_NO, KC_NO, KC_BRIU, KC_BRID, KC_VOLU, KC_VOLD, KC_ENT, KC_TAB, KC_NO, KC_NO),
-    [3] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_9, KC_5, KC_6, KC_7, KC_8, KC_LALT, KC_LGUI, KC_LSFT,
-        KC_LCTL, KC_NO, KC_0, KC_1, KC_2, KC_3, KC_4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PEQL, KC_PPLS, KC_PMNS,
-        KC_PSLS, KC_PAST, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
-    [4] = LAYOUT_split_3x5_2(KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_LCTL, KC_LSFT, KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_NO),
-    [5] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LALT,
-        KC_LGUI, KC_LSFT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_TRNS),
-    [6] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F5, KC_F6, KC_F7, KC_F8, KC_LALT, KC_LGUI,
-        KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F9,
-        KC_F10, KC_F11, KC_F12, KC_NO, KC_NO, KC_NO, KC_NO)};
+	[0] = LAYOUT_split_3x5_2(KC_QUOT, KC_COMM, KC_DOT, KC_P, KC_Y, KC_F, KC_G, KC_C, KC_R, KC_L, KC_A, KC_O, KC_E, KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_SCLN, KC_Q, KC_J, KC_K, KC_X, KC_B, KC_M, KC_W, KC_V, KC_Z, LT(3,KC_ENT), LT(1,KC_BSPC), LT(2,KC_TAB), KC_SPC),
+	[1] = LAYOUT_split_3x5_2(KC_GRV, KC_MINS, KC_EQL, KC_PLUS, KC_NO, KC_AT, KC_LBRC, KC_RBRC, KC_SLSH, KC_BSLS, KC_EXLM, KC_QUES, KC_HASH, KC_ASTR, KC_NO, KC_TILD, KC_LPRN, KC_RPRN, KC_CIRC, KC_DLR, KC_AMPR, KC_PIPE, KC_UNDS, KC_PERC, KC_NO, KC_NO, KC_LCBR, KC_RCBR, KC_NO, KC_NO, KC_NO, KC_NO, KC_TAB, KC_SPC),
+	[2] = LAYOUT_split_3x5_2(KC_HOME, KC_END, KC_PGDN, KC_PGUP, KC_INS, KC_NO, KC_MPRV, KC_MNXT, KC_MPLY, KC_MUTE, KC_LEFT, KC_RGHT, KC_DOWN, KC_UP, KC_NO, KC_NO, KC_RCTL, KC_RSFT, KC_RGUI, KC_RALT, KC_WH_L, KC_WH_R, KC_WH_D, KC_WH_U, KC_NO, KC_NO, KC_BRIU, KC_BRID, KC_VOLU, KC_VOLD, KC_ENT, KC_BSPC, KC_NO, KC_NO),
+	[3] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_9, KC_5, KC_6, KC_7, KC_8, KC_LALT, KC_LGUI, KC_LSFT, KC_LCTL, KC_NO, KC_0, KC_1, KC_2, KC_3, KC_4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PEQL, KC_PPLS, KC_PMNS, KC_PSLS, KC_PAST, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+	[4] = LAYOUT_split_3x5_2(KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_LCTL, KC_LSFT, KC_LGUI, KC_LALT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_NO, KC_NO),
+	[5] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LALT, KC_LGUI, KC_LSFT, KC_LCTL, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_TRNS),
+	[6] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F5, KC_F6, KC_F7, KC_F8, KC_LALT, KC_LGUI, KC_LSFT, KC_LCTL, KC_NO, KC_NO, KC_F1, KC_F2, KC_F3, KC_F4, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_F9, KC_F10, KC_F11, KC_F12, KC_NO, KC_NO, KC_NO, KC_NO)
+};

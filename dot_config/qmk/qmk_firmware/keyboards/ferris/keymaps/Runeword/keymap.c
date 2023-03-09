@@ -28,15 +28,15 @@ enum custom_keycodes {
 
 // ________________________ define the behavior of custom keycodes
 
-bool custom_mod(int layer, bool pressed) {
-  if (pressed) {
+bool custom_mod(int layer, keyrecord_t *record, uint16_t kc_mod) {
+  if (record->event.pressed) {
       layer_on(layer);
-      register_code(KC_LCTL);
-      set_oneshot_mods(MOD_BIT(KC_LCTL));
+      register_code(kc_mod);
+      set_oneshot_mods(MOD_BIT(kc_mod));
       return false;
   } else {
       layer_off(layer);
-      unregister_code(KC_LCTL);
+      unregister_code(kc_mod);
       return true;
   }
 }
@@ -44,31 +44,11 @@ bool custom_mod(int layer, bool pressed) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
-    // hold layer, hold modifier + one shot modifier
-    case right_ctrl:
-        return custom_mod(4, record->event.pressed);
-        break;
-
-    case left_ctrl_3:
-        return custom_mod(3, record->event.pressed);
-        break;
-
-    case left_ctrl:
-        return custom_mod(5, record->event.pressed);
-        break;
-
-    case left_gui_3:
-    if (record->event.pressed) {
-        layer_on(3);
-        register_code(KC_LGUI);
-        set_oneshot_mods(MOD_BIT(KC_LGUI));
-        return false;
-    } else {
-        layer_off(3);
-        unregister_code(KC_LGUI);
-        return true;
-    }
-    break;
+    // hold layer, hold modifier, one shot modifier
+    case right_ctrl: return custom_mod(4, record, KC_LCTL); break;
+    case left_ctrl_3: return custom_mod(3, record, KC_LCTL); break;
+    case left_ctrl: return custom_mod(5, record, KC_LCTL); break;
+    case left_gui_3: return custom_mod(3, record, KC_LGUI); break;
 
     // hold layer 4, control+shift and control+shift for one keypress
     case right_ctrl_shift:

@@ -6,8 +6,8 @@ enum custom_keycodes {
 
     // french special characters
     GRAVEA = SAFE_RANGE,
-    GRAVEE,
-    GRAVEU,
+    // GRAVEE,
+    // GRAVEU,
     CIRCUMFLEXA,
     CIRCUMFLEXO,
     CIRCUMFLEXE,
@@ -21,7 +21,9 @@ enum custom_keycodes {
     right_ctrl,
     right_ctrl_shift,
     left_ctrl,
-    left_ctrl_shift
+    left_ctrl_shift,
+    left_ctrl_3,
+    left_gui_3
 };
 
 // ________________________ define the behavior of custom keycodes
@@ -42,6 +44,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true;
         }
         break;
+
+    case left_ctrl_3:
+    if (record->event.pressed) {
+        layer_on(3);
+        register_code(KC_LCTL);
+        set_oneshot_mods(MOD_BIT(KC_LCTL));
+        return false;
+    } else {
+        layer_off(3);
+        unregister_code(KC_LCTL);
+        return true;
+    }
+    break;
+
+    case left_gui_3:
+    if (record->event.pressed) {
+        layer_on(3);
+        register_code(KC_LGUI);
+        set_oneshot_mods(MOD_BIT(KC_LGUI));
+        return false;
+    } else {
+        layer_off(3);
+        unregister_code(KC_LGUI);
+        return true;
+    }
+    break;
 
     case left_ctrl:
         if (record->event.pressed) {
@@ -91,12 +119,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case GRAVEA:
         if (record->event.pressed) SEND_STRING(SS_RALT("`") "a");
         break;
-    case GRAVEE:
-        if (record->event.pressed) SEND_STRING(SS_RALT("`") "e");
-        break;
-    case GRAVEU:
-        if (record->event.pressed) SEND_STRING(SS_RALT("`") "u");
-        break;
+    // case GRAVEE:
+    //     if (record->event.pressed) SEND_STRING(SS_RALT("`") "e");
+    //     break;
+    // case GRAVEU:
+    //     if (record->event.pressed) SEND_STRING(SS_RALT("`") "u");
+    //     break;
     case CIRCUMFLEXA:
         if (record->event.pressed) SEND_STRING(SS_RALT("6") "a");
         break;
@@ -148,8 +176,10 @@ enum combos {
     SPE_CIRCUMFLEXO,
     SPE_CIRCUMFLEXU,
     SPE_GRAVEA,
-    SPE_GRAVEE,
-    SPE_GRAVEU,
+    // SPE_GRAVEE,
+    // SPE_GRAVEU,
+    MOD_LC_3,
+    MOD_LG_3,
     SPE_TREMAE,
     SPE_TREMAI,
     SPE_TREMAU,
@@ -231,8 +261,10 @@ combo_t key_combos[] = {
     [SPE_CIRCUMFLEXO] = COMBO(thumb3_comm, CIRCUMFLEXO),
     [SPE_CIRCUMFLEXU] = COMBO(thumb3_p, CIRCUMFLEXU),
     [SPE_GRAVEA]      = COMBO(thumb3_a, GRAVEA),
-    [SPE_GRAVEE]      = COMBO(thumb3_o, GRAVEE),
-    [SPE_GRAVEU]      = COMBO(thumb3_u, GRAVEU),
+    // [SPE_GRAVEE]      = COMBO(thumb3_o, GRAVEE),
+    // [SPE_GRAVEU]      = COMBO(thumb3_u, GRAVEU),
+    [MOD_LC_3]      = COMBO(thumb3_u, left_ctrl_3),
+    [MOD_LG_3]      = COMBO(thumb3_o, left_gui_3),
     [SPE_TREMAE]      = COMBO(thumb3_j, TREMAE),
     [SPE_TREMAI]      = COMBO(thumb3_x, TREMAI),
     [SPE_TREMAU]      = COMBO(thumb3_k, TREMAU),

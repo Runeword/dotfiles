@@ -21,9 +21,9 @@
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
-        nixos/hardware-configuration.nix
         nixos/configuration.nix
+        nixos/hardware-configuration.nix
+        inputs.nixos-hardware.nixosModules.framework-12th-gen-intel
       ];
     };
 

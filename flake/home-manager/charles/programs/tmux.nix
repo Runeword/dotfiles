@@ -28,9 +28,13 @@
   set -g message-command-style "fg=#7a7c9e,bg=default"
   set -g pane-border-style "fg=#2d324a"
   set -g pane-active-border-style "fg=#7a7c9e"
+
+  # bind -n F3 run-shell -b "$CONFIG/tmux/plugins/tmux-fzf/scripts/window.sh switch"
+  TMUX_FZF_PREVIEW=1
   '';
 
   programs.tmux.plugins = [
     { plugin = pkgs.tmuxPlugins.resurrect; }
+    { plugin = pkgs.tmuxPlugins.tmux-fzf; }
   ];
 }

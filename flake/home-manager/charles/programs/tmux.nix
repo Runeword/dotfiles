@@ -11,6 +11,7 @@
   set -g mouse on
   set -g status-interval 1 # Update the status line every 1 seconds
   set -g renumber-windows on # Re-number windows when one is closed
+  set -g display-time 500
 
   # _________________________________ Status line
   set -g status-style bg=default
@@ -29,12 +30,11 @@
   set -g pane-border-style "fg=#2d324a"
   set -g pane-active-border-style "fg=#7a7c9e"
 
-  # bind -n F3 run-shell -b "$CONFIG/tmux/plugins/tmux-fzf/scripts/window.sh switch"
-  TMUX_FZF_PREVIEW=1
+  # _________________________________ Scripts
+  run -b '/nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/restore.sh r'
   '';
 
   programs.tmux.plugins = [
     { plugin = pkgs.tmuxPlugins.resurrect; }
-    { plugin = pkgs.tmuxPlugins.tmux-fzf; }
   ];
 }

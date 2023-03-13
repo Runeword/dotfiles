@@ -44,8 +44,8 @@
     tks="tmux kill-session";
     trs="read -p 'Session name: ' name && tmux rename-session $name";
     tkk="tmux kill-server";
-    tss="$HOME/.config/tmux/plugins/tmux-resurrect/scripts/save.sh";
-    trr="[[ '$TERM_PROGRAM' == 'tmux' ]] && $HOME/.config/tmux/plugins/tmux-resurrect/scripts/restore.sh";
+    tss="/nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/save.sh";
+    trr="[[ '$TERM_PROGRAM' == 'tmux' ]] && /nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/restore.sh";
 
     # ______________________________________GIT
     gs="git status";

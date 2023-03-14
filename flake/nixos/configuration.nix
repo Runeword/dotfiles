@@ -69,8 +69,22 @@
     xkbVariant = "altgr-intl";
     # autoRepeatInterval = 150;
     # autoRepeatDelay = 25;
+
+    # i3
+    # displayManager.lightdm.enable = true;
+    # displayManager.defaultSession = "none+i3";
+    # desktopManager.xterm.enable = false;
+    # windowManager.i3.enable = true;
+
+    # # xfce
+    # displayManager.defaultSession = "xfce";
+    # desktopManager.xterm.enable = false;
+    # desktopManager.xfce = {
+    #   enable = true;
+    # };
+
+    # xfce + i3
     windowManager.i3.enable = true;
-    displayManager.lightdm.enable = true;
     displayManager.defaultSession = "xfce+i3";
     desktopManager.xterm.enable = false;
     desktopManager.xfce = {
@@ -93,7 +107,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)

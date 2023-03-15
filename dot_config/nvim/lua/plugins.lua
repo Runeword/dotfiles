@@ -51,6 +51,14 @@ return {
     dependencies = { 'mattn/webapi-vim' },
   },
 
+  {
+    enabled = true,
+    'willothy/flatten.nvim',
+    config = true,
+    lazy = false,
+    priority = 1001,
+  },
+
   -- {
   --   'gelguy/wilder.nvim',
   --   dependencies = { "romgrk/fzy-lua-native" },

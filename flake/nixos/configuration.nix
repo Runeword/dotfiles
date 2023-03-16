@@ -15,6 +15,7 @@
     pavucontrol
     pasystray
     gnome.gnome-disk-utility
+    # system-config-printer
     gparted
     vim
   ];
@@ -94,10 +95,14 @@
     };
   };
 
-  # Enable CUPS to print documents.
+  # printing
   services.printing.enable = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  services.avahi.openFirewall = true;
+  services.printing.drivers = [ pkgs.epson-escpr ];
 
-  # Enable sound with pipewire.
+  # sound
   sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;

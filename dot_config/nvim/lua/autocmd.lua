@@ -97,7 +97,7 @@ local function matchup()
     callback = function()
       nvim_set_hl(0, 'MatchParen', { fg = '#7429ff', italic = true, bold = true })
       nvim_set_hl(0, 'MatchWord', { fg = '#7429ff' })
-      nvim_set_hl(0, 'MatchBackground', { bg = '#222277'})
+      nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b'})
     end
   })
 end
@@ -144,9 +144,9 @@ local function sj()
     group = "sj",
     pattern = "*",
     callback = function()
-      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#0dff00', fg = 'black' })
-      nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white' })
-      nvim_set_hl(0, 'SjMatches', { bg = '#3a0a8f', fg = 'white' })
+      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#ffe100', fg = 'black', bold = false })
+      nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white', bold = false })
+      nvim_set_hl(0, 'SjMatches', { bg = '#3a0a8f', fg = 'white', bold = false })
     end
   })
 end

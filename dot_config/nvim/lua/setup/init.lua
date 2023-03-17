@@ -477,6 +477,10 @@ local function bufferline()
       modified_icon = '',
       close_icon = '',
     },
+    highlights = {
+      numbers = { fg = '#7a7c9e', bg = 'none', },
+      numbers_selected = { fg = 'white', bg = 'none', },
+    }
   })
 end
 

@@ -16,7 +16,7 @@ local function core()
   o.mouse = "a" -- Enables mouse support
   o.cursorline = false
   o.cursorcolumn = true
-  o.statuscolumn='%s%=%l %C%#Yellow#%{v:relnum == 0 ? ">" : ""}%#IndentBlankLineChar#%{v:relnum == 0 ? "" : " "}'
+  -- o.statuscolumn='%s%=%l %C%#Yellow#%{v:relnum == 0 ? ">" : ""}%#IndentBlankLineChar#%{v:relnum == 0 ? "" : " "}'
   o.scrolloff = 5 -- Minimal number of screen lines to keep above and below the cursor
   o.foldenable = false -- All folds are open
   o.number = true -- Print the line number in front of each line

@@ -19,6 +19,13 @@ return {
   { 'kyazdani42/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
 
+  {
+    'luukvbaal/statuscol.nvim',
+    config = function()
+      require("statuscol").setup()
+    end,
+  },
+
   { 'dhruvasagar/vim-table-mode',
     init = function()
       require('setup').tablemode()

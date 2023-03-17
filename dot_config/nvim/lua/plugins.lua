@@ -19,12 +19,12 @@ return {
   { 'kyazdani42/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
 
-  {
-    'luukvbaal/statuscol.nvim',
-    config = function()
-      require("statuscol").setup()
-    end,
-  },
+  -- {
+  --   'luukvbaal/statuscol.nvim',
+  --   config = function()
+  --     require("statuscol").setup()
+  --   end,
+  -- },
 
   { 'dhruvasagar/vim-table-mode',
     init = function()
@@ -48,7 +48,7 @@ return {
   -- {
   --   'gelguy/wilder.nvim',
   --   dependencies = { "romgrk/fzy-lua-native" },
-  --   -- rocks = 'pcre2',
+  --   rocks = 'pcre2',
   --   config = function()
   --     require("setup").wilder()
   --   end,

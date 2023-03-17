@@ -1,4 +1,5 @@
 local cmd = vim.cmd
+local o = vim.o
 local fn = vim.fn
 local highlight = vim.highlight
 local autocmd = vim.api.nvim_create_autocmd
@@ -16,7 +17,11 @@ local function core()
 
   autocmd("TermOpen", {
     group = "term",
-    command = "startinsert",
+    callback = function()
+      o.relativenumber = false
+      o.number = false
+      cmd('startinsert')
+    end
   })
 
   autocmd("BufWritePost", {

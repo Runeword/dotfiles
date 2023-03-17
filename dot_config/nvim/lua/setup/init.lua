@@ -467,6 +467,9 @@ end
 local function bufferline()
   require('bufferline').setup({
     options = {
+      numbers = function(opts)
+        return string.format('%s', opts.raise(opts.ordinal))
+      end,
       indicator = { style = 'none' },
       separator_style = { '', '' },
       tab_size = 0,

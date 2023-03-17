@@ -161,6 +161,12 @@ local function starry()
   g.starry_set_hl = false
   g.starry_daylight_switch = false
 
+  require('starry').setup({
+    disable = {
+      term_colors = true,
+    }
+  })
+
   cmd('colorscheme moonlight')
 end
 
@@ -193,9 +199,9 @@ local function sj()
     -- },
     keymaps = {
       cancel = "<Esc>",
-      validate = "<Enter>",
-      prev_match = "<S-Tab>",
-      next_match = "<Tab>",
+      validate = "<Tab>",
+      prev_match = "<S-Enter>",
+      next_match = "<Enter>",
       prev_pattern = "<C-p>",
       next_pattern = "<C-n>",
       delete_prev_char = "<BS>",

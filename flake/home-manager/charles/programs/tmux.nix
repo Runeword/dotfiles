@@ -8,6 +8,7 @@
 
   programs.tmux.extraConfig = ''
   # _________________________________ Extra options
+  set -sa terminal-features ',alacritty:RGB'
   set -g mouse on
   set -g status-interval 1 # Update the status line every 1 seconds
   set -g renumber-windows on # Re-number windows when one is closed

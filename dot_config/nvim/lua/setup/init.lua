@@ -478,8 +478,8 @@ local function bufferline()
       close_icon = '',
     },
     highlights = {
-      numbers = { fg = '#7a7c9e', bg = 'none', },
-      numbers_selected = { fg = 'white', bg = 'none', },
+      numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
+      numbers_selected = { fg = 'white', bg = 'none', italic = false },
     }
   })
 end

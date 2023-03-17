@@ -10,7 +10,7 @@
     italic.style = "Italic";
     bold_italic.family = "Hack Nerd Font";
     bold_italic.style = "Bold Italic";
-    size = 10.0;
+    size = 9.8;
     offset.y = 5;
   };
 

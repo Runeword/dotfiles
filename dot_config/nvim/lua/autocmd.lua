@@ -151,7 +151,7 @@ local function sj()
     callback = function()
       nvim_set_hl(0, 'SjFocusedLabel', { bg = '#ffe100', fg = 'black', bold = false })
       nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white', bold = false })
-      nvim_set_hl(0, 'SjMatches', { bg = '#3a0a8f', fg = 'white', bold = false })
+      nvim_set_hl(0, 'SjMatches', { bg = '#36297d', fg = 'white', bold = false })
     end
   })
 end

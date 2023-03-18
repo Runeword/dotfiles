@@ -147,6 +147,7 @@ local function starry()
   require('autocmd').sj()
   require('autocmd').matchup()
 
+  g.starry_bold = false
   g.starry_italic_comments = false
   g.starry_italic_string = false
   g.starry_italic_keywords = true

@@ -165,7 +165,10 @@ local function starry()
   require('starry').setup({
     disable = {
       term_colors = true,
-    }
+    },
+    custom_highlights = {
+      -- Yank = { bg = '#00ffa2', fg = 'black' },
+    },
   })
 
   cmd('colorscheme moonlight')

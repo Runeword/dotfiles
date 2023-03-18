@@ -23,7 +23,7 @@ local function core()
   cmd [[cnoreabbrev <expr> h  getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
 
   -- Terminal
-  -- map('n', '<Leader>t', ':te<CR>ireset<CR>')
+  map('n', '<Leader>t', '<cmd>te<CR>')
   map('t', '<Esc>', [[<C-\><C-n>]])
 
   -- Unmap

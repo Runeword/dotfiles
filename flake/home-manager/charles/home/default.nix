@@ -11,6 +11,7 @@
     wget
     ripgrep
     shopify-cli
+    progress
     nodePackages.pnpm
     fd
     thefuck

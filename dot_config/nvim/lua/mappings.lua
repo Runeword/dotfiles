@@ -281,19 +281,19 @@ end
 
 -------------------- akinsho/bufferline.nvim
 local function bufferline()
-  map("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", silent)
-  map("n", "<s-tab>", "<cmd>BufferLineCyclePrev<CR>", silent)
-  map("n", "<pageup>", "<cmd>BufferLineMovePrev<CR>", silent)
-  map("n", "<pagedown>", "<cmd>BufferLineMoveNext<CR>", silent)
-  map("n", "<A-1>", function() require("bufferline").go_to_buffer(1) end)
-  map("n", "<A-2>", function() require("bufferline").go_to_buffer(2) end)
-  map("n", "<A-3>", function() require("bufferline").go_to_buffer(3) end)
-  map("n", "<A-4>", function() require("bufferline").go_to_buffer(4) end)
-  map("n", "<A-5>", function() require("bufferline").go_to_buffer(5) end)
-  map("n", "<A-6>", function() require("bufferline").go_to_buffer(6) end)
-  map("n", "<A-7>", function() require("bufferline").go_to_buffer(7) end)
-  map("n", "<A-8>", function() require("bufferline").go_to_buffer(8) end)
-  map("n", "<A-9>", function() require("bufferline").go_to_buffer(-1) end)
+  map({ "n", "x" }, "<tab>", "<cmd>BufferLineCycleNext<CR>", silent)
+  map({ "n", "x" }, "<s-tab>", "<cmd>BufferLineCyclePrev<CR>", silent)
+  map({ "n", "x" }, "<pageup>", "<cmd>BufferLineMovePrev<CR>", silent)
+  map({ "n", "x" }, "<pagedown>", "<cmd>BufferLineMoveNext<CR>", silent)
+  map({ "n", "t", "i", "x" }, "<A-1>", function() require("bufferline").go_to_buffer(1) end)
+  map({ "n", "t", "i", "x" }, "<A-2>", function() require("bufferline").go_to_buffer(2) end)
+  map({ "n", "t", "i", "x" }, "<A-3>", function() require("bufferline").go_to_buffer(3) end)
+  map({ "n", "t", "i", "x" }, "<A-4>", function() require("bufferline").go_to_buffer(4) end)
+  map({ "n", "t", "i", "x" }, "<A-5>", function() require("bufferline").go_to_buffer(5) end)
+  map({ "n", "t", "i", "x" }, "<A-6>", function() require("bufferline").go_to_buffer(6) end)
+  map({ "n", "t", "i", "x" }, "<A-7>", function() require("bufferline").go_to_buffer(7) end)
+  map({ "n", "t", "i", "x" }, "<A-8>", function() require("bufferline").go_to_buffer(8) end)
+  map({ "n", "t", "i", "x" }, "<A-9>", function() require("bufferline").go_to_buffer(-1) end)
 end
 
 -------------------- AndrewRadev/splitjoin.vim

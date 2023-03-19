@@ -98,45 +98,10 @@ local function bufferline()
       -- nvim_set_hl(0, 'BufferLineFill', { bg = 'none' })
       nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e' })
       nvim_set_hl(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none' })
-
-      -- BufferLineInfoDiagnostic xxx cterm= gui= guifg=#1b5767 guisp=#81a2ac
-      -- BufferLineInfo xxx cterm= gui= guifg=#24748a guisp=#add8e6
-      -- BufferLineInfoVisible xxx cterm= gui= guifg=#24748a
-      -- BufferLineHintDiagnosticSelected xxx cterm=bold,italic gui=bold,italic guifg=#9e9e9e guisp=#9e9e9e
-      -- BufferLineHintDiagnosticVisible xxx cterm= gui= guifg=#1b5767
-      -- BufferLineHintDiagnostic xxx cterm= gui= guifg=#1b5767 guisp=#9e9e9e
-      -- BufferLineHintSelected xxx cterm=bold,italic gui=bold,italic guifg=#d3d3d3 guisp=#d3d3d3
-      -- BufferLineHintVisible xxx cterm= gui= guifg=#24748a
-      -- BufferLineDiagnosticSelected xxx cterm=bold,italic gui=bold,italic guifg=#bebda1
-      -- BufferLineDiagnosticVisible xxx cterm= gui= guifg=#1b5767
-      -- BufferLineNumbersVisible xxx cterm= gui= guifg=#24748a
-      -- BufferLineBufferSelected xxx cterm=bold,italic gui=bold,italic guifg=#fefcd7
-      -- BufferLineCloseButtonSelected xxx cterm= gui= guifg=#fefcd7
-      -- BufferLineCloseButtonVisible xxx cterm= gui= guifg=#24748a
-      -- BufferLineCloseButton xxx cterm= gui= guifg=#24748a
-      -- BufferLineTabClose xxx cterm= gui= guifg=#24748a
-      -- BufferLineTabSelected xxx cterm= gui= guifg=#a3ace1
-      -- BufferLineGroupLabel xxx cterm= gui= guibg=#24748a
-      -- BufferLineGroupSeparator xxx cterm= gui= guifg=#24748a
-      -- BufferLineInfoSelected xxx cterm=bold,italic gui=bold,italic guifg=#add8e6 guisp=#add8e6
-      -- BufferLineErrorDiagnosticVisible xxx cterm= gui= guifg=#1b5767
-      -- BufferLineModified xxx cterm= gui= guifg=#c5cdcc
-      -- BufferLineFill xxx cterm=
-      -- BufferLineNumbersSelected xxx cterm=bold gui=bold guifg=White
-      -- BufferLineNumbers xxx cterm= gui= guifg=#7a7c9e
-      -- BufferLineSeparator xxx cterm= gui=
-      -- BufferLineHint xxx cterm= gui= guifg=#24748a guisp=#d3d3d3
-      -- BufferLineTab  xxx cterm= gui= guifg=#24748a
-      -- BufferLineWarningDiagnosticSelected xxx cterm=bold,italic gui=bold,italic guifg=#bf7b00 guisp=#bf7b00
-      -- BufferLineBackground xxx cterm=
-      -- BufferLineDiagnostic xxx cterm= gui= guifg=#1b5767
-      -- BufferLineOffsetSeparator xxx cterm= gui= guifg=#413893
-      -- BufferLinePickVisible xxx cterm=bold,italic gui=bold,italic guifg=#ff0000
-      -- BufferLinePickSelected xxx cterm=bold,italic gui=bold,italic guifg=#ff0000
-      -- BufferLineIndicatorVisible xxx cterm= gui=
-      -- BufferLineIndicatorSelected xxx cterm= gui= guifg=#a3ace1
-      -- BufferLineTabSeparatorSelected xxx cterm= gui=
-      -- BufferLineTabSeparator xxx cterm= gui=
+      nvim_set_hl(0, 'BufferLineNumbers', { fg = '#7a7c9e', bg = 'none', italic = false })
+      nvim_set_hl(0, 'BufferLineNumbersSelected', { fg = 'white', bg = 'none', italic = false })
+      nvim_set_hl(0, 'BufferLineDuplicate', { fg = '#7a7c9e', bg = 'none', italic = false })
+      nvim_set_hl(0, 'BufferLineDuplicateSelected', { fg = 'white', bg = 'none', italic = false })
     end,
   })
 end

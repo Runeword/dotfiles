@@ -9,6 +9,7 @@
     nsf="sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nfu="nix flake update $HOME/flake";
     nd="read -p 'nix develop $HOME/flake#' devShell && nix develop $HOME/flake#$devShell";
+    wa="watch progress -q";
 
     # ______________________________________QMK
     qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";

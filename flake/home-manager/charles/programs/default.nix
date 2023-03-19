@@ -19,4 +19,7 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
   programs.bash.bashrcExtra = builtins.readFile ../extra/.bashrc;
+
+  programs.zoxide.enable = true;
+  programs.zoxide.enableBashIntegration = true;
 }

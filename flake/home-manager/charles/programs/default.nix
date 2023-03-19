@@ -16,8 +16,6 @@
   programs.fzf.fileWidgetCommand = "fd --hidden --follow --no-ignore --max-depth 1 --exclude .git --exclude node_modules";
   programs.fzf.defaultOptions = [ "--no-separator" ];
 
-  programs.rofi.enable = true;
-
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
   programs.bash.bashrcExtra = builtins.readFile ../extra/.bashrc;

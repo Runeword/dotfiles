@@ -785,11 +785,13 @@ ciwspan<esc>  # <div></div> => <span></span>
 ### debug
 
 ```
+:checkhealth
 nvim -V10nvim.log           # nvim logs
 :verbose set fo             # debug init.vim
 :verbose inoremap <esc>     # debug init.vim
 :messages                   # error messages
 :highlight                  # highlight groups
+:filter BufferLine highlight
 :so $VIMRUNTIME/syntax/hitest.vim # highlight groups in a new window
 :echo &ft                   # display file type
 ```

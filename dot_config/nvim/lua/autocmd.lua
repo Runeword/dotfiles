@@ -95,7 +95,7 @@ local function bufferline()
     group = 'bufferline',
     pattern = '*',
     callback = function()
-      -- nvim_set_hl(0, 'BufferLineFill', { bg = 'none' })
+      nvim_set_hl(0, 'BufferLineFill', { bg = 'none' })
       nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e' })
       nvim_set_hl(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none' })
       nvim_set_hl(0, 'BufferLineNumbers', { fg = '#7a7c9e', bg = 'none', italic = false })
@@ -166,7 +166,7 @@ local function sj()
       nvim_set_hl(0, 'SjFocusedLabel',
         { bg = '#ffe100', fg = 'black', bold = false, })
       nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white', bold = false, })
-      nvim_set_hl(0, 'SjMatches', { bg = '#36297d', fg = 'white', bold = false, })
+      nvim_set_hl(0, 'SjMatches', { bg = '#222b66', fg = 'white', bold = false, })
     end,
   })
 end

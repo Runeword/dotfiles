@@ -20,6 +20,7 @@
     xclip
     chezmoi
     bat
+    rofi
     peek
     gcc
     realesrgan-ncnn-vulkan

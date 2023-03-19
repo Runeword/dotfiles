@@ -166,9 +166,6 @@ local function starry()
     disable = {
       term_colors = true,
     },
-    custom_highlights = {
-      -- Yank = { bg = '#00ffa2', fg = 'black' },
-    },
   })
 
   cmd('colorscheme moonlight')
@@ -196,11 +193,6 @@ local function sj()
       "n", "s", "f", "g", "c", "r", "l", ";", "q", "j", "k", "x", "b",
       "m", "w", "v", "z",
     },
-    -- highlights = {
-    --   SjFocusedLabel = { bg = "#00fbff", fg = 'black', },
-    --   SjLabel = { bg = '#ccff88', fg = 'black' },
-    --   SjMatches = { bg = '#77aaff', fg = 'black' },
-    -- },
     keymaps = {
       cancel = "<Esc>",
       validate = "<Tab>",

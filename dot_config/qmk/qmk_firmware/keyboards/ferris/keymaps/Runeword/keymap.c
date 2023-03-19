@@ -23,7 +23,8 @@ enum custom_keycodes {
     left_ctrl,
     left_ctrl_shift,
     left_ctrl_3,
-    left_gui_3
+    left_gui_3,
+    left_alt_3
 };
 
 // ________________________ define the behavior of custom keycodes
@@ -46,9 +47,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
 
     case right_ctrl: return custom_mod(4, record, KC_LCTL); break;
-    case left_ctrl_3: return custom_mod(3, record, KC_LCTL); break;
     case left_ctrl: return custom_mod(5, record, KC_LCTL); break;
+    case left_ctrl_3: return custom_mod(3, record, KC_LCTL); break;
     case left_gui_3: return custom_mod(3, record, KC_LGUI); break;
+    case left_alt_3: return custom_mod(3, record, KC_LALT); break;
 
     case right_ctrl_shift:
         if (record->event.pressed) {
@@ -145,6 +147,7 @@ enum combos {
     // SPE_GRAVEU,
     MOD_LC_3,
     MOD_LG_3,
+    MOD_LA_3,
     SPE_TREMAE,
     SPE_TREMAI,
     SPE_TREMAU,
@@ -230,6 +233,7 @@ combo_t key_combos[] = {
     // [SPE_GRAVEU]      = COMBO(thumb3_u, GRAVEU),
     [MOD_LC_3]      = COMBO(thumb3_u, left_ctrl_3),
     [MOD_LG_3]      = COMBO(thumb3_o, left_gui_3),
+    [MOD_LA_3]      = COMBO(thumb3_a, left_alt_3),
     [SPE_TREMAE]      = COMBO(thumb3_j, TREMAE),
     [SPE_TREMAI]      = COMBO(thumb3_x, TREMAI),
     [SPE_TREMAU]      = COMBO(thumb3_k, TREMAU),
@@ -294,6 +298,12 @@ bool process_combo_key_release(uint16_t combo_index, combo_t *combo, uint8_t key
     case MOD_LG_3:
         switch (keycode) {
             case KC_O: unregister_code(KC_LGUI); break;
+        }
+        return false;
+
+    case MOD_LA_3:
+        switch (keycode) {
+            case KC_A: unregister_code(KC_LALT); break;
         }
         return false;
     }

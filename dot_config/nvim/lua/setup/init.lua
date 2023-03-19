@@ -481,10 +481,10 @@ local function bufferline()
       modified_icon = '',
       close_icon = '',
     },
-    highlights = {
-      numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
-      numbers_selected = { fg = 'white', bg = 'none', italic = false },
-    }
+    -- highlights = {
+    --   numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
+    --   numbers_selected = { fg = 'white', bg = 'none', italic = false },
+    -- }
   })
 end
 

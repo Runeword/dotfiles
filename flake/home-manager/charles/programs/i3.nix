@@ -107,7 +107,9 @@
 
 
     # Run program
-    "${mod}+BackSpace" = "exec rofi -modi drun -show drun"; # -config ~/.config/rofi/rofidmenu.rasi
+    # "${mod}+BackSpace" = "exec rofi -modi drun -show drun";
+    # "${mod}+BackSpace" = "exec alacritty bash -c 'fzf $* < /proc/$$/fd/0 > /proc/$$/fd/1'";
+    "${mod}+BackSpace" = "exec ~/.config/rofi/launchers/type-3/launcher.sh";
     "${mod}+Shift+h" = "exec alacritty";
     "${mod}+Shift+t" = "exec google-chrome-stable";
     "${mod}+Shift+n" = "exec thunar";

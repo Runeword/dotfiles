@@ -116,15 +116,16 @@ local function core()
   map('n', '}', function() fn.search('{', 'b') end)
 
   -- Buffers
-  map("n", "<Leader>q", "<cmd>bwipeout!<CR>", silent)
+  map("n", "<Leader>w", "<C-w>", { noremap = true })
+  map("n", "<C-t>", "<cmd>enew<CR>", silent)
+  map("n", "<C-w>", "<cmd>bwipeout!<CR>", silent)
   -- map("n", "<Tab>", "<cmd>bnext<CR>", silent)
   -- map("n", "<S-Tab>", "<cmd>bprevious<CR>", silent)
 
-  -- Quickfix list
   map("n", "<C-q>", '<cmd>q!<CR>')
 
   -------------------- folke/lazy.nvim
-  map('n', '<leader>l', '<Cmd>Lazy<CR>')
+  map('n', '<leader>l', '<cmd>Lazy<CR>')
 end
 
 -------------------- Runeword/putter.nvim

@@ -35,9 +35,9 @@ return {
     end,
   },
 
-  { 'mattn/vim-gist',
-    dependencies = { 'mattn/webapi-vim' },
-  },
+  -- { 'mattn/vim-gist',
+  --   dependencies = { 'mattn/webapi-vim' },
+  -- },
 
   { 'willothy/flatten.nvim',
     config = true,

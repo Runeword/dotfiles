@@ -15,13 +15,13 @@
     progress
     nodePackages.pnpm
     fd
-    # supabase-cli
     thefuck
     inkscape
     clifm
     vifm
     xclip
     chezmoi
+    trashy
     bat
     rofi
     peek
@@ -33,6 +33,7 @@
     firefox
     (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
     neovim-nightly
+    # supabase-cli
     # nodejs-19_x
     # python311
   ];

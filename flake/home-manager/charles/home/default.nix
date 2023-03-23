@@ -15,7 +15,7 @@
     progress
     nodePackages.pnpm
     fd
-    thefuck
+    # thefuck
     inkscape
     clifm
     vifm
@@ -38,8 +38,13 @@
     # python311
   ];
 
-  nixpkgs.overlays = [ (self: super:
-{
+home.sessionVariables = {
+  _ZO_FZF_OPTS = "--reverse --height 40% --no-separator --border none"; # zoxide fzf options
+};
+
+nixpkgs.overlays = [
+  # (self: super: {
+
 # supabase-cli = super.supabase-cli.override (old: {
 #     buildGoModule = args: pkgs.buildGoModule (args // {
 #         version = "1.45.1";
@@ -72,5 +77,7 @@
  #   ldflags = [ "-s" "-w" "-X" "github.com/supabase/cli/cmd.version=1.45.1" ];
 # });
 
-}) ];
+# })
+];
+
 }

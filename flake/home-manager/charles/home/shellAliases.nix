@@ -10,7 +10,9 @@
     nfu="nix flake update $HOME/flake";
     nd="read -p 'nix develop $HOME/flake#' devShell && nix develop $HOME/flake#$devShell";
     wa="watch progress -q";
-    c="z";
+    n="nvim";
+    c="__zoxide_z";
+    cf="__zoxide_zi";
     r="trash";
 
     # ______________________________________QMK

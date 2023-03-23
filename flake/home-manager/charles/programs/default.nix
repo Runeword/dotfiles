@@ -13,8 +13,10 @@
 
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
-  programs.fzf.fileWidgetCommand = "fd --hidden --follow --no-ignore --max-depth 1 --exclude .git --exclude node_modules";
-  programs.fzf.defaultOptions = [ "--no-separator" ];
+  programs.fzf.defaultCommand = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules"; # --strip-cwd-prefix
+  programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" ];
+  programs.fzf.fileWidgetCommand = config.programs.fzf.defaultCommand;
+  # programs.fzf.fileWidgetOptions = config.programs.fzf.defaultOptions;
 
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;

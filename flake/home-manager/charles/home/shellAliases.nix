@@ -14,6 +14,7 @@
     c="__zoxide_z";
     cf="__zoxide_zi";
     r="trash";
+    f="fzf";
 
     # ______________________________________QMK
     qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";

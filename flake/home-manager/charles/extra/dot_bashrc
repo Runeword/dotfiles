@@ -1,6 +1,7 @@
 # bind ctrl-n to neovim
 bind -x '"\C-n":"nvim"'
-eval $(thefuck --alias f)
+
+# eval $(thefuck --alias f)
 
 # unbind alt-number
 for i in "-" {0..9}; do bind -r "\e$i"; done

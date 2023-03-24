@@ -5,32 +5,40 @@
     pick="colorpicker";
     slg="$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     dual="$HOME/.screenlayout/dual.sh";
+    wa="watch progress -q";
+    mv="mv -v";
+    cp="cp -v";
+    mkdir="mkdir -p";
+    n="nvim";
+    r="trash";
+    l="ls -A";
+    ll="ls -hAlt";
+    cd="__zoxide_z";
+    cdi="__zoxide_zi";
+    c="cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
+    ca="cd $(fd --type directory --hidden --follow --no-ignore | fzf)";
+
+    # ______________________________________ NIX
     hsf="home-manager switch --flake $HOME/flake";
     nsf="sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nfu="nix flake update $HOME/flake";
     nd="read -p 'nix develop $HOME/flake#' devShell && nix develop $HOME/flake#$devShell";
-    wa="watch progress -q";
-    n="nvim";
-    c="__zoxide_z";
-    cf="__zoxide_zi";
-    r="trash";
-    f="fzf";
 
-    # ______________________________________QMK
+    # ______________________________________ QMK
     qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
     qfl="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)";
     qfr="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
     qcd="cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     qd="(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
-    # ______________________________________ARCH
+    # ______________________________________ ARCH
     pa="sudo pacman -Syyu";
     par="pacman -R";
     pas="pacman -S";
     pass="pacman -Ss";
     ya="yay -Syyu";
 
-    # ______________________________________CHEZMOI
+    # ______________________________________ CHEZMOI
     chd="chezmoi diff";
     cha="chezmoi add";
     chy="chezmoi apply";
@@ -38,7 +46,7 @@
     chi="chezmoi ignored";
     chc="chezmoi cd";
 
-    # ______________________________________TMUX
+    # ______________________________________ TMUX
     t="tmux";
     tl="tmux ls";
     ta="tmux attach -t";
@@ -53,7 +61,7 @@
     tss="/nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/save.sh";
     trr="[[ '$TERM_PROGRAM' == 'tmux' ]] && /nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/restore.sh";
 
-    # ______________________________________GIT
+    # ______________________________________ GIT
     gs="git status";
     gt="git stash";
     gtl="git stash list";

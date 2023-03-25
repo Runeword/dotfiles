@@ -16,7 +16,6 @@
     nodePackages.pnpm
     fd
     inkscape
-    clifm
     vifm
     xclip
     chezmoi

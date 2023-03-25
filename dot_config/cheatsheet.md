@@ -795,6 +795,7 @@ nvim -V10nvim.log           # nvim logs
 :filter BufferLine highlight
 :so $VIMRUNTIME/syntax/hitest.vim # highlight groups in a new window
 :echo &ft                   # display file type
+:help deprecaded
 ```
 
 

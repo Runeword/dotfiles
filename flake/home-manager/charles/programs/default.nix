@@ -7,6 +7,7 @@
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix
+    ./wezterm.nix
   ];
 
   programs.home-manager.enable = true;

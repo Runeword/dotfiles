@@ -32,7 +32,7 @@
       background = "#00000000";
       border = "#00000000";
       indicator = "#e345ff";
-      childBorder = "#0080ff60";
+      childBorder = "#ff0073";
       text = "#ffffff";
     };
 
@@ -154,17 +154,19 @@
 
       urgentWorkspace = {
         background = "#00000000";
-        border = "#5294E2";
+        border = "#00000000";
         text = "#ffffff";
       };
     };
   }];
 
   xsession.windowManager.i3.extraConfig = ''
-  for_window [class=.*] border pixel 6, focus
+  for_window [class=.*] border pixel 2, focus
   for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
   for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
   for_window [class="blueman-manager-wrapped" instance="blueman-manager-wrapped"] floating enable
+  # gaps inner 8px
+  # smart_gaps on
   '';
 
   programs.i3status.general = {

@@ -161,12 +161,13 @@
   }];
 
   xsession.windowManager.i3.extraConfig = ''
+  # gaps inner 8px
+  # smart_gaps on
+
   for_window [class=.*] border pixel 2, focus
   for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
   for_window [class="Nm-connection-editor" instance="nm-connection-editor"] floating enable
   for_window [class="blueman-manager-wrapped" instance="blueman-manager-wrapped"] floating enable
-  # gaps inner 8px
-  # smart_gaps on
   '';
 
   programs.i3status.general = {

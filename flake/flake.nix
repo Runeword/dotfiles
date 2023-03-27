@@ -43,7 +43,11 @@
 
       js = pkgs.mkShell {
         packages = [
+          pkgs.deno
           pkgs.nodejs-19_x
+          pkgs.nodePackages.pnpm
+          pkgs.nodePackages.npm
+          # pkgs.supabase-cli
         ];
         shellHook = ''
         nl="npm ls --depth=0";

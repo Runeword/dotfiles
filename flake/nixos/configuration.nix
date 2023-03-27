@@ -93,7 +93,22 @@
       noDesktop = true;
       enableXfwm = false;
     };
-  };
+
+    # # xfce + xmonad
+    # desktopManager.xterm.enable = false;
+    # desktopManager.xfce.enable = true;
+    # desktopManager.xfce.noDesktop = true;
+    # desktopManager.xfce.enableXfwm = false;
+    # windowManager.xmonad.enable = true;
+    # windowManager.xmonad.enableContribAndExtras = true;
+    # windowManager.xmonad.extraPackages = haskellPackages : [
+    #       haskellPackages.xmonad-contrib
+    #       haskellPackages.xmonad-extras
+    #       haskellPackages.xmonad
+    #     ];
+    # displayManager.defaultSession = "xfce+xmonad";
+
+    };
 
   # printing
   services.printing.enable = true;

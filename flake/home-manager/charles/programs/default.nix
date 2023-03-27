@@ -7,7 +7,8 @@
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix
-    ./wezterm.nix
+    # ./xmonad.nix
+    # ./wezterm.nix
   ];
 
   programs.home-manager.enable = true;
@@ -26,4 +27,6 @@
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
   programs.zoxide.options = [ "--no-cmd" ];
+
+  programs.kitty.enable = true;
 }

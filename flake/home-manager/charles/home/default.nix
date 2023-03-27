@@ -13,7 +13,6 @@
     deno
     shopify-cli
     progress
-    nodePackages.pnpm
     fd
     inkscape
     vifm
@@ -31,8 +30,6 @@
     firefox
     (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" ]; })
     neovim-nightly
-    # supabase-cli
-    # nodejs-19_x
     # python311
   ];
 

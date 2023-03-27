@@ -2,6 +2,7 @@
   imports = [
     ./readline.nix
     ./alacritty.nix
+    ./kitty.nix
     ./i3.nix
     ./feh.nix
     ./ssh.nix
@@ -27,6 +28,4 @@
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
   programs.zoxide.options = [ "--no-cmd" ];
-
-  programs.kitty.enable = true;
 }

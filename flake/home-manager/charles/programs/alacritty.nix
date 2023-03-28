@@ -10,7 +10,7 @@
     italic.style = "Italic";
     bold_italic.family = "Hack Nerd Font";
     bold_italic.style = "Bold Italic";
-    size = 9.8;
+    size = 10;
     offset.y = 5;
   };
 
@@ -50,6 +50,9 @@
   { key = "Key6"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t6"]; }; }
   { key = "Key7"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t7"]; }; }
   { key = "Key8"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t8"]; }; }
+  { key = "NumpadEquals"; mods = "Control"; action = "ResetFontSize"; }
+  { key = "NumpadAdd"; mods = "Control"; action = "IncreaseFontSize"; }
+  { key = "NumpadSubtract"; mods = "Control"; action = "DecreaseFontSize"; }
   ];
 
   programs.alacritty.settings.colors = {

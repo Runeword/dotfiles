@@ -6,7 +6,7 @@
   xsession.windowManager.i3.config = {
     modifier = "Mod4";
     floating.modifier = "Mod4";
-    terminal = "alacritty";
+    terminal = "kitty";
     window.hideEdgeBorders = "smart";
     focus.newWindow = "focus";
 
@@ -20,7 +20,7 @@
     ];
 
     assigns = {
-      "1" = [{ class = "Alacritty"; }];
+      "1" = [{ class = "kitty"; }];
       "2" = [{ class = "Google-chrome"; }];
       "4" = [{ class = "Slack"; }];
     };
@@ -108,14 +108,14 @@
 
     # Run program
     # "${mod}+BackSpace" = "exec rofi -modi drun -show drun";
-    # "${mod}+BackSpace" = "exec alacritty bash -c 'fzf $* < /proc/$$/fd/0 > /proc/$$/fd/1'";
+    # "${mod}+BackSpace" = "exec kitty bash -c 'fzf $* < /proc/$$/fd/0 > /proc/$$/fd/1'";
     "${mod}+BackSpace" = "exec ~/.config/rofi/launchers/type-3/launcher.sh";
-    "${mod}+Shift+h" = "exec alacritty";
+    "${mod}+Shift+h" = "exec kitty";
     "${mod}+Shift+t" = "exec google-chrome-stable";
     "${mod}+Shift+n" = "exec thunar";
 
     # Focus or run program
-    "${mod}+h" = "exec (i3-msg [class=\"Alacritty\"] focus | grep true) || exec alacritty";
+    "${mod}+h" = "exec (i3-msg [class=\"kitty\"] focus | grep true) || exec kitty";
     "${mod}+t" = "exec (i3-msg [class=\"Google-chrome\"] focus | grep true) || exec google-chrome-stable";
     "${mod}+n" = "exec (i3-msg [class=\"Thunar\"] focus | grep true) || exec thunar";
     "${mod}+s" = "exec (i3-msg [class=\"Slack\"] focus | grep true) || exec slack";

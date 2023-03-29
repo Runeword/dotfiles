@@ -14,11 +14,12 @@
     cursor_blink_interval = "0.5";
     modify_font = "cell_height +5px";
     clear_all_shortcuts = "yes";
+    confirm_os_window_close = 0;
   };
 
   programs.kitty.keybindings = {
-    "ctrl+kp_plus" = "change_font_size all +2.0";
-    "ctrl+kp_minus" = "change_font_size all -2.0";
+    "ctrl+kp_plus" = "change_font_size all +1.0";
+    "ctrl+kp_minus" = "change_font_size all -1.0";
     "ctrl+kp_equal" = "change_font_size all 0";
     "ctrl+shift+c" = "copy_to_clipboard";
     "ctrl+shift+v" = "paste_from_clipboard";

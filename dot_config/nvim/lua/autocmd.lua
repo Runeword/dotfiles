@@ -57,6 +57,7 @@ local function core()
       nvim_set_hl(0, 'PmenuThumb', { bg = '#1e2633' })
       nvim_set_hl(0, 'CursorLine', { bg = '#1e2633' })
       nvim_set_hl(0, 'CursorColumn', { bg = '#1e2633' })
+      nvim_set_hl(0, 'Search', { bg = '#5d00ff' })
 
       -- nvim_set_hl(0, 'VertSplit', { fg = '#292e42' })
       -- nvim_set_hl(0, 'Hlargs', { fg = '#FAFF00' })

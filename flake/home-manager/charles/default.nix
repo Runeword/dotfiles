@@ -3,7 +3,7 @@
 
   fonts.fontconfig.enable = true;
 
-  xresources.properties."Xft.dpi" = 200; 
+  # xresources.properties."Xft.dpi" = 200; 
 
   # xsession.enable = true;
   # xsession.profileExtra = ''

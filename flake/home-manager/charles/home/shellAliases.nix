@@ -22,7 +22,8 @@
     hsf="home-manager switch --flake $HOME/flake";
     nsf="sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nfu="nix flake update $HOME/flake";
-    nd="read -p 'nix develop $HOME/flake#' devShell && nix develop $HOME/flake#$devShell";
+    nd="read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
+    nfi="read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
 
     # ______________________________________ QMK
     qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";

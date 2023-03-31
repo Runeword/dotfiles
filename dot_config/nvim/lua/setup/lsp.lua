@@ -7,16 +7,16 @@ return function()
   -------------------- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
   diagnostic.config({
     virtual_text = {
-      prefix = "",
+      prefix = '',
       spacing = 2,
     },
     signs = false,
     float = {
-      header = "",
-      prefix = "",
+      header = '',
+      prefix = '',
       format = function(diagnostic)
         return string.format(
-          " %s %s %s",
+          ' %s %s %s',
           diagnostic.source,
           diagnostic.user_data.lsp.code,
           diagnostic.message
@@ -27,14 +27,15 @@ return function()
 
   -------------------- neovim/nvim-lspconfig
   local function on_attach_server(documentFormattingProvider)
-    return function (client, buffer)
-      client.server_capabilities.documentFormattingProvider = documentFormattingProvider
-      require("mappings").lspconfig(buffer)
+    return function(client, buffer)
+      client.server_capabilities.documentFormattingProvider =
+      documentFormattingProvider
+      require('mappings').lspconfig(buffer)
     end
   end
 
-  local lspconfig = require("lspconfig")
-  local lsp_flags = { debounce_text_changes = 0 }
+  local lspconfig = require('lspconfig')
+  local lsp_flags = { debounce_text_changes = 0, }
 
   lspconfig.tsserver.setup({
     on_attach = on_attach_server(false),
@@ -87,6 +88,14 @@ return function()
 
   lspconfig['nil_ls'].setup({
     on_attach = on_attach_server(true),
+    settings = {
+      ['nil'] = {
+        formatting = {
+          -- command = { 'nixpkgs-fmt' },
+          command = { 'alejandra' },
+        },
+      },
+    },
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })

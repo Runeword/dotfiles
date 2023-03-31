@@ -10,9 +10,11 @@
     italic.style = "Italic";
     bold_italic.family = "Hack Nerd Font";
     bold_italic.style = "Bold Italic";
-    size = 10;
+    size = 20;
     offset.y = 5;
   };
+
+  programs.alacritty.settings.env.WINIT_X11_SCALE_FACTOR = "1";
 
   programs.alacritty.settings.selection = {
     semantic_escape_chars = ",│`|:\"' ()[]{}<>\t";

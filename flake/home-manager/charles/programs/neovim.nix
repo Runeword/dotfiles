@@ -18,6 +18,8 @@
   marksman
   ccls
   nil
+  alejandra
+  nixpkgs-fmt
   ];
 
   # programs.neovim.plugins = with pkgs; [

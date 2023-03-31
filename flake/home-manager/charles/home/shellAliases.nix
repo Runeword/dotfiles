@@ -9,6 +9,8 @@
     mv="mv -v";
     cp="cp -v";
     mkdir="mkdir -p";
+    o="xdg-open";
+    oi="kitty +kitten icat";
     n="nvim";
     r="trash";
     l="ls -A";

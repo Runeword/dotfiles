@@ -9,7 +9,7 @@
     mv="mv -v";
     cp="cp -v";
     mkdir="mkdir -p";
-    o="xdg-open";
+    xo="xdg-open";
     oi="kitty +kitten icat";
     n="nvim";
     r="trash";
@@ -19,6 +19,7 @@
     cdi="__zoxide_zi";
     c="cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
     ca="cd $(fd --type directory --hidden --follow --no-ignore | fzf)";
+    o="xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";
 
     # ______________________________________ NIX
     hsf="home-manager switch --flake $HOME/flake";

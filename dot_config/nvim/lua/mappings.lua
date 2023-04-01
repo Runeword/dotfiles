@@ -128,8 +128,16 @@ local function core()
 
   -------------------- folke/lazy.nvim
   map('n', '<leader>l', '<cmd>Lazy<CR>')
+
 end
 
+-------------------- chrisgrieser/nvim-spider
+local function spider()
+  map({"n", "o", "x"}, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+  map({"n", "o", "x"}, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-w" })
+  map({"n", "o", "x"}, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-w" })
+  map({"n", "o", "x"}, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-w" })
+end
 -------------------- Runeword/putter.nvim
 local function putter()
   map({ "n", "x" }, "glp", require("putter").putLinewise(']p`]'))
@@ -493,4 +501,5 @@ return {
   tablemode = tablemode,
   varioustextobjs = varioustextobjs,
   printer = printer,
+  spider = spider,
 }

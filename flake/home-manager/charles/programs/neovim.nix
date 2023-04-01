@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.neovim.enable = true;
   programs.neovim.defaultEditor = true;
   programs.neovim.viAlias = false;
@@ -8,18 +13,18 @@
 
   # install language servers
   programs.neovim.extraPackages = with pkgs; [
-  nodePackages.vls
-  nodePackages.typescript-language-server
-  nodePackages.eslint
-  nodePackages.vscode-langservers-extracted
-  nodePackages.bash-language-server
-  nodePackages.yaml-language-server
-  sumneko-lua-language-server
-  marksman
-  ccls
-  nil
-  alejandra
-  nixpkgs-fmt
+    nodePackages.vls
+    nodePackages.typescript-language-server
+    nodePackages.eslint
+    nodePackages.vscode-langservers-extracted
+    nodePackages.bash-language-server
+    nodePackages.yaml-language-server
+    sumneko-lua-language-server
+    marksman
+    ccls
+    nil
+    alejandra
+    nixpkgs-fmt
   ];
 
   # programs.neovim.plugins = with pkgs; [

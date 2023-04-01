@@ -1,12 +1,14 @@
 return {
-  { 'woosaaahh/sj.nvim',
+  {
+    'woosaaahh/sj.nvim',
     config = function()
       require('setup').sj()
       require('mappings').sj()
     end,
   },
 
-  { 'andymass/vim-matchup',
+  {
+    'andymass/vim-matchup',
     init = function()
       require('options').matchup()
     end,
@@ -26,7 +28,8 @@ return {
   --   end,
   -- },
 
-  { 'dhruvasagar/vim-table-mode',
+  {
+    'dhruvasagar/vim-table-mode',
     init = function()
       require('setup').tablemode()
     end,
@@ -39,7 +42,8 @@ return {
   --   dependencies = { 'mattn/webapi-vim' },
   -- },
 
-  { 'willothy/flatten.nvim',
+  {
+    'willothy/flatten.nvim',
     config = true,
     lazy = false,
     priority = 1001,
@@ -54,7 +58,8 @@ return {
   --   end,
   -- },
 
-  { 'michaelb/sniprun',
+  {
+    'michaelb/sniprun',
     build = 'bash ./install.sh',
     config = function()
       require('setup').sniprun()
@@ -62,41 +67,55 @@ return {
     end,
   },
 
-  { 'rareitems/printer.nvim',
+  {
+    'chrisgrieser/nvim-spider',
+    lazy = true,
+    spider = function()
+      require('mappings').spider()
+    end,
+  },
+
+  {
+    'rareitems/printer.nvim',
     config = function()
       require('setup').printer()
       require('mappings').printer()
     end,
   },
 
-  { 'mfussenegger/nvim-dap',
+  {
+    'mfussenegger/nvim-dap',
     config = function()
       require('mappings').dap()
       require('setup.dap')
     end,
   },
 
-  { 'akinsho/bufferline.nvim',
+  {
+    'akinsho/bufferline.nvim',
     config = function()
       require('mappings').bufferline()
       require('setup').bufferline()
     end,
   },
 
-  { 'inside/vim-search-pulse',
+  {
+    'inside/vim-search-pulse',
     config = function()
       require('mappings').pulse()
     end,
   },
 
-  { 'chrisgrieser/nvim-various-textobjs',
+  {
+    'chrisgrieser/nvim-various-textobjs',
     config = function()
       require('setup').varioustextobjs()
       require('mappings').varioustextobjs()
     end,
   },
 
-  { 'ray-x/starry.nvim',
+  {
+    'ray-x/starry.nvim',
     lazy = false,
     priority = 1000,
     init = function()
@@ -104,31 +123,36 @@ return {
     end,
   },
 
-  { 'nvim-treesitter/nvim-treesitter',
+  {
+    'nvim-treesitter/nvim-treesitter',
     config = function()
       require('setup').treesitter()
     end,
     build = ':TSUpdate',
   },
 
-  { 'neovim/nvim-lspconfig',
+  {
+    'neovim/nvim-lspconfig',
     config = require('setup.lsp'),
   },
 
-  { 'anuvyklack/hydra.nvim',
+  {
+    'anuvyklack/hydra.nvim',
     dependencies = 'anuvyklack/keymap-layer.nvim',
     config = function()
       require('mappings').hydra()
     end,
   },
 
-  { 'smjonas/live-command.nvim',
+  {
+    'smjonas/live-command.nvim',
     config = function()
       require('setup').livecommand()
     end,
   },
 
-  { 'ms-jpq/coq_nvim',
+  {
+    'ms-jpq/coq_nvim',
     branch = 'coq',
     init = function()
       require('setup').coq()
@@ -139,32 +163,37 @@ return {
     end,
   },
 
-  { 'is0n/fm-nvim',
+  {
+    'is0n/fm-nvim',
     config = function()
       require('mappings').fm()
       require('setup').fm()
     end,
   },
 
-  { 'lewis6991/gitsigns.nvim',
+  {
+    'lewis6991/gitsigns.nvim',
     config = function()
       require('setup').gitsigns()
     end,
   },
 
-  { 'gbprod/stay-in-place.nvim',
+  {
+    'gbprod/stay-in-place.nvim',
     config = function()
       require('setup').stayinplace()
     end,
   },
 
-  { 'norcalli/nvim-colorizer.lua',
+  {
+    'norcalli/nvim-colorizer.lua',
     config = function()
       require('setup').colorizer()
     end,
   },
 
-  { 'weilbith/nvim-code-action-menu',
+  {
+    'weilbith/nvim-code-action-menu',
     config = function()
       require('mappings').codeactionmenu()
       require('setup').codeactionmenu()
@@ -172,13 +201,15 @@ return {
     cmd = 'CodeActionMenu',
   },
 
-  { 'nacro90/numb.nvim',
+  {
+    'nacro90/numb.nvim',
     config = function()
       require('setup').numb()
     end,
   },
 
-  { 'echasnovski/mini.nvim',
+  {
+    'echasnovski/mini.nvim',
     config = function()
       require('autocmd').indentscope()
       require('setup').indentscope()
@@ -191,7 +222,8 @@ return {
   { 'itchyny/vim-cursorword', },
   { 'tommcdo/vim-exchange', },
 
-  { 'numToStr/Comment.nvim',
+  {
+    'numToStr/Comment.nvim',
     config = function()
       require('setup').comment()
       require('mappings').comment()
@@ -204,44 +236,51 @@ return {
   --   end,
   -- },
 
-  { 'AndrewRadev/splitjoin.vim',
+  {
+    'AndrewRadev/splitjoin.vim',
     config = function()
       require('mappings').splitjoin()
     end,
   },
 
-  { 'windwp/nvim-autopairs',
+  {
+    'windwp/nvim-autopairs',
     config = function()
       require('setup').autopairs()
     end,
   },
 
-  { 'ahmedkhalf/project.nvim',
+  {
+    'ahmedkhalf/project.nvim',
     config = function()
       require('setup').project()
     end,
   },
 
-  { 'kosayoda/nvim-lightbulb',
+  {
+    'kosayoda/nvim-lightbulb',
     config = function()
       require('setup').lightbulb()
       require('autocmd').lightbulb()
     end,
   },
 
-  { 'nvim-lualine/lualine.nvim',
+  {
+    'nvim-lualine/lualine.nvim',
     dependencies = { 'kyazdani42/nvim-web-devicons' },
     config = require('setup.lualine'),
   },
 
-  { 'ibhagwan/fzf-lua',
+  {
+    'ibhagwan/fzf-lua',
     config = function()
       require('mappings').fzf()
       require('setup').fzf()
     end,
   },
 
-  { 'monaqa/dial.nvim',
+  {
+    'monaqa/dial.nvim',
     config = function()
       require('mappings').dial()
       require('setup').dial()
@@ -250,17 +289,20 @@ return {
 
   { 'svban/YankAssassin.vim', },
 
-  { 'machakann/vim-highlightedyank',
+  {
+    'machakann/vim-highlightedyank',
     config = function()
       require('setup').highlightedyank()
     end,
   },
 
-  { 'glts/vim-textobj-comment',
+  {
+    'glts/vim-textobj-comment',
     dependencies = 'kana/vim-textobj-user',
   },
 
-  { 'D4KU/vim-textobj-chainmember',
+  {
+    'D4KU/vim-textobj-chainmember',
     dependencies = 'kana/vim-textobj-user',
     init = function()
       require('setup').textobjchainmember()
@@ -270,11 +312,13 @@ return {
     end,
   },
 
-  { 'kana/vim-textobj-line',
+  {
+    'kana/vim-textobj-line',
     dependencies = 'kana/vim-textobj-user',
   },
 
-  { 'AndrewRadev/sideways.vim',
+  {
+    'AndrewRadev/sideways.vim',
     config = function()
       require('mappings').sideways()
     end,
@@ -287,7 +331,8 @@ return {
   --   end,
   -- },
 
-  { 'kylechui/nvim-surround',
+  {
+    'kylechui/nvim-surround',
     config = function()
       require('setup').surround()
     end,
@@ -295,7 +340,8 @@ return {
 
   { 'tpope/vim-abolish', },
 
-  { 'Runeword/putter.nvim',
+  {
+    'Runeword/putter.nvim',
     -- "/home/charles/Documents/dev/plugins/putter.nvim",
     config = function()
       require('mappings').putter()

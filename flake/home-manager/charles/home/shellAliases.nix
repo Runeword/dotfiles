@@ -3,6 +3,7 @@
     shn = "shutdown now";
     chrome = "google-chrome-stable";
     pick = "colorpicker";
+    win = "xprop WM_CLASS";
     sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     dua = "$HOME/.screenlayout/dual.sh";
     wa = "watch progress -q";

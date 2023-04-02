@@ -411,6 +411,11 @@ ssh-add -D                                          # Remove all private keys
 
 chmod 600 ~/.ssh/id_rsa                             # In case access to the server is denied, maybe file permissions are too open
 
+# Create ssh key with proper permissions
+mkdir .ssh && chmod 700 .ssh
+touch .ssh/config && chmod 600 .ssh/config
+touch .ssh/id_ed25519_home && chmod 600 .ssh/id_ed25519_home
+
 # Add the public key on the server
 
 su

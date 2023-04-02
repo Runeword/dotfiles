@@ -3,8 +3,8 @@
     shn = "shutdown now";
     chrome = "google-chrome-stable";
     pick = "colorpicker";
-    slg = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
-    dual = "$HOME/.screenlayout/dual.sh";
+    sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
+    dua = "$HOME/.screenlayout/dual.sh";
     wa = "watch progress -q";
     mv = "mv -v";
     cp = "cp -v";
@@ -22,11 +22,11 @@
     o = "xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";
 
     # ______________________________________ NIX
-    hsf = "home-manager switch --flake $HOME/flake";
-    nsf = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
-    nfu = "nix flake update $HOME/flake";
+    hs = "home-manager switch --flake $HOME/flake";
+    ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
+    nfu = "nix flake update $HOME/flake";
 
     # ______________________________________ QMK
     qc = "(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
@@ -34,13 +34,6 @@
     qfr = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
     qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
-
-    # ______________________________________ ARCH
-    pa = "sudo pacman -Syyu";
-    par = "pacman -R";
-    pas = "pacman -S";
-    pass = "pacman -Ss";
-    ya = "yay -Syyu";
 
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";

@@ -27,7 +27,10 @@
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
-    nfu = "nix flake update $HOME/flake";
+    nfl = "nix flake lock $HOME/flake";
+    nfs = "nix flake show";
+    nr = "nix run";
+    ng = "nix-collect-garbage";
 
     # ______________________________________ QMK
     qc = "(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";

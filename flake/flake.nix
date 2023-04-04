@@ -8,18 +8,21 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   # inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
-  outputs = { self, ... }@inputs:
-  let pkgs = import inputs.nixpkgs {
-    system = "x86_64-linux";
-    config.allowUnfree = true;
-    overlays = [
-      inputs.neovim-nightly-overlay.overlay
-    ];
-  };
+  inputs.nixified-ai.url = "github:nixified-ai/flake";
 
+  outputs = {self, ...} @ inputs: let
+    pkgs = import inputs.nixpkgs {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+      overlays = [
+        inputs.neovim-nightly-overlay.overlay
+      ];
+      extraSpecialArgs = {inherit inputs;};
+    };
   in {
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs.inputs = inputs;
       modules = [
         nixos/configuration.nix
         nixos/hardware-configuration.nix
@@ -50,10 +53,10 @@
           pkgs.nodePackages.npm
         ];
         shellHook = ''
-        nl="npm ls --depth=0";
-        nlg="npm ls -g --depth=0";
-        nd="npm run dev";
-        ni="npm i";
+          nl="npm ls --depth=0";
+          nlg="npm ls -g --depth=0";
+          nd="npm run dev";
+          ni="npm i";
         '';
       };
     };

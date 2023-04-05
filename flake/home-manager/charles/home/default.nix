@@ -9,7 +9,6 @@
   home.homeDirectory = "/home/charles";
   home.stateVersion = "22.11";
   home.packages = with pkgs; [
-    git
     htop
     qmk
     xarchiver

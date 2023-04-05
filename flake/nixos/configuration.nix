@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   nix.package = pkgs.nixFlakes;
@@ -9,15 +9,17 @@
   services.fwupd.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  environment.systemPackages = with pkgs; [
+  # environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # xfce.thunar-archive-plugin
-    xfce.xfce4-volumed-pulse
-    pavucontrol
-    pasystray
-    gnome.gnome-disk-utility
+    inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
+    pkgs.xfce.xfce4-volumed-pulse
+    pkgs.pavucontrol
+    pkgs.pasystray
+    pkgs.gnome.gnome-disk-utility
     # system-config-printer
-    gparted
-    vim
+    pkgs.gparted
+    pkgs.vim
   ];
 
   services.udev.enable = true;

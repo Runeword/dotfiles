@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, inputs, ... }: {
   imports = [ ./programs ./home ./services ];
 
   fonts.fontconfig.enable = true;

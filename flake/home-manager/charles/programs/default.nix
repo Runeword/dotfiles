@@ -28,4 +28,8 @@
   programs.zoxide.enable = true;
   programs.zoxide.enableBashIntegration = true;
   programs.zoxide.options = [ "--no-cmd" ];
+
+  programs.git.enable = true;
+  programs.git.userEmail = "60324746+Runeword@users.noreply.github.com";
+  programs.git.userName = "Runeword";
 }

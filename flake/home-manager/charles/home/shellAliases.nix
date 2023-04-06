@@ -27,7 +27,7 @@
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
-    nfl = "nix flake lock $HOME/flake";
+    nfu = "nix flake update $HOME/flake";
     nfs = "nix flake show";
     nr = "nix run";
     ng = "nix-collect-garbage";

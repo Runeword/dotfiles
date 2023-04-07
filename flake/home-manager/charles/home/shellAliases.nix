@@ -39,6 +39,13 @@
     qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
+    # ______________________________________ BLUETOOTHCTL
+    bd = "bluetoothctl devices";
+    bc = "bluetoothctl connect";
+    bp = "bluetoothctl pair";
+    bt = "bluetoothctl trust";
+    bs = "bluetoothctl scan";
+
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";
     cha = "chezmoi add";

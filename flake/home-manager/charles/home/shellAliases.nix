@@ -48,6 +48,8 @@
     bs = "bluetoothctl scan on";
     bo = "bluetoothctl power on ";
     bf = "bluetoothctl power off";
+    br = "bluetoothctl remove";
+    bi = "bluetoothctl devices | fzf --preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar";
 
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";

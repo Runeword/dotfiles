@@ -40,11 +40,14 @@
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
     # ______________________________________ BLUETOOTHCTL
+    b = "bluetoothctl";
     bd = "bluetoothctl devices";
     bc = "bluetoothctl connect";
     bp = "bluetoothctl pair";
     bt = "bluetoothctl trust";
-    bs = "bluetoothctl scan";
+    bs = "bluetoothctl scan on";
+    bo = "bluetoothctl power on ";
+    bf = "bluetoothctl power off";
 
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";

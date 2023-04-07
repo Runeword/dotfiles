@@ -32,4 +32,6 @@
   programs.git.enable = true;
   programs.git.userEmail = "60324746+Runeword@users.noreply.github.com";
   programs.git.userName = "Runeword";
+
+  programs.vscode.enable = true;
 }

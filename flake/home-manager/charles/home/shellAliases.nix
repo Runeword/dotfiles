@@ -41,15 +41,31 @@
 
     # ______________________________________ BLUETOOTHCTL
     b = "bluetoothctl";
-    bd = "bluetoothctl devices";
-    bc = "bluetoothctl connect";
+    bh = "bluetoothctl help";
     bp = "bluetoothctl pair";
+    br = "bluetoothctl remove";
+    bc = "bluetoothctl connect";
+    bd = "bluetoothctl disconnect";
     bt = "bluetoothctl trust";
+    bu = "bluetoothctl untrust";
     bs = "bluetoothctl scan on";
     bo = "bluetoothctl power on ";
     bf = "bluetoothctl power off";
-    br = "bluetoothctl remove";
-    bi = "bluetoothctl devices | fzf --preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar";
+    bi = "bluetoothctl info";
+    blp = "bluetoothctl devices Paired";
+    blc = "bluetoothctl devices Connected";
+    blt = "bluetoothctl devices Trusted";
+    bl = ''
+    bluetoothctl devices | fzf \
+    --preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' \
+    --preview-window right,65%,noborder \
+    --no-scrollbar \
+    --header-first \
+    --header='C-p pair  C-c connect  C-t trust' \
+    --bind='ctrl-p:preview:bluetoothctl info {2} | grep "Paired: yes" -q && bluetoothctl remove {2} || bluetoothctl pair {2}' \
+    --bind='ctrl-c:preview:bluetoothctl info {2} | grep "Connected: yes" -q && bluetoothctl disconnect {2} || bluetoothctl connect {2}' \
+    --bind='ctrl-t:preview:bluetoothctl info {2} | grep "Trusted: yes" -q && bluetoothctl untrust {2} || bluetoothctl trust {2}'
+    '';
 
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";

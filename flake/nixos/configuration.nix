@@ -28,7 +28,7 @@
   ];
 
   # Bluetooth
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
   hardware.bluetooth.enable = true;
 
   boot.loader.systemd-boot.enable = true;

@@ -39,7 +39,7 @@
     qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
-    # ______________________________________ BLUETOOTHCTL
+    # ______________________________________ BLUETOOTH
     b = "bluetoothctl";
     bh = "bluetoothctl help";
     bp = "bluetoothctl pair";
@@ -66,6 +66,12 @@
     --bind='ctrl-c:preview:bluetoothctl info {2} | grep "Connected: yes" -q && bluetoothctl disconnect {2} || bluetoothctl connect {2}' \
     --bind='ctrl-t:preview:bluetoothctl info {2} | grep "Trusted: yes" -q && bluetoothctl untrust {2} || bluetoothctl trust {2}'
     '';
+
+    # ______________________________________ NETWORK
+    wo= "nmcli radio wifi on";
+    wf= "nmcli radio wifi off";
+    # nmcli networking off
+    # nmcli networking on
 
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";

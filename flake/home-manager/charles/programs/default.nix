@@ -34,4 +34,10 @@
   programs.git.userName = "Runeword";
 
   programs.vscode.enable = true;
+
+  programs.jq.enable = true;
+
+  programs.direnv.enable = true;
+  programs.direnv.enableBashIntegration = true;
+  programs.direnv.nix-direnv.enable = true;
 }

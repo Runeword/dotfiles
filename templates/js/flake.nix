@@ -1,6 +1,5 @@
 {
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
   outputs = {self, ...} @ inputs: let
     pkgs = import inputs.nixpkgs {

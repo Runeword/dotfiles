@@ -26,6 +26,11 @@
     hs = "home-manager switch --flake $HOME/flake";
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
+    ne = ''
+    read -p 'use flake github:Runeword/dotfiles?dir=templates/' templateName \
+    && echo "use flake \"github:Runeword/dotfiles?dir=templates/$templateName\"" >> .envrc \
+    && direnv allow
+    '';
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfu = "nix flake update $HOME/flake";
     nfs = "nix flake show";

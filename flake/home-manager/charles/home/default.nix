@@ -11,13 +11,13 @@
   home.packages = with pkgs; [
     htop
     unzip
+    nurl
     qmk
     xarchiver
     wget
     doppler
     ripgrep
     deno
-    shopify-cli
     progress
     fd
     inkscape
@@ -33,7 +33,6 @@
     realesrgan-ncnn-vulkan
     slack
     bitwarden-cli
-    nodePackages.firebase-tools
     # supabase-cli
     google-chrome
     firefox

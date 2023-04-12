@@ -30,6 +30,15 @@
                 });
           });
         })
+        # supabase-cli = super.supabase-cli.overrideAttrs (old: {
+        #   src = super.fetchFromGitHub {
+        #     owner = "supabase";
+        #     repo = "cli";
+        #     rev = "v1.45.1";
+        #     sha256 = "sha256-fj8kMvHSs1ZOnMgyaWAyIAwzK6LJz0gxhJ+Dpf5hwis=";
+        #   };
+        #   ldflags = [ "-s" "-w" "-X" "github.com/supabase/cli/cmd.version=1.45.1" ];
+        # });
       ];
     };
   in {

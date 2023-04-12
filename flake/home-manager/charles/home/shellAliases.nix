@@ -86,6 +86,12 @@
     chi = "chezmoi ignored";
     chc = "chezmoi cd";
 
+    # ______________________________________ NPM
+    npl="npm ls --depth=0";
+    npg="npm ls -g --depth=0";
+    npd="npm run dev";
+    npi="npm i";
+
     # ______________________________________ TMUX
     t = "tmux";
     tl = "tmux ls";

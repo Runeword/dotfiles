@@ -4,9 +4,6 @@
   outputs = {self, ...} @ inputs: let
     pkgs = import inputs.nixpkgs {
       system = "x86_64-linux";
-      config.allowUnfree = true;
-      overlays = [
-      ];
     };
   in {
     devShells.x86_64-linux = {
@@ -24,13 +21,6 @@
           pkgs.nodePackages.pnpm
           pkgs.nodePackages.npm
         ];
-
-        shellHook = ''
-            nl="npm ls --depth=0";
-          nlg="npm ls -g --depth=0";
-          nd="npm run dev";
-          ni="npm i";
-        '';
       };
     };
   };

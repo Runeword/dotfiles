@@ -24,6 +24,7 @@
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";
+    hp = "home-manager packages | fzf";
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
     ne = ''
@@ -34,6 +35,7 @@
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfu = "nix flake update $HOME/flake";
     nfs = "nix flake show";
+    nfl = "nix flake lock";
     nr = "nix run";
     ng = "nix-collect-garbage";
 

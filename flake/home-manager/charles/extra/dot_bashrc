@@ -13,3 +13,9 @@ fi
 if [[ ! "$SSH_AUTH_SOCK" ]]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
+
+if [ -d $HOME/flake/home-manager/charles/extra/shellFunctions ]; then
+    for file in $HOME/flake/home-manager/charles/extra/shellFunctions/*; do
+        . "$file"
+    done
+fi

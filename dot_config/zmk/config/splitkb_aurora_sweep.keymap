@@ -9,12 +9,61 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+  combos {
+    compatible = "zmk,combos";
+
+    combo_esc {
+      timeout-ms = <50>;
+      key-positions = <12 13>;
+      bindings = <&kp ESC>;
+    };
+
+    combo_tab {
+      timeout-ms = <50>;
+      key-positions = <13 14>;
+      bindings = <&kp TAB>;
+    };
+
+    combo_enter {
+      timeout-ms = <50>;
+      key-positions = <12 13 14>;
+      bindings = <&kp ENTER>;
+    };
+
+    combo_lcaps {
+      timeout-ms = <50>;
+      key-positions = <22 23 24>;
+      bindings = <&kp LCAPS>;
+    };
+
+    combo_space {
+      timeout-ms = <50>;
+      key-positions = <17 18>;
+      bindings = <&kp SPACE>;
+    };
+
+    combo_bspc {
+      timeout-ms = <50>;
+      key-positions = <17 18 19>;
+      bindings = <&kp BSPC>;
+    };
+
+    combo_del {
+      timeout-ms = <50>;
+      key-positions = <27 28 29>;
+      bindings = <&kp DEL>;
+    };
+  };
+
   keymap {
     compatible = "zmk,keymap";
 
     default_layer {
       bindings = <
-      &kp COMMA &bt BT_CLR &bt BT_NXT &bt BT_PRV &kp Y
+      &kp SQT &kp COMMA &kp DOT &kp P &kp Y            &kp F &kp G &kp C &kp R &kp L
+      &kp A &kp O &kp E &kp U &kp I                    &kp D &kp H &kp T &kp N &kp S
+      &kp COLON &kp Q &kp J &kp K &kp X                &kp B &kp M &kp W &kp V &kp Z
       >;
     };
   };

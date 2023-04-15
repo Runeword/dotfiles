@@ -14,45 +14,45 @@
     compatible = "zmk,combos";
 
     combo_esc {
-      timeout-ms = <50>;
-      key-positions = <12 13>;
+      timeout-ms = <20>;
+      key-positions = <11 12>;
       bindings = <&kp ESC>;
     };
 
     combo_tab {
-      timeout-ms = <50>;
-      key-positions = <13 14>;
+      timeout-ms = <20>;
+      key-positions = <12 13>;
       bindings = <&kp TAB>;
     };
 
     combo_enter {
       timeout-ms = <50>;
-      key-positions = <12 13 14>;
+      key-positions = <11 12 13>;
       bindings = <&kp ENTER>;
     };
 
     combo_lcaps {
       timeout-ms = <50>;
-      key-positions = <22 23 24>;
+      key-positions = <21 22 23>;
       bindings = <&kp LCAPS>;
     };
 
     combo_space {
-      timeout-ms = <50>;
-      key-positions = <17 18>;
+      timeout-ms = <20>;
+      key-positions = <16 17>;
       bindings = <&kp SPACE>;
+    };
+
+    combo_redo {
+      timeout-ms = <20>;
+      key-positions = <17 18>;
+      bindings = <&kp C_AC_REDO>;
     };
 
     combo_bspc {
       timeout-ms = <50>;
-      key-positions = <17 18 19>;
+      key-positions = <16 17 18>;
       bindings = <&kp BSPC>;
-    };
-
-    combo_del {
-      timeout-ms = <50>;
-      key-positions = <27 28 29>;
-      bindings = <&kp DEL>;
     };
   };
 

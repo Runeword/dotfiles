@@ -88,8 +88,9 @@
     combo_caps { layers = <0>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
 
     // sticky modifiers left
-    combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&m_lmod_ctrl>; };
-    combo_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&kp LSHFT>, <&m_lmod_shft>; };
+    /* combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&m_lmod_ctrl>; }; */
+    combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&mo 4>, <&skq LCTRL>; };
+    combo_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&mo 4>, <&skq LSHFT>; };
     /* combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&skq LCTRL>; }; */
     /* combo_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&sk LSHFT>; }; */
     combo_gui_l { layers = <0>; timeout-ms = <30>; key-positions = <31 11>; bindings = <&sk LGUI>; };

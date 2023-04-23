@@ -89,10 +89,9 @@
 
     // sticky modifiers left
     /* combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&m_lmod_ctrl>; }; */
-    combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&mo 4>, <&skq LCTRL>; };
-    combo_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&mo 4>, <&skq LSHFT>; };
-    /* combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&skq LCTRL>; }; */
-    /* combo_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&sk LSHFT>; }; */
+    /* combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&mo 4>, <&skq LCTRL>; }; */
+    combo_ctrl_l { layers = <0>; timeout-ms = <30>; key-positions = <31 13>; bindings = <&skq LCTRL>; };
+    combo_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&sk LSHFT>; };
     combo_gui_l { layers = <0>; timeout-ms = <30>; key-positions = <31 11>; bindings = <&sk LGUI>; };
     combo_alt_l { layers = <0>; timeout-ms = <30>; key-positions = <31 10>; bindings = <&sk LALT>; };
     combo_ctrl_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12 13>; bindings = <&sk LC(LSHFT)>; };
@@ -100,8 +99,8 @@
     combo_gui_shft_l { layers = <0>; timeout-ms = <30>; key-positions = <31 12 11>; bindings = <&sk LG(LSHFT)>; };
 
     // sticky modifiers right
-    combo_ctrl_r { layers = <0>; timeout-ms = <30>; key-positions = <32 16>; bindings = <&m_rmod_ctrl>; };
-    /* combo_ctrl_r { layers = <0>; timeout-ms = <30>; key-positions = <32 16>; bindings = <&skq RCTRL>; }; */
+    /* combo_ctrl_r { layers = <0>; timeout-ms = <30>; key-positions = <32 16>; bindings = <&m_rmod_ctrl>; }; */
+    combo_ctrl_r { layers = <0>; timeout-ms = <30>; key-positions = <32 16>; bindings = <&skq RCTRL>; };
     combo_shft_r { layers = <0>; timeout-ms = <30>; key-positions = <32 17>; bindings = <&sk RSHFT>; };
     combo_gui_r { layers = <0>; timeout-ms = <30>; key-positions = <32 18>; bindings = <&sk RGUI>; };
     combo_alt_r { layers = <0>; timeout-ms = <30>; key-positions = <32 19>; bindings = <&sk RALT>; };

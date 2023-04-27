@@ -22,6 +22,7 @@
     progress
     fd
     inputs.src-cli.packages.x86_64-linux.default
+    # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     inkscape
     vifm
     xclip

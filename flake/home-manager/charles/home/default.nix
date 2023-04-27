@@ -1,8 +1,8 @@
-{ inputs }:
 {
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   imports = [./shellAliases.nix];

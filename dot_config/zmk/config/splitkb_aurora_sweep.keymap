@@ -9,6 +9,16 @@
 #define MOD_R 5
 #define FUN 7
 
+#define HT(name, macro, skq) \
+name: name { \
+  label = #name; \
+  compatible = "zmk,behavior-hold-tap"; \
+  #binding-cells = <2>; \
+  flavor = "tap-preferred"; \
+  tapping-term-ms = <200>; \
+  bindings = <macro>, <skq>; \
+};
+
 &sk {
   quick-release;
   /delete-property/ ignore-modifiers;
@@ -27,23 +37,8 @@
       ignore-modifiers;
      };
 
-     ht_lctrl: ht_lctrl {
-         compatible = "zmk,behavior-hold-tap";
-         label = "ht_lctrl";
-         #binding-cells = <2>;
-         flavor = "tap-preferred";
-         tapping-term-ms = <200>;
-         bindings = <&mc_lctrl>, <&skq>;
-     };
-
-     ht_rctrl: ht_rctrl {
-         compatible = "zmk,behavior-hold-tap";
-         label = "ht_rctrl";
-         #binding-cells = <2>;
-         flavor = "tap-preferred";
-         tapping-term-ms = <200>;
-         bindings = <&mc_rctrl>, <&skq>;
-     };
+     HT(ht_lctrl, &mc_lctrl, &skq)
+     HT(ht_rctrl, &mc_rctrl, &skq)
   };
 
   conditional_layers {

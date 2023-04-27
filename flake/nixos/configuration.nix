@@ -22,6 +22,7 @@
     # system-config-printer
     pkgs.gparted
     pkgs.vim
+    # inputs.src-cli.packages.x86_64-linux.default
   ];
 
   services.udev.enable = true;

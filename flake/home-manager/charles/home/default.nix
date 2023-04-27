@@ -1,3 +1,4 @@
+{ inputs }:
 {
   config,
   pkgs,
@@ -20,6 +21,7 @@
     ripgrep
     progress
     fd
+    inputs.src-cli.packages.x86_64-linux.default
     inkscape
     vifm
     xclip

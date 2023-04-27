@@ -8,6 +8,7 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   # inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
+  inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   # inputs.nixified-ai.url = "github:nixified-ai/flake";
 
   outputs = {self, ...} @ inputs: let
@@ -35,30 +36,6 @@
       modules = [
         home-manager/charles
       ];
-    };
-
-    devShells.x86_64-linux = {
-      default = pkgs.mkShell {
-        packages = [
-          pkgs.nodejs-19_x
-        ];
-      };
-
-      js = pkgs.mkShell {
-        packages = [
-          pkgs.nodePackages.typescript
-          pkgs.nodejs-19_x
-          pkgs.deno
-          pkgs.nodePackages.pnpm
-          pkgs.nodePackages.npm
-        ];
-        shellHook = ''
-          nl="npm ls --depth=0";
-          nlg="npm ls -g --depth=0";
-          nd="npm run dev";
-          ni="npm i";
-        '';
-      };
     };
   };
 }

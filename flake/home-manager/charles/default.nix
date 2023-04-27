@@ -3,6 +3,7 @@
 
   fonts.fontconfig.enable = true;
 
+  home.packages = [ inputs.src-cli.packages.x86_64-linux.default ];
   # xresources.properties."Xft.dpi" = 200; 
 
   # xsession.enable = true;

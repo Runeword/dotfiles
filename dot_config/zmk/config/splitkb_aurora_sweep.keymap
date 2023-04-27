@@ -72,10 +72,10 @@
     combo_tab { layers = <0 MOD_R>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
     combo_esc { layers = <0>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp ESC>; };
     combo_repeat { layers = <0>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
-    combo_bspc { layers = <0 NAV>; timeout-ms = <60>; key-positions = <11 12 13>; bindings = <&kp BSPC>; };
+    combo_bspc { layers = <0 NAV MOD_R>; timeout-ms = <60>; key-positions = <11 12 13>; bindings = <&kp BSPC>; };
     combo_enter { layers = <0>; timeout-ms = <60>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
-    combo_del_l { layers = <0 NAV>; timeout-ms = <60>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
-    combo_del_r { layers = <0 NAV>; timeout-ms = <60>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
+    combo_del_l { layers = <0 NAV MOD_R>; timeout-ms = <60>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
+    combo_del_r { layers = <0 NAV MOD_L>; timeout-ms = <60>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
     combo_caps { layers = <0>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
 
     // sticky modifiers left

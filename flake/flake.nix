@@ -11,19 +11,14 @@
   inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   # inputs.nixified-ai.url = "github:nixified-ai/flake";
 
-  outputs = {self, ...} @ inputs: let
-    pkgs = import inputs.nixpkgs {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-      overlays = [
-        inputs.neovim-nightly-overlay.overlay
-      ];
-      extraSpecialArgs = {inherit inputs;};
-    };
+  outputs = { self, ... } @ inputs: let
+    system = "x86_64-linux";
   in {
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
+
       specialArgs.inputs = inputs;
+
       modules = [
         nixos/configuration.nix
         nixos/hardware-configuration.nix
@@ -32,7 +27,16 @@
     };
 
     homeConfigurations.charles = inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          inputs.neovim-nightly-overlay.overlay
+        ];
+      };
+
+      extraSpecialArgs = { inherit inputs; };
+
       modules = [
         home-manager/charles
       ];

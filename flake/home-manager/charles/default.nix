@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }: {
   imports = [
   ./programs
-  (import ./home { inputs = inputs; })
+  ./home
   ./services
   ];
 

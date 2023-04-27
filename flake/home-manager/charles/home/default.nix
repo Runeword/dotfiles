@@ -18,7 +18,6 @@
     wget
     doppler
     ripgrep
-    deno
     progress
     fd
     inkscape

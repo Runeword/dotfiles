@@ -14,7 +14,6 @@
   # environment.systemPackages = with pkgs; [
   environment.systemPackages = [
     # xfce.thunar-archive-plugin
-    # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     pkgs.xfce.xfce4-volumed-pulse
     pkgs.pavucontrol
     pkgs.pasystray
@@ -22,7 +21,6 @@
     # system-config-printer
     pkgs.gparted
     pkgs.vim
-    # inputs.src-cli.packages.x86_64-linux.default
   ];
 
   services.udev.enable = true;

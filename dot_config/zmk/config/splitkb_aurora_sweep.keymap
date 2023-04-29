@@ -25,18 +25,28 @@ NAME: NAME { \
   label = #NAME; \
   compatible = "zmk,behavior-macro"; \
   #binding-cells = <0>; \
-  wait-ms = <30>; \
-  tap-ms = <40>; \
+  wait-ms = <0>; \
+  tap-ms = <0>; \
   bindings = <&macro_press &mo MO &kp MOD>, <&macro_pause_for_release> , <&macro_release &mo MO &kp MOD>; \
 };
 
-#define COMBO_MOD(NAME, POS, HT, MOD) \
+#define MACRO_SKQ(NAME, KEY) \
+NAME: NAME { \
+  label = #NAME; \
+  compatible = "zmk,behavior-macro"; \
+  #binding-cells = <0>; \
+  wait-ms = <0>; \
+  tap-ms = <0>; \
+  bindings = <&skq KEY>; \
+};
+
+#define COMBO_HT(NAME, TIME, POS, HT) \
 NAME { \
   layers = <LAYER_DEF>; \
-  timeout-ms = <30>; \
+  timeout-ms = <TIME>; \
   slow-release; \
   key-positions = <POS>; \
-  bindings = <&HT 0 MOD>; \
+  bindings = <&HT 0 0>; \
 };
 
 &sk {
@@ -52,27 +62,54 @@ NAME { \
       label = "STICKY_KEY_QUICK_RELEASE";
       #binding-cells = <1>;
       bindings = <&kp>;
-      release-after-ms = <1000>;
+      release-after-ms = <100>;
       quick-release;
       ignore-modifiers;
      };
 
-     // HOLDTAP_MOD(NAME, MACRO)
-     HOLDTAP_MOD(ht_lctrl, &mc_lctrl, &skq LCTRL)
-     // HOLDTAP_MOD(ht_lctrl, &mc_lctrl, &mc_lctrl)
-     // HOLDTAP_MOD(ht_rctrl, &mc_rctrl)
-     // HOLDTAP_MOD(ht_num_ctrl, &mc_num_ctrl)
-     // HOLDTAP_MOD(ht_num_gui, &mc_num_gui)
+     // HOLDTAP_MOD(NAME, HOLD, TAP)
+     HOLDTAP_MOD(ht_lctrl, &mc_hold_lctrl, &mc_tap_lctrl)
+     HOLDTAP_MOD(ht_rctrl, &mc_hold_rctrl, &mc_tap_rctrl)
+     HOLDTAP_MOD(ht_lshft, &mc_hold_lshft, &mc_tap_lshft)
+     HOLDTAP_MOD(ht_rshft, &mc_hold_rshft, &mc_tap_rshft)
+     HOLDTAP_MOD(ht_lgui, &mc_hold_lgui, &mc_tap_lgui)
+     HOLDTAP_MOD(ht_rgui, &mc_hold_rgui, &mc_tap_rgui)
+     HOLDTAP_MOD(ht_lalt, &mc_hold_lalt, &mc_tap_lalt)
+     HOLDTAP_MOD(ht_ralt, &mc_hold_ralt, &mc_tap_ralt)
+     HOLDTAP_MOD(ht_num_lctrl, &mc_hold_num_lctrl, &mc_tap_num_lctrl)
+     HOLDTAP_MOD(ht_num_lshft, &mc_hold_num_lshft, &mc_tap_num_lshft)
+     HOLDTAP_MOD(ht_num_lgui, &mc_hold_num_lgui, &mc_tap_num_lgui)
+     HOLDTAP_MOD(ht_num_lalt, &mc_hold_num_lalt, &mc_tap_num_lalt)
   };
 
   macros {
     // MACRO_MOD(NAME, MO, MOD)
-    MACRO_MOD(mc_lctrl, LAYER_LMOD, LCTRL)
-    MACRO_MOD(mc_rctrl, LAYER_RMOD, RCTRL)
-    MACRO_MOD(mc_num_ctrl, LAYER_NUM, LCTRL)
-    MACRO_MOD(mc_num_shft, LAYER_NUM, LSHFT)
-    MACRO_MOD(mc_num_gui, LAYER_NUM, LGUI)
-    MACRO_MOD(mc_num_alt, LAYER_NUM, LALT)
+    MACRO_MOD(mc_hold_lctrl, LAYER_LMOD, LCTRL)
+    MACRO_MOD(mc_hold_rctrl, LAYER_RMOD, RCTRL)
+    MACRO_MOD(mc_hold_lshft, LAYER_LMOD, LSHFT)
+    MACRO_MOD(mc_hold_rshft, LAYER_RMOD, RSHFT)
+    MACRO_MOD(mc_hold_lgui, LAYER_LMOD, LGUI)
+    MACRO_MOD(mc_hold_rgui, LAYER_RMOD, RGUI)
+    MACRO_MOD(mc_hold_lalt, LAYER_LMOD, LALT)
+    MACRO_MOD(mc_hold_ralt, LAYER_RMOD, RALT)
+    MACRO_MOD(mc_hold_num_lctrl, LAYER_NUM, LCTRL)
+    MACRO_MOD(mc_hold_num_lshft, LAYER_NUM, LSHFT)
+    MACRO_MOD(mc_hold_num_lgui, LAYER_NUM, LGUI)
+    MACRO_MOD(mc_hold_num_lalt, LAYER_NUM, LALT)
+
+    // MACRO_SKQ(NAME, KEY)
+    MACRO_SKQ(mc_tap_lctrl, LCTRL)
+    MACRO_SKQ(mc_tap_rctrl, RCTRL)
+    MACRO_SKQ(mc_tap_lshft, LSHFT)
+    MACRO_SKQ(mc_tap_rshft, RSHFT)
+    MACRO_SKQ(mc_tap_lgui, LGUI)
+    MACRO_SKQ(mc_tap_rgui, RGUI)
+    MACRO_SKQ(mc_tap_lalt, LALT)
+    MACRO_SKQ(mc_tap_ralt, RALT)
+    MACRO_SKQ(mc_tap_num_lctrl, LCTRL) // TODO chain skq + sl
+    MACRO_SKQ(mc_tap_num_lshft, LSHFT) // TODO chain skq + sl
+    MACRO_SKQ(mc_tap_num_lgui, LGUI) // TODO chain skq + sl
+    MACRO_SKQ(mc_tap_num_lalt, LALT) // TODO chain skq + sl
   };
 
   combos {
@@ -81,39 +118,33 @@ NAME { \
     combo_tab { layers = <LAYER_DEF LAYER_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
     combo_esc { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp ESC>; };
     combo_repeat { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
-    combo_bspc { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <60>; key-positions = <11 12 13>; bindings = <&kp BSPC>; };
-    combo_enter { layers = <LAYER_DEF>; timeout-ms = <60>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
-    combo_del_l { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <60>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
-    combo_del_r { layers = <LAYER_DEF LAYER_NAV LAYER_LMOD>; timeout-ms = <60>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
+    combo_bspc { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp BSPC>; };
+    combo_enter { layers = <LAYER_DEF>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
+    combo_del_l { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
+    combo_del_r { layers = <LAYER_DEF LAYER_NAV LAYER_LMOD>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
     combo_caps { layers = <LAYER_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
 
     // sticky modifiers
+    // COMBO_HT(NAME, TIME, POS, HT)
+    COMBO_HT(combo_lctrl, 30, 31 13, ht_lctrl)
+    COMBO_HT(combo_rctrl, 30, 32 16, ht_rctrl)
+    COMBO_HT(combo_lshft, 30, 31 12, ht_lshft)
+    COMBO_HT(combo_rshft, 30, 32 17, ht_rshft)
+    COMBO_HT(combo_lgui, 30, 31 11, ht_lgui)
+    COMBO_HT(combo_rgui, 30, 32 18, ht_rgui)
+    COMBO_HT(combo_lalt, 30, 31 10, ht_lalt)
+    COMBO_HT(combo_ralt, 30, 32 19, ht_ralt)
+    COMBO_HT(combo_num_lctrl, 30, 30 13, ht_num_lctrl)
+    COMBO_HT(combo_num_lshft, 30, 30 12, ht_num_lshft)
+    COMBO_HT(combo_num_lgui, 30, 30 11, ht_num_lgui)
+    COMBO_HT(combo_num_lalt, 30, 30 10, ht_num_lalt)
 
-    // COMBO_MOD(NAME, POS, HT, MOD)
-    // COMBO_MOD(combo_lctrl, 31 13, ht_lctrl, LCTRL)
-    // COMBO_MOD(combo_rctrl, 32 16, ht_rctrl, RCTRL)
-
-    combo_lshft { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 12>; bindings = <&sk LSHFT>; };
-    combo_lgui { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 11>; bindings = <&sk LGUI>; };
-    combo_lalt { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 10>; bindings = <&sk LALT>; };
     combo_lctrl_lshft { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 12 13>; bindings = <&sk LC(LSHFT)>; };
     combo_lctrl_lalt { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 13 10>; bindings = <&sk LC(LALT)>; };
     combo_lgui_lshft { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 12 11>; bindings = <&sk LG(LSHFT)>; };
-    combo_rshft { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 17>; bindings = <&sk RSHFT>; };
-    combo_rgui { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 18>; bindings = <&sk RGUI>; };
-    combo_ralt { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 19>; bindings = <&sk RALT>; };
     combo_rctrl_rshft { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 16 17>; bindings = <&sk RC(RSHFT)>; };
     combo_rctrl_ralt { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 16 19>; bindings = <&sk RC(RALT)>; };
     combo_rgui_rshft { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 18 19>; bindings = <&sk RG(RSHFT)>; };
-
-    combo_lctrl { layers = <LAYER_DEF>; timeout-ms = <30>; slow-release; key-positions = <31 13>; bindings = <&ht_lctrl 0 0>; };
-    // combo_rctrl { layers = <LAYER_DEF>; timeout-ms = <30>; slow-release; key-positions = <32 16>; bindings = <&ht_rctrl 0 RCTRL>; };
-
-    // modifiers numbers
-    // combo_ctrl_numbers { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <30 13>; bindings = <&ht_num_ctrl 0 LCTRL>; };
-    // combo_gui_numbers { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <30 11>; bindings = <&ht_num_gui 0 LGUI>; };
-    combo_shft_numbers { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <30 12>; bindings = <&mc_num_shft>; };
-    combo_alt_numbers { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <30 10>; bindings = <&mc_num_alt>; };
   };
 
   conditional_layers {

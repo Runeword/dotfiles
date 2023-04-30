@@ -17,8 +17,8 @@ local remap = { remap = true }
 local function core()
   map("x", "<C-n>", ":Norm ")
   map("n", "<Leader>ch", "<cmd>silent !google-chrome-stable %:p<CR>")
-  map("n", ";", ":", { noremap = true })
-  map("n", ":", ";", { noremap = true })
+  -- map("n", ";", ":", { noremap = true })
+  -- map("n", ":", ";", { noremap = true })
 
   -- Help
   cmd [[command! -nargs=1 -complete=help H h <args> | only]]

@@ -140,7 +140,7 @@ NAME { \
     MACRO_MOD(mc_hold_num_lalt, LAYER_NUM, LALT)
 
     // MACRO_SKQ(NAME, KEY)
-    // MACRO_SKQM instead of MACRO_SKQ for multiple modifiers because it require ignore-modifiers enabled
+    // MACRO_SKQM(NAME, KEY) enable ignore-modifiers, for use with multiple modifiers like LC(LSHFT)
     MACRO_SKQ(mc_tap_lctrl, LCTRL)
     MACRO_SKQM(mc_tap_lctrl_lshft, LC(LSHFT))
     MACRO_SKQ(mc_tap_rctrl, RCTRL)
@@ -155,10 +155,14 @@ NAME { \
     MACRO_SKQM(mc_tap_ralt_rshft, RA(RSHFT))
     MACRO_SKQ(mc_tap_lshft, LSHFT)
     MACRO_SKQ(mc_tap_rshft, RSHFT)
-    MACRO_SKQ(mc_tap_num_lctrl, LCTRL) // TODO chain skq + sl
-    MACRO_SKQ(mc_tap_num_lshft, LSHFT) // TODO chain skq + sl
-    MACRO_SKQ(mc_tap_num_lgui, LGUI) // TODO chain skq + sl
-    MACRO_SKQ(mc_tap_num_lalt, LALT) // TODO chain skq + sl
+
+    // can't use two sticky keys like sk and sl in a macro because they are indexed by key position
+    // https://github.com/zmkfirmware/zmk/issues/1421
+    // MACRO_SKQ(NAME, KEY)
+    MACRO_SKQ(mc_tap_num_lctrl, LCTRL)
+    MACRO_SKQ(mc_tap_num_lshft, LSHFT)
+    MACRO_SKQ(mc_tap_num_lgui, LGUI)
+    MACRO_SKQ(mc_tap_num_lalt, LALT)
   };
 
   combos {

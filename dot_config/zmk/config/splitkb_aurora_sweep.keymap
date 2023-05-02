@@ -70,6 +70,24 @@ NAME: NAME { \
   bindings = <&skqm KEY>; \
 };
 
+#define TAPDANCE(NAME, B1, B2) \
+NAME: NAME { \
+  compatible = "zmk,behavior-tap-dance"; \
+  label = #NAME; \
+  #binding-cells = <0>; \
+  tapping-term-ms = <200>; \
+  bindings = <B1>, <B2>; \
+};
+
+#define TAPDANCE_3(NAME, B1, B2, B3) \
+NAME: NAME { \
+  compatible = "zmk,behavior-tap-dance"; \
+  label = #NAME; \
+  #binding-cells = <0>; \
+  tapping-term-ms = <200>; \
+  bindings = <B1>, <B2>, <B3>; \
+};
+
 #define COMBO_HOLDTAP(NAME, TIME, POS, HT) \
 NAME { \
   layers = <LAYER_DEF>; \
@@ -106,6 +124,12 @@ NAME { \
       quick-release;
       ignore-modifiers;
      };
+
+     // TAPDANCE(NAME, BINDING1, BINDING2)
+     TAPDANCE(td_special_a, &mc_grave_a, &mc_circumflex_a)
+     TAPDANCE_3(td_special_u, &mc_grave_u, &mc_circumflex_u, &mc_trema_u)
+     TAPDANCE(td_special_i, &mc_circumflex_i, &mc_trema_i)
+     TAPDANCE(td_special_e, &mc_circumflex_e, &mc_trema_e)
 
      // HOLDTAP_MACRO(NAME, HOLD, TAP)
      HOLDTAP_MACRO(ht_lctrl, &mc_hold_lctrl, &mc_tap_lctrl)
@@ -175,9 +199,17 @@ NAME { \
     MACRO_SKQ(mc_tap_num_lalt, LALT)
 
     // MACRO(NAME, BINDINGS)
-    MACRO(mc_grav_a, <&kp RA(GRAVE) &kp A>)
-    MACRO(mc_grav_e, <&kp RA(GRAVE) &kp E>)
-    MACRO(mc_grav_u, <&kp RA(GRAVE) &kp U>)
+    MACRO(mc_grave_a, <&kp RA(GRAVE) &kp A>)
+    MACRO(mc_grave_e, <&kp RA(GRAVE) &kp E>)
+    MACRO(mc_grave_u, <&kp RA(GRAVE) &kp U>)
+    MACRO(mc_circumflex_a, <&kp RA(NUMBER_6) &kp A>)
+    MACRO(mc_circumflex_o, <&kp RA(NUMBER_6) &kp O>)
+    MACRO(mc_circumflex_e, <&kp RA(NUMBER_6) &kp E>)
+    MACRO(mc_circumflex_u, <&kp RA(NUMBER_6) &kp U>)
+    MACRO(mc_circumflex_i, <&kp RA(NUMBER_6) &kp I>)
+    MACRO(mc_trema_e, <&kp RA(RS(SQT)) &kp E>)
+    MACRO(mc_trema_u, <&kp RA(RS(SQT)) &kp U>)
+    MACRO(mc_trema_i, <&kp RA(RS(SQT)) &kp I>)
     MACRO(mc_acute_e, <&kp RA(E)>)
     MACRO(mc_cedilla_c, <&kp RA(COMMA)>)
   };
@@ -195,10 +227,13 @@ NAME { \
     cb_caps { layers = <LAYER_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
 
     // french special characters
-    cb_grav_a { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&mc_grav_a>; };
+    cb_special_a { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&td_special_a>; };
     cb_acute_e { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <12 2>; bindings = <&mc_acute_e>; };
-    cb_grav_u { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <13 3>; bindings = <&mc_grav_u>; };
-    cb_grav_e { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <22 12>; bindings = <&mc_grav_e>; };
+    cb_grave_e { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <13 3>; bindings = <&mc_grave_e>; };
+    cb_circumflex_o { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <21 11>; bindings = <&mc_circumflex_o>; };
+    cb_special_e { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <22 12>; bindings = <&td_special_e>; };
+    cb_special_u { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <23 13>; bindings = <&td_special_u>; };
+    cb_special_i { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <24 14>; bindings = <&td_special_i>; };
     cb_cedilla_c { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <17 7>; bindings = <&mc_cedilla_c>; };
 
     // sticky modifiers

@@ -60,14 +60,25 @@ NAME: NAME { \
   bindings = <&skq KEY>; \
 };
 
-#define MACRO_SKQM(NAME, KEY) \
+#define MACRO_SKQX(NAME, KEY) \
 NAME: NAME { \
   label = #NAME; \
   compatible = "zmk,behavior-macro"; \
   #binding-cells = <0>; \
   wait-ms = <0>; \
   tap-ms = <0>; \
-  bindings = <&skqm KEY>; \
+  bindings = <&skqx KEY>; \
+};
+
+#define SKQ_MACRO(NAME, MACRO) \
+NAME: NAME { \
+  compatible = "zmk,behavior-sticky-key"; \
+  label = "skq_macro"; \
+  #binding-cells = <1>; \
+  bindings = <MACRO>; \
+  release-after-ms = <200>; \
+  quick-release; \
+  ignore-modifiers; \
 };
 
 #define TAPDANCE(NAME, B1, B2) \
@@ -115,7 +126,7 @@ NAME { \
       /delete-property/ ignore-modifiers;
      };
 
-    skqm: skq_multiple_modifiers {
+    skqx: skq_multiple_modifiers {
       compatible = "zmk,behavior-sticky-key";
       label = "skq_multiple_modifiers";
       #binding-cells = <1>;
@@ -124,6 +135,8 @@ NAME { \
       quick-release;
       ignore-modifiers;
      };
+
+     SKQ_MACRO(skqm_tap_num_lctrl, &mc_hold_num_lctrl)
 
      // TAPDANCE(NAME, BINDING1, BINDING2)
      TAPDANCE(td_special_a, &mc_grave_a, &mc_circumflex_a)
@@ -146,13 +159,15 @@ NAME { \
      HOLDTAP_MACRO(ht_ralt_rshft, &mc_hold_ralt_rshft, &mc_tap_ralt_rshft)
      HOLDTAP_MACRO(ht_lshft, &mc_hold_lshft, &mc_tap_lshft)
      HOLDTAP_MACRO(ht_rshft, &mc_hold_rshft, &mc_tap_rshft)
-     HOLDTAP_MACRO(ht_num_lctrl, &mc_hold_num_lctrl, &mc_tap_num_lctrl)
+     HOLDTAP_MACRO(ht_num_lctrl, &mc_hold_num_lctrl, &mc_skqm_tap_num_lctrl)
      HOLDTAP_MACRO(ht_num_lshft, &mc_hold_num_lshft, &mc_tap_num_lshft)
      HOLDTAP_MACRO(ht_num_lgui, &mc_hold_num_lgui, &mc_tap_num_lgui)
      HOLDTAP_MACRO(ht_num_lalt, &mc_hold_num_lalt, &mc_tap_num_lalt)
   };
 
   macros {
+    MACRO(mc_skqm_tap_num_lctrl, <&skqm_tap_num_lctrl 0>)
+
     // MACRO_MOD(NAME, MO, MOD)
     MACRO_MOD(mc_hold_lctrl, LAYER_LMOD, LCTRL)
     MACRO_MOD(mc_hold_lctrl_lshft, LAYER_LMOD, LC(LSHFT))
@@ -174,19 +189,19 @@ NAME { \
     MACRO_MOD(mc_hold_num_lalt, LAYER_NUM, LALT)
 
     // MACRO_SKQ(NAME, KEY)
-    // MACRO_SKQM(NAME, KEY) enable ignore-modifiers, for use with multiple modifiers like LC(LSHFT)
+    // MACRO_SKQX(NAME, KEY) enable ignore-modifiers, for use with multiple modifiers like LC(LSHFT)
     MACRO_SKQ(mc_tap_lctrl, LCTRL)
-    MACRO_SKQM(mc_tap_lctrl_lshft, LC(LSHFT))
+    MACRO_SKQX(mc_tap_lctrl_lshft, LC(LSHFT))
     MACRO_SKQ(mc_tap_rctrl, RCTRL)
-    MACRO_SKQM(mc_tap_rctrl_rshft, RC(RSHFT))
+    MACRO_SKQX(mc_tap_rctrl_rshft, RC(RSHFT))
     MACRO_SKQ(mc_tap_lgui, LGUI)
-    MACRO_SKQM(mc_tap_lgui_lshft, LG(LSHFT))
+    MACRO_SKQX(mc_tap_lgui_lshft, LG(LSHFT))
     MACRO_SKQ(mc_tap_rgui, RGUI)
-    MACRO_SKQM(mc_tap_rgui_rshft, RG(RSHFT))
+    MACRO_SKQX(mc_tap_rgui_rshft, RG(RSHFT))
     MACRO_SKQ(mc_tap_lalt, LALT)
-    MACRO_SKQM(mc_tap_lalt_lshft, LA(LSHFT))
+    MACRO_SKQX(mc_tap_lalt_lshft, LA(LSHFT))
     MACRO_SKQ(mc_tap_ralt, RALT)
-    MACRO_SKQM(mc_tap_ralt_rshft, RA(RSHFT))
+    MACRO_SKQX(mc_tap_ralt_rshft, RA(RSHFT))
     MACRO_SKQ(mc_tap_lshft, LSHFT)
     MACRO_SKQ(mc_tap_rshft, RSHFT)
 
@@ -225,6 +240,8 @@ NAME { \
     cb_del_l { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
     cb_del_r { layers = <LAYER_DEF LAYER_NAV LAYER_LMOD>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
     cb_caps { layers = <LAYER_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
+    cb_boot_l { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <31 24>; bindings = <&bootloader>; };
+    cb_boot_r { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <32 25>; bindings = <&bootloader>; };
 
     // french special characters
     cb_special_a { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&td_special_a>; };

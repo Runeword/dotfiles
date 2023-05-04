@@ -20,6 +20,7 @@
 #define P_RGUI 18
 #define P_RALT 19
 
+// hold-tap behavior that take two macros, one activated on hold, one activated on tap
 #define HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP) \
 NAME: NAME { \
   label = #NAME; \
@@ -30,50 +31,33 @@ NAME: NAME { \
   bindings = <MACRO_HOLD>, <MACRO_TAP>; \
 };
 
-#define MACRO_MOD(NAME, MO, MOD) \
+// macro behavior that take multiple keys which are activated when the macro is hold
+#define MACRO_HOLD(NAME, BINDINGS) \
 NAME: NAME { \
   label = #NAME; \
   compatible = "zmk,behavior-macro"; \
   #binding-cells = <0>; \
   wait-ms = <0>; \
   tap-ms = <0>; \
-  bindings = <&macro_press &mo MO &kp MOD>, <&macro_pause_for_release> , <&macro_release &mo MO &kp MOD>; \
+  bindings = <&macro_press BINDINGS>, <&macro_pause_for_release> , <&macro_release BINDINGS>; \
 };
 
-#define MACRO(NAME, BINDINGS) \
+// macro behavior that take multiple keys which are activated when the macro is tap
+#define MACRO_TAP(NAME, BINDINGS) \
 NAME: NAME { \
   label = #NAME; \
   compatible = "zmk,behavior-macro"; \
   #binding-cells = <0>; \
   wait-ms = <0>; \
   tap-ms = <0>; \
-  bindings = BINDINGS; \
+  bindings = <BINDINGS>; \
 };
 
-#define MACRO_SKQ(NAME, KEY) \
-NAME: NAME { \
-  label = #NAME; \
-  compatible = "zmk,behavior-macro"; \
-  #binding-cells = <0>; \
-  wait-ms = <0>; \
-  tap-ms = <0>; \
-  bindings = <&skq KEY>; \
-};
-
-#define MACRO_SKQX(NAME, KEY) \
-NAME: NAME { \
-  label = #NAME; \
-  compatible = "zmk,behavior-macro"; \
-  #binding-cells = <0>; \
-  wait-ms = <0>; \
-  tap-ms = <0>; \
-  bindings = <&skqx KEY>; \
-};
-
+// sticky key behavior that take a macro as bindings
 #define SKQ_MACRO(NAME, MACRO) \
 NAME: NAME { \
   compatible = "zmk,behavior-sticky-key"; \
-  label = "skq_macro"; \
+  label = #NAME; \
   #binding-cells = <1>; \
   bindings = <MACRO>; \
   release-after-ms = <200>; \
@@ -81,41 +65,38 @@ NAME: NAME { \
   ignore-modifiers; \
 };
 
-#define TAPDANCE(NAME, B1, B2) \
-NAME: NAME { \
-  compatible = "zmk,behavior-tap-dance"; \
-  label = #NAME; \
-  #binding-cells = <0>; \
-  tapping-term-ms = <200>; \
-  bindings = <B1>, <B2>; \
-};
-
-#define TAPDANCE_3(NAME, B1, B2, B3) \
-NAME: NAME { \
-  compatible = "zmk,behavior-tap-dance"; \
-  label = #NAME; \
-  #binding-cells = <0>; \
-  tapping-term-ms = <200>; \
-  bindings = <B1>, <B2>, <B3>; \
-};
-
-#define COMBO_HOLDTAP(NAME, TIME, POS, HT) \
+// combo behavior that take a hold-tap as bindings
+#define COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP) \
 NAME { \
   layers = <LAYER_DEF>; \
-  timeout-ms = <TIME>; \
+  timeout-ms = <TIMEOUT>; \
   slow-release; \
-  key-positions = <POS>; \
-  bindings = <&HT 0 0>; \
+  key-positions = <POSITION>; \
+  bindings = <&HOLDTAP 0 0>; \
 };
 
-&sk {
-  quick-release;
-  /delete-property/ ignore-modifiers;
+#define TAPDANCE(NAME, TAP_1, TAP_2) \
+NAME: NAME { \
+  compatible = "zmk,behavior-tap-dance"; \
+  label = #NAME; \
+  #binding-cells = <0>; \
+  tapping-term-ms = <200>; \
+  bindings = <TAP_1>, <TAP_2>; \
+};
+
+#define TAPDANCE_3(NAME, TAP_1, TAP_2, TAP_3) \
+NAME: NAME { \
+  compatible = "zmk,behavior-tap-dance"; \
+  label = #NAME; \
+  #binding-cells = <0>; \
+  tapping-term-ms = <200>; \
+  bindings = <TAP_1>, <TAP_2>, <TAP_3>; \
 };
 
 / {
 
   behaviors {
+    // sticky key behavior with quick-release option that deactivate the sticky key on the next key being pressed
     skq: sk_quick_release {
       compatible = "zmk,behavior-sticky-key";
       label = "sk_quick_release";
@@ -126,6 +107,7 @@ NAME { \
       /delete-property/ ignore-modifiers;
      };
 
+    // sticky key behavior with ignore-modifiers option for use with multiple modifiers like LC(LSHFT)
     skqx: skq_multiple_modifiers {
       compatible = "zmk,behavior-sticky-key";
       label = "skq_multiple_modifiers";
@@ -136,15 +118,22 @@ NAME { \
       ignore-modifiers;
      };
 
-     SKQ_MACRO(skqm_tap_num_lctrl, &mc_hold_num_lctrl)
+     // SKQ_MACRO(NAME, MACRO)
 
-     // TAPDANCE(NAME, BINDING1, BINDING2)
+     SKQ_MACRO(skqm_tap_num_lctrl, &mc_hold_num_lctrl)
+     SKQ_MACRO(skqm_tap_num_lshft, &mc_hold_num_lshft)
+     SKQ_MACRO(skqm_tap_num_lgui, &mc_hold_num_lgui)
+     SKQ_MACRO(skqm_tap_num_lalt, &mc_hold_num_lalt)
+
+     // TAPDANCE(NAME, TAP_1, TAP_2)
+
      TAPDANCE(td_special_a, &mc_grave_a, &mc_circumflex_a)
-     TAPDANCE_3(td_special_u, &mc_grave_u, &mc_circumflex_u, &mc_trema_u)
      TAPDANCE(td_special_i, &mc_circumflex_i, &mc_trema_i)
      TAPDANCE(td_special_e, &mc_circumflex_e, &mc_trema_e)
+     TAPDANCE_3(td_special_u, &mc_grave_u, &mc_circumflex_u, &mc_trema_u)
 
-     // HOLDTAP_MACRO(NAME, HOLD, TAP)
+     // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
+
      HOLDTAP_MACRO(ht_lctrl, &mc_hold_lctrl, &mc_tap_lctrl)
      HOLDTAP_MACRO(ht_lctrl_lshft, &mc_hold_lctrl_lshft, &mc_tap_lctrl_lshft)
      HOLDTAP_MACRO(ht_rctrl, &mc_hold_rctrl, &mc_tap_rctrl)
@@ -159,74 +148,72 @@ NAME { \
      HOLDTAP_MACRO(ht_ralt_rshft, &mc_hold_ralt_rshft, &mc_tap_ralt_rshft)
      HOLDTAP_MACRO(ht_lshft, &mc_hold_lshft, &mc_tap_lshft)
      HOLDTAP_MACRO(ht_rshft, &mc_hold_rshft, &mc_tap_rshft)
-     HOLDTAP_MACRO(ht_num_lctrl, &mc_hold_num_lctrl, &mc_skqm_tap_num_lctrl)
+     HOLDTAP_MACRO(ht_num_lctrl, &mc_hold_num_lctrl, &mc_tap_num_lctrl)
      HOLDTAP_MACRO(ht_num_lshft, &mc_hold_num_lshft, &mc_tap_num_lshft)
      HOLDTAP_MACRO(ht_num_lgui, &mc_hold_num_lgui, &mc_tap_num_lgui)
      HOLDTAP_MACRO(ht_num_lalt, &mc_hold_num_lalt, &mc_tap_num_lalt)
   };
 
   macros {
-    MACRO(mc_skqm_tap_num_lctrl, <&skqm_tap_num_lctrl 0>)
+    // MACRO_HOLD(NAME, BINDINGS)
 
-    // MACRO_MOD(NAME, MO, MOD)
-    MACRO_MOD(mc_hold_lctrl, LAYER_LMOD, LCTRL)
-    MACRO_MOD(mc_hold_lctrl_lshft, LAYER_LMOD, LC(LSHFT))
-    MACRO_MOD(mc_hold_rctrl, LAYER_RMOD, RCTRL)
-    MACRO_MOD(mc_hold_rctrl_rshft, LAYER_RMOD, RC(RSHFT))
-    MACRO_MOD(mc_hold_lgui, LAYER_LMOD, LGUI)
-    MACRO_MOD(mc_hold_lgui_lshft, LAYER_LMOD, LG(LSHFT))
-    MACRO_MOD(mc_hold_rgui, LAYER_RMOD, RGUI)
-    MACRO_MOD(mc_hold_rgui_rshft, LAYER_RMOD, RG(RSHFT))
-    MACRO_MOD(mc_hold_lalt, LAYER_LMOD, LALT)
-    MACRO_MOD(mc_hold_lalt_lshft, LAYER_LMOD, LA(LSHFT))
-    MACRO_MOD(mc_hold_ralt, LAYER_RMOD, RALT)
-    MACRO_MOD(mc_hold_ralt_rshft, LAYER_RMOD, RA(RSHFT))
-    MACRO_MOD(mc_hold_lshft, LAYER_LMOD, LSHFT)
-    MACRO_MOD(mc_hold_rshft, LAYER_RMOD, RSHFT)
-    MACRO_MOD(mc_hold_num_lctrl, LAYER_NUM, LCTRL)
-    MACRO_MOD(mc_hold_num_lshft, LAYER_NUM, LSHFT)
-    MACRO_MOD(mc_hold_num_lgui, LAYER_NUM, LGUI)
-    MACRO_MOD(mc_hold_num_lalt, LAYER_NUM, LALT)
+    MACRO_HOLD(mc_hold_lctrl, &mo LAYER_LMOD &kp LCTRL)
+    MACRO_HOLD(mc_hold_lctrl_lshft, &mo LAYER_LMOD &kp LC(LSHFT))
+    MACRO_HOLD(mc_hold_rctrl, &mo LAYER_RMOD &kp RCTRL)
+    MACRO_HOLD(mc_hold_rctrl_rshft, &mo LAYER_RMOD &kp RC(RSHFT))
+    MACRO_HOLD(mc_hold_lgui, &mo LAYER_LMOD &kp LGUI)
+    MACRO_HOLD(mc_hold_lgui_lshft, &mo LAYER_LMOD &kp LG(LSHFT))
+    MACRO_HOLD(mc_hold_rgui, &mo LAYER_RMOD &kp RGUI)
+    MACRO_HOLD(mc_hold_rgui_rshft, &mo LAYER_RMOD &kp RG(RSHFT))
+    MACRO_HOLD(mc_hold_lalt, &mo LAYER_LMOD &kp LALT)
+    MACRO_HOLD(mc_hold_lalt_lshft, &mo LAYER_LMOD &kp LA(LSHFT))
+    MACRO_HOLD(mc_hold_ralt, &mo LAYER_RMOD &kp RALT)
+    MACRO_HOLD(mc_hold_ralt_rshft, &mo LAYER_RMOD &kp RA(RSHFT))
+    MACRO_HOLD(mc_hold_lshft, &mo LAYER_LMOD &kp LSHFT)
+    MACRO_HOLD(mc_hold_rshft, &mo LAYER_RMOD &kp RSHFT)
+    MACRO_HOLD(mc_hold_num_lctrl, &mo LAYER_NUM &kp LCTRL)
+    MACRO_HOLD(mc_hold_num_lshft, &mo LAYER_NUM &kp LSHFT)
+    MACRO_HOLD(mc_hold_num_lgui, &mo LAYER_NUM &kp LGUI)
+    MACRO_HOLD(mc_hold_num_lalt, &mo LAYER_NUM &kp LALT)
 
-    // MACRO_SKQ(NAME, KEY)
-    // MACRO_SKQX(NAME, KEY) enable ignore-modifiers, for use with multiple modifiers like LC(LSHFT)
-    MACRO_SKQ(mc_tap_lctrl, LCTRL)
-    MACRO_SKQX(mc_tap_lctrl_lshft, LC(LSHFT))
-    MACRO_SKQ(mc_tap_rctrl, RCTRL)
-    MACRO_SKQX(mc_tap_rctrl_rshft, RC(RSHFT))
-    MACRO_SKQ(mc_tap_lgui, LGUI)
-    MACRO_SKQX(mc_tap_lgui_lshft, LG(LSHFT))
-    MACRO_SKQ(mc_tap_rgui, RGUI)
-    MACRO_SKQX(mc_tap_rgui_rshft, RG(RSHFT))
-    MACRO_SKQ(mc_tap_lalt, LALT)
-    MACRO_SKQX(mc_tap_lalt_lshft, LA(LSHFT))
-    MACRO_SKQ(mc_tap_ralt, RALT)
-    MACRO_SKQX(mc_tap_ralt_rshft, RA(RSHFT))
-    MACRO_SKQ(mc_tap_lshft, LSHFT)
-    MACRO_SKQ(mc_tap_rshft, RSHFT)
+    // MACRO_TAP(NAME, BINDINGS)
+
+    MACRO_TAP(mc_tap_lctrl, &skq LCTRL)
+    MACRO_TAP(mc_tap_lctrl_lshft, &skqx LC(LSHFT))
+    MACRO_TAP(mc_tap_rctrl, &skq RCTRL)
+    MACRO_TAP(mc_tap_rctrl_rshft, &skqx RC(RSHFT))
+    MACRO_TAP(mc_tap_lgui, &skq LGUI)
+    MACRO_TAP(mc_tap_lgui_lshft, &skqx LG(LSHFT))
+    MACRO_TAP(mc_tap_rgui, &skq RGUI)
+    MACRO_TAP(mc_tap_rgui_rshft, &skqx RG(RSHFT))
+    MACRO_TAP(mc_tap_lalt, &skq LALT)
+    MACRO_TAP(mc_tap_lalt_lshft, &skqx LA(LSHFT))
+    MACRO_TAP(mc_tap_ralt, &skq RALT)
+    MACRO_TAP(mc_tap_ralt_rshft, &skqx RA(RSHFT))
+    MACRO_TAP(mc_tap_lshft, &skq LSHFT)
+    MACRO_TAP(mc_tap_rshft, &skq RSHFT)
 
     // can't use two sticky keys like sk and sl in a macro because they are indexed by key position
     // https://github.com/zmkfirmware/zmk/issues/1421
-    // MACRO_SKQ(NAME, KEY)
-    MACRO_SKQ(mc_tap_num_lctrl, LCTRL)
-    MACRO_SKQ(mc_tap_num_lshft, LSHFT)
-    MACRO_SKQ(mc_tap_num_lgui, LGUI)
-    MACRO_SKQ(mc_tap_num_lalt, LALT)
+    // the workaround is to create a custom sticky key behavior with a hold macro as binding
+    MACRO_TAP(mc_tap_num_lctrl, &skqm_tap_num_lctrl 0)
+    MACRO_TAP(mc_tap_num_lshft, &skqm_tap_num_lshft 0)
+    MACRO_TAP(mc_tap_num_lgui, &skqm_tap_num_lgui 0)
+    MACRO_TAP(mc_tap_num_lalt, &skqm_tap_num_lalt 0)
 
-    // MACRO(NAME, BINDINGS)
-    MACRO(mc_grave_a, <&kp RA(GRAVE) &kp A>)
-    MACRO(mc_grave_e, <&kp RA(GRAVE) &kp E>)
-    MACRO(mc_grave_u, <&kp RA(GRAVE) &kp U>)
-    MACRO(mc_circumflex_a, <&kp RA(NUMBER_6) &kp A>)
-    MACRO(mc_circumflex_o, <&kp RA(NUMBER_6) &kp O>)
-    MACRO(mc_circumflex_e, <&kp RA(NUMBER_6) &kp E>)
-    MACRO(mc_circumflex_u, <&kp RA(NUMBER_6) &kp U>)
-    MACRO(mc_circumflex_i, <&kp RA(NUMBER_6) &kp I>)
-    MACRO(mc_trema_e, <&kp RA(RS(SQT)) &kp E>)
-    MACRO(mc_trema_u, <&kp RA(RS(SQT)) &kp U>)
-    MACRO(mc_trema_i, <&kp RA(RS(SQT)) &kp I>)
-    MACRO(mc_acute_e, <&kp RA(E)>)
-    MACRO(mc_cedilla_c, <&kp RA(COMMA)>)
+    MACRO_TAP(mc_grave_a, &kp RA(GRAVE) &kp A)
+    MACRO_TAP(mc_grave_e, &kp RA(GRAVE) &kp E)
+    MACRO_TAP(mc_grave_u, &kp RA(GRAVE) &kp U)
+    MACRO_TAP(mc_circumflex_a, &kp RA(NUMBER_6) &kp A)
+    MACRO_TAP(mc_circumflex_o, &kp RA(NUMBER_6) &kp O)
+    MACRO_TAP(mc_circumflex_e, &kp RA(NUMBER_6) &kp E)
+    MACRO_TAP(mc_circumflex_u, &kp RA(NUMBER_6) &kp U)
+    MACRO_TAP(mc_circumflex_i, &kp RA(NUMBER_6) &kp I)
+    MACRO_TAP(mc_trema_e, &kp RA(RS(SQT)) &kp E)
+    MACRO_TAP(mc_trema_u, &kp RA(RS(SQT)) &kp U)
+    MACRO_TAP(mc_trema_i, &kp RA(RS(SQT)) &kp I)
+    MACRO_TAP(mc_acute_e, &kp RA(E))
+    MACRO_TAP(mc_cedilla_c, &kp RA(COMMA))
   };
 
   combos {
@@ -253,8 +240,8 @@ NAME { \
     cb_special_i { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <24 14>; bindings = <&td_special_i>; };
     cb_cedilla_c { layers = <LAYER_DEF>; timeout-ms = <100>; key-positions = <17 7>; bindings = <&mc_cedilla_c>; };
 
-    // sticky modifiers
-    // COMBO_HOLDTAP(NAME, TIME, POS, HT)
+    // sticky modifiers on layer default
+    // COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP)
     COMBO_HOLDTAP(cb_lctrl, 30, 31 P_LCTRL, ht_lctrl)
     COMBO_HOLDTAP(cb_lctrl_lshft, 30, 31 P_LCTRL P_LSHFT, ht_lctrl_lshft)
     COMBO_HOLDTAP(cb_rctrl, 30, 32 P_RCTRL, ht_rctrl)
@@ -269,6 +256,9 @@ NAME { \
     COMBO_HOLDTAP(cb_ralt_rshft, 30, 32 P_RALT P_RSHFT, ht_ralt_rshft)
     COMBO_HOLDTAP(cb_lshft, 30, 31 P_LSHFT, ht_lshft)
     COMBO_HOLDTAP(cb_rshft, 30, 32 P_RSHFT, ht_rshft)
+
+    // sticky modifiers on layer num
+    // COMBO_HOLDTAP(NAME, TIME, POS, HT)
     COMBO_HOLDTAP(cb_num_lctrl, 30, 30 P_LCTRL, ht_num_lctrl)
     COMBO_HOLDTAP(cb_num_lshft, 30, 30 P_LSHFT, ht_num_lshft)
     COMBO_HOLDTAP(cb_num_lgui, 30, 30 P_LGUI, ht_num_lgui)

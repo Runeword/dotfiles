@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     ./readline.nix
     ./alacritty.nix
@@ -40,4 +40,7 @@
   programs.direnv.enable = true;
   programs.direnv.enableBashIntegration = true;
   programs.direnv.nix-direnv.enable = true;
+
+  programs.starship.enable = true;
+  programs.starship.enableBashIntegration = true;
 }

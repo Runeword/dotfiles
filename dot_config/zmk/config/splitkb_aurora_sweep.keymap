@@ -220,9 +220,9 @@ NAME: NAME { \
     compatible = "zmk,combos";
 
     cb_tab { layers = <LAYER_DEF LAYER_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
-    cb_esc { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp ESC>; };
+    cb_esc { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <1 2>; bindings = <&kp ESC>; };
+    cb_bspc { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
     cb_repeat { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
-    cb_bspc { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <30>; key-positions = <1 2>; bindings = <&kp BSPC>; };
     cb_enter_l { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
     cb_enter_r { layers = <LAYER_DEF>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
     cb_del_l { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };

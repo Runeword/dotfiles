@@ -20,6 +20,7 @@
     doppler
     ripgrep
     progress
+    neofetch
     fd
     inputs.src-cli.packages.x86_64-linux.default
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
@@ -38,7 +39,7 @@
     bitwarden-cli
     google-chrome
     firefox
-    (nerdfonts.override {fonts = ["Hack" "DroidSansMono"];})
+    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
     neovim-nightly
     # python311
   ];

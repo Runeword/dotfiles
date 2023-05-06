@@ -1,17 +1,17 @@
 {
   programs.kitty.enable = true;
 
-  programs.kitty.font = {
-    name = "Hack Nerd Font";
-    size = 20;
-  };
-
   programs.kitty.settings = {
     cursor_shape = "beam";
     cursor_beam_thickness = "0.1";
     cursor_blink_interval = "0.5";
     modify_font = "cell_height +5px";
     clear_all_shortcuts = "yes";
+    font_family = "Sauce Code Pro Nerd Font Complete";
+    bold_font = "Sauce Code Pro Semibold Nerd Font Complete";
+    italic_font = "Sauce Code Pro Italic Nerd Font Complete";
+    bold_italic_font = "Sauce Code Pro Semibold Italic Nerd Font Complete";
+    font_size = "20.0";
     confirm_os_window_close = 0;
     # theme
     background_opacity = "0.7";
@@ -22,13 +22,27 @@
     selection_foreground = "none";
     # normal
     color0  = "#000000";
-    color1  = "#cd0000";
-    color2  = "#00cd00";
-    color3  = "#cdcd00";
-    color4  = "#0000ee";
-    color5  = "#cd00cd";
-    color6  = "#00cdcd";
-    color7  = "#e5e5e5";
+    # color1  = "#805c72";
+    color1  = "#db274b";
+    color2  = "#008f13";
+    color3  = "#EF7C2B";
+    # color4  = "#483dba";
+    color4  = "#5448d9";
+    # color4  = "#516abd";
+    # color5  = "#fc0384";
+    color5  = "#e0167f";
+    # color6  = "#288199";
+    color6  = "#00b3cf";
+    color7  = "#ffffff";
+
+    # color0  = "#000000";
+    # color1  = "#805c72";
+    # color2  = "#008f13";
+    # color3  = "#EF7C2B";
+    # color4  = "#516abd";
+    # color5  = "#a63f7e";
+    # color6  = "#00b3cf";
+    # color7  = "#ffffff";
     # bright
     color8 = "#7f7f7f";
     color9 = "#ff0000";

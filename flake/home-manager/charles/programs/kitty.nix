@@ -11,7 +11,7 @@
     bold_font = "Sauce Code Pro Semibold Nerd Font Complete";
     italic_font = "Sauce Code Pro Italic Nerd Font Complete";
     bold_italic_font = "Sauce Code Pro Semibold Italic Nerd Font Complete";
-    font_size = "20.0";
+    font_size = "21.0";
     confirm_os_window_close = 0;
     # theme
     background_opacity = "0.7";

@@ -8,6 +8,7 @@
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix
+    ./starship.nix
     # ./xmonad.nix
     # ./wezterm.nix
   ];
@@ -17,7 +18,7 @@
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.defaultCommand = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules"; # --strip-cwd-prefix
-  programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" ];
+  programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" "--bind tab:down" "--bind shift-tab:up"];
   programs.fzf.fileWidgetCommand = config.programs.fzf.defaultCommand;
   # programs.fzf.fileWidgetOptions = config.programs.fzf.defaultOptions;
 
@@ -40,7 +41,4 @@
   programs.direnv.enable = true;
   programs.direnv.enableBashIntegration = true;
   programs.direnv.nix-direnv.enable = true;
-
-  programs.starship.enable = true;
-  programs.starship.enableBashIntegration = true;
 }

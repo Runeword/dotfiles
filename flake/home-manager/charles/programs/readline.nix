@@ -6,6 +6,7 @@
   programs.readline.variables.completion-ignore-case = true;
 
   programs.readline.bindings = {
+    "\\C-i" = "menu-complete"; # tab
     "\\C-u" = "kill-whole-line"; # ctrl + u
     "\\C-\\b" = "backward-kill-word"; # ctrl + backspace
     "\\e[A" = "history-search-backward"; # arrow up

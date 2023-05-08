@@ -17,7 +17,7 @@
     l = "ls -A";
     ll = "ls -hAlt";
     cd = "__zoxide_z";
-    cdi = "__zoxide_zi";
+    cdh = "__zoxide_zi";
     c = "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
     ca = "cd $(fd --type directory --hidden --follow --no-ignore | fzf)";
     o = "xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";
@@ -34,7 +34,9 @@
     && direnv allow
     '';
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
-    nfu = "nix flake update $HOME/flake";
+    nfu = "nix flake lock --update-input $(nix flake metadata $HOME/flake --json  | jq -r '.locks.nodes.root.inputs | keys[]' | fzf --no-info --cycle) $HOME/flake";
+    # nfu = "nix flake update $HOME/flake";
+    # github:Runeword/dotfiles?dir=flake/
     nfs = "nix flake show";
     nfl = "nix flake lock";
     nr = "nix run";

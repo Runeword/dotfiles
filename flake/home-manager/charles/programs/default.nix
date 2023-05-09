@@ -18,7 +18,8 @@
   programs.fzf.enable = true;
   programs.fzf.enableBashIntegration = true;
   programs.fzf.defaultCommand = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules"; # --strip-cwd-prefix
-  programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" "--bind tab:down" "--bind shift-tab:up"];
+  # programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" "--bind tab:down" "--bind shift-tab:up" "--bind ctrl-space:select"];
+  programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" ];
   programs.fzf.fileWidgetCommand = config.programs.fzf.defaultCommand;
   # programs.fzf.fileWidgetOptions = config.programs.fzf.defaultOptions;
 
@@ -33,6 +34,7 @@
   programs.git.enable = true;
   programs.git.userEmail = "60324746+Runeword@users.noreply.github.com";
   programs.git.userName = "Runeword";
+  # programs.git.delta.enable = true;
 
   programs.vscode.enable = true;
 

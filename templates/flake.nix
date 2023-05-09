@@ -1,10 +1,17 @@
 {
   outputs = { self }: {
-    templates.js.path = ./js;
-    templates.js.welcomeText = "js";
-    templates.proto.path = ./proto;
-    templates.proto.welcomeText = "proto";
-    templates.firebase.path = ./firebase;
-    templates.firebase.welcomeText = "firebase";
+    templates = {
+      js.path = ./js;
+      js.description = "js";
+      js.welcomeText = "js";
+
+      proto.path = ./proto;
+      proto.description = "proto";
+      proto.welcomeText = "proto";
+
+      firebase.path = ./firebase;
+      firebase.description = "firebase";
+      firebase.welcomeText = "firebase";
+    };
   };
 }

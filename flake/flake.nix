@@ -9,7 +9,7 @@
   # inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
   inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
-  # inputs.nixified-ai.url = "github:nixified-ai/flake";
+  inputs.nixified-ai.url = "github:nixified-ai/flake";
 
   outputs = { self, ... } @ inputs: let
     system = "x86_64-linux";

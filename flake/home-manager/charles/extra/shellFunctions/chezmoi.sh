@@ -8,4 +8,6 @@ cha() {
     --preview-window bottom,80%,noborder
   )
   [ -z "$selected_files" ] && return 1
+
+  chezmoi add $selected_files
 }

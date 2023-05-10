@@ -56,7 +56,6 @@
 
     # ______________________________________ CHEZMOI
     chd = "chezmoi diff";
-    cha = "chezmoi add";
     chy = "chezmoi apply";
     chf = "chezmoi forget";
     chi = "chezmoi ignored";

@@ -9,5 +9,7 @@ cha() {
   )
   [ -z "$selected_files" ] && return 1
 
-  chezmoi add $selected_files
+  for i in $selected_files; do
+    chezmoi add $i
+  done
 }

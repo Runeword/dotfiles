@@ -55,7 +55,7 @@
     # nmcli networking on
 
     # ______________________________________ CHEZMOI
-    chd = "chezmoi diff";
+    chd = "chezmoi diff --reverse ~/";
     chy = "chezmoi apply";
     chf = "chezmoi forget";
     chi = "chezmoi ignored";

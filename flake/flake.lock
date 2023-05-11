@@ -185,15 +185,14 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "utils": "utils"
+        ]
       },
       "locked": {
-        "lastModified": 1680597706,
-        "narHash": "sha256-ZqJ3T+BxzjPH9TnmeUwS4Uu9ZQPeBXAFC9sUWlharT4=",
+        "lastModified": 1683833146,
+        "narHash": "sha256-ELF0oXgg0NYGyKtU74HW8CeLstFJwwCGbuahnQla67I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ec06f419af79207b33d797064dfb3fc9dbe1df4a",
+        "rev": "cc9f65d104e5227d103a529a9fc3687ef4ccb117",
         "type": "github"
       },
       "original": {
@@ -491,21 +490,6 @@
         "dir": "contrib",
         "owner": "sourcegraph",
         "repo": "src-cli",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }

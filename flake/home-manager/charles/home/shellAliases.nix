@@ -55,9 +55,7 @@
     # nmcli networking on
 
     # ______________________________________ CHEZMOI
-    chd = "chezmoi diff --reverse ~/";
-    chy = "chezmoi apply";
-    chf = "chezmoi forget";
+    chd = "chezmoi diff --reverse";
     chi = "chezmoi ignored";
     chc = "chezmoi cd";
 
@@ -100,7 +98,6 @@
     gb = "git branch";
     gbd = "git branch -d";
     gl = "git log";
-    ga = "git add";
     gm = "git merge";
     grb = "git rebase";
     grs = "git reset";

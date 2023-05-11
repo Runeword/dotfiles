@@ -1,15 +1,21 @@
-select_files() {
-  echo "$1" | fzf \
-    --multi --inline-info --cycle --height 70% \
-    --preview 'chezmoi diff --reverse --color=true ~/{}' \
-    --preview-window bottom,80%,noborder
+_select_files() {
+  echo "$1"
+  # echo "$1" | fzf \
+  #   --multi --inline-info --cycle --height 70% \
+  #   --preview 'chezmoi diff --reverse --color=true ~/{}' \
+  #   --preview-window bottom,80%,noborder
 }
 
 cha() {
   files=$(chezmoi status | awk '{print $2}')
   [ -z "$files" ] && return 1
 
-  selected_files=($select_files $files)
+  selected_files=$(_select_files "$files")
+  # selected_files=$(echo "$files" | fzf \
+  #   --multi --inline-info --cycle --height 70% \
+  #   --preview 'chezmoi diff --reverse --color=true ~/{}' \
+  #   --preview-window bottom,80%,noborder
+  # )
   [ -z "$selected_files" ] && return 1
 
   for i in $selected_files; do
@@ -21,11 +27,7 @@ chy() {
   files=$(chezmoi status | awk '{print $2}')
   [ -z "$files" ] && return 1
 
-  selected_files=$(echo "$files" | fzf \
-    --multi --inline-info --cycle --height 70% \
-    --preview 'chezmoi diff --reverse --color=true ~/{}' \
-    --preview-window bottom,80%,noborder
-  )
+  selected_files=$($_select_files "$files")
   [ -z "$selected_files" ] && return 1
 
   for i in $selected_files; do
@@ -37,11 +39,7 @@ chf() {
   files=$(chezmoi managed)
   [ -z "$files" ] && return 1
 
-  selected_files=$(echo "$files" | fzf \
-    --multi --inline-info --cycle --height 70% \
-    --preview 'chezmoi diff --reverse --color=true ~/{}' \
-    --preview-window bottom,80%,noborder
-  )
+  selected_files=$($_select_files "$files")
   [ -z "$selected_files" ] && return 1
 
   for i in $selected_files; do

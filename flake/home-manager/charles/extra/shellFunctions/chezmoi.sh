@@ -35,7 +35,7 @@ chf() {
 
   selected_files=$(echo "$files" | fzf \
     --multi --inline-info --cycle --height 70% \
-    --preview 'bat --style=plain --color=always {}' \
+    --preview '[ -f {} ] && bat --style=plain --color=always {}' \
     --preview-window right,70%,noborder)
   [ -z "$selected_files" ] && return 1
 

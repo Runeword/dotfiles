@@ -30,7 +30,6 @@
     xclip
     chezmoi
     trashy
-    bat
     rofi
     peek
     gcc

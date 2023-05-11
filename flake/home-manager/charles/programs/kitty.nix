@@ -7,10 +7,11 @@
     cursor_blink_interval = "0.5";
     modify_font = "cell_height +5px";
     clear_all_shortcuts = "yes";
-    font_family = "Sauce Code Pro Nerd Font Complete";
-    bold_font = "Sauce Code Pro Semibold Nerd Font Complete";
-    italic_font = "Sauce Code Pro Italic Nerd Font Complete";
-    bold_italic_font = "Sauce Code Pro Semibold Italic Nerd Font Complete";
+    # kitty list-fonts
+    font_family = "SauceCodePro NF";
+    bold_font = "SauceCodePro NF SemiBold";
+    italic_font = "SauceCodePro NF Italic";
+    bold_italic_font = "SauceCodePro NF SemiBold Italic";
     font_size = "21.0";
     confirm_os_window_close = 0;
     # theme

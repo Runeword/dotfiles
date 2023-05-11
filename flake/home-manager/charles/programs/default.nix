@@ -43,4 +43,7 @@
   programs.direnv.enable = true;
   programs.direnv.enableBashIntegration = true;
   programs.direnv.nix-direnv.enable = true;
+
+  programs.bat.enable = true;
+  programs.bat.config.theme = "Nord";
 }

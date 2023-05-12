@@ -7,12 +7,12 @@ nfu () {
   flake_path=${1-$HOME/flake}
   flake_metadata=$(nix flake metadata "$flake_path" --json)
 
-  inputs=$(echo "$flake_metadata" | jq -r '.locks.nodes.root.inputs | keys[]')
+  inputs=$(echo "$flake_metadata" | jq --raw-output '.locks.nodes.root.inputs | keys[]')
   [ -z "$inputs" ] && return 1
 
   selected_inputs=$(echo "$inputs" | fzf \
     --multi --inline-info --cycle --height 70% \
-    --preview "nix flake metadata "$flake_path" --json | jq --color-output '.locks.nodes.\"{}\"'" \
+    --preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
     --preview-window right,75%,noborder
 )
   [ -z "$selected_inputs" ] && return 1
@@ -28,7 +28,7 @@ nfu () {
 ne () {
   flake_path=${1-$HOME/templates}
 
-  templates=$(nix flake show "$flake_path" --json | jq -r '.templates | keys[]')
+  templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
   [ -z "$templates" ] && return 1
 
   selected_template=$(echo "$templates" | fzf --no-info --cycle)

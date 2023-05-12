@@ -31,7 +31,12 @@ ne () {
   templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
   [ -z "$templates" ] && return 1
 
-  selected_template=$(echo "$templates" | fzf --no-info --cycle)
+  # --no-info --cycle \
+  selected_template=$(echo "$templates" | fzf \
+  --multi --inline-info --cycle --height 70% \
+  --preview "bat --style=plain --color=always $flake_path/{}/flake.nix" \
+  --preview-window right,80%,noborder
+)
   [ -z "$selected_template" ] && return 1
 
   echo "use flake \"$flake_path/$selected_template\"" >> .envrc

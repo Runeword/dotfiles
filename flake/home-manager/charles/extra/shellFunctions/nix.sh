@@ -5,11 +5,16 @@
 # It exits the function if there are no inputs or no inputs are selected.
 nfu () {
   flake_path=${1-$HOME/flake}
+  flake_metadata=$(nix flake metadata "$flake_path" --json)
 
-  inputs=$(nix flake metadata "$flake_path" --json | jq -r '.locks.nodes.root.inputs | keys[]')
+  inputs=$(echo "$flake_metadata" | jq -r '.locks.nodes.root.inputs | keys[]')
   [ -z "$inputs" ] && return 1
 
-  selected_inputs=$(echo "$inputs" | fzf --multi --no-info --cycle)
+  selected_inputs=$(echo "$inputs" | fzf \
+    --multi --inline-info --cycle --height 70% \
+    --preview "nix flake metadata "$flake_path" --json | jq --color-output '.locks.nodes.\"{}\"'" \
+    --preview-window right,75%,noborder
+)
   [ -z "$selected_inputs" ] && return 1
 
   for i in $selected_inputs; do
@@ -33,6 +38,10 @@ ne () {
   direnv allow
 }
 
+# --preview '[ -f {} ] && bat --style=plain --color=always {}' \
+# chezmoi diff --reverse --color=true
+# nix-instantiate --parse templates/firebase/flake.nix | bat --language=nix
+# cat templates/firebase/flake.nix | bat --language nix
 # "nix flake update $HOME/flake"; # update all inputs
 # github:Runeword/dotfiles?dir=flake/
 # github:Runeword/dotfiles?dir=templates/$template

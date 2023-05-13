@@ -167,8 +167,8 @@ NAME: NAME { \
     MACRO_HOLD(mc_hold_rgui_rshft, &mo LAYER_RMOD &kp RG(RSHFT))
     MACRO_HOLD(mc_hold_lalt, &mo LAYER_LMOD &kp LALT)
     MACRO_HOLD(mc_hold_lalt_lshft, &mo LAYER_LMOD &kp LA(LSHFT))
-    MACRO_HOLD(mc_hold_ralt, &mo LAYER_RMOD &kp RALT)
-    MACRO_HOLD(mc_hold_ralt_rshft, &mo LAYER_RMOD &kp RA(RSHFT))
+    MACRO_HOLD(mc_hold_ralt, &mo LAYER_RMOD &kp LALT)
+    MACRO_HOLD(mc_hold_ralt_rshft, &mo LAYER_RMOD &kp LA(RSHFT))
     MACRO_HOLD(mc_hold_lshft, &mo LAYER_LMOD &kp LSHFT)
     MACRO_HOLD(mc_hold_rshft, &mo LAYER_RMOD &kp RSHFT)
     MACRO_HOLD(mc_hold_num_lctrl, &mo LAYER_NUM &kp LCTRL)
@@ -188,8 +188,8 @@ NAME: NAME { \
     MACRO_TAP(mc_tap_rgui_rshft, &skqx RG(RSHFT))
     MACRO_TAP(mc_tap_lalt, &skq LALT)
     MACRO_TAP(mc_tap_lalt_lshft, &skqx LA(LSHFT))
-    MACRO_TAP(mc_tap_ralt, &skq RALT)
-    MACRO_TAP(mc_tap_ralt_rshft, &skqx RA(RSHFT))
+    MACRO_TAP(mc_tap_ralt, &skq LALT)
+    MACRO_TAP(mc_tap_ralt_rshft, &skqx LA(RSHFT))
     MACRO_TAP(mc_tap_lshft, &skq LSHFT)
     MACRO_TAP(mc_tap_rshft, &skq RSHFT)
 
@@ -326,7 +326,7 @@ NAME: NAME { \
     mods_right {
       bindings = <
         &trans &trans &trans &trans &trans               &none &none &none &none &none
-        &trans &trans &trans &trans &trans               &none &kp RCTRL &kp RSHFT &kp RGUI &kp RALT
+        &trans &trans &trans &trans &trans               &none &kp RCTRL &kp RSHFT &kp RGUI &kp LALT
         &trans &trans &trans &trans &trans               &none &none &none &none &none
         &trans &trans &trans &trans
         >;

@@ -307,9 +307,9 @@ NAME: NAME { \
 
     navigation {
       bindings = <
-        &kp HOME &kp END &kp PG_DN &kp PG_UP &none       &none &none &none &none &none
-        &kp LEFT &kp RIGHT &kp DOWN &kp UP &kp PRCNT     &none &kp RCTRL &kp RSHFT &kp RGUI &kp RALT
-        &none &none &none &none &none                    &none &kp C_BRI_UP &kp C_BRI_DN &kp C_VOL_UP &kp C_VOL_DN
+        &kp HOME &kp END &kp PG_DN &kp PG_UP &none       &bt BT_CLR &none &none &none &none
+        &kp LEFT &kp RIGHT &kp DOWN &kp UP &kp PRCNT     &bt BT_NXT &kp RCTRL &kp RSHFT &kp RGUI &kp RALT
+        &none &none &none &none &none                    &bt BT_PRV &kp C_BRI_UP &kp C_BRI_DN &kp C_VOL_UP &kp C_VOL_DN
         &trans &trans &trans &trans
         >;
     };

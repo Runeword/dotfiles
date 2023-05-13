@@ -1,7 +1,7 @@
 #!/bin/sh
 
 b () {
-$(bluetoothctl devices | fzf \
+bluetoothctl devices | fzf \
 --preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' \
 --preview-window right,65%,noborder \
 --no-scrollbar \
@@ -30,5 +30,4 @@ C-o  on/off
 --bind='alt-p:reload-sync(bluetoothctl devices Paired)' \
 --bind='alt-c:reload-sync(bluetoothctl devices Connected)' \
 --bind='alt-t:reload-sync(bluetoothctl devices Trusted)'
-);
 }

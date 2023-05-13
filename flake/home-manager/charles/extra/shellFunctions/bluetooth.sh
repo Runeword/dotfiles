@@ -1,30 +1,34 @@
 #!/bin/sh
 
 b () {
-choice1=$(bluetoothctl devices | fzf \
+$(bluetoothctl devices | fzf \
 --preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' \
 --preview-window right,65%,noborder \
 --no-scrollbar \
 --header-first \
---header='FILTER   <C-a> all       <C-p> paired
-         <C-c> connected <C-t> trusted
-SCAN     <C-s>' \
+--header='
+ACTION           FILTER
+C-s  scan        A-a  all
+C-p  pair        A-p  paired
+C-c  connect     A-c  connected
+C-t  trust       A-t  trusted
+C-d  disconnect
+C-r  remove
+C-u  untrust
+C-o  on/off
+' \
 --bind='enter:execute(echo {2})+abort' \
 --bind='ctrl-s:execute-silent(bluetoothctl scan on&)' \
---bind='ctrl-a:reload-sync(bluetoothctl devices)' \
---bind='ctrl-p:reload-sync(bluetoothctl devices Paired)' \
---bind='ctrl-c:reload-sync(bluetoothctl devices Connected)' \
---bind='ctrl-t:reload-sync(bluetoothctl devices Trusted)'
+--bind='ctrl-p:preview:bluetoothctl pair {2}' \
+--bind='ctrl-r:preview:bluetoothctl remove {2}' \
+--bind='ctrl-t:preview:bluetoothctl trust {2}' \
+--bind='ctrl-u:preview:bluetoothctl untrust {2}' \
+--bind='ctrl-c:preview:bluetoothctl connect {2}' \
+--bind='ctrl-d:preview:bluetoothctl disconnect {2}' \
+--bind='ctrl-o:preview:bluetooth | grep -q "bluetooth = on" && bluetooth off || bluetooth on' \
+--bind='alt-a:reload-sync(bluetoothctl devices)' \
+--bind='alt-p:reload-sync(bluetoothctl devices Paired)' \
+--bind='alt-c:reload-sync(bluetoothctl devices Connected)' \
+--bind='alt-t:reload-sync(bluetoothctl devices Trusted)'
 );
-
-[ -n "$choice1" ] || return 0
-
-choice2=$(echo -e "connect\ndisconnect\npair\nremove\ntrust\nuntrust" | fzf \
---preview "bluetoothctl info $choice1 | head -$FZF_PREVIEW_LINES" \
---preview-window right,65%,noborder \
---no-scrollbar \
---bind="enter:preview:[ -n "{1}" ] && [ -n "$choice1" ] && bluetoothctl {1} $choice1"
-);
-
-b
 }

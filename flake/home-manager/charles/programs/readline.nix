@@ -8,7 +8,8 @@
   programs.readline.bindings = {
     "\\C-i" = "menu-complete"; # tab
     "\\e[Z" = "menu-complete-backward"; # shift + tab
-    "\\C-u" = "kill-whole-line"; # ctrl + u
+    "\\C-u" = "kill-whole-line";
+    "\\C-j" = "unix-line-discard";
     "\\C-\\b" = "backward-kill-word"; # ctrl + backspace
     "\\e[A" = "history-search-backward"; # arrow up
     "\\e[B" = "history-search-forward"; # arrow down

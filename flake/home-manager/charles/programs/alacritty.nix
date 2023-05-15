@@ -52,6 +52,9 @@
   { key = "Key6"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t6"]; }; }
   { key = "Key7"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t7"]; }; }
   { key = "Key8"; mods = "Control"; command = { program = "tmux"; args = ["select-window" "-t8"]; }; }
+  { key = "Equals"; mods = "Control"; action = "ResetFontSize"; }
+  { key = "Plus"; mods = "Control"; action = "IncreaseFontSize"; }
+  { key = "Minus"; mods = "Control"; action = "DecreaseFontSize"; }
   { key = "NumpadEquals"; mods = "Control"; action = "ResetFontSize"; }
   { key = "NumpadAdd"; mods = "Control"; action = "IncreaseFontSize"; }
   { key = "NumpadSubtract"; mods = "Control"; action = "DecreaseFontSize"; }

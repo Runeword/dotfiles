@@ -7,15 +7,16 @@ bluetoothctl devices | fzf \
 --no-scrollbar \
 --header-first \
 --header='
-ACTION           FILTER
-C-s  scan        A-a  all
-C-p  pair        A-p  paired
-C-c  connect     A-c  connected
-C-t  trust       A-t  trusted
+ACTION            FILTER
+C-s  scan         A-a  all
+C-p  pair         A-p  paired
+C-c  connect      A-c  connected
+C-t  trust        A-t  trusted
 C-d  disconnect
 C-r  remove
 C-u  untrust
-C-o  on/off
+C-w  bluetoothctl power on/off
+C-o  bluetooth on/off
 ' \
 --bind='enter:execute(echo {2})+abort' \
 --bind='ctrl-s:execute-silent(bluetoothctl scan on&)' \
@@ -25,6 +26,7 @@ C-o  on/off
 --bind='ctrl-u:preview:bluetoothctl untrust {2}' \
 --bind='ctrl-c:preview:bluetoothctl connect {2}' \
 --bind='ctrl-d:preview:bluetoothctl disconnect {2}' \
+--bind='ctrl-w:preview:bluetoothctl show | grep -q "Powered: yes" && bluetoothctl power off || bluetoothctl power on' \
 --bind='ctrl-o:preview:bluetooth | grep -q "bluetooth = on" && bluetooth off || bluetooth on' \
 --bind='alt-a:reload-sync(bluetoothctl devices)' \
 --bind='alt-p:reload-sync(bluetoothctl devices Paired)' \

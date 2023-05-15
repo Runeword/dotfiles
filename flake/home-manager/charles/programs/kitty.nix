@@ -59,6 +59,9 @@
     "ctrl+kp_plus" = "change_font_size all +1.0";
     "ctrl+kp_minus" = "change_font_size all -1.0";
     "ctrl+kp_equal" = "change_font_size all 0";
+    "ctrl+plus" = "change_font_size all +1.0";
+    "ctrl+minus" = "change_font_size all -1.0";
+    "ctrl+equal" = "change_font_size all 0";
     "ctrl+shift+c" = "copy_to_clipboard";
     "ctrl+shift+v" = "paste_from_clipboard";
     # tmux

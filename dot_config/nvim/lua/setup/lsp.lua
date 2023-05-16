@@ -7,7 +7,7 @@ return function()
   -------------------- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
   diagnostic.config({
     virtual_text = {
-      prefix = '',
+      prefix = '',
       spacing = 2,
     },
     signs = false,
@@ -16,7 +16,7 @@ return function()
       prefix = '',
       format = function(diagnostic)
         return string.format(
-          ' %s %s %s',
+          '󱞩 %s %s %s',
           diagnostic.source,
           diagnostic.user_data.lsp.code,
           diagnostic.message

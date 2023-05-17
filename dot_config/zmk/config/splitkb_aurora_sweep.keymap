@@ -10,15 +10,15 @@
 #define LAYER_RMOD 5
 #define LAYER_FUN 7
 
-#define P_LCTRL 13
-#define P_LSHFT 12
-#define P_LGUI 11
-#define P_LALT 10
+#define p_LC 13
+#define p_LS 12
+#define p_LG 11
+#define p_LA 10
 
-#define P_RCTRL 16
-#define P_RSHFT 17
-#define P_RGUI 18
-#define P_RALT 19
+#define p_RC 16
+#define p_RS 17
+#define p_RG 18
+#define p_RA 19
 
 // hold-tap behavior that take two macros, one activated on hold, one activated on tap
 #define HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP) \
@@ -102,6 +102,43 @@ NAME: NAME { \
   bindings = <TAP_1>, <TAP_2>, <TAP_3>; \
 };
 
+#define COMBO_MOD(MOD) \
+// COMBO(cb_R##MOD##_sqt, 50, 32 P_R##MOD 0, <&kp R##MOD(SQT)>) \
+// COMBO(cb_R##MOD##_comma, 50, 32 P_R##MOD 1, <&kp R##MOD(COMMA)>) \
+// COMBO(cb_R##MOD##_dot, 50, 32 P_R##MOD 2, <&kp R##MOD(DOT)>) \
+COMBO(cb_R##MOD##_p, 50, 32 P_R##MOD 3, <&kp R##MOD(P)>) \
+COMBO(cb_R##MOD##_y, 50, 32 P_R##MOD 4, <&kp R##MOD(Y)>) \
+\
+COMBO(cb_L##MOD##_f, 50, 31 P_L##MOD 5, <&kp L##MOD(F)>) \
+COMBO(cb_L##MOD##_g, 50, 31 P_L##MOD 6, <&kp L##MOD(G)>) \
+COMBO(cb_L##MOD##_c, 50, 31 P_L##MOD 7, <&kp L##MOD(C)>) \
+COMBO(cb_L##MOD##_r, 50, 31 P_L##MOD 8, <&kp L##MOD(R)>) \
+COMBO(cb_L##MOD##_l, 50, 31 P_L##MOD 9, <&kp L##MOD(L)>) \
+\
+COMBO(cb_R##MOD##_a, 50, 32 P_R##MOD 10, <&kp R##MOD(A)>) \
+COMBO(cb_R##MOD##_o, 50, 32 P_R##MOD 11, <&kp R##MOD(O)>) \
+COMBO(cb_R##MOD##_e, 50, 32 P_R##MOD 12, <&kp R##MOD(E)>) \
+COMBO(cb_R##MOD##_u, 50, 32 P_R##MOD 13, <&kp R##MOD(U)>) \
+COMBO(cb_R##MOD##_i, 50, 32 P_R##MOD 14, <&kp R##MOD(I)>) \
+\
+COMBO(cb_L##MOD##_d, 50, 31 P_L##MOD 15, <&kp L##MOD(D)>) \
+COMBO(cb_L##MOD##_h, 50, 31 P_L##MOD 16, <&kp L##MOD(H)>) \
+COMBO(cb_L##MOD##_t, 50, 31 P_L##MOD 17, <&kp L##MOD(T)>) \
+COMBO(cb_L##MOD##_n, 50, 31 P_L##MOD 18, <&kp L##MOD(N)>) \
+COMBO(cb_L##MOD##_s, 50, 31 P_L##MOD 19, <&kp L##MOD(S)>) \
+\
+// COMBO(cb_R##MOD##_semi, 50, 32 P_R##MOD 20, <&kp R##MOD(SEMI)>) \
+COMBO(cb_R##MOD##_q, 50, 32 P_R##MOD 21, <&kp R##MOD(Q)>) \
+COMBO(cb_R##MOD##_j, 50, 32 P_R##MOD 22, <&kp R##MOD(J)>) \
+COMBO(cb_R##MOD##_k, 50, 32 P_R##MOD 23, <&kp R##MOD(K)>) \
+COMBO(cb_R##MOD##_x, 50, 32 P_R##MOD 24, <&kp R##MOD(X)>) \
+\
+COMBO(cb_L##MOD##_b, 50, 31 P_L##MOD 25, <&kp L##MOD(B)>) \
+COMBO(cb_L##MOD##_m, 50, 31 P_L##MOD 26, <&kp L##MOD(M)>) \
+COMBO(cb_L##MOD##_w, 50, 31 P_L##MOD 27, <&kp L##MOD(W)>) \
+COMBO(cb_L##MOD##_v, 50, 31 P_L##MOD 28, <&kp L##MOD(V)>) \
+COMBO(cb_L##MOD##_z, 50, 31 P_L##MOD 29, <&kp L##MOD(Z)>)
+
 / {
 
   behaviors {
@@ -129,10 +166,10 @@ NAME: NAME { \
 
      // SKQ_MACRO(NAME, MACRO)
 
-     SKQ_MACRO(skqm_tap_num_lctrl, &mc_hold_num_lctrl)
-     SKQ_MACRO(skqm_tap_num_lshft, &mc_hold_num_lshft)
-     SKQ_MACRO(skqm_tap_num_lgui, &mc_hold_num_lgui)
-     SKQ_MACRO(skqm_tap_num_lalt, &mc_hold_num_lalt)
+     SKQ_MACRO(skqm_tap_num_LC, &mc_hold_num_LC)
+     SKQ_MACRO(skqm_tap_num_LS, &mc_hold_num_LS)
+     SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
+     SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
 
      // TAPDANCE(NAME, TAP_1, TAP_2)
 
@@ -143,72 +180,72 @@ NAME: NAME { \
 
      // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
 
-     HOLDTAP_MACRO(ht_lctrl, &mc_hold_lctrl, &mc_tap_lctrl)
-     HOLDTAP_MACRO(ht_lctrl_lshft, &mc_hold_lctrl_lshft, &mc_tap_lctrl_lshft)
-     HOLDTAP_MACRO(ht_rctrl, &mc_hold_rctrl, &mc_tap_rctrl)
-     HOLDTAP_MACRO(ht_rctrl_rshft, &mc_hold_rctrl_rshft, &mc_tap_rctrl_rshft)
-     HOLDTAP_MACRO(ht_lgui, &mc_hold_lgui, &mc_tap_lgui)
-     HOLDTAP_MACRO(ht_lgui_lshft, &mc_hold_lgui_lshft, &mc_tap_lgui_lshft)
-     HOLDTAP_MACRO(ht_rgui, &mc_hold_rgui, &mc_tap_rgui)
-     HOLDTAP_MACRO(ht_rgui_rshft, &mc_hold_rgui_rshft, &mc_tap_rgui_rshft)
-     HOLDTAP_MACRO(ht_lalt, &mc_hold_lalt, &mc_tap_lalt)
-     HOLDTAP_MACRO(ht_lalt_lshft, &mc_hold_lalt_lshft, &mc_tap_lalt_lshft)
-     HOLDTAP_MACRO(ht_ralt, &mc_hold_ralt, &mc_tap_ralt)
-     HOLDTAP_MACRO(ht_ralt_rshft, &mc_hold_ralt_rshft, &mc_tap_ralt_rshft)
-     HOLDTAP_MACRO(ht_lshft, &mc_hold_lshft, &mc_tap_lshft)
-     HOLDTAP_MACRO(ht_rshft, &mc_hold_rshft, &mc_tap_rshft)
-     HOLDTAP_MACRO(ht_num_lctrl, &mc_hold_num_lctrl, &mc_tap_num_lctrl)
-     HOLDTAP_MACRO(ht_num_lshft, &mc_hold_num_lshft, &mc_tap_num_lshft)
-     HOLDTAP_MACRO(ht_num_lgui, &mc_hold_num_lgui, &mc_tap_num_lgui)
-     HOLDTAP_MACRO(ht_num_lalt, &mc_hold_num_lalt, &mc_tap_num_lalt)
+     HOLDTAP_MACRO(ht_LC,  &mc_hold_LC,  &mc_tap_LC)
+     HOLDTAP_MACRO(ht_LCS, &mc_hold_LCS, &mc_tap_LCS)
+     HOLDTAP_MACRO(ht_RC,  &mc_hold_RC,  &mc_tap_RC)
+     HOLDTAP_MACRO(ht_RCS, &mc_hold_RCS, &mc_tap_RCS)
+     HOLDTAP_MACRO(ht_LG,  &mc_hold_LG,  &mc_tap_LG)
+     HOLDTAP_MACRO(ht_LGS, &mc_hold_LGS, &mc_tap_LGS)
+     HOLDTAP_MACRO(ht_RG,  &mc_hold_RG,  &mc_tap_RG)
+     HOLDTAP_MACRO(ht_RGS, &mc_hold_RGS, &mc_tap_RGS)
+     HOLDTAP_MACRO(ht_LA,  &mc_hold_LA,  &mc_tap_LA)
+     HOLDTAP_MACRO(ht_LAS, &mc_hold_LAS, &mc_tap_LAS)
+     HOLDTAP_MACRO(ht_RA,  &mc_hold_RA,  &mc_tap_RA)
+     HOLDTAP_MACRO(ht_RAS, &mc_hold_RAS, &mc_tap_RAS)
+     HOLDTAP_MACRO(ht_LS,  &mc_hold_LS,  &mc_tap_LS)
+     HOLDTAP_MACRO(ht_RS,  &mc_hold_RS,  &mc_tap_RS)
+     HOLDTAP_MACRO(ht_num_LC, &mc_hold_num_LC, &mc_tap_num_LC)
+     HOLDTAP_MACRO(ht_num_LS, &mc_hold_num_LS, &mc_tap_num_LS)
+     HOLDTAP_MACRO(ht_num_LG, &mc_hold_num_LG, &mc_tap_num_LG)
+     HOLDTAP_MACRO(ht_num_LA, &mc_hold_num_LA, &mc_tap_num_LA)
   };
 
   macros {
     // MACRO_HOLD(NAME, BINDINGS)
 
-    MACRO_HOLD(mc_hold_lctrl, &mo LAYER_LMOD &kp LCTRL)
-    MACRO_HOLD(mc_hold_lctrl_lshft, &mo LAYER_LMOD &kp LC(LSHFT))
-    MACRO_HOLD(mc_hold_rctrl, &mo LAYER_RMOD &kp RCTRL)
-    MACRO_HOLD(mc_hold_rctrl_rshft, &mo LAYER_RMOD &kp RC(RSHFT))
-    MACRO_HOLD(mc_hold_lgui, &mo LAYER_LMOD &kp LGUI)
-    MACRO_HOLD(mc_hold_lgui_lshft, &mo LAYER_LMOD &kp LG(LSHFT))
-    MACRO_HOLD(mc_hold_rgui, &mo LAYER_RMOD &kp RGUI)
-    MACRO_HOLD(mc_hold_rgui_rshft, &mo LAYER_RMOD &kp RG(RSHFT))
-    MACRO_HOLD(mc_hold_lalt, &mo LAYER_LMOD &kp LALT)
-    MACRO_HOLD(mc_hold_lalt_lshft, &mo LAYER_LMOD &kp LA(LSHFT))
-    MACRO_HOLD(mc_hold_ralt, &mo LAYER_RMOD &kp LALT)
-    MACRO_HOLD(mc_hold_ralt_rshft, &mo LAYER_RMOD &kp LA(RSHFT))
-    MACRO_HOLD(mc_hold_lshft, &mo LAYER_LMOD &kp LSHFT)
-    MACRO_HOLD(mc_hold_rshft, &mo LAYER_RMOD &kp RSHFT)
-    MACRO_HOLD(mc_hold_num_lctrl, &mo LAYER_NUM &kp LCTRL)
-    MACRO_HOLD(mc_hold_num_lshft, &mo LAYER_NUM &kp LSHFT)
-    MACRO_HOLD(mc_hold_num_lgui, &mo LAYER_NUM &kp LGUI)
-    MACRO_HOLD(mc_hold_num_lalt, &mo LAYER_NUM &kp LALT)
+    MACRO_HOLD(mc_hold_LC, &mo LAYER_LMOD &kp LCTRL)
+    MACRO_HOLD(mc_hold_LCS, &mo LAYER_LMOD &kp LC(LSHFT))
+    MACRO_HOLD(mc_hold_RC, &mo LAYER_RMOD &kp RCTRL)
+    MACRO_HOLD(mc_hold_RCS, &mo LAYER_RMOD &kp RC(RSHFT))
+    MACRO_HOLD(mc_hold_LG, &mo LAYER_LMOD &kp LGUI)
+    MACRO_HOLD(mc_hold_LGS, &mo LAYER_LMOD &kp LG(LSHFT))
+    MACRO_HOLD(mc_hold_RG, &mo LAYER_RMOD &kp RGUI)
+    MACRO_HOLD(mc_hold_RGS, &mo LAYER_RMOD &kp RG(RSHFT))
+    MACRO_HOLD(mc_hold_LA, &mo LAYER_LMOD &kp LALT)
+    MACRO_HOLD(mc_hold_LAS, &mo LAYER_LMOD &kp LA(LSHFT))
+    MACRO_HOLD(mc_hold_RA, &mo LAYER_RMOD &kp LALT)
+    MACRO_HOLD(mc_hold_RAS, &mo LAYER_RMOD &kp LA(RSHFT))
+    MACRO_HOLD(mc_hold_LS, &mo LAYER_LMOD &kp LSHFT)
+    MACRO_HOLD(mc_hold_RS, &mo LAYER_RMOD &kp RSHFT)
+    MACRO_HOLD(mc_hold_num_LC, &mo LAYER_NUM &kp LCTRL)
+    MACRO_HOLD(mc_hold_num_LS, &mo LAYER_NUM &kp LSHFT)
+    MACRO_HOLD(mc_hold_num_LG, &mo LAYER_NUM &kp LGUI)
+    MACRO_HOLD(mc_hold_num_LA, &mo LAYER_NUM &kp LALT)
 
     // MACRO_TAP(NAME, BINDINGS)
 
-    MACRO_TAP(mc_tap_lctrl, &skq LCTRL)
-    MACRO_TAP(mc_tap_lctrl_lshft, &skqx LC(LSHFT))
-    MACRO_TAP(mc_tap_rctrl, &skq RCTRL)
-    MACRO_TAP(mc_tap_rctrl_rshft, &skqx RC(RSHFT))
-    MACRO_TAP(mc_tap_lgui, &skq LGUI)
-    MACRO_TAP(mc_tap_lgui_lshft, &skqx LG(LSHFT))
-    MACRO_TAP(mc_tap_rgui, &skq RGUI)
-    MACRO_TAP(mc_tap_rgui_rshft, &skqx RG(RSHFT))
-    MACRO_TAP(mc_tap_lalt, &skq LALT)
-    MACRO_TAP(mc_tap_lalt_lshft, &skqx LA(LSHFT))
-    MACRO_TAP(mc_tap_ralt, &skq LALT)
-    MACRO_TAP(mc_tap_ralt_rshft, &skqx LA(RSHFT))
-    MACRO_TAP(mc_tap_lshft, &skq LSHFT)
-    MACRO_TAP(mc_tap_rshft, &skq RSHFT)
+    MACRO_TAP(mc_tap_LC, &skq LCTRL)
+    MACRO_TAP(mc_tap_LCS, &skqx LC(LSHFT))
+    MACRO_TAP(mc_tap_RC, &skq RCTRL)
+    MACRO_TAP(mc_tap_RCS, &skqx RC(RSHFT))
+    MACRO_TAP(mc_tap_LG, &skq LGUI)
+    MACRO_TAP(mc_tap_LGS, &skqx LG(LSHFT))
+    MACRO_TAP(mc_tap_RG, &skq RGUI)
+    MACRO_TAP(mc_tap_RGS, &skqx RG(RSHFT))
+    MACRO_TAP(mc_tap_LA, &skq LALT)
+    MACRO_TAP(mc_tap_LAS, &skqx LA(LSHFT))
+    MACRO_TAP(mc_tap_RA, &skq LALT)
+    MACRO_TAP(mc_tap_RAS, &skqx LA(RSHFT))
+    MACRO_TAP(mc_tap_LS, &skq LSHFT)
+    MACRO_TAP(mc_tap_RS, &skq RSHFT)
 
     // can't use two sticky keys like sk and sl in a macro because they are indexed by key position
     // https://github.com/zmkfirmware/zmk/issues/1421
     // the workaround is to create a custom sticky key behavior with a hold macro as binding
-    MACRO_TAP(mc_tap_num_lctrl, &skqm_tap_num_lctrl 0)
-    MACRO_TAP(mc_tap_num_lshft, &skqm_tap_num_lshft 0)
-    MACRO_TAP(mc_tap_num_lgui, &skqm_tap_num_lgui 0)
-    MACRO_TAP(mc_tap_num_lalt, &skqm_tap_num_lalt 0)
+    MACRO_TAP(mc_tap_num_LC, &skqm_tap_num_LC 0)
+    MACRO_TAP(mc_tap_num_LS, &skqm_tap_num_LS 0)
+    MACRO_TAP(mc_tap_num_LG, &skqm_tap_num_LG 0)
+    MACRO_TAP(mc_tap_num_LA, &skqm_tap_num_LA 0)
 
     MACRO_TAP(mc_grave_a, &kp RA(GRAVE) &kp A)
     MACRO_TAP(mc_grave_e, &kp RA(GRAVE) &kp E)
@@ -229,8 +266,8 @@ NAME: NAME { \
     compatible = "zmk,combos";
 
     cb_tab { layers = <LAYER_DEF LAYER_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
-    l_cb_esc { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
-    r_cb_esc { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&kp ESC>; };
+    cb_esc_l { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
+    cb_esc_r { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&kp ESC>; };
     cb_bspc { layers = <LAYER_DEF LAYER_NAV LAYER_RMOD>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
     cb_repeat { layers = <LAYER_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
     cb_enter_l { layers = <LAYER_DEF LAYER_RMOD LAYER_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
@@ -253,150 +290,61 @@ NAME: NAME { \
 
     // LAYER_DEF STICKY MODIFIERS
     // COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP)
-    COMBO_HOLDTAP(cb_lctrl, 30, 31 P_LCTRL, ht_lctrl)
-    COMBO_HOLDTAP(cb_lctrl_lshft, 30, 31 P_LCTRL P_LSHFT, ht_lctrl_lshft)
-    COMBO_HOLDTAP(cb_rctrl, 30, 32 P_RCTRL, ht_rctrl)
-    COMBO_HOLDTAP(cb_rctrl_rshft, 30, 32 P_RCTRL P_RSHFT, ht_rctrl_rshft)
-    COMBO_HOLDTAP(cb_lgui, 30, 31 P_LGUI, ht_lgui)
-    COMBO_HOLDTAP(cb_lgui_lshft, 30, 31 P_LGUI P_LSHFT, ht_lgui_lshft)
-    COMBO_HOLDTAP(cb_rgui, 30, 32 P_RGUI, ht_rgui)
-    COMBO_HOLDTAP(cb_rgui_rshft, 30, 32 P_RGUI P_RSHFT, ht_rgui_rshft)
-    COMBO_HOLDTAP(cb_lalt, 30, 31 P_LALT, ht_lalt)
-    COMBO_HOLDTAP(cb_lalt_lshft, 30, 31 P_LALT P_LSHFT, ht_lalt_lshft)
-    COMBO_HOLDTAP(cb_ralt, 30, 32 P_RALT, ht_ralt)
-    COMBO_HOLDTAP(cb_ralt_rshft, 30, 32 P_RALT P_RSHFT, ht_ralt_rshft)
-    COMBO_HOLDTAP(cb_lshft, 30, 31 P_LSHFT, ht_lshft)
-    COMBO_HOLDTAP(cb_rshft, 30, 32 P_RSHFT, ht_rshft)
+    COMBO_HOLDTAP(cb_LC, 30, 31 p_LC, ht_LC)
+    COMBO_HOLDTAP(cb_LCS, 30, 31 p_LC p_LS, ht_LCS)
+    COMBO_HOLDTAP(cb_RC, 30, 32 p_RC, ht_RC)
+    COMBO_HOLDTAP(cb_RCS, 30, 32 p_RC p_RS, ht_RCS)
+    COMBO_HOLDTAP(cb_LG, 30, 31 p_LG, ht_LG)
+    COMBO_HOLDTAP(cb_LGS, 30, 31 p_LG p_LS, ht_LGS)
+    COMBO_HOLDTAP(cb_RG, 30, 32 p_RG, ht_RG)
+    COMBO_HOLDTAP(cb_RGS, 30, 32 p_RG p_RS, ht_RGS)
+    COMBO_HOLDTAP(cb_LA, 30, 31 p_LA, ht_LA)
+    COMBO_HOLDTAP(cb_LAS, 30, 31 p_LA p_LS, ht_LAS)
+    COMBO_HOLDTAP(cb_RA, 30, 32 p_RA, ht_RA)
+    COMBO_HOLDTAP(cb_RAS, 30, 32 p_RA p_RS, ht_RAS)
+    COMBO_HOLDTAP(cb_LS, 30, 31 p_LS, ht_LS)
+    COMBO_HOLDTAP(cb_RS, 30, 32 p_RS, ht_RS)
 
-    // LAYER_DEF CTRL
-    COMBO(cb_rctrl_p, 50, 32 P_RCTRL 3, <&kp RC(P)>)
-    COMBO(cb_rctrl_y, 50, 32 P_RCTRL 4, <&kp RC(Y)>)
+    // #define LOOP(start, end)                  \
+    // for (int i = (start); i < (end); i++) { \
+    //   printf("%d\n", i);                    \
+    // }
 
-    COMBO(cb_lctrl_f, 50, 31 P_LCTRL 5, <&kp LC(F)>)
-    COMBO(cb_lctrl_g, 50, 31 P_LCTRL 6, <&kp LC(G)>)
-    COMBO(cb_lctrl_c, 50, 31 P_LCTRL 7, <&kp LC(C)>)
-    COMBO(cb_lctrl_r, 50, 31 P_LCTRL 8, <&kp LC(R)>)
-    COMBO(cb_lctrl_l, 50, 31 P_LCTRL 9, <&kp LC(L)>)
-
-    COMBO(cb_rctrl_a, 50, 32 P_RCTRL 10, <&kp RC(A)>)
-    COMBO(cb_rctrl_o, 50, 32 P_RCTRL 11, <&kp RC(O)>)
-    COMBO(cb_rctrl_e, 50, 32 P_RCTRL 12, <&kp RC(E)>)
-    COMBO(cb_rctrl_u, 50, 32 P_RCTRL 13, <&kp RC(U)>)
-    COMBO(cb_rctrl_i, 50, 32 P_RCTRL 14, <&kp RC(I)>)
-
-    COMBO(cb_lctrl_d, 50, 31 P_LCTRL 15, <&kp LC(D)>)
-    COMBO(cb_lctrl_h, 50, 31 P_LCTRL 16, <&kp LC(H)>)
-    COMBO(cb_lctrl_t, 50, 31 P_LCTRL 17, <&kp LC(T)>)
-    COMBO(cb_lctrl_n, 50, 31 P_LCTRL 18, <&kp LC(N)>)
-    COMBO(cb_lctrl_s, 50, 31 P_LCTRL 19, <&kp LC(S)>)
-
-    COMBO(cb_rctrl_q, 50, 32 P_RCTRL 21, <&kp RC(Q)>)
-    COMBO(cb_rctrl_j, 50, 32 P_RCTRL 22, <&kp RC(J)>)
-    COMBO(cb_rctrl_k, 50, 32 P_RCTRL 23, <&kp RC(K)>)
-    COMBO(cb_rctrl_x, 50, 32 P_RCTRL 24, <&kp RC(X)>)
-
-    COMBO(cb_lctrl_b, 50, 31 P_LCTRL 25, <&kp LC(B)>)
-    COMBO(cb_lctrl_m, 50, 31 P_LCTRL 26, <&kp LC(M)>)
-    COMBO(cb_lctrl_w, 50, 31 P_LCTRL 27, <&kp LC(W)>)
-    COMBO(cb_lctrl_v, 50, 31 P_LCTRL 28, <&kp LC(V)>)
-    COMBO(cb_lctrl_z, 50, 31 P_LCTRL 29, <&kp LC(Z)>)
-
-    // LAYER_DEF SHFT
-    COMBO(cb_rshft_p, 50, 32 P_RSHFT 3, <&kp RS(P)>)
-    COMBO(cb_rshft_y, 50, 32 P_RSHFT 4, <&kp RS(Y)>)
-
-    COMBO(cb_lshft_f, 50, 31 P_LSHFT 5, <&kp LS(F)>)
-    COMBO(cb_lshft_g, 50, 31 P_LSHFT 6, <&kp LS(G)>)
-    COMBO(cb_lshft_c, 50, 31 P_LSHFT 7, <&kp LS(C)>)
-    COMBO(cb_lshft_r, 50, 31 P_LSHFT 8, <&kp LS(R)>)
-    COMBO(cb_lshft_l, 50, 31 P_LSHFT 9, <&kp LS(L)>)
-
-    COMBO(cb_rshft_a, 50, 32 P_RSHFT 10, <&kp RS(A)>)
-    COMBO(cb_rshft_o, 50, 32 P_RSHFT 11, <&kp RS(O)>)
-    COMBO(cb_rshft_e, 50, 32 P_RSHFT 12, <&kp RS(E)>)
-    COMBO(cb_rshft_u, 50, 32 P_RSHFT 13, <&kp RS(U)>)
-    COMBO(cb_rshft_i, 50, 32 P_RSHFT 14, <&kp RS(I)>)
-
-    COMBO(cb_lshft_d, 50, 31 P_LSHFT 15, <&kp LS(D)>)
-    COMBO(cb_lshft_h, 50, 31 P_LSHFT 16, <&kp LS(H)>)
-    COMBO(cb_lshft_t, 50, 31 P_LSHFT 17, <&kp LS(T)>)
-    COMBO(cb_lshft_n, 50, 31 P_LSHFT 18, <&kp LS(N)>)
-    COMBO(cb_lshft_s, 50, 31 P_LSHFT 19, <&kp LS(S)>)
-
-    COMBO(cb_rshft_q, 50, 32 P_RSHFT 21, <&kp RS(Q)>)
-    COMBO(cb_rshft_j, 50, 32 P_RSHFT 22, <&kp RS(J)>)
-    COMBO(cb_rshft_k, 50, 32 P_RSHFT 23, <&kp RS(K)>)
-    COMBO(cb_rshft_x, 50, 32 P_RSHFT 24, <&kp RS(X)>)
-
-    COMBO(cb_lshft_b, 50, 31 P_LSHFT 25, <&kp LS(B)>)
-    COMBO(cb_lshft_m, 50, 31 P_LSHFT 26, <&kp LS(M)>)
-    COMBO(cb_lshft_w, 50, 31 P_LSHFT 27, <&kp LS(W)>)
-    COMBO(cb_lshft_v, 50, 31 P_LSHFT 28, <&kp LS(V)>)
-    COMBO(cb_lshft_z, 50, 31 P_LSHFT 29, <&kp LS(Z)>)
-
-    // LAYER_DEF GUI
-    COMBO(cb_rgui_p, 50, 32 P_RGUI 3, <&kp RG(P)>)
-    COMBO(cb_rgui_y, 50, 32 P_RGUI 4, <&kp RG(Y)>)
-
-    COMBO(cb_lgui_f, 50, 31 P_LGUI 5, <&kp LG(F)>)
-    COMBO(cb_lgui_g, 50, 31 P_LGUI 6, <&kp LG(G)>)
-    COMBO(cb_lgui_c, 50, 31 P_LGUI 7, <&kp LG(C)>)
-    COMBO(cb_lgui_r, 50, 31 P_LGUI 8, <&kp LG(R)>)
-    COMBO(cb_lgui_l, 50, 31 P_LGUI 9, <&kp LG(L)>)
-
-    COMBO(cb_rgui_a, 50, 32 P_RGUI 10, <&kp RG(A)>)
-    COMBO(cb_rgui_o, 50, 32 P_RGUI 11, <&kp RG(O)>)
-    COMBO(cb_rgui_e, 50, 32 P_RGUI 12, <&kp RG(E)>)
-    COMBO(cb_rgui_u, 50, 32 P_RGUI 13, <&kp RG(U)>)
-    COMBO(cb_rgui_i, 50, 32 P_RGUI 14, <&kp RG(I)>)
-
-    COMBO(cb_lgui_d, 50, 31 P_LGUI 15, <&kp LG(D)>)
-    COMBO(cb_lgui_h, 50, 31 P_LGUI 16, <&kp LG(H)>)
-    COMBO(cb_lgui_t, 50, 31 P_LGUI 17, <&kp LG(T)>)
-    COMBO(cb_lgui_n, 50, 31 P_LGUI 18, <&kp LG(N)>)
-    COMBO(cb_lgui_s, 50, 31 P_LGUI 19, <&kp LG(S)>)
-
-    COMBO(cb_rgui_q, 50, 32 P_RGUI 21, <&kp RG(Q)>)
-    COMBO(cb_rgui_j, 50, 32 P_RGUI 22, <&kp RG(J)>)
-    COMBO(cb_rgui_k, 50, 32 P_RGUI 23, <&kp RG(K)>)
-    COMBO(cb_rgui_x, 50, 32 P_RGUI 24, <&kp RG(X)>)
-
-    COMBO(cb_lgui_b, 50, 31 P_LGUI 25, <&kp LG(B)>)
-    COMBO(cb_lgui_m, 50, 31 P_LGUI 26, <&kp LG(M)>)
-    COMBO(cb_lgui_w, 50, 31 P_LGUI 27, <&kp LG(W)>)
-    COMBO(cb_lgui_v, 50, 31 P_LGUI 28, <&kp LG(V)>)
-    COMBO(cb_lgui_z, 50, 31 P_LGUI 29, <&kp LG(Z)>)
+    COMBO_MOD(C)
+    COMBO_MOD(S)
+    COMBO_MOD(G)
+    COMBO_MOD(A)
 
     // LAYER_NUM CTRL
-    COMBO(cb_lctrl_0, 50, 30 P_LCTRL 15, <&kp LC(NUMBER_0)>)
-    COMBO(cb_lctrl_1, 50, 30 P_LCTRL 16, <&kp LC(NUMBER_1)>)
-    COMBO(cb_lctrl_2, 50, 30 P_LCTRL 17, <&kp LC(NUMBER_2)>)
-    COMBO(cb_lctrl_3, 50, 30 P_LCTRL 18, <&kp LC(NUMBER_3)>)
-    COMBO(cb_lctrl_4, 50, 30 P_LCTRL 19, <&kp LC(NUMBER_4)>)
-    COMBO(cb_lctrl_5, 50, 30 P_LCTRL 5, <&kp LC(NUMBER_5)>)
-    COMBO(cb_lctrl_6, 50, 30 P_LCTRL 6, <&kp LC(NUMBER_6)>)
-    COMBO(cb_lctrl_7, 50, 30 P_LCTRL 7, <&kp LC(NUMBER_7)>)
-    COMBO(cb_lctrl_8, 50, 30 P_LCTRL 8, <&kp LC(NUMBER_8)>)
-    COMBO(cb_lctrl_9, 50, 30 P_LCTRL 9, <&kp LC(NUMBER_9)>)
+    COMBO(cb_LC_0, 50, 30 p_LC 15, <&kp LC(NUMBER_0)>)
+    COMBO(cb_LC_1, 50, 30 p_LC 16, <&kp LC(NUMBER_1)>)
+    COMBO(cb_LC_2, 50, 30 p_LC 17, <&kp LC(NUMBER_2)>)
+    COMBO(cb_LC_3, 50, 30 p_LC 18, <&kp LC(NUMBER_3)>)
+    COMBO(cb_LC_4, 50, 30 p_LC 19, <&kp LC(NUMBER_4)>)
+    COMBO(cb_LC_5, 50, 30 p_LC 5, <&kp LC(NUMBER_5)>)
+    COMBO(cb_LC_6, 50, 30 p_LC 6, <&kp LC(NUMBER_6)>)
+    COMBO(cb_LC_7, 50, 30 p_LC 7, <&kp LC(NUMBER_7)>)
+    COMBO(cb_LC_8, 50, 30 p_LC 8, <&kp LC(NUMBER_8)>)
+    COMBO(cb_LC_9, 50, 30 p_LC 9, <&kp LC(NUMBER_9)>)
 
     // LAYER_NUM GUI
-    COMBO(cb_lgui_0, 50, 30 P_LGUI 15, <&kp LG(NUMBER_0)>)
-    COMBO(cb_lgui_1, 50, 30 P_LGUI 16, <&kp LG(NUMBER_1)>)
-    COMBO(cb_lgui_2, 50, 30 P_LGUI 17, <&kp LG(NUMBER_2)>)
-    COMBO(cb_lgui_3, 50, 30 P_LGUI 18, <&kp LG(NUMBER_3)>)
-    COMBO(cb_lgui_4, 50, 30 P_LGUI 19, <&kp LG(NUMBER_4)>)
-    COMBO(cb_lgui_5, 50, 30 P_LGUI 5, <&kp LG(NUMBER_5)>)
-    COMBO(cb_lgui_6, 50, 30 P_LGUI 6, <&kp LG(NUMBER_6)>)
-    COMBO(cb_lgui_7, 50, 30 P_LGUI 7, <&kp LG(NUMBER_7)>)
-    COMBO(cb_lgui_8, 50, 30 P_LGUI 8, <&kp LG(NUMBER_8)>)
-    COMBO(cb_lgui_9, 50, 30 P_LGUI 9, <&kp LG(NUMBER_9)>)
+    COMBO(cb_LG_0, 50, 30 p_LG 15, <&kp LG(NUMBER_0)>)
+    COMBO(cb_LG_1, 50, 30 p_LG 16, <&kp LG(NUMBER_1)>)
+    COMBO(cb_LG_2, 50, 30 p_LG 17, <&kp LG(NUMBER_2)>)
+    COMBO(cb_LG_3, 50, 30 p_LG 18, <&kp LG(NUMBER_3)>)
+    COMBO(cb_LG_4, 50, 30 p_LG 19, <&kp LG(NUMBER_4)>)
+    COMBO(cb_LG_5, 50, 30 p_LG 5, <&kp LG(NUMBER_5)>)
+    COMBO(cb_LG_6, 50, 30 p_LG 6, <&kp LG(NUMBER_6)>)
+    COMBO(cb_LG_7, 50, 30 p_LG 7, <&kp LG(NUMBER_7)>)
+    COMBO(cb_LG_8, 50, 30 p_LG 8, <&kp LG(NUMBER_8)>)
+    COMBO(cb_LG_9, 50, 30 p_LG 9, <&kp LG(NUMBER_9)>)
 
-    // sticky modifiers on layer num
+    // LAYER_NUM STICKY MODIFIERS
     // COMBO_HOLDTAP(NAME, TIME, POS, HT)
-    COMBO_HOLDTAP(cb_num_lctrl, 30, 30 P_LCTRL, ht_num_lctrl)
-    COMBO_HOLDTAP(cb_num_lshft, 30, 30 P_LSHFT, ht_num_lshft)
-    COMBO_HOLDTAP(cb_num_lgui, 30, 30 P_LGUI, ht_num_lgui)
-    COMBO_HOLDTAP(cb_num_lalt, 30, 30 P_LALT, ht_num_lalt)
+    COMBO_HOLDTAP(cb_num_LC, 30, 30 p_LC, ht_num_LC)
+    COMBO_HOLDTAP(cb_num_LS, 30, 30 p_LS, ht_num_LS)
+    COMBO_HOLDTAP(cb_num_LG, 30, 30 p_LG, ht_num_LG)
+    COMBO_HOLDTAP(cb_num_LA, 30, 30 p_LA, ht_num_LA)
   };
 
   conditional_layers {

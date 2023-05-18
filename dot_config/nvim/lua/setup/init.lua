@@ -691,6 +691,11 @@ local function livecommand()
   }
 end
 
+-------------------- echasnovski/mini.align
+local function align()
+  require('mini.align').setup()
+end
+
 return {
   colorizer = colorizer,
   project = project,
@@ -724,5 +729,6 @@ return {
   varioustextobjs = varioustextobjs,
   printer = printer,
   textobjchainmember = textobjchainmember,
-  starry = starry
+  starry = starry,
+  align = align
 }

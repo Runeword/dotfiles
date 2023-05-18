@@ -209,11 +209,27 @@ return {
   },
 
   {
-    'echasnovski/mini.nvim',
+    'echasnovski/mini.ai',
+    version = false,
+    config = function()
+      require('setup').ai()
+    end,
+  },
+
+  {
+    'echasnovski/mini.indentscope',
+    version = false,
     config = function()
       require('autocmd').indentscope()
       require('setup').indentscope()
-      require('setup').ai()
+    end,
+  },
+
+  {
+    'echasnovski/mini.align',
+    version = false,
+    config = function()
+      require('setup').align()
     end,
   },
 

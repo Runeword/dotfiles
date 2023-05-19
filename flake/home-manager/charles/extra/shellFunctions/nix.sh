@@ -22,6 +22,8 @@ nfu () {
   done
 }
 
+# "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir
+
 # This function allows the user to select a template from a specified Nix flake
 # then adds the template to .envrc so direnv can load it.
 # It exits the function if there are no templates or no template is selected.
@@ -34,7 +36,7 @@ ne () {
   # --no-info --cycle \
   selected_template=$(echo "$templates" | fzf \
   --multi --inline-info --cycle --height 70% \
-  --preview "bat --style=plain --color=always $flake_path/{}/flake.nix" \
+  --preview "bat --style=plain --color=always $(nix flake metadata $flake_path --json | jq -r .path)/{}/flake.nix" \
   --preview-window right,80%,noborder
 )
   [ -z "$selected_template" ] && return 1
@@ -43,6 +45,7 @@ ne () {
   direnv allow
 }
 
+# templates=$(nix flake metadata "$flake_path" --json | jq -r .path)
 # --preview '[ -f {} ] && bat --style=plain --color=always {}' \
 # chezmoi diff --reverse --color=true
 # nix-instantiate --parse templates/firebase/flake.nix | bat --language=nix

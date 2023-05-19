@@ -10,7 +10,7 @@
     mv = "mv -v";
     cp = "cp -v";
     mkdir = "mkdir -p";
-    xo = "xdg-open";
+    # xo = "xdg-open";
     oi = "kitty +kitten icat";
     n = "nvim";
     r = "trash";
@@ -23,6 +23,8 @@
     o = "xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";
     s = "source";
     ss = "src search";
+    xc = "xclip -selection c";
+    xp = "xclip -selection c -o";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-b () {
+bt () {
 bluetoothctl devices | fzf \
 --preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' \
 --preview-window right,65%,noborder \

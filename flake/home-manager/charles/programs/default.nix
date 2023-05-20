@@ -9,6 +9,7 @@
     ./tmux.nix
     ./neovim.nix
     ./starship.nix
+    ./broot.nix
     # ./xmonad.nix
     # ./wezterm.nix
   ];

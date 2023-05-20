@@ -10,7 +10,7 @@
     mv = "mv -v";
     md = "mkdir -p";
     cp = "cp -v";
-    b = "br";
+    b = "br -c :open_preview";
     oi = "kitty +kitten icat";
     n = "nvim";
     r = "trash";

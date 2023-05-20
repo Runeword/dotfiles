@@ -9,25 +9,52 @@
       from_shell = true;
     }
     {
-      key = "shift-tab";
-      internal = ":back";
+      key = "tab";
+      cmd = ":toggle_stage;:line_down";
     }
     {
-      key = "tab";
-      internal = ":focus";
+      key = "Backtab";
+      cmd = ":toggle_stage;:line_up";
+    }
+    {
+      key = "ctrl-l";
+      internal = ":clear_stage";
+    }
+    {
+      key = "down";
+      internal = ":line_down";
+    }
+    {
+      key = "up";
+      internal = ":line_up";
+    }
+    {
+      key = "ctrl-u";
+      internal = ":input_clear";
+    }
+    {
+      key = "ctrl-left";
+      internal = ":input_go_word_left";
+    }
+    {
+      key = "ctrl-right";
+      internal = ":input_go_word_right";
+    }
+    {
+      key = "ctrl-h";
+      internal = ":toggle_hidden";
+    }
+    {
+      key = "ctrl-x";
+      internal = ":toggle_perm";
+    }
+    {
+      key = "ctrl-d";
+      internal = ":toggle_dates";
+    }
+    {
+      key = "ctrl-p";
+      internal = ":toggle_preview";
     }
   ];
-
-  # { key = "alt-enter"; internal = ":open_leave"; }
-  # { key = "alt-enter"; internal = ":open_stay"; }
-  # { key = "alt-enter"; internal = ":focus"; }
-  # { invocation = "p"; execution = ":parent"; }
-  # { invocation = "edit"; shortcut = "e"; execution = "$EDITOR {file}" ; }
-  # { invocation = "create {subpath}"; execution = "$EDITOR {directory}/{subpath}"; }
-  # { invocation = "view"; execution = "less {file}"; }
-  # {
-  #   invocation = "blop {name}\\.{type}";
-  #   execution = "mkdir {parent}/{type} && ${pkgs.neovim}/bin/nvim {parent}/{type}/{name}.{type}";
-  #   from_shell = true;
-  # }
 }

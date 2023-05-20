@@ -8,9 +8,9 @@
     dua = "$HOME/.screenlayout/dual.sh";
     wa = "watch progress -q";
     mv = "mv -v";
+    md = "mkdir -p";
     cp = "cp -v";
-    mkdir = "mkdir -p";
-    # xo = "xdg-open";
+    b = "br";
     oi = "kitty +kitten icat";
     n = "nvim";
     r = "trash";
@@ -25,6 +25,7 @@
     ss = "src search";
     xc = "xclip -selection c";
     xp = "xclip -selection c -o";
+    # xo = "xdg-open";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";
@@ -45,7 +46,7 @@
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
     # ______________________________________ BLUETOOTH
-    bl = "bluetoothctl";
+    bc = "bluetoothctl";
     bh = "bluetoothctl help";
     bs = "bluetoothctl scan on";
     bo = "bluetoothctl power on ";

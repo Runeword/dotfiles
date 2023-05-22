@@ -28,12 +28,15 @@
     color2  = "#008f13";
     color3  = "#EF7C2B";
     # color4  = "#483dba";
-    color4  = "#5448d9";
+    # color4  = "#5448d9";
+    color4  = "#87AFD7";
     # color4  = "#516abd";
     # color5  = "#fc0384";
-    color5  = "#e0167f";
+    # color5  = "#e0167f";
+    color5  = "#FF00FF";
     # color6  = "#288199";
-    color6  = "#00b3cf";
+    # color6  = "#00b3cf";
+    color6  = "#00FFFF";
     color7  = "#ffffff";
 
     # color0  = "#000000";

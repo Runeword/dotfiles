@@ -7,16 +7,28 @@
   programs.broot.enable = true;
   programs.broot.enableBashIntegration = true;
 
-  programs.broot.settings.content_search_max_file_size = "10MB";
-  programs.broot.settings.modal = false;
-  programs.broot.settings.show_selection_mark = true;
-  programs.broot.settings.imports = lib.mkForce [];
+  programs.broot.settings = {
+    content_search_max_file_size = "10MB";
+    modal = false;
+    quit_on_last_cancel = true;
+    show_selection_mark = true;
+    imports = lib.mkForce [];
+    syntax_theme = "MochaDark"; # Github SolarizedDark SolarizedLight MochaDark OceanDark OceanLight
+  };
 
   programs.broot.settings.verbs = [
     {
       key = "enter";
       external = "cd {directory}";
+      # [ -d $filename ] && cd $filename || [ -f $filename ] && edit $filename
+      # [ -f "$filename" ] is true for files, [ -d "$dirname" ]
       from_shell = true;
+    }
+
+    {
+      key = "ctrl-d";
+      external = "dragon -x {file}";
+      leave_broot = false;
     }
 
     {
@@ -60,18 +72,8 @@
     }
 
     {
-      key = "ctrl-h";
-      internal = ":toggle_hidden";
-    }
-
-    {
-      key = "ctrl-x";
-      internal = ":toggle_perm";
-    }
-
-    {
-      key = "ctrl-d";
-      internal = ":toggle_dates";
+      key = "ctrl-i";
+      cmd = ":toggle_hidden;:toggle_perm;:toggle_dates";
     }
 
     {
@@ -267,9 +269,9 @@
     help_headers = "ansi(178) None";
     help_table_border = "ansi(239) None";
 
-    preview = "gray(20) gray(1)  / gray(18) gray(2)";
-    preview_title = "gray(23) gray(2)  / gray(21) gray(2)";
-    preview_line_number = "gray(12) gray(3)";
+    preview = "gray(20) gray(1)  / gray(18) Black";
+    preview_title = "gray(23) None  / gray(21) None";
+    preview_line_number = "gray(12) None";
     preview_match = "None ansi(29)";
 
     hex_null = "gray(8) None";

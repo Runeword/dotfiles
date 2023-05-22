@@ -16,6 +16,7 @@
     nix-init
     qmk
     xarchiver
+    xdragon
     wget
     doppler
     ripgrep
@@ -23,9 +24,6 @@
     neofetch
     onefetch
     fd
-    inputs.src-cli.packages.x86_64-linux.default
-    inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
-    # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
     inkscape
     vifm
     xclip
@@ -40,9 +38,14 @@
     bitwarden-cli
     google-chrome
     firefox
-    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
     neovim-nightly
     # python311
+
+    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
+
+    inputs.src-cli.packages.x86_64-linux.default
+    inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
+    # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
   ];
 
   home.sessionVariables = {
@@ -51,11 +54,6 @@
     # FZF_DEFAULT_OPTS="--bind tab:down shift-tab:up";
     _ZO_FZF_OPTS = "--reverse --height 40% --no-separator --border none"; # zoxide fzf options
   };
-
-  # home.sessionVariables = {
-  #   FOO = "Hello";
-  #   BAR = "${config.home.sessionVariables.FOO} World!";
-  # };
 
   nixpkgs.overlays = [
   ];

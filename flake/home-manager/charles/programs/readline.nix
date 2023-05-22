@@ -4,6 +4,7 @@
   programs.readline.variables.bind-tty-special-chars = false; # override default readline bindings
   programs.readline.variables.show-all-if-ambiguous = true; # show all tab-completion options on first tab
   programs.readline.variables.completion-ignore-case = true;
+  programs.readline.variables.colored-stats = true;
 
   programs.readline.bindings = {
     "\\C-i" = "menu-complete"; # tab

@@ -6,6 +6,7 @@
 }: {
   programs.broot.enable = true;
   programs.broot.enableBashIntegration = true;
+  programs.broot.enableFishIntegration = true;
 
   programs.broot.settings = {
     content_search_max_file_size = "10MB";

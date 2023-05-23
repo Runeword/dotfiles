@@ -16,21 +16,13 @@
     ./starship.nix
     ./broot.nix
     ./zoxide.nix
+    ./fzf.nix
     # ./xmonad.nix
     # ./wezterm.nix
   ];
 
   programs = {
     home-manager.enable = true;
-
-    fzf.enable = true;
-    fzf.enableBashIntegration = true;
-    fzf.enableFishIntegration = true;
-    fzf.defaultCommand = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules"; # --strip-cwd-prefix
-    # fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" "--bind tab:down" "--bind shift-tab:up" "--bind ctrl-space:select"];
-    fzf.defaultOptions = ["--reverse" "--no-separator" "--border none"];
-    fzf.fileWidgetCommand = config.programs.fzf.defaultCommand;
-    # fzf.fileWidgetOptions = config.programs.fzf.defaultOptions;
 
     bash.enable = true;
     bash.enableCompletion = true;

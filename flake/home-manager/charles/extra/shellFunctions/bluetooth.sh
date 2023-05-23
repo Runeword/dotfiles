@@ -7,7 +7,7 @@ bluetoothctl devices | fzf \
 --no-scrollbar \
 --header-first \
 --header='
-ACTION            FILTER
+ACTION            RELOAD/FILTER
 C-s  scan         A-a  all
 C-p  pair         A-p  paired
 C-c  connect      A-c  connected

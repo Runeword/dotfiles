@@ -15,6 +15,7 @@
     ./neovim.nix
     ./starship.nix
     ./broot.nix
+    ./zoxide.nix
     # ./xmonad.nix
     # ./wezterm.nix
   ];
@@ -36,11 +37,7 @@
     bash.bashrcExtra = builtins.readFile ../extra/.bashrc;
 
     fish.enable = true;
-
-    zoxide.enable = true;
-    zoxide.enableBashIntegration = true;
-    zoxide.enableFishIntegration = true;
-    zoxide.options = ["--no-cmd"];
+    fish.shellAbbrs = config.home.shellAliases;
 
     git.enable = true;
     git.userEmail = "60324746+Runeword@users.noreply.github.com";

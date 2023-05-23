@@ -11,11 +11,12 @@
     md = "mkdir -p";
     cp = "cp -v";
     b = "br -c :open_preview";
+    bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
+    l = "ls -A";
+    ll = "ls -hAlt";
     oi = "kitty +kitten icat";
     n = "nvim";
     r = "trash";
-    l = "ls -A";
-    ll = "ls -hAlt";
     cd = "__zoxide_z";
     ch = "__zoxide_zi";
     c = "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --inline-info --cycle --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
@@ -36,7 +37,9 @@
     nfs = "nix flake show";
     nfl = "nix flake lock";
     nr = "nix run";
-    ng = "nix-collect-garbage";
+    ng = "sudo nix-collect-garbage";
+    ngd = "nix-env --delete-generations +10";
+    ngl = "nix-env --list-generations";
 
     # ______________________________________ QMK
     qc = "(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";

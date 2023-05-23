@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./readline.nix
     ./alacritty.nix
@@ -14,37 +19,49 @@
     # ./wezterm.nix
   ];
 
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
 
-  programs.fzf.enable = true;
-  programs.fzf.enableBashIntegration = true;
-  programs.fzf.defaultCommand = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules"; # --strip-cwd-prefix
-  # programs.fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" "--bind tab:down" "--bind shift-tab:up" "--bind ctrl-space:select"];
-  programs.fzf.defaultOptions = [ "--reverse" "--no-separator" "--border none" ];
-  programs.fzf.fileWidgetCommand = config.programs.fzf.defaultCommand;
-  # programs.fzf.fileWidgetOptions = config.programs.fzf.defaultOptions;
+    fzf.enable = true;
+    fzf.enableBashIntegration = true;
+    fzf.enableFishIntegration = true;
+    fzf.defaultCommand = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules"; # --strip-cwd-prefix
+    # fzf.defaultOptions = [ "--reverse" "--height 40%" "--no-separator" "--border none" "--bind tab:down" "--bind shift-tab:up" "--bind ctrl-space:select"];
+    fzf.defaultOptions = ["--reverse" "--no-separator" "--border none"];
+    fzf.fileWidgetCommand = config.programs.fzf.defaultCommand;
+    # fzf.fileWidgetOptions = config.programs.fzf.defaultOptions;
 
-  programs.bash.enable = true;
-  programs.bash.enableCompletion = true;
-  programs.bash.bashrcExtra = builtins.readFile ../extra/.bashrc;
+    bash.enable = true;
+    bash.enableCompletion = true;
+    bash.bashrcExtra = builtins.readFile ../extra/.bashrc;
 
-  programs.zoxide.enable = true;
-  programs.zoxide.enableBashIntegration = true;
-  programs.zoxide.options = [ "--no-cmd" ];
+    fish.enable = true;
 
-  programs.git.enable = true;
-  programs.git.userEmail = "60324746+Runeword@users.noreply.github.com";
-  programs.git.userName = "Runeword";
-  # programs.git.delta.enable = true;
+    zoxide.enable = true;
+    zoxide.enableBashIntegration = true;
+    zoxide.enableFishIntegration = true;
+    zoxide.options = ["--no-cmd"];
 
-  programs.vscode.enable = true;
+    git.enable = true;
+    git.userEmail = "60324746+Runeword@users.noreply.github.com";
+    git.userName = "Runeword";
+    # git.delta.enable = true;
 
-  programs.jq.enable = true;
+    vscode.enable = true;
 
-  programs.direnv.enable = true;
-  programs.direnv.enableBashIntegration = true;
-  programs.direnv.nix-direnv.enable = true;
+    jq.enable = true;
 
-  programs.bat.enable = true;
-  programs.bat.config.theme = "Nord";
+    direnv.enable = true;
+    direnv.enableBashIntegration = true;
+    direnv.nix-direnv.enable = true;
+
+    bat.enable = true;
+    bat.config.theme = "Nord";
+
+    # navi.enable = true;
+    # navi.enableBashIntegration = true;
+
+    # skim.enable = true;
+    # skim.enableBashIntegration = true;
+  };
 }

@@ -48,12 +48,6 @@
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
   ];
 
-  home.sessionVariables = {
-    # FZF_DEFAULT_COMMAND="fd --strip-cwd-prefix --hidden --follow --exclude .git";
-    # FZF_CTRL_T_COMMAND="${config.home.sessionVariables.FZF_DEFAULT_COMMAND}";
-    # FZF_DEFAULT_OPTS="--bind tab:down shift-tab:up";
-  };
-
   nixpkgs.overlays = [
   ];
 }

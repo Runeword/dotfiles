@@ -15,6 +15,7 @@
     nurl
     nix-init
     qmk
+    gh
     xarchiver
     xdragon
     wget

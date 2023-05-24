@@ -1,5 +1,6 @@
 {
   home.shellAliases = {
+    # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
     shn = "shutdown now";
     chrome = "google-chrome-stable";
     pick = "colorpicker";
@@ -12,6 +13,7 @@
     cp = "cp -v";
     b = "br -c :open_preview";
     bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
+    bt = "__bluetooth";
     l = "ls -A";
     ll = "ls -hAltF";
     oi = "kitty +kitten icat";
@@ -24,6 +26,7 @@
     ss = "src search";
     xc = "xclip -selection c";
     xp = "xclip -selection c -o";
+    f = "feh --bg-fill";
     # xo = "xdg-open";
 
     # ______________________________________ NIX

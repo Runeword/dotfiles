@@ -21,12 +21,12 @@
     # ./wezterm.nix
   ];
 
-  # home.sessionVariables.LS_COLORS = builtins.replaceStrings ["01;"] ["00;"] (builtins.getEnv "LS_COLORS");
+  programs.dircolors.enable = true;
+  programs.dircolors.enableBashIntegration = true;
+  programs.dircolors.enableFishIntegration = true;
 
   programs = {
     home-manager.enable = true;
-
-    # dircolors.enable
 
     bash.enable = true;
     bash.enableCompletion = true;

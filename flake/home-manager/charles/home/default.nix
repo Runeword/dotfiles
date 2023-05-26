@@ -40,7 +40,7 @@
     google-chrome
     firefox
     neovim-nightly
-    # python311
+    python311
 
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
 

@@ -17,13 +17,10 @@
     ./broot.nix
     ./zoxide.nix
     ./fzf.nix
+    ./dircolors.nix
     # ./xmonad.nix
     # ./wezterm.nix
   ];
-
-  programs.dircolors.enable = true;
-  programs.dircolors.enableBashIntegration = true;
-  programs.dircolors.enableFishIntegration = true;
 
   programs = {
     home-manager.enable = true;

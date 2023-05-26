@@ -1,6 +1,3 @@
-# LS_COLORS=${LS_COLORS//01;/00;} ; export LS_COLORS # disable bold in the ls command output
-# LS_COLORS=$LS_COLORS:'di=0;34:' ; export LS_COLORS # edit one key of the ls command output
-
 bind -x '"\C-n":"nvim"'
 bind -x '"\C-b":"br -c :open_preview"'
 

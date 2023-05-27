@@ -5,7 +5,6 @@
   inputs,
   ...
 }: {
-  imports = [./shellAliases.nix];
   home.username = "charles";
   home.homeDirectory = "/home/charles";
   home.stateVersion = "22.11";

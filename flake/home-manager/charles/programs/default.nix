@@ -17,18 +17,13 @@
     ./broot.nix
     ./zoxide.nix
     ./fzf.nix
-    # ./dircolors.nix
+    ./bash
     ./fish
-    # ./xmonad.nix
-    # ./wezterm.nix
+    # ./dircolors.nix
   ];
 
   programs = {
     home-manager.enable = true;
-
-    bash.enable = true;
-    bash.enableCompletion = true;
-    bash.bashrcExtra = builtins.readFile ../extra/.bashrc;
 
     git.enable = true;
     git.userEmail = "60324746+Runeword@users.noreply.github.com";

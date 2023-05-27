@@ -14,8 +14,8 @@
     b = "br -c :open_preview";
     bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
     bt = "__bluetooth";
-    l = "command ls -A --color --width 90";
-    ll = "command ls -hAltF --color";
+    l = "command ls --almost-all --color --width 90";
+    ll = "command ls -lt --almost-all --color --human-readable --classify";
     oi = "kitty +kitten icat";
     n = "nvim";
     r = "trash";

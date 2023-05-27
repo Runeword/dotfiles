@@ -1,7 +1,6 @@
 { config, pkgs, lib, inputs, ... }: {
   imports = [
   ./modules
-  ./services
   ];
 
   fonts.fontconfig.enable = true;

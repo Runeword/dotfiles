@@ -8,9 +8,9 @@
     sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     dua = "$HOME/.screenlayout/dual.sh";
     wa = "watch progress -q";
-    mv = "mv -v";
-    md = "mkdir -p";
-    cp = "cp -v";
+    mv = "mv --verbose";
+    md = "mkdir --parents";
+    cp = "cp --recursive --verbose";
     b = "br -c :open_preview";
     bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
     bt = "__bluetooth";

@@ -17,7 +17,7 @@
     ./broot.nix
     ./zoxide.nix
     ./fzf.nix
-    ./dircolors.nix
+    # ./dircolors.nix
     ./fish
     # ./xmonad.nix
     # ./wezterm.nix

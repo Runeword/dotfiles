@@ -18,7 +18,8 @@
     ./zoxide.nix
     ./fzf.nix
     ./home.nix
-    ./home.shellAliases.nix
+    ./packages.nix
+    ./shellAliases.nix
     ./bash
     ./fish
     # ./dircolors.nix

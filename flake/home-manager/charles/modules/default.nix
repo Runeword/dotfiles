@@ -20,6 +20,7 @@
     ./home.nix
     ./packages.nix
     ./shellAliases.nix
+    ./nushell.nix
     ./git.nix
     ./bash
     ./fish

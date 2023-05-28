@@ -20,6 +20,7 @@
     ./home.nix
     ./packages.nix
     ./shellAliases.nix
+    ./git.nix
     ./bash
     ./fish
     # ./dircolors.nix
@@ -27,11 +28,6 @@
 
   programs = {
     home-manager.enable = true;
-
-    git.enable = true;
-    git.userEmail = "60324746+Runeword@users.noreply.github.com";
-    git.userName = "Runeword";
-    # git.delta.enable = true;
 
     vscode.enable = true;
 

@@ -6,11 +6,16 @@ __select_files() {
 }
 
 cha() {
-  files=$(chezmoi status | awk '{print $2}')
-  [ -z "$files" ] && return 1
+  if [ $# -gt 0 ]
+  then
+    selected_files=$@
+  else
+    files=$(chezmoi status | awk '{print $2}')
+    [ -z "$files" ] && return 1
 
-  selected_files=$(__select_files "$files")
-  [ -z "$selected_files" ] && return 1
+    selected_files=$(__select_files "$files")
+    [ -z "$selected_files" ] && return 1
+  fi
 
   for i in $selected_files; do
     chezmoi add $i
@@ -18,11 +23,16 @@ cha() {
 }
 
 chy() {
-  files=$(chezmoi status | awk '{print $2}')
-  [ -z "$files" ] && return 1
+  if [ $# -gt 0 ]
+  then
+    selected_files=$@
+  else
+    files=$(chezmoi status | awk '{print $2}')
+    [ -z "$files" ] && return 1
 
-  selected_files=$(__select_files "$files")
-  [ -z "$selected_files" ] && return 1
+    selected_files=$(__select_files "$files")
+    [ -z "$selected_files" ] && return 1
+  fi
 
   for i in $selected_files; do
     chezmoi apply $i
@@ -30,14 +40,19 @@ chy() {
 }
 
 chf() {
-  files=$(chezmoi managed)
-  [ -z "$files" ] && return 1
+  if [ $# -gt 0 ]
+  then
+    selected_files=$@
+  else
+    files=$(chezmoi managed)
+    [ -z "$files" ] && return 1
 
-  selected_files=$(echo "$files" | fzf \
-    --multi --inline-info --cycle --height 70% \
-    --preview '[ -f {} ] && bat --style=plain --color=always {}' \
-    --preview-window right,70%,noborder)
-  [ -z "$selected_files" ] && return 1
+    selected_files=$(echo "$files" | fzf \
+      --multi --inline-info --cycle --height 70% \
+      --preview '[ -f {} ] && bat --style=plain --color=always {}' \
+      --preview-window right,70%,noborder)
+          [ -z "$selected_files" ] && return 1
+  fi
 
   for i in $selected_files; do
     chezmoi forget $i

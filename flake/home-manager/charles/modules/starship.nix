@@ -2,6 +2,8 @@
   programs.starship.enable = true;
   programs.starship.enableBashIntegration = true;
   programs.starship.enableFishIntegration = true;
+  programs.starship.enableNushellIntegration = true;
+
   programs.starship.settings = {
     line_break.disabled = true;
     character.disabled = true;

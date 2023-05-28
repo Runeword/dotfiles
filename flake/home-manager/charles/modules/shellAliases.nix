@@ -72,46 +72,5 @@
     npg="npm ls -g --depth=0";
     npd="npm run dev";
     npi="npm i";
-
-    # ______________________________________ TMUX
-    t = "tmux";
-    tl = "tmux ls";
-    ta = "tmux attach -t";
-    td = "tmux detach";
-    tnw = "tmux new-window -n";
-    tkw = "tmux kill-window";
-    trw = "read -p 'Window name: ' name && tmux rename-window $name";
-    tns = "tmux new -s";
-    tks = "tmux kill-session";
-    trs = "read -p 'Session name: ' name && tmux rename-session $name";
-    tkk = "tmux kill-server";
-    tss = "/nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/save.sh";
-    trr = "[[ '$TERM_PROGRAM' == 'tmux' ]] && /nix/store/n229j84913c7y76h5m4fa1g18gqmgn09-tmuxplugin-resurrect-unstable-2022-05-01/share/tmux-plugins/resurrect/scripts/restore.sh";
-
-    # ______________________________________ GIT
-    gs = "git status";
-    gt = "git stash";
-    gtl = "git stash list";
-    gty = "git stash apply";
-    gpl = "git pull";
-    gp = "git push";
-    gpo = "git push origin";
-    gd = "git diff";
-    gdc = "git diff --cached";
-    gc = "git commit";
-    gcl = "git clone";
-    gcp = "git cherry-pick";
-    gk = "git checkout";
-    gk-- = "git checkout --";
-    gb = "git branch";
-    gbd = "git branch -d";
-    gl = "git log";
-    gm = "git merge";
-    grb = "git rebase";
-    grs = "git reset";
-    grs1 = "git reset HEAD~1";
-    gwa = "git worktree add";
-    gwl = "git worktree list";
-    gwr = "git worktree remove";
   };
 }

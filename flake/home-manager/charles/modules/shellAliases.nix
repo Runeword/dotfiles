@@ -11,7 +11,7 @@
     mv = "mv --verbose";
     md = "mkdir --parents";
     cp = "cp --recursive --verbose";
-    b = "br -c :open_preview";
+    b = "br"; # :open_preview
     bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
     bt = "__bluetooth";
     l = "command ls --almost-all --color --width 90";
@@ -33,6 +33,7 @@
     hs = "home-manager switch --flake $HOME/flake";
     hp = "home-manager packages | fzf --inline-info";
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
+    nb = "sudo nixos-rebuild boot --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfs = "nix flake show";

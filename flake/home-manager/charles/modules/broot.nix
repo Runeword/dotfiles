@@ -23,7 +23,7 @@
       external = ''
         if [ -d {file} ]
         then cd {file}
-        else nvim {file}
+        else $EDITOR {file}
         fi
       '';
       from_shell = true;

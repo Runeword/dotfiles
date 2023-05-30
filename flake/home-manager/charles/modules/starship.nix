@@ -7,17 +7,18 @@
   programs.starship.settings = {
     format = builtins.concatStringsSep "" [
       "$shell"
-      "$directory"
       "$nix_shell"
       "$all"
       "$git_branch"
+      "$directory"
     ];
 
     shell.disabled = false;
     shell.fish_indicator = "🐟";
     shell.bash_indicator = "";
 
-    directory.style = "white";
+    directory.style = "cyan";
+    directory.format = "[$path]($style)[$read_only]($read_only_style) ";
 
     line_break.disabled = true;
 
@@ -37,8 +38,9 @@
     nodejs.style = "white";
     nodejs.version_format = "$\{raw\}";
 
-    nix_shell.format = "[$symbol($name)]($style) ";
-    nix_shell.symbol = "❄️ ";
+    # nix_shell.format = "[$symbol($name)]($style) ";
+    nix_shell.format = "[$symbol]($style) ";
+    nix_shell.symbol = "❄️";
     nix_shell.style = "white";
   };
 }

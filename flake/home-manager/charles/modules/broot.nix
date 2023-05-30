@@ -20,9 +20,12 @@
   programs.broot.settings.verbs = [
     {
       key = "enter";
-      external = "cd {directory}";
-      # [ -d $filename ] && cd $filename || [ -f $filename ] && edit $filename
-      # [ -f "$filename" ] is true for files, [ -d "$dirname" ]
+      external = ''
+        if [ -d {file} ]
+        then cd {file}
+        else nvim {file}
+        fi
+      '';
       from_shell = true;
     }
 

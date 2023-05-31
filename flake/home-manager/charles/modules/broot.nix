@@ -27,6 +27,7 @@
         fi
       '';
       from_shell = true;
+      leave_broot = true;
     }
 
     {

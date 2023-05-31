@@ -21,6 +21,7 @@
     ./packages.nix
     ./shellAliases.nix
     ./nushell.nix
+    ./services.nix
     ./git.nix
     ./bash
     ./fish

@@ -14,11 +14,11 @@
     ];
 
     shell.disabled = false;
-    shell.fish_indicator = "🐟";
+    shell.fish_indicator = "🐟 ";
     shell.bash_indicator = "";
+    shell.format = "[$indicator]($style)";
 
     directory.style = "cyan";
-    directory.format = "[$path]($style)[$read_only]($read_only_style) ";
 
     line_break.disabled = true;
 

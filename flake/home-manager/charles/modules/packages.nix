@@ -9,6 +9,7 @@
     nurl
     nix-init
     qmk
+    erdtree
     gh
     xarchiver
     xdragon
@@ -26,6 +27,7 @@
     trashy
     rofi
     peek
+    tree
     gcc
     colorpicker
     realesrgan-ncnn-vulkan

@@ -2,6 +2,7 @@ local cmd = vim.cmd
 local lsp = vim.lsp
 local fn = vim.fn
 local diagnostic = vim.diagnostic
+local tbl_deep_extend = vim.tbl_deep_extend
 
 return function()
   -------------------- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
@@ -34,25 +35,17 @@ return function()
     end
   end
 
-  local lspconfig = require('lspconfig')
-  local lsp_flags = { debounce_text_changes = 0, }
-
-  lspconfig.tsserver.setup({
-    on_attach = on_attach_server(false),
-    autostart = true,
-    ['settings.format.enable'] = false,
-    flags = lsp_flags,
-  })
-
   local function set_config(user_opts)
-    local opts = {
+    local default_opts = {
       on_attach = on_attach_server(true),
       ['settings.format.enable'] = true,
-      flags = lsp_flags,
+      flags = { debounce_text_changes = 0, },
     }
-    return vim.tbl_deep_extend('force', opts, user_opts or {})
+    return tbl_deep_extend('force', default_opts, user_opts or {})
   end
 
+
+  local lspconfig = require('lspconfig')
 
   lspconfig['eslint'].setup(set_config())
   lspconfig['lua_ls'].setup(set_config())
@@ -60,65 +53,25 @@ return function()
   lspconfig['ccls'].setup(set_config())
   lspconfig['marksman'].setup(set_config())
   lspconfig['bashls'].setup(set_config())
+  lspconfig['vuels'].setup(set_config({ on_attach = on_attach_server(false), }))
 
-  lspconfig['vuels'].setup({
-    on_attach = on_attach_server(false),
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
+  lspconfig.tsserver.setup(set_config(
+    {
+      on_attach = on_attach_server(false),
+      autostart = true,
+      ['settings.format.enable'] = false,
+    }
+  ))
 
-  lspconfig['nil_ls'].setup({
-    on_attach = on_attach_server(true),
-    settings = {
-      ['nil'] = {
-        formatting = {
-          command = { 'alejandra', }, -- 'nixpkgs-fmt'
+  lspconfig['nil_ls'].setup(set_config(
+    {
+      settings = {
+        ['nil'] = {
+          formatting = {
+            command = { 'alejandra', }, -- 'nixpkgs-fmt'
+          },
         },
       },
-    },
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
+    }
+  ))
 end
-
--- if server.name == "volar" then
---   opts.on_attach = on_attach_volar
---   opts.settings = { format = { enable = false } }
---   opts.init_options = {
---     documentFeatures = {
---       documentColor = false,
---       documentFormatting = {
---         defaultPrintWidth = 100
---       },
---       documentSymbol = true,
---       foldingRange = true,
---       linkedEditingRange = true,
---       selectionRange = true
---     },
---     languageFeatures = {
---       callHierarchy = true,
---       codeAction = false,
---       codeLens = true,
---       completion = {
---         defaultAttrNameCase = "kebabCase",
---         defaultTagNameCase = "both"
---       },
---       definition = true,
---       diagnostics = true,
---       documentHighlight = true,
---       documentLink = true,
---       hover = true,
---       implementation = true,
---       references = true,
---       rename = true,
---       renameFileRefactoring = true,
---       schemaRequestService = true,
---       semanticTokens = false,
---       signatureHelp = true,
---       typeDefinition = true
---     },
---     typescript = {
---       serverPath = ""
---     }
---   }
--- end

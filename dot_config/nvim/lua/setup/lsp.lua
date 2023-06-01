@@ -44,45 +44,22 @@ return function()
     flags = lsp_flags,
   })
 
-  local opts = {
-    on_attach = on_attach_server(true),
-    ['settings.format.enable'] = false,
-    flags = lsp_flags,
-  }
+  local function set_config(user_opts)
+    local opts = {
+      on_attach = on_attach_server(true),
+      ['settings.format.enable'] = true,
+      flags = lsp_flags,
+    }
+    return vim.tbl_deep_extend('force', opts, user_opts or {})
+  end
 
-  lspconfig['eslint'].setup({
-    on_attach = on_attach_server(true),
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
 
-  -- lspconfig['lua_ls'].setup({
-  --   on_attach = on_attach_server(true),
-  --   ['settings.format.enable'] = true,
-  --   flags = lsp_flags,
-  -- })
-
-  lspconfig['lua_ls'].setup(
-    vim.tbl_deep_extend('force', opts, {} or {})
-  )
-
-  lspconfig['yamlls'].setup({
-    on_attach = on_attach_server(true),
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
-
-  lspconfig['bashls'].setup({
-    on_attach = on_attach_server(true),
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
-
-  lspconfig['ccls'].setup({
-    on_attach = on_attach_server(true),
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
+  lspconfig['eslint'].setup(set_config())
+  lspconfig['lua_ls'].setup(set_config())
+  lspconfig['yamlls'].setup(set_config())
+  lspconfig['ccls'].setup(set_config())
+  lspconfig['marksman'].setup(set_config())
+  lspconfig['bashls'].setup(set_config())
 
   lspconfig['vuels'].setup({
     on_attach = on_attach_server(false),
@@ -95,17 +72,10 @@ return function()
     settings = {
       ['nil'] = {
         formatting = {
-          -- command = { 'nixpkgs-fmt' },
-          command = { 'alejandra', },
+          command = { 'alejandra', }, -- 'nixpkgs-fmt'
         },
       },
     },
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
-
-  lspconfig['marksman'].setup({
-    on_attach = on_attach_server(true),
     ['settings.format.enable'] = true,
     flags = lsp_flags,
   })

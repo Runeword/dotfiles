@@ -29,7 +29,7 @@ return function()
   local function on_attach_server(documentFormattingProvider)
     return function(client, buffer)
       client.server_capabilities.documentFormattingProvider =
-      documentFormattingProvider
+          documentFormattingProvider
       require('mappings').lspconfig(buffer)
     end
   end
@@ -40,15 +40,15 @@ return function()
   lspconfig.tsserver.setup({
     on_attach = on_attach_server(false),
     autostart = true,
-    -- cmd = {
-    --   "typescript-language-server",
-    --   "--stdio",
-    --   "--tsserver-path",
-    --   "/nix/store/34pzigggq36pk9sz9a95bz53qlqx1mpx-typescript-4.9.4/lib/node_modules/typescript/lib/"
-    -- },
     ['settings.format.enable'] = false,
     flags = lsp_flags,
   })
+
+  local opts = {
+    on_attach = on_attach_server(true),
+    ['settings.format.enable'] = false,
+    flags = lsp_flags,
+  }
 
   lspconfig['eslint'].setup({
     on_attach = on_attach_server(true),
@@ -56,11 +56,15 @@ return function()
     flags = lsp_flags,
   })
 
-  lspconfig['lua_ls'].setup({
-    on_attach = on_attach_server(true),
-    ['settings.format.enable'] = true,
-    flags = lsp_flags,
-  })
+  -- lspconfig['lua_ls'].setup({
+  --   on_attach = on_attach_server(true),
+  --   ['settings.format.enable'] = true,
+  --   flags = lsp_flags,
+  -- })
+
+  lspconfig['lua_ls'].setup(
+    vim.tbl_deep_extend('force', opts, {} or {})
+  )
 
   lspconfig['yamlls'].setup({
     on_attach = on_attach_server(true),
@@ -92,7 +96,7 @@ return function()
       ['nil'] = {
         formatting = {
           -- command = { 'nixpkgs-fmt' },
-          command = { 'alejandra' },
+          command = { 'alejandra', },
         },
       },
     },

@@ -6,27 +6,33 @@ local tbl_deep_extend = vim.tbl_deep_extend
 
 return function()
   -------------------- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
-  diagnostic.config({
-    virtual_text = {
-      prefix = '',
-      spacing = 2,
-    },
-    signs = false,
-    float = {
-      header = '',
-      prefix = '',
-      format = function(diagnostic)
-        return string.format(
-          '󱞩 %s %s %s',
-          diagnostic.source,
-          diagnostic.user_data.lsp.code,
-          diagnostic.message
-        )
-      end,
-    },
-  })
+
+  diagnostic.config(
+    {
+      signs = false,
+
+      virtual_text = {
+        prefix = '',
+        spacing = 2,
+      },
+
+      float = {
+        header = '',
+        prefix = '',
+        format = function(diag)
+          return string.format(
+            '󱞩 %s %s %s',
+            diag.source,
+            diag.user_data.lsp.code,
+            diag.message
+          )
+        end,
+      },
+    }
+  )
 
   -------------------- neovim/nvim-lspconfig
+
   local function on_attach_server(documentFormattingProvider)
     return function(client, buffer)
       client.server_capabilities.documentFormattingProvider =
@@ -35,13 +41,13 @@ return function()
     end
   end
 
-  local function set_config(user_opts)
+  local function set_config(override_opts)
     local default_opts = {
       on_attach = on_attach_server(true),
       ['settings.format.enable'] = true,
       flags = { debounce_text_changes = 0, },
     }
-    return tbl_deep_extend('force', default_opts, user_opts or {})
+    return tbl_deep_extend('force', default_opts, override_opts or {})
   end
 
 

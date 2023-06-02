@@ -41,6 +41,8 @@ local function core()
 
   -- Edit
   map("i", "ù", "<Esc>`^u")
+  map("i", "<C-BS>", "<Esc>cvb")
+  map('n', '<BS>', 'ciw')
 
   -- Text objects
   map({ 'x', 'o' }, "a<Leader>", "ap")

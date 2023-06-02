@@ -19,7 +19,7 @@ C-d  disconnect    A-a  all
 C-r  remove
 C-u  untrust
 ' \
---bind='enter:execute(echo {2})+abort' \
+--bind='enter:execute-silent(echo {2} | xclip -selection clipboard)' \
 --bind='ctrl-s:execute-silent(bluetoothctl scan on&)' \
 --bind='ctrl-p:preview:bluetoothctl pair {2}' \
 --bind='ctrl-r:preview:bluetoothctl remove {2}' \
@@ -34,3 +34,4 @@ C-u  untrust
 --bind='alt-c:reload-sync(bluetoothctl devices Connected)' \
 --bind='alt-t:reload-sync(bluetoothctl devices Trusted)'
 }
+# --bind='enter:execute(echo {2})+abort' \

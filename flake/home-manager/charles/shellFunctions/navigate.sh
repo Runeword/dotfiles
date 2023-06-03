@@ -6,7 +6,15 @@ preview_cmd='if [ -d {} ]; then
                 bat --style=plain --color=always {};
              fi | head -$FZF_PREVIEW_LINES'
 
-o () {
+# preview_cmd() {
+#   if [ -d "$1" ]; then
+#     tree -Ca -L 2 "$1"
+#   else
+#     bat --style=plain --color=always "$1"
+#   fi | head -$FZF_PREVIEW_LINES
+# }
+
+open_file () {
   selected_files=$(
     fd --hidden \
       --follow \
@@ -18,8 +26,8 @@ o () {
       --exclude node_modules \
       --exclude .local \
       | fzf --multi --inline-info --cycle --height 70% --ansi \
-      --preview "$preview_cmd" \
-    --preview-window right,50%,noborder --no-scrollbar
+      --preview "$(preview_cmd {})" \
+      --preview-window right,50%,noborder --no-scrollbar
   )
   if [ -d $selected_files ]
   then cd $selected_files
@@ -29,6 +37,8 @@ o () {
   return 1
 }
 
+# --preview "$(preview_cmd {})" \
+# --preview "$preview_cmd" \
 # --preview 'if [ -d {} ]; then tree -Ca -L 2 {}; else bat --style=plain --color=always {}; fi | head -$FZF_PREVIEW_LINES' \
 # if [ -d {} ]; then tree -Ca -L 2 {}; else bat --style=plain --color=always {}; fi | head -$FZF_PREVIEW_LINES
 # --bind 'enter:execute(if [ -d {} ]; then cd {}; else $EDITOR {}; fi)+abort' \

@@ -25,12 +25,14 @@
     nil
     alejandra
     nixpkgs-fmt
+    shfmt
   ];
 
   # programs.neovim.plugins = with pkgs; [
   #   vimPlugins.nvim-treesitter
   #   vimPlugins.nvim-treesitter.withAllGrammars
   #   vimPlugins.nvim-treesitter-textobjects
+  #   vimPlugins.codeium-vim
   # ];
 
   # programs.neovim.extraConfig = "luafile ~/flake/config/nvim/init.lua";

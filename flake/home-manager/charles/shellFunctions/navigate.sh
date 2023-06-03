@@ -1,21 +1,23 @@
 #!/bin/sh
 
-preview_cmd='if [ -d {} ]; then
-                tree -Ca -L 2 {};
-             else
-                bat --style=plain --color=always {};
-             fi | head -$FZF_PREVIEW_LINES'
+# preview_cmd='if [ -d {} ]; then
+#                 tree -Ca -L 2 {};
+#              else
+#                 bat --style=plain --color=always {};
+#              fi | head -$FZF_PREVIEW_LINES'
 
-# preview_cmd() {
-#   if [ -d "$1" ]; then
-#     tree -Ca -L 2 "$1"
-#   else
-#     bat --style=plain --color=always "$1"
-#   fi | head -$FZF_PREVIEW_LINES
-# }
+__preview_cmd() {
+  if [ -d "$1" ]; then
+    tree -Ca -L 2 "$1"
+  else
+    bat --style=plain --color=always "$1"
+    fi | head -$FZF_PREVIEW_LINES
+  }
+
+export -f preview_cmd
 
 open_file () {
-  selected_files=$(
+    selected_files=$(
     fd --hidden \
       --follow \
       --no-ignore \
@@ -26,15 +28,17 @@ open_file () {
       --exclude node_modules \
       --exclude .local \
       | fzf --multi --inline-info --cycle --height 70% --ansi \
-      --preview "$(preview_cmd {})" \
+      --preview "__preview_cmd {}" \
       --preview-window right,50%,noborder --no-scrollbar
-  )
-  if [ -d $selected_files ]
-  then cd $selected_files
-  elif [ -f $selected_files ]
-  then $EDITOR $selected_files
-  fi
-  return 1
+    )
+
+    if [ -d $selected_files ]
+    then cd $selected_files
+    elif [ -f $selected_files ]
+    then $EDITOR $selected_files
+    fi
+
+    return 1
 }
 
 # --preview "$(preview_cmd {})" \

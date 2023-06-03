@@ -1,15 +1,5 @@
-local cmd = vim.cmd
-local fn = vim.fn
-local o = vim.o
-local g = vim.g
+local vim = vim
 local map = vim.keymap.set
-local call = vim.call
-local api = vim.api
-local feedkeys = vim.api.nvim_feedkeys
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local diagnostic = vim.diagnostic
-local lsp = vim.lsp
 local silent = { silent = true, }
 local expr = { expr = true, }
 local remap = { remap = true, }
@@ -21,8 +11,8 @@ local function core()
   -- map("n", ":", ";", { noremap = true })
 
   -- Help
-  cmd [[command! -nargs=1 -complete=help H h <args> | only]]
-  cmd [[cnoreabbrev <expr> h  getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
+  vim.cmd [[command! -nargs=1 -complete=help H h <args> | only]]
+  vim.cmd [[cnoreabbrev <expr> h  getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
 
   -- Terminal
   map('n', '<Leader>t', '<cmd>te<CR>')
@@ -42,7 +32,8 @@ local function core()
   -- Edit
   map('i', 'ù', '<Esc>`^u')
   map('i', '<C-BS>', '<Esc>cvb')
-  map('n', '<BS>', 'ciw')
+  map('n', '<BS>', '"_ciw')
+  map('n', '<space>', 'i <Esc>r')
 
   -- Text objects
   map({ 'x', 'o', }, 'a<Leader>', 'ap')
@@ -82,9 +73,9 @@ local function core()
   -- map({ 'x', 'o' }, '<Plug>(arpeggio-default:})', 'a}', remap)
   -- map({ 'x', 'o' }, '<Plug>(arpeggio-default:[)', 'i[', remap)
   -- map({ 'x', 'o' }, '<Plug>(arpeggio-default:])', 'a]', remap)
-  -- fn['arpeggio#map']('ox', '', 0, '()', 'a)')
-  -- fn['arpeggio#map']('ox', '', 0, '{}', 'a}')
-  -- fn['arpeggio#map']('ox', '', 0, '[]', 'a]')
+  -- vim.fn['arpeggio#map']('ox', '', 0, '()', 'a)')
+  -- vim.fn['arpeggio#map']('ox', '', 0, '{}', 'a}')
+  -- vim.fn['arpeggio#map']('ox', '', 0, '[]', 'a]')
 
   -- Operators
   map('x', 'p', '"_dP')
@@ -107,18 +98,18 @@ local function core()
   map('n', 'j', 'gj')
   map('n', '0', 'g0')
   map('n', '$', function()
-    fn.execute('normal! g$')
-    o.ve = ''
-    o.ve = 'all'
+    vim.fn.execute('normal! g$')
+    vim.o.ve = ''
+    vim.o.ve = 'all'
   end)
   map('n', '^', 'g^')
   map('n', '&', 'g^')
-  map('n', '(', function() fn.search('(') end)
-  map('n', ')', function() fn.search('(', 'b') end)
-  map('n', '[', function() fn.search('[') end)
-  map('n', ']', function() fn.search('[', 'b') end)
-  map('n', '{', function() fn.search('{') end)
-  map('n', '}', function() fn.search('{', 'b') end)
+  map('n', '(', function() vim.fn.search('(') end)
+  map('n', ')', function() vim.fn.search('(', 'b') end)
+  map('n', '[', function() vim.fn.search('[') end)
+  map('n', ']', function() vim.fn.search('[', 'b') end)
+  map('n', '{', function() vim.fn.search('{') end)
+  map('n', '}', function() vim.fn.search('{', 'b') end)
 
   -- Buffers
   map('n', '<Leader>w', '<C-w>', { noremap = true, })
@@ -226,9 +217,9 @@ end
 
 -------------------- inside/vim-search-pulse
 local function pulse()
-  g.vim_search_pulse_duration = 200
-  g.vim_search_pulse_mode = 'pattern'
-  g.vim_search_pulse_disable_auto_mappings = 1
+  vim.g.vim_search_pulse_duration = 200
+  vim.g.vim_search_pulse_mode = 'pattern'
+  vim.g.vim_search_pulse_disable_auto_mappings = 1
 
   map('n', 'n', 'n<Plug>Pulse', remap)
   map('n', 'N', 'N<Plug>Pulse', remap)
@@ -332,8 +323,8 @@ end
 
 -------------------- AndrewRadev/splitjoin.vim
 local function splitjoin()
-  g.splitjoin_split_mapping = ''
-  g.splitjoin_join_mapping = ''
+  vim.g.splitjoin_split_mapping = ''
+  vim.g.splitjoin_join_mapping = ''
   map('n', 'gj', '<cmd>silent SplitjoinJoin<CR>')
   map('n', 'gk', '<cmd>silent SplitjoinSplit<CR>')
 end
@@ -355,17 +346,17 @@ end
 
 -------------------- neovim/nvim-lspconfig
 local function lspconfig(buffer)
-  map('n', 'gd', lsp.buf.definition, { buffer = buffer, })
-  map('n', 'gr', lsp.buf.references, { buffer = buffer, })
-  map('n', '<Leader>f', lsp.buf.format, { buffer = buffer, })
+  map('n', 'gd', vim.lsp.buf.definition, { buffer = buffer, })
+  map('n', 'gr', vim.lsp.buf.references, { buffer = buffer, })
+  map('n', '<Leader>f', vim.lsp.buf.format, { buffer = buffer, })
   map('n', '<Leader>a', '<cmd>CodeActionMenu<Enter>', { buffer = buffer, })
-  -- map('n', '<leader>r', function() lsp.buf.rename(fn.input('New Name: ')) end, { buffer = buffer })
+  -- map('n', '<leader>r', function() lsp.buf.rename(vim.fn.input('New Name: ')) end, { buffer = buffer })
   -- map("n", '<ScrollWheelUp>', diagnostic.goto_prev, { buffer = buffer })
   -- map("n", '<ScrollWheelDown>', diagnostic.goto_next, { buffer = buffer })
-  map('n', '<PageUp>', diagnostic.goto_prev, { buffer = buffer, })
-  map('n', '<PageDown>', diagnostic.goto_next, { buffer = buffer, })
+  map('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
+  map('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
   -- map('n', '<Leader>l', diagnostic.setloclist, { noremap = true, silent = true })
-  map('n', '<Leader>x', diagnostic.setqflist, { noremap = true, silent = true, })
+  map('n', '<Leader>x', vim.diagnostic.setqflist, { noremap = true, silent = true, })
   -- lsp.buf.formatting_seq_sync(nil, 6000, { 'tsserver', 'html', 'cssls', 'vuels', 'eslint' })
   -- lsp.buf.formatting_seq_sync
 end
@@ -378,14 +369,14 @@ end
 -------------------- ms-jpq/coq_nvim
 local function coq()
   map('i', '<Esc>',
-    function() return fn.pumvisible() == 1 and '<C-e><Esc>`^' or '<Esc>`^' end,
+    function() return vim.fn.pumvisible() == 1 and '<C-e><Esc>`^' or '<Esc>`^' end,
     expr)
   map('i', '<C-c>',
-    function() return fn.pumvisible() == 1 and '<C-e><C-c>' or '<C-c>' end, expr)
+    function() return vim.fn.pumvisible() == 1 and '<C-e><C-c>' or '<C-c>' end, expr)
   map('i', '<Tab>',
-    function() return fn.pumvisible() == 1 and '<C-n>' or '<Tab>' end, expr)
+    function() return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>' end, expr)
   map('i', '<S-Tab>',
-    function() return fn.pumvisible() == 1 and '<C-p>' or '<BS>' end, expr)
+    function() return vim.fn.pumvisible() == 1 and '<C-p>' or '<BS>' end, expr)
   map('n', '<Leader>cs', function() require('coq').Snips('edit') end)
 end
 
@@ -405,8 +396,8 @@ local function hydra()
     mode = { 'n', 'x', },
     config = {
       hint = false,
-      on_enter = function() o.scrolloff = 9999 end,
-      on_exit = function() o.scrolloff = 5 end,
+      on_enter = function() vim.o.scrolloff = 9999 end,
+      on_exit = function() vim.o.scrolloff = 5 end,
     },
     heads = {
       { 'u', '5k', },
@@ -417,29 +408,29 @@ local function hydra()
   map({ 'n', 'x', }, '<Leader>e',
     function()
       scroll:activate()
-      fn.execute('normal! 5j')
+      vim.fn.execute('normal! 5j')
     end)
   map({ 'n', 'x', }, '<Leader>u',
     function()
       scroll:activate()
-      fn.execute('normal! 5k')
+      vim.fn.execute('normal! 5k')
     end)
 
-  local nextParagraphStart = function() fn.search(
+  local nextParagraphStart = function() vim.fn.search(
     [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW') end
-  local nextParagraphEnd = function() fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
+  local nextParagraphEnd = function() vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
       'sW') end
-  local prevParagraphStart = function() fn.search(
+  local prevParagraphStart = function() vim.fn.search(
     [[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb') end
-  local prevParagraphEnd = function() fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
+  local prevParagraphEnd = function() vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
       'sWb') end
 
   local jumpParagraph = require('hydra')({
     mode = { 'n', 'x', },
     config = {
       hint = false,
-      on_enter = function() o.scrolloff = 9999 end,
-      on_exit = function() o.scrolloff = 5 end,
+      on_enter = function() vim.o.scrolloff = 9999 end,
+      on_exit = function() vim.o.scrolloff = 5 end,
     },
     heads = {
       { '<Down>',   nextParagraphStart, },

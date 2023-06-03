@@ -33,10 +33,10 @@ return function()
 
   -------------------- neovim/nvim-lspconfig
 
-  local function on_attach_server(documentFormattingProvider)
+  local function on_attach_server(dfp)
     return function(client, buffer)
-      client.server_capabilities.documentFormattingProvider =
-          documentFormattingProvider
+      client.server_capabilities.documentFormattingProvider = dfp
+      client.server_capabilities.semanticTokensProvider = nil
       require('mappings').lspconfig(buffer)
     end
   end

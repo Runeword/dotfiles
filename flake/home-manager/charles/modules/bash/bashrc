@@ -1,5 +1,6 @@
 # disable bold in the ls command output
-LS_COLORS=${LS_COLORS//01;/00;} ; export LS_COLORS
+LS_COLORS=${LS_COLORS//01;/00;}
+export LS_COLORS
 
 bind -x '"\C-n":"nvim"'
 bind -x '"\C-o":"open_file"'
@@ -11,15 +12,15 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 2h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+if ! pgrep -u "$USER" ssh-agent >/dev/null; then
+	ssh-agent -t 2h >"$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 if [[ ! "$SSH_AUTH_SOCK" ]]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+	source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
 if [ -d $HOME/flake/home-manager/charles/shellFunctions ]; then
-    for file in $HOME/flake/home-manager/charles/shellFunctions/*; do
-        . "$file"
-    done
+	for file in $HOME/flake/home-manager/charles/shellFunctions/*; do
+		. "$file"
+	done
 fi

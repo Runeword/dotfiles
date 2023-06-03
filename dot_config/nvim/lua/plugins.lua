@@ -21,6 +21,13 @@ return {
   { 'kyazdani42/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
 
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('setup').nullls()
+    end,
+  },
+
   -- {
   --   'luukvbaal/statuscol.nvim',
   --   config = function()
@@ -237,6 +244,7 @@ return {
   { 'windwp/nvim-ts-autotag', },
   { 'itchyny/vim-cursorword', },
   { 'tommcdo/vim-exchange', },
+  -- { 'Exafunction/codeium.vim', },
 
   {
     'numToStr/Comment.nvim',
@@ -283,7 +291,7 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons' },
+    dependencies = { 'kyazdani42/nvim-web-devicons', },
     config = require('setup.lualine'),
   },
 

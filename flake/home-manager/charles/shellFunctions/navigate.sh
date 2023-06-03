@@ -1,44 +1,38 @@
 #!/bin/sh
 
-# preview_cmd='if [ -d {} ]; then
-#                 tree -Ca -L 2 {};
-#              else
-#                 bat --style=plain --color=always {};
-#              fi | head -$FZF_PREVIEW_LINES'
-
 __preview_cmd() {
-  if [ -d "$1" ]; then
-    tree -Ca -L 2 "$1"
-  else
-    bat --style=plain --color=always "$1"
-    fi | head -$FZF_PREVIEW_LINES
-  }
+	if [ -d "$1" ]; then
+		tree -Ca -L 2 "$1"
+	else
+		bat --style=plain --color=always "$1"
+	fi | head -$FZF_PREVIEW_LINES
+}
 
-export -f preview_cmd
+export -f __preview_cmd
 
-open_file () {
-    selected_files=$(
-    fd --hidden \
-      --follow \
-      --no-ignore \
-      --exclude .git \
-      --exclude flake-inputs \
-      --exclude .nix-defexpr \
-      --exclude .nix-profile \
-      --exclude node_modules \
-      --exclude .local \
-      | fzf --multi --inline-info --cycle --height 70% --ansi \
-      --preview "__preview_cmd {}" \
-      --preview-window right,50%,noborder --no-scrollbar
-    )
+open_file() {
+	selected_files=$(
+		fd --hidden \
+			--follow \
+			--no-ignore \
+			--exclude .git \
+			--exclude flake-inputs \
+			--exclude .nix-defexpr \
+			--exclude .nix-profile \
+			--exclude node_modules \
+			--exclude .local |
+			fzf --multi --inline-info --cycle --height 70% --ansi \
+				--preview "__preview_cmd {}" \
+				--preview-window right,50%,noborder --no-scrollbar
+	)
 
-    if [ -d $selected_files ]
-    then cd $selected_files
-    elif [ -f $selected_files ]
-    then $EDITOR $selected_files
-    fi
+	if [ -d $selected_files ]; then
+		cd $selected_files
+	elif [ -f $selected_files ]; then
+		$EDITOR $selected_files
+	fi
 
-    return 1
+	return 1
 }
 
 # --preview "$(preview_cmd {})" \

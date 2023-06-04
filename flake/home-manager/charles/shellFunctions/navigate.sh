@@ -5,36 +5,44 @@ __preview_cmd() {
 		tree -Ca -L 2 "$1"
 	else
 		bat --style=plain --color=always "$1"
-	fi | head -$FZF_PREVIEW_LINES
+	fi | head -n $FZF_PREVIEW_LINES
 }
 
 export -f __preview_cmd
 
 open_file() {
 	selected_files=$(
-		fd --hidden \
-			--follow \
-			--no-ignore \
-			--exclude .git \
-			--exclude flake-inputs \
-			--exclude .nix-defexpr \
-			--exclude .nix-profile \
-			--exclude node_modules \
-			--exclude .local |
+		find . \
+			\( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
+			-o -path './.nix-profile' -o -path './node_modules' -o -path './.local' \) \
+			-prune -o -printf '%P\n' |
 			fzf --multi --inline-info --cycle --height 70% --ansi \
 				--preview "__preview_cmd {}" \
 				--preview-window right,50%,noborder --no-scrollbar
 	)
 
-	if [ -d $selected_files ]; then
+	if [ -z "$selected_files" ]; then
+		return 1
+	elif [ -d $selected_files ]; then
 		cd $selected_files
+		history -s "cd $selected_files"
 	elif [ -f $selected_files ]; then
 		$EDITOR $selected_files
+		history -s "$EDITOR $selected_files"
 	fi
 
 	return 1
 }
 
+# fd --hidden \
+#   --follow \
+#   --no-ignore \
+#   --exclude .git \
+#   --exclude flake-inputs \
+#   --exclude .nix-defexpr \
+#   --exclude .nix-profile \
+#   --exclude node_modules \
+#   --exclude .local |
 # --preview "$(preview_cmd {})" \
 # --preview "$preview_cmd" \
 # --preview 'if [ -d {} ]; then tree -Ca -L 2 {}; else bat --style=plain --color=always {}; fi | head -$FZF_PREVIEW_LINES' \

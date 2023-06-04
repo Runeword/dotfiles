@@ -225,7 +225,8 @@ local function pulse()
   map('n', 'N', 'N<Plug>Pulse', remap)
   map('n', '*', '*<Plug>Pulse', remap)
   map('n', '#', '#<Plug>Pulse', remap)
-  map('c', '<Enter>', 'search_pulse#PulseFirst()', { silent = true, expr = true, })
+  map('c', '<Enter>', 'search_pulse#PulseFirst()',
+    { silent = true, expr = true, })
 end
 
 local function comment()
@@ -356,7 +357,8 @@ local function lspconfig(buffer)
   map('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
   map('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
   -- map('n', '<Leader>l', diagnostic.setloclist, { noremap = true, silent = true })
-  map('n', '<Leader>x', vim.diagnostic.setqflist, { noremap = true, silent = true, })
+  map('n', '<Leader>x', vim.diagnostic.setqflist,
+    { noremap = true, silent = true, })
   -- lsp.buf.formatting_seq_sync(nil, 6000, { 'tsserver', 'html', 'cssls', 'vuels', 'eslint' })
   -- lsp.buf.formatting_seq_sync
 end
@@ -372,7 +374,8 @@ local function coq()
     function() return vim.fn.pumvisible() == 1 and '<C-e><Esc>`^' or '<Esc>`^' end,
     expr)
   map('i', '<C-c>',
-    function() return vim.fn.pumvisible() == 1 and '<C-e><C-c>' or '<C-c>' end, expr)
+    function() return vim.fn.pumvisible() == 1 and '<C-e><C-c>' or '<C-c>' end,
+    expr)
   map('i', '<Tab>',
     function() return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>' end, expr)
   map('i', '<S-Tab>',
@@ -416,14 +419,22 @@ local function hydra()
       vim.fn.execute('normal! 5k')
     end)
 
-  local nextParagraphStart = function() vim.fn.search(
-    [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW') end
-  local nextParagraphEnd = function() vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
-      'sW') end
-  local prevParagraphStart = function() vim.fn.search(
-    [[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb') end
-  local prevParagraphEnd = function() vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
-      'sWb') end
+  local nextParagraphStart = function()
+    vim.fn.search(
+      [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW')
+  end
+  local nextParagraphEnd = function()
+    vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
+      'sW')
+  end
+  local prevParagraphStart = function()
+    vim.fn.search(
+      [[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
+  end
+  local prevParagraphEnd = function()
+    vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
+      'sWb')
+  end
 
   local jumpParagraph = require('hydra')({
     mode = { 'n', 'x', },
@@ -499,9 +510,9 @@ local function dap()
       { 'o',     require('dap').step_out, },
       { 'b',     require('dap').toggle_breakpoint, },
       { 'r',     require('dap').repl.open, },
-      { 'q',     nil,                             { exit = true, }, },
-      { '<Esc>', nil,                             { exit = true, }, },
-      { '<C-s>', nil,                             { exit = true, }, },
+      { 'q',     nil,                              { exit = true, }, },
+      { '<Esc>', nil,                              { exit = true, }, },
+      { '<C-s>', nil,                              { exit = true, }, },
     },
   })
 

@@ -16,6 +16,7 @@ open_file() {
 			\( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
 			-o -path './.nix-profile' -o -path './node_modules' -o -path './.local' \) \
 			-prune -o -printf '%P\n' |
+			tail -n +2 |
 			fzf --multi --inline-info --cycle --height 70% --ansi \
 				--preview "__preview_cmd {}" \
 				--preview-window right,50%,noborder --no-scrollbar

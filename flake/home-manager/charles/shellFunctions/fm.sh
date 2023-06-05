@@ -1,4 +1,4 @@
- #!/bin/sh
+#!/bin/sh
 
 __preview_cmd() {
 	if [ -d "$1" ]; then
@@ -10,7 +10,7 @@ __preview_cmd() {
 
 export -f __preview_cmd
 
-op() {
+open_file() {
 	selected_files=$(
 		find . \
 			\( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
@@ -25,7 +25,7 @@ op() {
 	num_lines=$(echo "$selected_files" | wc -l)
 
 	if [ -z "$selected_files" ]; then
-	  return 1
+	  return 0
 	elif [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
 		history -s "cd $selected_files"
 		cd $selected_files
@@ -33,6 +33,4 @@ op() {
 		history -s $EDITOR $selected_files
     $EDITOR $selected_files
 	fi
-
-	return 1
 }

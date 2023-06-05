@@ -4,14 +4,14 @@ __preview_cmd() {
 	if [ -d "$1" ]; then
 		tree -Ca -L 2 "$1"
 	else
-		bat --style=plain --color=always "$1"
+		command -v bat >/dev/null && bat --style=plain --color=always "$1" || cat "$1"
 	fi | head -n $FZF_PREVIEW_LINES
 }
 
 export -f __preview_cmd
 
-open_file() {
-	selected_files=$(
+__open_file() {
+	local selected_files=$(
 		find . \
 			\( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
 			-o -path './.nix-profile' -o -path './node_modules' -o -path './.local' \) \
@@ -22,7 +22,7 @@ open_file() {
 				--preview-window right,50%,noborder --no-scrollbar
 	)
 
-	num_lines=$(echo "$selected_files" | wc -l)
+	local num_lines=$(echo "$selected_files" | wc -l)
 
 	if [ -z "$selected_files" ]; then
 		return 0
@@ -30,7 +30,7 @@ open_file() {
 		history -s "cd $selected_files"
 		cd $selected_files
 	else
-		history -s $EDITOR $selected_files
+		history -s "$EDITOR $selected_files"
 		$EDITOR $selected_files
 	fi
 }

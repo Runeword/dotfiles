@@ -1,16 +1,16 @@
 #!/bin/sh
 
-__preview_cmd() {
-	if [ -d "$1" ]; then
-		tree -Ca -L 2 "$1"
-	else
-		command -v bat >/dev/null && bat --style=plain --color=always "$1" || cat "$1"
-	fi | head -n $FZF_PREVIEW_LINES
-}
-
-export -f __preview_cmd
-
 __open_file() {
+	# Preview of focussed file or folder
+	__preview_cmd() {
+		if [ -d "$1" ]; then
+			tree -Ca -L 2 "$1"
+		else
+			command -v bat >/dev/null && bat --style=plain --color=always "$1" || cat "$1"
+		fi | head -n $FZF_PREVIEW_LINES
+	}
+
+	# Find then select file(s)
 	local selected_files=$(
 		find . \
 			\( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
@@ -18,19 +18,32 @@ __open_file() {
 			-prune -o -printf '%P\n' |
 			tail -n +2 |
 			fzf --multi --inline-info --cycle --height 70% --ansi \
-				--preview "__preview_cmd {}" \
+				--preview "$(typeset -f __preview_cmd); __preview_cmd {}" \
 				--preview-window right,50%,noborder --no-scrollbar
 	)
 
+	# If no selection do nothing
+	[ -z "$selected_files" ] && return 0
+
+	# Check the number of selected files
 	local num_lines=$(echo "$selected_files" | wc -l)
 
-	if [ -z "$selected_files" ]; then
-		return 0
-	elif [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
-		history -s "cd $selected_files"
-		cd $selected_files
-	else
-		history -s "$EDITOR $selected_files"
-		$EDITOR $selected_files
+	# If single directory selection
+	if [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
+		# Then cd into it
+		if cd $selected_files; then
+			history -s "cd $selected_files"
+		else
+			echo "Error: could not change directory to $selected_files"
+			return 1
+		fi
+	else # If single or multiple file selection
+		# Then open it in editor
+		if $EDITOR $selected_files; then
+			history -s "$EDITOR $selected_files"
+		else
+			echo "Error: could not open $selected_files with $EDITOR"
+			return 1
+		fi
 	fi
 }

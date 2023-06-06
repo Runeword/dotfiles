@@ -19,7 +19,7 @@ __open_file() {
 			tail -n +2 |
 			fzf --multi --inline-info --cycle --height 70% --ansi \
 				--preview "$(typeset -f __preview_cmd); __preview_cmd {}" \
-				--preview-window right,50%,noborder --no-scrollbar
+				--preview-window right,50%,border-left --no-scrollbar
 	)
 
 	# If no selection do nothing

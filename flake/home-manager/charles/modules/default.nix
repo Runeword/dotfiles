@@ -18,6 +18,7 @@
     ./zoxide.nix
     ./fzf.nix
     ./home.nix
+    ./bat.nix
     ./packages.nix
     ./shellAliases.nix
     ./nushell.nix
@@ -38,9 +39,6 @@
     direnv.enable = true;
     direnv.enableBashIntegration = true;
     direnv.nix-direnv.enable = true;
-
-    bat.enable = true;
-    bat.config.theme = "Nord";
 
     # navi.enable = true;
     # navi.enableBashIntegration = true;

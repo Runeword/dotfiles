@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  bat.enable = true;
-  bat.config.theme = "dracula";
-  bat.themes = {
+  programs.bat.enable = true;
+  programs.bat.config.theme = "dracula";
+  programs.bat.themes = {
     dracula = builtins.readFile (pkgs.fetchFromGitHub {
         owner = "dracula";
         repo = "sublime";

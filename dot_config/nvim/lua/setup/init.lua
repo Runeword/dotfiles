@@ -678,22 +678,22 @@ local function coq()
     clients = {
       snippets = {
         weight_adjust = 2,
-        short_name = '⚡',
+        short_name = 'snip',
       },
       tree_sitter = {
-        short_name = '侮',
+        short_name = 'tree',
       },
       lsp = {
-        short_name = '',
+        short_name = 'lsp',
       },
       paths = {
-        short_name = '',
+        short_name = 'path',
       },
       tmux = {
-        short_name = '里',
+        short_name = 'tmux',
       },
       buffers = {
-        short_name = 'זּ',
+        short_name = 'buff',
       },
     },
   }

@@ -18,7 +18,6 @@
     ./zoxide.nix
     ./fzf.nix
     ./home.nix
-    ./bat.nix
     ./packages.nix
     ./shellAliases.nix
     ./nushell.nix
@@ -26,6 +25,7 @@
     ./git.nix
     ./bash
     ./fish
+    ./bat
     # ./dircolors.nix
   ];
 

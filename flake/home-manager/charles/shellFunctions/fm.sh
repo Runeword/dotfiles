@@ -7,7 +7,7 @@ __open_file() {
 			tree -Ca -L 2 "$1"
 		else
 			command -v bat >/dev/null && bat --style=plain --color=always "$1" || cat "$1"
-		fi | head -n $FZF_PREVIEW_LINES
+		fi
 	}
 
 	# Find then select file(s)

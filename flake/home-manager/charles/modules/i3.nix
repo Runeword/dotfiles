@@ -16,7 +16,7 @@
     };
 
     startup = [
-      { command = "feh --bg-fill ~/.config/Skin\\ The\\ Remixes.png"; always = false; notification = false; }
+      { command = "feh --bg-fill ~/.config/SkinTheRemixes.png"; always = false; notification = false; }
     ];
 
     assigns = {

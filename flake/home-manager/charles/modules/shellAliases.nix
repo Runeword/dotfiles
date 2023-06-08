@@ -3,10 +3,11 @@
     # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
     shn = "shutdown now";
     chrome = "google-chrome-stable";
-    pick = "colorpicker";
+    # color = "colorpicker"; # X11
+    color = "hyprpicker -a";
     win = "xprop WM_CLASS";
-    sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
-    dua = "$HOME/.screenlayout/dual.sh";
+    # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
+    # dua = "$HOME/.screenlayout/dual.sh";
     wa = "watch progress -q";
     mv = "mv --verbose";
     md = "mkdir --parents";
@@ -29,7 +30,10 @@
     ss = "src search";
     xc = "xclip -selection c";
     xp = "xclip -selection c -o";
-    f = "feh --bg-fill";
+    hm = "hyprctl monitors";
+    hhp = "hyprctl hyprpaper preload";
+    hhw = "hyprctl hyprpaper wallpaper";
+    # f = "feh --bg-fill";
     # xo = "xdg-open";
 
     # ______________________________________ NIX

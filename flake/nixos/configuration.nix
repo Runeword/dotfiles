@@ -6,7 +6,32 @@
     experimental-features = nix-command flakes
   '';
 
+  security.polkit.enable = true;
   services.fwupd.enable = true;
+
+  services.xserver = {
+      enable = true;
+      # layout = "us";
+      # xkbVariant = "altgr-intl";
+      # videosDrivers = ["nvidia"];
+      displayManager.gdm = {
+          enable = true;
+          wayland = true;
+      };
+  };
+
+  hardware = {
+      opengl.enable = true;
+      nvidia.modesetting.enable = true;
+  };
+
+# hyprland
+  programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+      xwayland.hidpi = true;
+      nvidiaPatches = true;
+  };
 
   virtualisation.docker.enable = true;
 
@@ -70,35 +95,35 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  services.xserver = {
-    enable = true;
-    layout = "us";
-    xkbVariant = "altgr-intl";
-    # autoRepeatInterval = 150;
-    # autoRepeatDelay = 25;
-
-    # i3
-    # displayManager.lightdm.enable = true;
-    # displayManager.defaultSession = "none+i3";
-    # desktopManager.xterm.enable = false;
-    # windowManager.i3.enable = true;
-
-    # # xfce
-    # displayManager.defaultSession = "xfce";
-    # desktopManager.xterm.enable = false;
-    # desktopManager.xfce = {
-    #   enable = true;
-    # };
-
-    # xfce + i3
-    windowManager.i3.enable = true;
-    displayManager.defaultSession = "xfce+i3";
-    desktopManager.xterm.enable = false;
-    desktopManager.xfce = {
-      enable = true;
-      noDesktop = true;
-      enableXfwm = false;
-    };
+  # services.xserver = {
+  #   enable = true;
+  #   layout = "us";
+  #   xkbVariant = "altgr-intl";
+  #   # autoRepeatInterval = 150;
+  #   # autoRepeatDelay = 25;
+  #
+  #   # i3
+  #   # displayManager.lightdm.enable = true;
+  #   # displayManager.defaultSession = "none+i3";
+  #   # desktopManager.xterm.enable = false;
+  #   # windowManager.i3.enable = true;
+  #
+  #   # # xfce
+  #   # displayManager.defaultSession = "xfce";
+  #   # desktopManager.xterm.enable = false;
+  #   # desktopManager.xfce = {
+  #   #   enable = true;
+  #   # };
+  #
+  #   # xfce + i3
+  #   windowManager.i3.enable = true;
+  #   displayManager.defaultSession = "xfce+i3";
+  #   desktopManager.xterm.enable = false;
+  #   desktopManager.xfce = {
+  #     enable = true;
+  #     noDesktop = true;
+  #     enableXfwm = false;
+  #   };
 
     # # xfce + xmonad
     # desktopManager.xterm.enable = false;
@@ -114,7 +139,7 @@
     #     ];
     # displayManager.defaultSession = "xfce+xmonad";
 
-    };
+    # };
 
   # printing
   services.printing.enable = true;

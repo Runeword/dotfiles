@@ -8,8 +8,9 @@
     ./readline.nix
     ./alacritty.nix
     ./kitty.nix
-    ./i3.nix
-    ./feh.nix
+    # ./i3.nix # X11
+    # ./feh.nix # X11
+    # ./picom.nix # X11
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix
@@ -21,13 +22,21 @@
     ./packages.nix
     ./shellAliases.nix
     ./nushell.nix
-    ./services.nix
     ./git.nix
     ./bash
     ./fish
     ./bat
+    ./eww
     # ./dircolors.nix
   ];
+
+  # wayland.windowManager.sway = {
+  #   enable = true;
+  #   config = rec {
+  #     modifier = "Mod4";
+  #     terminal = "kitty";
+  #   };
+  # };
 
   programs = {
     home-manager.enable = true;
@@ -39,11 +48,5 @@
     direnv.enable = true;
     direnv.enableBashIntegration = true;
     direnv.nix-direnv.enable = true;
-
-    # navi.enable = true;
-    # navi.enableBashIntegration = true;
-
-    # skim.enable = true;
-    # skim.enableBashIntegration = true;
   };
 }

@@ -23,4 +23,5 @@
   # home.sessionVariables.FZF_DEFAULT_COMMAND = "fd --strip-cwd-prefix --hidden --follow --exclude .git";
   # home.sessionVariables.FZF_CTRL_T_COMMAND = "${config.home.sessionVariables.FZF_DEFAULT_COMMAND}";
   # home.sessionVariables.FZF_DEFAULT_OPTS = "--bind tab:down shift-tab:up";
+  # home.sessionVariables.FZF_DEFAULT_OPTS = "--reverse --no-separator --border none";
 }

@@ -17,7 +17,7 @@ __open_file() {
 			-o -path './.nix-profile' -o -path './node_modules' -o -path './.local' \) \
 			-prune -o -printf '%P\n' |
 			tail -n +2 |
-			fzf --multi --inline-info --cycle --height 70% --ansi \
+			fzf --multi --inline-info --reverse --no-separator --border none --cycle --height 70% --ansi \
 				--preview "$(typeset -f __preview_cmd); __preview_cmd {}" \
 				--preview-window right,50%,border-left --no-scrollbar
 	)

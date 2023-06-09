@@ -17,7 +17,7 @@
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
-      specialArgs.inputs = inputs;
+      specialArgs = { inherit inputs; };
 
       modules = [
         nixos/configuration.nix

@@ -12,7 +12,7 @@ nfu() {
 
 	selected_inputs=$(
 		echo "$inputs" | fzf \
-			--multi --inline-info --cycle --height 70% \
+			--multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
 			--preview-window right,75%,noborder
 	)
@@ -37,7 +37,7 @@ ne() {
 	# --no-info --cycle \
 	selected_template=$(
 		echo "$templates" | fzf \
-			--multi --inline-info --cycle --height 70% \
+			--multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
 			--preview "bat --style=plain --color=always $(nix flake metadata $flake_path --json | jq -r .path)/{}/flake.nix" \
 			--preview-window right,80%,noborder
 	)

@@ -5,6 +5,9 @@ __bluetooth() {
 		--preview 'bluetoothctl info {2} | head -$FZF_PREVIEW_LINES' \
 		--preview-window right,65%,noborder \
 		--no-scrollbar \
+    --reverse \
+    --no-separator \
+    --border none \
 		--header-first \
 		--header='
 C-s  scan devices 

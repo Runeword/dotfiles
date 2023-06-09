@@ -10,6 +10,8 @@
     nix-init
     qmk
     erdtree
+    wluma
+    brillo
     gh
     xarchiver
     xdragon
@@ -22,14 +24,18 @@
     fd
     inkscape
     vifm
-    xclip
     chezmoi
     trashy
     rofi
     peek
     tree
     gcc
-    colorpicker
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+    # xclip # X11
+    # colorpicker # X11
     realesrgan-ncnn-vulkan
     slack
     bitwarden-cli
@@ -37,6 +43,10 @@
     firefox
     neovim-nightly
     python311
+    hyprpaper
+    hyprpicker
+    wl-clipboard
+    imv
 
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
 

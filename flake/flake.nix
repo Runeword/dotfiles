@@ -11,13 +11,13 @@
   inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   inputs.nixified-ai.url = "github:nixified-ai/flake";
 
-  outputs = { self, ... } @ inputs: let
+  outputs = {self, ...} @ inputs: let
     system = "x86_64-linux";
   in {
     nixosConfigurations.charles = inputs.nixpkgs.lib.nixosSystem {
       inherit system;
 
-      specialArgs = { inherit inputs; };
+      specialArgs = {inherit inputs;};
 
       modules = [
         nixos/configuration.nix
@@ -35,7 +35,7 @@
         ];
       };
 
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {inherit inputs;};
 
       modules = [
         home-manager/charles

@@ -28,6 +28,7 @@ local function core()
   -- Save
   map('n', '<C-s>', '<cmd>silent write<CR>')
   map('i', '<C-s>', '<Esc>`^<cmd>silent write<CR>')
+  map('x', '<C-s>', '<Esc><cmd>silent write<CR>')
 
   -- Edit
   map('i', 'ù', '<Esc>`^u')

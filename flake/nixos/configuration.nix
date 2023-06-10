@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -10,27 +13,27 @@
   services.fwupd.enable = true;
 
   services.xserver = {
+    enable = true;
+    # layout = "us";
+    # xkbVariant = "altgr-intl";
+    # videosDrivers = ["nvidia"];
+    displayManager.gdm = {
       enable = true;
-      # layout = "us";
-      # xkbVariant = "altgr-intl";
-      # videosDrivers = ["nvidia"];
-      displayManager.gdm = {
-          enable = true;
-          wayland = true;
-      };
+      wayland = true;
+    };
   };
 
   hardware = {
-      opengl.enable = true;
-      nvidia.modesetting.enable = true;
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
   };
 
-# hyprland
   programs.hyprland = {
-      enable = true;
-      xwayland.enable = true;
-      xwayland.hidpi = true;
-      nvidiaPatches = true;
+    enable = true;
+    xwayland.enable = true;
+    xwayland.hidpi = true;
+    nvidiaPatches = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
 
   virtualisation.docker.enable = true;
@@ -125,28 +128,28 @@
   #     enableXfwm = false;
   #   };
 
-    # # xfce + xmonad
-    # desktopManager.xterm.enable = false;
-    # desktopManager.xfce.enable = true;
-    # desktopManager.xfce.noDesktop = true;
-    # desktopManager.xfce.enableXfwm = false;
-    # windowManager.xmonad.enable = true;
-    # windowManager.xmonad.enableContribAndExtras = true;
-    # windowManager.xmonad.extraPackages = haskellPackages : [
-    #       haskellPackages.xmonad-contrib
-    #       haskellPackages.xmonad-extras
-    #       haskellPackages.xmonad
-    #     ];
-    # displayManager.defaultSession = "xfce+xmonad";
+  # # xfce + xmonad
+  # desktopManager.xterm.enable = false;
+  # desktopManager.xfce.enable = true;
+  # desktopManager.xfce.noDesktop = true;
+  # desktopManager.xfce.enableXfwm = false;
+  # windowManager.xmonad.enable = true;
+  # windowManager.xmonad.enableContribAndExtras = true;
+  # windowManager.xmonad.extraPackages = haskellPackages : [
+  #       haskellPackages.xmonad-contrib
+  #       haskellPackages.xmonad-extras
+  #       haskellPackages.xmonad
+  #     ];
+  # displayManager.defaultSession = "xfce+xmonad";
 
-    # };
+  # };
 
   # printing
   services.printing.enable = true;
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
   services.avahi.openFirewall = true;
-  services.printing.drivers = [ pkgs.epson-escpr ];
+  services.printing.drivers = [pkgs.epson-escpr];
 
   # sound
   sound.enable = true;
@@ -169,7 +172,7 @@
   users.users.charles = {
     isNormalUser = true;
     description = "charles";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     # packages = with pkgs; [
     # ];
   };
@@ -201,5 +204,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
 }

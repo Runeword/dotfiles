@@ -46,7 +46,7 @@
     nfs = "nix flake show";
     nfl = "nix flake lock";
     nr = "nix run";
-    ng = "sudo nix-collect-garbage";
+    ng = "sudo nix-collect-garbage -d";
     ngd = "nix-env --delete-generations +10";
     ngl = "nix-env --list-generations";
 

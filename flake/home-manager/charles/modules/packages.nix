@@ -6,11 +6,9 @@
   home.packages = with pkgs; [
     htop
     unzip
-    nurl
     nix-init
     qmk
     erdtree
-    wluma
     brillo
     gh
     xarchiver
@@ -27,15 +25,9 @@
     chezmoi
     trashy
     rofi
-    peek
+    kooha
     tree
     gcc
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    # xclip # X11
-    # colorpicker # X11
     realesrgan-ncnn-vulkan
     slack
     bitwarden-cli
@@ -43,10 +35,25 @@
     firefox
     neovim-nightly
     python311
+
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+
+    # Wayland
     hyprpaper
     hyprpicker
     wl-clipboard
+    wev
     imv
+    wluma
+
+    # # X11
+    # peek
+    # xclip
+    # colorpicker
+    # xev
 
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
 

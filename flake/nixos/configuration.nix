@@ -59,6 +59,8 @@
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
   '';
 
+  services.clight.enable = true;
+
   # Bluetooth
   # services.blueman.enable = true;
   hardware.bluetooth.enable = true;
@@ -69,6 +71,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  location.provider = "manual";
+  location.longitude = 2.352222;
+  location.latitude = 48.856613;
 
   # Setup keyfile
   boot.initrd.secrets."/crypto_keyfile.bin" = null;

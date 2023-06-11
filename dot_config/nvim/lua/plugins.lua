@@ -244,6 +244,7 @@ return {
   { 'windwp/nvim-ts-autotag', },
   { 'itchyny/vim-cursorword', },
   { 'tommcdo/vim-exchange', },
+  { 'jghauser/mkdir.nvim', },
   -- { 'Exafunction/codeium.vim', },
 
   {

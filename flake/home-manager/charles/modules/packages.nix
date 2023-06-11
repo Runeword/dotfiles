@@ -47,7 +47,6 @@
     wl-clipboard
     wev
     imv
-    wluma
 
     # # X11
     # peek

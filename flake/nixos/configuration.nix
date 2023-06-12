@@ -42,9 +42,9 @@
   # environment.systemPackages = with pkgs; [
   environment.systemPackages = [
     # xfce.thunar-archive-plugin
-    pkgs.xfce.xfce4-volumed-pulse
-    pkgs.pavucontrol
-    pkgs.pasystray
+    # pkgs.xfce.xfce4-volumed-pulse
+    # pkgs.pavucontrol
+    # pkgs.pasystray
     pkgs.gnome.gnome-disk-utility
     # system-config-printer
     pkgs.gparted
@@ -160,22 +160,21 @@
   services.avahi.openFirewall = true;
   services.printing.drivers = [pkgs.epson-escpr];
 
-  # sound
+  # audio
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
+  services.pipewire.enable = true;
+  services.pipewire.audio.enable = true;
+  # services.pipewire.wireplumber.enable = true;
+  # lowLatency.enable = true;
+  # alsa.enable = true;
+  # alsa.support32Bit = true;
+  # pulse.enable = true;
+  # jack.enable = true;
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  # # use the example session manager (no others are packaged yet so this is enabled by default,
+  # # no need to redefine it in your config for now)
+  # media-session.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.charles = {

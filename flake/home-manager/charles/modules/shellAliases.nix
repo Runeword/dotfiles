@@ -23,9 +23,6 @@
     o = "__open_file";
     ".." = "cd ..";
     "..." = "cd ../..";
-    # c = "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --inline-info --cycle --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
-    # ca = "cd $(fd --type directory --hidden --follow --no-ignore | fzf --cycle)";
-    # o = "xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";
     s = "source";
     ss = "src search";
     xc = "xclip -selection c";

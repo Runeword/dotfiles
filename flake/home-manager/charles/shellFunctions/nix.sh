@@ -4,13 +4,13 @@
 # then updates the selected inputs.
 # It exits the function if there are no inputs or no inputs are selected.
 __update_flake_inputs() {
-	flake_path=$1
-	flake_metadata=$(nix flake metadata "$flake_path" --json)
+	local flake_path=$1
+	local flake_metadata=$(nix flake metadata "$flake_path" --json)
 
-	inputs=$(echo "$flake_metadata" | jq --raw-output '.locks.nodes.root.inputs | keys[]')
+	local inputs=$(echo "$flake_metadata" | jq --raw-output '.locks.nodes.root.inputs | keys[]')
 	[ -z "$inputs" ] && return 1
 
-	selected_inputs=$(
+	local selected_inputs=$(
 		echo "$inputs" | fzf \
 			--multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
@@ -29,13 +29,13 @@ __update_flake_inputs() {
 # then adds the template to .envrc so direnv can load it.
 # It exits the function if there are no templates or no template is selected.
 __use_flake_template() {
-	flake_path=$1
+	local flake_path=$1
 
-	templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
+	local templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
 	[ -z "$templates" ] && return 1
 
 	# --no-info --cycle \
-	selected_template=$(
+	local selected_template=$(
 		echo "$templates" | fzf \
 			--multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
 			--preview "bat --style=plain --color=always $(nix flake metadata $flake_path --json | jq -r .path)/{}/flake.nix" \

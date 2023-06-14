@@ -35,6 +35,7 @@
     firefox
     neovim-nightly
     python311
+    # socat
 
     xfce.thunar
     xfce.thunar-volman

@@ -3,8 +3,8 @@
 # This function prompts the user to select one or more inputs from a specified Nix flake
 # then updates the selected inputs.
 # It exits the function if there are no inputs or no inputs are selected.
-nfu() {
-	flake_path=${1-$HOME/flake}
+__update_flake_inputs() {
+	flake_path=$1
 	flake_metadata=$(nix flake metadata "$flake_path" --json)
 
 	inputs=$(echo "$flake_metadata" | jq --raw-output '.locks.nodes.root.inputs | keys[]')

@@ -5,6 +5,7 @@
   ...
 }: {
   nix.package = pkgs.nixFlakes;
+
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -39,16 +40,16 @@
   virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  # environment.systemPackages = with pkgs; [
-  environment.systemPackages = [
+
+  environment.systemPackages = with pkgs; [
     # xfce.thunar-archive-plugin
-    # pkgs.xfce.xfce4-volumed-pulse
-    # pkgs.pasystray
-    # pkgs.pavucontrol
-    pkgs.gnome.gnome-disk-utility
+    # xfce.xfce4-volumed-pulse
+    # pasystray
+    # pavucontrol
     # system-config-printer
-    pkgs.gparted
-    pkgs.vim
+    gnome.gnome-disk-utility
+    gparted
+    vim
   ];
 
   services.udev.enable = true;
@@ -62,11 +63,11 @@
   services.clight.enable = true;
 
   # Bluetooth
-  # services.blueman.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   # hardware.bluetooth.settings.General.Experimental = true;
   # hardware.bluetooth.settings.General.KernelExperimental = true;
+  # services.blueman.enable = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -83,16 +84,16 @@
   boot.initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".keyFile = "/crypto_keyfile.bin";
   boot.initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".device = "/dev/disk/by-uuid/4609397c-29de-4fbc-88d8-e42b0736ec6e";
 
+  # network
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  # Enables wireless support via wpa_supplicant.
-  # networking.wireless.enable = true;
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   programs.ssh.startAgent = true;
 
+  # locale
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -172,11 +173,7 @@
   # services.pipewire.alsa.support32Bit = true;
   # services.pipewire.jack.enable = true;
 
-  # # use the example session manager (no others are packaged yet so this is enabled by default,
-  # # no need to redefine it in your config for now)
-  # media-session.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # user
   users.users.charles = {
     isNormalUser = true;
     description = "charles";
@@ -184,9 +181,6 @@
     # packages = with pkgs; [
     # ];
   };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

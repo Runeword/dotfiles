@@ -3,12 +3,11 @@
 
   programs.waybar.settings = {
     mainBar = {
-      # margin = "5 20 5 20";
       margin = "20 2 20 2";
       layer = "top";
       position = "left";
       output = ["eDP-1" "HDMI-A-1"];
-      spacing = 4;
+      spacing = 20;
       exclusive = true;
       fixed-center = true;
       passthrough = false;
@@ -16,21 +15,20 @@
       ipc = false;
       modules-left = ["tray"];
       modules-center = ["wlr/workspaces" "wlr/taskbar"];
-      modules-right = ["temperature"];
+      modules-right = [];
+
+      "tray" = {
+        "icon-size" = 30;
+        "spacing" = 10;
+      };
 
       "wlr/taskbar" = {
         "format" = "{icon}";
-        "icon-size" = 25;
-        "spacing" = 70;
+        "icon-size" = 30;
         "icon-theme" = "Numix-Circle";
         "tooltip-format" = "{title}";
-        "on-click" = "activate";
         "on-click-middle" = "close";
-      };
-
-      "tray" = {
-        "icon-size" = 25;
-        "spacing" = 10;
+        "on-click" = "activate";
       };
 
       "wlr/workspaces" = {
@@ -46,8 +44,6 @@
   programs.waybar.style = ''
     window#waybar {
       background-color: transparent;
-      font-family: Source Code Pro;
-      color: #ffffff;
     }
   '';
 }

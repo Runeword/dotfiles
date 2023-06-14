@@ -39,6 +39,7 @@
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     nb = "sudo nixos-rebuild boot --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
+    nfu = "__update_flake_inputs $HOME/flake";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfs = "nix flake show";
     nfl = "nix flake lock";

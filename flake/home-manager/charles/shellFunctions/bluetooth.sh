@@ -10,7 +10,7 @@ __bluetooth() {
     --border none \
 		--header-first \
 		--header='
-C-s  scan devices 
+C-s  scan for devices 
 C-w  bluetoothctl power on/off
 C-b  bluetooth on/off
 

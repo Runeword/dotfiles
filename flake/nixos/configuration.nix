@@ -43,8 +43,8 @@
   environment.systemPackages = [
     # xfce.thunar-archive-plugin
     # pkgs.xfce.xfce4-volumed-pulse
-    # pkgs.pavucontrol
     # pkgs.pasystray
+    # pkgs.pavucontrol
     pkgs.gnome.gnome-disk-utility
     # system-config-printer
     pkgs.gparted
@@ -165,12 +165,12 @@
   security.rtkit.enable = true;
   services.pipewire.enable = true;
   services.pipewire.audio.enable = true;
-  # services.pipewire.wireplumber.enable = true;
-  # lowLatency.enable = true;
-  # alsa.enable = true;
-  # alsa.support32Bit = true;
-  # pulse.enable = true;
-  # jack.enable = true;
+  services.pipewire.wireplumber.enable = true;
+  # services.pipewire.lowLatency.enable = true;
+  # services.pipewire.pulse.enable = true;
+  # services.pipewire.alsa.enable = true;
+  # services.pipewire.alsa.support32Bit = true;
+  # services.pipewire.jack.enable = true;
 
   # # use the example session manager (no others are packaged yet so this is enabled by default,
   # # no need to redefine it in your config for now)

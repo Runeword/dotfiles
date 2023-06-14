@@ -26,7 +26,8 @@
     ./bash
     ./fish
     ./bat
-    ./eww
+    ./waybar
+    # ./eww
     # ./dircolors.nix
   ];
 

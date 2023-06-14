@@ -28,8 +28,8 @@ __update_flake_inputs() {
 # This function allows the user to select a template from a specified Nix flake
 # then adds the template to .envrc so direnv can load it.
 # It exits the function if there are no templates or no template is selected.
-ne() {
-	flake_path=${1-$HOME/templates}
+__use_flake_template() {
+	flake_path=$1
 
 	templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
 	[ -z "$templates" ] && return 1

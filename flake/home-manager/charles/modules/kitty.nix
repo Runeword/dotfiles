@@ -14,6 +14,7 @@
     bold_italic_font = "SauceCodePro NF SemiBold Italic";
     font_size = "21.0";
     confirm_os_window_close = 0;
+    window_padding_width = 4;
     # theme
     background_opacity = "0.7";
     background = "#000000";

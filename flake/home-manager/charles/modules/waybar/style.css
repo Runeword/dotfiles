@@ -1,0 +1,33 @@
+* {
+  all: unset;
+  font-family: "SauceCodePro Nerd Font Mono";
+}
+
+#taskbar button {
+  color: rgba(255, 255, 255, 0);
+  font-size: 18px;
+  padding: 0px 0px 0px 0px;
+  transition: color 0.3s ease-out;
+}
+
+#taskbar button image {
+  -gtk-icon-transform: scale(0.7);
+  transition: -gtk-icon-transform 0.1s ease;
+}
+
+#taskbar button:hover {
+  color: rgba(255, 255, 255, 0.4);
+  /* box-shadow: inset 0 -3px #ffffff; */
+}
+
+#taskbar button:hover image {
+  -gtk-icon-transform: scale(1);
+}
+
+#taskbar button.active {
+  color: rgba(255, 255, 255, 1);
+}
+
+#taskbar button.active image {
+  -gtk-icon-transform: scale(1);
+}

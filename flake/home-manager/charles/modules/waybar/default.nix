@@ -3,7 +3,7 @@
 
   programs.waybar.settings = {
     mainBar = {
-      margin = "0 12 0 0";
+      margin = "0 10 10 0";
       layer = "top";
       position = "left";
       output = ["eDP-1" "HDMI-A-1"];

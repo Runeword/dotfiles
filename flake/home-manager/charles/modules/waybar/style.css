@@ -4,21 +4,23 @@
 }
 
 #taskbar {
-  /* background: rgba(0, 0, 0, 0.4); */
-  border-radius: 0px 20px 20px 0px;
-  /* background: linear-gradient(to right, rgba(0, 0, 0, 0) , rgba(0, 0, 0, 1)); */
-  animation: gradient 15s ease infinite;
+  /* background: rgba(0, 0, 0, 0.8); */
+  border-radius: 20px 10px 10px 20px;
+  border-right: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(63,94,251,1), rgba(63,94,251,1), rgba(63,94,251,1), rgba(0,0,0,0)) 1 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1));
 }
 
 #taskbar button {
-  border-width: 0px 0px 0px 3px;
+  border-left: 3px;
   border-style: solid;
   border-color: transparent;
   /* transition: box-shadow 0.3s ease-out; */
   padding: 10px 10px 10px 10px;
   /* box-shadow: inset 2px 0 rgba(255, 255, 255, 0); */
-  /* background: rgba(0, 0, 0, 0.4); */
   /* color: rgba(255, 255, 255, 0); */
+  /* background: rgba(0, 0, 0, 0.4); */
   /* font-size: 5px; */
   /* transition: color 0.3s ease-out; */
 }
@@ -31,7 +33,7 @@
 #taskbar button:hover {
   color: rgba(255, 255, 255, 0.4);
   /* box-shadow: inset 2px 0 rgba(255, 255, 255, 0.4); */
-  border-image: linear-gradient(to bottom, rgba(0,0,0,0), rgb(51,204,254), rgba(0,0,0,0)) 1 100%;
+  border-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(51,204,254,0.4), rgba(51,204,254,0.4), rgba(0,0,0,0)) 1 100%;
 }
 
 #taskbar button:hover image {
@@ -41,7 +43,9 @@
 #taskbar button.active {
   color: rgba(255, 255, 255, 1);
   /* box-shadow: inset 2px 0 rgba(255, 255, 255, 0.8); */
-  border-image: linear-gradient(to bottom, rgba(0,0,0,0),rgb(51,204,254), rgba(0,0,0,0)) 1 100%;
+  /* border-image: linear-gradient(to bottom, rgba(0,0,0,0),rgb(51,204,254), rgba(0,0,0,0)) 1 100%; */
+  border-image: linear-gradient(to bottom, rgba(0,0,0,0), rgb(51,204,254), rgb(51,204,254), rgba(0,0,0,0)) 1 100%;
+  /* border-image: linear-gradient(to bottom, rgba(0,0,0,0),rgba(63,94,251,1), rgba(0,0,0,0)) 1 100%; */
 }
 
 #taskbar button.active image {

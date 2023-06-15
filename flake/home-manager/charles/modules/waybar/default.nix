@@ -3,7 +3,7 @@
 
   programs.waybar.settings = {
     mainBar = {
-      margin = "20 15 20 15";
+      margin = "20 12 20 12";
       layer = "top";
       position = "left";
       output = ["eDP-1" "HDMI-A-1"];
@@ -18,7 +18,7 @@
       modules-right = [];
 
       tray = {
-        icon-size = 35;
+        icon-size = 30;
         spacing = 10;
       };
 
@@ -26,7 +26,7 @@
         all-outputs = true;
         format = "{icon}";
         # icon-theme = "Numix-Circle";
-        icon-size = 38;
+        icon-size = 30;
         markup = false;
         tooltip = false;
         active-first = false;

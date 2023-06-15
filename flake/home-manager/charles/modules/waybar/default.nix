@@ -3,11 +3,11 @@
 
   programs.waybar.settings = {
     mainBar = {
-      margin = "20 12 20 12";
+      margin = "0 12 0 0";
       layer = "top";
       position = "left";
       output = ["eDP-1" "HDMI-A-1"];
-      spacing = 20;
+      spacing = 0;
       exclusive = true;
       fixed-center = true;
       passthrough = false;
@@ -19,12 +19,14 @@
 
       tray = {
         icon-size = 30;
-        spacing = 10;
+        spacing = 0;
       };
 
       "wlr/taskbar" = {
         all-outputs = true;
-        format = "{icon}";
+        spacing = 0;
+        format = "{icon}";
+        # format = "{icon}";
         # icon-theme = "Numix-Circle";
         icon-size = 30;
         markup = false;

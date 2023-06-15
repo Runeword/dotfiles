@@ -3,7 +3,7 @@
 
   programs.waybar.settings = {
     mainBar = {
-      margin = "20 2 20 2";
+      margin = "20 15 20 15";
       layer = "top";
       position = "left";
       output = ["eDP-1" "HDMI-A-1"];
@@ -17,33 +17,32 @@
       modules-center = ["wlr/workspaces" "wlr/taskbar"];
       modules-right = [];
 
-      "tray" = {
-        "icon-size" = 30;
-        "spacing" = 10;
+      tray = {
+        icon-size = 35;
+        spacing = 10;
       };
 
       "wlr/taskbar" = {
-        "format" = "{icon}";
-        "icon-size" = 30;
-        "icon-theme" = "Numix-Circle";
-        "tooltip-format" = "{title}";
-        "on-click-middle" = "close";
-        "on-click" = "activate";
+        all-outputs = true;
+        format = "{icon}";
+        # icon-theme = "Numix-Circle";
+        icon-size = 38;
+        markup = false;
+        tooltip = false;
+        active-first = false;
+        on-click = "activate";
+        on-click-middle = "close";
       };
 
       "wlr/workspaces" = {
-        "format" = "{name}";
-        "on-click" = "activate";
-        "sort-by-number" = true;
-        "on-scroll-up" = "hyprctl dispatch workspace e+1";
-        "on-scroll-down" = "hyprctl dispatch workspace e-1";
+        format = "{name}";
+        on-click = "activate";
+        sort-by-number = true;
+        on-scroll-up = "hyprctl dispatch workspace e+1";
+        on-scroll-down = "hyprctl dispatch workspace e-1";
       };
     };
   };
 
-  programs.waybar.style = ''
-    window#waybar {
-      background-color: transparent;
-    }
-  '';
+  programs.waybar.style = builtins.readFile ./style.css;
 }

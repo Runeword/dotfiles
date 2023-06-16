@@ -12,7 +12,7 @@
     bold_font = "SauceCodePro NF SemiBold";
     italic_font = "SauceCodePro NF Italic";
     bold_italic_font = "SauceCodePro NF SemiBold Italic";
-    font_size = "21.0";
+    font_size = "20.0";
     confirm_os_window_close = 0;
     window_padding_width = 5;
     # theme

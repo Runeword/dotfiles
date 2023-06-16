@@ -60,7 +60,7 @@
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
   '';
 
-  services.clight.enable = true;
+  # services.clight.enable = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;

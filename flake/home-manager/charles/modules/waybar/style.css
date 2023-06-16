@@ -4,7 +4,7 @@
 }
 
 #taskbar {
-  border-radius: 20px 10px 10px 20px;
+  border-radius: 10px 10px 10px 10px;
   border-right: 2px;
   border-style: solid;
   border-image: linear-gradient(to bottom,
@@ -21,7 +21,7 @@
   border-left: 3px;
   border-style: solid;
   border-color: transparent;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 5px;
   /* transition: box-shadow 0.3s ease-out; */
   /* box-shadow: inset 2px 0 rgba(255, 255, 255, 0); */
 }

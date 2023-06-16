@@ -3,7 +3,7 @@
 
   programs.waybar.settings = {
     mainBar = {
-      margin = "0 10 10 0";
+      margin = "0 10 0 0";
       layer = "top";
       position = "left";
       output = ["eDP-1" "HDMI-A-1"];
@@ -15,7 +15,7 @@
       ipc = false;
       modules-left = ["tray"];
       modules-center = ["wlr/workspaces" "wlr/taskbar"];
-      modules-right = [];
+      modules-right = ["memory" "cpu"];
 
       tray = {
         icon-size = 30;
@@ -26,8 +26,7 @@
         all-outputs = true;
         spacing = 0;
         format = "{icon}";
-        # format = "{icon}";
-        # icon-theme = "Numix-Circle";
+        icon-theme = "Numix-Circle";
         icon-size = 30;
         markup = false;
         tooltip = false;
@@ -42,6 +41,19 @@
         sort-by-number = true;
         on-scroll-up = "hyprctl dispatch workspace e+1";
         on-scroll-down = "hyprctl dispatch workspace e-1";
+      };
+
+      memory = {
+        interval = 2;
+        tooltip = false;
+        format = "{percentage}";
+      };
+
+      cpu = {
+        interval = 2;
+        tooltip = false;
+        format = "{usage}";
+        # "format"= "<span size='xx-large'> </span>\n<span size='x-large'>{usage}</span>";
       };
     };
   };

@@ -26,18 +26,9 @@
     ./bash
     ./fish
     ./bat
-    ./waybar
     # ./eww
     # ./dircolors.nix
   ];
-
-  # wayland.windowManager.sway = {
-  #   enable = true;
-  #   config = rec {
-  #     modifier = "Mod4";
-  #     terminal = "kitty";
-  #   };
-  # };
 
   programs = {
     home-manager.enable = true;
@@ -45,6 +36,8 @@
     vscode.enable = true;
 
     jq.enable = true;
+
+    waybar.enable = true;
 
     direnv.enable = true;
     direnv.enableBashIntegration = true;

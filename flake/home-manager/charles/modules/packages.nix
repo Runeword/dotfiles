@@ -35,7 +35,6 @@
     firefox
     neovim-nightly
     python311
-    # socat
 
     xfce.thunar
     xfce.thunar-volman
@@ -48,6 +47,9 @@
     wl-clipboard
     wev
     imv
+    grim
+    slurp
+    swappy
 
     # # X11
     # peek

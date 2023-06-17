@@ -8,6 +8,7 @@ window#waybar {
 
 #taskbar {
   color: transparent;
+  margin: 15px 15px 15px 0px;
   border-radius: 0px 10px 10px 0px;
   border-width: 0px 1px 0px 0px;
   border-style: solid;
@@ -47,17 +48,25 @@ window#waybar {
 }
 
 .modules-right {
+  margin: 15px 15px 0px 0px;
   border-radius: 0px 10px 0px 0px;
   border-style: solid;
-  border-width: 1px;
+  border-width: 0px 1px 0px 0px;
   border-color: rgba(63,94,251,1);
-  font-size: 16px;
   background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
 }
 
 .modules-right #cpu,
+.modules-right #clock,
+.modules-right #bluetooth,
+.modules-right #battery,
 .modules-right #memory {
-  padding: 10px 0px 10px 0px;
+  padding: 7px 0px 10px 0px;
+  /* font-size: 17px; */
+}
+
+.modules-right #clock {
+  font-size: 20px;
 }
 
 tooltip {

@@ -4,7 +4,7 @@
     shn = "shutdown now";
     chrome = "google-chrome-stable";
     # color = "colorpicker"; # X11
-    color = "hyprpicker -a";
+    color = "hyprpicker --autocopy --format=hex";
     win = "xprop WM_CLASS";
     # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     # dua = "$HOME/.screenlayout/dual.sh";
@@ -17,10 +17,10 @@
     bt = "__bluetooth";
     l = "command ls --almost-all --color --width 90";
     ll = "command ls -lt --almost-all --color --human-readable --classify";
-    oi = "kitty +kitten icat";
     n = "nvim";
     r = "trash";
     o = "__open_file";
+    img = "kitten icat";
     ".." = "cd ..";
     "..." = "cd ../..";
     s = "source";
@@ -30,6 +30,7 @@
     hm = "hyprctl monitors";
     hhp = "hyprctl hyprpaper preload";
     hhw = "hyprctl hyprpaper wallpaper";
+    shot = "grim -g \"$(slurp)\" - | swappy -f -";
     # f = "feh --bg-fill";
     # xo = "xdg-open";
 

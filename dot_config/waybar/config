@@ -82,7 +82,6 @@
 
   "clock" : {
     "format" : "{:%H\n%M}",
-    "format-alt" : "{:%A, %B %d, %Y (%R)}",
-    "tooltip" : false,
+    "tooltip-format" : "{:%a %d %b %Y}",
   },
 }

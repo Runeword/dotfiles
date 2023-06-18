@@ -35,6 +35,7 @@
     firefox
     neovim-nightly
     python311
+    btop
 
     xfce.thunar
     xfce.thunar-volman

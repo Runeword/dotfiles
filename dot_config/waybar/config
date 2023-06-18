@@ -4,7 +4,7 @@
     "width" : 50,
     "position" : "left",
     "output" : ["eDP-1", "HDMI-A-1"],
-    "spacing" : 0,
+    "spacing" : 10,
     "exclusive" : true,
     "fixed-center" : true,
     "passthrough" : false,
@@ -12,7 +12,15 @@
     "ipc" : false,
     "modules-left" : ["tray"],
     "modules-center" : ["wlr/workspaces", "wlr/taskbar"],
-    "modules-right" : ["group/hardware", "battery", "clock#hour", "clock#day"],
+    "modules-right" : ["memory", "cpu", "battery", "clock"],
+
+    // "group/hardware": {
+    //   "orientation": "vertical",
+    //   "modules": [
+    //   "memory",
+    //   "cpu",
+    //   ]
+    // },
 
   "tray" : {
     "icon-size" : 30,
@@ -48,15 +56,7 @@
       "warning" : 70,
       "critical" : 90,
     },
-    "format" : "{percentage}",
-  },
-
-  "group/hardware": {
-    "orientation": "vertical",
-    "modules": [
-    "memory",
-    "cpu",
-    ]
+    "format" : "{percentage}\n<span size='x-large'></span>",
   },
 
   "cpu" : {
@@ -80,23 +80,9 @@
     "format-icons" : ["", "", "", "", ""],
   },
 
-  "bluetooth" : {
-    "format" : "󰂯",
-    "format-disabled" : "",
-    "format-connected" : "󰂯",
-    "tooltip-format" : "{controller_alias}\t{controller_address}",
-    "tooltip-format-connected" : "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-     "tooltip-format-enumerate-connected" : "{device_alias}\t{device_address}"
-  },
-
-  "clock#hour" : {
+  "clock" : {
     "format" : "{:%H\n%M}",
     "format-alt" : "{:%A, %B %d, %Y (%R)}",
-    "tooltip" : false,
-  },
-
-  "clock#day" : {
-    "format" : "{:%a\n%d\n%m}",
     "tooltip" : false,
   },
 }

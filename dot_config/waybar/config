@@ -54,8 +54,8 @@
   "group/hardware": {
     "orientation": "vertical",
     "modules": [
-    "cpu",
     "memory",
+    "cpu",
     ]
   },
 
@@ -67,8 +67,7 @@
       "warning" : 70,
       "critical" : 90,
     },
-    "format" : "<span size='x-large'></span>\n{usage}",
-    // "format": "<span size='xx-large'> </span>\n<span size='x-large'>{usage}</span>"
+    "format" : "{usage}\n<span size='xx-large'></span>",
   },
 
   "battery" : {
@@ -77,7 +76,7 @@
       "warning" : 30,
       "critical" : 15,
     },
-    "format" : "<span size='xx-large'>{icon}</span>\n{capacity}",
+    "format" : "{capacity}\n<span size='xx-large'>{icon}</span>",
     "format-icons" : ["", "", "", "", ""],
   },
 

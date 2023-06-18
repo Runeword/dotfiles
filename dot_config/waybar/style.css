@@ -8,12 +8,11 @@ window#waybar {
 
 #taskbar {
   color: transparent;
-  margin: 15px 15px 15px 0px;
   border-radius: 0px 10px 10px 0px;
   border-width: 0px 1px 0px 0px;
   border-style: solid;
-  border-color: rgba(63,94,251,1);
-  background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.5));
+  border-color: rgba(63,94,251,0.7);
+  background: linear-gradient(to right, rgba(0, 0, 0 ,0.3), rgba(0, 0, 0, 0.6));
 }
 
 #taskbar button {
@@ -21,7 +20,7 @@ window#waybar {
   border-style: solid;
   border-left-color: transparent;
   transition: border-left-color 0.3s ease-out;
-  padding: 10px 10px 10px 5px;
+  padding: 10px 0px 10px 0px;
 }
 
 #taskbar button:hover {
@@ -47,33 +46,30 @@ window#waybar {
   -gtk-icon-transform: scale(1);
 }
 
-.modules-right {
-  margin: 15px 15px 0px 0px;
-  color: rgba(51,204,254,1);
-  border-radius: 0px 10px 0px 0px;
-  border-style: solid;
-  border-width: 0px 1px 0px 0px;
-  border-color: rgba(63,94,251,1);
-  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.5));
-}
-
-.modules-right #cpu,
-.modules-right #clock,
-.modules-right #bluetooth,
-.modules-right #battery,
-.modules-right #memory {
-  padding: 7px 0px 10px 0px;
-  /* font-size: 17px; */
-}
-
-.modules-right #clock {
-  font-size: 20px;
-}
-
-tooltip {
-  background: rgba(0,0,0,0.9);
-  border-radius: 5px;
-}
+/* .modules-right { */
+/*   margin: 0px 10px 0px 10px; */
+/* } */
+/**/
+/* .modules-right #hardware { */
+/*   font-size: 20px; */
+/*   border-radius: 10px 20px 20px 0px; */
+/*   padding: 5px 0px 15px 0px; */
+/*   margin: 0px 10px 10px 0px; */
+/*   border-width: 0px 1px 1px 0px; */
+/*   border-style: solid; */
+/*   border-color: rgba(63,94,251,0.6); */
+/*   background: linear-gradient(to right, rgba(0, 0, 0 ,0.3), rgba(0, 0, 0, 0.6)); */
+/* } */
+/**/
+/* .modules-right #clock { */
+/*   font-size: 24px; */
+/*   padding: 7px 0px 5px 0px; */
+/* } */
+/**/
+/* tooltip { */
+/*   background: rgba(0,0,0,0.9); */
+/*   border-radius: 5px; */
+/* } */
 
 /* border-image: linear-gradient(to bottom, rgba(0,0,0,0),rgb(51,204,254), rgba(0,0,0,0)) 1 100%; */
 /* box-shadow: inset 2px 0 rgba(255, 255, 255, 0.4); */

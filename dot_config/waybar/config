@@ -11,45 +11,50 @@
     "gtk-layer-shell" : true,
     "ipc" : false,
     "modules-left" : ["tray", "wlr/workspaces"],
-    "modules-center" : ["custom/bottomTransLight", "wlr/taskbar", "custom/topLightTrans"],
-    "modules-right" : ["custom/bottomDarkTrans", "memory", "memory#icon", "custom/separator", "cpu", "cpu#icon", "custom/topLightDark", "battery", "battery#icon", "network", "custom/topTransLight"],
+    "modules-center" : ["custom/bottomLeftLightTrans", "wlr/taskbar", "custom/topRightLightTrans"],
+    "modules-right" : ["group/hardware"],
 
-    "custom/separator": {
+    "group/hardware": {
+      "orientation": "vertical",
+      "modules": ["custom/bottomRightDarkTrans", "memory", "memory#icon", "custom/separatorDark", "cpu", "cpu#icon", "custom/topLeftDarkLight", "battery", "battery#icon", "custom/separatorLight", "network", "network#icon", "custom/topLeftLightTrans"]
+    },
+
+    "custom/separatorDark": {
       "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/bottomDarkTrans": {
+    "custom/separatorLight": {
+      "tooltip" : false,
+      "format" : " ",
+    },
+
+    "custom/bottomRightDarkTrans": {
     "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/bottomLightTrans": {
+    "custom/bottomLeftLightTrans": {
       "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/topDarkTrans": {
-      "tooltip" : false,
-      "format" : " ",
-    },
-
-    "custom/topTransLight": {
+    "custom/topLeftLightTrans": {
     "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/topLightTrans": {
+    "custom/topRightLightTrans": {
       "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/topLightDark": {
+    "custom/topLeftDarkLight": {
       "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/bottomTransLight": {
+    "custom/bottomLeftLightTrans": {
       "tooltip" : false,
       "format" : " ",
     },
@@ -108,7 +113,7 @@
       "warning" : 70,
       "critical" : 90,
     },
-    "format" : "<span size='large'>󱤓</span>",
+    "format" : "<span size='large'></span>",
   },
 
   "cpu" : {
@@ -154,8 +159,8 @@
     "format-icons" : ["", "", "", "", ""],
   },
 
-  "network": {
-      "format-wifi": "{signalStrength}",
+"network": {
+      "format-wifi": "{signalStrength} ",
       "tooltip-format": "{ifname} via {gwaddr} ",
       "tooltip-format-wifi": "{essid} ({signalStrength}%)  {bandwidthDownOctets}",
       "tooltip-format-ethernet": "{ifname} ",
@@ -166,8 +171,8 @@
   },
 
 "network#icon": {
-    "format-wifi": "{signalStrength}",
-    "format-icons" : ["", "", "", "", ""],
+  "format" : "<span size='x-large'>{icon}</span>",
+    "format-icons" : ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
     "tooltip-format": "{ifname} via {gwaddr} ",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)  {bandwidthDownOctets}",
     "tooltip-format-ethernet": "{ifname} ",

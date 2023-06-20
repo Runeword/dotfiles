@@ -11,21 +11,26 @@
     "gtk-layer-shell" : true,
     "ipc" : false,
     "modules-left" : ["tray", "wlr/workspaces"],
-    "modules-center" : ["wlr/taskbar"],
-    "modules-right" : ["custom/bottomDarkTrans", "memory", "memory#icon", "cpu", "cpu#icon", "custom/topLightDark", "battery", "battery#icon", "custom/topTransLight"],
+    "modules-center" : ["custom/bottomTransLight", "wlr/taskbar", "custom/topLightTrans"],
+    "modules-right" : ["custom/bottomDarkTrans", "memory", "memory#icon", "custom/separator", "cpu", "cpu#icon", "custom/topLightDark", "battery", "battery#icon", "network", "custom/topTransLight"],
+
+    "custom/separator": {
+      "tooltip" : false,
+      "format" : " ",
+    },
 
     "custom/bottomDarkTrans": {
     "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/topDarkTrans": {
-    "tooltip" : false,
+    "custom/bottomLightTrans": {
+      "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/triangleBottomRight": {
-    "tooltip" : false,
+    "custom/topDarkTrans": {
+      "tooltip" : false,
       "format" : " ",
     },
 
@@ -34,13 +39,18 @@
       "format" : " ",
     },
 
+    "custom/topLightTrans": {
+      "tooltip" : false,
+      "format" : " ",
+    },
+
     "custom/topLightDark": {
       "tooltip" : false,
       "format" : " ",
     },
 
-    "custom/triangleTopRightDark": {
-    "tooltip" : false,
+    "custom/bottomTransLight": {
+      "tooltip" : false,
       "format" : " ",
     },
 
@@ -87,6 +97,7 @@
       "critical" : 90,
     },
     "format" : "{percentage}",
+    "rotate" : 320,
   },
 
   "memory#icon" : {
@@ -97,7 +108,7 @@
       "warning" : 70,
       "critical" : 90,
     },
-    "format" : "<span size='large'></span>",
+    "format" : "<span size='large'>󱤓</span>",
   },
 
   "cpu" : {
@@ -109,6 +120,7 @@
       "critical" : 90,
     },
     "format" : "{usage}",
+    "rotate" : 320,
   },
 
   "cpu#icon" : {
@@ -129,6 +141,7 @@
       "critical" : 15,
     },
     "format" : "{capacity}",
+    "rotate" : 320,
   },
 
   "battery#icon" : {
@@ -139,8 +152,29 @@
     },
     "format" : "<span size='xx-large'>{icon}</span>",
     "format-icons" : ["", "", "", "", ""],
-    // "rotate" : 90,
   },
+
+  "network": {
+      "format-wifi": "{signalStrength}",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%)  {bandwidthDownOctets}",
+      "tooltip-format-ethernet": "{ifname} ",
+      "tooltip-format-disconnected": "Disconnected",
+      "max-length": 50,
+      "interval": 30,
+      "rotate" : 320,
+  },
+
+"network#icon": {
+    "format-wifi": "{signalStrength}",
+    "format-icons" : ["", "", "", "", ""],
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  {bandwidthDownOctets}",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 30,
+},
 
   "clock" : {
     "format" : "{:%H\n%M}",

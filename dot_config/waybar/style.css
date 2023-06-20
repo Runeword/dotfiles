@@ -7,14 +7,12 @@ window#waybar {
 }
 
 #taskbar {
-  margin: 0px 10px 0px 0px;
   color: transparent;
-  border-radius: 0px 10px 10px 0px;
-  border-width: 0px 1px 0px 0px;
-  /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
   border-style: solid;
   border-color: rgba(63,94,251,0.7);
-  background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4));
+  background: rgba(0, 0, 0, 0.35);
+  /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
+  /* background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4)); */
 }
 
 #taskbar button {
@@ -53,57 +51,74 @@ window#waybar {
 }
 
 .modules-right #clock {
-  font-size: 24px;
-  padding: 0px 0px 0px 5px;
-  margin: 0px 10px 10px 0px;
+  font-size: 20px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.modules-right #network {
+  background: rgba(0, 0, 0, 0.35);
 }
 
 #custom-bottomDarkTrans {
-  border-bottom: 40px solid rgba(0, 0, 0, 0.6);
-  border-right: 40px solid transparent;
-  margin: 0px 20px 0px 0px;
+  border-bottom: 30px solid rgba(0, 0, 0, 0.6);
+  border-right: 30px solid transparent;
+  font-size: 0px;
+}
+
+#custom-bottomTransLight {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.35);
+  border-left: 30px solid transparent;
+  font-size: 0px;
+}
+
+#custom-topLightTrans {
+  border-top: 30px solid rgba(0, 0, 0, 0.35);
+  border-right: 30px solid transparent;
   font-size: 0px;
 }
 
 #custom-topLightDark {
-  border-top: 40px solid rgba(0, 0, 0, 0.6);
-  border-left: 40px solid rgba(0, 0, 0, 0.35);
-  margin: 0px 20px 0px 0px;
+  border-top: 30px solid rgba(0, 0, 0, 0.6);
+  border-left: 30px solid rgba(0, 0, 0, 0.35);
   font-size: 0px;
 }
 
 #custom-topDarkTrans {
-  border-bottom: 40px solid transparent;
-  border-left: 40px solid rgba(0, 0, 0, 0.35);
-  margin: 0px 20px 0px 0px;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid rgba(0, 0, 0, 0.35);
   font-size: 0px;
 }
 
 #custom-topTransLight {
-  border-top: 40px solid rgba(0, 0, 0, 0.35);
-  border-left: 40px solid transparent;
-  margin: 0px 20px 50px 0px;
+  border-top: 30px solid rgba(0, 0, 0, 0.35);
+  border-left: 30px solid transparent;
+  margin: 0px 0px 30px 0px;
   font-size: 0px;
 }
 
 .modules-right #memory {
 color: #a1a1a1;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  margin: 0px 20px 0px 0px;
+  margin: 0px 0px 0px 0px;
   border-width: 0px 0px 0px 0px;
   border-style: solid;
   border-color: rgba(63,94,251,0.6);
   background: rgba(0, 0, 0, 0.6);
 }
 
+#custom-separator {
+  background: rgba(0, 0, 0, 0.6);
+}
+
 .modules-right #cpu {
 color: #a1a1a1;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  margin: 0px 20px 0px 0px;
+  margin: 0px 0px 0px 0px;
   border-width: 0px 0px 0px 0px;
   border-style: solid;
   border-color: rgba(63,94,251,0.6);
@@ -112,10 +127,10 @@ color: #a1a1a1;
 
 .modules-right #battery {
   color: #a1a1a1;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 0px 0px 0px 0px;
   padding: 0px 0px 0px 0px;
-  margin: 0px 20px 0px 0px;
+  margin: 0px 0px 0px 0px;
   border-width: 0px 0px 0px 0px;
   border-style: solid;
   border-color: rgba(63,94,251,0.6);

@@ -20,7 +20,7 @@ window#waybar {
   border-style: solid;
   border-left-color: transparent;
   transition: border-left-color 0.3s ease-out;
-  padding: 10px 0px 10px 0px;
+  padding: 5px 0px 5px 0px;
 }
 
 #taskbar button:hover {
@@ -60,80 +60,66 @@ window#waybar {
   background: rgba(0, 0, 0, 0.35);
 }
 
-#custom-bottomDarkTrans {
+#custom-bottomRightDarkTrans,
+#custom-bottomLeftLightTrans,
+#custom-topRightLightTrans,
+#custom-topLeftDarkLight,
+#custom-topLeftLightTrans {
+  font-size: 0px;
+}
+
+#custom-bottomRightDarkTrans {
   border-bottom: 30px solid rgba(0, 0, 0, 0.6);
   border-right: 30px solid transparent;
-  font-size: 0px;
 }
 
-#custom-bottomTransLight {
+#custom-bottomLeftLightTrans {
   border-bottom: 30px solid rgba(0, 0, 0, 0.35);
   border-left: 30px solid transparent;
-  font-size: 0px;
 }
 
-#custom-topLightTrans {
+#custom-topRightLightTrans {
   border-top: 30px solid rgba(0, 0, 0, 0.35);
   border-right: 30px solid transparent;
-  font-size: 0px;
 }
 
-#custom-topLightDark {
+#custom-topLeftDarkLight {
   border-top: 30px solid rgba(0, 0, 0, 0.6);
   border-left: 30px solid rgba(0, 0, 0, 0.35);
-  font-size: 0px;
 }
 
-#custom-topDarkTrans {
-  border-bottom: 30px solid transparent;
-  border-left: 30px solid rgba(0, 0, 0, 0.35);
-  font-size: 0px;
-}
-
-#custom-topTransLight {
+#custom-topLeftLightTrans {
   border-top: 30px solid rgba(0, 0, 0, 0.35);
   border-left: 30px solid transparent;
-  margin: 0px 0px 30px 0px;
-  font-size: 0px;
 }
 
-.modules-right #memory {
-color: #a1a1a1;
-  font-size: 16px;
-  border-radius: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  border-width: 0px 0px 0px 0px;
-  border-style: solid;
-  border-color: rgba(63,94,251,0.6);
-  background: rgba(0, 0, 0, 0.6);
-}
-
-#custom-separator {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modules-right #cpu {
-color: #a1a1a1;
-  font-size: 16px;
-  border-radius: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  border-width: 0px 0px 0px 0px;
-  border-style: solid;
-  border-color: rgba(63,94,251,0.6);
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.modules-right #battery {
+#hardware {
   color: #a1a1a1;
+  margin: 0px 0px 30px 0px;
+}
+
+#memory {
   font-size: 16px;
-  border-radius: 0px 0px 0px 0px;
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  border-width: 0px 0px 0px 0px;
-  border-style: solid;
-  border-color: rgba(63,94,251,0.6);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#custom-separatorDark {
+font-size: 10px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#custom-separatorLight {
+font-size: 10px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+#cpu {
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#battery {
+  font-size: 16px;
   background: rgba(0, 0, 0, 0.35);
 }
 

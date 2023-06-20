@@ -38,6 +38,9 @@
     jq.enable = true;
 
     waybar.enable = true;
+    waybar.package = pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    });
 
     direnv.enable = true;
     direnv.enableBashIntegration = true;

@@ -1,6 +1,6 @@
 * {
   all: unset;
-  font-family: "SauceCodePro Nerd Font Mono";
+  font-family: "DroidSansM Nerd Font Mono";
 }
 
 window#waybar {
@@ -13,6 +13,16 @@ window#waybar {
   background: rgba(0, 0, 0, 0.35);
   /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
   /* background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4)); */
+}
+
+#workspaces {
+  font-size: 20px;
+  color: #a1a1a1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#workspaces button.active {
+  color: #ffffff;
 }
 
 #taskbar button {
@@ -47,21 +57,24 @@ window#waybar {
 }
 
 .modules-right {
-  font-family: "DroidSansM Nerd Font Mono";
 }
 
-.modules-right #clock {
+#clock {
   font-size: 20px;
-  padding: 0px 0px 0px 0px;
+  color: #a1a1a1;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 0px 10px 0px;
   margin: 0px 0px 0px 0px;
 }
 
-.modules-right #network {
+#network {
   background: rgba(0, 0, 0, 0.35);
 }
 
 #custom-bottomRightDarkTrans,
 #custom-bottomLeftLightTrans,
+#custom-bottomLeftLightDark,
+#custom-bottomLeftDarkTrans,
 #custom-topRightLightTrans,
 #custom-topLeftDarkLight,
 #custom-topLeftLightTrans {
@@ -73,8 +86,18 @@ window#waybar {
   border-right: 30px solid transparent;
 }
 
+#custom-bottomLeftLightDark {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.35);
+  border-left: 30px solid rgba(0, 0, 0, 0.6);
+}
+
 #custom-bottomLeftLightTrans {
   border-bottom: 30px solid rgba(0, 0, 0, 0.35);
+  border-left: 30px solid transparent;
+}
+
+#custom-bottomLeftDarkTrans {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.60);
   border-left: 30px solid transparent;
 }
 
@@ -95,7 +118,7 @@ window#waybar {
 
 #hardware {
   color: #a1a1a1;
-  margin: 0px 0px 30px 0px;
+  margin: 0px 0px 50px 0px;
 }
 
 #memory {

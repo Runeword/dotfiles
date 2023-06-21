@@ -10,8 +10,8 @@
     "passthrough" : false,
     "gtk-layer-shell" : true,
     "ipc" : false,
-    "modules-left" : ["tray", "wlr/workspaces"],
-    "modules-center" : ["custom/bottomLeftLightTrans", "wlr/taskbar", "custom/topRightLightTrans"],
+    "modules-left" : ["clock", "custom/bottomLeftLightDark", "tray", "custom/separatorLight", "custom/topLeftLightTrans"],
+    "modules-center" : ["custom/bottomLeftDarkTrans", "wlr/workspaces", "custom/bottomLeftLightDark", "wlr/taskbar", "custom/topRightLightTrans"],
     "modules-right" : ["group/hardware"],
 
     "group/hardware": {
@@ -39,6 +39,16 @@
       "format" : " ",
     },
 
+    "custom/bottomLeftDarkTrans": {
+      "tooltip" : false,
+      "format" : " ",
+    },
+
+    "custom/bottomLeftLightDark": {
+      "tooltip" : false,
+      "format" : " ",
+    },
+
     "custom/topLeftLightTrans": {
     "tooltip" : false,
       "format" : " ",
@@ -50,11 +60,6 @@
     },
 
     "custom/topLeftDarkLight": {
-      "tooltip" : false,
-      "format" : " ",
-    },
-
-    "custom/bottomLeftLightTrans": {
       "tooltip" : false,
       "format" : " ",
     },
@@ -155,12 +160,12 @@
       "warning" : 30,
       "critical" : 15,
     },
-    "format" : "<span size='xx-large'>{icon}</span>",
+    "format" : "<span size='x-large'>{icon}</span>",
     "format-icons" : ["", "", "", "", ""],
   },
 
 "network": {
-      "format-wifi": "{signalStrength} ",
+      "format-wifi": "{signalStrength}",
       "tooltip-format": "{ifname} via {gwaddr} ",
       "tooltip-format-wifi": "{essid} ({signalStrength}%)  {bandwidthDownOctets}",
       "tooltip-format-ethernet": "{ifname} ",

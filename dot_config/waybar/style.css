@@ -17,8 +17,13 @@ window#waybar {
 
 #workspaces {
   font-size: 20px;
-  color: #a1a1a1;
+  color: #666666;
   background: rgba(0, 0, 0, 0.6);
+  padding: 0px 0px 5px 0px;
+}
+
+#workspaces button {
+  padding: 10px 0px 0px 0px;
 }
 
 #workspaces button.active {
@@ -64,7 +69,6 @@ window#waybar {
   color: #a1a1a1;
   background: rgba(0, 0, 0, 0.6);
   padding: 10px 0px 10px 0px;
-  margin: 0px 0px 0px 0px;
 }
 
 #network {

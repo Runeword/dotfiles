@@ -107,7 +107,7 @@
       "critical" : 90,
     },
     "format" : "{percentage}",
-    // "rotate" : 320,
+    "rotate" : 320,
   },
 
   "memory#icon" : {
@@ -130,7 +130,7 @@
       "critical" : 90,
     },
     "format" : "{usage}",
-    // "rotate" : 320,
+    "rotate" : 320,
   },
 
   "cpu#icon" : {
@@ -151,7 +151,7 @@
       "critical" : 15,
     },
     "format" : "{capacity}",
-    // "rotate" : 320,
+    "rotate" : 320,
   },
 
   "battery#icon" : {
@@ -172,7 +172,7 @@
       "tooltip-format-disconnected": "Disconnected",
       "max-length": 50,
       "interval": 30,
-      // "rotate" : 320,
+      "rotate" : 320,
   },
 
 "network#icon": {

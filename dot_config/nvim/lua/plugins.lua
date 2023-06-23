@@ -121,12 +121,21 @@ return {
     end,
   },
 
+  -- {
+  --   'ray-x/starry.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   init = function()
+  --     require('setup').starry()
+  --   end,
+  -- },
+
   {
-    'ray-x/starry.nvim',
+    'dasupradyumna/midnight.nvim',
     lazy = false,
     priority = 1000,
     init = function()
-      require('setup').starry()
+      vim.cmd.colorscheme 'midnight'
     end,
   },
 

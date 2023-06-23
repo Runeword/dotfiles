@@ -41,23 +41,24 @@ local function core()
     pattern = '*',
     callback = function()
       nvim_set_hl(0, 'DiagnosticFloatingError',
-        { link = 'DiagnosticVirtualTextError' })
+        { link = 'DiagnosticVirtualTextError', })
       nvim_set_hl(0, 'DiagnosticFloatingHint',
-        { link = 'DiagnosticVirtualTextHint' })
+        { link = 'DiagnosticVirtualTextHint', })
       nvim_set_hl(0, 'DiagnosticFloatingInfo',
-        { link = 'DiagnosticVirtualTextInfo' })
+        { link = 'DiagnosticVirtualTextInfo', })
       nvim_set_hl(0, 'DiagnosticFloatingWarn',
-        { link = 'DiagnosticVirtualTextWarn' })
-      nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-      nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#1e2633' })
-      nvim_set_hl(0, 'Yank', { bg = '#00ffa2', fg = 'black' })
-      nvim_set_hl(0, 'Pmenu', { bg = 'black', fg = '#7a7c9e' })
-      nvim_set_hl(0, 'PmenuSel', { bg = '#1e2633', fg = 'white' })
-      nvim_set_hl(0, 'PmenuSbar', { bg = 'black' })
-      nvim_set_hl(0, 'PmenuThumb', { bg = '#1e2633' })
-      nvim_set_hl(0, 'CursorLine', { bg = '#1e2633' })
-      nvim_set_hl(0, 'CursorColumn', { bg = '#1e2633' })
-      nvim_set_hl(0, 'Search', { bg = '#5d00ff' })
+        { link = 'DiagnosticVirtualTextWarn', })
+      nvim_set_hl(0, 'NormalFloat', { bg = 'none', })
+      nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#1e2633', })
+      nvim_set_hl(0, 'Yank', { bg = '#00ffa2', fg = 'black', })
+      nvim_set_hl(0, 'Pmenu', { bg = 'black', fg = '#7a7c9e', })
+      nvim_set_hl(0, 'PmenuSel', { bg = '#1e2633', fg = 'white', })
+      nvim_set_hl(0, 'PmenuSbar', { bg = 'black', })
+      nvim_set_hl(0, 'PmenuThumb', { bg = '#1e2633', })
+      nvim_set_hl(0, 'CursorLine', { bg = '#1e2633', })
+      nvim_set_hl(0, 'CursorColumn', { bg = '#1e2633', })
+      nvim_set_hl(0, 'Search', { bg = '#5d00ff', })
+      nvim_set_hl(0, 'Normal', { bg = 'none', })
 
       -- nvim_set_hl(0, 'VertSplit', { fg = '#292e42' })
       -- nvim_set_hl(0, 'Hlargs', { fg = '#FAFF00' })
@@ -66,7 +67,7 @@ local function core()
     end,
   })
 
-  autocmd({ 'BufWinEnter', 'BufRead', 'BufNewFile' }, {
+  autocmd({ 'BufWinEnter', 'BufRead', 'BufNewFile', }, {
     group = 'disableAutoComment',
     pattern = '*',
     command = 'setlocal fo-=c fo-=r fo-=o fo+=t',
@@ -96,13 +97,17 @@ local function bufferline()
     group = 'bufferline',
     pattern = '*',
     callback = function()
-      nvim_set_hl(0, 'BufferLineFill', { bg = 'none' })
-      nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e' })
-      nvim_set_hl(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none' })
-      nvim_set_hl(0, 'BufferLineNumbers', { fg = '#7a7c9e', bg = 'none', italic = false })
-      nvim_set_hl(0, 'BufferLineNumbersSelected', { fg = 'white', bg = 'none', italic = false })
-      nvim_set_hl(0, 'BufferLineDuplicate', { fg = '#7a7c9e', bg = 'none', italic = false })
-      nvim_set_hl(0, 'BufferLineDuplicateSelected', { fg = 'white', bg = 'none', italic = false })
+      nvim_set_hl(0, 'BufferLineFill', { bg = 'none', })
+      nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e', })
+      nvim_set_hl(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none', })
+      nvim_set_hl(0, 'BufferLineNumbers',
+        { fg = '#7a7c9e', bg = 'none', italic = false, })
+      nvim_set_hl(0, 'BufferLineNumbersSelected',
+        { fg = 'white', bg = 'none', italic = false, })
+      nvim_set_hl(0, 'BufferLineDuplicate',
+        { fg = '#7a7c9e', bg = 'none', italic = false, })
+      nvim_set_hl(0, 'BufferLineDuplicateSelected',
+        { fg = 'white', bg = 'none', italic = false, })
     end,
   })
 end
@@ -115,15 +120,15 @@ local function matchup()
     callback = function()
       nvim_set_hl(0, 'MatchParen',
         { fg = '#7429ff', italic = true, bold = true, })
-      nvim_set_hl(0, 'MatchWord', { fg = '#7429ff' })
-      nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b' })
+      nvim_set_hl(0, 'MatchWord', { fg = '#7429ff', })
+      nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b', })
     end,
   })
 end
 
 local function lightbulb()
   augroup('lightbulb', { clear = true, })
-  autocmd({ 'CursorHold', 'CursorHoldI' }, {
+  autocmd({ 'CursorHold', 'CursorHoldI', }, {
     group = 'lightbulb',
     pattern = '*',
     callback = require('nvim-lightbulb').update_lightbulb,

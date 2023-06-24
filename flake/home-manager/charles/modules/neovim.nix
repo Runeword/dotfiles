@@ -15,8 +15,8 @@
   programs.neovim.extraPackages = with pkgs; [
     nodePackages.vls
     nodePackages.typescript-language-server
-    nodePackages.eslint
-    nodePackages.vscode-langservers-extracted
+    # nodePackages.eslint
+    # vscode-langservers-extracted
     nodePackages.bash-language-server
     nodePackages.yaml-language-server
     sumneko-lua-language-server

@@ -20,10 +20,10 @@
     n = "nvim";
     r = "trash";
     o = "__open_file";
+    s = "__ripgrep";
     img = "kitten icat";
     ".." = "cd ..";
     "..." = "cd ../..";
-    s = "source";
     ss = "src search";
     xc = "xclip -selection c";
     xp = "xclip -selection c -o";
@@ -31,8 +31,6 @@
     hhp = "hyprctl hyprpaper preload";
     hhw = "hyprctl hyprpaper wallpaper";
     shot = "grim -g \"$(slurp)\" - | swappy -f -";
-    # f = "feh --bg-fill";
-    # xo = "xdg-open";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

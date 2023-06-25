@@ -70,8 +70,8 @@ __ripgrep() {
 			--ansi \
 			--color "hl:-1:underline,hl+:-1:underline:reverse" \
 			--delimiter : \
-      --reverse \
-      --no-separator \
+			--reverse \
+			--no-separator \
 			--preview 'bat --style=plain --color=always {1} --highlight-line {2}' \
 			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
 			--bind 'enter:become(vim {1} +{2})'

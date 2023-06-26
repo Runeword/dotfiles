@@ -57,6 +57,7 @@ __open_file() {
 }
 
 __ripgrep() {
+	# local selected_files=$(
 	rg \
 		--color always \
 		--colors 'path:none' \
@@ -68,15 +69,35 @@ __ripgrep() {
 		--smart-case "${*:-}" |
 		fzf \
 			--ansi \
+			--multi \
 			--color "hl:-1:underline,hl+:-1:underline:reverse" \
 			--delimiter : \
 			--reverse \
+			--inline-info \
 			--no-separator \
 			--preview 'bat --style=plain --color=always {1} --highlight-line {2}' \
 			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-			--bind 'enter:become(vim {1} +{2})'
+			--bind 'enter:become(nvim {1} +{2})'
+	# )
+	# --bind 'enter:execute(echo {1} +{2})+abort'
+	# echo $selected_files
+
+	# # If no selection do nothing
+	# [ -z "$selected_files" ] && return 0
+	#
+	# # Check the number of selected files
+	# local num_lines=$(echo "$selected_files" | wc -l)
+	#
+	# # Open files in editor
+	# if $EDITOR $selected_files; then
+	# 	history -s "$EDITOR $selected_files"
+	# else
+	# 	echo "Error: could not open $selected_files with $EDITOR"
+	# 	return 1
+	# fi
 }
 
+# --bind 'enter:become(vim {1} +{2})'
 # "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --inline-info --cycle --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
 # "cd $(fd --type directory --hidden --follow --no-ignore | fzf --cycle)";
 # "xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";

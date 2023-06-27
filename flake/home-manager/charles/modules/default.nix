@@ -45,5 +45,7 @@
     direnv.enable = true;
     direnv.enableBashIntegration = true;
     direnv.nix-direnv.enable = true;
+
+    fuzzel.enable = true;
   };
 }

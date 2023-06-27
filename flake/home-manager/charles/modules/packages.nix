@@ -24,7 +24,6 @@
     vifm
     chezmoi
     trashy
-    rofi
     kooha
     tree
     gcc

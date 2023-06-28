@@ -1,8 +1,8 @@
 local fn = vim.fn
 local api = vim.api
 
-return function ()
-  local lualine = require("lualine")
+return function()
+  local lualine = require('lualine')
 
   -- stylua: ignore
   local colors = {
@@ -21,19 +21,19 @@ return function ()
     c = colors.bg,
     R = colors.bg,
     v = colors.bg,
-    [""] = colors.bg,
+    [''] = colors.bg,
     no = colors.bg,
     s = colors.bg,
     S = colors.bg,
-    [""] = colors.bg,
+    [''] = colors.bg,
     ic = colors.bg,
     Rv = colors.bg,
     cv = colors.bg,
     ce = colors.bg,
     r = colors.bg,
     rm = colors.bg,
-    ["r?"] = colors.bg,
-    ["!"] = colors.bg,
+    ['r?'] = colors.bg,
+    ['!'] = colors.bg,
     t = colors.bg,
   }
 
@@ -46,9 +46,9 @@ return function ()
     return function(str)
       local win_width = fn.winwidth(0)
       if hide_width and win_width < hide_width then
-        return ""
+        return ''
       elseif trunc_width and trunc_len and win_width < trunc_width and #str > trunc_len then
-        return str:sub(1, trunc_len) .. (no_ellipsis and "" or "...")
+        return str:sub(1, trunc_len) .. (no_ellipsis and '' or '...')
       end
       return str
     end
@@ -56,14 +56,14 @@ return function ()
 
   local conditions = {
     buffer_not_empty = function()
-      return fn.empty(fn.expand("%:t")) ~= 1
+      return fn.empty(fn.expand('%:t')) ~= 1
     end,
     hide_in_width = function()
       return fn.winwidth(0) > 80
     end,
     check_git_workspace = function()
-      local filepath = fn.expand("%:p:h")
-      local gitdir = fn.finddir(".git", filepath .. ";")
+      local filepath = fn.expand('%:p:h')
+      local gitdir = fn.finddir('.git', filepath .. ';')
       return gitdir and #gitdir > 0 and #gitdir < #filepath
     end,
   }
@@ -82,8 +82,8 @@ return function ()
     -- 	padding = { right = 1, left = 0 },
     -- },
     {
-      "mode",
-      padding = { left = 1, right = 2 },
+      'mode',
+      padding = { left = 1, right = 2, },
       fmt = string.lower,
     },
     {
@@ -92,16 +92,16 @@ return function ()
       file_status = false,
       newfile_status = true,
       path = 1,
-      padding = { left = 0, right = 1 },
+      padding = { left = 0, right = 1, },
       symbols = {
         unnamed = 'unnamed',
         newfile = 'new',
       },
     },
     {
-      "diagnostics",
-      sources = { "nvim_diagnostic" },
-      symbols = { error = "", warn = "", hint = "", info = "" },
+      'diagnostics',
+      sources = { 'nvim_diagnostic', },
+      symbols = { error = '', warn = '', hint = '', info = '', },
     },
 
     --------------------------- Mid section
@@ -110,9 +110,9 @@ return function ()
 
   local sectionRight = {
     {
-      "diff",
+      'diff',
       -- symbols = { added = " ", modified = " ", removed = " " },
-      symbols = { added = "+", modified = "~", removed = "-" },
+      symbols = { added = '+', modified = '~', removed = '-', },
       -- diff_color = {
       -- 	added = { fg = colors.green },
       -- 	modified = { fg = colors.orange },
@@ -121,14 +121,17 @@ return function ()
       cond = conditions.hide_in_width,
     },
     {
-      "branch",
+      'branch',
       icons_enabled = false,
-      icon = "",
+      icon = '',
       fmt = function(branchName)
-        return branchName == "" and "" or branchName
+        return branchName == '' and '' or branchName
       end,
       -- fmt = trunc(120, 60, 60, true),
-      padding = { right = 1, left = 0 },
+      padding = { right = 1, left = 0, },
+    },
+    {
+      require('lsp-progress').progress,
     },
     -- {
     -- 	"filesize",
@@ -151,16 +154,16 @@ return function ()
   local config = {
     options = {
       -- Disable sections and component separators
-      component_separators = "",
-      section_separators = "",
+      component_separators = '',
+      section_separators = '',
       always_divide_middle = true,
       globalstatus = true,
       theme = {
         -- We are going to use lualine_c an lualine_x as left and
         -- right section. Both are highlighted by c theme .  So we
         -- are just setting default looks o statusline
-        normal = { c = { fg = colors.fg, bg = colors.bg } },
-        inactive = { c = { fg = colors.fg, bg = colors.bg } },
+        normal = { c = { fg = colors.fg, bg = colors.bg, }, },
+        inactive = { c = { fg = colors.fg, bg = colors.bg, }, },
       },
     },
     sections = {
@@ -182,7 +185,7 @@ return function ()
       lualine_y = {},
       lualine_z = {},
     },
-    extensions = { "quickfix" },
+    extensions = { 'quickfix', },
     -- extensions = { extension },
   }
 

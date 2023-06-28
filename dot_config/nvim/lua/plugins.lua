@@ -18,7 +18,7 @@ return {
   },
 
   { 'nvim-lua/plenary.nvim', },
-  { 'kyazdani42/nvim-web-devicons', },
+  { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
 
   {
@@ -301,8 +301,20 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'kyazdani42/nvim-web-devicons', },
-    config = require('setup.lualine'),
+    dependencies = { 'nvim-tree/nvim-web-devicons', },
+    config = function()
+      require('setup.lualine')()
+      require('autocmd').lualine()
+    end,
+  },
+
+  {
+    'linrongbin16/lsp-progress.nvim',
+    event = { 'VimEnter', },
+    dependencies = { 'nvim-tree/nvim-web-devicons', },
+    config = function()
+      require('lsp-progress').setup()
+    end,
   },
 
   {

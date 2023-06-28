@@ -135,6 +135,21 @@ local function lightbulb()
   })
 end
 
+local function lualine()
+  -- augroup('lualine', { clear = true, })
+  -- autocmd({ 'User', 'LspProgressStatusUpdated', }, {
+  --   group = 'lualine',
+  --   pattern = '*',
+  --   callback = require('lualine').refresh(),
+  -- })
+  vim.cmd([[
+  augroup lualine
+      autocmd!
+      autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
+  augroup END
+  ]])
+end
+
 local function packer()
   augroup('packer_user_config', { clear = true, })
   autocmd('BufWritePost', {
@@ -191,4 +206,5 @@ return {
   lightbulb = lightbulb,
   sj = sj,
   matchup = matchup,
+  lualine = lualine,
 }

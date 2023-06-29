@@ -38,6 +38,11 @@
     nodejs.style = "white";
     nodejs.version_format = "$\{raw\}";
 
+    lua.format = "[$symbol($version)]($style) ";
+    lua.symbol = "lua ";
+    lua.style = "white";
+    lua.version_format = "$\{raw\}";
+
     # nix_shell.format = "[$symbol($name)]($style) ";
     nix_shell.format = "[$symbol]($style) ";
     nix_shell.symbol = "❄️";

@@ -153,6 +153,27 @@ local function wilder()
   }))
 end
 
+
+-------------------- andymass/vim-matchup
+local function matchup()
+  g.loaded_matchit = 1
+  g.matchup_matchparen_nomode = 'i'
+  g.matchup_mappings_enabled = 0
+  g.matchup_matchparen_pumvisible = 0
+  g.matchup_matchparen_deferred = 1
+  g.matchup_matchparen_deferred_show_delay = 50
+  g.matchup_matchparen_deferred_hide_delay = 50
+  g.matchup_motion_override_Npercent = 0
+  g.matchup_surround_enabled = 1
+  g.matchup_motion_enabled = 1
+  g.matchup_text_obj_enabled = 1
+  g.matchup_transmute_enabled = 1
+  g.matchup_matchparen_enabled = 1
+  g.matchup_override_vimtex = 1
+  g.matchup_matchparen_hi_background = 1
+  g.matchup_matchparen_offscreen = { method = 'popup', fullwidth = 1, }
+end
+
 -------------------- ray-x/starry.nvim
 local function starry()
   -- autocommand will have no effect on previously sourced colorschemes
@@ -414,12 +435,12 @@ local function treesitter()
     autopairs = { enable = true, }, -- windwp/nvim-autopairs
     autotag = { enable = true, },   -- windwp/nvim-ts-autotag
     matchup = {
-                                    -- andymass/vim-matchup
+      -- andymass/vim-matchup
       enable = true,
       disable_virtual_text = true,
     },
     rainbow = {
-                -- p00f/nvim-ts-rainbow
+      -- p00f/nvim-ts-rainbow
       enable = false,
       max_file_lines = nil,
       colors = {
@@ -429,7 +450,7 @@ local function treesitter()
       },
     },
     textobjects = {
-                    -- nvim-treesitter/nvim-treesitter-textobjects
+      -- nvim-treesitter/nvim-treesitter-textobjects
       select = {
         enable = true,
         lookahead = true,
@@ -491,8 +512,8 @@ local function bufferline()
       close_icon = '',
     },
     -- highlights = {
-    --   numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
-    --   numbers_selected = { fg = 'white', bg = 'none', italic = false },
+      -- numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
+      -- numbers_selected = { fg = 'white', bg = 'none', italic = false },
     -- }
   })
 end
@@ -617,6 +638,59 @@ local function masonlspconfig()
       -- -- 'volar',
     },
     automatic_installation = false,
+  })
+end
+
+local function lspprogress()
+  require('lsp-progress').setup({
+    spinner = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷', },
+    spin_update_time = 200,
+    decay = 1000,
+    event = 'LspProgressStatusUpdated',
+    event_update_time_limit = 100,
+    max_size = -1,
+    series_format = function(title, message, percentage, done)
+      local builder = {}
+      local has_title = false
+      local has_message = false
+      if title and title ~= '' then
+        table.insert(builder, title)
+        has_title = true
+      end
+      if message and message ~= '' then
+        table.insert(builder, message)
+        has_message = true
+      end
+      if percentage and (has_title or has_message) then
+        table.insert(builder, string.format('(%.0f%%%%)', percentage))
+      end
+      if done and (has_title or has_message) then
+        table.insert(builder, '- done')
+      end
+      return table.concat(builder, ' ')
+    end,
+    -- Format client message.
+    -- `[null-ls] ⣷ formatting isort (100%) - done, formatting black (50%)`.
+    client_format = function(client_name, spinner, series_messages)
+      return #series_messages > 0
+          and ('[' .. client_name .. '] ' .. spinner .. ' ' .. table.concat(
+            series_messages,
+            ', '
+          ))
+          or nil
+    end,
+    -- Format (final) message.
+    -- ` LSP [null-ls] ⣷ formatting isort (100%) - done, formatting black (50%)`
+    format = function(client_messages)
+      local sign = 'LSP'
+      return #client_messages > 0
+          and (sign .. ' ' .. table.concat(client_messages, ' '))
+          or sign
+    end,
+    debug = false,
+    console_log = true,
+    file_log = false,
+    file_log_name = 'lsp-progress.log',
   })
 end
 
@@ -749,4 +823,6 @@ return {
   starry = starry,
   align = align,
   nullls = nullls,
+  lspprogress = lspprogress,
+  matchup = matchup,
 }

@@ -10,7 +10,7 @@ return {
   {
     'andymass/vim-matchup',
     init = function()
-      require('options').matchup()
+      require('setup').matchup()
     end,
     config = function()
       require('mappings').matchup()
@@ -208,14 +208,14 @@ return {
     end,
   },
 
-  {
-    'weilbith/nvim-code-action-menu',
-    config = function()
-      require('mappings').codeactionmenu()
-      require('setup').codeactionmenu()
-    end,
-    cmd = 'CodeActionMenu',
-  },
+  -- {
+  --   'weilbith/nvim-code-action-menu',
+  --   config = function()
+  --     require('mappings').codeactionmenu()
+  --     require('setup').codeactionmenu()
+  --   end,
+  --   cmd = 'CodeActionMenu',
+  -- },
 
   {
     'nacro90/numb.nvim',
@@ -313,7 +313,7 @@ return {
     event = { 'VimEnter', },
     dependencies = { 'nvim-tree/nvim-web-devicons', },
     config = function()
-      require('lsp-progress').setup()
+      require('setup').lspprogress()
     end,
   },
 

@@ -11,7 +11,7 @@
     "gtk-layer-shell" : true,
     "ipc" : false,
     "modules-left" : ["clock", "custom/bottomLeftLightDark", "tray", "custom/separatorLight", "custom/topLeftLightTrans"],
-    "modules-center" : ["custom/bottomLeftDarkTrans", "wlr/workspaces", "custom/bottomLeftLightDark", "wlr/taskbar", "custom/topRightLightTrans"],
+    "modules-center" : [ "wlr/workspaces", "wlr/taskbar"],
     "modules-right" : ["group/hardware"],
 
     "group/hardware": {

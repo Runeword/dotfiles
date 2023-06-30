@@ -8,6 +8,7 @@ window#waybar {
 
 #taskbar {
   color: transparent;
+  margin-top: 20px;
   border-style: solid;
   border-color: rgba(63,94,251,0.7);
   background: rgba(0, 0, 0, 0.35);
@@ -19,11 +20,16 @@ window#waybar {
   font-size: 20px;
   color: #666666;
   background: rgba(0, 0, 0, 0.6);
-  padding: 0px 0px 5px 0px;
+  padding: 0px 0px 2px 0px;
+  border-radius: 15px;
+}
+
+#workspaces button:first-child {
+  padding: 8px 0px 8px 0px;
 }
 
 #workspaces button {
-  padding: 10px 0px 0px 0px;
+  padding: 0px 0px 8px 0px;
 }
 
 #workspaces button.active {

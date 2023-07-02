@@ -16,7 +16,7 @@
 
     "group/hardware": {
       "orientation": "vertical",
-      "modules": ["memory#border", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "cpu#border", "battery#string", "battery#icon", "network", "network#icon", "custom/topLeftLightTrans"]
+      "modules": ["custom/bottomRightDarkTrans", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "custom/topLeftDarkLight", "battery#string", "battery#icon", "network", "network#icon", "custom/topLeftLightTrans"]
     },
 
     "custom/bottomRightDarkTrans": {
@@ -80,17 +80,6 @@
     "on-scroll-down" : "hyprctl dispatch workspace e-1",
   },
 
-    "memory#border" : {
-      "tooltip" : false,
-      "format" : " ",
-      "interval" : 2,
-      "on-click": "kitty --class floating btop",
-      "states" : {
-        "warning" : 30,
-        "critical" : 90,
-      },
-    },
-
   "memory#string" : {
     "interval" : 2,
     "tooltip" : false,
@@ -112,17 +101,6 @@
       "critical" : 90,
     },
     "format" : "<span size='large'></span>",
-  },
-
-  "cpu#border" : {
-    "interval" : 2,
-    "tooltip" : false,
-    "on-click": "kitty --class floating btop",
-    "states" : {
-      "warning" : 20,
-      "critical" : 90,
-    },
-    "format" : " ",
   },
 
   "cpu#string" : {

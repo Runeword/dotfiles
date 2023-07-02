@@ -10,13 +10,14 @@
     "passthrough" : false,
     "gtk-layer-shell" : true,
     "ipc" : false,
-    "modules-left" : ["clock", "tray"],
-    "modules-center" : ["wlr/workspaces", "wlr/taskbar"],
+    // "modules-left" : ["clock", "wlr/taskbar"],
+    "modules-left" : ["clock"],
+    "modules-center" : ["wlr/workspaces", "tray",],
     "modules-right" : ["group/hardware"],
 
     "group/hardware": {
       "orientation": "vertical",
-      "modules": ["custom/bottomRightDarkTrans", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "custom/topLeftDarkLight", "battery#string", "battery#icon", "network", "network#icon", "custom/topLeftLightTrans"]
+      "modules": ["custom/bottomRightDarkTrans", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "custom/topLeftDarkTrans", "custom/bottomRightDarkTrans", "battery#string", "battery#icon", "network", "network#icon", "custom/topLeftDarkTrans"]
     },
 
     "custom/bottomRightDarkTrans": {
@@ -41,6 +42,11 @@
 
     "custom/topLeftLightTrans": {
     "tooltip" : false,
+      "format" : " ",
+    },
+
+    "custom/topLeftDarkTrans": {
+      "tooltip" : false,
       "format" : " ",
     },
 

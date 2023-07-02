@@ -131,27 +131,36 @@ window#waybar {
   margin: 0px 0px 50px 0px;
 }
 
-#memory {
+#memory.icon {
+  padding-bottom: 5px;
+}
+#memory.icon, #memory.string {
   font-size: 16px;
   background: rgba(0, 0, 0, 0.6);
 }
-
-#custom-separatorDark {
-font-size: 10px;
-  background: rgba(0, 0, 0, 0.6);
+#memory.border {
+  font-size: 0px;
+  border-bottom: 30px solid rgba(0, 0, 0, 0.6);
+  border-right: 30px solid transparent;
 }
 
-#custom-separatorLight {
-font-size: 10px;
-  background: rgba(0, 0, 0, 0.35);
+#cpu.string {
+  padding-top: 5px;
 }
-
-#cpu {
+#cpu.string, #cpu.icon {
   font-size: 16px;
   background: rgba(0, 0, 0, 0.6);
 }
+#cpu.border {
+  font-size: 0px;
+  border-top: 30px solid rgba(0, 0, 0, 0.6);
+  border-left: 30px solid rgba(0, 0, 0, 0.35);
+}
 
-#battery {
+#cpu.warning, #battery.warning, #memory.warning {
+  color: #5080FF;
+}
+#battery.string, #battery.icon {
   font-size: 16px;
   background: rgba(0, 0, 0, 0.35);
 }

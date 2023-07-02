@@ -35,6 +35,7 @@
     neovim-nightly
     python311
     btop
+    p7zip
 
     xfce.thunar
     xfce.thunar-volman

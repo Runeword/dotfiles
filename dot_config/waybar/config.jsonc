@@ -17,7 +17,7 @@
 
     "group/hardware": {
       "orientation": "vertical",
-      "modules": ["custom/bottomRightDarkTrans", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "custom/topLeftDarkTrans", "custom/bottomRightDarkTrans", "battery#string", "battery#icon", "network", "network#icon", "custom/topLeftDarkTrans"]
+      "modules": ["custom/bottomRightDarkTrans", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "custom/topLeftDarkTrans", "custom/bottomRightDarkTrans", "battery#string", "battery#icon", "network#string", "network#icon", "custom/topLeftDarkTrans"]
     },
 
     "custom/bottomRightDarkTrans": {
@@ -152,7 +152,7 @@
     "format-icons" : ["", "", "", "", ""],
   },
 
-"network": {
+"network#string": {
       "format-wifi": "{signalStrength}",
       "tooltip-format": "{ifname} via {gwaddr} ",
       "tooltip-format-wifi": "{essid} ({signalStrength}%)  {bandwidthDownOctets}",

@@ -11,7 +11,7 @@
     "gtk-layer-shell" : true,
     "ipc" : false,
     "modules-left" : ["clock", "tray"],
-    "modules-center" : [ "wlr/workspaces", "wlr/taskbar"],
+    "modules-center" : ["wlr/workspaces", "wlr/taskbar"],
     "modules-right" : ["group/hardware"],
 
     "group/hardware": {

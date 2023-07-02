@@ -3,13 +3,12 @@
   font-family: "DroidSansM Nerd Font Mono";
 }
 
-window#waybar {
-}
+window#waybar {}
 
 #taskbar {
   color: transparent;
   border-style: solid;
-  border-color: rgba(63,94,251,0.7);
+  border-color: rgba(63, 94, 251, 0.7);
   background: rgba(0, 0, 0, 0.35);
   /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
   /* background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4)); */
@@ -46,12 +45,12 @@ window#waybar {
 
 #taskbar button:hover {
   color: rgba(255, 255, 255, 0.4);
-  border-left-color: rgba(51,204,254,0.4);
+  border-left-color: rgba(51, 204, 254, 0.4);
 }
 
 #taskbar button.active {
   color: rgba(255, 255, 255, 1);
-  border-left-color: rgba(51,204,254,1);
+  border-left-color: rgba(51, 204, 254, 1);
 }
 
 #taskbar button image {
@@ -67,8 +66,7 @@ window#waybar {
   -gtk-icon-transform: scale(1);
 }
 
-.modules-right {
-}
+.modules-right {}
 
 #clock {
   font-size: 18px;
@@ -84,12 +82,29 @@ window#waybar {
 #custom-topRightLightTrans,
 #custom-topLeftDarkLight,
 #custom-topLeftDarkTrans,
-#custom-topLeftLightTrans { font-size: 0px; }
+#custom-topLeftLightTrans {
+  font-size: 0px;
+}
 
-#custom-bottomRightDarkTrans { border-bottom: 30px solid rgba(0, 0, 0, 0.6); border-right: 30px solid transparent; }
-#custom-bottomLeftLightDark { border-bottom: 30px solid rgba(0, 0, 0, 0.35); border-left: 30px solid rgba(0, 0, 0, 0.6); }
-#custom-bottomLeftDarkTrans { border-bottom: 30px solid rgba(0, 0, 0, 0.60); border-left: 30px solid transparent; }
-#custom-bottomLeftLightTrans { border-bottom: 30px solid rgba(0, 0, 0, 0.35); border-left: 30px solid transparent; }
+#custom-bottomRightDarkTrans {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.6);
+  border-right: 30px solid transparent;
+}
+
+#custom-bottomLeftLightDark {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.35);
+  border-left: 30px solid rgba(0, 0, 0, 0.6);
+}
+
+#custom-bottomLeftDarkTrans {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.60);
+  border-left: 30px solid transparent;
+}
+
+#custom-bottomLeftLightTrans {
+  border-bottom: 30px solid rgba(0, 0, 0, 0.35);
+  border-left: 30px solid transparent;
+}
 
 #custom-topRightLightTrans {
   border-top: 30px solid rgba(0, 0, 0, 0.35);
@@ -116,22 +131,40 @@ window#waybar {
   margin: 0px 0px 50px 0px;
 }
 
-#memory.icon, #battery.icon { padding-bottom: 5px; }
-#cpu.string, #network.string { padding-top: 5px; }
-#cpu.warning, #battery.warning, #memory.warning { color: #5080FF; }
+#memory.icon,
+#battery.icon {
+  padding-bottom: 5px;
+}
 
-#memory.string, #cpu.string, #battery.string, #network.string {
+#cpu.string,
+#network.string {
+  padding-top: 5px;
+}
+
+#cpu.warning,
+#battery.warning,
+#memory.warning {
+  color: #5080FF;
+}
+
+#memory.string,
+#cpu.string,
+#battery.string,
+#network.string {
   font-size: 14px;
   background: rgba(0, 0, 0, 0.6);
 }
 
-#memory.icon, #cpu.icon, #battery.icon, #network.icon {
-font-size: 16px;
-background: rgba(0, 0, 0, 0.6);
+#memory.icon,
+#cpu.icon,
+#battery.icon,
+#network.icon {
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 tooltip {
-  background: rgba(0,0,0,1);
+  background: rgba(0, 0, 0, 1);
   border-radius: 5px;
 }
 

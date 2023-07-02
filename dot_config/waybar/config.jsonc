@@ -16,17 +16,7 @@
 
     "group/hardware": {
       "orientation": "vertical",
-      "modules": ["custom/bottomRightDarkTrans", "memory", "memory#icon", "custom/separatorDark", "cpu", "cpu#icon", "custom/topLeftDarkLight", "battery", "battery#icon", "custom/separatorLight", "network", "network#icon", "custom/topLeftLightTrans"]
-    },
-
-    "custom/separatorDark": {
-      "tooltip" : false,
-      "format" : " ",
-    },
-
-    "custom/separatorLight": {
-      "tooltip" : false,
-      "format" : " ",
+      "modules": ["memory#border", "memory#string", "memory#icon", "cpu#string", "cpu#icon", "cpu#border", "battery#string", "battery#icon", "network", "network#icon", "custom/topLeftLightTrans"]
     },
 
     "custom/bottomRightDarkTrans": {
@@ -64,14 +54,6 @@
       "format" : " ",
     },
 
-    // "group/hardware": {
-    //   "orientation": "vertical",
-    //   "modules": [
-    //   "memory",
-    //   "cpu",
-    //   ]
-    // },
-
   "tray" : {
     "icon-size" : 30,
     "spacing" : 0,
@@ -98,12 +80,23 @@
     "on-scroll-down" : "hyprctl dispatch workspace e-1",
   },
 
-  "memory" : {
+    "memory#border" : {
+      "tooltip" : false,
+      "format" : " ",
+      "interval" : 2,
+      "on-click": "kitty --class floating btop",
+      "states" : {
+        "warning" : 30,
+        "critical" : 90,
+      },
+    },
+
+  "memory#string" : {
     "interval" : 2,
     "tooltip" : false,
     "on-click": "kitty --class floating btop",
     "states" : {
-      "warning" : 70,
+      "warning" : 30,
       "critical" : 90,
     },
     "format" : "{percentage}",
@@ -115,18 +108,29 @@
     "tooltip" : false,
     "on-click": "kitty --class floating btop",
     "states" : {
-      "warning" : 70,
+      "warning" : 30,
       "critical" : 90,
     },
     "format" : "<span size='large'></span>",
   },
 
-  "cpu" : {
+  "cpu#border" : {
     "interval" : 2,
     "tooltip" : false,
     "on-click": "kitty --class floating btop",
     "states" : {
-      "warning" : 70,
+      "warning" : 20,
+      "critical" : 90,
+    },
+    "format" : " ",
+  },
+
+  "cpu#string" : {
+    "interval" : 2,
+    "tooltip" : false,
+    "on-click": "kitty --class floating btop",
+    "states" : {
+      "warning" : 20,
       "critical" : 90,
     },
     "format" : "{usage}",
@@ -138,16 +142,16 @@
     "tooltip" : false,
     "on-click": "kitty --class floating btop",
     "states" : {
-      "warning" : 70,
+      "warning" : 20,
       "critical" : 90,
     },
     "format" : "<span size='x-large'></span>",
   },
 
-  "battery" : {
+  "battery#string" : {
     "interval" : 30,
     "states" : {
-      "warning" : 30,
+      "warning" : 40,
       "critical" : 15,
     },
     "format" : "{capacity}",
@@ -157,7 +161,7 @@
   "battery#icon" : {
     "interval" : 30,
     "states" : {
-      "warning" : 30,
+      "warning" : 40,
       "critical" : 15,
     },
     "format" : "<span size='x-large'>{icon}</span>",

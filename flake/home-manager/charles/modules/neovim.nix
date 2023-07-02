@@ -15,10 +15,10 @@
   programs.neovim.extraPackages = with pkgs; [
     nodePackages.vls
     nodePackages.typescript-language-server
-    # nodePackages.eslint
-    # vscode-langservers-extracted
+    vscode-langservers-extracted
     nodePackages.bash-language-server
     nodePackages.yaml-language-server
+    nodePackages.eslint
     sumneko-lua-language-server
     marksman
     ccls

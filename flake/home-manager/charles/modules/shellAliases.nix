@@ -12,9 +12,10 @@
     mv = "mv --verbose";
     md = "mkdir --parents";
     cp = "cp --recursive --verbose";
-    b = "br"; # :open_preview
+    # b = "br"; # :open_preview
     bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
     bt = "__bluetooth";
+    b = "bluetuith";
     l = "command ls --almost-all --color --width 90";
     ll = "command ls -lt --almost-all --color --human-readable --classify";
     n = "nvim";

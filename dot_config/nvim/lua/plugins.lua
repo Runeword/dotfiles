@@ -208,14 +208,14 @@ return {
     end,
   },
 
-  -- {
-  --   'weilbith/nvim-code-action-menu',
-  --   config = function()
-  --     require('mappings').codeactionmenu()
-  --     require('setup').codeactionmenu()
-  --   end,
-  --   cmd = 'CodeActionMenu',
-  -- },
+  {
+    'weilbith/nvim-code-action-menu',
+    config = function()
+      require('mappings').codeactionmenu()
+      require('setup').codeactionmenu()
+    end,
+    cmd = 'CodeActionMenu',
+  },
 
   {
     'nacro90/numb.nvim',

@@ -30,6 +30,9 @@
     # ./dircolors.nix
   ];
 
+
+  services.fnott.enable = true;
+
   programs = {
     home-manager.enable = true;
 

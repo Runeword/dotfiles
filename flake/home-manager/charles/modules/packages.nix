@@ -36,11 +36,13 @@
     python311
     btop
     p7zip
+    bluetuith
+    gping
 
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
+    # xfce.thunar
+    # xfce.thunar-volman
+    # xfce.thunar-archive-plugin
+    # xfce.thunar-media-tags-plugin
 
     # Wayland
     hyprpaper

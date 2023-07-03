@@ -42,15 +42,22 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    # xfce.thunar-archive-plugin
     # xfce.xfce4-volumed-pulse
     # pasystray
     # pavucontrol
     # system-config-printer
-    gnome.gnome-disk-utility
+    # gnome.gnome-disk-utility
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
     gparted
     vim
   ];
+
+  # thunar
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   services.udev.enable = true;
   services.udev.packages = with pkgs; [

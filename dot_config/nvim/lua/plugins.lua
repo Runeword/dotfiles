@@ -1,10 +1,49 @@
 return {
+  -- {
+  --   'woosaaahh/sj.nvim',
+  --   config = function()
+  --     require('setup').sj()
+  --     require('mappings').sj()
+  --   end,
+  -- },
+
   {
-    'woosaaahh/sj.nvim',
-    config = function()
-      require('setup').sj()
-      require('mappings').sj()
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    init = function()
+      require('autocmd').flash()
     end,
+    opts = {
+      -- labels = "asdfghjklqwertyuiopzxcvbnm",
+      labels = "',pyaoeuidhtnsfgcrl;qjkxbmwvz",
+      label = {
+        uppercase = false,
+      },
+      highlight = {
+        -- show a backdrop with hl FlashBackdrop
+        backdrop = false,
+        -- Highlight the search matches
+        matches = true,
+        -- extmark priority
+        priority = 5000,
+        groups = {
+          match = 'FlashMatch',
+          current = 'FlashCurrent',
+          backdrop = 'FlashBackdrop',
+          label = 'FlashLabel',
+        },
+      },
+    },
+    keys = {
+      {
+        's',
+        mode = { 'n', 'x', 'o', },
+        function()
+          require('flash').jump()
+        end,
+        desc = 'Flash',
+      },
+    },
   },
 
   {

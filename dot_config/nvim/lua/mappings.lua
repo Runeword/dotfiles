@@ -34,7 +34,7 @@ local function core()
   map('i', 'ù', '<Esc>`^u')
   map('i', '<C-BS>', '<Esc>cvb')
   map('n', '<BS>', '"_ciw')
-  map('n', '<space>', 'i <Esc>r')
+  map('n', '<space>', 'a <Esc>r')
 
   -- Text objects
   map({ 'x', 'o', }, 'a<Leader>', 'ap')

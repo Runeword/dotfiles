@@ -1,6 +1,6 @@
 * {
   all: unset;
-  font-family: "DroidSansM Nerd Font Mono";
+  font-family: "DroidSansM Nerd Font Propo";
 }
 
 window#waybar {}
@@ -128,16 +128,17 @@ window#waybar {}
 
 #hardware {
   color: #a1a1a1;
-  margin: 0px 0px 50px 0px;
 }
 
 #memory.icon,
-#battery.icon {
-  padding-bottom: 5px;
+#network.icon,
+#wireplumber.icon {
+  padding-bottom: 7px;
 }
 
 #cpu.string,
-#network.string {
+#battery.string,
+#bluetooth.string {
   padding-top: 5px;
 }
 
@@ -147,6 +148,8 @@ window#waybar {}
   color: #5080FF;
 }
 
+#bluetooth.string,
+#wireplumber.string,
 #memory.string,
 #cpu.string,
 #battery.string,
@@ -155,11 +158,13 @@ window#waybar {}
   background: rgba(0, 0, 0, 0.6);
 }
 
+#bluetooth.icon,
+#wireplumber.icon,
 #memory.icon,
 #cpu.icon,
 #battery.icon,
 #network.icon {
-  font-size: 16px;
+  font-size: 12px;
   background: rgba(0, 0, 0, 0.6);
 }
 

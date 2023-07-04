@@ -47,12 +47,13 @@
     # pavucontrol
     # system-config-printer
     # gnome.gnome-disk-utility
+    vim
     xfce.thunar
     xfce.thunar-volman
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
+    xarchiver
     gparted
-    vim
   ];
 
   # thunar
@@ -72,8 +73,8 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  # hardware.bluetooth.settings.General.Experimental = true;
-  # hardware.bluetooth.settings.General.KernelExperimental = true;
+  hardware.bluetooth.settings.General.Experimental = true;
+  hardware.bluetooth.settings.General.KernelExperimental = true;
   # services.blueman.enable = true;
 
   boot.loader.systemd-boot.enable = true;

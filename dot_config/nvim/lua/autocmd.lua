@@ -185,10 +185,22 @@ local function sj()
     group = 'sj',
     pattern = '*',
     callback = function()
-      nvim_set_hl(0, 'SjFocusedLabel',
-        { bg = '#ffe100', fg = 'black', bold = false, })
+      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#ffe100', fg = 'black', bold = false, })
       nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white', bold = false, })
       nvim_set_hl(0, 'SjMatches', { bg = '#222b66', fg = 'white', bold = false, })
+    end,
+  })
+end
+
+local function flash()
+  augroup('flash', { clear = true, })
+  autocmd('ColorScheme', {
+    group = 'flash',
+    pattern = '*',
+    callback = function()
+      nvim_set_hl(0, 'FlashMatch', { bg = '#222b66', fg = 'white', bold = false, })
+      nvim_set_hl(0, 'FlashCurrent', { bg = '#ffe100', fg = 'black', bold = false, })
+      nvim_set_hl(0, 'FlashLabel', { bg = '#5d00ff', fg = 'white', bold = false, })
     end,
   })
 end
@@ -206,6 +218,7 @@ return {
   coq = coq,
   lightbulb = lightbulb,
   sj = sj,
+  flash = flash,
   matchup = matchup,
   lualine = lualine,
 }

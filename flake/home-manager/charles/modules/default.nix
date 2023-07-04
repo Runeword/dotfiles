@@ -50,5 +50,12 @@
     direnv.nix-direnv.enable = true;
 
     fuzzel.enable = true;
+
+    zsh.enable = true;
+    zsh.enableAutosuggestions = true;
+    zsh.enableCompletion = true;
+    zsh.enableVteIntegration = true;
+    zsh.autocd = false;
   };
+  # environment.pathsToLink = [ "/share/zsh" ];
 }

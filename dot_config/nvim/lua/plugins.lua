@@ -10,21 +10,12 @@ return {
   {
     'folke/flash.nvim',
     event = 'VeryLazy',
-    init = function()
-      require('autocmd').flash()
-    end,
     opts = {
-      -- labels = "asdfghjklqwertyuiopzxcvbnm",
       labels = "',pyaoeuidhtnsfgcrl;qjkxbmwvz",
-      label = {
-        uppercase = false,
-      },
+      label = { uppercase = false, },
       highlight = {
-        -- show a backdrop with hl FlashBackdrop
         backdrop = false,
-        -- Highlight the search matches
         matches = true,
-        -- extmark priority
         priority = 5000,
         groups = {
           match = 'FlashMatch',
@@ -174,7 +165,7 @@ return {
     lazy = false,
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'midnight'
+      require('setup').midnight()
     end,
   },
 

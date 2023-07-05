@@ -206,6 +206,18 @@ local function starry()
   cmd('colorscheme moonlight')
 end
 
+-------------------- dasupradyumna/midnight.nvim
+local function midnight()
+  -- autocommand will have no effect on previously sourced colorschemes
+  -- so it must be added before any colorscheme is sourced
+  require('autocmd').bufferline()
+  -- require('autocmd').sj()
+  require('autocmd').matchup()
+  require('autocmd').flash()
+
+  cmd.colorscheme 'midnight'
+end
+
 -------------------- woosaaahh/sj.nvim
 local function sj()
   require('sj').setup({
@@ -512,8 +524,8 @@ local function bufferline()
       close_icon = '',
     },
     -- highlights = {
-      -- numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
-      -- numbers_selected = { fg = 'white', bg = 'none', italic = false },
+    -- numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
+    -- numbers_selected = { fg = 'white', bg = 'none', italic = false },
     -- }
   })
 end
@@ -825,4 +837,5 @@ return {
   nullls = nullls,
   lspprogress = lspprogress,
   matchup = matchup,
+  midnight = midnight,
 }

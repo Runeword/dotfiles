@@ -31,11 +31,6 @@ local function numb()
   require('numb').setup()
 end
 
--------------------- chrisgrieser/nvim-various-textobjs
-local function varioustextobjs()
-  require('various-textobjs').setup({ useDefaultKeymaps = false, })
-end
-
 -------------------- gbprod/stay-in-place.nvim
 local function stayinplace()
   require('stay-in-place').setup()
@@ -53,41 +48,6 @@ local function ssr()
       replace_all = '<C-CR>',
     },
   }
-end
-
--------------------- dhruvasagar/vim-table-mode
-local function tablemode()
-  g.table_mode_disable_mappings = 1
-  g.table_mode_disable_tableize_mappings = 1
-  g.table_mode_syntax = 0
-end
-
--------------------- jose-elias-alvarez/null-ls.nvim
-local function nullls()
-  local null_ls = require('null-ls')
-
-  null_ls.setup({
-    sources = {
-      null_ls.builtins.formatting.shfmt,
-      -- null_ls.builtins.diagnostics.eslint,
-      -- null_ls.builtins.completion.spell,
-    },
-  })
-end
-
--------------------- rareitems/printer.nvim
-local function printer()
-  require('printer').setup({
-    keymap = '<Leader>p',
-    formatters = {
-      typescript = function(text_inside, text_var)
-        return string.format("console.log('%s ', %s)", text_inside, text_var)
-      end,
-    },
-    add_to_inside = function(text)
-      return string.format('(%s) %s', fn.line('.'), text)
-    end,
-  })
 end
 
 -------------------- kylechui/nvim-surround
@@ -154,26 +114,6 @@ local function wilder()
 end
 
 
--------------------- andymass/vim-matchup
-local function matchup()
-  g.loaded_matchit = 1
-  g.matchup_matchparen_nomode = 'i'
-  g.matchup_mappings_enabled = 0
-  g.matchup_matchparen_pumvisible = 0
-  g.matchup_matchparen_deferred = 1
-  g.matchup_matchparen_deferred_show_delay = 50
-  g.matchup_matchparen_deferred_hide_delay = 50
-  g.matchup_motion_override_Npercent = 0
-  g.matchup_surround_enabled = 1
-  g.matchup_motion_enabled = 1
-  g.matchup_text_obj_enabled = 1
-  g.matchup_transmute_enabled = 1
-  g.matchup_matchparen_enabled = 1
-  g.matchup_override_vimtex = 1
-  g.matchup_matchparen_hi_background = 1
-  g.matchup_matchparen_offscreen = { method = 'popup', fullwidth = 1, }
-end
-
 -------------------- ray-x/starry.nvim
 local function starry()
   -- autocommand will have no effect on previously sourced colorschemes
@@ -204,18 +144,6 @@ local function starry()
   })
 
   cmd('colorscheme moonlight')
-end
-
--------------------- dasupradyumna/midnight.nvim
-local function midnight()
-  -- autocommand will have no effect on previously sourced colorschemes
-  -- so it must be added before any colorscheme is sourced
-  require('autocmd').bufferline()
-  -- require('autocmd').sj()
-  require('autocmd').matchup()
-  require('autocmd').flash()
-
-  cmd.colorscheme 'midnight'
 end
 
 -------------------- woosaaahh/sj.nvim
@@ -297,16 +225,6 @@ local function fzf()
   })
 end
 
--------------------- rockerBOO/awesome-neovim
-local function sniprun()
-  require('sniprun').setup({
-    snipruncolors = {
-      SniprunVirtualTextOk  = { bg = 'black', fg = 'white', },
-      SniprunVirtualTextErr = { bg = 'black', fg = 'white', },
-    },
-    live_mode_toggle = 'enable',
-  })
-end
 
 -------------------- is0n/fm-nvim
 local function fm()
@@ -506,27 +424,6 @@ local function treesitter()
     -- 		show_help = "?",
     -- 	},
     -- },
-  })
-end
-
--------------------- akinsho/bufferline.nvim
-local function bufferline()
-  require('bufferline').setup({
-    options = {
-      numbers = function(opts)
-        return string.format('%s', opts.raise(opts.ordinal))
-      end,
-      indicator = { style = 'none', },
-      separator_style = { '', '', },
-      tab_size = 0,
-      buffer_close_icon = '',
-      modified_icon = '',
-      close_icon = '',
-    },
-    -- highlights = {
-    -- numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
-    -- numbers_selected = { fg = 'white', bg = 'none', italic = false },
-    -- }
   })
 end
 

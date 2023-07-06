@@ -65,50 +65,25 @@ return {
   --   end,
   -- },
 
+
   {
     'gbprod/stay-in-place.nvim',
     config = function()
-      require('setup').stayinplace()
+      require('stay-in-place').setup()
     end,
   },
 
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require('setup').colorizer()
+      require('colorizer').setup()
     end,
-  },
-
-  {
-    'weilbith/nvim-code-action-menu',
-    config = function()
-      require('mappings').codeactionmenu()
-      require('setup').codeactionmenu()
-    end,
-    cmd = 'CodeActionMenu',
   },
 
   {
     'nacro90/numb.nvim',
     config = function()
-      require('setup').numb()
-    end,
-  },
-
-  {
-    'echasnovski/mini.ai',
-    version = false,
-    config = function()
-      require('setup').ai()
-    end,
-  },
-
-  {
-    'echasnovski/mini.indentscope',
-    version = false,
-    config = function()
-      require('autocmd').indentscope()
-      require('setup').indentscope()
+      require('numb').setup()
     end,
   },
 
@@ -116,7 +91,7 @@ return {
     'echasnovski/mini.align',
     version = false,
     config = function()
-      require('setup').align()
+      require('mini.align').setup()
     end,
   },
 
@@ -127,14 +102,6 @@ return {
   { 'jghauser/mkdir.nvim', },
   -- { 'Exafunction/codeium.vim', },
 
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('setup').comment()
-      require('mappings').comment()
-    end,
-  },
-
   -- { 'smjonas/inc-rename.nvim',
   --   config = function()
   --     require('inc_rename').setup()
@@ -142,23 +109,9 @@ return {
   -- },
 
   {
-    'AndrewRadev/splitjoin.vim',
-    config = function()
-      require('mappings').splitjoin()
-    end,
-  },
-
-  {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('setup').autopairs()
-    end,
-  },
-
-  {
     'ahmedkhalf/project.nvim',
     config = function()
-      require('setup').project()
+      require('project_nvim').setup()
     end,
   },
 

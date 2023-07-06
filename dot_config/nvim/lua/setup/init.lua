@@ -11,29 +11,9 @@ local api = vim.api
 --   g.wordmotion_nomap = 1
 -- end
 
--------------------- norcalli/nvim-colorizer.lua
-local function colorizer()
-  require('colorizer').setup()
-end
-
 -------------------- machakann/vim-highlightedyank
 local function highlightedyank()
   g.highlightedyank_highlight_duration = 100
-end
-
--------------------- ahmedkhalf/project.nvim
-local function project()
-  require('project_nvim').setup()
-end
-
--------------------- nacro90/numb.nvim
-local function numb()
-  require('numb').setup()
-end
-
--------------------- gbprod/stay-in-place.nvim
-local function stayinplace()
-  require('stay-in-place').setup()
 end
 
 -------------------- cshuaimin/ssr.nvim
@@ -66,11 +46,6 @@ local function surround()
       visual = 'S',
     },
   })
-end
-
--------------------- numToStr/Comment.nvim
-local function comment()
-  require('Comment').setup()
 end
 
 -------------------- gelguy/wilder.nvim
@@ -258,62 +233,6 @@ local function fm()
   })
 end
 
--------------------- echasnovski/mini.nvim#miniindentscope
-local function indentscope()
-  local scope = require('mini.indentscope')
-  scope.setup({
-    draw = {
-      delay = 0,
-      animation = scope.gen_animation.none(),
-    },
-    mappings = {
-      object_scope = 'ii',
-      object_scope_with_border = 'ai',
-      goto_top = '',
-      goto_bottom = '',
-      -- goto_top = "<S-CR>",
-      -- goto_bottom = "<CR>",
-    },
-    options = {
-      border = 'both',
-      indent_at_cursor = true,
-      try_as_border = true,
-    },
-    symbol = '▏',
-  })
-end
-
--------------------- echasnovski/mini.nvim#miniai
-local function ai()
-  local gen_spec = require('mini.ai').gen_spec
-  require('mini.ai').setup({
-    custom_textobjects = {
-      f = false,
-      a = gen_spec.argument({ brackets = { '%b()', '%b{}', '%b[]', }, }),
-      -- a = gen_spec.argument({ brackets = { '%b()' } }),
-      -- o = gen_spec.argument({ brackets = { '%b{}' } }),
-      -- e = gen_spec.argument({ brackets = { '%b[]' } }),
-      -- A = gen_spec.pair('(', ')', { type = 'balanced' }),
-      -- O = gen_spec.pair('{', '}', { type = 'balanced' }),
-      -- E = gen_spec.pair('[', ']', { type = 'balanced' }),
-      -- Q = gen_spec.pair('`', '`', { type = 'balanced' }),
-    },
-    mappings = {
-      around = 'a',
-      inside = 'i',
-      around_next = 'an',
-      inside_next = 'in',
-      around_last = 'ao',
-      inside_last = 'io',
-      goto_left = '',
-      goto_right = '',
-    },
-    n_lines = 100,
-    search_method = 'cover_or_nearest',
-    -- search_method = 'cover_or_next',
-  })
-end
-
 -------------------- nvim-treesitter/nvim-treesitter
 local function treesitter()
   require('nvim-treesitter.configs').setup({
@@ -385,12 +304,6 @@ local function treesitter()
   })
 end
 
--------------------- weilbith/nvim-code-action-menu
-local function codeactionmenu()
-  g.code_action_menu_show_details = false
-  g.code_action_menu_show_diff = true
-end
-
 -------------------- D4KU/vim-textobj-chainmember
 local function textobjchainmember()
   g.textobj_chainmember_no_default_key_mappings = 1
@@ -414,55 +327,6 @@ local function bettern()
       ['T'] = { previous = 'n', next = '<s-n>', },
     },
   }
-end
-
--------------------- windwp/nvim-autopairs
-local function autopairs()
-  local remap = vim.api.nvim_set_keymap
-  local npairs = require('nvim-autopairs')
-
-  npairs.setup({
-    map_bs = true,
-    map_cr = false,
-    check_ts = true,
-    ignored_next_char = '[%w%.]',
-    -- fast_wrap = {
-    --   map = "<C-h>",
-    --   chars = { "{", "[", "(", '"', "'" },
-    --   pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
-    --   offset = 0,
-    --   end_key = "s",
-    --   keys = "aoeuhtns",
-    --   check_comma = true,
-    --   highlight = "Search",
-    --   highlight_grey = "Comment",
-    -- },
-  })
-
-  -- skip it, if you use another global object
-  _G.MUtils = {}
-
-  MUtils.CR = function()
-    if fn.pumvisible() ~= 0 then
-      if fn.complete_info({ 'selected', }).selected ~= -1 then
-        return npairs.esc('<c-y>')
-      else
-        return npairs.esc('<c-e>') .. npairs.autopairs_cr()
-      end
-    else
-      return npairs.autopairs_cr()
-    end
-  end
-  remap('i', '<cr>', 'v:lua.MUtils.CR()', { expr = true, noremap = true, })
-
-  MUtils.BS = function()
-    if fn.pumvisible() ~= 0 and fn.complete_info({ 'mode', }).mode == 'eval' then
-      return npairs.esc('<c-e>') .. npairs.autopairs_bs()
-    else
-      return npairs.autopairs_bs()
-    end
-  end
-  remap('i', '<bs>', 'v:lua.MUtils.BS()', { expr = true, noremap = true, })
 end
 
 -------------------- monaqa/dial.nvim
@@ -571,11 +435,6 @@ end
 --       'w', 'v', 'z' },
 --   }
 -- end
-
--------------------- echasnovski/mini.align
-local function align()
-  require('mini.align').setup()
-end
 
 return {
   colorizer = colorizer,

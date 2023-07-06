@@ -21,7 +21,8 @@ end
 opt.runtimepath:prepend(lazypath)
 
 require('lazy').setup(
-  require('plugins'),
+  'plugins',
+  -- require('plugins'),
   {
     defaults = { lazy = false, },
     -- install = { colorscheme = { 'tokyonight', 'habamax' } },
@@ -39,6 +40,10 @@ require('lazy').setup(
           'zipPlugin',
         },
       },
+    },
+    change_detection = {
+      enabled = true,
+      notify = false,
     },
   }
 )

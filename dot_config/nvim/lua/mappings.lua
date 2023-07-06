@@ -229,21 +229,6 @@ local function sj()
   map({ 'n', 'o', 'x', }, 's', require('sj').run)
 end
 
--------------------- lewis6991/gitsigns.nvim
-local function gitsigns(buffer)
-  map({ 'n', 'x', }, '<leader>ga', package.loaded.gitsigns.stage_buffer,
-    { buffer = buffer, desc = 'git add file', })
-  map({ 'n', 'x', }, '<leader>gr', package.loaded.gitsigns.reset_buffer_index,
-    { buffer = buffer, desc = 'git reset file', })
-  map({ 'n', 'x', }, '<leader>gc', package.loaded.gitsigns.reset_buffer,
-    { buffer = buffer, desc = 'git checkout -- file', })
-  map({ 'n', 'x', }, '<leader>gb',
-    package.loaded.gitsigns.toggle_current_line_blame,
-    { buffer = buffer, desc = 'git blame', })
-  map({ 'n', 'x', }, '<leader>gd', package.loaded.gitsigns.toggle_deleted,
-    { buffer = buffer, })
-end
-
 -------------------- AndrewRadev/splitjoin.vim
 local function splitjoin()
   vim.g.splitjoin_split_mapping = ''
@@ -288,21 +273,6 @@ end
 -------------------- weilbith/nvim-code-action-menu
 local function codeactionmenu()
   -- map("n", '<leader>ca', '<cmd>CodeActionMenu<Enter>')
-end
-
--------------------- ms-jpq/coq_nvim
-local function coq()
-  map('i', '<Esc>',
-    function() return vim.fn.pumvisible() == 1 and '<C-e><Esc>`^' or '<Esc>`^' end,
-    expr)
-  map('i', '<C-c>',
-    function() return vim.fn.pumvisible() == 1 and '<C-e><C-c>' or '<C-c>' end,
-    expr)
-  map('i', '<Tab>',
-    function() return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>' end, expr)
-  map('i', '<S-Tab>',
-    function() return vim.fn.pumvisible() == 1 and '<C-p>' or '<BS>' end, expr)
-  map('n', '<Leader>cs', function() require('coq').Snips('edit') end)
 end
 
 -------------------- anuvyklack/hydra.nvim

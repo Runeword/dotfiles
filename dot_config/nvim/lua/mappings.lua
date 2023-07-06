@@ -125,17 +125,7 @@ local function core()
   map('n', '<leader>l', '<cmd>Lazy<CR>')
 end
 
--------------------- chrisgrieser/nvim-spider
-local function spider()
-  map({ 'n', 'o', 'x', }, 'w', "<cmd>lua require('spider').motion('w')<CR>",
-    { desc = 'Spider-w', })
-  map({ 'n', 'o', 'x', }, 'e', "<cmd>lua require('spider').motion('e')<CR>",
-    { desc = 'Spider-w', })
-  map({ 'n', 'o', 'x', }, 'b', "<cmd>lua require('spider').motion('b')<CR>",
-    { desc = 'Spider-w', })
-  map({ 'n', 'o', 'x', }, 'ge', "<cmd>lua require('spider').motion('ge')<CR>",
-    { desc = 'Spider-w', })
-end
+
 -------------------- Runeword/putter.nvim
 local function putter()
   map({ 'n', 'x', }, 'glp', require('putter').putLinewise(']p`]'))
@@ -189,10 +179,10 @@ local function telescope()
   -- map("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
 end
 
--------------------- williamboman/mason.nvim
-local function mason()
-  map('n', '<Leader>m', '<cmd>Mason<Cr>')
-end
+-- -------------------- williamboman/mason.nvim
+-- local function mason()
+--   map('n', '<Leader>m', '<cmd>Mason<Cr>')
+-- end
 
 -------------------- junegunn/fzf
 local function fzf()
@@ -204,30 +194,10 @@ local function fzf()
   -- map("n", "<Leader>x", "<cmd>lua require('fzf-lua').quickfix({multiprocess=true})<CR>")
 end
 
--------------------- andymass/vim-matchup
-local function matchup()
-  map({ 'n', 'x', }, '%', '<plug>(matchup-%)')
-  map({ 'n', 'x', }, 'g%', '<plug>(matchup-g%)')
-end
-
 -------------------- jonatan-branting/nvim-better-n
 local function bettern()
   map('n', 'n', require('better-n').n, { nowait = true, })
   map('n', '<s-n>', require('better-n').shift_n, { nowait = true, })
-end
-
--------------------- inside/vim-search-pulse
-local function pulse()
-  vim.g.vim_search_pulse_duration = 200
-  vim.g.vim_search_pulse_mode = 'pattern'
-  vim.g.vim_search_pulse_disable_auto_mappings = 1
-
-  map('n', 'n', 'n<Plug>Pulse', remap)
-  map('n', 'N', 'N<Plug>Pulse', remap)
-  map('n', '*', '*<Plug>Pulse', remap)
-  map('n', '#', '#<Plug>Pulse', remap)
-  map('c', '<Enter>', 'search_pulse#PulseFirst()',
-    { silent = true, expr = true, })
 end
 
 local function comment()
@@ -259,29 +229,6 @@ local function sj()
   map({ 'n', 'o', 'x', }, 's', require('sj').run)
 end
 
--------------------- dhruvasagar/vim-table-mode
-local function tablemode()
-  map('n', '<Leader>tt', '<Cmd>TableModeToggle<CR>')
-end
-
--------------------- rareitems/printer.nvim
-local function printer()
-  map('n', '<Leader>pw', '<Plug>(printer_print)iw')
-end
-
--------------------- chrisgrieser/nvim-various-textobjs
-local function varioustextobjs()
-  map({ 'o', 'x', }, 'ak', function() require('various-textobjs').key(false) end)
-  map({ 'o', 'x', }, 'ik', function() require('various-textobjs').key(true) end)
-  map({ 'o', 'x', }, 'av',
-    function() require('various-textobjs').value(false) end)
-  map({ 'o', 'x', }, 'iv', function() require('various-textobjs').value(true) end)
-  map({ 'o', 'x', }, 'ad',
-    function() require('various-textobjs').number(false) end)
-  map({ 'o', 'x', }, 'id',
-    function() require('various-textobjs').number(true) end)
-end
-
 -------------------- lewis6991/gitsigns.nvim
 local function gitsigns(buffer)
   map({ 'n', 'x', }, '<leader>ga', package.loaded.gitsigns.stage_buffer,
@@ -295,32 +242,6 @@ local function gitsigns(buffer)
     { buffer = buffer, desc = 'git blame', })
   map({ 'n', 'x', }, '<leader>gd', package.loaded.gitsigns.toggle_deleted,
     { buffer = buffer, })
-end
-
--------------------- akinsho/bufferline.nvim
-local function bufferline()
-  map({ 'n', 'x', }, '<tab>', '<cmd>BufferLineCycleNext<CR>', silent)
-  map({ 'n', 'x', }, '<s-tab>', '<cmd>BufferLineCyclePrev<CR>', silent)
-  map({ 'n', 'x', }, '<pageup>', '<cmd>BufferLineMovePrev<CR>', silent)
-  map({ 'n', 'x', }, '<pagedown>', '<cmd>BufferLineMoveNext<CR>', silent)
-  map({ 'n', 't', 'i', 'x', }, '<A-1>',
-    function() require('bufferline').go_to_buffer(1) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-2>',
-    function() require('bufferline').go_to_buffer(2) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-3>',
-    function() require('bufferline').go_to_buffer(3) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-4>',
-    function() require('bufferline').go_to_buffer(4) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-5>',
-    function() require('bufferline').go_to_buffer(5) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-6>',
-    function() require('bufferline').go_to_buffer(6) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-7>',
-    function() require('bufferline').go_to_buffer(7) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-8>',
-    function() require('bufferline').go_to_buffer(8) end)
-  map({ 'n', 't', 'i', 'x', }, '<A-9>',
-    function() require('bufferline').go_to_buffer(-1) end)
 end
 
 -------------------- AndrewRadev/splitjoin.vim
@@ -474,16 +395,6 @@ local function hydra()
     end)
 end
 
--------------------- michaelb/sniprun
-local function sniprun()
-  map({ 'n', 'v', }, '<leader>rr', '<Plug>SnipRun')
-  map('n', '<leader>re', '<Plug>SnipReset')
-  map('n', '<leader>rl', '<Plug>SnipLive')
-  map('n', '<leader>rc', '<Plug>SnipClose')
-  map('n', '<leader>ri', '<Plug>SnipInfo')
-  map('n', '<leader>rm', '<Plug>SnipReplMemoryClean')
-end
-
 -------------------- D4KU/vim-textobj-chainmember
 local function textobjchainmember()
   map({ 'o', 'x', }, 'am', '<Plug>(textobj-chainmember-a)')
@@ -492,32 +403,6 @@ local function textobjchainmember()
   map({ 'o', 'x', }, 'iom', '<Plug>(textobj-chainmember-last-i)')
   map({ 'o', 'x', }, 'anm', '<Plug>(textobj-chainmember-next-a)')
   map({ 'o', 'x', }, 'inm', '<Plug>(textobj-chainmember-next-i)')
-end
-
--------------------- mfussenegger/nvim-dap
-local function dap()
-  local mappings = require('hydra')({
-    hint = '',
-    mode = { 'o', 'n', 'x', },
-    config = {
-      -- hint = { type = 'cmdline' },
-      hint = false,
-      color = 'pink',
-    },
-    heads = {
-      { 'c',     require('dap').continue, },
-      { 'n',     require('dap').step_over, },
-      { 'i',     require('dap').step_into, },
-      { 'o',     require('dap').step_out, },
-      { 'b',     require('dap').toggle_breakpoint, },
-      { 'r',     require('dap').repl.open, },
-      { 'q',     nil,                              { exit = true, }, },
-      { '<Esc>', nil,                              { exit = true, }, },
-      { '<C-s>', nil,                              { exit = true, }, },
-    },
-  })
-
-  map({ 'n', 'x', }, '<Leader>d', function() mappings:activate() end)
 end
 
 -- -------------------- chaoren/vim-wordmotion

@@ -200,11 +200,6 @@ local function bettern()
   map('n', '<s-n>', require('better-n').shift_n, { nowait = true, })
 end
 
-local function comment()
-  map('x', 'gc', '<Plug>(comment_toggle_linewise_visual)gv', remap)
-  map('x', 'gb', '<Plug>(comment_toggle_blockwise_visual)gv', remap)
-end
-
 -------------------- AndrewRadev/sideways.vim
 local function sideways()
   map('n', '<Left>', '<cmd>SidewaysJumpLeft<CR>')
@@ -227,14 +222,6 @@ end
 -------------------- woosaaahh/sj.nvim
 local function sj()
   map({ 'n', 'o', 'x', }, 's', require('sj').run)
-end
-
--------------------- AndrewRadev/splitjoin.vim
-local function splitjoin()
-  vim.g.splitjoin_split_mapping = ''
-  vim.g.splitjoin_join_mapping = ''
-  map('n', 'gj', '<cmd>silent SplitjoinJoin<CR>')
-  map('n', 'gk', '<cmd>silent SplitjoinSplit<CR>')
 end
 
 -------------------- is0n/fm-nvim
@@ -268,11 +255,6 @@ local function lspconfig(buffer)
     { noremap = true, silent = true, })
   -- lsp.buf.formatting_seq_sync(nil, 6000, { 'tsserver', 'html', 'cssls', 'vuels', 'eslint' })
   -- lsp.buf.formatting_seq_sync
-end
-
--------------------- weilbith/nvim-code-action-menu
-local function codeactionmenu()
-  -- map("n", '<leader>ca', '<cmd>CodeActionMenu<Enter>')
 end
 
 -------------------- anuvyklack/hydra.nvim

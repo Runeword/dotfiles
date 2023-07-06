@@ -7,56 +7,9 @@ return {
   --   end,
   -- },
 
-  {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    opts = {
-      labels = "',pyaoeuidhtnsfgcrl;qjkxbmwvz",
-      label = { uppercase = false, },
-      highlight = {
-        backdrop = false,
-        matches = true,
-        priority = 5000,
-        groups = {
-          match = 'FlashMatch',
-          current = 'FlashCurrent',
-          backdrop = 'FlashBackdrop',
-          label = 'FlashLabel',
-        },
-      },
-    },
-    keys = {
-      {
-        's',
-        mode = { 'n', 'x', 'o', },
-        function()
-          require('flash').jump()
-        end,
-        desc = 'Flash',
-      },
-    },
-  },
-
-  {
-    'andymass/vim-matchup',
-    init = function()
-      require('setup').matchup()
-    end,
-    config = function()
-      require('mappings').matchup()
-    end,
-  },
-
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
-
-  {
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      require('setup').nullls()
-    end,
-  },
 
   -- {
   --   'luukvbaal/statuscol.nvim',
@@ -65,26 +18,10 @@ return {
   --   end,
   -- },
 
-  {
-    'dhruvasagar/vim-table-mode',
-    init = function()
-      require('setup').tablemode()
-    end,
-    config = function()
-      require('mappings').tablemode()
-    end,
-  },
-
   -- { 'mattn/vim-gist',
   --   dependencies = { 'mattn/webapi-vim' },
   -- },
 
-  {
-    'willothy/flatten.nvim',
-    config = true,
-    lazy = false,
-    priority = 1001,
-  },
 
   -- {
   --   'gelguy/wilder.nvim',
@@ -94,62 +31,6 @@ return {
   --     require("setup").wilder()
   --   end,
   -- },
-
-  {
-    'michaelb/sniprun',
-    build = 'bash ./install.sh',
-    config = function()
-      require('setup').sniprun()
-      require('mappings').sniprun()
-    end,
-  },
-
-  {
-    'chrisgrieser/nvim-spider',
-    lazy = true,
-    spider = function()
-      require('mappings').spider()
-    end,
-  },
-
-  {
-    'rareitems/printer.nvim',
-    config = function()
-      require('setup').printer()
-      require('mappings').printer()
-    end,
-  },
-
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('mappings').dap()
-      require('setup.dap')
-    end,
-  },
-
-  {
-    'akinsho/bufferline.nvim',
-    config = function()
-      require('mappings').bufferline()
-      require('setup').bufferline()
-    end,
-  },
-
-  {
-    'inside/vim-search-pulse',
-    config = function()
-      require('mappings').pulse()
-    end,
-  },
-
-  {
-    'chrisgrieser/nvim-various-textobjs',
-    config = function()
-      require('setup').varioustextobjs()
-      require('mappings').varioustextobjs()
-    end,
-  },
 
   -- {
   --   'ray-x/starry.nvim',
@@ -161,25 +42,11 @@ return {
   -- },
 
   {
-    'dasupradyumna/midnight.nvim',
-    lazy = false,
-    priority = 1000,
-    init = function()
-      require('setup').midnight()
-    end,
-  },
-
-  {
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('setup').treesitter()
     end,
     build = ':TSUpdate',
-  },
-
-  {
-    'neovim/nvim-lspconfig',
-    config = require('setup.lsp'),
   },
 
   {

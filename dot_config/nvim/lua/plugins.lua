@@ -57,39 +57,13 @@ return {
     end,
   },
 
-  {
-    'smjonas/live-command.nvim',
-    config = function()
-      require('setup').livecommand()
-    end,
-  },
-
-  {
-    'ms-jpq/coq_nvim',
-    branch = 'coq',
-    init = function()
-      require('setup').coq()
-    end,
-    config = function()
-      require('autocmd').coq()
-      require('mappings').coq()
-    end,
-  },
-
-  {
-    'is0n/fm-nvim',
-    config = function()
-      require('mappings').fm()
-      require('setup').fm()
-    end,
-  },
-
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('setup').gitsigns()
-    end,
-  },
+  -- {
+  --   'is0n/fm-nvim',
+  --   config = function()
+  --     require('mappings').fm()
+  --     require('setup').fm()
+  --   end,
+  -- },
 
   {
     'gbprod/stay-in-place.nvim',

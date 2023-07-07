@@ -1,7 +1,6 @@
 local cmd = vim.cmd
 local o = vim.o
 local fn = vim.fn
-local highlight = vim.highlight
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local nvim_set_hl = vim.api.nvim_set_hl
@@ -92,41 +91,6 @@ local function core()
   })
 end
 
-local function bufferline()
-  augroup('bufferline', { clear = true, })
-  autocmd('ColorScheme', {
-    group = 'bufferline',
-    pattern = '*',
-    callback = function()
-      nvim_set_hl(0, 'BufferLineFill', { bg = 'none', })
-      nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e', })
-      nvim_set_hl(0, 'BufferLineBufferSelected', { fg = 'white', bg = 'none', })
-      nvim_set_hl(0, 'BufferLineNumbers',
-        { fg = '#7a7c9e', bg = 'none', italic = false, })
-      nvim_set_hl(0, 'BufferLineNumbersSelected',
-        { fg = 'white', bg = 'none', italic = false, })
-      nvim_set_hl(0, 'BufferLineDuplicate',
-        { fg = '#7a7c9e', bg = 'none', italic = false, })
-      nvim_set_hl(0, 'BufferLineDuplicateSelected',
-        { fg = 'white', bg = 'none', italic = false, })
-    end,
-  })
-end
-
-local function matchup()
-  augroup('matchup', { clear = true, })
-  autocmd('ColorScheme', {
-    group = 'matchup',
-    pattern = '*',
-    callback = function()
-      nvim_set_hl(0, 'MatchParen',
-        { fg = '#7429ff', italic = true, bold = true, })
-      nvim_set_hl(0, 'MatchWord', { fg = '#7429ff', })
-      nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b', })
-    end,
-  })
-end
-
 local function packer()
   augroup('packer_user_config', { clear = true, })
   autocmd('BufWritePost', {
@@ -149,19 +113,6 @@ local function sj()
   })
 end
 
-local function flash()
-  augroup('flash', { clear = true, })
-  autocmd('ColorScheme', {
-    group = 'flash',
-    pattern = '*',
-    callback = function()
-      nvim_set_hl(0, 'FlashMatch', { bg = '#222b66', fg = 'white', bold = false, })
-      nvim_set_hl(0, 'FlashCurrent', { bg = '#ffe100', fg = 'black', bold = false, })
-      nvim_set_hl(0, 'FlashLabel', { bg = '#5d00ff', fg = 'white', bold = false, })
-    end,
-  })
-end
-
 -- local function telescope()
 --   cmd([[autocmd ColorScheme * highlight TelescopeBorder guibg=none]])
 --   cmd([[autocmd ColorScheme * highlight TelescopeNormal guibg=none]])
@@ -169,13 +120,6 @@ end
 
 return {
   packer = packer,
-  indentscope = indentscope,
   core = core,
-  bufferline = bufferline,
-  coq = coq,
-  lightbulb = lightbulb,
   sj = sj,
-  flash = flash,
-  matchup = matchup,
-  lualine = lualine,
 }

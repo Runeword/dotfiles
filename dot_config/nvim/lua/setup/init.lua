@@ -11,11 +11,6 @@ local api = vim.api
 --   g.wordmotion_nomap = 1
 -- end
 
--------------------- machakann/vim-highlightedyank
-local function highlightedyank()
-  g.highlightedyank_highlight_duration = 100
-end
-
 -------------------- cshuaimin/ssr.nvim
 local function ssr()
   require('ssr').setup {
@@ -28,24 +23,6 @@ local function ssr()
       replace_all = '<C-CR>',
     },
   }
-end
-
--------------------- kylechui/nvim-surround
-local function surround()
-  require('nvim-surround').setup({
-    keymaps = {
-      insert = false,
-      insert_line = false,
-      normal_line = false,
-      normal_cur_line = false,
-      visual_line = false,
-      normal_cur = 'ySS',
-      normal = 'yS',
-      delete = 'dS',
-      change = 'cS',
-      visual = 'S',
-    },
-  })
 end
 
 -------------------- gelguy/wilder.nvim
@@ -159,48 +136,6 @@ local function sj()
   })
 end
 
--------------------- kosayoda/nvim-lightbulb
-local function lightbulb()
-  fn.sign_define('LightBulbSign', { text = '⚡', })
-end
-
--------------------- ibhagwan/fzf-lua
-local function fzf()
-  local actions = require('fzf-lua.actions')
-
-  require('fzf-lua').setup({
-    winopts = {
-      fullscreen = true,
-      border = 'none',
-      preview = {
-        layout = 'horizontal',
-        horizontal = 'up:70%',
-        title = false,
-        delay = 0,
-        scrollchars = { '▎', '', },
-      },
-    },
-    keymap = {
-      builtin = {},
-      fzf = {
-        -- 	-- ["tab"] = "down",
-        -- 	-- ["btab"] = "up",
-        ['ctrl-e'] = 'preview-page-down',
-        ['ctrl-u'] = 'preview-page-up',
-      },
-    },
-    actions = {
-      files = {
-        ['default'] = actions.file_edit,
-      },
-      buffers = {
-        ['default'] = actions.buf_edit,
-      },
-    },
-  })
-end
-
-
 -------------------- is0n/fm-nvim
 local function fm()
   require('fm-nvim').setup({
@@ -304,11 +239,6 @@ local function treesitter()
   })
 end
 
--------------------- D4KU/vim-textobj-chainmember
-local function textobjchainmember()
-  g.textobj_chainmember_no_default_key_mappings = 1
-end
-
 -------------------- gbprod/cutlass.nvim
 local function cutlass()
   require('cutlass').setup({
@@ -329,28 +259,6 @@ local function bettern()
   }
 end
 
--------------------- monaqa/dial.nvim
-local function dial()
-  local augend = require('dial.augend')
-  require('dial.config').augends:register_group({
-    default = {
-      augend.integer.alias.decimal,
-      augend.integer.alias.decimal_int,
-      augend.date.alias['%Y/%m/%d'],
-      augend.semver.alias.semver,
-      augend.constant.alias.bool,
-      augend.constant.new({
-        elements = { 'let', 'const', },
-      }),
-      augend.constant.new({
-        elements = { '&&', '||', },
-        word = false,
-        cyclic = true,
-      }),
-    },
-  })
-end
-
 -------------------- williamboman/mason.nvim
 local function mason()
   require('mason').setup({ ui = { border = 'single', }, })
@@ -369,59 +277,6 @@ local function masonlspconfig()
       -- -- 'volar',
     },
     automatic_installation = false,
-  })
-end
-
-local function lspprogress()
-  require('lsp-progress').setup({
-    spinner = { '⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷', },
-    spin_update_time = 200,
-    decay = 1000,
-    event = 'LspProgressStatusUpdated',
-    event_update_time_limit = 100,
-    max_size = -1,
-    series_format = function(title, message, percentage, done)
-      local builder = {}
-      local has_title = false
-      local has_message = false
-      if title and title ~= '' then
-        table.insert(builder, title)
-        has_title = true
-      end
-      if message and message ~= '' then
-        table.insert(builder, message)
-        has_message = true
-      end
-      if percentage and (has_title or has_message) then
-        table.insert(builder, string.format('(%.0f%%%%)', percentage))
-      end
-      if done and (has_title or has_message) then
-        table.insert(builder, '- done')
-      end
-      return table.concat(builder, ' ')
-    end,
-    -- Format client message.
-    -- `[null-ls] ⣷ formatting isort (100%) - done, formatting black (50%)`.
-    client_format = function(client_name, spinner, series_messages)
-      return #series_messages > 0
-          and ('[' .. client_name .. '] ' .. spinner .. ' ' .. table.concat(
-            series_messages,
-            ', '
-          ))
-          or nil
-    end,
-    -- Format (final) message.
-    -- ` LSP [null-ls] ⣷ formatting isort (100%) - done, formatting black (50%)`
-    format = function(client_messages)
-      local sign = 'LSP'
-      return #client_messages > 0
-          and (sign .. ' ' .. table.concat(client_messages, ' '))
-          or sign
-    end,
-    debug = false,
-    console_log = true,
-    file_log = false,
-    file_log_name = 'lsp-progress.log',
   })
 end
 

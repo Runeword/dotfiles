@@ -164,114 +164,6 @@ local function fm()
   map('n', '<leader>n', '<cmd>Vifm<CR>')
 end
 
--------------------- neovim/nvim-lspconfig
-local function lspconfig(buffer)
-  map('n', 'gd', vim.lsp.buf.definition, { buffer = buffer, })
-  map('n', 'gr', vim.lsp.buf.references, { buffer = buffer, })
-  map('n', '<Leader>f', vim.lsp.buf.format, { buffer = buffer, })
-  map('n', '<Leader>a', '<cmd>CodeActionMenu<Enter>', { buffer = buffer, })
-  -- map('n', '<leader>r', function() lsp.buf.rename(vim.fn.input('New Name: ')) end, { buffer = buffer })
-  -- map("n", '<ScrollWheelUp>', diagnostic.goto_prev, { buffer = buffer })
-  -- map("n", '<ScrollWheelDown>', diagnostic.goto_next, { buffer = buffer })
-  map('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
-  map('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
-  -- map('n', '<Leader>l', diagnostic.setloclist, { noremap = true, silent = true })
-  map('n', '<Leader>x', vim.diagnostic.setqflist,
-    { noremap = true, silent = true, })
-  -- lsp.buf.formatting_seq_sync(nil, 6000, { 'tsserver', 'html', 'cssls', 'vuels', 'eslint' })
-  -- lsp.buf.formatting_seq_sync
-end
-
--------------------- anuvyklack/hydra.nvim
-local function hydra()
-  require('hydra')({
-    name = 'newline',
-    mode = { 'n', 'x', },
-    body = 'g',
-    heads = {
-      { 'o', '<cmd>set paste<CR>m`o<Esc>``<cmd>set nopaste<CR>', },
-      { 'O', '<cmd>set paste<CR>m`O<Esc>``<cmd>set nopaste<CR>', },
-    },
-  })
-
-  local scroll = require('hydra')({
-    mode = { 'n', 'x', },
-    config = {
-      hint = false,
-      on_enter = function() vim.o.scrolloff = 9999 end,
-      on_exit = function() vim.o.scrolloff = 5 end,
-    },
-    heads = {
-      { 'u', '5k', },
-      { 'e', '5j', },
-    },
-  })
-
-  map({ 'n', 'x', }, '<Leader>e',
-    function()
-      scroll:activate()
-      vim.fn.execute('normal! 5j')
-    end)
-  map({ 'n', 'x', }, '<Leader>u',
-    function()
-      scroll:activate()
-      vim.fn.execute('normal! 5k')
-    end)
-
-  local nextParagraphStart = function()
-    vim.fn.search(
-      [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW')
-  end
-  local nextParagraphEnd = function()
-    vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
-      'sW')
-  end
-  local prevParagraphStart = function()
-    vim.fn.search(
-      [[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
-  end
-  local prevParagraphEnd = function()
-    vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
-      'sWb')
-  end
-
-  local jumpParagraph = require('hydra')({
-    mode = { 'n', 'x', },
-    config = {
-      hint = false,
-      on_enter = function() vim.o.scrolloff = 9999 end,
-      on_exit = function() vim.o.scrolloff = 5 end,
-    },
-    heads = {
-      { '<Down>',   nextParagraphStart, },
-      { '<Up>',     prevParagraphStart, },
-      { '<C-Up>',   prevParagraphEnd, },
-      { '<C-Down>', nextParagraphEnd, },
-    },
-  })
-
-  map({ 'n', 'x', }, '<Down>',
-    function()
-      jumpParagraph:activate()
-      nextParagraphStart()
-    end)
-  map({ 'n', 'x', }, '<Up>',
-    function()
-      jumpParagraph:activate()
-      prevParagraphStart()
-    end)
-  map({ 'n', 'x', }, '<S-Up>',
-    function()
-      jumpParagraph:activate()
-      prevParagraphEnd()
-    end)
-  map({ 'n', 'x', }, '<S-Down>',
-    function()
-      jumpParagraph:activate()
-      nextParagraphEnd()
-    end)
-end
-
 -- -------------------- chaoren/vim-wordmotion
 -- local function wordMotion()
 -- local wordMotion = require('hydra')({ mode = { 'o', 'n', 'x' }, config = { hint = false, color = 'pink' }, heads = {
@@ -291,31 +183,10 @@ end
 return {
   core = core,
   telescope = telescope,
-  splitjoin = splitjoin,
   fm = fm,
-  lspconfig = lspconfig,
-  bufferline = bufferline,
-  coq = coq,
-  fzf = fzf,
-  dial = dial,
-  gitsigns = gitsigns,
-  textobjchainmember = textobjchainmember,
   hydra = hydra,
   leap = leap,
   bettern = bettern,
-  pulse = pulse,
   sj = sj,
-  codeactionmenu = codeactionmenu,
-  mason = mason,
-  dap = dap,
-  comment = comment,
   ssr = ssr,
-  sniprun = sniprun,
-  sideways = sideways,
-  putter = putter,
-  matchup = matchup,
-  tablemode = tablemode,
-  varioustextobjs = varioustextobjs,
-  printer = printer,
-  spider = spider,
 }

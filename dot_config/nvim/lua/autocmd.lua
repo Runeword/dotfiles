@@ -127,30 +127,6 @@ local function matchup()
   })
 end
 
-local function lightbulb()
-  augroup('lightbulb', { clear = true, })
-  autocmd({ 'CursorHold', 'CursorHoldI', }, {
-    group = 'lightbulb',
-    pattern = '*',
-    callback = require('nvim-lightbulb').update_lightbulb,
-  })
-end
-
-local function lualine()
-  -- augroup('lualine', { clear = true, })
-  -- autocmd({ 'User', 'LspProgressStatusUpdated', }, {
-  --   group = 'lualine',
-  --   pattern = '*',
-  --   callback = require('lualine').refresh(),
-  -- })
-  vim.cmd([[
-  augroup lualine
-      autocmd!
-      autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
-  augroup END
-  ]])
-end
-
 local function packer()
   augroup('packer_user_config', { clear = true, })
   autocmd('BufWritePost', {

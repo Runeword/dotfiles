@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
   -- {
   --   'woosaaahh/sj.nvim',
@@ -10,6 +12,8 @@ return {
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
+  { 'tpope/vim-abolish', },
+
 
   -- {
   --   'luukvbaal/statuscol.nvim',
@@ -41,6 +45,14 @@ return {
   --   end,
   -- },
 
+  -- {
+  --   'is0n/fm-nvim',
+  --   config = function()
+  --     require('mappings').fm()
+  --     require('setup').fm()
+  --   end,
+  -- },
+
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
@@ -57,14 +69,12 @@ return {
     end,
   },
 
-  -- {
-  --   'is0n/fm-nvim',
-  --   config = function()
-  --     require('mappings').fm()
-  --     require('setup').fm()
-  --   end,
-  -- },
-
+  {
+    'willothy/flatten.nvim',
+    config = true,
+    lazy = false,
+    priority = 1001,
+  },
 
   {
     'gbprod/stay-in-place.nvim',
@@ -100,6 +110,7 @@ return {
   { 'itchyny/vim-cursorword', },
   { 'tommcdo/vim-exchange', },
   { 'jghauser/mkdir.nvim', },
+  { 'svban/YankAssassin.vim', },
   -- { 'Exafunction/codeium.vim', },
 
   -- { 'smjonas/inc-rename.nvim',
@@ -116,53 +127,9 @@ return {
   },
 
   {
-    'kosayoda/nvim-lightbulb',
-    config = function()
-      require('setup').lightbulb()
-      require('autocmd').lightbulb()
-    end,
-  },
-
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', },
-    config = function()
-      require('setup.lualine')()
-      require('autocmd').lualine()
-    end,
-  },
-
-  {
-    'linrongbin16/lsp-progress.nvim',
-    event = { 'VimEnter', },
-    dependencies = { 'nvim-tree/nvim-web-devicons', },
-    config = function()
-      require('setup').lspprogress()
-    end,
-  },
-
-  {
-    'ibhagwan/fzf-lua',
-    config = function()
-      require('mappings').fzf()
-      require('setup').fzf()
-    end,
-  },
-
-  {
-    'monaqa/dial.nvim',
-    config = function()
-      require('mappings').dial()
-      require('setup').dial()
-    end,
-  },
-
-  { 'svban/YankAssassin.vim', },
-
-  {
     'machakann/vim-highlightedyank',
     config = function()
-      require('setup').highlightedyank()
+      vim.g.highlightedyank_highlight_duration = 100
     end,
   },
 
@@ -172,26 +139,8 @@ return {
   },
 
   {
-    'D4KU/vim-textobj-chainmember',
-    dependencies = 'kana/vim-textobj-user',
-    init = function()
-      require('setup').textobjchainmember()
-    end,
-    config = function()
-      require('mappings').textobjchainmember()
-    end,
-  },
-
-  {
     'kana/vim-textobj-line',
     dependencies = 'kana/vim-textobj-user',
-  },
-
-  {
-    'AndrewRadev/sideways.vim',
-    config = function()
-      require('mappings').sideways()
-    end,
   },
 
   -- {
@@ -200,21 +149,4 @@ return {
   --     require("setup").wordmotion()
   --   end,
   -- },
-
-  {
-    'kylechui/nvim-surround',
-    config = function()
-      require('setup').surround()
-    end,
-  },
-
-  { 'tpope/vim-abolish', },
-
-  {
-    'Runeword/putter.nvim',
-    -- "/home/charles/Documents/dev/plugins/putter.nvim",
-    config = function()
-      require('mappings').putter()
-    end,
-  },
 }

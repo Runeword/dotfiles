@@ -34,7 +34,29 @@ return {
       return function(client, buffer)
         client.server_capabilities.documentFormattingProvider = dfp
         client.server_capabilities.semanticTokensProvider = nil
-        require('mappings').lspconfig(buffer)
+
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = buffer, })
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = buffer, })
+
+        vim.keymap.set('n', '<Leader>f', vim.lsp.buf.format, { buffer = buffer, })
+        vim.keymap.set('n', '<Leader>a', '<cmd>CodeActionMenu<Enter>',
+          { buffer = buffer, })
+
+        -- vim.keymap.set('n', '<leader>r', function() lsp.buf.rename(vim.fn.input('New Name: ')) end, { buffer = buffer })
+        -- vim.keymap.set("n", '<ScrollWheelUp>', diagnostic.goto_prev, { buffer = buffer })
+        -- vim.keymap.set("n", '<ScrollWheelDown>', diagnostic.goto_next, { buffer = buffer })
+
+        vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev,
+          { buffer = buffer, })
+        vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next,
+          { buffer = buffer, })
+
+        vim.keymap.set('n', '<Leader>x', vim.diagnostic.setqflist,
+          { noremap = true, silent = true, })
+
+        -- vim.keymap.set('n', '<Leader>l', diagnostic.setloclist, { noremap = true, silent = true })
+        -- lsp.buf.formatting_seq_sync(nil, 6000, { 'tsserver', 'html', 'cssls', 'vuels', 'eslint' })
+        -- lsp.buf.formatting_seq_sync
       end
     end
 

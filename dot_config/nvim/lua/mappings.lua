@@ -125,53 +125,6 @@ local function core()
   map('n', '<leader>l', '<cmd>Lazy<CR>')
 end
 
-
--------------------- Runeword/putter.nvim
-local function putter()
-  map({ 'n', 'x', }, 'glp', require('putter').putLinewise(']p`]'))
-  map({ 'n', 'x', }, 'glP', require('putter').putLinewise(']P`]'))
-  map({ 'n', 'x', }, 'gllp', require('putter').putLinewiseSuffix(']p`]'))
-  map({ 'n', 'x', }, 'gllP', require('putter').putLinewiseSuffix(']P`]'))
-  map({ 'n', 'x', }, 'glsp', require('putter').putLinewiseSurround(']p`]'))
-  map({ 'n', 'x', }, 'glsP', require('putter').putLinewiseSurround(']P`]'))
-  map({ 'n', 'x', }, 'p', require('putter').putCharwise('p'))
-  map({ 'n', 'x', }, 'P',
-    require('putter').jumpToLineStart(require('putter').putCharwise('P')))
-  map({ 'n', 'x', }, 'gp', require('putter').putCharwisePrefix('p'))
-  map({ 'n', 'x', }, 'gP', require('putter').putCharwiseSuffix('P'))
-  map({ 'n', 'x', }, 'gsp', require('putter').putCharwiseSurround('p'))
-  map({ 'n', 'x', }, 'gsP', require('putter').putCharwiseSurround('P'))
-  -- map({ "n", "x" }, "x", require("putter").snapToLineEnd('"_x'))
-  -- map({ "n", "x" }, "p", require("putter").jumpToLineEnd(require("putter").putCharwise('p')))
-  -- map({ "n", "x" }, "gp", require("putter").putCharwisePrefix('geep'))
-  -- map({ "n", "x" }, "gP", require("putter").putCharwiseSuffix('gewP'))
-  -- map({ "n", "x" }, "gsp", require("putter").putCharwiseSurround('geep'))
-  -- map({ "n", "x" }, "gsP", require("putter").putCharwiseSurround('gewP'))
-
-  -- map("n", "<leader><Tab>", require("putter").addBuffersToQfList)
-  -- map("n", "<C-down>", require("putter").cycleNextLocItem, silent)
-  -- map("n", "<C-up>", require("putter").cyclePrevLocItem, silent)
-  -- map("n", "<C-q>", "&buftype is# 'quickfix' ? ':try | cclose | catch | q! | catch | endtry<CR>' : ':q!<CR>'", expr)
-
-  -- vim.keymap.set("n", "t", require("putter").__dot_repeat('p'))
-
-  -- local counter = 0
-  --
-  -- function _G.__dot_repeat(motion) -- 4.
-  --     if motion == nil then
-  --         vim.o.operatorfunc = "v:lua.require('putter').snapToLineEnd('_x')()"
-  --         return "g@$" -- 2.
-  --     end
-  --
-  --     -- print("counter:", counter, "motion:", motion)
-  --     counter = counter + 1
-  -- end
-  --
-  -- vim.keymap.set("n", "ga", _G.__dot_repeat, expr)
-
-  -- -- stylua: ignore
-end
-
 -------------------- nvim-telescope/telescope.nvim
 local function telescope()
   -- map("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", opts)
@@ -184,28 +137,10 @@ end
 --   map('n', '<Leader>m', '<cmd>Mason<Cr>')
 -- end
 
--------------------- junegunn/fzf
-local function fzf()
-  map('n', '<Leader><Leader>', require('fzf-lua').files)
-  map('n', '<Leader>h', require('fzf-lua').live_grep_resume)
-  map('n', '<Leader>sh', require('fzf-lua').help_tags)
-  map('n', '<Leader>sm', require('fzf-lua').keymaps)
-  map('n', '<Leader>sl', require('fzf-lua').highlights)
-  -- map("n", "<Leader>x", "<cmd>lua require('fzf-lua').quickfix({multiprocess=true})<CR>")
-end
-
 -------------------- jonatan-branting/nvim-better-n
 local function bettern()
   map('n', 'n', require('better-n').n, { nowait = true, })
   map('n', '<s-n>', require('better-n').shift_n, { nowait = true, })
-end
-
--------------------- AndrewRadev/sideways.vim
-local function sideways()
-  map('n', '<Left>', '<cmd>SidewaysJumpLeft<CR>')
-  map('n', '<Right>', '<cmd>SidewaysJumpRight<CR>')
-  map('n', '<C-Left>', '<cmd>SidewaysLeft<CR>')
-  map('n', '<C-Right>', '<cmd>SidewaysRight<CR>')
 end
 
 -------------------- ggandor/leap.nvim
@@ -227,16 +162,6 @@ end
 -------------------- is0n/fm-nvim
 local function fm()
   map('n', '<leader>n', '<cmd>Vifm<CR>')
-end
-
--------------------- monaqa/dial.nvim
-local function dial()
-  map('n', '<C-a>', require('dial.map').inc_normal())
-  map('n', '<C-x>', require('dial.map').dec_normal())
-  map('v', '<C-a>', require('dial.map').inc_visual())
-  map('v', '<C-x>', require('dial.map').dec_visual())
-  map('v', 'g<C-a>', require('dial.map').inc_gvisual())
-  map('v', 'g<C-x>', require('dial.map').dec_gvisual())
 end
 
 -------------------- neovim/nvim-lspconfig
@@ -345,16 +270,6 @@ local function hydra()
       jumpParagraph:activate()
       nextParagraphEnd()
     end)
-end
-
--------------------- D4KU/vim-textobj-chainmember
-local function textobjchainmember()
-  map({ 'o', 'x', }, 'am', '<Plug>(textobj-chainmember-a)')
-  map({ 'o', 'x', }, 'im', '<Plug>(textobj-chainmember-i)')
-  map({ 'o', 'x', }, 'aom', '<Plug>(textobj-chainmember-last-a)')
-  map({ 'o', 'x', }, 'iom', '<Plug>(textobj-chainmember-last-i)')
-  map({ 'o', 'x', }, 'anm', '<Plug>(textobj-chainmember-next-a)')
-  map({ 'o', 'x', }, 'inm', '<Plug>(textobj-chainmember-next-i)')
 end
 
 -- -------------------- chaoren/vim-wordmotion

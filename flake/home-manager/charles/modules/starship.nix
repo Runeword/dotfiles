@@ -13,12 +13,14 @@
       "$directory"
     ];
 
-    shell.disabled = false;
-    shell.fish_indicator = "🐟 ";
-    shell.bash_indicator = "";
+    shell.disabled = true;
+    shell.bash_indicator = "b";
+    shell.fish_indicator = "f";
+    shell.zsh_indicator = "z";
     shell.format = "[$indicator]($style)";
 
     directory.style = "cyan";
+    directory.format = "[$path]($style) ";
 
     line_break.disabled = true;
 

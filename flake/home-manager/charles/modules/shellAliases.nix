@@ -37,6 +37,7 @@
     hs = "home-manager switch --flake $HOME/flake";
     hp = "home-manager packages | fzf --inline-info";
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
+    ni = "nix-info -m";
     nb = "sudo nixos-rebuild boot --flake $HOME/flake#charles";
     nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
     nfu = "__update_flake_inputs $HOME/flake";

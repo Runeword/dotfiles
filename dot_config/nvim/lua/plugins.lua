@@ -1,73 +1,10 @@
 local vim = vim
 
 return {
-  -- {
-  --   'woosaaahh/sj.nvim',
-  --   config = function()
-  --     require('setup').sj()
-  --     require('mappings').sj()
-  --   end,
-  -- },
-
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
   { 'tpope/vim-abolish', },
-
-
-  -- {
-  --   'luukvbaal/statuscol.nvim',
-  --   config = function()
-  --     require("statuscol").setup()
-  --   end,
-  -- },
-
-  -- { 'mattn/vim-gist',
-  --   dependencies = { 'mattn/webapi-vim' },
-  -- },
-
-
-  -- {
-  --   'gelguy/wilder.nvim',
-  --   dependencies = { "romgrk/fzy-lua-native" },
-  --   rocks = 'pcre2',
-  --   config = function()
-  --     require("setup").wilder()
-  --   end,
-  -- },
-
-  -- {
-  --   'ray-x/starry.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   init = function()
-  --     require('setup').starry()
-  --   end,
-  -- },
-
-  -- {
-  --   'is0n/fm-nvim',
-  --   config = function()
-  --     require('mappings').fm()
-  --     require('setup').fm()
-  --   end,
-  -- },
-
-  {
-    'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('setup').treesitter()
-    end,
-    build = ':TSUpdate',
-  },
-
-  {
-    'anuvyklack/hydra.nvim',
-    dependencies = 'anuvyklack/keymap-layer.nvim',
-    config = function()
-      require('mappings').hydra()
-    end,
-  },
 
   {
     'willothy/flatten.nvim',
@@ -111,13 +48,6 @@ return {
   { 'tommcdo/vim-exchange', },
   { 'jghauser/mkdir.nvim', },
   { 'svban/YankAssassin.vim', },
-  -- { 'Exafunction/codeium.vim', },
-
-  -- { 'smjonas/inc-rename.nvim',
-  --   config = function()
-  --     require('inc_rename').setup()
-  --   end,
-  -- },
 
   {
     'ahmedkhalf/project.nvim',
@@ -149,4 +79,39 @@ return {
   --     require("setup").wordmotion()
   --   end,
   -- },
+
+  -- {
+  --   'woosaaahh/sj.nvim',
+  --   config = function()
+  --     require('setup').sj()
+  --     require('mappings').sj()
+  --   end,
+  -- },
+
+  -- { 'smjonas/inc-rename.nvim',
+  --   config = function()
+  --     require('inc_rename').setup()
+  --   end,
+  -- },
+
+  -- {
+  --   'luukvbaal/statuscol.nvim',
+  --   config = function()
+  --     require("statuscol").setup()
+  --   end,
+  -- },
+
+  -- { 'mattn/vim-gist',
+  --   dependencies = { 'mattn/webapi-vim' },
+  -- },
+
+  -- {
+  --   'is0n/fm-nvim',
+  --   config = function()
+  --     require('mappings').fm()
+  --     require('setup').fm()
+  --   end,
+  -- },
+
+  -- { 'Exafunction/codeium.vim', },
 }

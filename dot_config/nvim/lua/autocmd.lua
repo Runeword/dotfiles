@@ -73,7 +73,6 @@ local function core()
         { link = 'DiagnosticVirtualTextWarn', })
       vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none', })
       vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = '#1e2633', })
-      vim.api.nvim_set_hl(0, 'Yank', { bg = '#00ffa2', fg = 'black', })
       vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'black', fg = '#7a7c9e', })
       vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#1e2633', fg = 'white', })
       vim.api.nvim_set_hl(0, 'PmenuSbar', { bg = 'black', })
@@ -81,12 +80,12 @@ local function core()
       vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#1e2633', })
       vim.api.nvim_set_hl(0, 'CursorColumn', { bg = '#1e2633', })
       vim.api.nvim_set_hl(0, 'Search', { bg = '#5d00ff', })
+      vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#ffe100', fg = 'black', })
       vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', })
       vim.api.nvim_set_hl(0, 'SignColumn', { bg = 'none', })
 
       -- vim.api.nvim_set_hl(0, 'VertSplit', { fg = '#292e42' })
       -- vim.api.nvim_set_hl(0, 'Hlargs', { fg = '#FAFF00' })
-      -- vim.api.nvim_set_hl(0, 'IncSearch', { bg = '#00ffa2', fg = 'black' })
       -- #0a172e #1e2633 #7a7c9e
     end,
   })
@@ -107,7 +106,8 @@ local function sj()
     group = 'sj',
     pattern = '*',
     callback = function()
-      nvim_set_hl(0, 'SjFocusedLabel', { bg = '#ffe100', fg = 'black', bold = false, })
+      nvim_set_hl(0, 'SjFocusedLabel',
+        { bg = '#ffe100', fg = 'black', bold = false, })
       nvim_set_hl(0, 'SjLabel', { bg = '#5d00ff', fg = 'white', bold = false, })
       nvim_set_hl(0, 'SjMatches', { bg = '#222b66', fg = 'white', bold = false, })
     end,

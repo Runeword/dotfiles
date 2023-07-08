@@ -30,6 +30,17 @@ return {
       end,
     })
 
+    -- machakann/vim-highlightedyank
+    vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'highlightedyank',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
+          { bg = '#00ffa2', fg = 'black', })
+      end,
+    })
+
     vim.cmd.colorscheme 'midnight'
   end,
 }

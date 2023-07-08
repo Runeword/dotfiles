@@ -55,7 +55,7 @@ return {
         autohide = false,
         jump_labels = false,
         multi_line = true,
-        label = { exclude = 'hjkliardc', },
+        -- label = { exclude = 'hjkliardc', },
         keys = { 'f', 'F', 't', 'T', ';', ',', },
         char_actions = function(motion)
           return {
@@ -66,7 +66,7 @@ return {
           }
         end,
         search = { wrap = false, },
-        highlight = { backdrop = true, },
+        highlight = { backdrop = false, },
         jump = { register = false, },
       },
     },

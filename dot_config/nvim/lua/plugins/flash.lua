@@ -35,19 +35,6 @@ return {
   },
 
   init = function()
-    vim.api.nvim_create_augroup('flash', { clear = true, })
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = 'flash',
-      pattern = '*',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'FlashMatch',
-          { bg = '#222b66', fg = 'white', bold = false, })
-        vim.api.nvim_set_hl(0, 'FlashCurrent',
-          { bg = '#ffe100', fg = 'black', bold = false, })
-        vim.api.nvim_set_hl(0, 'FlashLabel',
-          { bg = '#5d00ff', fg = 'white', bold = false, })
-      end,
-    })
   end,
 
   keys = {

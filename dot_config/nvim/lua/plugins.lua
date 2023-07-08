@@ -80,14 +80,6 @@ return {
   --   end,
   -- },
 
-  -- {
-  --   'woosaaahh/sj.nvim',
-  --   config = function()
-  --     require('setup').sj()
-  --     require('mappings').sj()
-  --   end,
-  -- },
-
   -- { 'smjonas/inc-rename.nvim',
   --   config = function()
   --     require('inc_rename').setup()

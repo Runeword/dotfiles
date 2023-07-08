@@ -68,31 +68,8 @@ local function bettern()
   }
 end
 
--------------------- williamboman/mason.nvim
-local function mason()
-  require('mason').setup({ ui = { border = 'single', }, })
-end
-
--------------------- williamboman/mason-lspconfig.nvim
-local function masonlspconfig()
-  require('mason-lspconfig').setup({
-    ensure_installed = {
-      -- 'tsserver',
-      -- 'eslint',
-      -- 'sumneko_lua',
-      -- 'yamlls',
-      -- 'vuels',
-      -- 'bashls',
-      -- -- 'volar',
-    },
-    automatic_installation = false,
-  })
-end
-
 return {
   fm = fm,
   bettern = bettern,
-  mason = mason,
-  masonlspconfig = masonlspconfig,
   ssr = ssr,
 }

@@ -132,11 +132,6 @@ local function telescope()
   -- map("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
 end
 
--- -------------------- williamboman/mason.nvim
--- local function mason()
---   map('n', '<Leader>m', '<cmd>Mason<Cr>')
--- end
-
 -------------------- jonatan-branting/nvim-better-n
 local function bettern()
   map('n', 'n', require('better-n').n, { nowait = true, })

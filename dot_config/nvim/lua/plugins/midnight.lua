@@ -11,7 +11,6 @@ return {
     -- autocommand will have no effect on previously sourced colorschemes
     -- so it must be added before any colorscheme is sourced
 
-    -- require('autocmd').bufferline()
     -- require('autocmd').matchup()
 
     -- folke/flash.nvim
@@ -37,6 +36,27 @@ return {
       callback = function()
         vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
           { bg = '#00ffa2', fg = 'black', })
+      end,
+    })
+
+    -- akinsho/bufferline.nvim
+    vim.api.nvim_create_augroup('bufferline', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'bufferline',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'BufferLineFill', { bg = 'none', })
+        vim.api.nvim_set_hl(0, 'BufferLineBackground', { fg = '#7a7c9e', })
+        vim.api.nvim_set_hl(0, 'BufferLineBufferSelected',
+          { fg = 'white', bg = 'none', })
+        vim.api.nvim_set_hl(0, 'BufferLineNumbers',
+          { fg = '#7a7c9e', bg = 'none', italic = false, })
+        vim.api.nvim_set_hl(0, 'BufferLineNumbersSelected',
+          { fg = 'white', bg = 'none', italic = false, })
+        vim.api.nvim_set_hl(0, 'BufferLineDuplicate',
+          { fg = '#7a7c9e', bg = 'none', italic = false, })
+        vim.api.nvim_set_hl(0, 'BufferLineDuplicateSelected',
+          { fg = 'white', bg = 'none', italic = false, })
       end,
     })
 

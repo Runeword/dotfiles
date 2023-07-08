@@ -154,11 +154,6 @@ local function ssr()
   map({ 'n', 'x', }, 't', function() require('ssr').open() end)
 end
 
--------------------- woosaaahh/sj.nvim
-local function sj()
-  map({ 'n', 'o', 'x', }, 's', require('sj').run)
-end
-
 -------------------- is0n/fm-nvim
 local function fm()
   map('n', '<leader>n', '<cmd>Vifm<CR>')
@@ -184,9 +179,7 @@ return {
   core = core,
   telescope = telescope,
   fm = fm,
-  hydra = hydra,
   leap = leap,
   bettern = bettern,
-  sj = sj,
   ssr = ssr,
 }

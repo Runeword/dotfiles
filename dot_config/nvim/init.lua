@@ -53,4 +53,11 @@ require('lazy').setup(
 local viewConfig = require('lazy.view.config')
 
 viewConfig.keys.details = 'o'
+viewConfig.keys.close = '<Esc>'
+viewConfig.keys.hover = 'K'
+viewConfig.keys.diff = 'd'
+viewConfig.keys.profile_sort = '<C-s>'
+viewConfig.keys.profile_filter = '<C-f>'
+viewConfig.keys.abort = '<C-c>'
+
 viewConfig.commands.build.key_plugin = 'r'

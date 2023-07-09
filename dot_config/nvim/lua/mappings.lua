@@ -7,12 +7,10 @@ local remap = { remap = true, }
 local function core()
   map('x', '<C-n>', ':Norm ')
   map('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
-  -- map("n", ";", ":", { noremap = true })
-  -- map("n", ":", ";", { noremap = true })
 
   -- Help
   vim.cmd [[command! -nargs=1 -complete=help H h <args> | only]]
-  vim.cmd [[cnoreabbrev <expr> h  getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']]
+  vim.keymap.set('ca', 'h', [[getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']], { expr = true, noremap = true })
 
   -- Terminal
   map('n', '<Leader>t', '<cmd>te<CR>')
@@ -138,17 +136,6 @@ local function bettern()
   map('n', '<s-n>', require('better-n').shift_n, { nowait = true, })
 end
 
--------------------- ggandor/leap.nvim
-local function leap()
-  map({ 'n', 'x', }, 's', '<Plug>(leap-forward)', remap)
-  map({ 'n', 'x', }, 'S', '<Plug>(leap-backward)', remap)
-end
-
--------------------- cshuaimin/ssr.nvim
-local function ssr()
-  map({ 'n', 'x', }, 't', function() require('ssr').open() end)
-end
-
 -------------------- is0n/fm-nvim
 local function fm()
   map('n', '<leader>n', '<cmd>Vifm<CR>')
@@ -174,7 +161,5 @@ return {
   core = core,
   telescope = telescope,
   fm = fm,
-  leap = leap,
   bettern = bettern,
-  ssr = ssr,
 }

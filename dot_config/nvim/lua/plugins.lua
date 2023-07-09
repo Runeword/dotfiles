@@ -104,13 +104,5 @@ return {
   --   dependencies = { 'mattn/webapi-vim' },
   -- },
 
-  -- {
-  --   'is0n/fm-nvim',
-  --   config = function()
-  --     require('mappings').fm()
-  --     require('setup').fm()
-  --   end,
-  -- },
-
   -- { 'Exafunction/codeium.vim', },
 }

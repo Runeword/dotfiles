@@ -8,6 +8,8 @@ return {
     vim.diagnostic.config(
       {
         signs = false,
+        -- whynothugo/lsp_lines.nvim
+        -- virtual_lines = { only_current_line = true },
 
         virtual_text = {
           prefix = '',

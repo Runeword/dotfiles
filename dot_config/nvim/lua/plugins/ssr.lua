@@ -18,7 +18,7 @@ return {
     --     next_match = 'n',
     --     prev_match = 'N',
     --     replace_confirm = '<cr>',
-    --     replace_all = '<leader><cr>',
+    --     replace_all = '<C-CR>',
     --   },
     -- }
   end,

@@ -33,7 +33,7 @@ local function core()
   -- Edit
   map('i', 'ù', '<Esc>`^u')
   map('i', '<C-BS>', '<Esc>cvb')
-  map('n', '<BS>', '"_ciw')
+  -- map('n', '<BS>', '"_ciw')
   map('n', '<space>', 'a <Esc>r')
 
   -- Text objects

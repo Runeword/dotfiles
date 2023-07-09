@@ -73,6 +73,11 @@ return {
     dependencies = 'kana/vim-textobj-user',
   },
 
+  {
+    'kana/vim-textobj-entire',
+    dependencies = 'kana/vim-textobj-user',
+  },
+
   -- {
   --   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   --   config = function()

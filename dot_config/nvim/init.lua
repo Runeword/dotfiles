@@ -1,14 +1,12 @@
-local fn = vim.fn
-local loop = vim.loop
-local opt = vim.opt
+local vim = vim
 
 require('autocmd')
 require('options')
 require('mappings')
 
-local lazypath = fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not loop.fs_stat(lazypath) then
-  fn.system({
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     'git',
     'clone',
     '--filter=blob:none',
@@ -18,7 +16,7 @@ if not loop.fs_stat(lazypath) then
   })
 end
 
-opt.runtimepath:prepend(lazypath)
+vim.opt.runtimepath:prepend(lazypath)
 
 require('lazy').setup(
   'plugins',

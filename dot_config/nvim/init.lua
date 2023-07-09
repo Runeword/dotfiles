@@ -2,9 +2,9 @@ local fn = vim.fn
 local loop = vim.loop
 local opt = vim.opt
 
-require('autocmd').core()
-require('options').core()
-require('mappings').core()
+require('autocmd')
+require('options')
+require('mappings')
 
 local lazypath = fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not loop.fs_stat(lazypath) then

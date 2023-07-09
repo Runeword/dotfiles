@@ -1,6 +1,7 @@
 local vim = vim
 
 return {
+  enabled = true,
   'weilbith/nvim-code-action-menu',
 
   config = function()

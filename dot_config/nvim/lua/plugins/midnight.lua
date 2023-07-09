@@ -75,6 +75,12 @@ return {
     --   end,
     -- })
 
+    -- nvim-telescope/telescope.nvim
+    -- local function telescope()
+    --   vim.cmd([[autocmd ColorScheme * highlight TelescopeBorder guibg=none]])
+    --   vim.cmd([[autocmd ColorScheme * highlight TelescopeNormal guibg=none]])
+    -- end
+
     vim.cmd.colorscheme 'midnight'
   end,
 }

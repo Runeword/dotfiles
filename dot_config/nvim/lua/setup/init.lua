@@ -11,19 +11,6 @@ local api = vim.api
 --   g.wordmotion_nomap = 1
 -- end
 
--------------------- cshuaimin/ssr.nvim
-local function ssr()
-  require('ssr').setup {
-    min_width = 50,
-    min_height = 5,
-    keymaps = {
-      close = 'q',
-      next_match = 'n',
-      prev_match = 'N',
-      replace_all = '<C-CR>',
-    },
-  }
-end
 
 -------------------- is0n/fm-nvim
 local function fm()
@@ -57,19 +44,6 @@ local function fm()
   })
 end
 
--------------------- jonatan-branting/nvim-better-n
-local function bettern()
-  require('better-n').setup {
-    callbacks = {},
-    mappings = {
-      ['F'] = { previous = 'n', next = '<s-n>', },
-      ['T'] = { previous = 'n', next = '<s-n>', },
-    },
-  }
-end
-
 return {
   fm = fm,
-  bettern = bettern,
-  ssr = ssr,
 }

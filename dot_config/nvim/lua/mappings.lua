@@ -123,13 +123,6 @@ local function core()
   map('n', '<leader>l', '<cmd>Lazy<CR>')
 end
 
--------------------- nvim-telescope/telescope.nvim
-local function telescope()
-  -- map("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", opts)
-  -- map("n", "<leader>s", "<cmd>Telescope live_grep<cr>", opts)
-  -- map("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
-end
-
 -------------------- jonatan-branting/nvim-better-n
 local function bettern()
   map('n', 'n', require('better-n').n, { nowait = true, })

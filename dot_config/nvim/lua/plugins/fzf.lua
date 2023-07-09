@@ -5,9 +5,9 @@ return {
 
   config = function()
     vim.keymap.set('n', '<Leader><Leader>', require('fzf-lua').files)
-    vim.keymap.set('n', '<Leader>h', require('fzf-lua').live_grep_resume)
-    vim.keymap.set('n', '<Leader>sh', require('fzf-lua').help_tags)
-    vim.keymap.set('n', '<Leader>sm', require('fzf-lua').keymaps)
+    vim.keymap.set('n', '<Leader><Space>', require('fzf-lua').live_grep_resume)
+    vim.keymap.set('n', '<Leader>h', require('fzf-lua').help_tags)
+    vim.keymap.set('n', '<Leader>k', require('fzf-lua').keymaps)
     vim.keymap.set('n', '<Leader>sl', require('fzf-lua').highlights)
     -- vim.keymap.set("n", "<Leader>x", "<cmd>lua require('fzf-lua').quickfix({multiprocess=true})<CR>")
 

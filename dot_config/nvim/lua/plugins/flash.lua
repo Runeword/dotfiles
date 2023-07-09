@@ -8,6 +8,7 @@ return {
   opts = {
     labels = "',pyaoeuidhtnsfgcrl;qjkxbmwvz",
     label = { uppercase = false, },
+
     highlight = {
       backdrop = false,
       matches = true,
@@ -23,6 +24,7 @@ return {
     prompt = {
       enabled = true,
       prefix = { { '🦘 ', 'FlashPromptIcon', }, },
+
       win_config = {
         relative = 'win',
         width = 20,
@@ -39,6 +41,7 @@ return {
         highlight = {
           backdrop = false,
         },
+
         jump = {
           history = true,
           register = true,
@@ -52,11 +55,13 @@ return {
           opts.autohide = vim.fn.mode(true):find('no') and vim.v.operator == 'y'
           opts.jump_labels = opts.jump_labels and vim.v.count == 0
         end,
+
         autohide = false,
         jump_labels = false,
         multi_line = true,
         -- label = { exclude = 'hjkliardc', },
         keys = { 'f', 'F', 't', 'T', ';', ',', },
+
         char_actions = function(motion)
           return {
             [';'] = 'next',
@@ -65,6 +70,7 @@ return {
             [motion:upper()] = 'prev',
           }
         end,
+
         search = { wrap = false, },
         highlight = { backdrop = false, },
         jump = { register = false, },

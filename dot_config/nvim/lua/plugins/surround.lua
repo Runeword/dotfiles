@@ -6,10 +6,11 @@ return {
       keymaps = {
         insert = false,
         insert_line = false,
+        normal_cur = false,
         normal_line = false,
         normal_cur_line = false,
         visual_line = false,
-        normal_cur = 'ys',
+        change_line = false,
         normal = 's',
         delete = 'ds',
         change = 'cs',

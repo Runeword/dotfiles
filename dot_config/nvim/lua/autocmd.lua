@@ -8,6 +8,7 @@ local nvim_set_hl = vim.api.nvim_set_hl
 
 local function core()
   augroup('chezmoi', { clear = true, })
+  augroup('help', { clear = true, })
   augroup('tmux', { clear = true, })
   augroup('diagnostic', { clear = true, })
   augroup('quickfix', { clear = true, })
@@ -27,6 +28,14 @@ local function core()
     group = 'chezmoi',
     pattern = '~/.local/share/chezmoi/*',
     command = 'silent! !chezmoi apply --source-path %',
+  })
+
+  autocmd('FileType', {
+    group = 'help',
+    pattern = 'help',
+    callback = function()
+      vim.keymap.set('n', 'gx', '<C-]>')
+    end,
   })
 
   autocmd('BufWritePost', {

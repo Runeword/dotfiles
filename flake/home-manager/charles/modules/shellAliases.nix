@@ -22,7 +22,7 @@
     r = "trash";
     o = "__open_file";
     s = "__ripgrep";
-    img = "kitten icat";
+    i = "kitten icat";
     ".." = "cd ..";
     "..." = "cd ../..";
     ss = "src search";
@@ -31,7 +31,6 @@
     hm = "hyprctl monitors";
     hhp = "hyprctl hyprpaper preload";
     hhw = "hyprctl hyprpaper wallpaper";
-    shot = "grim -g \"$(slurp)\" - | swappy -f -";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

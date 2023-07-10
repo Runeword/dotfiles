@@ -10,6 +10,9 @@
 
   inputs.hyprland.url = "github:hyprwm/Hyprland";
 
+  inputs.hyprland-contrib.url = "github:hyprwm/contrib";
+  inputs.hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   inputs.nixified-ai.url = "github:nixified-ai/flake";
 

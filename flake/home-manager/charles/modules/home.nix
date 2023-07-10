@@ -10,6 +10,7 @@
   home.stateVersion = "22.11";
 
   # home.sessionVariables.EDITOR = "nvim";
+  # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
   home.sessionVariables.VISUAL = "nvim";
   home.sessionVariables.MANPAGER = "nvim +Man!";
 

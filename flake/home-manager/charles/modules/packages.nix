@@ -50,9 +50,10 @@
     wl-clipboard
     wev
     imv
-    grim
-    slurp
+    # grim
+    # slurp
     swappy
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
 
     # # X11
     # peek

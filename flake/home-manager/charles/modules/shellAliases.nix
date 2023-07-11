@@ -4,7 +4,6 @@
     shn = "shutdown now";
     chrome = "google-chrome-stable";
     # color = "colorpicker"; # X11
-    color = "hyprpicker --autocopy --format=hex";
     win = "xprop WM_CLASS";
     # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     # dua = "$HOME/.screenlayout/dual.sh";
@@ -55,13 +54,6 @@
     # qfr = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
     # qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     # qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
-
-    # ______________________________________ BLUETOOTH
-    bc = "bluetoothctl";
-    bh = "bluetoothctl help";
-    bs = "bluetoothctl scan on";
-    bo = "bluetoothctl power on ";
-    bf = "bluetoothctl power off";
 
     # ______________________________________ NETWORK
     wo= "nmcli radio wifi on";

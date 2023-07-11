@@ -9,7 +9,7 @@ return {
     require('mini.ai').setup({
       custom_textobjects = {
         f = false,
-        a = gen_spec.argument({ brackets = { '%b()', '%b{}', '%b[]', }, }),
+        a = gen_spec.argument({ brackets = { '%b()', '%b{}', '%b[]' }, }),
         -- a = gen_spec.argument({ brackets = { '%b()' } }),
         -- o = gen_spec.argument({ brackets = { '%b{}' } }),
         -- e = gen_spec.argument({ brackets = { '%b[]' } }),
@@ -24,8 +24,8 @@ return {
         inside = 'i',
         around_next = 'an',
         inside_next = 'in',
-        around_last = 'ao',
-        inside_last = 'io',
+        around_last = 'ap',
+        inside_last = 'ip',
         goto_left = '',
         goto_right = '',
       },

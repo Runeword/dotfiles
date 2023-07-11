@@ -1,27 +1,21 @@
 local vim = vim
 
 return {
-  'Runeword/putter.nvim',
-  -- "/home/charles/Documents/dev/plugins/putter.nvim",
+  -- 'Runeword/putter.nvim',
+  dir = "/home/charles/Documents/dev/putter.nvim",
 
   config = function()
     vim.keymap.set({ 'n', 'x', }, 'glp', require('putter').putLinewise(']p`]'))
     vim.keymap.set({ 'n', 'x', }, 'glP', require('putter').putLinewise(']P`]'))
 
-    vim.keymap.set({ 'n', 'x', }, 'gllp', require('putter').putLinewiseSuffix(']p`]'))
-    vim.keymap.set({ 'n', 'x', }, 'gllP', require('putter').putLinewiseSuffix(']P`]'))
-
-    vim.keymap.set({ 'n', 'x', }, 'glsp', require('putter').putLinewiseSurround(']p`]'))
-    vim.keymap.set({ 'n', 'x', }, 'glsP', require('putter').putLinewiseSurround(']P`]'))
-
     vim.keymap.set({ 'n', 'x', }, 'p', require('putter').putCharwise('p'))
     vim.keymap.set({ 'n', 'x', }, 'P', require('putter').jumpToLineStart(require('putter').putCharwise('P')))
 
-    vim.keymap.set({ 'n', 'x', }, 'gp', require('putter').putCharwisePrefix('p'))
-    vim.keymap.set({ 'n', 'x', }, 'gP', require('putter').putCharwiseSuffix('P'))
+    -- vim.keymap.set({ 'n', 'x', }, 'gp', require('putter').putCharwisePrefix('p'))
+    -- vim.keymap.set({ 'n', 'x', }, 'gP', require('putter').putCharwiseSuffix('P'))
 
-    vim.keymap.set({ 'n', 'x', }, 'gsp', require('putter').putCharwiseSurround('p'))
-    vim.keymap.set({ 'n', 'x', }, 'gsP', require('putter').putCharwiseSurround('P'))
+    -- vim.keymap.set({ 'n', 'x', }, 'gsp', require('putter').putCharwiseSurround('p'))
+    -- vim.keymap.set({ 'n', 'x', }, 'gsP', require('putter').putCharwiseSurround('P'))
 
     -- vim.keymap.set({ "n", "x" }, "x", require("putter").snapToLineEnd('"_x'))
     -- vim.keymap.set({ "n", "x" }, "p", require("putter").jumpToLineEnd(require("putter").putCharwise('p')))

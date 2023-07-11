@@ -4,12 +4,6 @@ local remap = { remap = true, }
 vim.keymap.set('x', '<C-n>', ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
 
--- Help
-vim.cmd [[command! -nargs=1 -complete=help H h <args> | only]]
-vim.keymap.set('ca', 'h',
-  [[getcmdtype() == ":" && getcmdline() == 'h' ? 'H' : 'h']],
-  { expr = true, noremap = true, })
-
 -- Terminal
 vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
@@ -29,8 +23,14 @@ vim.keymap.set('x', '<C-s>', '<Esc><cmd>silent write<CR>')
 -- Edit
 vim.keymap.set('i', 'ù', '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
--- map('n', '<BS>', '"_ciw')
-vim.keymap.set('n', '<space>', 'a <Esc>r')
+-- vim.keymap.set('n', '<BS>', '"_ciw')
+vim.cmd([[
+function! RepeatChar(char, count)
+  return repeat(a:char, a:count)
+endfunction
+nnoremap <A-a> :<C-U>exec "normal A".RepeatChar(nr2char(getchar()), v:count1)<CR>
+nnoremap <A-i> :<C-U>exec "normal I".RepeatChar(nr2char(getchar()), v:count1)<CR>
+]])
 
 -- Text objects
 vim.keymap.set({ 'x', 'o', }, 'a<Leader>', 'ap')

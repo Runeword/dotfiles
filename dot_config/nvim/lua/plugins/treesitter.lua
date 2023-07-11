@@ -38,6 +38,7 @@ return {
             ['F'] = '@call.outer',
             ['aF'] = '@call.outer',
             ['iF'] = '@call.inner',
+            ['id'] = '@number.inner',
           },
         },
 

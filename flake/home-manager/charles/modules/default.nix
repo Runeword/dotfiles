@@ -8,9 +8,6 @@
     ./readline.nix
     ./alacritty.nix
     ./kitty.nix
-    # ./i3.nix # X11
-    # ./feh.nix # X11
-    # ./picom.nix # X11
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix

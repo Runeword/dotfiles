@@ -14,9 +14,9 @@ return {
       function() require('various-textobjs').value(false) end)
     vim.keymap.set({ 'o', 'x', }, 'iv',
       function() require('various-textobjs').value(true) end)
-    vim.keymap.set({ 'o', 'x', }, 'ad',
-      function() require('various-textobjs').number(false) end)
-    vim.keymap.set({ 'o', 'x', }, 'id',
-      function() require('various-textobjs').number(true) end)
+    -- vim.keymap.set({ 'o', 'x', }, 'ad',
+    --   function() require('various-textobjs').number(false) end)
+    -- vim.keymap.set({ 'o', 'x', }, 'id',
+    --   function() require('various-textobjs').number(true) end)
   end,
 }

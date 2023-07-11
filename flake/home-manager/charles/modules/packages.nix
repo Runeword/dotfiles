@@ -59,6 +59,7 @@
     realesrgan-ncnn-vulkan
     imaginer
     kooha
+    # wl-screenrec
     inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
@@ -70,6 +71,7 @@
     imv
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     swappy
+    fnott
     # grim
     # slurp
   ];

@@ -4,67 +4,73 @@
   ...
 }: {
   home.packages = with pkgs; [
-    htop
-    unzip
-    nix-init
+    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
+    python311
     qmk
-    erdtree
-    brillo
-    gh
-    xarchiver
-    xdragon
-    wget
-    doppler
-    ripgrep
-    progress
-    neofetch
-    onefetch
-    fd
-    inkscape
-    vifm
-    chezmoi
-    trashy
-    kooha
-    tree
     gcc
-    realesrgan-ncnn-vulkan
-    slack
-    bitwarden-cli
+
+    # ---------------------------------- Editors
+    neovim-nightly
+    vifm
+
+    # ---------------------------------- Browsers
     google-chrome
     firefox
-    neovim-nightly
-    python311
-    btop
-    p7zip
+
+    # ---------------------------------- Hardware
     bluetuith
+    brillo
+
+    # ---------------------------------- CLI tools
+    wget
+    ripgrep
+    fd
+    trashy
+    xdragon
+    nix-init
+
+    # ---------------------------------- Git
+    inputs.src-cli.packages.x86_64-linux.default
+    gh
+    chezmoi
+
+    # ---------------------------------- Secrets
+    bitwarden-cli
+    doppler
+
+    # ---------------------------------- Archivers
+    unzip
+    xarchiver
+    p7zip
+
+    # ---------------------------------- Analitics
+    htop
+    btop
+    duf
     gping
+    tree
+    erdtree
+    neofetch
+    onefetch
+    progress
 
-    # xfce.thunar
-    # xfce.thunar-volman
-    # xfce.thunar-archive-plugin
-    # xfce.thunar-media-tags-plugin
+    # ---------------------------------- Graphics
+    inkscape
+    realesrgan-ncnn-vulkan
+    imaginer
+    kooha
+    inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
+    # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
-    # Wayland
+    # ---------------------------------- Wayland
     hyprpaper
     hyprpicker
     wl-clipboard
     wev
     imv
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+    swappy
     # grim
     # slurp
-    swappy
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-
-    # # X11
-    # peek
-    # xclip
-    # colorpicker
-    # xev
-
-    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
-
-    inputs.src-cli.packages.x86_64-linux.default
-    inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
-    # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
   ];
 }

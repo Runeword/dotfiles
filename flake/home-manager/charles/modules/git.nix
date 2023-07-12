@@ -5,6 +5,7 @@
   # programs.git.delta.enable = true;
 
   home.shellAliases = {
+    ga = "git add";
     gs = "git status";
     gt = "git stash";
     gtl = "git stash list";

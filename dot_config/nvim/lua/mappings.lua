@@ -24,13 +24,23 @@ vim.keymap.set('x', '<C-s>', '<Esc><cmd>silent write<CR>')
 vim.keymap.set('i', 'ù', '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- vim.keymap.set('n', '<BS>', '"_ciw')
-vim.cmd([[
-function! RepeatChar(char, count)
-  return repeat(a:char, a:count)
-endfunction
-nnoremap <A-a> :<C-U>exec "normal A".RepeatChar(nr2char(getchar()), v:count1)<CR>
-nnoremap <A-i> :<C-U>exec "normal I".RepeatChar(nr2char(getchar()), v:count1)<CR>
-]])
+
+-- vim.cmd([[
+-- function! RepeatChar(char, count)
+--   return repeat(a:char, a:count)
+-- endfunction
+-- nnoremap ga :<C-U>exec "normal A".RepeatChar(nr2char(getchar()), v:count1)<CR>
+-- nnoremap gi :<C-U>exec "normal I".RepeatChar(nr2char(getchar()), v:count1)<CR>
+-- ]])
+
+-- local function appendSingleChar()
+--   local char = vim.fn.getcharstr()
+--   vim.fn.execute('normal! A' .. char)
+-- end
+--
+-- vim.keymap.set({ 'n', }, 'ga', function() appendSingleChar() end)
+
+vim.keymap.set({ 'n', }, 'ga', 'm`A' .. vim.fn.getcharstr() .. '<Esc>``')
 
 -- Text objects
 vim.keymap.set({ 'x', 'o', }, 'a<Leader>', 'ap')
@@ -39,11 +49,14 @@ vim.keymap.set({ 'o', }, '<Leader>', 'ip')
 
 vim.keymap.set({ 'x', 'o', }, 'q', 'iq', remap)
 vim.keymap.set({ 'x', 'o', }, 'nq', 'inq', remap)
-vim.keymap.set({ 'x', 'o', }, 'oq', 'ioq', remap)
+vim.keymap.set({ 'x', 'o', }, 'pq', 'ipq', remap)
 
 vim.keymap.set({ 'x', 'o', }, 'a', 'ia', remap)
 vim.keymap.set({ 'x', 'o', }, 'na', 'ina', remap)
-vim.keymap.set({ 'x', 'o', }, 'oa', 'ioa', remap)
+vim.keymap.set({ 'x', 'o', }, 'pa', 'ipa', remap)
+
+vim.keymap.set({ 'o', }, 'w', 'iw', remap)
+vim.keymap.set({ 'o', }, 'W', 'iW', remap)
 
 -- vim.keymap.set({ 'x', 'o' }, "n}", "an{", remap)
 -- vim.keymap.set({ 'x', 'o' }, "o}", "ao{", remap)

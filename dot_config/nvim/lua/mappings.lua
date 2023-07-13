@@ -33,14 +33,101 @@ vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- nnoremap gi :<C-U>exec "normal I".RepeatChar(nr2char(getchar()), v:count1)<CR>
 -- ]])
 
--- local function appendSingleChar()
---   local char = vim.fn.getcharstr()
---   vim.fn.execute('normal! A' .. char)
+local function appendSingleChar(get_col)
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local row = cursor[1] - 1
+  local col = get_col(vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1],
+    false)[1])
+
+  -- Set virtual text
+  local namespace = vim.api.nvim_create_namespace('booster')
+  local extmark = vim.api.nvim_buf_set_extmark(0, namespace, row, col, {
+    virt_text = { { '_', 'Normal', }, },
+    virt_text_pos = 'inline',
+    priority = 200,
+  })
+  vim.api.nvim_command('redraw')
+
+  -- Set character
+  local ok, charstr = pcall(vim.fn.getcharstr)
+  local exitKeys = { [''] = true, }
+  if ok and not exitKeys[charstr] then
+    vim.api.nvim_buf_set_text(0, row, col, row, col, { charstr, })
+  end
+
+  -- Clear virtual text
+  vim.api.nvim_buf_del_extmark(0, namespace, extmark)
+end
+
+local function appendCharEndLine()
+  return appendSingleChar(function(line) return string.len(line) end)
+end
+
+local function appendCharStartLine()
+  return appendSingleChar(function(line) return string.find(line, '(%S)') - 1 end)
+end
+
+vim.keymap.set({ 'n', }, 'ga', appendCharEndLine)
+vim.keymap.set({ 'n', }, 'gi', appendCharStartLine)
+
+-- local function appendSingleChar(get_col)
+--   local cursor = vim.api.nvim_win_get_cursor(0)
+--   local row = cursor[1] - 1
+--   local col = get_col(vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1],
+--     false)[1])
+--
+--   -- Set virtual text
+--   local namespace = vim.api.nvim_create_namespace('booster')
+--   local extmark = vim.api.nvim_buf_set_extmark(0, namespace, row, col, {
+--     virt_text = { { '_', 'Normal', }, },
+--     virt_text_pos = 'inline',
+--     priority = 200,
+--   })
+--   vim.api.nvim_command('redraw')
+--
+--   -- Set character
+--   local ok, charstr = pcall(vim.fn.getcharstr)
+--   local exitKeys = { [''] = true, }
+--   if ok and not exitKeys[charstr] then
+--     vim.api.nvim_buf_set_text(0, row, col, row, col, { charstr, })
+--   end
+--
+--   -- Clear virtual text
+--   vim.api.nvim_buf_del_extmark(0, namespace, extmark)
 -- end
 --
--- vim.keymap.set({ 'n', }, 'ga', function() appendSingleChar() end)
+-- _G.my_count = 0
+--
+-- function _G.appendCharEndLine()
+--   my_count = my_count + 1
+--   print('Count: ' .. my_count)
+--   return appendSingleChar(function(line) return string.len(line) end)
+-- end
+--
+-- local function appendCharStartLine()
+--   return appendSingleChar(function(line) return string.find(line, '(%S)') - 1 end)
+-- end
+--
+-- vim.keymap.set({ 'n', }, 'ga', appendCharEndLine)
+-- vim.keymap.set({ 'n', }, 'gi', appendCharStartLine)
+--
+-- _G.main_func = function()
+--   my_count = 0
+--   vim.go.operatorfunc = 'v:lua.appendCharEndLine'
+--   vim.api.nvim_feedkeys('g@l', 'n', false)
+--   -- return "g@l"
+-- end
+--
+-- _G.callback = function()
+--   my_count = my_count + 1
+--   print('Count: ' .. my_count)
+-- end
+--
+-- vim.keymap.set('n', 'gt', main_func)
 
-vim.keymap.set({ 'n', }, 'ga', 'm`A' .. vim.fn.getcharstr() .. '<Esc>``')
+-- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
+-- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
+-- vim.api.nvim_command('redraw')
 
 -- Text objects
 vim.keymap.set({ 'x', 'o', }, 'a<Leader>', 'ap')
@@ -49,11 +136,11 @@ vim.keymap.set({ 'o', }, '<Leader>', 'ip')
 
 vim.keymap.set({ 'x', 'o', }, 'q', 'iq', remap)
 vim.keymap.set({ 'x', 'o', }, 'nq', 'inq', remap)
-vim.keymap.set({ 'x', 'o', }, 'pq', 'ipq', remap)
+vim.keymap.set({ 'x', 'o', }, 'oq', 'ipq', remap)
 
 vim.keymap.set({ 'x', 'o', }, 'a', 'ia', remap)
 vim.keymap.set({ 'x', 'o', }, 'na', 'ina', remap)
-vim.keymap.set({ 'x', 'o', }, 'pa', 'ipa', remap)
+vim.keymap.set({ 'x', 'o', }, 'oa', 'ipa', remap)
 
 vim.keymap.set({ 'o', }, 'w', 'iw', remap)
 vim.keymap.set({ 'o', }, 'W', 'iW', remap)

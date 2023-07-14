@@ -35,22 +35,7 @@ vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 
 local input_cache = nil
 
-local function posEndOfLine()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  return cursor[1] - 1,
-      string.len(
-        vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], false)[1]
-      )
-end
-
-local function posStartOfLine()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  return cursor[1] - 1,
-      string.find(
-        vim.api.nvim_buf_get_lines(0, cursor[1] - 1, cursor[1], false)[1], '(%S)'
-      ) - 1
-end
-
+-------------------- Main function
 local function appendSingleChar(row, col)
   -- Set virtual text
   local namespace = vim.api.nvim_create_namespace('booster')
@@ -62,7 +47,6 @@ local function appendSingleChar(row, col)
   vim.api.nvim_command('redraw')
 
   -- Set character
-  vim.print(input_cache)
   if input_cache then
     vim.api.nvim_buf_set_text(0, row, col, row, col, { input_cache, })
   else
@@ -78,30 +62,84 @@ local function appendSingleChar(row, col)
   vim.api.nvim_buf_del_extmark(0, namespace, extmark)
 end
 
--- local my_count = 0
+-------------------- Position
+local function getLineStr(row)
+  return vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]
+end
 
+local function endOfLinePos()
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  return
+      row - 1,
+      string.len(getLineStr(row))
+end
+
+local function startOfLinePos()
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  return
+      row - 1,
+      string.find(getLineStr(row), '(%S)') - 1
+end
+
+local function beforePos()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  return
+      pos[1] - 1,
+      pos[2]
+end
+
+local function afterPos()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  return
+      pos[1] - 1,
+      pos[2] + 1
+end
+
+-------------------- Initialization
 function _G._appendCharEndLine()
-  -- my_count = my_count + 1
-  -- print('Count: ' .. my_count)
-  return appendSingleChar(posEndOfLine())
+  return appendSingleChar(endOfLinePos())
 end
 
 function _G._appendCharStartLine()
-  return appendSingleChar(posStartOfLine())
+  return appendSingleChar(startOfLinePos())
 end
 
+function _G._appendCharBefore()
+  return appendSingleChar(beforePos())
+end
+
+function _G._appendCharAfter()
+  return appendSingleChar(afterPos())
+end
+
+-------------------- Dot repeat
 local function dot_repeat_wrapper(name)
   input_cache = nil
-  -- my_count = 0
   vim.go.operatorfunc = 'v:lua.' .. name
   vim.api.nvim_feedkeys('g@l', 'n', false)
 end
 
-local function appendCharEndLine() return dot_repeat_wrapper('_appendCharEndLine') end
-local function appendCharStartLine() return dot_repeat_wrapper('_appendCharStartLine') end
+local function appendCharEndLine()
+  return dot_repeat_wrapper('_appendCharEndLine')
+end
 
+local function appendCharStartLine()
+  return dot_repeat_wrapper('_appendCharStartLine')
+end
+
+local function appendCharBefore()
+  return dot_repeat_wrapper('_appendCharBefore')
+end
+
+local function appendCharAfter()
+  return dot_repeat_wrapper('_appendCharAfter')
+end
+
+-------------------- Mappings
 vim.keymap.set('n', 'ga', appendCharEndLine)
-vim.keymap.set({ 'n', }, 'gi', appendCharStartLine)
+vim.keymap.set('n', 'gi', appendCharStartLine)
+vim.keymap.set('n', 'gt', appendCharBefore)
+vim.keymap.set('n', 'gT', appendCharAfter)
 
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)

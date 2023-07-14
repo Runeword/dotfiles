@@ -120,24 +120,27 @@ end
 
 -------------------- Dot repeat
 local function dot_repeat_wrapper(name)
-  input_cache = nil
   vim.go.operatorfunc = 'v:lua.' .. name
   vim.api.nvim_feedkeys('g@l', 'n', false)
 end
 
 local function appendCharEndLine()
+  input_cache = nil
   return dot_repeat_wrapper('_appendCharEndLine')
 end
 
 local function appendCharStartLine()
+  input_cache = nil
   return dot_repeat_wrapper('_appendCharStartLine')
 end
 
 local function appendCharBefore()
+  input_cache = nil
   return dot_repeat_wrapper('_appendCharBefore')
 end
 
 local function appendCharAfter()
+  input_cache = nil
   return dot_repeat_wrapper('_appendCharAfter')
 end
 
@@ -147,21 +150,29 @@ vim.keymap.set('n', 'gi', appendCharStartLine, { expr = true, })
 vim.keymap.set('n', 'ra', appendCharAfter, { expr = true, })
 vim.keymap.set('n', 'ri', appendCharBefore, { expr = true, })
 
-local function appendNewlineBelow()
+function _G._appendNewlineBelow()
   local row = vim.api.nvim_win_get_cursor(0)[1]
   vim.api.nvim_buf_set_lines(0, row, row, false, { '', })
 end
 
-local function appendNewlineAbove()
+function _G._appendNewlineAbove()
   local row = vim.api.nvim_win_get_cursor(0)[1]
   vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { '', })
 end
 
-vim.keymap.set('n', 'go', appendNewlineBelow)
-vim.keymap.set('n', 'gO', appendNewlineAbove)
+local function appendNewlineAbove()
+  dot_repeat_wrapper('_appendNewlineAbove')
+end
 
--- vim.keymap.set('n', 'go', appendNewlineBelow, { expr = true, })
--- vim.keymap.set('n', 'gO', appendNewlineAbove, { expr = true, })
+local function appendNewlineBelow()
+  dot_repeat_wrapper('_appendNewlineBelow')
+end
+
+-- vim.keymap.set('n', 'go', appendNewlineBelow)
+-- vim.keymap.set('n', 'gO', appendNewlineAbove)
+
+vim.keymap.set('n', 'go', appendNewlineBelow, { expr = true, })
+vim.keymap.set('n', 'gO', appendNewlineAbove, { expr = true, })
 
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)

@@ -36,36 +36,38 @@ vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- ]])
 
 local input_cache = nil
-vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
 
 -------------------- Main function
 local function appendSingleChar(row, col)
-  -- Set virtual text
+  vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
   local namespace = vim.api.nvim_create_namespace('booster')
-  local extmark = vim.api.nvim_buf_set_extmark(0, namespace, row, col, {
-    virt_text = { { '_', 'BoosterAppendChar', }, },
-    virt_text_pos = 'inline',
-    priority = 200,
-  })
-  vim.api.nvim_command('redraw')
 
-  -- Set character
-  if input_cache then
-    vim.api.nvim_buf_set_text(0, row, col, row, col,
-      { string.rep(input_cache, vim.v.count1), })
-  else
+  if not input_cache then
+    -- Set virtual text
+    local extmark = nil
+    extmark = vim.api.nvim_buf_set_extmark(0, namespace, row, col, {
+      virt_text = { { '_', 'BoosterAppendChar', }, },
+      virt_text_pos = 'inline',
+      priority = 200,
+    })
+    vim.api.nvim_command('redraw')
+
+    -- Get character
     local ok, charstr = pcall(vim.fn.getcharstr)
-    input_cache = charstr
     local exitKeys = { [''] = true, }
-
     if ok and not exitKeys[charstr] then
-      vim.api.nvim_buf_set_text(0, row, col, row, col,
-        { string.rep(input_cache, vim.v.count1), })
+      input_cache = charstr
     end
+
+    -- Clear virtual text
+    if extmark then vim.api.nvim_buf_del_extmark(0, namespace, extmark) end
   end
 
-  -- Clear virtual text
-  vim.api.nvim_buf_del_extmark(0, namespace, extmark)
+  if input_cache then
+    -- Set character
+    vim.api.nvim_buf_set_text(0, row, col, row, col,
+      { string.rep(input_cache, vim.v.count1), })
+  end
 end
 
 -------------------- Position
@@ -151,13 +153,15 @@ vim.keymap.set('n', 'ra', appendCharAfter, { expr = true, })
 vim.keymap.set('n', 'ri', appendCharBefore, { expr = true, })
 
 function _G._appendNewlineBelow()
+  local newLines = {}; for i=1,vim.v.count1 do newLines[i] = "" end
   local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row, row, false, { '', })
+  vim.api.nvim_buf_set_lines(0, row, row, false, newLines)
 end
 
 function _G._appendNewlineAbove()
+  local newLines = {}; for i=1,vim.v.count1 do newLines[i] = "" end
   local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { '', })
+  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, newLines)
 end
 
 local function appendNewlineAbove()

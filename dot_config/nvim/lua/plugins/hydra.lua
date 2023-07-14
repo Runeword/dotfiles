@@ -6,16 +6,16 @@ return {
   dependencies = 'anuvyklack/keymap-layer.nvim',
 
   config = function()
-    require('hydra')({
-      name = 'newline',
-      mode = { 'n', 'x', },
-      body = 'g',
-
-      heads = {
-        { 'o', '<cmd>set paste<CR>m`o<Esc>``<cmd>set nopaste<CR>', },
-        { 'O', '<cmd>set paste<CR>m`O<Esc>``<cmd>set nopaste<CR>', },
-      },
-    })
+    -- require('hydra')({
+    --   name = 'newline',
+    --   mode = { 'n', 'x', },
+    --   body = 'g',
+    --
+    --   heads = {
+    --     { 'o', '<cmd>set paste<CR>m`o<Esc>``<cmd>set nopaste<CR>', },
+    --     { 'O', '<cmd>set paste<CR>m`O<Esc>``<cmd>set nopaste<CR>', },
+    --   },
+    -- })
 
     local scroll = require('hydra')({
       mode = { 'n', 'x', },

@@ -9,6 +9,8 @@ vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
+vim.keymap.set('n', 'gr', 'r')
+vim.keymap.set('n', 'r', '<Nop>')
 vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
 vim.keymap.set('n', '<C-p>', '<Nop>')
@@ -34,13 +36,14 @@ vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- ]])
 
 local input_cache = nil
+vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
 
 -------------------- Main function
 local function appendSingleChar(row, col)
   -- Set virtual text
   local namespace = vim.api.nvim_create_namespace('booster')
   local extmark = vim.api.nvim_buf_set_extmark(0, namespace, row, col, {
-    virt_text = { { '_', 'Normal', }, },
+    virt_text = { { '_', 'BoosterAppendChar', }, },
     virt_text_pos = 'inline',
     priority = 200,
   })
@@ -48,13 +51,16 @@ local function appendSingleChar(row, col)
 
   -- Set character
   if input_cache then
-    vim.api.nvim_buf_set_text(0, row, col, row, col, { input_cache, })
+    vim.api.nvim_buf_set_text(0, row, col, row, col,
+      { string.rep(input_cache, vim.v.count1), })
   else
     local ok, charstr = pcall(vim.fn.getcharstr)
     input_cache = charstr
     local exitKeys = { [''] = true, }
+
     if ok and not exitKeys[charstr] then
-      vim.api.nvim_buf_set_text(0, row, col, row, col, { charstr, })
+      vim.api.nvim_buf_set_text(0, row, col, row, col,
+        { string.rep(input_cache, vim.v.count1), })
     end
   end
 
@@ -78,7 +84,7 @@ local function startOfLinePos()
   local row = vim.api.nvim_win_get_cursor(0)[1]
   return
       row - 1,
-      string.find(getLineStr(row), '(%S)') - 1
+      (string.find(getLineStr(row), '(%S)') or 1) - 1
 end
 
 local function beforePos()
@@ -136,10 +142,26 @@ local function appendCharAfter()
 end
 
 -------------------- Mappings
-vim.keymap.set('n', 'ga', appendCharEndLine)
-vim.keymap.set('n', 'gi', appendCharStartLine)
-vim.keymap.set('n', 'gt', appendCharBefore)
-vim.keymap.set('n', 'gT', appendCharAfter)
+vim.keymap.set('n', 'ga', appendCharEndLine, { expr = true, })
+vim.keymap.set('n', 'gi', appendCharStartLine, { expr = true, })
+vim.keymap.set('n', 'ra', appendCharAfter, { expr = true, })
+vim.keymap.set('n', 'ri', appendCharBefore, { expr = true, })
+
+local function appendNewlineBelow()
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row, row, false, { '', })
+end
+
+local function appendNewlineAbove()
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { '', })
+end
+
+vim.keymap.set('n', 'go', appendNewlineBelow)
+vim.keymap.set('n', 'gO', appendNewlineAbove)
+
+-- vim.keymap.set('n', 'go', appendNewlineBelow, { expr = true, })
+-- vim.keymap.set('n', 'gO', appendNewlineAbove, { expr = true, })
 
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
@@ -217,15 +239,15 @@ vim.keymap.set('n', '$', function()
 end)
 vim.keymap.set('n', '^', 'g^')
 vim.keymap.set('n', '&', 'g^')
-vim.keymap.set('n', '(', function() vim.fn.search('(') end)
-vim.keymap.set('n', ')', function() vim.fn.search(')') end)
--- vim.keymap.set('n', ')', function() vim.fn.search('(', 'b') end)
-vim.keymap.set('n', '[', function() vim.fn.search('[') end)
-vim.keymap.set('n', ']', function() vim.fn.search(']') end)
--- vim.keymap.set('n', ']', function() vim.fn.search('[', 'b') end)
-vim.keymap.set('n', '{', function() vim.fn.search('{') end)
-vim.keymap.set('n', '}', function() vim.fn.search('}') end)
--- vim.keymap.set('n', '}', function() vim.fn.search('{', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '(', function() vim.fn.search('(') end)
+vim.keymap.set({ 'n', 'x', }, ')', function() vim.fn.search(')') end)
+-- vim.keymap.set({ 'n', 'x' }, ')', function() vim.fn.search('(', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '[', function() vim.fn.search('[') end)
+vim.keymap.set({ 'n', 'x', }, ']', function() vim.fn.search(']') end)
+-- vim.keymap.set({ 'n', 'x' }, ']', function() vim.fn.search('[', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '{', function() vim.fn.search('{') end)
+vim.keymap.set({ 'n', 'x', }, '}', function() vim.fn.search('}') end)
+-- vim.keymap.set({ 'n', 'x' }, '}', function() vim.fn.search('{', 'b') end)
 
 -- Buffers
 vim.keymap.set('n', '<Leader>w', '<C-w>', { noremap = true, })

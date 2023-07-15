@@ -204,7 +204,8 @@
     },
     "wireplumber#string": {
       "format": "{volume}",
-      "rotate": 320
+      "rotate": 320,
+      "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
     },
     "wireplumber#icon": {
       "format": "{icon}",
@@ -213,7 +214,8 @@
         "<span size='x-large'>󰕿</span>",
         "<span size='x-large'>󰖀</span>",
         "<span size='x-large'>󰕾</span>"
-      ]
+      ],
+      "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
     },
     "bluetooth#string": {
       "format": "{num_connections}",

@@ -17,6 +17,7 @@ return {
     --   },
     -- })
 
+    -------------------- Scroll
     local scroll = require('hydra')({
       mode = { 'n', 'x', },
 
@@ -44,6 +45,23 @@ return {
         vim.fn.execute('normal! 5k')
       end)
 
+    -------------------- Switch window
+    require('hydra')({
+      mode = 'n',
+
+      config = {
+        hint = false,
+        invoque_on_body = true,
+      },
+
+      body = '<Leader>w',
+
+      heads = {
+        { 'w', '<C-w>w', },
+      },
+    })
+
+    -------------------- Jump paragraph
     local nextParagraphStart = function()
       vim.fn.search(
         [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW')

@@ -9,7 +9,7 @@ vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
-vim.keymap.set('n', 'gr', 'r')
+vim.keymap.set('n', 'rr', 'r')
 vim.keymap.set('n', 'r', '<Nop>')
 vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
@@ -21,19 +21,14 @@ vim.keymap.set('', 'q', '<Nop>')
 vim.keymap.set('n', '<C-s>', '<cmd>silent write<CR>')
 vim.keymap.set('i', '<C-s>', '<Esc>`^<cmd>silent write<CR>')
 vim.keymap.set('x', '<C-s>', '<Esc><cmd>silent write<CR>')
+vim.keymap.set('n', '<Leader>s', '<cmd>silent write<CR>')
+vim.keymap.set('i', '<Leader>s', '<Esc>`^<cmd>silent write<CR>')
+vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 
 -- Edit
 vim.keymap.set('i', 'ù', '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- vim.keymap.set('n', '<BS>', '"_ciw')
-
--- vim.cmd([[
--- function! RepeatChar(char, count)
---   return repeat(a:char, a:count)
--- endfunction
--- nnoremap ga :<C-U>exec "normal A".RepeatChar(nr2char(getchar()), v:count1)<CR>
--- nnoremap gi :<C-U>exec "normal I".RepeatChar(nr2char(getchar()), v:count1)<CR>
--- ]])
 
 local input_cache = nil
 
@@ -181,6 +176,7 @@ vim.keymap.set('n', 'gO', appendNewlineAbove, { expr = true, })
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 -- vim.api.nvim_command('redraw')
+-- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>w', true, false, true), 'n', false)
 
 -- Text objects
 vim.keymap.set({ 'x', 'o', }, 'a<Leader>', 'ap')
@@ -265,13 +261,12 @@ vim.keymap.set({ 'n', 'x', }, '}', function() vim.fn.search('}') end)
 -- vim.keymap.set({ 'n', 'x' }, '}', function() vim.fn.search('{', 'b') end)
 
 -- Buffers
-vim.keymap.set('n', '<Leader>w', '<C-w>', { noremap = true, })
-vim.keymap.set('n', '<C-t>', '<cmd>enew<CR>', { silent = true, })
-vim.keymap.set('n', '<C-w>', '<cmd>bwipeout!<CR>', { silent = true, })
+-- vim.keymap.set('n', '<Leader>w', '<C-w>', { noremap = true, })
+vim.keymap.set('n', '<Leader>q', '<cmd>q!<CR>')
+vim.keymap.set('n', 'qq', '<cmd>bwipeout!<CR>', { silent = true, })
+-- vim.keymap.set('n', '<C-t>', '<cmd>enew<CR>', { silent = true, })
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
 -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
-
-vim.keymap.set('n', '<C-q>', '<cmd>q!<CR>')
 
 -------------------- folke/lazy.nvim
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>')

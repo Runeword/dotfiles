@@ -18,6 +18,7 @@
     firefox
 
     # ---------------------------------- Hardware
+    pw-viz
     bluetuith
     brillo
 
@@ -28,6 +29,7 @@
     trashy
     xdragon
     nix-init
+    tldr
 
     # ---------------------------------- Git
     inputs.src-cli.packages.x86_64-linux.default

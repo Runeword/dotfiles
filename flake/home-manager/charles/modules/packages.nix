@@ -12,12 +12,14 @@
     # ---------------------------------- Editors
     neovim-nightly
     vifm
+    kitty
 
     # ---------------------------------- Browsers
     google-chrome
     firefox
 
     # ---------------------------------- Hardware
+    networkmanagerapplet
     pw-viz
     bluetuith
     brillo

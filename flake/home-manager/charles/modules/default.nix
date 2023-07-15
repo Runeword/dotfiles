@@ -7,7 +7,6 @@
   imports = [
     ./readline.nix
     ./alacritty.nix
-    ./kitty.nix
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix
@@ -105,6 +104,8 @@
     direnv.nix-direnv.enable = true;
 
     fuzzel.enable = true;
+
+    zellij.enable = true;
 
     zsh.enable = true;
     zsh.enableAutosuggestions = true;

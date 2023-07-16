@@ -87,13 +87,13 @@ function _G._appendCharEndLine()
   local lines = vim.api.nvim_buf_get_lines(0, visualStart[1] - 1, visualEnd[1],
     false)
 
-  -- Set virtual text
-  local extmarks = {}
-
   if not input_cache then
+    local extmarks = {}
+
+    -- Set virtual text
     for i, str in ipairs(lines) do
-      table.insert(extmarks, vim.api.nvim_buf_set_extmark(0, namespace,
-        visualStart[1] - 2 + i,
+      table.insert(extmarks, vim.api.nvim_buf_set_extmark(
+        0, namespace, visualStart[1] - 2 + i,
         string.len(getLineStr(visualStart[1] - 1 + i)),
         {
           virt_text = { { '_', 'BoosterAppendChar', }, },
@@ -108,29 +108,26 @@ function _G._appendCharEndLine()
     -- Get character
     local ok, charstr = pcall(vim.fn.getcharstr)
     local exitKeys = { [''] = true, }
+
     if ok and not exitKeys[charstr] then
-      input_cache = charstr
+      input_cache = charstr -- Cache it
     end
 
     -- Clear virtual text
-    vim.print(extmarks)
-    if extmarks then
-      for i, extmark in ipairs(extmarks) do
-        vim.api.nvim_buf_del_extmark(0, namespace, extmark)
-      end
+    for i, extmark in ipairs(extmarks) do
+      vim.api.nvim_buf_del_extmark(0, namespace, extmark)
     end
   end
 
-  if #lines == 1 then
-    return appendSingleChar(endOfLinePos())
-  end
+  if not input_cache then return end
 
-  return (function()
-    for i, str in ipairs(lines) do
-      appendSingleChar(visualStart[1] - 2 + i,
-        string.len(getLineStr(visualStart[1] - 1 + i)))
-    end
-  end)()
+  -- Set character
+  for i, str in ipairs(lines) do
+    local row = visualStart[1] - 2 + i
+    local col = string.len(getLineStr(visualStart[1] - 1 + i))
+    vim.api.nvim_buf_set_text(0, row, col, row, col,
+      { string.rep(input_cache, vim.v.count1), })
+  end
 end
 
 function _G._appendCharStartLine()

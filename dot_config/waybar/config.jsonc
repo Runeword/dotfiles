@@ -200,7 +200,8 @@
     },
     "clock": {
       "format": "{:%H\n%M}",
-      "tooltip-format": "{:%a %d %b %Y}"
+      "tooltip-format": "{:%a %d %b %Y}",
+      "interval": 1
     },
     "wireplumber#string": {
       "format": "{volume}",

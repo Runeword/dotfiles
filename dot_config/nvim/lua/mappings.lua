@@ -31,12 +31,11 @@ vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
 local input_cache = nil
+vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
+local namespace = vim.api.nvim_create_namespace('booster')
 
 -------------------- Main function
-local function appendSingleChar(row, col)
-  vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
-  local namespace = vim.api.nvim_create_namespace('booster')
-
+local function appendSingleChar(row, col, charstr)
   if not input_cache then
     -- Set virtual text
     local extmark = nil
@@ -46,13 +45,6 @@ local function appendSingleChar(row, col)
       priority = 200,
     })
     vim.api.nvim_command('redraw')
-
-    -- Get character
-    local ok, charstr = pcall(vim.fn.getcharstr)
-    local exitKeys = { [''] = true, }
-    if ok and not exitKeys[charstr] then
-      input_cache = charstr
-    end
 
     -- Clear virtual text
     if extmark then vim.api.nvim_buf_del_extmark(0, namespace, extmark) end
@@ -100,7 +92,30 @@ end
 
 -------------------- Initialization
 function _G._appendCharEndLine()
-  return appendSingleChar(endOfLinePos())
+  local isVisual = string.match(vim.api.nvim_get_mode().mode, '[vV]')
+  local starting = vim.api.nvim_buf_get_mark(0, isVisual and '<' or '[')
+  local ending = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')
+
+  -- Get character
+  local ok, charstr = pcall(vim.fn.getcharstr)
+  local exitKeys = { [''] = true, }
+  if ok and not exitKeys[charstr] then
+    input_cache = charstr
+  end
+
+  local lines = vim.api.nvim_buf_get_lines(0, starting[1] - 1, ending[1], false)
+  vim.print(lines)
+
+  if #lines == 1 then
+    return appendSingleChar(endOfLinePos())
+  end
+
+  return (function()
+    for i, str in ipairs(lines) do
+      appendSingleChar(starting[1] + i - 2,
+        string.len(getLineStr(starting[1] + i - 1)))
+    end
+  end)()
 end
 
 function _G._appendCharStartLine()
@@ -118,7 +133,13 @@ end
 -------------------- Dot repeat
 local function dot_repeat_wrapper(name)
   vim.go.operatorfunc = 'v:lua.' .. name
-  vim.api.nvim_feedkeys('g@l', 'n', false)
+
+  local isVisual = string.match(vim.api.nvim_get_mode().mode, '[vV]')
+  if isVisual then
+    vim.api.nvim_feedkeys('g@', 'n', false)
+  else
+    vim.api.nvim_feedkeys('g@l', 'n', false)
+  end
 end
 
 local function appendCharEndLine()
@@ -142,19 +163,19 @@ local function appendCharAfter()
 end
 
 -------------------- Mappings
-vim.keymap.set('n', 'ga', appendCharEndLine, { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine, { expr = true, })
 vim.keymap.set('n', 'gi', appendCharStartLine, { expr = true, })
 vim.keymap.set('n', 'ra', appendCharAfter, { expr = true, })
 vim.keymap.set('n', 'ri', appendCharBefore, { expr = true, })
 
 function _G._appendNewlineBelow()
-  local newLines = {}; for i=1,vim.v.count1 do newLines[i] = "" end
+  local newLines = {}; for i = 1, vim.v.count1 do newLines[i] = '' end
   local row = vim.api.nvim_win_get_cursor(0)[1]
   vim.api.nvim_buf_set_lines(0, row, row, false, newLines)
 end
 
 function _G._appendNewlineAbove()
-  local newLines = {}; for i=1,vim.v.count1 do newLines[i] = "" end
+  local newLines = {}; for i = 1, vim.v.count1 do newLines[i] = '' end
   local row = vim.api.nvim_win_get_cursor(0)[1]
   vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, newLines)
 end

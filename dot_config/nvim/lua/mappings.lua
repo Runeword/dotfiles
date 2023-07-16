@@ -38,7 +38,7 @@ local function setVirtualText(row, col)
 end
 
 -------------------- Main function
-local function appendSingleChar(row, col, charstr)
+local function appendSingleChar(row, col)
   if input_cache then
     -- Set character
     vim.api.nvim_buf_set_text(0, row, col, row, col,
@@ -51,18 +51,26 @@ local function getLineStr(row)
   return vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1]
 end
 
-local function endOfLinePos()
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  return
-      row - 1,
-      string.len(getLineStr(row))
+-- local function endOfLinePos()
+--   local row = vim.api.nvim_win_get_cursor(0)[1]
+--   return
+--       row - 1,
+--       string.len(getLineStr(row))
+-- end
+
+-- local function startOfLinePos()
+--   local row = vim.api.nvim_win_get_cursor(0)[1]
+--   return
+--       row - 1,
+--       (string.find(getLineStr(row), '(%S)') or 1) - 1
+-- end
+
+local function startOfLineCol(row)
+  return (string.find(getLineStr(row), '(%S)') or 1) - 1
 end
 
-local function startOfLinePos()
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  return
-      row - 1,
-      (string.find(getLineStr(row), '(%S)') or 1) - 1
+local function endOfLineCol(row)
+  return string.len(getLineStr(row))
 end
 
 local function beforePos()
@@ -79,12 +87,11 @@ local function afterPos()
       pos[2] + 1
 end
 
--------------------- Initialization
-function _G._appendCharEndLine()
+local function main(acol)
   local isVisual = string.match(vim.api.nvim_get_mode().mode, '[vV]')
-  local visualStart = vim.api.nvim_buf_get_mark(0, isVisual and '<' or '[')
-  local visualEnd = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')
-  local lines = vim.api.nvim_buf_get_lines(0, visualStart[1] - 1, visualEnd[1],
+  local startPos = vim.api.nvim_buf_get_mark(0, isVisual and '<' or '[')
+  local endPos = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')
+  local lines = vim.api.nvim_buf_get_lines(0, startPos[1] - 1, endPos[1],
     false)
 
   if not input_cache then
@@ -93,8 +100,8 @@ function _G._appendCharEndLine()
     -- Set virtual text
     for i, str in ipairs(lines) do
       table.insert(extmarks, vim.api.nvim_buf_set_extmark(
-        0, namespace, visualStart[1] - 2 + i,
-        string.len(getLineStr(visualStart[1] - 1 + i)),
+        0, namespace, startPos[1] - 2 + i,
+        acol(startPos[1] - 1 + i),
         {
           virt_text = { { '_', 'BoosterAppendChar', }, },
           virt_text_pos = 'inline',
@@ -105,12 +112,13 @@ function _G._appendCharEndLine()
 
     vim.api.nvim_command('redraw')
 
-    -- Get character
+    -- Prompt for character
     local ok, charstr = pcall(vim.fn.getcharstr)
     local exitKeys = { [''] = true, }
 
+    -- Cache character if prompt not aborted
     if ok and not exitKeys[charstr] then
-      input_cache = charstr -- Cache it
+      input_cache = charstr
     end
 
     -- Clear virtual text
@@ -123,15 +131,20 @@ function _G._appendCharEndLine()
 
   -- Set character
   for i, str in ipairs(lines) do
-    local row = visualStart[1] - 2 + i
-    local col = string.len(getLineStr(visualStart[1] - 1 + i))
+    local row = startPos[1] - 2 + i
+    local col = acol(startPos[1] - 1 + i)
     vim.api.nvim_buf_set_text(0, row, col, row, col,
       { string.rep(input_cache, vim.v.count1), })
   end
 end
 
+-------------------- Initialization
+function _G._appendCharEndLine()
+  return main(endOfLineCol)
+end
+
 function _G._appendCharStartLine()
-  return appendSingleChar(startOfLinePos())
+  return main(startOfLineCol)
 end
 
 function _G._appendCharBefore()
@@ -176,7 +189,7 @@ end
 
 -------------------- Mappings
 vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine, { expr = true, })
-vim.keymap.set('n', 'gi', appendCharStartLine, { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine, { expr = true, })
 vim.keymap.set('n', 'ra', appendCharAfter, { expr = true, })
 vim.keymap.set('n', 'ri', appendCharBefore, { expr = true, })
 

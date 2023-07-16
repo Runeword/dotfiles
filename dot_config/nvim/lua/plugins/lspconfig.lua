@@ -49,9 +49,9 @@ return {
         -- vim.keymap.set("n", '<ScrollWheelUp>', diagnostic.goto_prev, { buffer = buffer })
         -- vim.keymap.set("n", '<ScrollWheelDown>', diagnostic.goto_next, { buffer = buffer })
 
-        vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev,
+        vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_prev,
           { buffer = buffer, })
-        vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next,
+        vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_next,
           { buffer = buffer, })
 
         vim.keymap.set('n', '<Leader>x', vim.diagnostic.setqflist,

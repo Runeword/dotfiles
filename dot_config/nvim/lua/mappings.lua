@@ -35,16 +35,6 @@ vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
 local namespace = vim.api.nvim_create_namespace('booster')
 
 local function setVirtualText(row, col)
-  if not input_cache then
-    -- Set virtual text
-    local extmark = nil
-    extmark = vim.api.nvim_buf_set_extmark(0, namespace, row, col, {
-      virt_text = { { '_', 'BoosterAppendChar', }, },
-      virt_text_pos = 'inline',
-      priority = 200,
-    })
-    return extmark
-  end
 end
 
 -------------------- Main function
@@ -92,38 +82,44 @@ end
 -------------------- Initialization
 function _G._appendCharEndLine()
   local isVisual = string.match(vim.api.nvim_get_mode().mode, '[vV]')
-  local starting = vim.api.nvim_buf_get_mark(0, isVisual and '<' or '[')
-  local ending = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')
+  local visualStart = vim.api.nvim_buf_get_mark(0, isVisual and '<' or '[')
+  local visualEnd = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')
+  local lines = vim.api.nvim_buf_get_lines(0, visualStart[1] - 1, visualEnd[1],
+    false)
 
-  local lines = vim.api.nvim_buf_get_lines(0, starting[1] - 1, ending[1], false)
-  vim.print(lines)
-
+  -- Set virtual text
   local extmarks = {}
-  for i, str in ipairs(lines) do
-    local extmark = setVirtualText(
-      starting[1] + i - 2,
-      string.len(getLineStr(starting[1] + i - 1))
-    )
-    table.insert(extmarks, extmark)
-  end
 
-  vim.api.nvim_command('redraw')
+  if not input_cache then
+    for i, str in ipairs(lines) do
+      table.insert(extmarks, vim.api.nvim_buf_set_extmark(0, namespace,
+        visualStart[1] - 2 + i,
+        string.len(getLineStr(visualStart[1] - 1 + i)),
+        {
+          virt_text = { { '_', 'BoosterAppendChar', }, },
+          virt_text_pos = 'inline',
+          priority = 200,
+        }
+      ))
+    end
 
-  -- Get character
-  local ok, charstr = pcall(vim.fn.getcharstr)
-  local exitKeys = { [''] = true, }
-  if ok and not exitKeys[charstr] then
-    input_cache = charstr
-  end
+    vim.api.nvim_command('redraw')
 
-  -- Clear virtual text
-  vim.print(extmarks)
-  if extmarks then
-    for i, extmark in ipairs(extmarks) do
-      vim.api.nvim_buf_del_extmark(0, namespace, extmark)
+    -- Get character
+    local ok, charstr = pcall(vim.fn.getcharstr)
+    local exitKeys = { [''] = true, }
+    if ok and not exitKeys[charstr] then
+      input_cache = charstr
+    end
+
+    -- Clear virtual text
+    vim.print(extmarks)
+    if extmarks then
+      for i, extmark in ipairs(extmarks) do
+        vim.api.nvim_buf_del_extmark(0, namespace, extmark)
+      end
     end
   end
-
 
   if #lines == 1 then
     return appendSingleChar(endOfLinePos())
@@ -131,8 +127,8 @@ function _G._appendCharEndLine()
 
   return (function()
     for i, str in ipairs(lines) do
-      appendSingleChar(starting[1] + i - 2,
-        string.len(getLineStr(starting[1] + i - 1)))
+      appendSingleChar(visualStart[1] - 2 + i,
+        string.len(getLineStr(visualStart[1] - 1 + i)))
     end
   end)()
 end

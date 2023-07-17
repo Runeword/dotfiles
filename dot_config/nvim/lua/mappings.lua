@@ -62,14 +62,11 @@ local function appendSingleChar(getColumn)
   local endRow = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')[1]
   local lines = vim.api.nvim_buf_get_lines(0, startRow - 1, endRow, false)
 
-  -- vim.print(startPos)
-  -- vim.print(endPos)
-
   if not input_cache then
     local extmarks = {}
 
     -- Set virtual text
-    for i, str in ipairs(lines) do
+    for i, _ in ipairs(lines) do
       table.insert(extmarks, vim.api.nvim_buf_set_extmark(
         0, namespace, startRow - 2 + i,
         getColumn(startRow - 1 + i),
@@ -93,7 +90,7 @@ local function appendSingleChar(getColumn)
     end
 
     -- Clear virtual text
-    for i, extmark in ipairs(extmarks) do
+    for _, extmark in ipairs(extmarks) do
       vim.api.nvim_buf_del_extmark(0, namespace, extmark)
     end
   end
@@ -101,7 +98,7 @@ local function appendSingleChar(getColumn)
   if not input_cache then return end
 
   -- Set character
-  for i, str in ipairs(lines) do
+  for i, _ in ipairs(lines) do
     local row = startRow - 2 + i
     local col = getColumn(startRow - 1 + i)
     vim.api.nvim_buf_set_text(0, row, col, row, col,
@@ -118,28 +115,19 @@ function _G._appendCharStartLine()
   return appendSingleChar(colBeforeLine)
 end
 
-function _G._appendCharBefore()
+function _G._appendCharBeforeCursor()
   return appendSingleChar(colBeforeCursor)
 end
 
-function _G._appendCharAfter()
+function _G._appendCharAfterCursor()
   return appendSingleChar(colAfterCursor)
 end
 
 -------------------- Dot repeat
 local function dot_repeat_wrapper(name)
   vim.go.operatorfunc = 'v:lua.' .. name
-
   local isVisual = string.match(vim.api.nvim_get_mode().mode, '[vV\22]')
-
-  vim.print(vim.api.nvim_get_mode())
-  vim.print(isVisual)
-
-  if isVisual then
-    vim.api.nvim_feedkeys('g@', 'n', false)
-  else
-    vim.api.nvim_feedkeys('g@l', 'n', false)
-  end
+  vim.api.nvim_feedkeys(isVisual and 'g@' or 'g@l', 'n', false)
 end
 
 local function appendCharEndLine()
@@ -152,47 +140,38 @@ local function appendCharStartLine()
   return dot_repeat_wrapper('_appendCharStartLine')
 end
 
-local function appendCharBefore()
+local function appendCharBeforeCursor()
   input_cache = nil
-  return dot_repeat_wrapper('_appendCharBefore')
+  return dot_repeat_wrapper('_appendCharBeforeCursor')
 end
 
-local function appendCharAfter()
+local function appendCharAfterCursor()
   input_cache = nil
-  return dot_repeat_wrapper('_appendCharAfter')
+  return dot_repeat_wrapper('_appendCharAfterCursor')
 end
 
 -------------------- Mappings
 vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine, { expr = true, })
 vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine, { expr = true, })
-vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfter, { expr = true, })
-vim.keymap.set({ 'x', 'n', }, 'ri', appendCharBefore, { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfterCursor, { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'ri', appendCharBeforeCursor, { expr = true, })
 
-function _G._appendNewlineBelow()
+-------------------- Append newline
+local function appendNewLine(rowOffset)
   local newLines = {}; for i = 1, vim.v.count1 do newLines[i] = '' end
   local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row, row, false, newLines)
+  vim.api.nvim_buf_set_lines(0, row + rowOffset, row + rowOffset, false, newLines)
 end
 
-function _G._appendNewlineAbove()
-  local newLines = {}; for i = 1, vim.v.count1 do newLines[i] = '' end
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, newLines)
-end
+function _G._appendNewlineBelow() appendNewLine(0) end
 
-local function appendNewlineAbove()
-  dot_repeat_wrapper('_appendNewlineAbove')
-end
+function _G._appendNewlineAbove() appendNewLine(-1) end
 
-local function appendNewlineBelow()
-  dot_repeat_wrapper('_appendNewlineBelow')
-end
+local function appendNewlineAbove() dot_repeat_wrapper('_appendNewlineAbove') end
+local function appendNewlineBelow() dot_repeat_wrapper('_appendNewlineBelow') end
 
--- vim.keymap.set('n', 'go', appendNewlineBelow)
--- vim.keymap.set('n', 'gO', appendNewlineAbove)
-
-vim.keymap.set('n', 'go', appendNewlineBelow, { expr = true, })
-vim.keymap.set('n', 'gO', appendNewlineAbove, { expr = true, })
+vim.keymap.set({ 'n', }, 'go', appendNewlineBelow, { expr = true, })
+vim.keymap.set({ 'n', }, 'gO', appendNewlineAbove, { expr = true, })
 
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)

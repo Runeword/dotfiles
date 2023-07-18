@@ -10,7 +10,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
 vim.keymap.set({ 'x', 'n', }, 'rr', 'r')
--- vim.keymap.set('n', 'r', '<Nop>')
+vim.keymap.set('n', 'r', '<Nop>')
 vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
 vim.keymap.set('n', '<C-p>', '<Nop>')
@@ -48,11 +48,11 @@ local function colAfterLine(row)
 end
 
 local function colBeforeCursor()
-  return vim.api.nvim_win_get_cursor(0)[2]
+  return vim.fn.virtcol('.') - 1
 end
 
 local function colAfterCursor()
-  return vim.api.nvim_win_get_cursor(0)[2] + 1
+  return vim.fn.virtcol('.')
 end
 
 -------------------- Main function
@@ -65,26 +65,35 @@ local function appendSingleChar(getColumn)
   if not input_cache then
     local extmarks = {}
 
-    -- Set virtual text
-    for i, _ in ipairs(lines) do
-      table.insert(extmarks, vim.api.nvim_buf_set_extmark(
-        0, namespace, startRow - 2 + i,
-        getColumn(startRow - 1 + i),
-        {
-          virt_text = { { '_', 'BoosterAppendChar', }, },
-          virt_text_pos = 'inline',
-          priority = 200,
-        }
-      ))
+    -- Set virtual text for each line
+    for i, str in ipairs(lines) do
+      local col = getColumn(startRow - 1 + i)
+      local row = startRow - 2 + i
+      local len = string.len(str)
+
+      -- If the cursor column is inside a non empty string
+      if len ~= 0 and len >= col then
+        table.insert(
+          extmarks,
+          vim.api.nvim_buf_set_extmark(0, namespace, row, col,
+            {
+              virt_text = { { '_', 'BoosterAppendChar', }, },
+              virt_text_pos = 'inline',
+              priority = 200,
+            }
+          ))
+      end
     end
+
+    if #extmarks == 0 then return end
 
     vim.api.nvim_command('redraw')
 
-    -- Prompt for character
+    -- Prompt for one character
     local ok, charstr = pcall(vim.fn.getcharstr)
     local exitKeys = { [''] = true, }
 
-    -- Cache character if prompt not aborted
+    -- Cache the character if prompt is not aborted
     if ok and not exitKeys[charstr] then
       input_cache = charstr
     end
@@ -93,16 +102,21 @@ local function appendSingleChar(getColumn)
     for _, extmark in ipairs(extmarks) do
       vim.api.nvim_buf_del_extmark(0, namespace, extmark)
     end
+
+    if not input_cache then return end
   end
 
-  if not input_cache then return end
-
-  -- Set character
-  for i, _ in ipairs(lines) do
+  -- Set character for each line
+  for i, str in ipairs(lines) do
     local row = startRow - 2 + i
     local col = getColumn(startRow - 1 + i)
-    vim.api.nvim_buf_set_text(0, row, col, row, col,
-      { string.rep(input_cache, vim.v.count1), })
+    local len = string.len(str)
+
+    -- If the cursor column is inside a non empty string
+    if len ~= 0 and len >= col then
+      vim.api.nvim_buf_set_text(0, row, col, row, col,
+        { string.rep(input_cache, vim.v.count1), })
+    end
   end
 end
 

@@ -19,7 +19,7 @@
     nodePackages.bash-language-server
     nodePackages.yaml-language-server
     nodePackages.eslint
-    sumneko-lua-language-server
+    lua-language-server
     marksman
     ccls
     nil

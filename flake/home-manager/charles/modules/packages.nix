@@ -32,6 +32,7 @@
     xdragon
     nix-init
     tldr
+    asciinema
 
     # ---------------------------------- Git
     inputs.src-cli.packages.x86_64-linux.default

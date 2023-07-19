@@ -9,8 +9,6 @@ vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
-vim.keymap.set({ 'x', 'n', }, 'rr', 'r')
-vim.keymap.set('n', 'r', '<Nop>')
 vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
 vim.keymap.set('n', '<C-p>', '<Nop>')
@@ -62,16 +60,16 @@ local function appendSingleChar(getColumn)
   local endRow = vim.api.nvim_buf_get_mark(0, isVisual and '>' or ']')[1]
   local lines = vim.api.nvim_buf_get_lines(0, startRow - 1, endRow, false)
 
+  -- If no character has been cached yet then we need to prompt the user for one
   if not input_cache then
     local extmarks = {}
 
-    -- Set virtual text for each line
+    -- Set virtual text when the cursor column is inside a non empty string
     for i, str in ipairs(lines) do
       local col = getColumn(startRow - 1 + i)
       local row = startRow - 2 + i
       local len = string.len(str)
 
-      -- If the cursor column is inside a non empty string
       if len ~= 0 and len >= col then
         table.insert(
           extmarks,
@@ -85,34 +83,33 @@ local function appendSingleChar(getColumn)
       end
     end
 
+    -- Quit if no extmarks have been set
     if #extmarks == 0 then return end
 
     vim.api.nvim_command('redraw')
 
     -- Prompt for one character
     local ok, charstr = pcall(vim.fn.getcharstr)
-    local exitKeys = { [''] = true, }
-
-    -- Cache the character if prompt is not aborted
-    if ok and not exitKeys[charstr] then
-      input_cache = charstr
-    end
 
     -- Clear virtual text
     for _, extmark in ipairs(extmarks) do
       vim.api.nvim_buf_del_extmark(0, namespace, extmark)
     end
 
-    if not input_cache then return end
+    -- Quit if prompt is aborted
+    local exitKeys = { [''] = true, }
+    if not ok or exitKeys[charstr] then return end
+
+    -- Cache character input
+    input_cache = charstr
   end
 
-  -- Set character for each line
+  -- Set character when the cursor column is inside a non empty string
   for i, str in ipairs(lines) do
-    local row = startRow - 2 + i
     local col = getColumn(startRow - 1 + i)
+    local row = startRow - 2 + i
     local len = string.len(str)
 
-    -- If the cursor column is inside a non empty string
     if len ~= 0 and len >= col then
       vim.api.nvim_buf_set_text(0, row, col, row, col,
         { string.rep(input_cache, vim.v.count1), })
@@ -167,6 +164,9 @@ end
 -------------------- Mappings
 vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine, { expr = true, })
 vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine, { expr = true, })
+
+vim.keymap.set({ 'x', 'n', }, 'rr', 'r')
+vim.keymap.set('n', 'r', '<Nop>')
 vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfterCursor, { expr = true, })
 vim.keymap.set({ 'x', 'n', }, 'ri', appendCharBeforeCursor, { expr = true, })
 
@@ -189,8 +189,6 @@ vim.keymap.set({ 'n', }, 'gO', appendNewlineAbove, { expr = true, })
 
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
--- vim.api.nvim_command('redraw')
--- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-w>w', true, false, true), 'n', false)
 
 -- Text objects
 vim.keymap.set({ 'x', 'o', }, 'a<Leader>', 'ap')

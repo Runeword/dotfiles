@@ -30,6 +30,8 @@
     hm = "hyprctl monitors";
     hhp = "hyprctl hyprpaper preload";
     hhw = "hyprctl hyprpaper wallpaper";
+    play = "asciinema play";
+    "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

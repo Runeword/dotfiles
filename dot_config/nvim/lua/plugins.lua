@@ -52,19 +52,11 @@ return {
   { 'itchyny/vim-cursorword', },
   { 'tommcdo/vim-exchange', },
   { 'jghauser/mkdir.nvim', },
-  { 'svban/YankAssassin.vim', },
 
   {
     'ahmedkhalf/project.nvim',
     config = function()
       require('project_nvim').setup()
-    end,
-  },
-
-  {
-    'machakann/vim-highlightedyank',
-    config = function()
-      vim.g.highlightedyank_highlight_duration = 100
     end,
   },
 
@@ -115,4 +107,12 @@ return {
   -- },
 
   -- { 'Exafunction/codeium.vim', },
+
+  -- { 'svban/YankAssassin.vim', },
+  -- {
+  --   'machakann/vim-highlightedyank',
+  --   config = function()
+  --     vim.g.highlightedyank_highlight_duration = 100
+  --   end,
+  -- },
 }

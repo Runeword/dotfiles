@@ -28,17 +28,6 @@ return {
       end,
     })
 
-    -- machakann/vim-highlightedyank
-    vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = 'highlightedyank',
-      pattern = '*',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
-          { bg = '#00ffa2', fg = 'black', })
-      end,
-    })
-
     -- akinsho/bufferline.nvim
     vim.api.nvim_create_augroup('bufferline', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {
@@ -66,6 +55,17 @@ return {
           { fg = 'black', bg = 'none', })
       end,
     })
+
+    -- -- machakann/vim-highlightedyank
+    -- vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
+    -- vim.api.nvim_create_autocmd('ColorScheme', {
+    --   group = 'highlightedyank',
+    --   pattern = '*',
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
+    --       { bg = '#00ffa2', fg = 'black', })
+    --   end,
+    -- })
 
     -- -- woosaaahh/sj.nvim
     -- vim.api.nvim_create_augroup('sj', { clear = true, })

@@ -13,6 +13,17 @@ return {
 
     -- require('autocmd').matchup()
 
+    -- gbprod/yanky.nvim
+    vim.api.nvim_create_augroup('yanky', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'yanky',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'YankyPut', { bg = '#222b66', fg = 'none', })
+        vim.api.nvim_set_hl(0, 'YankyYanked', { bg = '#00ffa2', fg = 'black', })
+      end,
+    })
+
     -- folke/flash.nvim
     vim.api.nvim_create_augroup('flash', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {
@@ -63,7 +74,7 @@ return {
     --   pattern = '*',
     --   callback = function()
     --     vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
-    --       { bg = '#00ffa2', fg = 'black', })
+    --       { bg = '#ff1994', fg = 'black', })
     --   end,
     -- })
 

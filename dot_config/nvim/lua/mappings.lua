@@ -236,7 +236,6 @@ vim.keymap.set({ 'o', }, 'W', 'iW', remap)
 -- vim.fn['arpeggio#map']('ox', '', 0, '[]', 'a]')
 
 -- Operators
-vim.keymap.set('x', 'p', '"_dP')
 vim.keymap.set({ 'n', 'v', }, 'd', '"_d')
 vim.keymap.set('n', 'D', '"_D')
 vim.keymap.set('n', 'dd', '"_dd^')

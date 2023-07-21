@@ -1,0 +1,5 @@
+if [ -d "$HOME/flake/home-manager/charles/shellFunctions" ]; then
+  for file in "$HOME/flake/home-manager/charles/shellFunctions"/*; do
+    . "$file"
+  done
+fi

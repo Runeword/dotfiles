@@ -17,11 +17,10 @@
     ./home.nix
     ./packages.nix
     ./shellAliases.nix
-    ./nushell.nix
     ./git.nix
     ./bash
-    ./fish
     ./bat
+    ./zsh
     # ./eww
     # ./dircolors.nix
   ];
@@ -106,12 +105,6 @@
     fuzzel.enable = true;
 
     zellij.enable = true;
-
-    zsh.enable = true;
-    zsh.enableAutosuggestions = true;
-    zsh.enableCompletion = true;
-    zsh.enableVteIntegration = true;
-    zsh.autocd = false;
   };
   # environment.pathsToLink = [ "/share/zsh" ];
 }

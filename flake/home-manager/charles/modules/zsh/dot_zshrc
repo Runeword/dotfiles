@@ -3,3 +3,20 @@ if [ -d "$HOME/flake/home-manager/charles/shellFunctions" ]; then
     . "$file"
   done
 fi
+
+bindkey '^U' kill-whole-line
+bindkey '^J' backward-kill-line
+bindkey '^K' kill-line
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+bindkey '^E' end-of-line
+bindkey '^A' beginning-of-line
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
+bindkey '^I' complete-word
+
+# abbr import-aliases
+# abbr hw="echo hello world"
+
+# alias cn='nvim'
+# alias cb='br -c :open_preview'

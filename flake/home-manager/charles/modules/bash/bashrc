@@ -19,8 +19,8 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 	source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
-if [ -d $HOME/flake/home-manager/charles/shellFunctions ]; then
-	for file in $HOME/flake/home-manager/charles/shellFunctions/*; do
+if [ -d $HOME/flake/home-manager/charles/modules/sh/functions ]; then
+	for file in $HOME/flake/home-manager/charles/modules/sh/functions/*; do
 		. "$file"
 	done
 fi

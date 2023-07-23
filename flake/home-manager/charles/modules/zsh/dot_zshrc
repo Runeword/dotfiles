@@ -29,8 +29,8 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 bindkey '^I' complete-word
 
-if [ -d "$HOME/flake/home-manager/charles/shellFunctions" ]; then
-  for file in "$HOME/flake/home-manager/charles/shellFunctions"/*; do
+if [ -d "$HOME/flake/home-manager/charles/modules/sh/functions" ]; then
+  for file in "$HOME/flake/home-manager/charles/modules/sh/functions"/*; do
     . "$file"
   done
 fi

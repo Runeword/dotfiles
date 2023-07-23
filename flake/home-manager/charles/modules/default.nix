@@ -16,10 +16,10 @@
     ./fzf.nix
     ./home.nix
     ./packages.nix
-    ./shellAliases.nix
     ./git.nix
     ./bash
     ./bat
+    ./sh
     ./zsh
     # ./eww
     # ./dircolors.nix

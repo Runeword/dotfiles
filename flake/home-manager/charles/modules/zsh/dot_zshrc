@@ -1,8 +1,22 @@
-if [ -d "$HOME/flake/home-manager/charles/shellFunctions" ]; then
-  for file in "$HOME/flake/home-manager/charles/shellFunctions"/*; do
-    . "$file"
-  done
-fi
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+autoload -U select-word-style
+select-word-style bash
+
+abbr import-aliases
+
+bindkey -r "^[OC"
+bindkey -r "^[OD"
+bindkey -r "^["
+bindkey -r "^V"
+bindkey -r "^W"
+bindkey -r "^Q"
+
+bindkey "^M" accept-line
+bindkey "^[[C" forward-char
+bindkey "^[[D" backward-char
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 
 bindkey '^U' kill-whole-line
 bindkey '^J' backward-kill-line
@@ -15,8 +29,8 @@ bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 bindkey '^I' complete-word
 
-# abbr import-aliases
-# abbr hw="echo hello world"
-
-# alias cn='nvim'
-# alias cb='br -c :open_preview'
+if [ -d "$HOME/flake/home-manager/charles/shellFunctions" ]; then
+  for file in "$HOME/flake/home-manager/charles/shellFunctions"/*; do
+    . "$file"
+  done
+fi

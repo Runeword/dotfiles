@@ -25,6 +25,7 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     ss = "src search";
+    a = "alias | fzf";
     xc = "xclip -selection c";
     xp = "xclip -selection c -o";
     hm = "hyprctl monitors";

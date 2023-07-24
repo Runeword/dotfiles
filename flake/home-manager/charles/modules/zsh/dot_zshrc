@@ -1,4 +1,5 @@
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+setopt MENU_COMPLETE
 
 autoload -U select-word-style
 select-word-style bash
@@ -28,6 +29,7 @@ bindkey '^A' beginning-of-line
 bindkey '^[[A' history-beginning-search-backward
 bindkey '^[[B' history-beginning-search-forward
 bindkey '^I' complete-word
+bindkey '^[[Z' reverse-menu-complete
 
 if [ -d "$HOME/flake/home-manager/charles/modules/sh/functions" ]; then
   for file in "$HOME/flake/home-manager/charles/modules/sh/functions"/*; do

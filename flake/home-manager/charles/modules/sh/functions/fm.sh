@@ -47,17 +47,12 @@ __open_file() {
 			echo "Error: could not change directory to $selected_files"
 			return 1
 		fi
-	else # If single or multiple file selection
-		# Then open it in editor
-
-		local selected_files_formated
-		selected_files_formated=$(echo "$selected_files" | paste -sd ' ')
-
-		if eval "$EDITOR $selected_files_formated"; then
+	else # If single or multiple file selection then open it in editor
+		if echo "$selected_files" | xargs "$EDITOR"; then
 			if [ -n "$BASH_VERSION" ]; then
-				history -s "$EDITOR $selected_files_formated"
+				history -s "$selected_files" | xargs "$EDITOR"
 			elif [ -n "$ZSH_VERSION" ]; then
-				print -s "$EDITOR $selected_files_formated"
+				print -s "$selected_files" | xargs "$EDITOR"
 			fi
 		else
 			echo "Error: could not open $selected_files with $EDITOR"

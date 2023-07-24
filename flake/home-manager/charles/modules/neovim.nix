@@ -26,6 +26,7 @@
     alejandra
     nixpkgs-fmt
     shfmt
+    shellcheck
   ];
 
   # programs.neovim.plugins = with pkgs; [

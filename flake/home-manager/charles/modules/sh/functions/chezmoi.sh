@@ -1,3 +1,5 @@
+#!/bin/sh
+
 __select_files() {
 	echo "$1" | fzf \
 		--multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
@@ -32,8 +34,8 @@ chy() {
 		[ -z "$selected_files" ] && return 1
 	fi
 
-	for i in $selected_files; do
-		chezmoi apply $i
+	for i in $(echo "$selected_files" | xargs); do
+		chezmoi apply "$i"
 	done
 }
 
@@ -51,7 +53,7 @@ chf() {
 		[ -z "$selected_files" ] && return 1
 	fi
 
-	for i in $selected_files; do
-		chezmoi forget $i
+  for i in $(echo "$selected_files" | xargs); do
+		chezmoi forget "$i"
 	done
 }

@@ -50,9 +50,9 @@ __open_file() {
 	else # If single or multiple file selection then open it in editor
 		if echo "$selected_files" | xargs "$EDITOR"; then
 			if [ -n "$BASH_VERSION" ]; then
-				history -s "$selected_files" | xargs "$EDITOR"
+				history -s "$EDITOR $(echo "$selected_files" | xargs)"
 			elif [ -n "$ZSH_VERSION" ]; then
-				print -s "$selected_files" | xargs "$EDITOR"
+				print -s "$EDITOR $(echo "$selected_files" | xargs)"
 			fi
 		else
 			echo "Error: could not open $selected_files with $EDITOR"

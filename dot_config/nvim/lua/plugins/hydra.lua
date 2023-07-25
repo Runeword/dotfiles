@@ -46,20 +46,26 @@ return {
       end)
 
     -------------------- Switch window
-    require('hydra')({
-      mode = 'n',
+    local window = require('hydra')({
+      mode = { 'n', },
 
       config = {
         hint = false,
-        invoque_on_body = true,
+        color = 'pink',
       },
-
-      body = '<Leader>w',
 
       heads = {
-        { 'w', '<C-w>w', },
+        { '<ESC>', '<C-w>w', },
+        { 'q',     '<C-w>w', },
       },
     })
+
+    vim.keymap.set({ 'n', 'x', }, '<Leader>w',
+      function()
+        window:activate()
+        local key = vim.api.nvim_replace_termcodes('<C-w>', true, false, true)
+        vim.api.nvim_feedkeys(key .. 'w', 'n', false)
+      end)
 
     -------------------- Jump paragraph
     local nextParagraphStart = function()

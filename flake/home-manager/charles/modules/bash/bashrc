@@ -12,8 +12,6 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
-source $HOME/flake/home-manager/charles/modules/sh/scripts/ssh-agent.sh
-
 if [ -d $HOME/flake/home-manager/charles/modules/sh/functions ]; then
 	for file in $HOME/flake/home-manager/charles/modules/sh/functions/*; do
 		. "$file"

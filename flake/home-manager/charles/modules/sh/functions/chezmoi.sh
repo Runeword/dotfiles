@@ -18,8 +18,8 @@ cha() {
 		[ -z "$selected_files" ] && return 1
 	fi
 
-	for i in $selected_files; do
-		chezmoi add $i
+  for i in $(echo "$selected_files" | xargs); do
+		chezmoi add "$i"
 	done
 }
 

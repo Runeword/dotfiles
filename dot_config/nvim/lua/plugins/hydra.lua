@@ -51,12 +51,12 @@ return {
 
       config = {
         hint = false,
-        color = 'pink',
+        -- color = 'pink',
       },
 
       heads = {
-        { '<ESC>', '<C-w>w', },
-        { 'q',     '<C-w>w', },
+        -- { '<ESC>', '<C-w>w', { nowait = true, }, },
+        -- { 'q',     '<C-w>w', { nowait = true, }, },
       },
     })
 

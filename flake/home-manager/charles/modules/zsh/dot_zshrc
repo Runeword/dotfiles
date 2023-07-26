@@ -6,15 +6,15 @@ select-word-style bash
 
 abbr import-aliases
 
-bindkey -r "^["
-bindkey -r "^V"
-bindkey -r "^W"
-bindkey -r "^Q"
+bindkey -r '^['
+bindkey -r '^V'
+bindkey -r '^W'
+bindkey -r '^Q'
 
-bindkey "^[OD" backward-char
-bindkey "^[OC" forward-char
-bindkey "^[[1;5D" backward-word
-bindkey "^[[1;5C" forward-word
+bindkey '^[OD' backward-char
+bindkey '^[OC' forward-char
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
@@ -26,10 +26,15 @@ bindkey '^[[3;5~' kill-word
 
 bindkey '^[OA' history-beginning-search-backward
 bindkey '^[OB' history-beginning-search-forward
-bindkey "^M" accept-line
 bindkey '^I' complete-word
 bindkey '^[[Z' reverse-menu-complete
-# bindkey "^M;" autosuggest-execute
+
+ABBR_DEFAULT_BINDINGS=0
+bindkey " " abbr-expand-and-space
+# bindkey '^M' abbr-expand-and-accept
+bindkey '^M' accept-line
+
+# bindkey '^M;' autosuggest-execute
 
 if [ -d "$HOME/flake/home-manager/charles/modules/sh/functions" ]; then
   for file in "$HOME/flake/home-manager/charles/modules/sh/functions"/*; do

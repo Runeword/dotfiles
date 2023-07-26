@@ -53,11 +53,11 @@
     ngl = "nix-env --list-generations";
 
     # ______________________________________ QMK
-    # qc = "(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
-    # qfl = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)";
-    # qfr = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
-    # qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
-    # qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
+    qc = "(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
+    qfl = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)";
+    qfr = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
+    qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
+    qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
     # ______________________________________ NETWORK
     wo= "nmcli radio wifi on";

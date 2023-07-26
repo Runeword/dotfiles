@@ -6,30 +6,30 @@ select-word-style bash
 
 abbr import-aliases
 
-bindkey -r "^[OC"
-bindkey -r "^[OD"
 bindkey -r "^["
 bindkey -r "^V"
 bindkey -r "^W"
 bindkey -r "^Q"
 
-bindkey "^M" accept-line
-bindkey "^[[C" forward-char
-bindkey "^[[D" backward-char
+bindkey "^[OD" backward-char
+bindkey "^[OC" forward-char
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
+bindkey '^E' end-of-line
+bindkey '^A' beginning-of-line
 
 bindkey '^U' kill-whole-line
 bindkey '^J' backward-kill-line
 bindkey '^K' kill-line
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
-bindkey '^E' end-of-line
-bindkey '^A' beginning-of-line
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
+
+bindkey '^[OA' history-beginning-search-backward
+bindkey '^[OB' history-beginning-search-forward
+bindkey "^M" accept-line
 bindkey '^I' complete-word
 bindkey '^[[Z' reverse-menu-complete
+# bindkey "^M;" autosuggest-execute
 
 if [ -d "$HOME/flake/home-manager/charles/modules/sh/functions" ]; then
   for file in "$HOME/flake/home-manager/charles/modules/sh/functions"/*; do

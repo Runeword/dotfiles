@@ -56,9 +56,9 @@
   ];
 
   # zsh
-  environment.pathsToLink = ["/share/zsh"];
   programs.zsh.enable = true;
   users.users.charles.shell = pkgs.zsh;
+  environment.pathsToLink = ["/share/zsh"];
 
   # thunar
   services.gvfs.enable = true; # Mount, trash, and other functionalities

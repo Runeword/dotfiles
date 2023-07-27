@@ -2,9 +2,9 @@
 
 __select_files() {
 	echo "$1" | fzf \
-		--multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
+		--multi --inline-info --reverse --no-separator --border none --cycle --height 100% \
 		--preview 'chezmoi diff --reverse --color=true ~/{}' \
-		--preview-window bottom,70%,noborder
+		--preview-window bottom,80%,noborder
 }
 
 cha() {

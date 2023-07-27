@@ -1,7 +1,5 @@
 {
   programs.dircolors.enable = true;
-  programs.dircolors.enableFishIntegration = true;
-  programs.dircolors.enableBashIntegration = true;
 
   programs.dircolors.settings = builtins.mapAttrs (name: value: builtins.replaceStrings ["01;"] ["00;"] value) {
     RESET = "0";

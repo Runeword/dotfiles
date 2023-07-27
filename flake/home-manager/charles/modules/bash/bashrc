@@ -1,7 +1,7 @@
 # disable bold in the ls command output
-LS_COLORS=${LS_COLORS//01;/00;}
-export LS_COLORS
-export EDITOR=nvim
+# LS_COLORS=${LS_COLORS//01;/00;}
+# export LS_COLORS
+# export EDITOR=nvim
 
 bind -x '"\C-n":"nvim"'
 bind -x '"\C-b":"br -c :open_preview"'
@@ -12,8 +12,8 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
-if [ -d $HOME/flake/home-manager/charles/modules/sh/functions ]; then
-	for file in $HOME/flake/home-manager/charles/modules/sh/functions/*; do
+if [ -d "$HOME/flake/home-manager/charles/modules/sh/functions" ]; then
+	for file in "$HOME/flake/home-manager/charles/modules/sh/functions"/*; do
 		. "$file"
 	done
 fi

@@ -25,6 +25,8 @@
     brillo
 
     # ---------------------------------- CLI tools
+    hyperfine
+    wl-screenrec
     wget
     ripgrep
     fd
@@ -64,7 +66,7 @@
     realesrgan-ncnn-vulkan
     imaginer
     kooha
-    # wl-screenrec
+    vlc
     inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
@@ -77,7 +79,7 @@
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     swappy
     fnott
+    slurp
     # grim
-    # slurp
   ];
 }

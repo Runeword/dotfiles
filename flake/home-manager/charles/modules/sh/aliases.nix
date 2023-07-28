@@ -34,6 +34,7 @@
     play = "asciinema play";
     "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
     key = "showkey -a";
+    p = "hyperfine";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

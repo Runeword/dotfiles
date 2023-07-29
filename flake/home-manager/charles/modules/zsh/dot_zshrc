@@ -51,7 +51,7 @@ bindkey '^M' accept-line
 bindkey 'CSI 13 ; 5 u' autosuggest-execute
 
 # ------------------------------------ zsh-autocomplete
-bindkey '\t' menu-select "$terminfo[kcbt]" menu-select�kd
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-selected
 bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # bindkey -M menuselect '^[' undo
 zstyle ':completion:*:*:*:*:descriptions' format '%F{197}%d%f'

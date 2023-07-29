@@ -13,9 +13,11 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "ipc": false,
-    // "modules-left" : ["clock", "wlr/taskbar"],
     "modules-left": [
-      "clock"
+      "custom/bottomLeftDarkTrans",
+      "clock",
+      "custom/topRightDarkTrans"
+      // "wlr/taskbar"
     ],
     "modules-center": [
       "wlr/workspaces",
@@ -27,24 +29,24 @@
     "group/hardware": {
       "orientation": "vertical",
       "modules": [
-        "custom/bottomRightDarkTrans",
+        // "custom/bottomRightDarkTrans",
         "memory#string",
         "memory#icon",
         "cpu#string",
         "cpu#icon",
-        "custom/topLeftDarkTrans",
-        "custom/bottomRightDarkTrans",
+        // "custom/topLeftDarkTrans",
+        // "custom/bottomRightDarkTrans",
         "wireplumber#string",
         "wireplumber#icon",
         "battery#string",
         "battery#icon",
-        "custom/topLeftDarkTrans",
-        "custom/bottomRightDarkTrans",
+        // "custom/topLeftDarkTrans",
+        // "custom/bottomRightDarkTrans",
         "network#string",
         "network#icon",
         "bluetooth#string",
-        "bluetooth#icon",
-        "custom/topLeftDarkTrans"
+        "bluetooth#icon"
+        // "custom/topLeftDarkTrans"
       ]
     },
     "custom/bottomRightDarkTrans": {
@@ -64,6 +66,10 @@
       "format": " "
     },
     "custom/topLeftLightTrans": {
+      "tooltip": false,
+      "format": " "
+    },
+    "custom/topRightDarkTrans": {
       "tooltip": false,
       "format": " "
     },
@@ -110,8 +116,8 @@
         "warning": 30,
         "critical": 90
       },
-      "format": "{percentage}",
-      "rotate": 320
+      "format": "{percentage}"
+      // "rotate": 320
     },
     "memory#icon": {
       "interval": 2,
@@ -132,8 +138,8 @@
         "warning": 20,
         "critical": 90
       },
-      "format": "{usage}",
-      "rotate": 320
+      "format": "{usage}"
+      // "rotate": 320
     },
     "cpu#icon": {
       "interval": 2,
@@ -152,8 +158,8 @@
         "warning": 40,
         "critical": 15
       },
-      "format": "{capacity}",
-      "rotate": 320
+      "format": "{capacity}"
+      // "rotate": 320
     },
     "battery#icon": {
       "interval": 30,
@@ -178,8 +184,8 @@
       "tooltip-format-ethernet": "{ifname} ",
       "tooltip-format-disconnected": "Disconnected",
       "max-length": 50,
-      "interval": 30,
-      "rotate": 320
+      "interval": 30
+      // "rotate": 320
     },
     "network#icon": {
       // "format" : "<span size='x-large'>{icon}</span>",
@@ -205,7 +211,7 @@
     },
     "wireplumber#string": {
       "format": "{volume}",
-      "rotate": 320,
+      // "rotate": 320,
       "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
     },
     "wireplumber#icon": {
@@ -228,8 +234,8 @@
       "tooltip-format": "{device_enumerate}",
       "tooltip-format-connected": "{device_enumerate}",
       // "tooltip-format-enumerate-connected": "{device_enumerate}",
-      "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}",
-      "rotate": 320
+      "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
+      // "rotate": 320
     },
     "bluetooth#icon": {
       "format": "<span size='large'>󰂯</span>",

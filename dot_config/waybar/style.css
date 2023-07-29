@@ -3,37 +3,38 @@
   font-family: "DroidSansM Nerd Font Propo";
 }
 
-window#waybar {}
-
-#taskbar {
-  color: transparent;
-  border-style: solid;
-  border-color: rgba(63, 94, 251, 0.7);
-  background: rgba(0, 0, 0, 0.35);
-  /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
-  /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
-  /* background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4)); */
-}
-
+/* ------------------------------------ WORKSPACES */
 #workspaces {
   font-size: 20px;
   color: #666666;
   background: rgba(0, 0, 0, 0.6);
-  padding: 0px 0px 2px 0px;
   margin-bottom: 50px;
 }
 
 #workspaces button:first-child {
-  padding: 8px 0px 8px 0px;
+  padding: 8px 0px 0px 0px;
+}
+
+#workspaces button:last-child {
+  padding: 0px 0px 8px 0px;
 }
 
 #workspaces button {
-  padding: 0px 0px 8px 0px;
+  padding: 4px 0px 4px 0px;
 }
 
 #workspaces button.active {
   color: #ffffff;
   box-shadow: inset 2px 0 rgba(63, 94, 251, 0.7);
+}
+
+/* ------------------------------------ TASKBAR */
+#taskbar {
+  color: transparent;
+  border-style: solid;
+  border-color: rgba(63, 94, 251, 0.7);
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 20px;
 }
 
 #taskbar button {
@@ -67,15 +68,49 @@ window#waybar {}
   -gtk-icon-transform: scale(1);
 }
 
-.modules-right {}
-
-#clock {
-  font-size: 18px;
+/* ------------------------------------ HARDWARE */
+#hardware {
   color: #a1a1a1;
-  padding: 10px 0px 10px 0px;
-  background: rgba(0, 0, 0, 0.60);
 }
 
+#cpu.icon.warning,
+#battery.icon.warning,
+#memory.icon.warning {
+  color: #ffffff;
+  box-shadow: inset 0px -2px rgba(173, 0, 0, 1);
+}
+
+#cpu.string.warning,
+#battery.string.warning,
+#memory.string.warning {
+  color: #ffffff;
+}
+
+#bluetooth.string,
+#wireplumber.string,
+#memory.string,
+#cpu.string,
+#battery.string,
+#network.string {
+  padding-top: 10;
+  padding-bottom: 5px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+#bluetooth.icon,
+#wireplumber.icon,
+#memory.icon,
+#cpu.icon,
+#battery.icon,
+#network.icon {
+  padding-bottom: 10;
+  margin-bottom: 2px;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* ------------------------------------ CUSTOM */
 #custom-bottomRightDarkTrans,
 #custom-bottomLeftLightDark,
 #custom-bottomLeftDarkTrans,
@@ -133,46 +168,12 @@ window#waybar {}
   border-right: 30px solid transparent;
 }
 
-#hardware {
+/* ------------------------------------ OTHER */
+#clock {
+  font-size: 18px;
   color: #a1a1a1;
-}
-
-#cpu.icon.warning,
-#battery.icon.warning,
-#memory.icon.warning {
-  color: #ffffff;
-  box-shadow: inset 0px -2px rgba(173, 0, 0, 1);
-  /* box-shadow: inset 0px -2px rgba(63,94,251,1); */
-}
-
-#cpu.string.warning,
-#battery.string.warning,
-#memory.string.warning {
-  color: #ffffff;
-}
-
-#bluetooth.string,
-#wireplumber.string,
-#memory.string,
-#cpu.string,
-#battery.string,
-#network.string {
-  padding-top: 10;
-  padding-bottom: 5px;
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-#bluetooth.icon,
-#wireplumber.icon,
-#memory.icon,
-#cpu.icon,
-#battery.icon,
-#network.icon {
-  padding-bottom: 10;
-  margin-bottom: 2px;
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 0px 10px 0px;
+  background: rgba(0, 0, 0, 0.60);
 }
 
 tooltip {
@@ -180,6 +181,11 @@ tooltip {
   border-radius: 5px;
 }
 
+/* window#waybar {} */
+/* .modules-right {} */
+/* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
+/* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
+/* background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4)); */
 /* border-image: linear-gradient(to bottom, rgba(0,0,0,0),rgb(51,204,254), rgba(0,0,0,0)) 1 100%; */
 /* box-shadow: inset 2px 0 rgba(255, 255, 255, 0.4); */
 /* background-image: url(""); */

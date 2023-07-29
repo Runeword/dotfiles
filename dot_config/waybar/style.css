@@ -11,6 +11,7 @@ window#waybar {}
   border-color: rgba(63, 94, 251, 0.7);
   background: rgba(0, 0, 0, 0.35);
   /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
+  /* box-shadow: inset -1px 0 rgba(63,94,251,0.7); */
   /* background: linear-gradient(to right, rgba(0, 0, 0 ,0.2), rgba(0, 0, 0, 0.4)); */
 }
 
@@ -20,7 +21,6 @@ window#waybar {}
   background: rgba(0, 0, 0, 0.6);
   padding: 0px 0px 2px 0px;
   margin-bottom: 50px;
-  /* background: linear-gradient(to bottom, rgba(0, 0, 0 ,0), rgba(0, 0, 0, 0.35)); */
 }
 
 #workspaces button:first-child {
@@ -33,6 +33,7 @@ window#waybar {}
 
 #workspaces button.active {
   color: #ffffff;
+  box-shadow: inset 2px 0 rgba(63, 94, 251, 0.7);
 }
 
 #taskbar button {
@@ -72,7 +73,7 @@ window#waybar {}
   font-size: 18px;
   color: #a1a1a1;
   padding: 10px 0px 10px 0px;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.60);
 }
 
 #custom-bottomRightDarkTrans,
@@ -82,6 +83,7 @@ window#waybar {}
 #custom-topRightLightTrans,
 #custom-topLeftDarkLight,
 #custom-topLeftDarkTrans,
+#custom-topRightDarkTrans,
 #custom-topLeftLightTrans {
   font-size: 0px;
 }
@@ -126,26 +128,27 @@ window#waybar {}
   border-left: 30px solid transparent;
 }
 
+#custom-topRightDarkTrans {
+  border-top: 30px solid rgba(0, 0, 0, 0.60);
+  border-right: 30px solid transparent;
+}
+
 #hardware {
   color: #a1a1a1;
 }
 
-#memory.icon,
-#network.icon,
-#wireplumber.icon {
-  padding-bottom: 7px;
+#cpu.icon.warning,
+#battery.icon.warning,
+#memory.icon.warning {
+  color: #ffffff;
+  box-shadow: inset 0px -2px rgba(173, 0, 0, 1);
+  /* box-shadow: inset 0px -2px rgba(63,94,251,1); */
 }
 
-#cpu.string,
-#battery.string,
-#bluetooth.string {
-  padding-top: 5px;
-}
-
-#cpu.warning,
-#battery.warning,
-#memory.warning {
-  color: #5080FF;
+#cpu.string.warning,
+#battery.string.warning,
+#memory.string.warning {
+  color: #ffffff;
 }
 
 #bluetooth.string,
@@ -154,6 +157,8 @@ window#waybar {}
 #cpu.string,
 #battery.string,
 #network.string {
+  padding-top: 10;
+  padding-bottom: 5px;
   font-size: 14px;
   background: rgba(0, 0, 0, 0.6);
 }
@@ -164,6 +169,8 @@ window#waybar {}
 #cpu.icon,
 #battery.icon,
 #network.icon {
+  padding-bottom: 10;
+  margin-bottom: 2px;
   font-size: 12px;
   background: rgba(0, 0, 0, 0.6);
 }

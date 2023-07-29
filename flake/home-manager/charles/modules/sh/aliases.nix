@@ -35,6 +35,7 @@
     "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
     key = "showkey -a";
     p = "hyperfine";
+    c = "hyprpicker --autocopy --format=hex";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

@@ -12,11 +12,15 @@
 }
 
 #workspaces button:first-child {
-  padding: 8px 0px 0px 0px;
+  padding-top: 8px;
 }
 
 #workspaces button:last-child {
-  padding: 0px 0px 8px 0px;
+  padding-bottom: 8px;
+}
+
+#workspaces button:first-child:last-child {
+  padding: 8px 0px 8px 0px;
 }
 
 #workspaces button {

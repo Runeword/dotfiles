@@ -100,7 +100,7 @@
     "cpu#string": {
       "interval": 2,
       "tooltip": false,
-      "on-click": "kitty --class floating btop",
+      "on-click": "kitty --override background_opacity=1 --class floating btop",
       "states": {
         "warning": 20,
         "critical": 90
@@ -110,7 +110,7 @@
     "cpu#icon": {
       "interval": 2,
       "tooltip": false,
-      "on-click": "kitty --class floating btop",
+      "on-click": "kitty --override background_opacity=1 --class floating btop",
       "states": {
         "warning": 20,
         "critical": 90

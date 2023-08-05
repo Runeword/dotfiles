@@ -43,5 +43,7 @@
     fuzzel.enable = true;
 
     zellij.enable = true;
+
+    obs-studio.enable = true;
   };
 }

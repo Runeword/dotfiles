@@ -66,8 +66,8 @@
     realesrgan-ncnn-vulkan
     imaginer
     kooha
-    obs-studio
-    # obs-cli
+    # qt6.qtwayland
+    obs-cli
     vlc
     inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
@@ -82,6 +82,6 @@
     swappy
     fnott
     slurp
-    # grim
+    grim
   ];
 }

@@ -44,6 +44,9 @@
 
     zellij.enable = true;
 
-    obs-studio.enable = true;
+    # obs-studio.enable = true;
+    # obs-studio.plugins = [
+    #   pkgs.obs-studio-plugins.wlrobs
+    # ];
   };
 }

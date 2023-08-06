@@ -36,6 +36,7 @@
     key = "showkey -a";
     p = "hyperfine";
     c = "hyprpicker --autocopy --format=hex";
+    w = "__wallpaper";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

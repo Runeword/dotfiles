@@ -114,64 +114,6 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* ------------------------------------ CUSTOM */
-#custom-bottomRightDarkTrans,
-#custom-bottomLeftLightDark,
-#custom-bottomLeftDarkTrans,
-#custom-bottomLeftLightTrans,
-#custom-topRightLightTrans,
-#custom-topLeftDarkLight,
-#custom-topLeftDarkTrans,
-#custom-topRightDarkTrans,
-#custom-topLeftLightTrans {
-  font-size: 0px;
-}
-
-#custom-bottomRightDarkTrans {
-  border-bottom: 30px solid rgba(0, 0, 0, 0.6);
-  border-right: 30px solid transparent;
-}
-
-#custom-bottomLeftLightDark {
-  border-bottom: 30px solid rgba(0, 0, 0, 0.35);
-  border-left: 30px solid rgba(0, 0, 0, 0.6);
-}
-
-#custom-bottomLeftDarkTrans {
-  border-bottom: 30px solid rgba(0, 0, 0, 0.60);
-  border-left: 30px solid transparent;
-}
-
-#custom-bottomLeftLightTrans {
-  border-bottom: 30px solid rgba(0, 0, 0, 0.35);
-  border-left: 30px solid transparent;
-}
-
-#custom-topRightLightTrans {
-  border-top: 30px solid rgba(0, 0, 0, 0.35);
-  border-right: 30px solid transparent;
-}
-
-#custom-topLeftDarkLight {
-  border-top: 30px solid rgba(0, 0, 0, 0.6);
-  border-left: 30px solid rgba(0, 0, 0, 0.35);
-}
-
-#custom-topLeftLightTrans {
-  border-top: 30px solid rgba(0, 0, 0, 0.35);
-  border-left: 30px solid transparent;
-}
-
-#custom-topLeftDarkTrans {
-  border-top: 30px solid rgba(0, 0, 0, 0.60);
-  border-left: 30px solid transparent;
-}
-
-#custom-topRightDarkTrans {
-  border-top: 30px solid rgba(0, 0, 0, 0.60);
-  border-right: 30px solid transparent;
-}
-
 /* ------------------------------------ OTHER */
 #clock {
   font-size: 18px;

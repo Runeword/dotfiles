@@ -1,8 +1,27 @@
 {
   pkgs,
   inputs,
+  # lib,
   ...
 }: {
+  # }: let
+
+  # pkgs-old = import (builtins.fetchGit {
+  #   # Descriptive name to make the store path easier to identify
+  #   name = "pkgs-old";
+  #   url = "https://github.com/NixOS/nixpkgs/";
+  #   ref = "refs/heads/nixpkgs-unstable";
+  #   rev = "3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16";
+  # }) {inherit (pkgs) system;};
+
+  # pkgs-old = import (builtins.fetchTarball {
+  #   url = "https://github.com/NixOS/nixpkgs/archive/2f04861c8ad1aaa69d532f34b63bb03da9912ae7.tar.gz";
+  #   sha256 = "sha256:11dxbmxqcyw87fcyj2dm7d94wax2s1phajwp99rycwjikq3ks8s6";
+  #   # sha256 = lib.fakeSha256;
+  # }) {inherit (pkgs) system;};
+
+  # in {
+
   home.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
     python311
@@ -66,8 +85,9 @@
     realesrgan-ncnn-vulkan
     imaginer
     kooha
-    # qt6.qtwayland
-    obs-cli
+    obs-studio
+    # pkgs-old.obs-studio
+    # obs-cli
     vlc
     inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia

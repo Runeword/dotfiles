@@ -9,6 +9,9 @@
     experimental-features = nix-command flakes
   '';
 
+  nix.settings.keep-outputs = true;
+  nix.settings.keep-derivations = true;
+
   security.polkit.enable = true;
   services.fwupd.enable = true;
 

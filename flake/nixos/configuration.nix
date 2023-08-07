@@ -108,6 +108,8 @@
 
   programs.ssh.startAgent = true;
 
+  programs.nix-ld.enable = true;
+
   # locale
   time.timeZone = "Europe/Paris";
   i18n.defaultLocale = "en_US.UTF-8";

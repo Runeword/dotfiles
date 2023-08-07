@@ -46,7 +46,7 @@
   in {
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = [
-        pkgs.nodejs-19_x
+        pkgs.nodejs-20
         pkgs.deno
         pkgs.nodePackages.typescript
         pkgs.nodePackages.pnpm

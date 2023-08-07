@@ -52,7 +52,7 @@
     trashy
     xdragon
     nix-init
-    tldr
+    tealdeer
     asciinema
 
     # ---------------------------------- Git

@@ -17,10 +17,10 @@
     shell.bash_indicator = "b";
     shell.fish_indicator = "f";
     shell.zsh_indicator = "z";
-    shell.format = "[$indicator]($style)";
+    shell.format = "[$indicator]($style) ";
 
-    directory.style = "cyan";
-    directory.format = "[$path]($style) ";
+    directory.style = "blue";
+    directory.format = "[$path/]($style) ";
 
     line_break.disabled = true;
 
@@ -32,7 +32,7 @@
 
     git_status.disabled = true;
     git_branch.format = "[$symbol $branch(:$remote_branch)]($style) ";
-    git_branch.symbol = "🌱";
+    git_branch.symbol = "🌳";
     git_branch.style = "white";
 
     nodejs.format = "[$symbol($version)]($style) ";
@@ -40,14 +40,15 @@
     nodejs.style = "white";
     nodejs.version_format = "$\{raw\}";
 
+    package.format = "[$symbol$version]($style) ";
+    package.style = "white";
+
     lua.format = "[$symbol($version)]($style) ";
     lua.symbol = "lua ";
     lua.style = "white";
     lua.version_format = "$\{raw\}";
 
-    # nix_shell.format = "[$symbol($name)]($style) ";
     nix_shell.format = "[$symbol]($style) ";
     nix_shell.symbol = "❄️";
-    nix_shell.style = "white";
   };
 }

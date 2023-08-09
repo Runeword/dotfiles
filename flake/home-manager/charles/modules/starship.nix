@@ -38,11 +38,12 @@
     git_branch.style = "white";
 
     nodejs.format = "[$symbol($version)]($style) ";
-    nodejs.symbol = "node ";
+    nodejs.symbol = "nodejs ";
     nodejs.style = "white";
     nodejs.version_format = "$\{raw\}";
 
-    package.format = "[$symbol$version]($style) ";
+    package.format = "[$symbol($version)]($style) ";
+    package.version_format = "$\{raw\}";
     package.style = "white";
 
     lua.format = "[$symbol($version)]($style) ";
@@ -51,6 +52,7 @@
     lua.version_format = "$\{raw\}";
 
     nix_shell.format = "[$symbol]($style) ";
-    nix_shell.symbol = "❄️";
+    nix_shell.symbol = "❄";
+    # nix_shell.symbol = "❄️";
   };
 }

@@ -1,247 +1,210 @@
-  {
-    "margin": "0 0 0 0",
-    "layer": "top",
-    "width": 30,
-    "position": "left",
-    "output": [
-      "eDP-1",
-      "HDMI-A-1"
+{
+  "margin": "0 0 0 0",
+  "layer": "top",
+  "width": 30,
+  "position": "left",
+  "output": [
+    "eDP-1",
+    "HDMI-A-1"
+  ],
+  // "spacing" : 10,
+  "exclusive": true,
+  "fixed-center": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "ipc": false,
+  "modules-left": [
+    "clock",
+    "tray"
+    //   "custom/bottomLeftDarkTrans",
+    //   "custom/topRightDarkTrans"
+    //   "wlr/taskbar",
+  ],
+  "modules-center": [
+    "wlr/workspaces"
+  ],
+  "modules-right": [
+    "group/hardware"
+  ],
+  "group/hardware": {
+    "orientation": "vertical",
+    "modules": [
+      "memory#string",
+      "memory#icon",
+      "cpu#string",
+      "cpu#icon",
+      "wireplumber#string",
+      "wireplumber#icon",
+      "battery#string",
+      "battery#icon",
+      "network#string",
+      "network#icon",
+      "bluetooth#string",
+      "bluetooth#icon"
+    ]
+  },
+  // -------------------------------------- TRAY
+  "tray": {
+    "icon-size": 21,
+    "spacing": 0
+  },
+  // -------------------------------------- TASKBAR
+  "wlr/taskbar": {
+    "all-outputs": true,
+    "spacing": 0,
+    "format": "{icon}",
+    "icon-theme": "Numix-Circle",
+    "icon-size": 30,
+    "markup": false,
+    "tooltip": false,
+    "active-first": false,
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+  // -------------------------------------- WORKSPACES
+  "wlr/workspaces": {
+    "format": "{name}",
+    "on-click": "activate",
+    "sort-by-number": true,
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  // -------------------------------------- CLOCK
+  "clock": {
+    "format": "{:%H\n%M}",
+    "tooltip-format": "{:%a %d %b %Y}",
+    "interval": 1
+  },
+  // -------------------------------------- MEMORY
+  "memory#string": {
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "kitty --override background_opacity=1 --class floating btop",
+    "states": {
+      "warning": 30,
+      "critical": 90
+    },
+    "format": "{percentage}"
+  },
+  "memory#icon": {
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "kitty --override background_opacity=1 --class floating btop",
+    "states": {
+      "warning": 30,
+      "critical": 90
+    },
+    "format": ""
+  },
+  // -------------------------------------- CPU
+  "cpu#string": {
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "kitty --override background_opacity=1 --class floating btop",
+    "states": {
+      "warning": 20,
+      "critical": 90
+    },
+    "format": "{usage}"
+  },
+  "cpu#icon": {
+    "interval": 2,
+    "tooltip": false,
+    "on-click": "kitty --override background_opacity=1 --class floating btop",
+    "states": {
+      "warning": 20,
+      "critical": 90
+    },
+    "format": ""
+  },
+  // -------------------------------------- BATTERY
+  "battery#string": {
+    "interval": 30,
+    "states": {
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "{capacity}"
+  },
+  "battery#icon": {
+    "interval": 30,
+    "states": {
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  // -------------------------------------- NETWORK
+  "network#string": {
+    "format-wifi": "{signalStrength}",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%  {bandwidthDownOctets}",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 30
+  },
+  "network#icon": {
+    "format": "{icon}",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
     ],
-    // "spacing" : 10,
-    "exclusive": true,
-    "fixed-center": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "ipc": false,
-    "modules-left": [
-      "clock",
-      "tray"
-      //   "custom/bottomLeftDarkTrans",
-      //   "custom/topRightDarkTrans"
-      //   "wlr/taskbar",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%  {bandwidthDownOctets}",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "interval": 30
+  },
+  // -------------------------------------- VOLUME
+  "wireplumber#string": {
+    "format": "{volume}",
+    "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
+  },
+  "wireplumber#icon": {
+    "format": "{icon}",
+    "format-muted": "<span size='x-large'>󰝟</span>",
+    "format-icons": [
+      "<span size='x-large'>󰕿</span>",
+      "<span size='x-large'>󰖀</span>",
+      "<span size='x-large'>󰕾</span>"
     ],
-    "modules-center": [
-      "wlr/workspaces"
-    ],
-    "modules-right": [
-      "group/hardware"
-    ],
-    "group/hardware": {
-      "orientation": "vertical",
-      "modules": [
-        "memory#string",
-        "memory#icon",
-        "cpu#string",
-        "cpu#icon",
-        "wireplumber#string",
-        "wireplumber#icon",
-        "battery#string",
-        "battery#icon",
-        "network#string",
-        "network#icon",
-        "bluetooth#string",
-        "bluetooth#icon"
-      ]
-    },
-    // -------------------------------------- TRAY
-    "tray": {
-      "icon-size": 21,
-      "spacing": 0
-    },
-    // -------------------------------------- TASKBAR
-    "wlr/taskbar": {
-      "all-outputs": true,
-      "spacing": 0,
-      "format": "{icon}",
-      "icon-theme": "Numix-Circle",
-      "icon-size": 30,
-      "markup": false,
-      "tooltip": false,
-      "active-first": false,
-      "on-click": "activate",
-      "on-click-middle": "close"
-    },
-    // -------------------------------------- WORKSPACES
-    "wlr/workspaces": {
-      "format": "{name}",
-      "on-click": "activate",
-      "sort-by-number": true,
-      "on-scroll-up": "hyprctl dispatch workspace e+1",
-      "on-scroll-down": "hyprctl dispatch workspace e-1"
-    },
-    // -------------------------------------- CLOCK
-    "clock": {
-      "format": "{:%H\n%M}",
-      "tooltip-format": "{:%a %d %b %Y}",
-      "interval": 1
-    },
-    // -------------------------------------- MEMORY
-    "memory#string": {
-      "interval": 2,
-      "tooltip": false,
-      "on-click": "kitty --override background_opacity=1 --class floating btop",
-      "states": {
-        "warning": 30,
-        "critical": 90
-      },
-      "format": "{percentage}"
-    },
-    "memory#icon": {
-      "interval": 2,
-      "tooltip": false,
-      "on-click": "kitty --override background_opacity=1 --class floating btop",
-      "states": {
-        "warning": 30,
-        "critical": 90
-      },
-      "format": ""
-    },
-    // -------------------------------------- CPU
-    "cpu#string": {
-      "interval": 2,
-      "tooltip": false,
-      "on-click": "kitty --override background_opacity=1 --class floating btop",
-      "states": {
-        "warning": 20,
-        "critical": 90
-      },
-      "format": "{usage}"
-    },
-    "cpu#icon": {
-      "interval": 2,
-      "tooltip": false,
-      "on-click": "kitty --override background_opacity=1 --class floating btop",
-      "states": {
-        "warning": 20,
-        "critical": 90
-      },
-      "format": ""
-    },
-    // -------------------------------------- BATTERY
-    "battery#string": {
-      "interval": 30,
-      "states": {
-        "warning": 40,
-        "critical": 15
-      },
-      "format": "{capacity}"
-    },
-    "battery#icon": {
-      "interval": 30,
-      "states": {
-        "warning": 40,
-        "critical": 15
-      },
-      "format": "{icon}",
-      "format-icons": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-    // -------------------------------------- NETWORK
-    "network#string": {
-      "format-wifi": "{signalStrength}",
-      "tooltip-format": "{ifname} via {gwaddr} ",
-      "tooltip-format-wifi": "{essid}  {signalStrength}%  {bandwidthDownOctets}",
-      "tooltip-format-ethernet": "{ifname} ",
-      "tooltip-format-disconnected": "Disconnected",
-      "max-length": 50,
-      "interval": 30
-    },
-    "network#icon": {
-      "format": "{icon}",
-      "format-icons": [
-        "󰤯",
-        "󰤟",
-        "󰤢",
-        "󰤥",
-        "󰤨"
-      ],
-      "tooltip-format": "{ifname} via {gwaddr} ",
-      "tooltip-format-wifi": "{essid}  {signalStrength}%  {bandwidthDownOctets}",
-      "tooltip-format-ethernet": "{ifname} ",
-      "tooltip-format-disconnected": "Disconnected",
-      "max-length": 50,
-      "interval": 30
-    },
-    // -------------------------------------- VOLUME
-    "wireplumber#string": {
-      "format": "{volume}",
-      "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
-    },
-    "wireplumber#icon": {
-      "format": "{icon}",
-      "format-muted": "<span size='x-large'>󰝟</span>",
-      "format-icons": [
-        "<span size='x-large'>󰕿</span>",
-        "<span size='x-large'>󰖀</span>",
-        "<span size='x-large'>󰕾</span>"
-      ],
-      "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
-    },
-    // -------------------------------------- BLUETOOTH
-    "bluetooth#string": {
-      "format": "{num_connections}",
-      "format-off": "{num_connections}",
-      "format-on": "{num_connections}",
-      "format-connected": "{num_connections}",
-      "format-disabled": "{num_connections}",
-      "format-connected-battery": "{device_battery_percentage}",
-      "tooltip-format": "{device_enumerate}",
-      "tooltip-format-connected": "{device_enumerate}",
-      // "tooltip-format-enumerate-connected": "{device_enumerate}",
-      "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
-    },
-    "bluetooth#icon": {
-      "format": "<span size='large'>󰂯</span>",
-      "format-off": "<span size='large'>󰂲</span>",
-      "format-on": "<span size='large'>󰂯</span>",
-      "format-connected": "<span size='x-large'>󰂰</span>",
-      "format-disabled": "<span size='large'>󰂲</span>",
-      "format-connected-battery": "<span size='x-large'>󰂰</span>",
-      "tooltip-format": "{device_enumerate}",
-      "tooltip-format-connected": "{device_enumerate}",
-      // "tooltip-format-enumerate-connected": "{device_enumerate}",
-      "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
-    },
-    // -------------------------------------- CUSTOM
-    "custom/bottomRightDarkTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/bottomLeftLightTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/bottomLeftDarkTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/bottomLeftLightDark": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/topLeftLightTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/topRightDarkTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/topLeftDarkTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/topRightLightTrans": {
-      "tooltip": false,
-      "format": " "
-    },
-    "custom/topLeftDarkLight": {
-      "tooltip": false,
-      "format": " "
-    }
+    "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
+  },
+  // -------------------------------------- BLUETOOTH
+  "bluetooth#string": {
+    "format": "{num_connections}",
+    "format-off": "{num_connections}",
+    "format-on": "{num_connections}",
+    "format-connected": "{num_connections}",
+    "format-disabled": "{num_connections}",
+    "format-connected-battery": "{device_battery_percentage}",
+    "tooltip-format": "{device_enumerate}",
+    "tooltip-format-connected": "{device_enumerate}",
+    // "tooltip-format-enumerate-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
+  },
+  "bluetooth#icon": {
+    "format": "<span size='large'>󰂯</span>",
+    "format-off": "<span size='large'>󰂲</span>",
+    "format-on": "<span size='large'>󰂯</span>",
+    "format-connected": "<span size='x-large'>󰂰</span>",
+    "format-disabled": "<span size='large'>󰂲</span>",
+    "format-connected-battery": "<span size='x-large'>󰂰</span>",
+    "tooltip-format": "{device_enumerate}",
+    "tooltip-format-connected": "{device_enumerate}",
+    // "tooltip-format-enumerate-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
   }
+}

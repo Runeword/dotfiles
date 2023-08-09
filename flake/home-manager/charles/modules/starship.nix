@@ -5,6 +5,8 @@
   programs.starship.enableNushellIntegration = true;
 
   programs.starship.settings = {
+    add_newline = false;
+
     format = builtins.concatStringsSep "" [
       "$shell"
       "$nix_shell"

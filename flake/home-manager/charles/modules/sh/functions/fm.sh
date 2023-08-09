@@ -42,7 +42,11 @@ __open_file() {
 	if [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
 		# Then cd into it
 		if cd "$selected_files"; then
-			history -s "cd $selected_files"
+			if [ -n "$BASH_VERSION" ]; then
+				history -s "cd $selected_files"
+			elif [ -n "$ZSH_VERSION" ]; then
+				print -s "cd $selected_files"
+			fi
 		else
 			echo "Error: could not change directory to $selected_files"
 			return 1

@@ -52,8 +52,11 @@
     trashy
     xdragon
     nix-init
-    tealdeer
+    # tealdeer
+    tldr
+    navi
     asciinema
+    terraform
 
     # ---------------------------------- Git
     inputs.src-cli.packages.x86_64-linux.default

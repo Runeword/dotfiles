@@ -1,6 +1,37 @@
-api.unmapAllExcept(['v', 'f', 'yt']);
+settings.blocklistPattern = /.*youtube.com.*|.*mail.google.com.*|.*docs.google.com.*/
 
+// Remap keys
 api.map('h', 'f');
+api.map('gh', 'af');
+api.map('H', 'gf');
+api.map('d', 'yt');
+api.map('w', 'gxT');
+api.map('W', 'gxt');
+api.map('gw', 'gx$');
+api.map('gW', 'gx0');
+
+
+api.unmapAllExcept([
+  // Remapped keys
+  'h',  // Open a link
+  'gh', // Open a link in active new tab
+  'H',  // Open a link in non-active new tab
+  'd',  // Duplicate current tab
+  'w',  // Close tab on right
+  'W',  // Close tab on left
+  'gw', // Close all tabs on right
+  'gW', // Close all tabs on left
+  // Default keys
+  'yy', // Copy current page's URL
+  'yY', // Copy all tabs's url
+  'yv', // Yank text of an element
+  'ya', // Copy a link URL to the clipboard
+  'v',  // Toggle visual mode
+  'r',  // Reload the page
+  '?'   // Show usage
+]);
+
+api.Hints.setCharacters('aoeuidtnsqjkmwv,.pyfgcr');
 
 settings.theme = `
 .sk_theme {

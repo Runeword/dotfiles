@@ -22,16 +22,16 @@
         # sha256 = lib.fakeSha256;
       };
     }
-    # {
-    #   name = "zsh-abbr";
-    #   src = pkgs.fetchFromGitHub {
-    #     owner = "olets";
-    #     repo = "zsh-abbr";
-    #     rev = "v5.1.0";
-    #     sha256 = "sha256-iKL2vn7TmQr78y0Bn02DgNf9DS5jZyh6uK9MzYTFZaA=";
-    #     # sha256 = lib.fakeSha256;
-    #   };
-    # }
+    {
+      name = "zsh-abbr";
+      src = pkgs.fetchFromGitHub {
+        owner = "olets";
+        repo = "zsh-abbr";
+        rev = "v5.1.0";
+        sha256 = "sha256-iKL2vn7TmQr78y0Bn02DgNf9DS5jZyh6uK9MzYTFZaA=";
+        # sha256 = lib.fakeSha256;
+      };
+    }
   ];
 
   # programs.zsh.zplug = {

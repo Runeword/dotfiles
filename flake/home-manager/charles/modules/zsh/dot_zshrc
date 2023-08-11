@@ -40,12 +40,12 @@ bindkey '^[OB' history-beginning-search-forward
 # bindkey '^I' complete-word
 # bindkey '^[[Z' reverse-menu-complete
 
-# # ------------------------------------ zsh-abbr
-# abbr import-aliases
-# ABBR_DEFAULT_BINDINGS=0
-# bindkey ' ' abbr-expand-and-space
-# bindkey '^M' accept-line
-# # bindkey '^M' abbr-expand-and-accept
+# ------------------------------------ zsh-abbr
+abbr import-aliases
+ABBR_DEFAULT_BINDINGS=0
+bindkey ' ' abbr-expand-and-space
+bindkey '^M' accept-line
+# bindkey '^M' abbr-expand-and-accept
 
 # ------------------------------------ zsh-autosuggestions
 bindkey 'CSI 13 ; 5 u' autosuggest-execute

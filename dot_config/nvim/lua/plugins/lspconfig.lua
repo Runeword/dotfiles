@@ -81,6 +81,8 @@ return {
     lspconfig['ccls'].setup(set_config())
     lspconfig['jsonls'].setup(set_config())
     lspconfig['marksman'].setup(set_config())
+    lspconfig['terraformls'].setup(set_config())
+    -- lspconfig['terraform_lsp'].setup(set_config())
     lspconfig['bashls'].setup(set_config())
     lspconfig['cssls'].setup(set_config())
     lspconfig['vuels'].setup(set_config({ on_attach = on_attach_server(false), }))

@@ -27,6 +27,8 @@
     nixpkgs-fmt
     shfmt
     shellcheck
+    terraform-ls
+    # terraform-lsp
   ];
 
   # programs.neovim.plugins = with pkgs; [

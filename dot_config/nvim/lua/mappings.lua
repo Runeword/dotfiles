@@ -3,6 +3,7 @@ local remap = { remap = true, }
 
 vim.keymap.set('x', '<C-n>', ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
+vim.keymap.set('n', 'g<Space>', '<cmd>silent %s/\\s\\+$//e<CR>')
 
 -- Terminal
 vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
@@ -256,7 +257,7 @@ vim.keymap.set({ 'n', 'x', }, '}', function() vim.fn.search('}') end)
 
 -- Buffers
 vim.keymap.set('n', '<Leader>q', '<cmd>q!<CR>')
-vim.keymap.set('n', 'qq', '<cmd>bwipeout!<CR>', { silent = true, })
+vim.keymap.set('n', 'qq', '<cmd>silent bwipeout!<CR>')
 -- vim.keymap.set('n', '<C-t>', '<cmd>enew<CR>', { silent = true, })
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
 -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })

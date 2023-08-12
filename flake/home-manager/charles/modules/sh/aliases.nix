@@ -41,6 +41,7 @@
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";
     hp = "home-manager packages | fzf --inline-info";
+    store = "cd /nix/store && __open_file";
     ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
     ni = "nix-info -m";
     nb = "sudo nixos-rebuild boot --flake $HOME/flake#charles";

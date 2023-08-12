@@ -31,7 +31,7 @@ api.unmapAllExcept([
   '?'   // Show usage
 ]);
 
-api.Hints.setCharacters('aoeuidtnsqjkmwv,.pyfgcr');
+api.Hints.setCharacters('aoeuidtnsqjkmwv.pyfgcr');
 
 settings.theme = `
 .sk_theme {

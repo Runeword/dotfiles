@@ -1,21 +1,16 @@
 style:
   tag:
     color: cyan # text color. possible values: https://bit.ly/3gloNNI
-    width_percentage: 0
-    min_width: 10
+    width_percentage: 10
   comment:
     color: dark_grey
-    width_percentage: 70
-    min_width: 40
+    width_percentage: 50
   snippet:
     color: white
-    width_percentage: 30
-    min_width: 40
 
 finder:
   command: fzf # equivalent to the --finder option
-  overrides: --with-nth=3,2
-  # overrides: --tac # equivalent to the --fzf-overrides option
+  overrides: --with-nth=3,2,1 --no-separator --height 70% --cycle --inline-info --no-preview
   # overrides_var: --tac # equivalent to the --fzf-overrides-var option
 
 cheats:

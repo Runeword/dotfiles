@@ -1,6 +1,7 @@
 # ------------------------------------ Word characters
 autoload -U select-word-style
 select-word-style bash
+setopt GLOB_DOTS
 
 # ------------------------------------ Remove default aliases
 unalias run-help 2>/dev/null

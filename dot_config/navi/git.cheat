@@ -46,10 +46,12 @@ git commit -m "<message>"
 git commit -nm "<message>"
 
 # Change message of the last commit then update message of the last commit on the remote
-git commit --amend && git push -f
+git commit --amend \
+git push -f
 
 # Revert the last commit then fix the detached head
-git revert <commit> && git checkout <current-branch>
+git revert <commit> \
+git checkout <current-branch>
 
 # Unstage staged file
 git reset <file>
@@ -77,7 +79,8 @@ git rm --cached <file>
 # In each resulting commit file, type the new commit message,
 # save the file, and close it.
 # Force-push the amended commits.
-git rebase -i HEAD~3 && git push --force
+git rebase -i HEAD~3 \
+git push --force
 
 % git, stash
 
@@ -244,7 +247,7 @@ git checkout --ours .
 git rebase foo
 
 # Cancel current rebase
-git rebase --abort && git push -f
+git rebase --abort
 
 # Switch to commit
 git checkout <commit-sha>

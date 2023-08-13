@@ -45,9 +45,9 @@
     hu = "__update_flake_inputs $HOME/home-manager";
     hp = "home-manager packages | fzf --inline-info";
     store = "cd /nix/store && __open_file";
-    ns = "sudo nixos-rebuild switch --flake $HOME/nixos#charles";
+    ns = "sudo nixos-rebuild switch --flake $HOME/nixos#$USER";
     ni = "nix-info -m";
-    nb = "sudo nixos-rebuild boot --flake $HOME/nixos#charles";
+    nb = "sudo nixos-rebuild boot --flake $HOME/nixos#$USER";
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
     nu = "__update_flake_inputs $HOME/nixos";
     nft = "__use_flake_template $HOME/templates";

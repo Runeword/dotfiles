@@ -41,14 +41,14 @@
     tldr = "navi --tldr";
 
     # ______________________________________ NIX
-    hs = "home-manager switch --flake $HOME/flake";
+    hs = "home-manager switch --flake $HOME";
     hp = "home-manager packages | fzf --inline-info";
     store = "cd /nix/store && __open_file";
-    ns = "sudo nixos-rebuild switch --flake $HOME/flake#charles";
+    ns = "sudo nixos-rebuild switch --flake $HOME#charles";
     ni = "nix-info -m";
-    nb = "sudo nixos-rebuild boot --flake $HOME/flake#charles";
-    nd = "read -p 'nix develop $HOME/flake#' devShellName && nix develop $HOME/flake#$devShellName";
-    nfu = "__update_flake_inputs $HOME/flake";
+    nb = "sudo nixos-rebuild boot --flake $HOME#charles";
+    nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
+    nfu = "__update_flake_inputs $HOME";
     nft = "__use_flake_template $HOME/templates";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfs = "nix flake show";

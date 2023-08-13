@@ -44,6 +44,7 @@
     brillo
 
     # ---------------------------------- CLI tools
+    bat
     hyperfine
     wl-screenrec
     wget
@@ -84,6 +85,7 @@
     progress
 
     # ---------------------------------- Graphics
+    showmethekey
     inkscape
     realesrgan-ncnn-vulkan
     imaginer

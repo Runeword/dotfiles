@@ -22,10 +22,12 @@
     o = "__open_file";
     s = "__ripgrep";
     i = "kitten icat";
+    w = "__wallpaper";
+    p = "hyperfine";
+    a = "alias | fzf";
     ".." = "cd ..";
     "..." = "cd ../..";
     ss = "src search";
-    a = "alias | fzf";
     xc = "xclip -selection c";
     xp = "xclip -selection c -o";
     hm = "hyprctl monitors";
@@ -34,9 +36,7 @@
     play = "asciinema play";
     "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
     key = "showkey -a";
-    p = "hyperfine";
-    c = "hyprpicker --autocopy --format=hex";
-    w = "__wallpaper";
+    color = "hyprpicker --autocopy --format=hex";
     cheat = "navi --cheatsh";
     tldr = "navi --tldr";
 

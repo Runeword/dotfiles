@@ -4,6 +4,9 @@
   inputs.home-manager.url = "github:nix-community/home-manager";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.hyprland-contrib.url = "github:hyprwm/contrib";
+  inputs.hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   # inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 

@@ -40,10 +40,10 @@ git add -p <path>
 git diff --cached
 
 # Commit changes and add a message
-git commit -m <message>
+git commit -m "<message>"
 
 # Bypasses the pre-commit and commit-msg hooks
-git commit -nm <message>
+git commit -nm "<message>"
 
 # Change message of the last commit then update message of the last commit on the remote
 git commit --amend && git push -f
@@ -78,3 +78,218 @@ git rm --cached <file>
 # save the file, and close it.
 # Force-push the amended commits.
 git rebase -i HEAD~3 && git push --force
+
+% git, stash
+
+# Save the work in progress
+git stash
+
+# Save the work in progress (include untracked files)
+git stash -u
+
+# Save the WIP with a message
+git stash push -m "<message>"
+
+# List WIP
+git stash list
+
+#
+git stash apply stash@{0}
+
+#
+git stash show stash@{0}
+
+# Apply last WIP
+git stash apply
+
+# Delete last WIP
+git stash drop
+
+# Apply then delete last WIP
+git stash pop
+
+# Delete all WIP of repository
+git stash clear
+
+# --keep-index stash not staged changes (not added to the index)
+git stash -k
+
+# --include-untracked stash not staged changes and new files
+git stash -k -u
+
+% git, branch
+
+# Switch to the branch
+git checkout <branch>
+
+# Delete file changes
+git checkout -- <path-to-file>
+
+# Delete changes of current directory
+git checkout -- .
+
+# Accept incoming changes and ignore current changes
+git checkout --theirs <path-to-file>
+
+# Ignore incoming changes and accept current changes
+git checkout --ours <path-to-file>
+
+# Create branch and switch to it
+git checkout -b <branch>
+
+# List locals branches
+git branch
+
+# List remote branches
+git branch -r
+
+# List locals + remote branches
+git branch -a
+
+# Delete branch
+git branch -d <branch>
+
+# Rename branche
+git branch -m <old-branch> <new-branch>
+
+# Rename current branch
+git branch -m <new-branch>
+
+# List of branches ordered by most recent commit
+git branch --sort=committerdate
+
+# List of branches ordered by less recent commit
+git branch --sort=-committerdate
+
+# Push all branches
+git push --all
+
+# Push all tags
+git push --tags
+
+# Display graph
+git log --all --graph --decorate --oneline
+
+# Clone the current repository to a new directory and checkout the specified branch
+git worktree add ../<new-directory> <branch-to-checkout>
+
+% git, remote
+
+# Change remote URI
+git remote set-url origin <ssh/http uri>
+
+# Add a remote URI
+git remote set-url --add --push origin <ssh/http uri>
+
+# List remotes
+git remote -v
+
+# Create remote branch
+git push origin <branch>
+
+# Create and track remote branch
+git push -u origin <branch>
+
+# Delete remote branch
+git push origin -d <branch>
+
+# Displays the last commit on the current branch
+git rebase -i HEAD~1
+
+# Global git user
+git config --global user.name "John Doe"
+
+# Global git user
+git config --global user.email "john@doe.org"
+
+# Project git user
+git config user.name "John Doe"
+
+# Project git user
+git config user.email "john@doe.org"
+
+# Stop local branch tracking by remote branch
+git config --unset branch.<branch>.remote
+
+# Delete remote branch
+git push origin :<branch>
+
+# List remote branches
+git ls-remote
+
+# List remote branch logs
+git log origin/<branch>
+
+% git, workflow
+
+# Download remote changes
+git fetch
+
+# Download and merge remote changes with locals ones
+git pull
+
+# Pull all branches
+git pull --all
+
+# Merge branch foo above the current branch
+git merge foo
+
+# Accept incoming changes (use code of the source branch)
+git checkout --theirs .
+
+# Ignore incoming changes (use code of the target branch)
+git checkout --ours .
+
+# Merge branch foo below the current branch, if git branch diverged after rebase, git push -f the branch
+git rebase foo
+
+# Cancel current rebase
+git rebase --abort && git push -f
+
+# Switch to commit
+git checkout <commit-sha>
+
+# Switch to last commit of the branch. Fix detached head state
+git checkout <branch>
+
+# Add commit to the current branch
+git cherry-pick <commit-sha>
+
+# Add commit to the current branch
+git cherry-pick --abort
+
+# Cherry pick a range of commits (firts commit not included)
+git cherry-pick ebe6942..905e279
+
+# Cherry pick a range of commits (include first and last commits)
+git cherry-pick ebe6942^..905e279
+
+% git, misc
+
+# Ignore file changes
+git update-index --assume-unchanged <file>
+
+# Tack file again
+git update-index --no-assume-unchanged <file>
+
+# Connect to server with git user
+ssh git@<server-name>
+
+# Clone repository
+git clone https://github.com/<repository>.git
+
+# Change the author of all commits
+git filter-branch -f --env-filter \
+"GIT_AUTHOR_NAME='yourname'; \
+GIT_AUTHOR_EMAIL='youremail@example.com'; \
+GIT_COMMITTER_NAME='yourname'; \
+GIT_COMMITTER_EMAIL='youremail@example.com';" \
+HEAD; && \
+git push --force origin master
+
+# After deleting .git/ re-enable sync between local repository and remote without delete local files or clone remote. Then delete local changes
+git init . \
+git remote add origin <remote url> \
+git fetch origin \
+git branch -f master origin/master \
+git reset .

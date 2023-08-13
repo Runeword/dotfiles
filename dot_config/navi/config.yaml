@@ -13,9 +13,9 @@ finder:
   overrides: --with-nth=3,2,1 --no-separator --height 70% --cycle --inline-info --no-preview
   # overrides_var: --tac # equivalent to the --fzf-overrides-var option
 
-cheats:
-  paths:
-  - ~/.config/navi/
+# cheats:
+#   paths:
+  # - ~/.config/navi/
 
 # search:
 # tags: git,!checkout # equivalent to the --tag-rules option

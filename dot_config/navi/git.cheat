@@ -1,0 +1,79 @@
+% git
+
+# Fix detached head state
+git checkout -
+
+# Display commit changes
+git show
+
+# List commits
+git log
+
+# List commits of all branches
+git log --all
+
+# Display state of the working tree
+git status
+
+# Display details of changes
+git diff
+
+# Diff between branches
+git diff branch_1 branch_2
+
+# Diff between oldCommit and newCommit
+git diff <old-commit-sha> <new-commit-sha>
+
+# Stages all changes
+git add -A
+
+# Stages edited and new files, without deleted ones
+git add .
+
+# Stages edited and deleted files, without new ones
+git add -u
+
+# Interactive stage, stage parts of a file
+git add -p <path>
+
+# Display cache/index changes
+git diff --cached
+
+# Commit changes and add a message
+git commit -m "message"
+
+# Bypasses the pre-commit and commit-msg hooks
+git commit -nm "message"
+
+# Change message of the last commit
+git commit --amend
+
+# Update message of the last commit on the remote
+git push -f
+
+# Force-push the amended commits.
+git push --force
+
+# Revert the last commit
+git revert <commit-sha> && \
+
+# Then fix the detached head
+git checkout <current branch>
+
+# Unstage staged file
+git reset <file>
+
+# Delete commits after the specified one
+git reset --hard <commit-sha>
+
+# Delete the last commit
+git reset --hard HEAD~1
+
+# Undo the last commit
+git reset HEAD~1
+
+# Update the remote branche
+git push -f
+
+# Untrack file
+git rm --cached <file>

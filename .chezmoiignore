@@ -1,9 +1,6 @@
 *
 
 !.config
-!flake
 !home-manager
 !nixos
-!flake.nix
-!flake.lock
 !templates

@@ -59,8 +59,8 @@ zstyle ':completion:*:*:*:*:descriptions' format '%F{181}%d%f'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # ------------------------------------ Functions
-if [ -d "$HOME/home-manager/charles/modules/sh/functions" ]; then
-  for file in "$HOME/home-manager/charles/modules/sh/functions"/*; do
+if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
+  for file in "$HOME/home-manager/$USER/sh/functions"/*; do
     . "$file"
   done
 fi

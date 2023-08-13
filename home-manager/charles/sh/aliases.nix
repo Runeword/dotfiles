@@ -18,7 +18,9 @@
     l = "command ls --almost-all --color --width 90";
     ll = "command ls -lt --almost-all --color --human-readable --classify";
     n = "nvim";
-    r = "trash";
+    r = "gomi -rf";
+    ru = "gomi --restore";
+    rd = "rm -rf $HOME/.gomi";
     o = "__open_file";
     s = "__ripgrep";
     i = "kitten icat";

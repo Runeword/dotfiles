@@ -37,6 +37,8 @@
     p = "hyperfine";
     c = "hyprpicker --autocopy --format=hex";
     w = "__wallpaper";
+    cheat = "navi --cheatsh";
+    tldr = "navi --tldr";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/flake";

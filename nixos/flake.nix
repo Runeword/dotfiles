@@ -4,9 +4,6 @@
 
   inputs.hyprland.url = "github:hyprwm/Hyprland";
 
-  inputs.hyprland-contrib.url = "github:hyprwm/contrib";
-  inputs.hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs";
-
   outputs = {self, ...} @ inputs: let
     system = "x86_64-linux";
   in {

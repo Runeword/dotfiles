@@ -50,7 +50,7 @@
     wget
     ripgrep
     fd
-    trashy
+    gomi
     xdragon
     nix-init
     # tealdeer

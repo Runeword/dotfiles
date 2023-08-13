@@ -18,7 +18,6 @@
     ./packages.nix
     ./git.nix
     ./bash
-    ./bat
     ./sh
     ./zsh
     ./dircolors.nix

@@ -60,7 +60,7 @@
     terraform
 
     # ---------------------------------- Git
-    inputs.src-cli.packages.x86_64-linux.default
+    # inputs.src-cli.packages.x86_64-linux.default
     gh
     chezmoi
 
@@ -94,7 +94,7 @@
     # pkgs-old.obs-studio
     # obs-cli
     vlc
-    inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
+    # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
     # ---------------------------------- Wayland

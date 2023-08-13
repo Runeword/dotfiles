@@ -19,10 +19,10 @@ git status
 git diff
 
 # Diff between branches
-git diff branch_1 branch_2
+git diff <branch-1> <branch-2>
 
-# Diff between oldCommit and newCommit
-git diff <old-commit-sha> <new-commit-sha>
+# Diff between commits
+git diff <old-commit> <new-commit>
 
 # Stages all changes
 git add -A
@@ -40,31 +40,22 @@ git add -p <path>
 git diff --cached
 
 # Commit changes and add a message
-git commit -m "message"
+git commit -m <message>
 
 # Bypasses the pre-commit and commit-msg hooks
-git commit -nm "message"
+git commit -nm <message>
 
-# Change message of the last commit
-git commit --amend
+# Change message of the last commit then update message of the last commit on the remote
+git commit --amend && git push -f
 
-# Update message of the last commit on the remote
-git push -f
-
-# Force-push the amended commits.
-git push --force
-
-# Revert the last commit
-git revert <commit-sha> && \
-
-# Then fix the detached head
-git checkout <current branch>
+# Revert the last commit then fix the detached head
+git revert <commit> && git checkout <current-branch>
 
 # Unstage staged file
 git reset <file>
 
 # Delete commits after the specified one
-git reset --hard <commit-sha>
+git reset --hard <commit>
 
 # Delete the last commit
 git reset --hard HEAD~1
@@ -77,3 +68,13 @@ git push -f
 
 # Untrack file
 git rm --cached <file>
+
+# Change message of older or multiple commits
+# Displays a list of the last 3 commits on the current branch
+# Then replace pick with reword before each commit message
+# you want to change.
+# Save and close the commit list file.
+# In each resulting commit file, type the new commit message,
+# save the file, and close it.
+# Force-push the amended commits.
+git rebase -i HEAD~3 && git push --force

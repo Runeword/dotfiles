@@ -22,26 +22,6 @@
         "type": "github"
       }
     },
-    "hyprland-contrib": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1690635289,
-        "narHash": "sha256-ec77Yf7mqusmGkxrmYXEG4D0DqEcNRA3vFextWVQOVA=",
-        "owner": "hyprwm",
-        "repo": "contrib",
-        "rev": "bef073cff65917ba2d888aa4dc39bd9868e2b0a4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hyprwm",
-        "repo": "contrib",
-        "type": "github"
-      }
-    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -118,7 +98,6 @@
     "root": {
       "inputs": {
         "hyprland": "hyprland",
-        "hyprland-contrib": "hyprland-contrib",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2"
       }

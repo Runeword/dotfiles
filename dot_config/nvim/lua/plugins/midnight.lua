@@ -13,16 +13,16 @@ return {
 
     -- require('autocmd').matchup()
 
-    -- gbprod/yanky.nvim
-    vim.api.nvim_create_augroup('yanky', { clear = true, })
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = 'yanky',
-      pattern = '*',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'YankyPut', { bg = '#222b66', fg = 'none', })
-        vim.api.nvim_set_hl(0, 'YankyYanked', { bg = '#00ffa2', fg = 'black', })
-      end,
-    })
+    -- -- gbprod/yanky.nvim
+    -- vim.api.nvim_create_augroup('yanky', { clear = true, })
+    -- vim.api.nvim_create_autocmd('ColorScheme', {
+    --   group = 'yanky',
+    --   pattern = '*',
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, 'YankyPut', { bg = '#222b66', fg = 'none', })
+    --     vim.api.nvim_set_hl(0, 'YankyYanked', { bg = '#00ffa2', fg = 'black', })
+    --   end,
+    -- })
 
     -- folke/flash.nvim
     vim.api.nvim_create_augroup('flash', { clear = true, })
@@ -67,16 +67,17 @@ return {
       end,
     })
 
-    -- -- machakann/vim-highlightedyank
-    -- vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
-    -- vim.api.nvim_create_autocmd('ColorScheme', {
-    --   group = 'highlightedyank',
-    --   pattern = '*',
-    --   callback = function()
-    --     vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
-    --       { bg = '#ff1994', fg = 'black', })
-    --   end,
-    -- })
+    -- machakann/vim-highlightedyank
+    vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'highlightedyank',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'HighlightedyankRegion',
+          { bg = '#00ffa2', fg = 'black', })
+        -- { bg = '#ff1994', fg = 'black', })
+      end,
+    })
 
     -- -- woosaaahh/sj.nvim
     -- vim.api.nvim_create_augroup('sj', { clear = true, })

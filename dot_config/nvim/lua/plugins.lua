@@ -75,6 +75,13 @@ return {
     dependencies = 'kana/vim-textobj-user',
   },
 
+  {
+    'machakann/vim-highlightedyank',
+    config = function()
+      vim.g.highlightedyank_highlight_duration = 100
+    end,
+  },
+
   -- {
   --   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
   --   config = function()
@@ -109,10 +116,4 @@ return {
   -- { 'Exafunction/codeium.vim', },
 
   -- { 'svban/YankAssassin.vim', },
-  -- {
-  --   'machakann/vim-highlightedyank',
-  --   config = function()
-  --     vim.g.highlightedyank_highlight_duration = 100
-  --   end,
-  -- },
 }

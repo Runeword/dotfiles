@@ -1,7 +1,8 @@
 local vim = vim
 
 return {
-  enabled = false,
+  enabled = true,
+
   dir = '/home/charles/Documents/dev/putter.nvim',
   -- 'Runeword/putter.nvim',
 

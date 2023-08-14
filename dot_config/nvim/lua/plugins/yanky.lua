@@ -1,7 +1,8 @@
 local vim = vim
 
 return {
-  enabled = true,
+  enabled = false,
+
   'gbprod/yanky.nvim',
 
   config = function()

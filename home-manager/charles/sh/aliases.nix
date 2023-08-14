@@ -56,6 +56,7 @@
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfs = "nix flake show";
     nfl = "nix flake lock";
+    nfm = "nix flake metadata";
     nr = "nix run";
     ng = "sudo nix-collect-garbage -d";
     ngd = "nix-env --delete-generations +10";

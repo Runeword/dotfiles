@@ -1,4 +1,4 @@
-settings.blocklistPattern = /.*youtube.com.*|.*mail.google.com.*|.*docs.google.com.*/
+settings.blocklistPattern = /.*youtube.com.*|.*getpocket.com.*|.*mail.google.com.*|.*docs.google.com.*/
 
 // Remap keys
 api.map('h', 'f');

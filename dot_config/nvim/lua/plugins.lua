@@ -5,6 +5,7 @@ return {
   { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
   { 'tpope/vim-abolish', },
+  { 'svban/YankAssassin.vim', },
 
   {
     'willothy/flatten.nvim',
@@ -114,6 +115,4 @@ return {
   -- },
 
   -- { 'Exafunction/codeium.vim', },
-
-  -- { 'svban/YankAssassin.vim', },
 }

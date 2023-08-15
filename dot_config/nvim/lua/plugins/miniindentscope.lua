@@ -38,6 +38,7 @@ return {
       },
 
       symbol = '▏',
+      -- symbol = '│',
     })
   end,
 }

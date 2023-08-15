@@ -79,6 +79,23 @@ return {
       end,
     })
 
+    -- echasnovski/mini.indentscope
+    vim.api.nvim_create_augroup('indentscope', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'indentscope',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol',
+          { bg = 'none', fg = '#222b66', })
+        vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbolOff',
+          { bg = 'none', fg = '#222b66', })
+      end,
+    })
+
+    -- * `MiniIndentscopeSymbol` - symbol showing on every line of scope if its
+    --   indent is multiple of 'shiftwidth'.
+    -- * `MiniIndentscopeSymbolOff` - symbol showing on every line of scope if its
+
     -- -- woosaaahh/sj.nvim
     -- vim.api.nvim_create_augroup('sj', { clear = true, })
     -- vim.api.nvim_create_autocmd('ColorScheme', {

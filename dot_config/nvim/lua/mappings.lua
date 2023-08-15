@@ -27,6 +27,7 @@ vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 -- Edit
 vim.keymap.set('i', 'ù', '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
+vim.keymap.set('n', 'g<Tab>', 'za')
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
 vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })
@@ -257,8 +258,8 @@ vim.keymap.set({ 'n', 'x', }, '}', function() vim.fn.search('}') end)
 
 -- Buffers
 vim.keymap.set('n', '<Leader>q', '<cmd>q!<CR>')
-vim.keymap.set('n', 'qq', '<cmd>silent bwipeout!<CR>')
--- vim.keymap.set('n', '<C-t>', '<cmd>enew<CR>', { silent = true, })
+vim.keymap.set('n', '<C-w>', '<cmd>silent bwipeout!<CR>')
+vim.keymap.set('n', '<C-t>', '<cmd>silent enew<CR>')
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
 -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
 

@@ -52,7 +52,7 @@
     nb = "sudo nixos-rebuild boot --flake $HOME/nixos#$USER";
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
     nu = "__update_flake_inputs $HOME/nixos";
-    nft = "__use_flake_template $HOME/templates";
+    nt = "__use_flake_template $HOME/templates";
     nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
     nfs = "nix flake show";
     nfl = "nix flake lock";

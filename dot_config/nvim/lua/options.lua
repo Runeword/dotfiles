@@ -5,8 +5,8 @@ local opt = vim.opt
 o.fillchars = [[eob: ,fold: ,foldopen:,foldclose:]]
 
 -- kevinhwang91/nvim-ufo
-o.foldcolumn = '1'                      -- '0' is not bad
-o.foldlevel = 99                        -- Using ufo provider need a large value, feel free to decrease the value
+o.foldcolumn = '1'
+o.foldlevel = 99
 o.foldlevelstart = 99
 o.foldenable = true
 

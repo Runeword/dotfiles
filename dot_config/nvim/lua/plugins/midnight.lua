@@ -11,19 +11,6 @@ return {
     -- autocommand will have no effect on previously sourced colorschemes
     -- so it must be added before any colorscheme is sourced
 
-    -- require('autocmd').matchup()
-
-    -- -- gbprod/yanky.nvim
-    -- vim.api.nvim_create_augroup('yanky', { clear = true, })
-    -- vim.api.nvim_create_autocmd('ColorScheme', {
-    --   group = 'yanky',
-    --   pattern = '*',
-    --   callback = function()
-    --     vim.api.nvim_set_hl(0, 'YankyPut', { bg = '#222b66', fg = 'none', })
-    --     vim.api.nvim_set_hl(0, 'YankyYanked', { bg = '#00ffa2', fg = 'black', })
-    --   end,
-    -- })
-
     -- folke/flash.nvim
     vim.api.nvim_create_augroup('flash', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {
@@ -91,31 +78,6 @@ return {
           { bg = 'none', fg = '#222b66', })
       end,
     })
-
-    -- * `MiniIndentscopeSymbol` - symbol showing on every line of scope if its
-    --   indent is multiple of 'shiftwidth'.
-    -- * `MiniIndentscopeSymbolOff` - symbol showing on every line of scope if its
-
-    -- -- woosaaahh/sj.nvim
-    -- vim.api.nvim_create_augroup('sj', { clear = true, })
-    -- vim.api.nvim_create_autocmd('ColorScheme', {
-    --   group = 'sj',
-    --   pattern = '*',
-    --   callback = function()
-    --     vim.api.nvim_set_hl(0, 'SjFocusedLabel',
-    --       { bg = '#ffe100', fg = 'black', bold = false, })
-    --     vim.api.nvim_set_hl(0, 'SjLabel',
-    --       { bg = '#5d00ff', fg = 'white', bold = false, })
-    --     vim.api.nvim_set_hl(0, 'SjMatches',
-    --       { bg = '#222b66', fg = 'white', bold = false, })
-    --   end,
-    -- })
-
-    -- nvim-telescope/telescope.nvim
-    -- local function telescope()
-    --   vim.cmd([[autocmd ColorScheme * highlight TelescopeBorder guibg=none]])
-    --   vim.cmd([[autocmd ColorScheme * highlight TelescopeNormal guibg=none]])
-    -- end
 
     vim.cmd.colorscheme 'midnight'
   end,

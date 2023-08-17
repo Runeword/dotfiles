@@ -2,15 +2,17 @@ local vim = vim
 local o = vim.o
 local opt = vim.opt
 
-o.fillchars = [[eob: ,fold: ,foldopen:,foldclose:]]
-
+o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
+o.foldopen = 'search,undo'
+-- nvim-treesitter/nvim-treesitter
+o.foldmethod = 'expr'
+o.foldexpr = 'nvim_treesitter#foldexpr()'
 -- kevinhwang91/nvim-ufo
 o.foldcolumn = '1'
 o.foldlevel = 99
 o.foldlevelstart = 99
 o.foldenable = true
 
--- fold
 local fcs = vim.opt.fillchars:get()
 local function get_fold(lnum)
   if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then return ' ' end
@@ -23,8 +25,8 @@ vim.o.statuscolumn = "%!v:lua.get_statuscol()"
 
 vim.cmd([[let mapleader = "\<enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 o.mouse = 'a'                           -- Enables mouse support
-o.cursorline = false
-o.cursorcolumn = true
+o.cursorline = true
+o.cursorcolumn = false
 o.scrolloff = 5                         -- Minimal number of screen lines to keep above and below the cursor
 o.number = true                         -- Print the line number in front of each line
 o.virtualedit = 'all'
@@ -57,10 +59,6 @@ opt.list = true
 opt.listchars:append "eol:¬,tab:→ ,lead: ,multispace:˙,trail:˙"
 
 opt.laststatus = 3
-
--- nvim-treesitter/nvim-treesitter
-o.foldmethod = 'expr'
-o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- vim.cmd([[color haslo]])
 -- vim.cmd([[colorscheme blaster]])

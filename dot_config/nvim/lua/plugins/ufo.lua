@@ -48,6 +48,7 @@ return {
     -- check out `./lua/ufo.lua` and search `setFoldVirtTextHandler` for detail.
     require('ufo').setup({
       fold_virt_text_handler = handler,
+      open_fold_hl_timeout = 0,
     })
 
     -- buffer scope handler

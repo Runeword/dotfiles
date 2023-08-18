@@ -53,9 +53,9 @@
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
     nu = "__update_flake_inputs $HOME/nixos";
     nt = "__use_flake_template $HOME/templates";
-    nfi = "read -p 'nix flake init -t $HOME/templates#' templateName && nix flake init -t $HOME/templates#$templateName";
-    nfs = "nix flake show";
-    nfl = "nix flake lock";
+    nl = "nix flake lock";
+    nw = "nix flake show";
+    # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
     nfm = "nix flake metadata";
     nr = "nix run";
     ng = "sudo nix-collect-garbage -d";

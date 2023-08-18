@@ -28,6 +28,7 @@
     shfmt
     shellcheck
     terraform-ls
+    gopls
     # terraform-lsp
   ];
 

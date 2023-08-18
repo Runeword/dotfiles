@@ -7,12 +7,12 @@
   programs.starship.settings = {
     add_newline = false;
 
-    format = builtins.concatStringsSep "" [
-      "$shell"
-      "$nix_shell"
-      "$all"
+    format = "$directory";
+
+    right_format = builtins.concatStringsSep "" [
       "$git_branch"
-      "$directory"
+      "$all"
+      "$nix_shell"
     ];
 
     shell.disabled = true;
@@ -33,17 +33,24 @@
     cmd_duration.format = "[$duration]($style) ";
 
     git_status.disabled = true;
-    git_branch.format = "[$symbol $branch(:$remote_branch)]($style) ";
-    git_branch.symbol = "🌳";
+    git_branch.format = "[$symbol$branch(:$remote_branch)]($style) ";
+    git_branch.symbol = "[󰊢](yellow) ";
     git_branch.style = "white";
 
     nodejs.format = "[$symbol($version)]($style) ";
-    nodejs.symbol = "nodejs ";
-    nodejs.style = "white";
     nodejs.version_format = "$\{raw\}";
+    nodejs.symbol = "[󰎙](green) ";
+    nodejs.style = "white";
 
+    golang.format = "[$symbol($version)]($style) ";
+    golang.version_format = "$\{raw\}";
+    golang.symbol = "[](cyan) ";
+    golang.style = "white";
+
+    package.disabled = true;
     package.format = "[$symbol($version)]($style) ";
     package.version_format = "$\{raw\}";
+    package.symbol = "[󰫈](purple) ";
     package.style = "white";
 
     lua.format = "[$symbol($version)]($style) ";
@@ -51,8 +58,8 @@
     lua.style = "white";
     lua.version_format = "$\{raw\}";
 
-    nix_shell.format = "[$symbol]($style) ";
-    nix_shell.symbol = "❄";
-    # nix_shell.symbol = "❄️";
+    nix_shell.format = "[$symbol]($style)";
+    nix_shell.symbol = " ";
+    # nix_shell.symbol = "❄️ ";
   };
 }

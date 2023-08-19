@@ -12,8 +12,11 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
-if [ -d "$HOME/home-manager/$USER/modules/sh/functions" ]; then
-	for file in "$HOME/home-manager/$USER/modules/sh/functions"/*; do
+if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
+	for file in "$HOME/home-manager/$USER/sh/functions"/*; do
 		. "$file"
 	done
 fi
+
+eval "$(navi widget bash)"
+eval "$(starship init bash)"

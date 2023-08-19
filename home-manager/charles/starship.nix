@@ -47,6 +47,11 @@
     golang.symbol = "[](cyan) ";
     golang.style = "white";
 
+    rust.format = "[$symbol($version)]($style) ";
+    rust.version_format = "$\{raw\}";
+    rust.symbol = "🦀";
+    rust.style = "white";
+
     package.disabled = true;
     package.format = "[$symbol($version)]($style) ";
     package.version_format = "$\{raw\}";

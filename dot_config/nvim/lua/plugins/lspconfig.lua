@@ -81,6 +81,7 @@ return {
     lspconfig['ccls'].setup(set_config())
     lspconfig['jsonls'].setup(set_config())
     lspconfig['gopls'].setup(set_config())
+    lspconfig['rust_analyzer'].setup(set_config())
     lspconfig['marksman'].setup(set_config())
     lspconfig['terraformls'].setup(set_config())
     -- lspconfig['terraform_lsp'].setup(set_config())

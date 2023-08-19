@@ -68,3 +68,4 @@ fi
 # ------------------------------------ Plugins
 eval "$(navi widget zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init --no-cmd zsh)"

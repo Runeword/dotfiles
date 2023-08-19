@@ -11,7 +11,6 @@
     ./ssh.nix
     ./tmux.nix
     ./neovim.nix
-    ./starship.nix
     ./broot.nix
     ./zoxide.nix
     ./fzf.nix

@@ -47,6 +47,7 @@
 
     # ---------------------------------- CLI tools
     starship
+    zoxide
     bat
     hyperfine
     wl-screenrec

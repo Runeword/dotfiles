@@ -1,0 +1,68 @@
+add_newline = false
+format = "$directory"
+right_format = "$git_branch$all$nix_shell"
+
+[character]
+disabled = true
+
+[cmd_duration]
+disabled = true
+format = "[$duration]($style) "
+min_time = 10000
+
+[directory]
+format = "[$path/]($style) "
+style = "blue"
+
+[git_branch]
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "white"
+symbol = "[󰊢](yellow) "
+
+[git_status]
+disabled = true
+
+[golang]
+format = "[$symbol($version)]($style) "
+style = "white"
+symbol = "[](cyan) "
+version_format = "${raw}"
+
+[line_break]
+disabled = true
+
+[lua]
+format = "[$symbol($version)]($style) "
+style = "white"
+symbol = "lua "
+version_format = "${raw}"
+
+[nix_shell]
+format = "[$symbol]($style)"
+symbol = " "
+
+[nodejs]
+format = "[$symbol($version)]($style) "
+style = "white"
+symbol = "[󰎙](green) "
+version_format = "${raw}"
+
+[package]
+disabled = true
+format = "[$symbol($version)]($style) "
+style = "white"
+symbol = "[󰫈](purple) "
+version_format = "${raw}"
+
+[rust]
+format = "[$symbol($version)]($style) "
+style = "white"
+symbol = "[](yellow) "
+version_format = "${raw}"
+
+[shell]
+bash_indicator = "b"
+disabled = true
+fish_indicator = "f"
+format = "[$indicator]($style) "
+zsh_indicator = "z"

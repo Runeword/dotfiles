@@ -29,6 +29,7 @@
     shellcheck
     terraform-ls
     gopls
+    rust-analyzer
     # terraform-lsp
   ];
 

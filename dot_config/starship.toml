@@ -57,7 +57,7 @@ version_format = "${raw}"
 [rust]
 format = "[$symbol($version)]($style) "
 style = "white"
-symbol = "[](yellow) "
+symbol = "[󱘗](yellow) "
 version_format = "${raw}"
 
 [shell]

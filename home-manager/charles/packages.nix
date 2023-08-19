@@ -46,6 +46,7 @@
     brillo
 
     # ---------------------------------- CLI tools
+    starship
     bat
     hyperfine
     wl-screenrec

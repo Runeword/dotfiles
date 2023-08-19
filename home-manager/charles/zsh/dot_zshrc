@@ -36,17 +36,17 @@ bindkey '^[OA' history-beginning-search-backward
 bindkey '^[OB' history-beginning-search-forward
 
 # ------------------------------------ Complete
-# zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-# setopt MENU_COMPLETE
-# bindkey '^I' complete-word
-# bindkey '^[[Z' reverse-menu-complete
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+setopt MENU_COMPLETE
+bindkey '^I' complete-word
+bindkey '^[[Z' reverse-menu-complete
 
-# ------------------------------------ zsh-abbr
-abbr import-aliases
-ABBR_DEFAULT_BINDINGS=0
-bindkey ' ' abbr-expand-and-space
-bindkey '^M' accept-line
-# bindkey '^M' abbr-expand-and-accept
+# # ------------------------------------ zsh-abbr
+# abbr import-aliases
+# ABBR_DEFAULT_BINDINGS=0
+# bindkey ' ' abbr-expand-and-space
+# bindkey '^M' accept-line
+# # bindkey '^M' abbr-expand-and-accept
 
 # ------------------------------------ zsh-autosuggestions
 bindkey 'CSI 13 ; 5 u' autosuggest-execute
@@ -67,3 +67,4 @@ fi
 
 # ------------------------------------ Plugins
 eval "$(navi widget zsh)"
+eval "$(starship init zsh)"

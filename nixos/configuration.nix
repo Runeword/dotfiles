@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   nix.package = pkgs.nixFlakes;
@@ -16,6 +17,8 @@
 
   security.polkit.enable = true;
   services.fwupd.enable = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.xserver = {
     enable = true;

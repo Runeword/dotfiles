@@ -27,6 +27,8 @@
     python311
     qmk
     gcc
+    httrack
+    pgmodeler
 
     # ---------------------------------- Editors
     neovim-nightly
@@ -70,6 +72,7 @@
     doppler
 
     # ---------------------------------- Archivers
+    zip
     unzip
     xarchiver
     p7zip

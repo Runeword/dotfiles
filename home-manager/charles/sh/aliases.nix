@@ -5,6 +5,8 @@
     chrome = "google-chrome-stable";
     # color = "colorpicker"; # X11
     win = "xprop WM_CLASS";
+    cd = "__zoxide_z";
+    h = "__zoxide_zi";
     # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     # dua = "$HOME/.screenlayout/dual.sh";
     wa = "watch progress -q";

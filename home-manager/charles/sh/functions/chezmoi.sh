@@ -19,7 +19,7 @@ cha() {
 	fi
 
   for i in $(echo "$selected_files" | xargs); do
-		chezmoi add "$i"
+		chezmoi add "$HOME/$i"
 	done
 }
 
@@ -35,7 +35,7 @@ chy() {
 	fi
 
 	for i in $(echo "$selected_files" | xargs); do
-		chezmoi apply "$i"
+		chezmoi apply "$HOME/$i"
 	done
 }
 
@@ -54,6 +54,6 @@ chf() {
 	fi
 
   for i in $(echo "$selected_files" | xargs); do
-		chezmoi forget "$i"
+		chezmoi forget "$HOME/$i"
 	done
 }

@@ -20,3 +20,4 @@ fi
 
 eval "$(navi widget bash)"
 eval "$(starship init bash)"
+eval "$(zoxide init --no-cmd bash)"

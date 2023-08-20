@@ -16,14 +16,14 @@ keybinds clear-defaults=true {
     bind "8" { GoToTab 8; }
     bind "9" { GoToTab 9; }
     bind "Tab" { GoToNextTab; }
-    // bind "Shift Tab" { GoToPreviousTab; }
+    bind "Backspace" { GoToPreviousTab; }
     bind "q" { Quit; }
-    bind "Ctrl g" { SwitchToMode "Locked"; }
-    // bind "n" { NewPane; }
+    bind "Ctrl h" { SwitchToMode "Locked"; }
+    bind "p" { NewPane; }
   }
 
   locked {
-    bind "Ctrl g" { SwitchToMode "Normal"; }
+    bind "Ctrl h" { SwitchToMode "Normal"; }
   }
 
   // resize {
@@ -242,7 +242,7 @@ plugins {
 // Choose the mode that zellij uses when starting up.
 // Default: normal
 //
-// default_mode "locked"
+default_mode "locked"
 
 // Toggle enabling the mouse mode.
 // On certain configurations, or terminals this could

@@ -23,4 +23,3 @@ grep -i "fontface" /etc/default/console-setup
 
 # Search for all files containing the 'pattern' and print out the line number and the line containing the 'pattern' for each match found
 grep -rnw '/path/to/somewhere/' -e 'pattern'
-```

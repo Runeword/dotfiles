@@ -1,0 +1,26 @@
+% search
+
+# Find files with the string
+find . | xargs grep <'The Big Brains Company'> -sl
+
+# Find files or directories then select it with fzf
+$(fd --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --reverse --height 40% --no-separator --border none)
+
+# Search xcap process among all processes (full format)
+ps -ef | grep xcap
+
+# Find all files modified on a given date
+sudo find / -type f -newermt 2018-11-26 ! -newermt 2018-11-27 -ls
+
+# Find files with extension
+sudo find / -name "*.ppk" -type f
+
+# Find files (case insensitive)
+find /path/to/folder/ -iname *file_name_portion*
+
+# Find lines with the string
+grep -i "fontface" /etc/default/console-setup
+
+# Search for all files containing the 'pattern' and print out the line number and the line containing the 'pattern' for each match found
+grep -rnw '/path/to/somewhere/' -e 'pattern'
+```

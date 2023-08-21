@@ -16,9 +16,11 @@ keybinds clear-defaults=true {
     bind "8" { GoToTab 8; }
     bind "9" { GoToTab 9; }
     bind "Tab" { GoToNextTab; }
+    bind "PageUp" { GoToNextTab; }
     bind "Backspace" { GoToPreviousTab; }
+    bind "PageDown" { GoToPreviousTab; }
     bind "q" { Quit; }
-    bind "Ctrl h" { SwitchToMode "Locked"; }
+    bind "Esc" { SwitchToMode "Locked"; }
     bind "p" { NewPane; }
   }
 

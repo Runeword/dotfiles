@@ -11,6 +11,20 @@ return {
     -- autocommand will have no effect on previously sourced colorschemes
     -- so it must be added before any colorscheme is sourced
 
+    -- andymass/vim-matchup
+    vim.api.nvim_create_augroup('matchup', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'matchup',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'MatchParen',
+          { fg = '#7429ff', italic = true, bold = true, })
+        vim.api.nvim_set_hl(0, 'MatchWord',       { fg = '#7429ff', })
+        vim.api.nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b', })
+      end,
+    })
+
+
     -- folke/flash.nvim
     vim.api.nvim_create_augroup('flash', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {

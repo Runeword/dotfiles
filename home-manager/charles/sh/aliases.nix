@@ -28,6 +28,7 @@
     i = "kitten icat";
     w = "__wallpaper";
     p = "hyperfine";
+    z = "zellij";
     a = "alias | fzf";
     ".." = "cd ..";
     "..." = "cd ../..";

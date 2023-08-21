@@ -1,153 +1,5 @@
 # NOTES
 
-## GIT
-
-```bash
-git checkout -                  # Fix detached head state
-git show                        # Display commit changes
-git log                         # List commits
-git log --all                   # List commits of all branches
-git status                      # Display state of the working tree
-git diff                        # Display details of changes
-git diff branch_1 branch_2      # Diff between branches
-git diff k73ud dj374            # Diff between oldCommit and newCommit
-git add -A                      # Stages all changes
-git add .                       # Stages edited and new files, without deleted ones
-git add -u                      # Stages edited and deleted files, without new ones
-git add -p <path>               # Interactive stage, stage parts of a file
-git diff --cached               # Display cache/index changes
-git commit -m "message"         # Commit changes and add a message
-git commit -nm "message"        # Bypasses the pre-commit and commit-msg hooks
-
-git commit --amend              # Change message of the last commit
-git push -f                     # Update message of the last commit on the remote
-
-                                # Change message of older or multiple commits
-git rebase -i HEAD~3            # Displays a list of the last 3 commits on the current branch
-                                # Then replace pick with reword before each commit message
-                                # you want to change.
-                                # Save and close the commit list file.
-                                # In each resulting commit file, type the new commit message,
-                                # save the file, and close it.
-git push --force                # Force-push the amended commits.
-
-git revert <commit-sha> && \    # Revert the last commit
-git checkout <current branch>   # Then fix the detached head
-git reset <file>                # Unstage staged file
-git reset --hard <commit-sha>   # Delete commits after the specified one
-git reset --hard HEAD~1         # Delete the last commit
-git reset HEAD~1                # Undo the last commit
-git push -f                     # Update the remote branche
-git rm --cached <file>          # Untrack file
-```
-
-### stash
-
-```bash
-git stash                     # Save the work in progress
-git stash -u                  # Save the work in progress (include untracked files)
-git stash push -m "<message>" # Save the WIP with a message
-git stash list                # List WIP
-git stash apply stash@{0}
-git stash show stash@{0}
-git stash apply               # Apply last WIP
-git stash drop                # Delete last WIP
-git stash pop                 # Apply then delete last WIP
-git stash clear               # Delete all WIP of repository
-git stash -k                  # --keep-index stash not staged changes (not added to the index)
-git stash -k -u               # --include-untracked stash not staged changes and new files
-
-```
-
-### branch
-
-```bash
-git checkout <branch>                      # Switch to the branch
-git checkout -- <path-to-file>             # Delete file changes
-git checkout -- .                          # Delete changes of current directory
-git checkout --theirs <path-to-file>       # Accept incoming changes and ignore current changes
-git checkout --ours <path-to-file>         # Ignore incoming changes and accept current changes
-git checkout -b <branch>                   # Create branch and switch to it
-git branch                                 # List locals branches
-git branch -r                              # List remote branches
-git branch -a                              # List locals + remote branches
-git branch -d <branch>                     # Delete branch
-git branch -m <old-branch> <new-branch>    # Rename branche
-git branch -m <new-branch>                 # Rename current branch
-git branch --sort=committerdate            # List of branches ordered by most recent commit
-git branch --sort=-committerdate           # List of branches ordered by less recent commit
-git push --all                             # Push all branches
-git push --tags                            # Push all tags
-git log --all --graph --decorate --oneline # Display graph
-git worktree add ../<new-directory> <branch-to-checkout> # Clone the current repository to a new directory and checkout the specified branch
-```
-
-### remote
-
-```bash
-git remote set-url origin <ssh/http uri>               # Change remote URI
-git remote set-url --add --push origin <ssh/http uri>  # Add a remote URI
-git remote -v                                          # List remotes
-git push origin <branch>                               # Create remote branch
-git push -u origin <branch>                            # Create and track remote branch
-git push origin -d <branch>                            # Delete remote branch
-git rebase -i HEAD~1                                   # Displays the last commit on the current branch
-git config --global user.name "John Doe"               # Global git user
-git config --global user.email "john@doe.org"
-git config user.name "John Doe"                        # Project git user
-git config user.email "john@doe.org"
-git config --unset branch.<branch>.remote              # Stop local branch tracking by remote branch
-git push origin :<branch>                              # Delete remote branch
-git ls-remote                                          # List remote branches
-git log origin/<branch>                                # List remote branch logs
-```
-
-### workflow
-
-```bash
-git fetch                         # Download remote changes
-git pull                          # Download and merge remote changes with locals ones
-git pull --all                    # Pull all branches
-git merge foo                     # Merge branch foo above the current branch
-git checkout --theirs .           # Accept incoming changes (use code of the source branch)
-git checkout --ours .             # Ignore incoming changes (use code of the target branch)
-git rebase foo                    # Merge branch foo below the current branch
-                                  # If git branch diverged after rebase, git push -f the branch
-git rebase --abort                # Cancel current rebase
-git push -f
-git checkout <commit-sha>         # Switch to commit
-git checkout <branch>             # Switch to last commit of the branch
-                                  # Fix detached head state
-git cherry-pick <commit-sha>      # Add commit to the current branch
-git cherry-pick --abort
-git cherry-pick ebe6942..905e279  # Cherry pick a range of commits (firts commit not included)
-git cherry-pick ebe6942^..905e279 # Cherry pick a range of commits (include first and last commits)
-git cherry-pick c307e6fbe9b8474178345639d4410eed548c2ad8^..81f0543a604a730a2c94e937d037fa234700e8e6
-```
-
-### misc
-
-```bash
-git update-index --assume-unchanged <file>        # Ignore file changes
-git update-index --no-assume-unchanged <file>     # Tack file again
-ssh git@<server-name>                             # Connect to server with git user
-git clone https://github.com/<repository>.git     # Clone repository
-git filter-branch -f --env-filter \               # Change the author of all commits
-"GIT_AUTHOR_NAME='yourname'; \
-GIT_AUTHOR_EMAIL='youremail@example.com'; \
-GIT_COMMITTER_NAME='yourname'; \
-GIT_COMMITTER_EMAIL='youremail@example.com';" \
-HEAD; && \
-git push --force origin master
-
-# After deleting .git/ re-enable sync between local repository and remote without delete local files or clone remote
-git init .
-git remote add origin <remote url>
-git fetch origin
-git branch -f master origin/master
-git reset . # Delete local changes
-```
-
 ## DOCKER
 
 ### install
@@ -385,50 +237,6 @@ chmod a+x exampleName.AppImage    # Change mode, donne l'autorisation d'executio
 apt clean                         # Vide le cache des paquets
 ```
 
-### custom functions
-
-```bash
-vi ~/.custom_commands.sh          # Create or change the script
-source ~/.custom_commands.sh      # Add the following command after the last line of the ~/.bashrc
-                                  # to load the script during each interactive shell launch
-```
-
-### ssh keys
-
-```bash
-# Generate ssh key pair
-
-ssh-keygen -t ed25519 -C "email@example.com"        # ED25519
-ssh-keygen -t rsa -b 4096 -C "email@example.com"    # RSA
-                                                    # ssh-keygen -t rsa -b 2048
-
-ssh-keygen -p -f <keyname>                          # Change ssh key password
-ssh-add ~/.ssh/id_rsa                               # Add private key to the ssh-agent
-ssh-add -l                                          # List keys added to the ssh-agent
-ssh-keygen -lf <path-to-private-key>                # Check key signature
-ssh-add -d <path-to-private-key>                    # Remove private key from the ssh-agent
-ssh-add -D                                          # Remove all private keys
-
-chmod 600 ~/.ssh/id_rsa                             # In case access to the server is denied, maybe file permissions are too open
-
-# Create ssh key with proper permissions
-mkdir .ssh && chmod 700 .ssh
-touch .ssh/config && chmod 600 .ssh/config
-touch .ssh/id_ed25519_home && chmod 600 .ssh/id_ed25519_home
-
-# Add the public key on the server
-
-su
-adduser <new-user-name>
-mkdir <new-user-name>/.ssh
-touch <new-user-name>/.ssh/authorized_keys
-# Puis ajouter la clé plublique copiée sur le serveur
-# dans le fichier authorized_keys de l'utilisateur
-# Vérifier que l'utilisateur y a accès en lecture
-# Ou
-cat /home/<user>/id_rsa.pub >> ./authorized_keys
-```
-
 ### utility
 
 ```bash
@@ -520,28 +328,6 @@ sensors                             # Display temperatures
 lscpu                               # Display CPU informations
 htop                                # Display CPU & RAM usage
 xprop WM_CLASS                      # Get class of clicked window for use with picom
-```
-
-### search
-
-```bash
-find . |  xargs  grep  'The Big Brains Company' -sl   # Recherche les fichiers qui contiennent une chaine de caractères
-$(fd --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --reverse --height 40% --no-separator --border none) # Find file or directory then select with fzf
-fd -l . /nix/store | grep 'tmux-plugins'
-ps -ef | grep xcap              # search xcap process among all processes (full format)
--s, --no-messages               # Suppress error messages about nonexistent or unreadable files
--l, --files-with-matches        # suppress normal output, instead print the name of each input file
-                                # from which output would normally have been printed
-                                # The scanning will stop on the first match
-sudo find / -type f -newermt 2018-11-26 ! -newermt 2018-11-27 -ls   # cherche tous les fichiers modifiés à une date donnée
-sudo find / -name "*.ppk" -type f                 # Cherche les clées .ppk
-find . -name "*.vim" -type f
-find /path/to/folder/ -iname *file_name_portion*  # Search file (case insensitive)
-<cmd> | grep foo                                  # Filtre le résultat de la commande sur les caractères "foo"
-grep -i "fontface" /etc/default/console-setup     # Cherche les lignes avec le mot
-grep -rnw '/path/to/somewhere/' -e 'pattern'      # Cherche un pattern et retourne les informations des fichiers le contenant
-                                                  # "fontface" en ignorant la casse
-grep "Site du Zéro"                               # Fichier.ext recherche la chaîne de caractères dans le fichier
 ```
 
 ### shell
@@ -944,14 +730,6 @@ gsutil cp -r gs://<source bucket>/2022-01-02T18:36:08_85547 gs://<destination bu
 
 ```
 
-## VUE
-
-### vue-cli
-
-```bash
-vue ui
-```
-
 ### eslint
 
 ```bash
@@ -979,12 +757,6 @@ json2csv -i <input-file-name>.json -F -o <output-file-name>.csv
 
 ```bash
 rg -e <pattern>
-```
-
-### fzf
-
-```bash
-# To install with with git (with pacman install fzf do not work with tmux)
 ```
 
 ### gitolite

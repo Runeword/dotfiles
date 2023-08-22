@@ -35,19 +35,6 @@ return {
     end,
   },
 
-  {
-    'echasnovski/mini.align',
-    version = false,
-    config = function()
-      require('mini.align').setup({
-        mappings = {
-          start = 'gl',
-          start_with_preview = '',
-        },
-      })
-    end,
-  },
-
   { 'nvim-treesitter/nvim-treesitter-textobjects', },
   { 'windwp/nvim-ts-autotag', },
   { 'itchyny/vim-cursorword', },
@@ -76,37 +63,9 @@ return {
     dependencies = 'kana/vim-textobj-user',
   },
 
-  {
-    'machakann/vim-highlightedyank',
-    config = function()
-      vim.g.highlightedyank_highlight_duration = 100
-    end,
-  },
-
-  -- {
-  --   'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-  --   config = function()
-  --     require('lsp_lines').setup()
-  --   end,
-  -- },
-
-  -- {
-  --   "chaoren/vim-wordmotion",
-  --   init = function()
-  --     require("setup").wordmotion()
-  --   end,
-  -- },
-
   -- { 'smjonas/inc-rename.nvim',
   --   config = function()
   --     require('inc_rename').setup()
-  --   end,
-  -- },
-
-  -- {
-  --   'luukvbaal/statuscol.nvim',
-  --   config = function()
-  --     require("statuscol").setup()
   --   end,
   -- },
 

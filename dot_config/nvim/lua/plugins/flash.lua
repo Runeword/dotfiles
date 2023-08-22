@@ -6,7 +6,7 @@ return {
   event = 'VeryLazy',
 
   opts = {
-    labels = ",pyaoeuidhtnsfgcrl;qjkxbmwvz",
+    labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
     label = { uppercase = false, },
 
     highlight = {

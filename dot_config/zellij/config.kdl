@@ -22,6 +22,10 @@ keybinds clear-defaults=true {
     bind "q" { Quit; }
     bind "Esc" { SwitchToMode "Locked"; }
     bind "p" { NewPane; }
+    bind "a" { MoveFocus "left"; }
+    bind "o" { MoveFocus "right"; }
+    bind "u" { MoveFocus "up"; }
+    bind "e" { MoveFocus "down"; }
   }
 
   locked {

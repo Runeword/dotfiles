@@ -21,3 +21,7 @@ fi
 eval "$(navi widget bash)"
 eval "$(starship init bash)"
 eval "$(zoxide init --no-cmd bash)"
+if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
+  . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/completion.bash
+  . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/key-bindings.bash
+fi

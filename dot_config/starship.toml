@@ -23,7 +23,7 @@ symbol = "[󰊢 ](bright-black)"
 
 [golang]
 format = "[$symbol$version](white) "
-symbol = "[ ](cyan)"
+symbol = "[󰟓 ](cyan)"
 version_format = "${raw}"
 
 [nix_shell]
@@ -43,7 +43,7 @@ version_format = "${raw}"
 
 [rust]
 format = "[$symbol$version](white) "
-symbol = "[󱘗 ](yellow) "
+symbol = "[󱘗](yellow) "
 version_format = "${raw}"
 
 [lua]

@@ -12,7 +12,6 @@
     ./tmux.nix
     ./neovim.nix
     ./broot.nix
-    ./fzf.nix
     ./home.nix
     ./packages.nix
     ./git.nix

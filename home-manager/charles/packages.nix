@@ -46,6 +46,7 @@
     brillo
 
     # ---------------------------------- CLI tools
+    fzf
     starship
     zoxide
     bat

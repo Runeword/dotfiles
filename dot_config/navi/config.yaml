@@ -1,12 +1,12 @@
 style:
   tag:
-    color: cyan # text color. possible values: https://bit.ly/3gloNNI
+    color: dark_grey # text color. possible values: https://bit.ly/3gloNNI
     width_percentage: 10
   comment:
     color: dark_grey
     width_percentage: 50
   snippet:
-    color: white
+    color: dark_grey
 
 finder:
   command: fzf # equivalent to the --finder option

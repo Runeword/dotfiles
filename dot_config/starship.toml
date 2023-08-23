@@ -19,7 +19,7 @@ format = "[$path/](blue) "
 
 [git_branch]
 format = "[$symbol$branch](white) "
-symbol = "[󰊢 ](bright-black)"
+symbol = "[󰊢 ](black)"
 
 [golang]
 format = "[$symbol$version](white) "

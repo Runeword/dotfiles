@@ -69,3 +69,7 @@ fi
 eval "$(navi widget zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init --no-cmd zsh)"
+if [[ $options[zle] = on ]]; then
+  . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/completion.zsh
+  . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/key-bindings.zsh
+fi

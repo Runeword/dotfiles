@@ -79,7 +79,7 @@ vim.api.nvim_create_autocmd('colorscheme', {
   group = 'diagnostic',
   pattern = '*',
   callback = function()
-    -- #0a172e #1e2633 '#424a57' #7a7c9e #222b66
+    -- #0a172e #1e2633 #424a57 #7a7c9e #222b66
 
     vim.api.nvim_set_hl(0, 'diagnosticfloatingerror', { link = 'diagnosticvirtualtexterror', })
     vim.api.nvim_set_hl(0, 'diagnosticfloatinghint',  { link = 'diagnosticvirtualtexthint', })

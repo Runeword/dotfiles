@@ -44,6 +44,9 @@
     color = "hyprpicker --autocopy --format=hex";
     cheat = "navi --cheatsh";
     tldr = "navi --tldr";
+    od = "ouch decompress";
+    oc = "ouch compress";
+    ol = "ouch list";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/home-manager";

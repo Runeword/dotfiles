@@ -20,9 +20,7 @@ __open_file() {
 			tail -n +2 |
 			fzf \
 				--multi \
-				--inline-info \
 				--reverse \
-				--no-separator \
 				--border none \
 				--cycle \
 				--height 70% \
@@ -31,6 +29,7 @@ __open_file() {
 				--preview-window right,50%,border-left --no-scrollbar
 	)
 
+# --inline-info \
 	# If no selection do nothing
 	[ -z "$selected_files" ] && return 0
 

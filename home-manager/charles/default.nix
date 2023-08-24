@@ -9,7 +9,6 @@
     ./readline.nix
     ./alacritty.nix
     ./ssh.nix
-    ./tmux.nix
     ./neovim.nix
     ./broot.nix
     ./home.nix

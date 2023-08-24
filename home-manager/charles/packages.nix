@@ -34,6 +34,8 @@
     neovim-nightly
     vifm
     kitty
+    tmux
+    tmuxPlugins.resurrect
 
     # ---------------------------------- Browsers
     google-chrome
@@ -75,10 +77,11 @@
     doppler
 
     # ---------------------------------- Archivers
-    zip
-    unzip
+    # zip
+    # unzip
+    # p7zip
+    ouch
     xarchiver
-    p7zip
 
     # ---------------------------------- Analitics
     htop

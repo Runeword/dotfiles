@@ -36,18 +36,18 @@
     nvidia.modesetting.enable = true;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    xwayland.hidpi = true;
-    nvidiaPatches = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
-
   # programs.hyprland = {
   #   enable = true;
-  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  #   xwayland.enable = true;
+  #   xwayland.hidpi = true;
+  #   nvidiaPatches = true;
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   # };
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  };
 
   virtualisation.docker.enable = true;
 

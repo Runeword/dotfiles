@@ -100,14 +100,14 @@
     realesrgan-ncnn-vulkan
     imaginer
     kooha
-    obs-studio
-    # pkgs-old.obs-studio
-    # obs-cli
+    # obs-studio
     vlc
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
     # ---------------------------------- Wayland
+    swaybg
+    waypaper
     hyprpaper
     hyprpicker
     wl-clipboard

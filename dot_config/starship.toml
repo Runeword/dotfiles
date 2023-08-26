@@ -14,8 +14,15 @@ disabled = true
 [line_break]
 disabled = true
 
+[battery]
+disabled = true
+
 [directory]
 format = "[$path/](blue) "
+
+[terraform]
+format = "[$symbol$workspace](white) "
+symbol = "[󱁢 ](purple)"
 
 [git_branch]
 format = "[$symbol$branch](white) "

@@ -1,6 +1,11 @@
 [Added Associations]
 
 [Default Applications]
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
 application/javascript=google-chrome.desktop;
 application/xhtml+xml=google-chrome.desktop;
 application/json=nvim.desktop
@@ -20,7 +25,6 @@ image/webp=imv.desktop
 text/calendar=nvim.desktop
 text/css=nvim.desktop
 text/csv=nvim.desktop
-text/html=nvim.desktop
 text/javascript=nvim.desktop
 text/plain=nvim.desktop
 video/x-msvideo=vlc.desktop;imv.desktop;

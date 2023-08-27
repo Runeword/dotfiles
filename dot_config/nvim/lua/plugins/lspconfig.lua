@@ -63,8 +63,12 @@ return {
       end
     end
 
+    -- nvim-cmp
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
     local function set_config(override_opts)
       local default_opts = {
+        capabilities = capabilities,
         on_attach = on_attach_server(true),
         ['settings.format.enable'] = true,
         flags = { debounce_text_changes = 0, },

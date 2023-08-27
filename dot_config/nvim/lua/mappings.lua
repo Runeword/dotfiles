@@ -5,6 +5,14 @@ vim.keymap.set('x', '<C-n>',      ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n', 'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
 
+vim.keymap.set('n', 'i', function()
+  if #vim.fn.getline('.') == 0 then
+    return [["_cc]]
+  else
+    return 'i'
+  end
+end, { expr = true, })
+
 local isFolded = false
 local function toggleFold()
   if not isFolded then
@@ -19,8 +27,8 @@ end
 vim.keymap.set('n', 'g<Enter>', toggleFold)
 
 -- Terminal
-vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
-vim.keymap.set('t', '<Esc>',     [[<C-\><C-n>]])
+-- vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
 vim.keymap.set('n', '<Enter>', '<Nop>')

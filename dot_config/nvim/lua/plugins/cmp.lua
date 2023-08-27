@@ -5,6 +5,8 @@ return {
 
   event = 'InsertEnter',
 
+  pin = true,
+
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
@@ -45,12 +47,11 @@ return {
       formatting = {
         format = function(entry, vim_item)
           vim_item.menu = ({
-            buffer = '[Buffer]',
-            nvim_lsp = '[LSP]',
-            luasnip = '[LuaSnip]',
-            codeium = '[codeium]',
-            nvim_lua = '[Lua]',
-            latex_symbols = '[LaTeX]',
+            buffer = 'buff',
+            nvim_lsp = 'lsp',
+            luasnip = 'snip',
+            codeium = 'codeium',
+            nvim_lua = 'lua',
           })[entry.source.name]
           return vim_item
         end,

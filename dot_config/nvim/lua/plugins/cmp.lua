@@ -10,9 +10,12 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
+    'jcdickinson/codeium.nvim',
   },
 
   config = function()
+    require('codeium').setup({})
+
     local cmp = require 'cmp'
 
     cmp.setup({
@@ -41,6 +44,7 @@ return {
 
       sources = cmp.config.sources({
         { name = 'nvim_lsp', },
+        { name = 'codeium', },
         { name = 'vsnip', }, -- For vsnip users.
         -- { name = 'luasnip' }, -- For luasnip users.
         -- { name = 'ultisnips' }, -- For ultisnips users.

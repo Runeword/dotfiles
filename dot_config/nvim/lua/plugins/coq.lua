@@ -3,6 +3,8 @@ local vim = vim
 return {
   'ms-jpq/coq_nvim',
 
+  enabled = false,
+
   branch = 'coq',
 
   init = function()

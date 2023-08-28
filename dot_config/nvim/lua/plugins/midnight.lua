@@ -68,6 +68,16 @@ return {
       end,
     })
 
+    -- tzachar/highlight-undo.nvim
+    vim.api.nvim_create_augroup('highlightundo', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'highlightundo',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'HighlightUndo', { bg = '#e4e8f2', fg = 'black', })
+      end,
+    })
+
     -- echasnovski/mini.indentscope
     vim.api.nvim_create_augroup('indentscope', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {

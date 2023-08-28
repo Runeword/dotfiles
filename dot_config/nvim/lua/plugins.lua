@@ -48,14 +48,49 @@ return {
     end,
   },
 
-  -- {
-  --   'Exafunction/codeium.vim',
-  --   enabled = false,
-  --   event = 'BufEnter',
-  --   config = function()
-  --     vim.g.codeium_disable_bindings = 1
-  --   end,
-  -- },
+  {
+    'lukas-reineke/virt-column.nvim',
+    config = function()
+      require('virt-column').setup({ char = '▏', })
+    end,
+  },
+
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter',
+    config = function()
+      -- vim.g.codeium_disable_bindings = 1
+    end,
+  },
+
+  {
+    'smjonas/duplicate.nvim',
+    config = function()
+      require('duplicate').setup()
+    end,
+  },
+
+  {
+    'tzachar/highlight-undo.nvim',
+    opts = {
+      duration = 300,
+      undo = {
+        hlgroup = 'HighlightUndo',
+        mode = 'n',
+        lhs = 'u',
+        map = 'undo',
+        opts = {},
+      },
+      redo = {
+        hlgroup = 'HighlightUndo',
+        mode = 'n',
+        lhs = '<C-r>',
+        map = 'redo',
+        opts = {},
+      },
+      highlight_for_count = true,
+    },
+  },
 
   {
     'glts/vim-textobj-comment',
@@ -81,6 +116,4 @@ return {
   -- { 'mattn/vim-gist',
   --   dependencies = { 'mattn/webapi-vim' },
   -- },
-
-  -- { 'Exafunction/codeium.vim', },
 }

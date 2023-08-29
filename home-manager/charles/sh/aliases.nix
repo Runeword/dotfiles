@@ -28,7 +28,8 @@
     i = "kitten icat";
     w = "__wallpaper";
     p = "hyperfine";
-    z = "zellij";
+    z = "__zellij";
+    zn = "zellij";
     a = "alias | fzf";
     ".." = "cd ..";
     "..." = "cd ../..";

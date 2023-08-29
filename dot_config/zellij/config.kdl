@@ -19,13 +19,14 @@ keybinds clear-defaults=true {
     bind "PageUp" { GoToNextTab; }
     bind "Backspace" { GoToPreviousTab; }
     bind "PageDown" { GoToPreviousTab; }
-    bind "q" { Quit; }
-    bind "Esc" { SwitchToMode "Locked"; }
+    bind "d" { Detach; }
     bind "p" { NewPane; }
     bind "a" { MoveFocus "left"; }
     bind "o" { MoveFocus "right"; }
     bind "u" { MoveFocus "up"; }
     bind "e" { MoveFocus "down"; }
+    bind "Esc" { SwitchToMode "Locked"; }
+    bind "Ctrl h" { SwitchToMode "Locked"; }
   }
 
   locked {

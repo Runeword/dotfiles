@@ -8,7 +8,6 @@
 #define la_NAV 3
 #define la_LMOD 4
 #define la_RMOD 5
-#define la_FUN 7
 
 #define po_T0 30
 #define po_T1 31
@@ -374,7 +373,7 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
         &none &none &none &none &none                    &kp NUMBER_9 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8
         &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &none      &kp NUMBER_0 &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4
         &none &none &none &none &none                    &kp EQUAL &kp PLUS &kp MINUS &kp SLASH &kp STAR
-        &sl la_FUN &trans &trans &trans
+        &trans &trans &trans &trans
         >;
     };
 
@@ -416,18 +415,9 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 
     tri {
       bindings = <
-        &none &none &none &none &none                    &none &none &none &none &none
-        &none &none &none &none &none                    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-        &none &none &none &none &none                    &none &bt BT_CLR &none &none &none
-        &trans &trans &trans &trans
-        >;
-    };
-
-    functions {
-      bindings = <
-        &none &none &none &none &none                    &none &kp F5 &kp F6 &kp F7 &kp F8
-        &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &none      &none &kp F1 &kp F2 &kp F3 &kp F4
-        &none &none &none &none &none                    &none &kp F9 &kp F10 &kp F11 &kp F12
+        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &none &kp F5 &kp F6 &kp F7 &kp F8
+        &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &bt BT_CLR                     &none &kp F1 &kp F2 &kp F3 &kp F4
+        &none &none &none &none &none                                        &none &kp F9 &kp F10 &kp F11 &kp F12
         &trans &trans &trans &trans
         >;
     };

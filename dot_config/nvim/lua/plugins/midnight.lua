@@ -74,7 +74,7 @@ return {
       group = 'highlightundo',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'HighlightUndo', { bg = '#e4e8f2', fg = 'black', })
+        vim.api.nvim_set_hl(0, 'HighlightUndo', { bg = '#222b66', fg = 'none', })
       end,
     })
 
@@ -89,13 +89,25 @@ return {
       end,
     })
 
+    -- Exafunction/codeium.vim
+    vim.api.nvim_create_augroup('codeium', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'codeium',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'CodeiumAnnotation', { bg = 'none', fg = '#5a7a99', italic = true, })
+        vim.api.nvim_set_hl(0, 'CodeiumSuggestion', { bg = 'none', fg = '#5a7a99', italic = true, })
+      end,
+    })
+
+    -- hrsh7th/nvim-cmp
     vim.api.nvim_create_augroup('cmp', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {
       group = 'cmp',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'PmenuSel',                 { fg = 'NONE', bg = '#242b3b', })
-        vim.api.nvim_set_hl(0, 'Pmenu',                    { fg = '#ffffff', bg = '#0e1117', })
+        vim.api.nvim_set_hl(0, 'PmenuSel',                 { fg = 'NONE', bg = '#323f5c', })
+        vim.api.nvim_set_hl(0, 'Pmenu',                    { fg = '#ffffff', bg = '#1e273b', })
 
         vim.api.nvim_set_hl(0, 'CmpItemKind',              { fg = '#ffffff', bg = 'NONE', })
         vim.api.nvim_set_hl(0, 'CmpItemAbbr',              { fg = '#ffffff', bg = 'NONE', })

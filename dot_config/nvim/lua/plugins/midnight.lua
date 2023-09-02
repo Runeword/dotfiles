@@ -107,14 +107,14 @@ return {
       pattern = '*',
       callback = function()
         vim.api.nvim_set_hl(0, 'PmenuSel',                 { fg = 'NONE', bg = '#323f5c', })
-        vim.api.nvim_set_hl(0, 'Pmenu',                    { fg = '#ffffff', bg = '#1e273b', })
+        vim.api.nvim_set_hl(0, 'Pmenu',                    { fg = '#e4e8f2', bg = '#1e273b', })
 
-        vim.api.nvim_set_hl(0, 'CmpItemKind',              { fg = '#ffffff', bg = 'NONE', })
-        vim.api.nvim_set_hl(0, 'CmpItemAbbr',              { fg = '#ffffff', bg = 'NONE', })
+        vim.api.nvim_set_hl(0, 'CmpItemKind',              { fg = '#e4e8f2', bg = 'NONE', })
+        vim.api.nvim_set_hl(0, 'CmpItemAbbr',              { fg = '#e4e8f2', bg = 'NONE', })
         vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated',    { fg = '#ff1994', bg = 'NONE', strikethrough = true, })
         vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch',         { fg = '#ff1994', bg = 'NONE', })
         vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy',    { fg = '#ff1994', bg = 'NONE', })
-        vim.api.nvim_set_hl(0, 'CmpItemMenu',              { fg = '#ffffff', bg = 'NONE', })
+        vim.api.nvim_set_hl(0, 'CmpItemMenu',              { fg = '#e4e8f2', bg = 'NONE', })
 
         vim.api.nvim_set_hl(0, 'CmpItemKindField',         { fg = 'NONE', bg = 'NONE', })
         vim.api.nvim_set_hl(0, 'CmpItemKindProperty',      { fg = 'NONE', bg = 'NONE', })

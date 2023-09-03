@@ -111,9 +111,9 @@ return {
 
         vim.api.nvim_set_hl(0, 'CmpItemKind',              { fg = '#e4e8f2', bg = 'NONE', })
         vim.api.nvim_set_hl(0, 'CmpItemAbbr',              { fg = '#e4e8f2', bg = 'NONE', })
-        vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated',    { fg = '#ff1994', bg = 'NONE', strikethrough = true, })
-        vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch',         { fg = '#ff1994', bg = 'NONE', })
-        vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy',    { fg = '#ff1994', bg = 'NONE', })
+        vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated',    { fg = '#00ffa2', bg = 'NONE', strikethrough = true, })
+        vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch',         { fg = '#00ffa2', bg = 'NONE', })
+        vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy',    { fg = '#00ffa2', bg = 'NONE', })
         vim.api.nvim_set_hl(0, 'CmpItemMenu',              { fg = '#e4e8f2', bg = 'NONE', })
 
         vim.api.nvim_set_hl(0, 'CmpItemKindField',         { fg = 'NONE', bg = 'NONE', })

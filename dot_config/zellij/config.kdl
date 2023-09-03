@@ -26,11 +26,11 @@ keybinds clear-defaults=true {
     bind "u" { MoveFocus "up"; }
     bind "e" { MoveFocus "down"; }
     bind "Esc" { SwitchToMode "Locked"; }
-    bind "Ctrl h" { SwitchToMode "Locked"; }
+    bind "Alt u" { SwitchToMode "Locked"; }
   }
 
   locked {
-    bind "Ctrl h" { SwitchToMode "Normal"; }
+    bind "Alt u" { SwitchToMode "Normal"; }
   }
 
   // resize {

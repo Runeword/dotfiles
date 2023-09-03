@@ -57,9 +57,9 @@ return {
             nvim_lua = 'lua',
           })[entry.source.name]
 
-          local MAX_LABEL_WIDTH = 20
+          local MAX_LABEL_WIDTH = 50
           local MIN_LABEL_WIDTH = 10
-          local ELLIPSIS_CHAR = '...'
+          local ELLIPSIS_CHAR = ' '
           local label = vim_item.abbr
           local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
 

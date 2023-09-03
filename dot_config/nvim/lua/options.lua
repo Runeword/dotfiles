@@ -29,7 +29,6 @@ o.cursorline = true
 o.cursorcolumn = false
 o.scrolloff = 5                         -- Minimal number of screen lines to keep above and below the cursor
 o.number = true                         -- Print the line number in front of each line
-o.colorcolumn = '80'
 o.virtualedit = 'all'
 o.cmdheight = 1
 o.wildcharm = ('\t'):byte()

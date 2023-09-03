@@ -109,7 +109,7 @@
 #battery.icon,
 #network.icon {
   padding-bottom: 10;
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
   font-size: 12px;
   background: rgba(0, 0, 0, 0.6);
 }

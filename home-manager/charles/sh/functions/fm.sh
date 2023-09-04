@@ -4,9 +4,13 @@ __open_file() {
 	# Preview of focussed file or folder
 	__preview_cmd() {
 		if [ -d "$1" ]; then
-			tree -Ca -L 2 "$1"
+			tree -Ca -L 2 "$1" | sed 's/^/  /; 1s/^/\n/'
 		else
-			command -v bat >/dev/null && bat --style=plain --color=always "$1" || cat "$1"
+			if command -v bat >/dev/null; then
+				bat --style=plain color=always "$1" | sed 's/^/  /; 1s/^/\n/'
+			else
+				cat "$1"
+			fi
 		fi
 	}
 
@@ -26,10 +30,11 @@ __open_file() {
 				--height 70% \
 				--ansi \
 				--preview "$(typeset -f __preview_cmd); __preview_cmd {}" \
-				--preview-window right,50%,border-left --no-scrollbar
+				--preview-window right,55%,border-none,~1
 	)
 
-# --inline-info \
+	# --no-scrollbar
+	# --inline-info \
 	# If no selection do nothing
 	[ -z "$selected_files" ] && return 0
 

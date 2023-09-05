@@ -45,7 +45,6 @@
 
     # ---------------------------------- Editors
     neovim-nightly
-    vifm
     kitty
     tmux
     tmuxPlugins.resurrect

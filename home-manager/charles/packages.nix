@@ -32,6 +32,9 @@
   # }) {inherit (pkgs) system;};
 
   # in {
+
+  home.file."bin/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+
   home.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
     python311
@@ -46,6 +49,7 @@
     kitty
     tmux
     tmuxPlugins.resurrect
+
     # tmuxKeylocker
 
     # ---------------------------------- Browsers

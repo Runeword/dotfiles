@@ -62,10 +62,6 @@
     # system-config-printer
     # gnome.gnome-disk-utility
     vim
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
     xarchiver
     polkit_gnome
     gparted
@@ -77,9 +73,16 @@
   environment.pathsToLink = ["/share/zsh"];
 
   # thunar
+  programs.thunar.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-media-tags-plugin
+    thunar-volman
+  ];
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
+  # udev
   services.udev.enable = true;
   services.udev.packages = with pkgs; [
     qmk-udev-rules

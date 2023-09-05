@@ -48,6 +48,7 @@
     od = "ouch decompress";
     oc = "ouch compress";
     ol = "ouch list";
+    gparted = "sudo -E gparted";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/home-manager";

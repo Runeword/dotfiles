@@ -53,6 +53,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # environment.etc."bin/polkit-gnome-authentication-agent-1".source = "${pkgs.tmuxPlugins.resurrect}/libexec/polkit-gnome-authentication-agent-1";
+
   environment.systemPackages = with pkgs; [
     # xfce.xfce4-volumed-pulse
     # pasystray
@@ -65,6 +67,7 @@
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
     xarchiver
+    polkit_gnome
     gparted
   ];
 
@@ -207,22 +210,6 @@
     extraGroups = ["networkmanager" "wheel"];
     # packages = with pkgs; [
     # ];
-  };
-
-  systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

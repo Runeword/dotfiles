@@ -30,7 +30,8 @@ __open_file() {
 				--height 70% \
 				--ansi \
 				--preview "$(typeset -f __preview_cmd); __preview_cmd {}" \
-				--preview-window right,55%,border-none,~1
+				--preview-window right,55%,border-none,~1 \
+        --bind='ctrl-y:execute-silent(wl-copy {})' \
 	)
 
 	# --no-scrollbar

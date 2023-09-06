@@ -1,4 +1,9 @@
 [Added Associations]
+application/x-shellscript=nvim.desktop;
+image/gif=imv-dir.desktop;
+image/png=imv-dir.desktop;
+inode/directory=imv.desktop;imv-dir.desktop;
+image/jpeg=imv-dir.desktop;
 
 [Default Applications]
 text/html=google-chrome.desktop

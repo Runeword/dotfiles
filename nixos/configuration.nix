@@ -63,7 +63,9 @@
     # gnome.gnome-disk-utility
     vim
     xarchiver
-    polkit_gnome
+    # polkit_gnome
+    libsForQt5.polkit-kde-agent
+    exfatprogs
     gparted
   ];
 

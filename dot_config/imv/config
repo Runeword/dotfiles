@@ -1,55 +1,51 @@
-# Default config for imv
-
 [options]
-
-# Suppress built-in key bindings, and specify them explicitly in this
-# config file.
 suppress_default_binds = true
 
-[aliases]
-# Define aliases here. Any arguments passed to an alias are appended to the
-# command.
-# alias = command to run
-
 [binds]
-# Define some key bindings
-q = quit
-y = exec echo working!
-
-# Image navigation
+# Next, Prev
 p = prev
 n = next
 gg = goto 1
 <Shift+G> = goto -1
 
-# Panning
-<Left> = pan 50 0
-<Right> = pan -50 0
-<Down> = pan 0 -50
-<Up> = pan 0 50
-
-# Zooming
-<Shift+plus> = zoom 1
-<minus> = zoom -1
-
-# Rotate Clockwise by 90 degrees
-<Ctrl+r> = rotate by 90
-
-# Other commands
-w = close
-f = fullscreen
-i = overlay
-# p = exec echo $imv_current_file
+# Move
+h = pan 50 0
+l = pan -50 0
+j = pan 0 -50
+k = pan 0 50
 c = center
-s = scaling next
-<Shift+S> = upscaling next
-a = zoom actual
+
+# Zoom
+<Shift+plus> = zoom 1
+<equal> = reset
+<minus> = zoom -1
+u = zoom 1
+e = zoom -1
+z = zoom actual
+
+# Transform
+<Ctrl+r> = rotate by 90
+<Ctrl+h> = flip horizontal
+<Ctrl+v> = flip vertical
+
+# Other
+f = fullscreen
+w = close
+i = overlay
 r = reset
+q = quit
+
+# Shell commands
+y = exec wl-copy $imv_current_file
+d = exec gomi "$imv_current_file"; close
 
 # Gif playback
-<period> = next_frame
-<space> = toggle_playing
+# <period> = next_frame
+# <space> = toggle_playing
 
 # Slideshow control
-t = slideshow +1
-<Shift+T> = slideshow -1
+# t = slideshow +1
+# <Shift+T> = slideshow -1
+
+# s = scaling next
+# <Shift+S> = upscaling next

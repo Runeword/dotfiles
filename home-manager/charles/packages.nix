@@ -62,6 +62,7 @@
     brillo
 
     # ---------------------------------- CLI tools
+    distrobox
     fzf
     starship
     zoxide
@@ -116,6 +117,7 @@
     kooha
     # obs-studio
     vlc
+    davinci-resolve
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 

@@ -40,7 +40,7 @@ zmodload zsh/complist
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{245}-- %d --%f'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' group-name '' 
+# zstyle ':completion:*' group-name '' 
 zstyle ':completion:*' menu select interactive
 bindkey -M menuselect '^I' vi-forward-char
 

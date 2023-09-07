@@ -37,17 +37,19 @@ bindkey '^[OB' history-beginning-search-forward
 
 # ------------------------------------ Complete
 zmodload zsh/complist
-bindkey -M menuselect '^I' vi-forward-char
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{245}-- %d --%f'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' group-name '' 
 zstyle ':completion:*' menu select interactive
+bindkey -M menuselect '^I' vi-forward-char
+
 # zstyle ':completion:*' menu select
+# bindkey '^I' complete-word
+
 setopt MENU_COMPLETE
 bindkey -v '^?' backward-delete-char
-# bindkey '^I' complete-word
 bindkey '^[[Z' reverse-menu-complete
-# zstyle ':completion:*' group-name '' 
 
 # # ------------------------------------ zsh-abbr
 # abbr import-aliases

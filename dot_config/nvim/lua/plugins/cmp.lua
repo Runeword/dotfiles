@@ -107,5 +107,16 @@ return {
         { name = 'cmdline', },
       }),
     })
+
+    vim.keymap.set({ 'i', 's', }, '<C-CR>',   function() require 'luasnip'.jump(1) end,  { silent = true, })
+    vim.keymap.set({ 'i', 's', }, '<C-S-CR>', function() require 'luasnip'.jump(-1) end, { silent = true, })
+
+    -- vim.keymap.set({ 'i', },   '<C-K>', function() require'luasnip'.expand() end, { silent = true, })
+
+    -- vim.keymap.set({ 'i', 's', }, '<C-E>', function()
+    --   if require'luasnip'.choice_active() then
+    --     require'luasnip'.change_choice(1)
+    --   end
+    -- end, { silent = true, })
   end,
 }

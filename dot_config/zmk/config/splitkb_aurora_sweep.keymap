@@ -167,6 +167,7 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
       global-quick-tap;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24>;
     };
 
     // sticky key behavior with quick-release option that deactivate the sticky key on the next key being pressed

@@ -146,6 +146,29 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 / {
 
   behaviors {
+    lh_pht: left_hand_positional_hold_tap {
+      compatible = "zmk,behavior-hold-tap";
+      label = "LEFT_POSITIONAL_HOLD_TAP";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick-tap-ms = <125>;
+      global-quick-tap;
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29>;
+    };
+
+    rh_pht: right_hand_positional_hold_tap {
+      compatible = "zmk,behavior-hold-tap";
+      label = "RIGHT_POSITIONAL_HOLD_TAP";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick-tap-ms = <125>;
+      global-quick-tap;
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+    };
+
     // sticky key behavior with quick-release option that deactivate the sticky key on the next key being pressed
     skq: sk_quick_release {
       compatible = "zmk,behavior-sticky-key";
@@ -361,9 +384,9 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 
     default {
       bindings = <
-      &kp SQT &kp COMMA &kp DOT &kp P &kp Y              &kp F &kp G &kp C &kp R &kp L
-      &kp A &kp O &kp E &kp U &kp I                      &kp D &kp H &kp T &kp N &kp S
-      &kp SEMI &kp Q &kp J &kp K &kp X                   &kp B &kp M &kp W &kp V &kp Z
+      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                             &kp F &kp G &kp C &kp R &kp L
+      &lh_pht LALT A &lh_pht LGUI O &lh_pht LSFT E &lh_pht LCTL U &kp I &kp D &rh_pht RCTL H &rh_pht RSFT T &rh_pht RGUI N &rh_pht RALT S
+      &kp SEMI &kp Q &kp J &kp K &kp X                                  &kp B &kp M &kp W &kp V &kp Z
       &sl la_NUM &sl la_SYM &sl la_NAV &kp SPACE
       >;
     };

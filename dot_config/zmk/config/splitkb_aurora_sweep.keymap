@@ -24,6 +24,9 @@
 #define po_RG 18
 #define po_RA 19
 
+#define po_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
+#define po_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
+
 // hold-tap behavior that take two macros, one activated on hold, one activated on tap
 #define HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP) \
 NAME: NAME { \
@@ -146,28 +149,49 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 / {
 
   behaviors {
-    lh_pht: left_hand_positional_hold_tap {
+    ht_mo: hold_tap_momentary_layer {
       compatible = "zmk,behavior-hold-tap";
-      label = "LEFT_POSITIONAL_HOLD_TAP";
+      label = "ht_mo";
       #binding-cells = <2>;
+      flavor = "hold-preferred";
       tapping-term-ms = <200>;
-      quick-tap-ms = <125>;
-      global-quick-tap;
-      flavor = "balanced";
-      bindings = <&kp>, <&kp>;
-      hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29>;
+      bindings = <&mo>, <&kp>;
     };
 
-    rh_pht: right_hand_positional_hold_tap {
+    // &ht_mo_sk la_NAV RSFT
+    ht_mo_sk: hold_tap_momentary_layer_sticky_modifier {
       compatible = "zmk,behavior-hold-tap";
-      label = "RIGHT_POSITIONAL_HOLD_TAP";
+      label = "ht_mo_sk";
       #binding-cells = <2>;
+      flavor = "hold-preferred";
       tapping-term-ms = <200>;
-      quick-tap-ms = <125>;
-      global-quick-tap;
+      bindings = <&mo>, <&skq>;
+    };
+
+    ht_mod_l: hold_tap_modifier_left {
+      compatible = "zmk,behavior-hold-tap";
+      label = "hold_tap_modifier_left";
+      #binding-cells = <2>;
+      tapping-term-ms = <270>;
+      quick-tap-ms = <170>;
+      // global-quick-tap;
       flavor = "balanced";
       bindings = <&kp>, <&kp>;
-      hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24>;
+      hold-trigger-key-positions = <po_RIGHT>;
+      hold-trigger-on-release;
+    };
+
+    ht_mod_r: hold_tap_modifier_right {
+      compatible = "zmk,behavior-hold-tap";
+      label = "hold_tap_modifier_right";
+      #binding-cells = <2>;
+      tapping-term-ms = <270>;
+      quick-tap-ms = <170>;
+      // global-quick-tap;
+      flavor = "balanced";
+      bindings = <&kp>, <&kp>;
+      hold-trigger-key-positions = <po_LEFT>;
+      hold-trigger-on-release;
     };
 
     // sticky key behavior with quick-release option that deactivate the sticky key on the next key being pressed
@@ -192,41 +216,41 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
       ignore-modifiers;
      };
 
-     // SKQ_MACRO(NAME, MACRO)
+    // SKQ_MACRO(NAME, MACRO)
 
-     SKQ_MACRO(skqm_tap_num_LC, &mc_hold_num_LC)
-     SKQ_MACRO(skqm_tap_num_LS, &mc_hold_num_LS)
-     SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
-     SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
+    SKQ_MACRO(skqm_tap_num_LC, &mc_hold_num_LC)
+    SKQ_MACRO(skqm_tap_num_LS, &mc_hold_num_LS)
+    SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
+    SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
 
-     // TAPDANCE(NAME, TAP_1, TAP_2)
+    // TAPDANCE(NAME, TAP_1, TAP_2)
 
-     TAPDANCE(td_special_a,   &mc_grave_a,      &mc_circumflex_a)
-     TAPDANCE(td_special_i,   &mc_circumflex_i, &mc_trema_i)
-     TAPDANCE(td_special_e,   &mc_circumflex_e, &mc_trema_e)
-     TAPDANCE_3(td_special_u, &mc_grave_u,      &mc_circumflex_u, &mc_trema_u)
+    TAPDANCE(td_special_a,   &mc_grave_a,      &mc_circumflex_a)
+    TAPDANCE(td_special_i,   &mc_circumflex_i, &mc_trema_i)
+    TAPDANCE(td_special_e,   &mc_circumflex_e, &mc_trema_e)
+    TAPDANCE_3(td_special_u, &mc_grave_u,      &mc_circumflex_u, &mc_trema_u)
 
-     // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
+    // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
 
-     HOLDTAP_MACRO(ht_LC,     &mc_hold_LC,     &mc_tap_LC)
-     HOLDTAP_MACRO(ht_LCS,    &mc_hold_LCS,    &mc_tap_LCS)
-     HOLDTAP_MACRO(ht_RC,     &mc_hold_RC,     &mc_tap_RC)
-     HOLDTAP_MACRO(ht_RCS,    &mc_hold_RCS,    &mc_tap_RCS)
-     HOLDTAP_MACRO(ht_LG,     &mc_hold_LG,     &mc_tap_LG)
-     HOLDTAP_MACRO(ht_LGS,    &mc_hold_LGS,    &mc_tap_LGS)
-     HOLDTAP_MACRO(ht_RG,     &mc_hold_RG,     &mc_tap_RG)
-     HOLDTAP_MACRO(ht_RGS,    &mc_hold_RGS,    &mc_tap_RGS)
-     HOLDTAP_MACRO(ht_LA,     &mc_hold_LA,     &mc_tap_LA)
-     HOLDTAP_MACRO(ht_LAS,    &mc_hold_LAS,    &mc_tap_LAS)
-     HOLDTAP_MACRO(ht_RA,     &mc_hold_RA,     &mc_tap_RA)
-     HOLDTAP_MACRO(ht_RAS,    &mc_hold_RAS,    &mc_tap_RAS)
-     HOLDTAP_MACRO(ht_LS,     &mc_hold_LS,     &mc_tap_LS)
-     HOLDTAP_MACRO(ht_RS,     &mc_hold_RS,     &mc_tap_RS)
+    HOLDTAP_MACRO(ht_LC,     &mc_hold_LC,     &mc_tap_LC)
+    HOLDTAP_MACRO(ht_LCS,    &mc_hold_LCS,    &mc_tap_LCS)
+    HOLDTAP_MACRO(ht_RC,     &mc_hold_RC,     &mc_tap_RC)
+    HOLDTAP_MACRO(ht_RCS,    &mc_hold_RCS,    &mc_tap_RCS)
+    HOLDTAP_MACRO(ht_LG,     &mc_hold_LG,     &mc_tap_LG)
+    HOLDTAP_MACRO(ht_LGS,    &mc_hold_LGS,    &mc_tap_LGS)
+    HOLDTAP_MACRO(ht_RG,     &mc_hold_RG,     &mc_tap_RG)
+    HOLDTAP_MACRO(ht_RGS,    &mc_hold_RGS,    &mc_tap_RGS)
+    HOLDTAP_MACRO(ht_LA,     &mc_hold_LA,     &mc_tap_LA)
+    HOLDTAP_MACRO(ht_LAS,    &mc_hold_LAS,    &mc_tap_LAS)
+    HOLDTAP_MACRO(ht_RA,     &mc_hold_RA,     &mc_tap_RA)
+    HOLDTAP_MACRO(ht_RAS,    &mc_hold_RAS,    &mc_tap_RAS)
+    HOLDTAP_MACRO(ht_LS,     &mc_hold_LS,     &mc_tap_LS)
+    HOLDTAP_MACRO(ht_RS,     &mc_hold_RS,     &mc_tap_RS)
 
-     HOLDTAP_MACRO(ht_num_LC, &mc_hold_num_LC, &mc_tap_num_LC)
-     HOLDTAP_MACRO(ht_num_LS, &mc_hold_num_LS, &mc_tap_num_LS)
-     HOLDTAP_MACRO(ht_num_LG, &mc_hold_num_LG, &mc_tap_num_LG)
-     HOLDTAP_MACRO(ht_num_LA, &mc_hold_num_LA, &mc_tap_num_LA)
+    HOLDTAP_MACRO(ht_num_LC, &mc_hold_num_LC, &mc_tap_num_LC)
+    HOLDTAP_MACRO(ht_num_LS, &mc_hold_num_LS, &mc_tap_num_LS)
+    HOLDTAP_MACRO(ht_num_LG, &mc_hold_num_LG, &mc_tap_num_LG)
+    HOLDTAP_MACRO(ht_num_LA, &mc_hold_num_LA, &mc_tap_num_LA)
   };
 
   macros {
@@ -295,10 +319,9 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
   combos {
     compatible = "zmk,combos";
 
-    cb_tab { layers = <la_DEF la_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
-    cb_esc_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
-    cb_esc_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&kp ESC>; };
-    cb_bspc { layers = <la_DEF la_NAV la_RMOD>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
+    cb_tab { layers = <la_DEF la_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&ht_mod_l LS(LCTRL) TAB>; };
+    cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&ht_mod_l LS(LGUI) ESC>; };
+    cb_bspc { layers = <la_DEF la_NAV la_RMOD>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp BSPC>; };
     cb_repeat { layers = <la_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
     cb_enter_l { layers = <la_DEF la_RMOD la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
     cb_enter_r { layers = <la_DEF la_LMOD>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
@@ -385,9 +408,9 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 
     default {
       bindings = <
-      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                             &kp F &kp G &kp C &kp R &kp L
-      &lh_pht LALT A &lh_pht LGUI O &lh_pht LSFT E &lh_pht LCTL U &kp I &kp D &rh_pht RCTL H &rh_pht RSFT T &rh_pht RGUI N &rh_pht RALT S
-      &kp SEMI &kp Q &kp J &kp K &kp X                                  &kp B &kp M &kp W &kp V &kp Z
+      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                       &kp F &kp G &kp C &kp R &kp L
+      &ht_mod_l LALT A &ht_mod_l LGUI O &ht_mod_l LSFT E &ht_mod_l LCTL U &kp I   &kp D &ht_mod_r RCTL H &ht_mod_r RSFT T &ht_mod_r RGUI N &ht_mod_r RALT S
+      &kp SEMI &kp Q &kp J &kp K &kp X                                            &kp B &kp M &kp W &kp V &kp Z
       &sl la_NUM &sl la_SYM &sl la_NAV &kp SPACE
       >;
     };

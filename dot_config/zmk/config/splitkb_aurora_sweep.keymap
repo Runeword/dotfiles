@@ -24,8 +24,34 @@
 #define po_RG 18
 #define po_RA 19
 
-#define po_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29
-#define po_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24
+#define po_RIGHT 5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 30 31 32 33
+#define po_LEFT 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33
+
+#define HM(NAME, HOLD, TAP, TRIGGER_POS) \
+NAME: NAME { \
+  label = #NAME; \
+  compatible = "zmk,behavior-hold-tap"; \
+  #binding-cells = <2>; \
+  tapping-term-ms = <270>; \
+  quick-tap-ms = <170>; \
+  global-quick-tap; \
+  flavor = "balanced"; \
+  bindings = <HOLD>, <TAP>; \
+  hold-trigger-key-positions = <TRIGGER_POS>; \
+  hold-trigger-on-release; \
+};
+
+#define HMM(NAME, HOLD, TAP, TRIGGER_POS) \
+NAME: NAME { \
+  label = #NAME; \
+  compatible = "zmk,behavior-hold-tap"; \
+  #binding-cells = <2>; \
+  tapping-term-ms = <270>; \
+  quick-tap-ms = <170>; \
+  global-quick-tap; \
+  flavor = "balanced"; \
+  bindings = <HOLD>, <TAP>; \
+};
 
 // hold-tap behavior that take two macros, one activated on hold, one activated on tap
 #define HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP) \
@@ -109,46 +135,51 @@ NAME: NAME { \
   bindings = <TAP_1>, <TAP_2>, <TAP_3>; \
 };
 
-#define COMBO_MOD(MOD) \
-COMBO(cb_R##MOD##_SQT,   50, po_T2 po_R##MOD 0,  <&kp R##MOD(SQT)>)   \
-COMBO(cb_R##MOD##_COMMA, 50, po_T2 po_R##MOD 1,  <&kp R##MOD(COMMA)>) \
-COMBO(cb_R##MOD##_DOT,   50, po_T2 po_R##MOD 2,  <&kp R##MOD(DOT)>)   \
-COMBO(cb_R##MOD##_P,     50, po_T2 po_R##MOD 3,  <&kp R##MOD(P)>)     \
-COMBO(cb_R##MOD##_Y,     50, po_T2 po_R##MOD 4,  <&kp R##MOD(Y)>)     \
-\
-COMBO(cb_L##MOD##_F,     50, po_T1 po_L##MOD 5,  <&kp L##MOD(F)>)     \
-COMBO(cb_L##MOD##_G,     50, po_T1 po_L##MOD 6,  <&kp L##MOD(G)>)     \
-COMBO(cb_L##MOD##_C,     50, po_T1 po_L##MOD 7,  <&kp L##MOD(C)>)     \
-COMBO(cb_L##MOD##_R,     50, po_T1 po_L##MOD 8,  <&kp L##MOD(R)>)     \
-COMBO(cb_L##MOD##_L,     50, po_T1 po_L##MOD 9,  <&kp L##MOD(L)>)     \
-\
-COMBO(cb_R##MOD##_A,     50, po_T2 po_R##MOD 10, <&kp R##MOD(A)>)     \
-COMBO(cb_R##MOD##_O,     50, po_T2 po_R##MOD 11, <&kp R##MOD(O)>)     \
-COMBO(cb_R##MOD##_E,     50, po_T2 po_R##MOD 12, <&kp R##MOD(E)>)     \
-COMBO(cb_R##MOD##_U,     50, po_T2 po_R##MOD 13, <&kp R##MOD(U)>)     \
-COMBO(cb_R##MOD##_I,     50, po_T2 po_R##MOD 14, <&kp R##MOD(I)>)     \
-\
-COMBO(cb_L##MOD##_D,     50, po_T1 po_L##MOD 15, <&kp L##MOD(D)>)     \
-COMBO(cb_L##MOD##_H,     50, po_T1 po_L##MOD 16, <&kp L##MOD(H)>)     \
-COMBO(cb_L##MOD##_T,     50, po_T1 po_L##MOD 17, <&kp L##MOD(T)>)     \
-COMBO(cb_L##MOD##_N,     50, po_T1 po_L##MOD 18, <&kp L##MOD(N)>)     \
-COMBO(cb_L##MOD##_S,     50, po_T1 po_L##MOD 19, <&kp L##MOD(S)>)     \
-\
-COMBO(cb_R##MOD##_SEMI,  50, po_T2 po_R##MOD 20, <&kp R##MOD(SEMI)>)  \
-COMBO(cb_R##MOD##_Q,     50, po_T2 po_R##MOD 21, <&kp R##MOD(Q)>)     \
-COMBO(cb_R##MOD##_J,     50, po_T2 po_R##MOD 22, <&kp R##MOD(J)>)     \
-COMBO(cb_R##MOD##_K,     50, po_T2 po_R##MOD 23, <&kp R##MOD(K)>)     \
-COMBO(cb_R##MOD##_X,     50, po_T2 po_R##MOD 24, <&kp R##MOD(X)>)     \
-\
-COMBO(cb_L##MOD##_B,     50, po_T1 po_L##MOD 25, <&kp L##MOD(B)>)     \
-COMBO(cb_L##MOD##_M,     50, po_T1 po_L##MOD 26, <&kp L##MOD(M)>)     \
-COMBO(cb_L##MOD##_W,     50, po_T1 po_L##MOD 27, <&kp L##MOD(W)>)     \
-COMBO(cb_L##MOD##_V,     50, po_T1 po_L##MOD 28, <&kp L##MOD(V)>)     \
-COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
+// #define COMBO_MOD(MOD) \
+// COMBO(cb_R##MOD##_SQT,   50, po_T2 po_R##MOD 0,  <&kp R##MOD(SQT)>)   \
+// COMBO(cb_R##MOD##_COMMA, 50, po_T2 po_R##MOD 1,  <&kp R##MOD(COMMA)>) \
+// COMBO(cb_R##MOD##_DOT,   50, po_T2 po_R##MOD 2,  <&kp R##MOD(DOT)>)   \
+// COMBO(cb_R##MOD##_P,     50, po_T2 po_R##MOD 3,  <&kp R##MOD(P)>)     \
+// COMBO(cb_R##MOD##_Y,     50, po_T2 po_R##MOD 4,  <&kp R##MOD(Y)>)     \
+// \
+// COMBO(cb_L##MOD##_F,     50, po_T1 po_L##MOD 5,  <&kp L##MOD(F)>)     \
+// COMBO(cb_L##MOD##_G,     50, po_T1 po_L##MOD 6,  <&kp L##MOD(G)>)     \
+// COMBO(cb_L##MOD##_C,     50, po_T1 po_L##MOD 7,  <&kp L##MOD(C)>)     \
+// COMBO(cb_L##MOD##_R,     50, po_T1 po_L##MOD 8,  <&kp L##MOD(R)>)     \
+// COMBO(cb_L##MOD##_L,     50, po_T1 po_L##MOD 9,  <&kp L##MOD(L)>)     \
+// \
+// COMBO(cb_R##MOD##_A,     50, po_T2 po_R##MOD 10, <&kp R##MOD(A)>)     \
+// COMBO(cb_R##MOD##_O,     50, po_T2 po_R##MOD 11, <&kp R##MOD(O)>)     \
+// COMBO(cb_R##MOD##_E,     50, po_T2 po_R##MOD 12, <&kp R##MOD(E)>)     \
+// COMBO(cb_R##MOD##_U,     50, po_T2 po_R##MOD 13, <&kp R##MOD(U)>)     \
+// COMBO(cb_R##MOD##_I,     50, po_T2 po_R##MOD 14, <&kp R##MOD(I)>)     \
+// \
+// COMBO(cb_L##MOD##_D,     50, po_T1 po_L##MOD 15, <&kp L##MOD(D)>)     \
+// COMBO(cb_L##MOD##_H,     50, po_T1 po_L##MOD 16, <&kp L##MOD(H)>)     \
+// COMBO(cb_L##MOD##_T,     50, po_T1 po_L##MOD 17, <&kp L##MOD(T)>)     \
+// COMBO(cb_L##MOD##_N,     50, po_T1 po_L##MOD 18, <&kp L##MOD(N)>)     \
+// COMBO(cb_L##MOD##_S,     50, po_T1 po_L##MOD 19, <&kp L##MOD(S)>)     \
+// \
+// COMBO(cb_R##MOD##_SEMI,  50, po_T2 po_R##MOD 20, <&kp R##MOD(SEMI)>)  \
+// COMBO(cb_R##MOD##_Q,     50, po_T2 po_R##MOD 21, <&kp R##MOD(Q)>)     \
+// COMBO(cb_R##MOD##_J,     50, po_T2 po_R##MOD 22, <&kp R##MOD(J)>)     \
+// COMBO(cb_R##MOD##_K,     50, po_T2 po_R##MOD 23, <&kp R##MOD(K)>)     \
+// COMBO(cb_R##MOD##_X,     50, po_T2 po_R##MOD 24, <&kp R##MOD(X)>)     \
+// \
+// COMBO(cb_L##MOD##_B,     50, po_T1 po_L##MOD 25, <&kp L##MOD(B)>)     \
+// COMBO(cb_L##MOD##_M,     50, po_T1 po_L##MOD 26, <&kp L##MOD(M)>)     \
+// COMBO(cb_L##MOD##_W,     50, po_T1 po_L##MOD 27, <&kp L##MOD(W)>)     \
+// COMBO(cb_L##MOD##_V,     50, po_T1 po_L##MOD 28, <&kp L##MOD(V)>)     \
+// COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 
 / {
 
   behaviors {
+    HMM(hm_mod_l, &kp, &kp, po_RIGHT)
+    HMM(hm_mod_r, &kp, &kp, po_LEFT)
+    HM(hm_mo_r, &mo, &kp, po_LEFT)
+    HM(hm_mo_l, &mo, &kp, po_RIGHT)
+
     ht_mo: hold_tap_momentary_layer {
       compatible = "zmk,behavior-hold-tap";
       label = "ht_mo";
@@ -166,32 +197,6 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
       flavor = "hold-preferred";
       tapping-term-ms = <200>;
       bindings = <&mo>, <&skq>;
-    };
-
-    ht_mod_l: hold_tap_modifier_left {
-      compatible = "zmk,behavior-hold-tap";
-      label = "hold_tap_modifier_left";
-      #binding-cells = <2>;
-      tapping-term-ms = <270>;
-      quick-tap-ms = <170>;
-      global-quick-tap;
-      flavor = "balanced";
-      bindings = <&kp>, <&kp>;
-      hold-trigger-key-positions = <po_RIGHT>;
-      hold-trigger-on-release;
-    };
-
-    ht_mod_r: hold_tap_modifier_right {
-      compatible = "zmk,behavior-hold-tap";
-      label = "hold_tap_modifier_right";
-      #binding-cells = <2>;
-      tapping-term-ms = <270>;
-      quick-tap-ms = <170>;
-      global-quick-tap;
-      flavor = "balanced";
-      bindings = <&kp>, <&kp>;
-      hold-trigger-key-positions = <po_LEFT>;
-      hold-trigger-on-release;
     };
 
     // sticky key behavior with quick-release option that deactivate the sticky key on the next key being pressed
@@ -216,12 +221,12 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
       ignore-modifiers;
      };
 
-    // SKQ_MACRO(NAME, MACRO)
+    // // SKQ_MACRO(NAME, MACRO)
 
-    SKQ_MACRO(skqm_tap_num_LC, &mc_hold_num_LC)
-    SKQ_MACRO(skqm_tap_num_LS, &mc_hold_num_LS)
-    SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
-    SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
+    // SKQ_MACRO(skqm_tap_num_LC, &mc_hold_num_LC)
+    // SKQ_MACRO(skqm_tap_num_LS, &mc_hold_num_LS)
+    // SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
+    // SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
 
     // TAPDANCE(NAME, TAP_1, TAP_2)
 
@@ -230,76 +235,76 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
     TAPDANCE(td_special_e,   &mc_circumflex_e, &mc_trema_e)
     TAPDANCE_3(td_special_u, &mc_grave_u,      &mc_circumflex_u, &mc_trema_u)
 
-    // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
+    // // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
 
-    HOLDTAP_MACRO(ht_LC,     &mc_hold_LC,     &mc_tap_LC)
-    HOLDTAP_MACRO(ht_LCS,    &mc_hold_LCS,    &mc_tap_LCS)
-    HOLDTAP_MACRO(ht_RC,     &mc_hold_RC,     &mc_tap_RC)
-    HOLDTAP_MACRO(ht_RCS,    &mc_hold_RCS,    &mc_tap_RCS)
-    HOLDTAP_MACRO(ht_LG,     &mc_hold_LG,     &mc_tap_LG)
-    HOLDTAP_MACRO(ht_LGS,    &mc_hold_LGS,    &mc_tap_LGS)
-    HOLDTAP_MACRO(ht_RG,     &mc_hold_RG,     &mc_tap_RG)
-    HOLDTAP_MACRO(ht_RGS,    &mc_hold_RGS,    &mc_tap_RGS)
-    HOLDTAP_MACRO(ht_LA,     &mc_hold_LA,     &mc_tap_LA)
-    HOLDTAP_MACRO(ht_LAS,    &mc_hold_LAS,    &mc_tap_LAS)
-    HOLDTAP_MACRO(ht_RA,     &mc_hold_RA,     &mc_tap_RA)
-    HOLDTAP_MACRO(ht_RAS,    &mc_hold_RAS,    &mc_tap_RAS)
-    HOLDTAP_MACRO(ht_LS,     &mc_hold_LS,     &mc_tap_LS)
-    HOLDTAP_MACRO(ht_RS,     &mc_hold_RS,     &mc_tap_RS)
+    // HOLDTAP_MACRO(ht_LC,     &mc_hold_LC,     &mc_tap_LC)
+    // HOLDTAP_MACRO(ht_LCS,    &mc_hold_LCS,    &mc_tap_LCS)
+    // HOLDTAP_MACRO(ht_RC,     &mc_hold_RC,     &mc_tap_RC)
+    // HOLDTAP_MACRO(ht_RCS,    &mc_hold_RCS,    &mc_tap_RCS)
+    // HOLDTAP_MACRO(ht_LG,     &mc_hold_LG,     &mc_tap_LG)
+    // HOLDTAP_MACRO(ht_LGS,    &mc_hold_LGS,    &mc_tap_LGS)
+    // HOLDTAP_MACRO(ht_RG,     &mc_hold_RG,     &mc_tap_RG)
+    // HOLDTAP_MACRO(ht_RGS,    &mc_hold_RGS,    &mc_tap_RGS)
+    // HOLDTAP_MACRO(ht_LA,     &mc_hold_LA,     &mc_tap_LA)
+    // HOLDTAP_MACRO(ht_LAS,    &mc_hold_LAS,    &mc_tap_LAS)
+    // HOLDTAP_MACRO(ht_RA,     &mc_hold_RA,     &mc_tap_RA)
+    // HOLDTAP_MACRO(ht_RAS,    &mc_hold_RAS,    &mc_tap_RAS)
+    // HOLDTAP_MACRO(ht_LS,     &mc_hold_LS,     &mc_tap_LS)
+    // HOLDTAP_MACRO(ht_RS,     &mc_hold_RS,     &mc_tap_RS)
 
-    HOLDTAP_MACRO(ht_num_LC, &mc_hold_num_LC, &mc_tap_num_LC)
-    HOLDTAP_MACRO(ht_num_LS, &mc_hold_num_LS, &mc_tap_num_LS)
-    HOLDTAP_MACRO(ht_num_LG, &mc_hold_num_LG, &mc_tap_num_LG)
-    HOLDTAP_MACRO(ht_num_LA, &mc_hold_num_LA, &mc_tap_num_LA)
+    // HOLDTAP_MACRO(ht_num_LC, &mc_hold_num_LC, &mc_tap_num_LC)
+    // HOLDTAP_MACRO(ht_num_LS, &mc_hold_num_LS, &mc_tap_num_LS)
+    // HOLDTAP_MACRO(ht_num_LG, &mc_hold_num_LG, &mc_tap_num_LG)
+    // HOLDTAP_MACRO(ht_num_LA, &mc_hold_num_LA, &mc_tap_num_LA)
   };
 
   macros {
-    // MACRO_HOLD(NAME, BINDINGS)
+    // // MACRO_HOLD(NAME, BINDINGS)
 
-    MACRO_HOLD(mc_hold_LC,     &mo la_LMOD &kp LCTRL)
-    MACRO_HOLD(mc_hold_LCS,    &mo la_LMOD &kp LC(LSHFT))
-    MACRO_HOLD(mc_hold_RC,     &mo la_RMOD &kp RCTRL)
-    MACRO_HOLD(mc_hold_RCS,    &mo la_RMOD &kp RC(RSHFT))
-    MACRO_HOLD(mc_hold_LG,     &mo la_LMOD &kp LGUI)
-    MACRO_HOLD(mc_hold_LGS,    &mo la_LMOD &kp LG(LSHFT))
-    MACRO_HOLD(mc_hold_RG,     &mo la_RMOD &kp RGUI)
-    MACRO_HOLD(mc_hold_RGS,    &mo la_RMOD &kp RG(RSHFT))
-    MACRO_HOLD(mc_hold_LA,     &mo la_LMOD &kp LALT)
-    MACRO_HOLD(mc_hold_LAS,    &mo la_LMOD &kp LA(LSHFT))
-    MACRO_HOLD(mc_hold_RA,     &mo la_RMOD &kp LALT)
-    MACRO_HOLD(mc_hold_RAS,    &mo la_RMOD &kp LA(RSHFT))
-    MACRO_HOLD(mc_hold_LS,     &mo la_LMOD &kp LSHFT)
-    MACRO_HOLD(mc_hold_RS,     &mo la_RMOD &kp RSHFT)
+    // MACRO_HOLD(mc_hold_LC,     &mo la_LMOD &kp LCTRL)
+    // MACRO_HOLD(mc_hold_LCS,    &mo la_LMOD &kp LC(LSHFT))
+    // MACRO_HOLD(mc_hold_RC,     &mo la_RMOD &kp RCTRL)
+    // MACRO_HOLD(mc_hold_RCS,    &mo la_RMOD &kp RC(RSHFT))
+    // MACRO_HOLD(mc_hold_LG,     &mo la_LMOD &kp LGUI)
+    // MACRO_HOLD(mc_hold_LGS,    &mo la_LMOD &kp LG(LSHFT))
+    // MACRO_HOLD(mc_hold_RG,     &mo la_RMOD &kp RGUI)
+    // MACRO_HOLD(mc_hold_RGS,    &mo la_RMOD &kp RG(RSHFT))
+    // MACRO_HOLD(mc_hold_LA,     &mo la_LMOD &kp LALT)
+    // MACRO_HOLD(mc_hold_LAS,    &mo la_LMOD &kp LA(LSHFT))
+    // MACRO_HOLD(mc_hold_RA,     &mo la_RMOD &kp LALT)
+    // MACRO_HOLD(mc_hold_RAS,    &mo la_RMOD &kp LA(RSHFT))
+    // MACRO_HOLD(mc_hold_LS,     &mo la_LMOD &kp LSHFT)
+    // MACRO_HOLD(mc_hold_RS,     &mo la_RMOD &kp RSHFT)
 
-    MACRO_HOLD(mc_hold_num_LC, &mo la_NUM  &kp LCTRL)
-    MACRO_HOLD(mc_hold_num_LS, &mo la_NUM  &kp LSHFT)
-    MACRO_HOLD(mc_hold_num_LG, &mo la_NUM  &kp LGUI)
-    MACRO_HOLD(mc_hold_num_LA, &mo la_NUM  &kp LALT)
+    // MACRO_HOLD(mc_hold_num_LC, &mo la_NUM  &kp LCTRL)
+    // MACRO_HOLD(mc_hold_num_LS, &mo la_NUM  &kp LSHFT)
+    // MACRO_HOLD(mc_hold_num_LG, &mo la_NUM  &kp LGUI)
+    // MACRO_HOLD(mc_hold_num_LA, &mo la_NUM  &kp LALT)
 
-    // MACRO_TAP(NAME, BINDINGS)
+    // // MACRO_TAP(NAME, BINDINGS)
 
-    MACRO_TAP(mc_tap_LC,  &skq  LCTRL)
-    MACRO_TAP(mc_tap_LCS, &skqx LC(LSHFT))
-    MACRO_TAP(mc_tap_RC,  &skq  RCTRL)
-    MACRO_TAP(mc_tap_RCS, &skqx RC(RSHFT))
-    MACRO_TAP(mc_tap_LG,  &skq  LGUI)
-    MACRO_TAP(mc_tap_LGS, &skqx LG(LSHFT))
-    MACRO_TAP(mc_tap_RG,  &skq  RGUI)
-    MACRO_TAP(mc_tap_RGS, &skqx RG(RSHFT))
-    MACRO_TAP(mc_tap_LA,  &skq  LALT)
-    MACRO_TAP(mc_tap_LAS, &skqx LA(LSHFT))
-    MACRO_TAP(mc_tap_RA,  &skq  LALT)
-    MACRO_TAP(mc_tap_RAS, &skqx LA(RSHFT))
-    MACRO_TAP(mc_tap_LS,  &skq  LSHFT)
-    MACRO_TAP(mc_tap_RS,  &skq  RSHFT)
+    // MACRO_TAP(mc_tap_LC,  &skq  LCTRL)
+    // MACRO_TAP(mc_tap_LCS, &skqx LC(LSHFT))
+    // MACRO_TAP(mc_tap_RC,  &skq  RCTRL)
+    // MACRO_TAP(mc_tap_RCS, &skqx RC(RSHFT))
+    // MACRO_TAP(mc_tap_LG,  &skq  LGUI)
+    // MACRO_TAP(mc_tap_LGS, &skqx LG(LSHFT))
+    // MACRO_TAP(mc_tap_RG,  &skq  RGUI)
+    // MACRO_TAP(mc_tap_RGS, &skqx RG(RSHFT))
+    // MACRO_TAP(mc_tap_LA,  &skq  LALT)
+    // MACRO_TAP(mc_tap_LAS, &skqx LA(LSHFT))
+    // MACRO_TAP(mc_tap_RA,  &skq  LALT)
+    // MACRO_TAP(mc_tap_RAS, &skqx LA(RSHFT))
+    // MACRO_TAP(mc_tap_LS,  &skq  LSHFT)
+    // MACRO_TAP(mc_tap_RS,  &skq  RSHFT)
 
-    // can't use two sticky keys like sk and sl in a macro because they are indexed by key position
-    // https://github.com/zmkfirmware/zmk/issues/1421
-    // the workaround is to create a custom sticky key behavior with a hold macro as binding
-    MACRO_TAP(mc_tap_num_LC, &skqm_tap_num_LC 0)
-    MACRO_TAP(mc_tap_num_LS, &skqm_tap_num_LS 0)
-    MACRO_TAP(mc_tap_num_LG, &skqm_tap_num_LG 0)
-    MACRO_TAP(mc_tap_num_LA, &skqm_tap_num_LA 0)
+    // // can't use two sticky keys like sk and sl in a macro because they are indexed by key position
+    // // https://github.com/zmkfirmware/zmk/issues/1421
+    // // the workaround is to create a custom sticky key behavior with a hold macro as binding
+    // MACRO_TAP(mc_tap_num_LC, &skqm_tap_num_LC 0)
+    // MACRO_TAP(mc_tap_num_LS, &skqm_tap_num_LS 0)
+    // MACRO_TAP(mc_tap_num_LG, &skqm_tap_num_LG 0)
+    // MACRO_TAP(mc_tap_num_LA, &skqm_tap_num_LA 0)
 
     MACRO_TAP(mc_grave_a,      &kp RA(GRAVE)    &kp A)
     MACRO_TAP(mc_grave_e,      &kp RA(GRAVE)    &kp E)
@@ -319,9 +324,10 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
   combos {
     compatible = "zmk,combos";
 
-    cb_tab { layers = <la_DEF la_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&ht_mod_l LS(LCTRL) TAB>; };
-    cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&ht_mod_l LS(LGUI) ESC>; };
-    cb_bspc { layers = <la_DEF la_NAV la_RMOD>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp BSPC>; };
+    cb_tab { layers = <la_DEF la_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
+    cb_bspc { layers = <la_DEF la_NAV la_RMOD>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
+    cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
+    // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&hm_mod_l LS(LGUI) ESC>; };
     cb_repeat { layers = <la_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
     cb_enter_l { layers = <la_DEF la_RMOD la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
     cb_enter_r { layers = <la_DEF la_LMOD>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
@@ -341,58 +347,58 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
     cb_special_i { layers = <la_DEF>; timeout-ms = <100>; key-positions = <24 14>; bindings = <&td_special_i>; };
     cb_cedilla_c { layers = <la_DEF>; timeout-ms = <100>; key-positions = <17 7>; bindings = <&mc_cedilla_c>; };
 
-    // la_DEF STICKY MODIFIERS
-    // COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP)
-    COMBO_HOLDTAP(cb_LC,  30, po_T1 po_LC, ht_LC)
-    COMBO_HOLDTAP(cb_LCS, 30, po_T1 po_LC  po_LS, ht_LCS)
-    COMBO_HOLDTAP(cb_RC,  30, po_T2 po_RC, ht_RC)
-    COMBO_HOLDTAP(cb_RCS, 30, po_T2 po_RC  po_RS, ht_RCS)
-    COMBO_HOLDTAP(cb_LG,  30, po_T1 po_LG, ht_LG)
-    COMBO_HOLDTAP(cb_LGS, 30, po_T1 po_LG  po_LS, ht_LGS)
-    COMBO_HOLDTAP(cb_RG,  30, po_T2 po_RG, ht_RG)
-    COMBO_HOLDTAP(cb_RGS, 30, po_T2 po_RG  po_RS, ht_RGS)
-    COMBO_HOLDTAP(cb_LA,  30, po_T1 po_LA, ht_LA)
-    COMBO_HOLDTAP(cb_LAS, 30, po_T1 po_LA  po_LS, ht_LAS)
-    COMBO_HOLDTAP(cb_RA,  30, po_T2 po_RA, ht_RA)
-    COMBO_HOLDTAP(cb_RAS, 30, po_T2 po_RA  po_RS, ht_RAS)
-    COMBO_HOLDTAP(cb_LS,  30, po_T1 po_LS, ht_LS)
-    COMBO_HOLDTAP(cb_RS,  30, po_T2 po_RS, ht_RS)
+    // // la_DEF STICKY MODIFIERS
+    // // COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP)
+    // COMBO_HOLDTAP(cb_LC,  30, po_T1 po_LC, ht_LC)
+    // COMBO_HOLDTAP(cb_LCS, 30, po_T1 po_LC  po_LS, ht_LCS)
+    // COMBO_HOLDTAP(cb_RC,  30, po_T2 po_RC, ht_RC)
+    // COMBO_HOLDTAP(cb_RCS, 30, po_T2 po_RC  po_RS, ht_RCS)
+    // COMBO_HOLDTAP(cb_LG,  30, po_T1 po_LG, ht_LG)
+    // COMBO_HOLDTAP(cb_LGS, 30, po_T1 po_LG  po_LS, ht_LGS)
+    // COMBO_HOLDTAP(cb_RG,  30, po_T2 po_RG, ht_RG)
+    // COMBO_HOLDTAP(cb_RGS, 30, po_T2 po_RG  po_RS, ht_RGS)
+    // COMBO_HOLDTAP(cb_LA,  30, po_T1 po_LA, ht_LA)
+    // COMBO_HOLDTAP(cb_LAS, 30, po_T1 po_LA  po_LS, ht_LAS)
+    // COMBO_HOLDTAP(cb_RA,  30, po_T2 po_RA, ht_RA)
+    // COMBO_HOLDTAP(cb_RAS, 30, po_T2 po_RA  po_RS, ht_RAS)
+    // COMBO_HOLDTAP(cb_LS,  30, po_T1 po_LS, ht_LS)
+    // COMBO_HOLDTAP(cb_RS,  30, po_T2 po_RS, ht_RS)
 
-    COMBO_MOD(C)
-    COMBO_MOD(S)
-    COMBO_MOD(G)
-    COMBO_MOD(A)
+    // COMBO_MOD(C)
+    // COMBO_MOD(S)
+    // COMBO_MOD(G)
+    // COMBO_MOD(A)
 
-    // la_NUM CTRL
-    COMBO(cb_LC_0, 50, po_T0 po_LC 15, <&kp LC(NUMBER_0)>)
-    COMBO(cb_LC_1, 50, po_T0 po_LC 16, <&kp LC(NUMBER_1)>)
-    COMBO(cb_LC_2, 50, po_T0 po_LC 17, <&kp LC(NUMBER_2)>)
-    COMBO(cb_LC_3, 50, po_T0 po_LC 18, <&kp LC(NUMBER_3)>)
-    COMBO(cb_LC_4, 50, po_T0 po_LC 19, <&kp LC(NUMBER_4)>)
-    COMBO(cb_LC_5, 50, po_T0 po_LC 5,  <&kp LC(NUMBER_5)>)
-    COMBO(cb_LC_6, 50, po_T0 po_LC 6,  <&kp LC(NUMBER_6)>)
-    COMBO(cb_LC_7, 50, po_T0 po_LC 7,  <&kp LC(NUMBER_7)>)
-    COMBO(cb_LC_8, 50, po_T0 po_LC 8,  <&kp LC(NUMBER_8)>)
-    COMBO(cb_LC_9, 50, po_T0 po_LC 9,  <&kp LC(NUMBER_9)>)
+    // // la_NUM CTRL
+    // COMBO(cb_LC_0, 50, po_T0 po_LC 15, <&kp LC(NUMBER_0)>)
+    // COMBO(cb_LC_1, 50, po_T0 po_LC 16, <&kp LC(NUMBER_1)>)
+    // COMBO(cb_LC_2, 50, po_T0 po_LC 17, <&kp LC(NUMBER_2)>)
+    // COMBO(cb_LC_3, 50, po_T0 po_LC 18, <&kp LC(NUMBER_3)>)
+    // COMBO(cb_LC_4, 50, po_T0 po_LC 19, <&kp LC(NUMBER_4)>)
+    // COMBO(cb_LC_5, 50, po_T0 po_LC 5,  <&kp LC(NUMBER_5)>)
+    // COMBO(cb_LC_6, 50, po_T0 po_LC 6,  <&kp LC(NUMBER_6)>)
+    // COMBO(cb_LC_7, 50, po_T0 po_LC 7,  <&kp LC(NUMBER_7)>)
+    // COMBO(cb_LC_8, 50, po_T0 po_LC 8,  <&kp LC(NUMBER_8)>)
+    // COMBO(cb_LC_9, 50, po_T0 po_LC 9,  <&kp LC(NUMBER_9)>)
 
-    // la_NUM GUI
-    COMBO(cb_LG_0, 50, po_T0 po_LG 15, <&kp LG(NUMBER_0)>)
-    COMBO(cb_LG_1, 50, po_T0 po_LG 16, <&kp LG(NUMBER_1)>)
-    COMBO(cb_LG_2, 50, po_T0 po_LG 17, <&kp LG(NUMBER_2)>)
-    COMBO(cb_LG_3, 50, po_T0 po_LG 18, <&kp LG(NUMBER_3)>)
-    COMBO(cb_LG_4, 50, po_T0 po_LG 19, <&kp LG(NUMBER_4)>)
-    COMBO(cb_LG_5, 50, po_T0 po_LG 5,  <&kp LG(NUMBER_5)>)
-    COMBO(cb_LG_6, 50, po_T0 po_LG 6,  <&kp LG(NUMBER_6)>)
-    COMBO(cb_LG_7, 50, po_T0 po_LG 7,  <&kp LG(NUMBER_7)>)
-    COMBO(cb_LG_8, 50, po_T0 po_LG 8,  <&kp LG(NUMBER_8)>)
-    COMBO(cb_LG_9, 50, po_T0 po_LG 9,  <&kp LG(NUMBER_9)>)
+    // // la_NUM GUI
+    // COMBO(cb_LG_0, 50, po_T0 po_LG 15, <&kp LG(NUMBER_0)>)
+    // COMBO(cb_LG_1, 50, po_T0 po_LG 16, <&kp LG(NUMBER_1)>)
+    // COMBO(cb_LG_2, 50, po_T0 po_LG 17, <&kp LG(NUMBER_2)>)
+    // COMBO(cb_LG_3, 50, po_T0 po_LG 18, <&kp LG(NUMBER_3)>)
+    // COMBO(cb_LG_4, 50, po_T0 po_LG 19, <&kp LG(NUMBER_4)>)
+    // COMBO(cb_LG_5, 50, po_T0 po_LG 5,  <&kp LG(NUMBER_5)>)
+    // COMBO(cb_LG_6, 50, po_T0 po_LG 6,  <&kp LG(NUMBER_6)>)
+    // COMBO(cb_LG_7, 50, po_T0 po_LG 7,  <&kp LG(NUMBER_7)>)
+    // COMBO(cb_LG_8, 50, po_T0 po_LG 8,  <&kp LG(NUMBER_8)>)
+    // COMBO(cb_LG_9, 50, po_T0 po_LG 9,  <&kp LG(NUMBER_9)>)
 
-    // la_NUM STICKY MODIFIERS
-    // COMBO_HOLDTAP(NAME, TIME, POS, HT)
-    COMBO_HOLDTAP(cb_num_LC, 30, po_T0 po_LC, ht_num_LC)
-    COMBO_HOLDTAP(cb_num_LS, 30, po_T0 po_LS, ht_num_LS)
-    COMBO_HOLDTAP(cb_num_LG, 30, po_T0 po_LG, ht_num_LG)
-    COMBO_HOLDTAP(cb_num_LA, 30, po_T0 po_LA, ht_num_LA)
+    // // la_NUM STICKY MODIFIERS
+    // // COMBO_HOLDTAP(NAME, TIME, POS, HT)
+    // COMBO_HOLDTAP(cb_num_LC, 30, po_T0 po_LC, ht_num_LC)
+    // COMBO_HOLDTAP(cb_num_LS, 30, po_T0 po_LS, ht_num_LS)
+    // COMBO_HOLDTAP(cb_num_LG, 30, po_T0 po_LG, ht_num_LG)
+    // COMBO_HOLDTAP(cb_num_LA, 30, po_T0 po_LA, ht_num_LA)
   };
 
   conditional_layers {
@@ -408,10 +414,10 @@ COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
 
     default {
       bindings = <
-      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                       &kp F &kp G &kp C &kp R &kp L
-      &ht_mod_l LALT A &ht_mod_l LGUI O &ht_mod_l LSFT E &ht_mod_l LCTL U &kp I   &kp D &ht_mod_r RCTL H &ht_mod_r RSFT T &ht_mod_r RGUI N &ht_mod_r RALT S
-      &kp SEMI &kp Q &kp J &kp K &kp X                                            &kp B &kp M &kp W &kp V &kp Z
-      &sl la_NUM &sl la_SYM &sl la_NAV &kp SPACE
+      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                             &kp F &kp G &kp C &kp R &kp L
+      &kp A &kp O &hm_mo_l la_SYM E &hm_mo_l la_NUM U &kp I             &kp D &hm_mo_r la_NAV H &hm_mo_r la_SYM T &kp N &kp S
+      &kp SEMI &kp Q &kp J &kp K &kp X                                  &kp B &kp M &kp W &kp V &kp Z
+      &hm_mod_l LGUI ENTER &sk LCTL &sk RSFT &hm_mod_r RALT SPACE
       >;
     };
 

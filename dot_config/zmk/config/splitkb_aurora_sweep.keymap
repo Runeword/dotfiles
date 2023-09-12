@@ -6,8 +6,12 @@
 #define la_NUM 1
 #define la_SYM 2
 #define la_NAV 3
-#define la_LMOD 4
-#define la_RMOD 5
+#define la_MED 4
+#define la_SPE 5
+#define la_FUN 6
+#define la_HAR 7
+// #define la_LMOD 4
+// #define la_RMOD 5
 
 #define po_T0 30
 #define po_T1 31
@@ -228,12 +232,12 @@ NAME: NAME { \
     // SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
     // SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
 
-    // TAPDANCE(NAME, TAP_1, TAP_2)
+    // // TAPDANCE(NAME, TAP_1, TAP_2)
 
-    TAPDANCE(td_special_a,   &mc_grave_a,      &mc_circumflex_a)
-    TAPDANCE(td_special_i,   &mc_circumflex_i, &mc_trema_i)
-    TAPDANCE(td_special_e,   &mc_circumflex_e, &mc_trema_e)
-    TAPDANCE_3(td_special_u, &mc_grave_u,      &mc_circumflex_u, &mc_trema_u)
+    // TAPDANCE(td_special_a,   &mc_grave_a,      &mc_circumflex_a)
+    // TAPDANCE(td_special_i,   &mc_circumflex_i, &mc_trema_i)
+    // TAPDANCE(td_special_e,      &mc_circumflex_e, &mc_trema_e)
+    // TAPDANCE_3(td_special_u, &mc_circumflex_u, &mc_trema_u)
 
     // // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
 
@@ -324,28 +328,28 @@ NAME: NAME { \
   combos {
     compatible = "zmk,combos";
 
-    cb_tab { layers = <la_DEF la_RMOD>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
-    cb_bspc { layers = <la_DEF la_NAV la_RMOD>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
+    cb_tab { layers = <la_DEF>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
+    cb_bspc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
     cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
     // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&hm_mod_l LS(LGUI) ESC>; };
     cb_repeat { layers = <la_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
-    cb_enter_l { layers = <la_DEF la_RMOD la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
-    cb_enter_r { layers = <la_DEF la_LMOD>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
-    cb_del_l { layers = <la_DEF la_NAV la_RMOD>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
-    cb_del_r { layers = <la_DEF la_NAV la_LMOD>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
+    cb_enter_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
+    cb_enter_r { layers = <la_DEF>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
+    cb_del_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
+    cb_del_r { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
     cb_caps { layers = <la_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
     cb_boot_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T1 24>; bindings = <&bootloader>; };
     cb_boot_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T2 25>; bindings = <&bootloader>; };
 
-    // french special characters
-    cb_special_a { layers = <la_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&td_special_a>; };
-    cb_acute_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <12 2>; bindings = <&mc_acute_e>; };
-    cb_grave_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <13 3>; bindings = <&mc_grave_e>; };
-    cb_circumflex_o { layers = <la_DEF>; timeout-ms = <100>; key-positions = <21 11>; bindings = <&mc_circumflex_o>; };
-    cb_special_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <22 12>; bindings = <&td_special_e>; };
-    cb_special_u { layers = <la_DEF>; timeout-ms = <100>; key-positions = <23 13>; bindings = <&td_special_u>; };
-    cb_special_i { layers = <la_DEF>; timeout-ms = <100>; key-positions = <24 14>; bindings = <&td_special_i>; };
-    cb_cedilla_c { layers = <la_DEF>; timeout-ms = <100>; key-positions = <17 7>; bindings = <&mc_cedilla_c>; };
+    // // french special characters
+    // cb_special_a { layers = <la_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&td_special_a>; };
+    // cb_acute_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <12 2>; bindings = <&mc_acute_e>; };
+    // cb_grave_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <13 3>; bindings = <&mc_grave_e>; };
+    // cb_circumflex_o { layers = <la_DEF>; timeout-ms = <100>; key-positions = <21 11>; bindings = <&mc_circumflex_o>; };
+    // cb_special_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <22 12>; bindings = <&td_special_e>; };
+    // cb_special_u { layers = <la_DEF>; timeout-ms = <100>; key-positions = <23 13>; bindings = <&td_special_u>; };
+    // cb_special_i { layers = <la_DEF>; timeout-ms = <100>; key-positions = <24 14>; bindings = <&td_special_i>; };
+    // cb_cedilla_c { layers = <la_DEF>; timeout-ms = <100>; key-positions = <17 7>; bindings = <&mc_cedilla_c>; };
 
     // // la_DEF STICKY MODIFIERS
     // // COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP)
@@ -401,31 +405,31 @@ NAME: NAME { \
     // COMBO_HOLDTAP(cb_num_LA, 30, po_T0 po_LA, ht_num_LA)
   };
 
-  conditional_layers {
-    compatible = "zmk,conditional-layers";
-    tri_layer {
-      if-layers = <la_SYM la_NAV>;
-      then-layer = <6>;
-    };
-  };
+  // conditional_layers {
+  //   compatible = "zmk,conditional-layers";
+  //   tri_layer {
+  //     if-layers = <la_SYM la_NAV>;
+  //     then-layer = <6>;
+  //   };
+  // };
 
   keymap {
     compatible = "zmk,keymap";
 
     default {
       bindings = <
-      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                             &kp F &kp G &kp C &kp R &kp L
-      &kp A &kp O &hm_mo_l la_SYM E &hm_mo_l la_NUM U &kp I             &kp D &hm_mo_r la_NAV H &hm_mo_r la_SYM T &kp N &kp S
-      &kp SEMI &kp Q &kp J &kp K &kp X                                  &kp B &kp M &kp W &kp V &kp Z
+      &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
+      &hm_mo_l la_FUN A &hm_mo_l la_MED O &hm_mo_l la_SYM E &hm_mo_l la_NUM U &kp I   &kp D &hm_mo_r la_NAV H &hm_mo_r la_SYM T &hm_mo_r la_SPE N &hm_mo_r la_HAR S
+      &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
       &hm_mod_l LGUI ENTER &sk LCTL &sk RSFT &hm_mod_r RALT SPACE
       >;
     };
 
     numbers {
       bindings = <
-        &none &none &none &none &none                    &kp NUMBER_9 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8
-        &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &none      &kp NUMBER_0 &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4
-        &none &none &none &none &none                    &kp EQUAL &kp PLUS &kp MINUS &kp SLASH &kp STAR
+        &trans &trans &trans &trans &trans                    &kp NUMBER_9 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8
+        &trans &trans &trans &trans &trans                    &kp NUMBER_0 &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4
+        &trans &trans &trans &trans &trans                    &kp EQUAL &kp PLUS &kp MINUS &kp SLASH &kp STAR
         &trans &trans &trans &trans
         >;
     };
@@ -441,38 +445,74 @@ NAME: NAME { \
 
     navigation {
       bindings = <
-        &kp HOME &kp END &kp PG_DN &kp PG_UP &none       &none &kp C_PREV &kp C_NEXT &kp C_PLAY_PAUSE &kp C_MUTE
-        &kp LEFT &kp RIGHT &kp DOWN &kp UP &kp PRCNT     &none &kp RCTRL &kp RSHFT &kp RGUI &kp RALT
-        &none &none &none &none &none                    &none &kp C_BRI_UP &kp C_BRI_DN &kp C_VOL_UP &kp C_VOL_DN
+        &kp HOME &kp END &kp PG_DN &kp PG_UP &trans      &trans &trans &trans &trans &trans
+        &kp LEFT &kp RIGHT &kp DOWN &kp UP &trans        &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans
         &trans &trans &trans &trans
         >;
     };
 
-    mods_left {
+    media {
       bindings = <
-        &none &none &none &none &none                    &trans &trans &trans &trans &trans
-        &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &none      &trans &trans &trans &trans &trans
-        &none &none &none &none &none                    &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans &trans               &trans &kp C_PREV &kp C_NEXT &kp C_PLAY_PAUSE &trans
+        &trans &trans &trans &trans &trans               &trans &kp C_VOL_UP &kp C_VOL_DN &kp C_MUTE &trans
+        &trans &trans &trans &trans &trans               &trans &kp C_BRI_UP &kp C_BRI_DN &trans &trans
         &trans &trans &trans &trans
         >;
     };
 
-    mods_right {
+    special {
       bindings = <
-        &trans &trans &trans &trans &trans               &none &none &none &none &none
-        &trans &trans &trans &trans &trans               &none &kp RCTRL &kp RSHFT &kp RGUI &kp LALT
-        &trans &trans &trans &trans &trans               &none &none &none &none &none
+        &mc_circumflex_a &mc_circumflex_o &mc_circumflex_e &mc_circumflex_u &mc_circumflex_i   &trans &trans &mc_cedilla_c &trans &trans
+        &mc_grave_a &mc_grave_e &mc_acute_e &mc_grave_u &trans                                 &trans &trans &trans &trans &trans
+        &trans &trans &mc_trema_e &mc_trema_u &mc_trema_i                                      &trans &trans &trans &trans &trans
         &trans &trans &trans &trans
         >;
     };
 
-    tri {
+    functions {
       bindings = <
-        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &none &kp F5 &kp F6 &kp F7 &kp F8
-        &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &bt BT_CLR                     &none &kp F1 &kp F2 &kp F3 &kp F4
-        &none &none &none &none &none                                        &none &kp F9 &kp F10 &kp F11 &kp F12
+        &trans &trans &trans &trans &trans     &trans &kp F5 &kp F6 &kp F7 &kp F8
+        &trans &trans &trans &trans &trans     &trans &kp F1 &kp F2 &kp F3 &kp F4
+        &trans &trans &trans &trans &trans     &trans &kp F9 &kp F10 &kp F11 &kp F12
         &trans &trans &trans &trans
         >;
     };
+
+    hardware {
+      bindings = <
+        &none &bt BT_CLR &bt BT_PRV &bt BT_NXT &none                         &none &none &none &none &none
+        &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &none &none &none &none &none
+        &none &none &none &none &none                                        &none &none &none &none &none
+        &trans &trans &trans &trans
+        >;
+    };
+
+    // mods_left {
+    //   bindings = <
+    //     &none &none &none &none &none                    &trans &trans &trans &trans &trans
+    //     &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &none      &trans &trans &trans &trans &trans
+    //     &none &none &none &none &none                    &trans &trans &trans &trans &trans
+    //     &trans &trans &trans &trans
+    //     >;
+    // };
+
+    // mods_right {
+    //   bindings = <
+    //     &trans &trans &trans &trans &trans               &none &none &none &none &none
+    //     &trans &trans &trans &trans &trans               &none &kp RCTRL &kp RSHFT &kp RGUI &kp LALT
+    //     &trans &trans &trans &trans &trans               &none &none &none &none &none
+    //     &trans &trans &trans &trans
+    //     >;
+    // };
+
+    // tri {
+    //   bindings = <
+    //     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &none &kp F5 &kp F6 &kp F7 &kp F8
+    //     &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &bt BT_CLR                     &none &kp F1 &kp F2 &kp F3 &kp F4
+    //     &none &none &none &none &none                                        &none &kp F9 &kp F10 &kp F11 &kp F12
+    //     &trans &trans &trans &trans
+    //     >;
+    // };
   };
 };

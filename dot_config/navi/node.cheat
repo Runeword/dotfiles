@@ -1,0 +1,83 @@
+% node,npm
+
+# Start docker after install
+sudo systemctl start docker
+
+# Install latest minor version or patch from specified version
+^<version>
+
+# Install latest patch from specified version
+~<version>
+
+# Upgrade the latest version of npm
+npm install -g npm@latest
+
+# Uninstall global package
+npm -r -g <package>
+
+# Uninstall global package
+npm uninstall -g <package>
+
+# Install package with exact version
+npm i <package>@<version>
+
+# Install package with exact tag
+npm i <package>@<tag>
+
+# Install specific branch
+npm i https://github.com/xjamundx/eslint-plugin-promise.git --save
+
+# Install latest npm version
+npm i -g npm@latest
+
+# Package will appear in your dependencies
+npm i <package>
+
+# Package will appear in your devDependencies
+npm i -D <package>
+
+# Install package with exact version
+npm i -E <package>
+
+# Prevent optional dependencies from being installed
+npm i --no-optional
+
+# Remove package from dependencies
+npm r -S <package>
+
+# Remove package from devDependencies
+npm r -D <package>
+
+# List outdated packages
+npm outdated
+
+# Update minor versions of packages
+npm up
+
+# Update all packages
+npm i -g npm-check-updates && \
+ncu -u && \
+npm up
+
+# Update minor versions of global packages
+npm up -g
+
+# Clean local npm cache which is stored in ~/.npm/_cacache
+npm cache clean -f \
+npm cache verify \
+rm -rf node_modules
+
+# Fix dependencies errors
+npm dedupe
+
+# List package and his dependencies
+npm ls <package>
+
+# List package without his dependencies
+npm ls --depth=0 | grep <package>
+
+# List local packages
+npm ls --depth=0
+
+# List global packages
+npm ls -g --depth=0

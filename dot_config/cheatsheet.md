@@ -1,55 +1,5 @@
 # NOTES
 
-## NODE
-
-### nvm
-
-```bash
-nvm ls-remote             # List available node versions
-                          # Blue  = installed
-                          # Green = used
-nvm install node          # Install latest node release
-nvm install 10.14.1       # Install specific node version
-nvm use 10.14.1           # Use installed node version
-node -v                   # Display used node version
-killall -9 node           # Delete all node instances,
-                          # helpful when a port is already taken by a node instance
-```
-
-### npm
-
-```bash
-^<version>                              # Install latest minor version or patch from specified version
-~<version>                              # Install latest patch from specified version
-npm install -g npm@latest               # Upgrade the latest version of npm
-npm -r -g <package>                     # Uninstall global package
-npm uninstall -g <package>              # Uninstall global package
-npm i <package>@<version>
-npm i <package>@<tag>
-npm i https://github.com/xjamundx/eslint-plugin-promise.git --save # Install specific branch
-npm i -g npm@latest                     # Install latest npm version
-npm i <package>                         # Package will appear in your dependencies
-npm i -D <package>                      # Package will appear in your devDependencies
-npm i -E <package>                      # Install package with exact version
-npm i --no-optional                     # Prevent optional dependencies from being installed
-npm r -S <package>                      # Remove package from dependencies
-npm r -D <package>                      # Remove package from devDependencies
-npm outdated                            # List outdated packages
-npm up                                  # Update minor versions of packages
-npm i -g npm-check-updates && \         # Update all packages
-ncu -u && \
-npm up
-npm up -g                               # Update global packages
-npm cache clean -f                      # Clean local npm cache which is stored in ~/.npm/_cacache
-npm cache verify
-rm -rf node_modules
-npm dedupe                              # Fix dependencies errors
-npm ls <package>                        # List package and his dependencies
-npm ls --depth=0 | grep <package>       # List package without his dependencies
-npm ls --depth=0                        # List local packages
-npm ls -g --depth=0                     # List global packages
-```
-
 ## BASH
 
 ### usb boot

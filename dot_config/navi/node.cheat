@@ -81,3 +81,23 @@ npm ls --depth=0
 
 # List global packages
 npm ls -g --depth=0
+
+% node,nvm
+
+# List available node versions, Blue = installed, Green = used
+nvm ls-remote
+
+# Install latest node release
+nvm install node
+
+# Install specific node version
+nvm install 10.14.1
+
+# Use installed node version
+nvm use 10.14.1
+
+# Display used node version
+node -v
+
+# Delete all node instances, helpful when a port is already taken by a node instance
+killall -9 node

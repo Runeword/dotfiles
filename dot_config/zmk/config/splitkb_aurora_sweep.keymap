@@ -323,6 +323,11 @@ NAME: NAME { \
     MACRO_TAP(mc_trema_i,      &kp RA(RS(SQT))  &kp I)
     MACRO_TAP(mc_acute_e,      &kp RA(E))
     MACRO_TAP(mc_cedilla_c,    &kp RA(COMMA))
+    MACRO_TAP(mc_euro,         &kp RA(NUMBER_5))
+    MACRO_TAP(mc_pound,        &kp RA(RS(NUMBER_4)))
+    MACRO_TAP(mc_degree,       &kp RA(RS(NUMBER_0)))
+    MACRO_TAP(mc_trademark,    &kp RA(V))
+    MACRO_TAP(mc_copyright,    &kp RA(C))
   };
 
   combos {
@@ -436,9 +441,9 @@ NAME: NAME { \
 
     symbols {
       bindings = <
-        &kp GRAVE &kp MINUS &kp EQUAL &kp PLUS &none     &kp AT &kp LBKT &kp RBKT &kp SLASH &kp BSLH
-        &kp EXCL &kp QUESTION &kp HASH &kp STAR &none    &kp TILDE &kp LPAR &kp RPAR &kp CARET &kp DLLR
-        &kp AMPS &kp PIPE &kp UNDER &kp PRCNT &none      &none &kp LBRC &kp RBRC &none &none
+        &kp GRAVE &kp MINUS &kp EQUAL &kp PLUS &mc_pound    &kp AT &kp LBKT &kp RBKT &kp SLASH &kp BSLH
+        &kp EXCL &kp QUESTION &kp HASH &kp STAR &mc_euro    &kp TILDE &kp LPAR &kp RPAR &kp CARET &kp DLLR
+        &kp AMPS &kp PIPE &kp UNDER &kp PRCNT &mc_degree    &none &kp LBRC &kp RBRC &mc_trademark &mc_copyright
         &trans &trans &trans &trans
         >;
     };

@@ -459,9 +459,9 @@ NAME: NAME { \
 
     media {
       bindings = <
-        &trans &trans &trans &trans &trans               &trans &kp C_PREV &kp C_NEXT &kp C_PLAY_PAUSE &trans
-        &trans &trans &trans &trans &trans               &trans &kp C_VOL_UP &kp C_VOL_DN &kp C_MUTE &trans
+        &trans &trans &trans &trans &trans               &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_REWIND &kp C_FAST_FORWARD
         &trans &trans &trans &trans &trans               &trans &kp C_BRI_UP &kp C_BRI_DN &trans &trans
+        &trans &trans &trans &trans &trans               &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans &trans
         &trans &trans &trans &trans
         >;
     };

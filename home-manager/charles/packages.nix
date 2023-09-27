@@ -60,8 +60,10 @@
     pw-viz
     bluetuith
     brillo
+    playerctl
 
     # ---------------------------------- CLI tools
+    awscli2
     distrobox
     fzf
     starship

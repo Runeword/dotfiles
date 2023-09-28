@@ -33,6 +33,11 @@ api.unmapAllExcept([
 
 api.Hints.setCharacters('aoeuidtnsqjkmwvpyfgcr');
 
+const hintsCss = "font-size: 11pt; font-family: 'JetBrains Mono NL', 'Cascadia Code', 'Helvetica Neue', Helvetica, Arial, sans-serif; border: 0px;";
+
+api.Hints.style(hintsCss);
+api.Hints.style(hintsCss, "text");
+
 settings.theme = `
 .sk_theme {
     font-family: Input Sans Condensed, Charcoal, sans-serif;

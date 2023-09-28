@@ -5,7 +5,7 @@ return {
 
   event = 'InsertEnter',
 
-  pin = true,
+  -- pin = true,
 
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',

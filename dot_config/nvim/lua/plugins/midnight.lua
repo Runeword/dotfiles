@@ -74,7 +74,7 @@ return {
       group = 'highlightundo',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'HighlightUndo', { bg = '#222b66', fg = 'none', })
+        vim.api.nvim_set_hl(0, 'HighlightUndo', { bg = '#545454', fg = 'none', })
       end,
     })
 

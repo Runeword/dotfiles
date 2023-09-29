@@ -426,7 +426,7 @@ NAME: NAME { \
       &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
       &hm_mo_l la_FUN A &hm_mo_l la_MED O &hm_mo_l la_SYM E &hm_mo_l la_NUM U &kp I   &kp D &hm_mo_r la_NAV H &hm_mo_r la_SYM T &hm_mo_r la_SPE N &hm_mo_r la_HAR S
       &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
-      &hm_mod_l LGUI ENTER &sk LCTL &sk RSFT &hm_mod_r RALT SPACE
+      &hm_mod_l LGUI ENTER &sk LCTL &sk RSFT &hm_mod_r LALT SPACE
       >;
     };
 

@@ -30,7 +30,7 @@
     p = "hyperfine";
     z = "__zellij";
     zn = "zellij";
-    a = "alias | fzf";
+    a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     ".." = "cd ..";
     "..." = "cd ../..";
     ss = "src search";

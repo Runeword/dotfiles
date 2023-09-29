@@ -18,7 +18,7 @@ return {
     vim.g.matchup_transmute_enabled = 1
     vim.g.matchup_matchparen_enabled = 1
     vim.g.matchup_override_vimtex = 1
-    vim.g.matchup_matchparen_hi_background = 1
+    vim.g.matchup_matchparen_hi_background = 0
     vim.g.matchup_matchparen_offscreen = { method = 'popup', fullwidth = 1, }
   end,
 

@@ -4,9 +4,9 @@
 
 #define la_DEF 0
 #define la_NUM 1
-#define la_SYM 2
-#define la_NAV 3
-#define la_MED 4
+#define la_SYM_l 2
+#define la_SYM_r 3
+#define la_NAV 4
 #define la_SPE 5
 #define la_FUN 6
 #define la_HAR 7
@@ -333,7 +333,7 @@ NAME: NAME { \
   combos {
     compatible = "zmk,combos";
 
-    cb_tab { layers = <la_DEF>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
+    cb_tab { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
     cb_bspc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
     cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
     // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&hm_mod_l LS(LGUI) ESC>; };
@@ -343,8 +343,8 @@ NAME: NAME { \
     cb_del_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
     cb_del_r { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
     cb_caps { layers = <la_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
-    cb_boot_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T1 24>; bindings = <&bootloader>; };
-    cb_boot_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T2 25>; bindings = <&bootloader>; };
+    // cb_boot_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T1 24>; bindings = <&bootloader>; };
+    // cb_boot_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T2 25>; bindings = <&bootloader>; };
 
     // // french special characters
     // cb_special_a { layers = <la_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&td_special_a>; };
@@ -424,44 +424,53 @@ NAME: NAME { \
     default {
       bindings = <
       &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
-      &hm_mo_l la_FUN A &hm_mo_l la_MED O &hm_mo_l la_SYM E &hm_mo_l la_NUM U &kp I   &kp D &hm_mo_r la_NAV H &hm_mo_r la_SYM T &hm_mo_r la_SPE N &hm_mo_r la_HAR S
+      &hm_mod_l LALT A &hm_mod_l LGUI O &hm_mod_l LCTL E &hm_mo_l la_SYM_r U &kp I    &kp D &hm_mo_r la_SYM_l H &hm_mod_r RCTL T &hm_mod_r RGUI N &hm_mod_r LALT S
       &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
-      &hm_mod_l LGUI ENTER &sk LCTL &sk RSFT &hm_mod_r LALT SPACE
+      &hm_mo_l la_NUM ENTER &sk LSFT &hm_mo_r la_NAV ESC &hm_mo_r la_SPE SPACE
       >;
     };
 
+// default {
+//   bindings = <
+//   &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
+//   &hm_mo_l la_FUN A &hm_mo_l la_MED O &hm_mo_l la_SYM E &hm_mo_l la_NUM U &kp I   &kp D &hm_mo_r la_NAV H &hm_mo_r la_SYM T &hm_mo_r la_SPE N &hm_mo_r la_HAR S
+//   &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
+//   &hm_mod_l LGUI ENTER &sk LCTL &sk RSFT &hm_mod_r LALT SPACE
+//   >;
+// };
+
     numbers {
       bindings = <
-        &trans &trans &trans &trans &trans                    &kp NUMBER_9 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8
-        &trans &trans &trans &trans &trans                    &kp NUMBER_0 &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4
-        &trans &trans &trans &trans &trans                    &kp EQUAL &kp PLUS &kp MINUS &kp SLASH &kp STAR
+        &trans &trans &trans &trans &trans                  &kp NUMBER_9 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8
+        &trans &trans &trans &trans &trans                  &kp NUMBER_0 &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4
+        &trans &trans &trans &trans &trans                  &kp EQUAL &kp PLUS &kp MINUS &kp SLASH &kp STAR
         &trans &trans &trans &trans
         >;
     };
 
-    symbols {
+    symbols_l {
       bindings = <
-        &kp GRAVE &kp MINUS &kp EQUAL &kp PLUS &mc_pound    &kp AT &kp LBKT &kp RBKT &kp SLASH &kp BSLH
-        &kp EXCL &kp QUESTION &kp HASH &kp STAR &mc_euro    &kp TILDE &kp LPAR &kp RPAR &kp CARET &kp DLLR
-        &kp AMPS &kp PIPE &kp UNDER &kp PRCNT &mc_degree    &none &kp LBRC &kp RBRC &mc_trademark &mc_copyright
+        &kp GRAVE &kp MINUS &kp EQUAL &kp PLUS &mc_pound    &trans &trans &trans &trans &trans
+        &kp EXCL &kp QUESTION &kp HASH &kp STAR &mc_euro    &trans &trans &trans &trans &trans
+        &kp AMPS &kp PIPE &kp UNDER &kp PRCNT &mc_degree    &trans &trans &trans &trans &trans
+        &trans &trans &trans &trans
+        >;
+    };
+
+    symbols_r {
+      bindings = <
+        &trans &trans &trans &trans &trans                  &kp AT &kp LBKT &kp RBKT &kp SLASH &kp BSLH
+        &trans &trans &trans &trans &trans                  &kp TILDE &kp LPAR &kp RPAR &kp CARET &kp DLLR
+        &trans &trans &trans &trans &trans                  &none &kp LBRC &kp RBRC &mc_trademark &mc_copyright
         &trans &trans &trans &trans
         >;
     };
 
     navigation {
       bindings = <
-        &kp HOME &kp END &kp PG_DN &kp PG_UP &trans      &trans &trans &trans &trans &trans
+        &kp HOME &kp END &kp PG_DN &kp PG_UP &trans      &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_REWIND &kp C_FAST_FORWARD
         &kp LEFT &kp RIGHT &kp DOWN &kp UP &trans        &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans
-        >;
-    };
-
-    media {
-      bindings = <
-        &trans &trans &trans &trans &trans               &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_REWIND &kp C_FAST_FORWARD
-        &trans &trans &trans &trans &trans               &trans &kp C_BRI_UP &kp C_BRI_DN &trans &trans
-        &trans &trans &trans &trans &trans               &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &trans &trans
+        &trans &trans &trans &trans &trans               &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &kp C_BRI_UP &kp C_BRI_DN
         &trans &trans &trans &trans
         >;
     };

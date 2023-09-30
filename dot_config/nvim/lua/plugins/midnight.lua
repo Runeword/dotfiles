@@ -18,7 +18,7 @@ return {
       pattern = '*',
       callback = function()
         vim.api.nvim_set_hl(0, 'MatchParen',
-          { fg = '#ff1994', bg = '#1a1a3b', italic = true, bold = true, })
+          { fg = '#ff1994', bg = '#22009c', italic = true, bold = true, })
         vim.api.nvim_set_hl(0, 'MatchWord', { fg = '#ff1994', })
         -- vim.api.nvim_set_hl(0, 'MatchParen',
         --   { fg = '#7429ff', italic = true, bold = true, })

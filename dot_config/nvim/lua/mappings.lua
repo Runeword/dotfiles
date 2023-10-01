@@ -9,7 +9,7 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
-vim.keymap.set({ 'n', 'i', 'o' }, '<Esc>', '<C-O>:stopinsert<CR>', { silent = true, })
+vim.keymap.set({ 'i', 'o' }, '<Esc>', '<C-O>:stopinsert<CR>', { silent = true, })
 
 vim.keymap.set('n', 'i', function()
   if #vim.fn.getline('.') == 0 then

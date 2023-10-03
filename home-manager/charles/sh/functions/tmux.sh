@@ -8,10 +8,13 @@ __tmux() {
 			--header='<CR> attach  <C-k> kill  <C-a> kill all' \
 			--bind='ctrl-k:reload-sync(tmux kill-session -t {1})' \
 			--bind='ctrl-q:execute(tmux kill-server)+abort' \
-			--bind='enter:execute(echo {1})+abort'
+			--bind='enter:execute(echo {1})+abort' \
+      --bind='tab:down,btab:up'
 	)
 
 	[ -z "$session" ] && return 1
 
-	tmux attach -t "$session"
+	if ! tmux attach-session -t "$session"; then
+		tmux switch-client -t "$session"
+	fi
 }

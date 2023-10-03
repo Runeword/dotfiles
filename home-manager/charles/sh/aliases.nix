@@ -49,7 +49,8 @@
     oc = "ouch compress";
     ol = "ouch list";
     gparted = "sudo -E gparted";
-    t = "__tmux";
+    t = "tmux";
+    tl = "__tmux";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/home-manager";

@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./readline.nix
-    ./alacritty.nix
     ./ssh.nix
     ./neovim.nix
     ./broot.nix

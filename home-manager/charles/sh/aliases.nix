@@ -49,7 +49,7 @@
     oc = "ouch compress";
     ol = "ouch list";
     gparted = "sudo -E gparted";
-    t = "tmux";
+    t = "__new_session";
     tl = "__tmux";
 
     # ______________________________________ NIX

@@ -34,6 +34,7 @@
   # in {
 
   home.file."bin/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  home.file."bin/tmux/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
 
   home.packages = with pkgs; [
     (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
@@ -49,6 +50,7 @@
     alacritty
     tmux
     tmuxPlugins.resurrect
+    tmuxPlugins.tmux-fzf
 
     # tmuxKeylocker
 

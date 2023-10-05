@@ -1,9 +1,20 @@
 __tmux() {
+	if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
+		printf 'new session name : ' && read -r session
+
+		[ -z "$session" ] && return 1
+
+		tmux new-session -s "$session"
+
+		return 1
+	fi
+
 	local item_pos
 
-	item_pos=$(tmux list-sessions -F '#{session_id} #{session_attached}' | awk '$2 == "1" {print NR}')
+	item_pos=$(tmux list-sessions -F '#{session_id} #{session_attached}' 2>/dev/null | awk '$2 == "1" {print NR}')
 
 	# tmux display-popup -E "tmux list-panes -a -F '#{window_index} #{window_name}' | fzf | cut -c 1-1 | xargs tmux select-window -t"
+	# ${TMUX:+--no-header} \
 
 	session=$(
 		tmux ls -F "#{session_name}" 2>/dev/null | fzf \

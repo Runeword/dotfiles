@@ -57,7 +57,7 @@ git checkout <current-branch>
 git reset <file>
 
 # Delete commits after the specified one
-git reset --hard <commit>
+git reset <commit> --hard
 
 # Delete the last commit
 git reset --hard HEAD~1

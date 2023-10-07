@@ -9,8 +9,10 @@ __tmux() {
 	fi
 
 	local item_pos
+  local session_id
 
-  item_pos=$(tmux list-sessions -F '#{session_id}' | awk '{if ($1 == "'$(tmux display-message -p "#{session_id}")'") print NR}')
+  session_id=$(tmux display-message -p '#{session_id}')
+  item_pos=$(tmux list-sessions -F '#{session_id}' | awk '{if ($1 == "'$session_id'") print NR}')
 
 	# tmux display-popup -E "tmux list-panes -a -F '#{window_index} #{window_name}' | fzf | cut -c 1-1 | xargs tmux select-window -t"
 	# ${TMUX:+--no-header} \
@@ -42,16 +44,15 @@ __tmux() {
 }
 
 __switch_window() {
-
 local item_pos
-item_pos=$(tmux list-sessions -F '#{session_id} #{session_attached}' 2>/dev/null | awk '$2 == "1" {print NR}')
+local window_id
+local window
 
-# tmux display-popup -E "tmux list-panes -a -F '#{window_index} #{window_name}' | fzf | cut -c 1-1 | xargs tmux select-window -t"
-# ${TMUX:+--no-header} \
-# tmux display-popup -E "tmux list-panes -a -F '#{window_index} #{window_id} #{window_name} #{session_name}' | fzf | cut -c 1-1 | xargs tmux select-window -t"
+window_id=$(tmux display-message -p '#{window_id}')
+item_pos=$(tmux list-windows -a -F '#{window_id}' | awk '{if ($1 == "'$window_id'") print NR}')
 
-session=$(
-  tmux ls -F '#{window_name} #{window_linked_sessions_list}' 2>/dev/null | fzf \
+window=$(
+tmux list-windows -a -F '#{window_name} #{session_name} #{window_id} #{session_id}' 2>/dev/null | fzf \
     --reverse \
     --cycle \
     --jump-labels=3 \
@@ -59,17 +60,17 @@ session=$(
     --delimiter=' ' \
     --header-first \
     --bind='tab:down,btab:up' \
-    ${TMUX:+--bind='focus:execute-silent(tmux select-window -t {1})'} \
+    ${TMUX:+--bind='focus:execute-silent(tmux switch-client -t {4}; tmux select-window -t {3})'} \
     ${TMUX:+--bind="load:pos($item_pos)"}
 )
 
-[ -z "$session" ] && return 1
-
-if [ -n "$TMUX" ]; then
-  tmux switch-client -t "$session"
-else
-  tmux attach-session -t "$session"
-fi
+# [ -z "$session" ] && return 1
+#
+# if [ -n "$TMUX" ]; then
+#   tmux switch-client -t "$session"
+# else
+#   tmux attach-session -t "$session"
+# fi
 }
 
 __new_session() {

@@ -1,8 +1,18 @@
-live_config_reload: true
-custom_cursor_colors: true
+# ---------------------------- Options
 
 # env:
 #   TERM: xterm-256color
+
+live_config_reload: true
+custom_cursor_colors: true
+
+window:
+  decorations: none
+  dynamic_padding: true
+  padding:
+    x: 16
+  opacity: 0.7
+  startup_mode: Maximized
 
 cursor:
   style:
@@ -13,16 +23,17 @@ cursor:
 
 selection:
   save_to_clipboard: true
-  #     semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
 # ---------------------------- Keymaps
+
 key_bindings:
   - { action: ResetFontSize, key: Equals, mods: Control }
-  - { action: IncreaseFontSize, key: Plus, mods: Control }
+  - { action: IncreaseFontSize, key: Plus, mods: Control|Shift }
   - { action: DecreaseFontSize, key: Minus, mods: Control }
   - { action: ResetFontSize, key: NumpadEquals, mods: Control }
   - { action: IncreaseFontSize, key: NumpadAdd, mods: Control }
   - { action: DecreaseFontSize, key: NumpadSubtract, mods: Control }
+
   - { key: PageUp, mods: Shift, action: ScrollLineUp }
   - { key: PageUp, mods: Shift, action: ScrollLineUp }
   - { key: PageUp, mods: Shift, action: ScrollLineUp }
@@ -31,16 +42,20 @@ key_bindings:
   - { key: PageDown, mods: Shift, action: ScrollLineDown }
   - { key: PageDown, mods: Shift, action: ScrollLineDown }
   - { key: PageDown, mods: Shift, action: ScrollLineDown }
+
   - { key: Home, mods: Shift, action: ScrollToTop }
   - { key: End, mods: Shift, action: ScrollToBottom }
 
-window:
-  decorations: none
-  dynamic_padding: true
-  padding:
-    x: 16
-  opacity: 0.7
-  startup_mode: Maximized
+  # ---------------------------- Extended keys
+
+  - { key: Return, mods: Shift, chars: "\x1b[13;2u" }
+  - { key: Return, mods: Control, chars: "\x1b[13;5u" }
+  - { key: Return, mods: Control|Shift, chars: "\x1b[13;6u" }
+  # - { key: Tab, mods: Shift, chars: "\x1b[9;2u" }
+  # - { key: Tab, mods: Control, chars: "\x1b[9;5u" }
+  # - { key: Tab, mods: Control|Shift, chars: "\x1b[9;6u" }
+
+# ---------------------------- Fonts
 
 font:
   bold:
@@ -59,6 +74,8 @@ font:
   offset:
     y: 5
 
+# ---------------------------- Colors
+
 colors:
   bright:
     black: "#d0d0d0"
@@ -69,6 +86,7 @@ colors:
     red: "#ff0000"
     white: "#ffffff"
     yellow: "#ffe330"
+
   normal:
     black: "#7f7f7f"
     blue: "#87AFD7"
@@ -78,9 +96,11 @@ colors:
     red: "#ff75a9"
     white: "#ffffff"
     yellow: "#ed725c"
+
   primary:
     background: "#000000"
     foreground: "#e4e8f2"
+
   cursor:
-    text: '#000000'
-    cursor: '#ffffff'
+    text: "#000000"
+    cursor: "#ffffff"

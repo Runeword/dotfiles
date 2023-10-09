@@ -1,4 +1,4 @@
-__tmux() {
+__switch_session() {
 	if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
 		trap 'return' INT
 		printf 'new session name : ' && read -r input
@@ -13,9 +13,6 @@ __tmux() {
 
 	session_id=$(tmux display-message -p '#{session_id}')
 	item_pos=$(tmux list-sessions -F '#{session_id}' | awk '{if ($1 == "'$session_id'") print NR}')
-
-	# tmux display-popup -E "tmux list-panes -a -F '#{window_index} #{window_name}' | fzf | cut -c 1-1 | xargs tmux select-window -t"
-	# ${TMUX:+--no-header} \
 
 	session=$(
 		tmux ls -F "#{session_name}" 2>/dev/null | fzf \

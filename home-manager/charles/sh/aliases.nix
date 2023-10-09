@@ -27,15 +27,17 @@
     s = "__ripgrep";
     i = "kitten icat";
     w = "__wallpaper";
-    p = "hyperfine";
     z = "__zellij";
     zn = "zellij";
     a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     ".." = "cd ..";
     "..." = "cd ../..";
     ss = "src search";
-    xc = "xclip -selection c";
-    xp = "xclip -selection c -o";
+    # xc = "xclip -selection c";
+    # xp = "xclip -selection c -o";
+    c = "wl-copy" ;
+    p = "wl-paste" ;
+
     hm = "hyprctl monitors";
     hhp = "hyprctl hyprpaper preload";
     hhw = "hyprctl hyprpaper wallpaper";
@@ -49,8 +51,7 @@
     oc = "ouch compress";
     ol = "ouch list";
     gparted = "sudo -E gparted";
-    t = "__new_session";
-    tl = "__tmux";
+    t = "__switch_session";
 
     # ______________________________________ NIX
     hs = "home-manager switch --flake $HOME/home-manager";

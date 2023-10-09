@@ -14,6 +14,10 @@ return {
       function() require('various-textobjs').value(false) end)
     vim.keymap.set({ 'o', 'x', }, 'iv',
       function() require('various-textobjs').value(true) end)
+    vim.keymap.set({ 'o', 'x', }, 'iw',
+      function() require('various-textobjs').subword(true) end)
+    -- vim.keymap.set({ 'o', 'x', }, 'aw',
+    --   function() require('various-textobjs').subword(false) end)
     -- vim.keymap.set({ 'o', 'x', }, 'ad',
     --   function() require('various-textobjs').number(false) end)
     -- vim.keymap.set({ 'o', 'x', }, 'id',

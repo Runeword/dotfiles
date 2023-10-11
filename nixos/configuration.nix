@@ -49,6 +49,9 @@
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
+  virtualisation.podman.enable = true;
+  virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
+
   virtualisation.docker.enable = true;
 
   nixpkgs.config.allowUnfree = true;

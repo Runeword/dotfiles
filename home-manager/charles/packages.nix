@@ -86,6 +86,7 @@
     asciinema
     terraform
     ngrok
+    distrobox
 
     # ---------------------------------- Git
     # inputs.src-cli.packages.x86_64-linux.default

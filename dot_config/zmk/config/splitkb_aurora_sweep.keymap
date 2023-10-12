@@ -333,8 +333,10 @@ NAME: NAME { \
   combos {
     compatible = "zmk,combos";
 
-    cb_tab { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; };
-    cb_bspc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; };
+    cb_tab { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; require-prior-idle-ms = <150>; };
+    cb_bspc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; require-prior-idle-ms = <150>; };
+    cb_tab_r { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <16 17>; bindings = <&kp TAB>; require-prior-idle-ms = <150>; };
+    cb_bspc_r { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <17 18>; bindings = <&kp BSPC>; require-prior-idle-ms = <150>; };
     cb_repeat_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&key_repeat>; };
     cb_repeat_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&key_repeat>; };
     // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };

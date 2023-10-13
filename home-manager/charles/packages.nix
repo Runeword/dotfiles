@@ -43,6 +43,7 @@
     gcc
     httrack
     pgmodeler
+    sioyek
 
     # ---------------------------------- Editors
     neovim-nightly

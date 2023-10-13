@@ -9,7 +9,6 @@
     ./readline.nix
     ./ssh.nix
     ./neovim.nix
-    ./broot.nix
     ./home.nix
     ./packages.nix
     ./git.nix

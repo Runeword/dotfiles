@@ -11,7 +11,7 @@ return {
         normal_cur_line = false,
         visual_line = false,
         -- change_line = false,
-        normal = 's',
+        normal = 'ys',
         delete = 'ds',
         change = 'cs',
         visual = 's',

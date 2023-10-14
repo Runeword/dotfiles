@@ -194,10 +194,8 @@ end
 vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine,      { expr = true, })
 vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine,    { expr = true, })
 
-vim.keymap.set({ 'x', 'n', }, 'rr', 'r')
-vim.keymap.set('n',           'r',  '<Nop>')
-vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfterCursor,  { expr = true, })
-vim.keymap.set({ 'x', 'n', }, 'ri', appendCharBeforeCursor, { expr = true, })
+-- vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfterCursor,  { expr = true, })
+-- vim.keymap.set({ 'x', 'n', }, 'ri', appendCharBeforeCursor, { expr = true, })
 
 -------------------- Append newline
 local function appendNewLine(rowOffset)

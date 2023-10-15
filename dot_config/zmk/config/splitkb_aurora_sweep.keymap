@@ -333,20 +333,20 @@ NAME: NAME { \
   combos {
     compatible = "zmk,combos";
 
-    cb_tab { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp TAB>; require-prior-idle-ms = <150>; };
     cb_bspc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; require-prior-idle-ms = <150>; };
-    cb_tab_r { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <16 17>; bindings = <&kp TAB>; require-prior-idle-ms = <150>; };
-    cb_bspc_r { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <17 18>; bindings = <&kp BSPC>; require-prior-idle-ms = <150>; };
-    cb_repeat_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&key_repeat>; };
-    cb_repeat_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&key_repeat>; };
+    cb_esc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp ESC>; require-prior-idle-ms = <150>; };
+    cb_rep { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <16 17>; bindings = <&key_repeat>; require-prior-idle-ms = <150>; };
+    cb_del { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <17 18>; bindings = <&kp DEL>; require-prior-idle-ms = <150>; };
+    // cb_repeat_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&key_repeat>; };
+    // cb_repeat_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&key_repeat>; };
     // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
     // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&hm_mod_l LS(LGUI) ESC>; };
     // cb_repeat { layers = <la_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
-    cb_enter_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
-    cb_enter_r { layers = <la_DEF>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
-    cb_del_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
-    cb_del_r { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
-    cb_caps { layers = <la_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
+    // cb_enter_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
+    // cb_enter_r { layers = <la_DEF>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
+    // cb_del_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
+    // cb_del_r { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
+    // cb_caps { layers = <la_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
     // cb_boot_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T1 24>; bindings = <&bootloader>; };
     // cb_boot_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T2 25>; bindings = <&bootloader>; };
 
@@ -430,7 +430,7 @@ NAME: NAME { \
       &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
       &hm_mod_l LALT A &hm_mod_l LGUI O &hm_mod_l LCTL E &hm_mo_l la_SYM_r U &kp I    &kp D &hm_mo_r la_SYM_l H &hm_mod_r RCTL T &hm_mod_r RGUI N &hm_mod_r LALT S
       &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
-      &hm_mo_l la_NUM ENTER &hm_mo_l la_NAV ESC &sk RSFT &hm_mo_r la_SPE SPACE
+      &hm_mo_l la_NUM ENTER &hm_mo_l la_NAV TAB &sk RSFT &hm_mo_r la_SPE SPACE
       >;
     };
 

@@ -88,5 +88,11 @@ return {
       function() require('flash').jump() end,
       desc = 'Flash',
     },
+    {
+      '<C-s>',
+      mode = { 'i', },
+      function() require('flash').jump() end,
+      desc = 'Flash',
+    },
   },
 }

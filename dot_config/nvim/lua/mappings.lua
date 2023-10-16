@@ -45,9 +45,9 @@ vim.keymap.set('',  'Q',       '<Nop>')
 vim.keymap.set('',  'q',       '<Nop>')
 
 -- Save
-vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
-vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
-vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
+-- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
+-- vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
+-- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
 vim.keymap.set('n', '<Leader>s', '<cmd>silent write<CR>')
 vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 
@@ -55,6 +55,8 @@ vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 vim.keymap.set('i', 'ù',     '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', 'g<Tab>', 'za')
+vim.keymap.set('n', 'U', '<C-r>')
+
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
 vim.api.nvim_set_hl(0, 'BoosterAppendChar', { fg = 'white', bg = 'none', })

@@ -4,6 +4,7 @@ local remap = { remap = true, }
 vim.keymap.set('x', '<C-n>',      ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n', 'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
+vim.keymap.set('n', '<Space>', '<Enter>', remap)
 
 vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
@@ -49,7 +50,6 @@ vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
 vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
 vim.keymap.set('n', '<Leader>s', '<cmd>silent write<CR>')
 vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
--- vim.keymap.set('i', '<Leader>s', '<Esc>`^<cmd>silent write<CR>')
 
 -- Edit
 vim.keymap.set('i', 'ù',     '<Esc>`^u')

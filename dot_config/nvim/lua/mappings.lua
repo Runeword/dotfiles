@@ -4,13 +4,11 @@ local remap = { remap = true, }
 vim.keymap.set('x', '<C-n>',      ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n', 'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set('n', '<Space>', '<Enter>', remap)
+vim.keymap.set('n', '<Space>',    '<Enter>',                                   remap)
 
 vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
-
-vim.keymap.set({ 'i', 'o' }, '<Esc>', '<C-O>:stopinsert<CR>', { silent = true, })
 
 vim.keymap.set('n', 'i', function()
   if #vim.fn.getline('.') == 0 then
@@ -55,7 +53,7 @@ vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 vim.keymap.set('i', 'ù',     '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', 'g<Tab>', 'za')
-vim.keymap.set('n', 'U', '<C-r>')
+vim.keymap.set('n', 'U',      '<C-r>')
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
@@ -193,8 +191,8 @@ local function appendCharAfterCursor()
 end
 
 -------------------- Mappings
-vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine,      { expr = true, })
-vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine,    { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine,   { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine, { expr = true, })
 
 -- vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfterCursor,  { expr = true, })
 -- vim.keymap.set({ 'x', 'n', }, 'ri', appendCharBeforeCursor, { expr = true, })

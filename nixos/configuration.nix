@@ -53,6 +53,8 @@
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.rootless.enable = true;
+  virtualisation.docker.rootless.setSocketVariable = true;
 
   nixpkgs.config.allowUnfree = true;
 

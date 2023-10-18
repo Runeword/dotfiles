@@ -9,7 +9,7 @@
     devShells.x86_64-linux = {
       default = pkgs.mkShell {
         packages = [
-          pkgs.python36
+          pkgs.python3
           pkgs.pipenv
         ];
       };

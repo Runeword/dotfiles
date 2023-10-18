@@ -68,6 +68,7 @@
 
     # ---------------------------------- CLI tools
     awscli2
+    lsof
     distrobox
     fzf
     starship

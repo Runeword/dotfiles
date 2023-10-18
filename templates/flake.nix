@@ -1,5 +1,5 @@
 {
-  outputs = { self }: {
+  outputs = {self}: {
     templates = {
       js.path = ./js;
       js.description = "js";
@@ -16,6 +16,10 @@
       go.path = ./go;
       go.description = "go";
       go.welcomeText = "go";
+
+      py.path = ./py;
+      py.description = "py";
+      py.welcomeText = "py";
 
       rust.path = ./rust;
       rust.description = "rust";

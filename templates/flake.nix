@@ -21,6 +21,10 @@
       py.description = "py";
       py.welcomeText = "py";
 
+      lambda.path = ./lambda;
+      lambda.description = "lambda";
+      lambda.welcomeText = "lambda";
+
       rust.path = ./rust;
       rust.description = "rust";
       rust.welcomeText = "rust";

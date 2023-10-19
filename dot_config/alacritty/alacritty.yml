@@ -54,6 +54,7 @@ key_bindings:
   # - { key: Tab, mods: Shift, chars: "\x1b[9;2u" }
   - { key: Tab, mods: Control, chars: "\x1b[9;5u" }
   - { key: Tab, mods: Control|Shift, chars: "\x1b[9;6u" }
+  - { key: Escape, mods: Control, chars: "\x02\x5b" }
 
   - { key: Key0, mods: Control, chars: "\x1b[48;5u" }
   - { key: Key1, mods: Control, chars: "\x1b[49;5u" }

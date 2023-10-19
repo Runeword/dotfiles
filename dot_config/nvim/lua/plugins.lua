@@ -6,6 +6,7 @@ return {
   { 'kana/vim-arpeggio', },
   { 'tpope/vim-abolish', },
   { 'svban/YankAssassin.vim', },
+  { 'Pocco81/auto-save.nvim', },
 
   {
     'willothy/flatten.nvim',

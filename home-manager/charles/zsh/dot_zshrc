@@ -25,7 +25,7 @@ bindkey '^E' end-of-line
 bindkey '^A' beginning-of-line
 
 # ------------------------------------ Kill
-bindkey '^U' kill-whole-line
+bindkey '^U' kill-buffer
 bindkey '^J' backward-kill-line
 bindkey '^K' kill-line
 bindkey '^H' backward-kill-word

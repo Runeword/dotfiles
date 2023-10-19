@@ -14,7 +14,7 @@ return {
         normal = 'ys',
         delete = 'ds',
         change = 'cs',
-        visual = 's',
+        visual = 'S',
       },
     })
   end,

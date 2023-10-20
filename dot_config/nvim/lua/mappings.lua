@@ -10,6 +10,16 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
+vim.keymap.set('n', 'gs', function()
+  vim.cmd([[
+  :let old_undolevels = &undolevels
+  :set undolevels=-1
+  :exe "normal a \<BS>\<Esc>"
+  :let &undolevels = old_undolevels
+  :unlet old_undolevels
+  ]])
+end)
+
 vim.keymap.set('n', 'i', function()
   if #vim.fn.getline('.') == 0 then
     return [["_cc]]
@@ -50,10 +60,11 @@ vim.keymap.set('',  'q',       '<Nop>')
 -- vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 
 -- Edit
-vim.keymap.set('i', 'ù',     '<Esc>`^u')
+-- vim.keymap.set('i', 'ù',     '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', 'g<Tab>', 'za')
 vim.keymap.set('n', 'U',      '<cmd>u0<CR>')
+vim.keymap.set('n', 'R',      "<cmd>exec 'undo' undotree()['seq_last']<CR>")
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 

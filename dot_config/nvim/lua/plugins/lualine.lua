@@ -5,7 +5,6 @@ return {
 
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'linrongbin16/lsp-progress.nvim',
   },
 
   config = function()
@@ -106,10 +105,6 @@ return {
         padding = { right = 1, left = 0, },
       },
 
-      {
-        require('lsp-progress').progress,
-      },
-
       -- {
       -- "filesize",
       -- cond = conditions.buffer_not_empty,
@@ -174,18 +169,5 @@ return {
     -- Now don't forget to initialize lualine
     lualine.setup(config)
 
-    -- vim.api.nvim_create_augroup('lualine', { clear = true, })
-    -- vim.api.nvim_create_autocmd({ 'User', 'LspProgressStatusUpdated', }, {
-    --   group = 'lualine',
-    --   pattern = '*',
-    --   callback = require('lualine').refresh(),
-    -- })
-
-    vim.cmd([[
-      augroup lualine
-          autocmd!
-          autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
-      augroup END
-      ]])
   end,
 }

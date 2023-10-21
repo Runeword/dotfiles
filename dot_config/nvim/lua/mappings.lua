@@ -229,9 +229,9 @@ vim.keymap.set({ 'n', }, 'gO', appendNewlineAbove, { expr = true, })
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 
 -- Text objects
-vim.keymap.set({ 'x', 'o', }, 'a<Leader>', 'ap')
-vim.keymap.set({ 'x', 'o', }, 'i<Leader>', 'ip')
-vim.keymap.set({ 'o', },      '<Leader>',  'ip')
+vim.keymap.set({ 'x', 'o', }, 'a<Space>', 'ap')
+vim.keymap.set({ 'x', 'o', }, 'i<Space>', 'ip')
+vim.keymap.set({ 'o', },      '<Space>',  'ip')
 
 vim.keymap.set({ 'x', 'o', }, 'q',         'iq',  remap)
 vim.keymap.set({ 'x', 'o', }, 'nq',        'inq', remap)

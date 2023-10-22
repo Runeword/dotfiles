@@ -22,7 +22,6 @@
   "keymap-layer.nvim": { "branch": "master", "commit": "e46840f9f377766e856964a49d7f351de3188a38" },
   "lazy.nvim": { "branch": "main", "commit": "9788a19ec0b4036028e78aec702634b4b89d3470" },
   "live-command.nvim": { "branch": "main", "commit": "d460067d47948725a6f25b20f31ea8bbfdfe4622" },
-  "lsp-progress.nvim": { "branch": "main", "commit": "df7a3d0d865d584552ab571295e73868e736e60f" },
   "lualine.nvim": { "branch": "master", "commit": "2248ef254d0a1488a72041cfb45ca9caada6d994" },
   "midnight.nvim": { "branch": "main", "commit": "955ae794290096d42a6f182741c01fd3665c1577" },
   "mini.ai": { "branch": "main", "commit": "10ad2ed049fb681a829b44aeb23443c0a9c910ae" },

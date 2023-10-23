@@ -2,6 +2,8 @@ settings.blocklistPattern = /.*youtube.com.*|.*getpocket.com.*|.*mail.google.com
 
 // Remap keys
 api.map('h', 'f');
+api.map('yl', 'yy');
+api.map('yL', 'yY');
 api.map('gh', 'af');
 api.map('H', 'gf');
 api.map('d', 'yt');
@@ -14,6 +16,8 @@ api.map('gW', 'gx0');
 api.unmapAllExcept([
   // Remapped keys
   'h',  // Open a link
+  'yl', // Copy current page's URL
+  'yL', // Copy all tabs's url
   'gh', // Open a link in active new tab
   'H',  // Open a link in non-active new tab
   'd',  // Duplicate current tab
@@ -22,10 +26,8 @@ api.unmapAllExcept([
   'gw', // Close all tabs on right
   'gW', // Close all tabs on left
   // Default keys
-  'yy', // Copy current page's URL
-  'yY', // Copy all tabs's url
+  '<Esc>', // Leave insert mode
   'yv', // Yank text of an element
-  'ya', // Copy a link URL to the clipboard
   'v',  // Toggle visual mode
   'r',  // Reload the page
   '?'   // Show usage

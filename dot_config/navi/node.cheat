@@ -1,4 +1,4 @@
-% node,npm
+% * node, npm
 
 # Start docker after install
 sudo systemctl start docker
@@ -82,7 +82,7 @@ npm ls --depth=0
 # List global packages
 npm ls -g --depth=0
 
-% node,nvm
+% node, nvm
 
 # List available node versions, Blue = installed, Green = used
 nvm ls-remote

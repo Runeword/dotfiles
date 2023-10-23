@@ -26,7 +26,8 @@
     o = "__open_file";
     s = "__ripgrep";
     i = "kitten icat";
-    w = "__wallpaper";
+    w = "waypaper";
+    # w = "__wallpaper";
     z = "__zellij";
     zn = "zellij";
     a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
@@ -35,8 +36,8 @@
     ss = "src search";
     # xc = "xclip -selection c";
     # xp = "xclip -selection c -o";
-    c = "wl-copy" ;
-    p = "wl-paste" ;
+    c = "wl-copy";
+    p = "wl-paste";
 
     hm = "hyprctl monitors";
     hhp = "hyprctl hyprpaper preload";
@@ -90,6 +91,11 @@
     chd = "chezmoi diff --reverse";
     chi = "chezmoi ignored";
     chc = "chezmoi cd";
+
+    # ______________________________________ GO
+    gog = "go get";
+    gomt = "go mod tidy";
+    goc = "go clean -modcache";
 
     # ______________________________________ NPM
     npl = "npm ls --depth=0";

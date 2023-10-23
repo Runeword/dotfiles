@@ -1,4 +1,4 @@
-% git
+% * git
 
 # Fix detached head state
 git checkout -

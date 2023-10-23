@@ -1,4 +1,4 @@
-% search
+% * search
 
 # Find files with the string
 find . | xargs grep <'The Big Brains Company'> -sl

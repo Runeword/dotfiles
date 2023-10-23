@@ -1,4 +1,4 @@
-% aws,lambda
+% * aws, lambda
 
 # List all Lambda functions
 aws lambda list-functions --profile <profile>

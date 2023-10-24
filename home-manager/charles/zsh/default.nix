@@ -9,7 +9,7 @@
   programs.zsh.enableCompletion = false;
 
   programs.zsh.initExtra = builtins.readFile ./.zshrc;
-  programs.zsh.initExtraFirst = builtins.readFile ./.zshrc_first;
+  # programs.zsh.initExtraBeforeCompInit = builtins.readFile ./.initExtraBeforeCompInit;
 
   programs.zsh.plugins = [
     # {

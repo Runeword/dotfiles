@@ -2,6 +2,7 @@
 autoload -U select-word-style
 select-word-style bash
 setopt GLOB_DOTS
+KEYTIMEOUT=1
 
 # ------------------------------------ Remove default aliases
 unalias run-help 2>/dev/null
@@ -39,13 +40,11 @@ bindkey '^[OB' history-beginning-search-forward
 zmodload zsh/complist
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*:*:*:*:descriptions' format '%F{245}-- %d --%f'
+zstyle ':completion:*:*:*:*:descriptions' format '%F{245}%d%f'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-# zstyle ':completion:*' group-name ''
+zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select interactive
 
-# bindkey -M menuselect '^I' vi-forward-char
-# bindkey -M menuselect '^[[Z' vi-backward-char
 bindkey -M menuselect '^I' vi-down-line-or-history
 bindkey -M menuselect '^[[Z' vi-up-line-or-history
 
@@ -68,10 +67,13 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#7f7f7f"
 bindkey 'CSI 13 ; 5 u' autosuggest-execute
 bindkey '\x1b[13;5u' autosuggest-execute
 
-# # ------------------------------------ zsh-autocomplete
+# ------------------------------------ zsh-autocomplete
+# zstyle ':completion:*:*:*:*:descriptions' format '%F{245}%d%f'
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # bindkey '\t' menu-select "$terminfo[kcbt]" menu-selected
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
-# # bindkey -M menuselect '^[' undo
+# bindkey -M menuselect '\r' .accept-line
+# bindkey -M menuselect ' ' undo
 
 # ------------------------------------ Functions
 if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
@@ -79,6 +81,18 @@ if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
     . "$file"
   done
 fi
+
+__open_file_wrapper() {
+  if [[ $#BUFFER == 0 ]]; then
+    __open_file
+    zle reset-prompt
+  else
+    zle expand-or-complete
+  fi
+}
+
+zle -N __open_file_wrapper
+bindkey '^I' __open_file_wrapper
 
 # ------------------------------------ Plugins
 eval "$(navi widget zsh)"

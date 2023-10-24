@@ -28,8 +28,6 @@
     i = "kitten icat";
     w = "waypaper";
     # w = "__wallpaper";
-    z = "__zellij";
-    zn = "zellij";
     a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     ".." = "cd ..";
     "..." = "cd ../..";

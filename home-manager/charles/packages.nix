@@ -123,6 +123,7 @@
     realesrgan-ncnn-vulkan
     imaginer
     kooha
+    krita
     # obs-studio
     vlc
     # davinci-resolve

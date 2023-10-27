@@ -1,4 +1,4 @@
-% * aws, lambda
+% aws, lambda
 
 # List functions
 aws lambda list-functions

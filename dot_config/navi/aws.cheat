@@ -1,13 +1,22 @@
 % * aws, lambda
 
-# List all Lambda functions
+# List functions
+aws lambda list-functions
+
+# List functions
 aws lambda list-functions --profile <profile>
 
-# sam
+# List profiles
+aws configure list-profiles
+
+# Build application
 sam build
 
-# sam
+# Run local
+sam local start-api
+
+# Run local
 sam local start-api --profile <profile> 
 
-# sam
-sam init --name <name> --runtime go1.x
+# Create application
+sam init

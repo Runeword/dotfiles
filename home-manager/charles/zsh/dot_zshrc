@@ -94,6 +94,18 @@ fi
 zle -N __navi_wrapper
 bindkey '^?' __navi_wrapper
 
+__navi_wrapper_2() {
+if [[ $#BUFFER == 0 ]]; then
+  navi --path ~/.local/share/navi/cheats
+  zle reset-prompt
+else
+  zle backward-delete-char
+fi
+}
+
+zle -N __navi_wrapper_2
+bindkey '^[[3;2~' __navi_wrapper_2
+
 __open_file_wrapper() {
   if [[ $#BUFFER == 0 ]]; then
     __open_file

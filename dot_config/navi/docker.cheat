@@ -1,4 +1,4 @@
-% * docker, install
+% docker, install
 
 # Start docker after install
 sudo systemctl start docker

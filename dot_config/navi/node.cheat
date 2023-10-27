@@ -1,4 +1,4 @@
-% * node, npm
+% node, npm
 
 # Start docker after install
 sudo systemctl start docker

@@ -2,7 +2,7 @@
 autoload -U select-word-style
 select-word-style bash
 setopt GLOB_DOTS
-KEYTIMEOUT=1
+# KEYTIMEOUT=1
 
 # ------------------------------------ Remove default aliases
 unalias run-help 2>/dev/null
@@ -49,7 +49,7 @@ bindkey -M menuselect '^I' vi-down-line-or-history
 bindkey -M menuselect '^[[Z' vi-up-line-or-history
 
 setopt MENU_COMPLETE
-bindkey -v '^?' backward-delete-char
+# bindkey -v '^?' backward-delete-char
 
 # zstyle ':completion:*' menu select
 # bindkey '^I' complete-word
@@ -81,6 +81,18 @@ if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
     . "$file"
   done
 fi
+
+__navi_wrapper() {
+if [[ $#BUFFER == 0 ]]; then
+  navi
+  zle reset-prompt
+else
+  zle backward-delete-char
+fi
+}
+
+zle -N __navi_wrapper
+bindkey '^?' __navi_wrapper
 
 __open_file_wrapper() {
   if [[ $#BUFFER == 0 ]]; then

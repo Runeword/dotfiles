@@ -43,9 +43,8 @@ __open_file() {
   local num_lines
   num_lines="$(echo "$selected_files" | wc -l)"
 
-  # If single directory selection
+  # If single directory selection then cd into it
   if [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
-    # Then cd into it
     if cd "$selected_files"; then
       if [ "$BASH_VERSION" != "" ]; then
         history -s "cd $selected_files"

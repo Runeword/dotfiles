@@ -27,6 +27,7 @@
     nixpkgs-fmt
     shfmt
     shellcheck
+    shellharden
     terraform-ls
     gopls
     rust-analyzer

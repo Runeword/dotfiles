@@ -19,7 +19,7 @@ __open_file() {
   selected_files=$(
     find . \
       \( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
-      -o -path './.nix-profile' -o -path './node_modules' -o -path './.local' \) \
+      -o -path './.nix-profile' -o -path './node_modules' -o -path './.local' -o -path './.direnv' \) \
       -prune -o -printf '%P\n' |
       tail -n +2 |
       fzf \

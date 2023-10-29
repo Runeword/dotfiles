@@ -82,41 +82,25 @@ if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
   done
 fi
 
-__navi_wrapper() {
-if [[ $#BUFFER == 0 ]]; then
-  navi
-  zle reset-prompt
-else
-  zle backward-delete-char
-fi
+__on_empty_buffer() {
+  [[ $#BUFFER == 0 ]] && { eval $1; zle reset-prompt; } || zle $2
 }
 
-zle -N __navi_wrapper
-bindkey '^?' __navi_wrapper
+__navi_custom_or_delete() { __on_empty_buffer navi backward-delete-char }
+zle -N __navi_custom_or_delete
+bindkey '^?' __navi_custom_or_delete
 
-__navi_wrapper_2() {
-if [[ $#BUFFER == 0 ]]; then
-  navi --path ~/.local/share/navi/cheats
-  zle reset-prompt
-else
-  zle backward-delete-char
-fi
-}
+__navi_or_delete() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" backward-delete-char }
+zle -N __navi_or_delete
+bindkey '^[[3;2~' __navi_or_delete
 
-zle -N __navi_wrapper_2
-bindkey '^[[3;2~' __navi_wrapper_2
+__open_file_or_complete() { __on_empty_buffer __open_file expand-or-complete }
+zle -N __open_file_or_complete
+bindkey '^I' __open_file_or_complete
 
-__open_file_wrapper() {
-  if [[ $#BUFFER == 0 ]]; then
-    __open_file
-    zle reset-prompt
-  else
-    zle expand-or-complete
-  fi
-}
-
-zle -N __open_file_wrapper
-bindkey '^I' __open_file_wrapper
+__ripgrep_or_complete() { __on_empty_buffer __ripgrep expand-or-complete }
+zle -N __ripgrep_or_complete
+bindkey '^[[Z' __ripgrep_or_complete
 
 # ------------------------------------ Plugins
 eval "$(navi widget zsh)"

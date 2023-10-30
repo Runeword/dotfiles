@@ -21,6 +21,6 @@ return {
     vim.keymap.set('n', '<Leader>rc', '<Plug>SnipClose')
     vim.keymap.set('n', '<Leader>ri', '<Plug>SnipInfo')
     vim.keymap.set('n', '<Leader>rm', '<Plug>SnipReplMemoryClean')
-    -- vim.keymap.set('n', '<Leader>ra', ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>", { silent = true, })
+    vim.keymap.set('n', '<Leader>ra', ":let b:caret=winsaveview() <CR> | :%SnipRun <CR>| :call winrestview(b:caret) <CR>", { silent = true, })
   end,
 }

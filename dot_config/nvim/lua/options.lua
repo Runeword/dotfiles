@@ -59,7 +59,7 @@ o.hidden = true                    -- Allow switching buffers with unsaved chang
 opt.lazyredraw = true              -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
 
 opt.list = true
-opt.listchars:append "eol:¬,tab:→ ,lead: ,multispace:˙,trail:˙"
+opt.listchars:append "eol:¬,tab:  ,lead: ,multispace:˙,trail:˙"
 
 opt.laststatus = 3
 

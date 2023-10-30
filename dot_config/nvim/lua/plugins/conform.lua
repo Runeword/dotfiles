@@ -17,7 +17,7 @@ return {
         },
       },
     })
-    vim.keymap.set({ 'n', }, '<Leader>f',
+    vim.keymap.set({ 'n', 'x'}, '<Leader>f',
       function() require('conform').format({ async = true, lsp_fallback = true, }) end)
   end,
 }

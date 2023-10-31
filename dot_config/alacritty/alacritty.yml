@@ -1,7 +1,8 @@
 # ---------------------------- Options
 
 env:
-  TERM: xterm-256color
+  # TERM: xterm-256color
+  TERM: alacritty
 
 live_config_reload: true
 custom_cursor_colors: true
@@ -74,16 +75,16 @@ key_bindings:
 
 font:
   bold:
-    family: SauceCodePro NF
+    family: SauceCodePro Nerd Font
     style: SemiBold
   bold_italic:
-    family: SauceCodePro NF
+    family: SauceCodePro Nerd Font
     style: SemiBold Italic
   italic:
-    family: SauceCodePro NF
+    family: SauceCodePro Nerd Font
     style: Italic
   normal:
-    family: SauceCodePro NF
+    family: SauceCodePro Nerd Font
     style: Regular
   size: 19
   offset:

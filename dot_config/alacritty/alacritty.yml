@@ -52,7 +52,9 @@ key_bindings:
   - { key: Return, mods: Control, chars: "\x1b[13;5u" }
   - { key: Return, mods: Control|Shift, chars: "\x1b[13;6u" }
   - { key: Back, mods: Shift, chars: "\x1b[3;2~" }
-  # - { key: Tab, mods: Shift, chars: "\x1b[9;2u" }
+  - { key: I, mods: Control, chars: "\x1b[105;5u" }
+  # - { key: Tab, chars: "\t" }
+  - { key: Tab, mods: Shift, chars: "\x1b[Z" }
   - { key: Tab, mods: Control, chars: "\x1b[9;5u" }
   - { key: Tab, mods: Control|Shift, chars: "\x1b[9;6u" }
   - { key: Escape, mods: Control, chars: "\x02\x5b" }

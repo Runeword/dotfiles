@@ -17,12 +17,8 @@ return {
       group = 'matchup',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'MatchParen',
-          { fg = '#ff1994', bg = '#22009c', italic = true, bold = true, })
-        vim.api.nvim_set_hl(0, 'MatchWord', { fg = '#ff1994', })
-        -- vim.api.nvim_set_hl(0, 'MatchParen',
-        --   { fg = '#7429ff', italic = true, bold = true, })
-        -- vim.api.nvim_set_hl(0, 'MatchWord',       { fg = '#7429ff', })
+        vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ffffff', bold = true, italic = true, })
+        vim.api.nvim_set_hl(0, 'MatchWord',  { fg = '#ffffff', bold = true, italic = true, })
         -- vim.api.nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b', })
       end,
     })

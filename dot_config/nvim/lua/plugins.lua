@@ -39,7 +39,6 @@ return {
   -- { 'mbbill/undotree', },
   { 'nvim-treesitter/nvim-treesitter-textobjects', },
   { 'windwp/nvim-ts-autotag', },
-  { 'itchyny/vim-cursorword', },
   { 'tommcdo/vim-exchange', },
   { 'jghauser/mkdir.nvim', },
 

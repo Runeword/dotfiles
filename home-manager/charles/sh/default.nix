@@ -10,8 +10,9 @@
   --reverse \
   --no-separator \
   --info=inline:'' \
-  --border none --color=fg:#d0d0d0,bg:-1,hl:#7e6fc4 \
-  --color=fg+:#ffffff,bg+:-1,hl+:#4fe8e3,hl+:regular,query:regular \
+  --border none \
+  --color=fg:#d0d0d0,bg:-1,hl:#8d84cf \
+  --color=fg+:#ffffff,fg+:regular,bg+:-1,hl+:#6bdbd8,hl+:regular,query:regular \
   --color=info:#d0d0d0,prompt:#ffffff,pointer:#ff75a9 \
   --color=marker:#ff75a9,spinner:#ffffff,header:#535e73 \
   --prompt='  ' \

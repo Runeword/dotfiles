@@ -83,13 +83,15 @@ __ripgrep() {
     fzf \
       --ansi \
       --multi \
-      --color "hl:-1:underline,hl+:-1:underline:reverse" \
       --delimiter : \
       --reverse \
-      --inline-info \
+      --border none \
+      --cycle \
+      --info=inline:'' \
+      --height 70% \
       --no-separator \
       --preview 'bat --style=plain --color=always {1} --highlight-line {2}' \
-      --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+      --preview-window 'right,55%,border-none,+{2}+3/3,~3' \
       --bind 'enter:become(nvim {1} +{2})'
   # )
   # --bind 'enter:execute(echo {1} +{2})+abort'
@@ -110,6 +112,7 @@ __ripgrep() {
   # fi
 }
 
+# --color "hl:-1:underline,hl+:-1:underline:reverse" \
 # --bind 'enter:become(vim {1} +{2})'
 # "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --inline-info --cycle --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
 # "cd $(fd --type directory --hidden --follow --no-ignore | fzf --cycle)";

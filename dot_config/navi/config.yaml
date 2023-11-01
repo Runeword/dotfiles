@@ -10,8 +10,8 @@ style:
 
 finder:
   command: fzf # equivalent to the --finder option
-  overrides: --exact -i --with-nth=3,2,1 --no-separator --height 70% --cycle --inline-info --no-preview --no-exact
-  overrides_var: --with-nth=3,2,1 --no-separator --height 70% --cycle --inline-info --no-exact
+  overrides: --exact -i --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-preview --no-exact
+  overrides_var: --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-exact
 
 cheats:
   paths:

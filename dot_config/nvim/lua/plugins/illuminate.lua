@@ -33,8 +33,8 @@ return {
     vim.keymap.del('n',           '<M-p>')
     vim.keymap.del({ 'o', 'x', }, '<M-i>')
 
-    vim.keymap.set('n',           '<C-CR>',   function() require('illuminate').goto_next_reference() end)
-    vim.keymap.set('n',           '<C-S-CR>', function() require('illuminate').goto_prev_reference() end)
-    vim.keymap.set({ 'o', 'x', }, '<CR>',     function() require('illuminate').textobj_select() end)
+    vim.keymap.set('n',           '*',     function() require('illuminate').goto_next_reference() end, { remap = true })
+    vim.keymap.set('n',           '#',     function() require('illuminate').goto_prev_reference() end, { remap = true })
+    vim.keymap.set({ 'o', 'x', }, '<CR>',  function() require('illuminate').textobj_select() end)
   end,
 }

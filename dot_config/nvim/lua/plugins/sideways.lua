@@ -2,6 +2,7 @@ local vim = vim
 
 return {
   'AndrewRadev/sideways.vim',
+  enabled = false,
 
   config = function()
     vim.keymap.set('n', '<Left>', '<cmd>SidewaysJumpLeft<CR>')

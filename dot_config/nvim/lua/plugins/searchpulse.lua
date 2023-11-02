@@ -10,8 +10,8 @@ return {
 
     vim.keymap.set('n', 'n', 'n<Plug>Pulse', { remap = true, })
     vim.keymap.set('n', 'N', 'N<Plug>Pulse', { remap = true, })
-    vim.keymap.set('n', '*', '*<Plug>Pulse', { remap = true, })
-    vim.keymap.set('n', '#', '#<Plug>Pulse', { remap = true, })
+    -- vim.keymap.set('n', '*', '*<Plug>Pulse', { remap = true, })
+    -- vim.keymap.set('n', '#', '#<Plug>Pulse', { remap = true, })
     vim.keymap.set('c', '<Enter>', 'search_pulse#PulseFirst()',
       { silent = true, expr = true, })
   end,

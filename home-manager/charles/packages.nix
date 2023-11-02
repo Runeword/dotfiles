@@ -44,6 +44,7 @@
     httrack
     pgmodeler
     sioyek
+    qdirstat
 
     # ---------------------------------- Editors
     neovim-nightly

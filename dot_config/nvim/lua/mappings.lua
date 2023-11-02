@@ -10,6 +10,10 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
+vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
+vim.keymap.set('n', '<Right>', '<C-i>')
+vim.keymap.set('n', '<Left>', '<C-o>')
+
 vim.keymap.set('n', 'gs', function()
   vim.cmd([[
   :let old_undolevels = &undolevels

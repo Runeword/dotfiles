@@ -18,11 +18,23 @@ return {
         },
 
         float = {
+          border = {
+            { '',  'FloatBorder', },
+            { '',  'FloatBorder', },
+            { '',  'FloatBorder', },
+            { ' ', 'FloatBorder', },
+            { ' ', 'FloatBorder', },
+            { ' ', 'FloatBorder', },
+            { ' ', 'FloatBorder', },
+            { ' ', 'FloatBorder', },
+          },
+          max_width = 80,
           header = '',
           prefix = '',
+          suffix = '',
           format = function(diag)
             return string.format(
-              '󱞩 %s %s %s',
+              '%s %s\n    %s',
               diag.source,
               diag.user_data.lsp.code,
               diag.message
@@ -49,10 +61,10 @@ return {
         -- vim.keymap.set("n", '<ScrollWheelUp>', diagnostic.goto_prev, { buffer = buffer })
         -- vim.keymap.set("n", '<ScrollWheelDown>', diagnostic.goto_next, { buffer = buffer })
 
-        vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev,
-          { buffer = buffer, })
-        vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next,
-          { buffer = buffer, })
+        -- vim.keymap.set('n', '<PageUp>', function() return vim.diagnostic.goto_prev({ float = { max_width = 50, }, }) end,
+        -- { buffer = buffer, })
+        vim.keymap.set('n', '<PageUp>',   vim.diagnostic.goto_prev, { buffer = buffer, })
+        vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
 
         vim.keymap.set('n', '<Leader>x', vim.diagnostic.setqflist,
           { noremap = true, silent = true, })

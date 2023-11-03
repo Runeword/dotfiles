@@ -17,9 +17,9 @@ return {
       group = 'matchup',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ffffff', italic = true, })
-        vim.api.nvim_set_hl(0, 'MatchWord',  { fg = '#ffffff', italic = true, })
-        vim.api.nvim_set_hl(0, 'OffscreenPopup',  { fg = '#ffffff', bg = 'none', italic = true, })
+        vim.api.nvim_set_hl(0, 'MatchParen',     { fg = '#ffffff', italic = true, })
+        vim.api.nvim_set_hl(0, 'MatchWord',      { underline = true, })
+        vim.api.nvim_set_hl(0, 'OffscreenPopup', { bg = 'none', })
       end,
     })
 
@@ -42,7 +42,8 @@ return {
       group = 'localhighlight',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1a1f30', })
+        vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1d253d', })
+        -- vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1a1f30', })
       end,
     })
 

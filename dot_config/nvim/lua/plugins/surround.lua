@@ -11,10 +11,10 @@ return {
         normal_cur_line = false,
         visual_line = false,
         -- change_line = false,
-        normal = 'ys',
+        normal = 's',
         delete = 'ds',
         change = 'cs',
-        visual = 'S',
+        visual = 's',
       },
     })
   end,

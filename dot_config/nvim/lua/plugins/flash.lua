@@ -60,7 +60,8 @@ return {
         jump_labels = false,
         multi_line = true,
         -- label = { exclude = 'hjkliardc', },
-        keys = { 'f', 'F', 't', 'T', ';', ',', },
+        keys = { 'f', 'F', ';', ',', },
+        -- keys = { 'f', 'F', 't', 'T', ';', ',', },
 
         char_actions = function(motion)
           return {
@@ -83,16 +84,16 @@ return {
 
   keys = {
     {
-      's',
+      't',
       mode = { 'n', 'x', 'o', },
       function() require('flash').jump() end,
       desc = 'Flash',
     },
-    {
-      '<C-s>',
-      mode = { 'i', },
-      function() require('flash').jump() end,
-      desc = 'Flash',
-    },
+    -- {
+    --   '<C-s>',
+    --   mode = { 'i', },
+    --   function() require('flash').jump() end,
+    --   desc = 'Flash',
+    -- },
   },
 }

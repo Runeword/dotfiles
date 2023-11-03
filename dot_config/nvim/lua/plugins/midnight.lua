@@ -17,9 +17,9 @@ return {
       group = 'matchup',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ffffff', bold = true, italic = true, })
-        vim.api.nvim_set_hl(0, 'MatchWord',  { fg = '#ffffff', bold = true, italic = true, })
-        -- vim.api.nvim_set_hl(0, 'MatchBackground', { bg = '#1a1a3b', })
+        vim.api.nvim_set_hl(0, 'MatchParen', { fg = '#ffffff', italic = true, })
+        vim.api.nvim_set_hl(0, 'MatchWord',  { fg = '#ffffff', italic = true, })
+        vim.api.nvim_set_hl(0, 'OffscreenPopup',  { fg = '#ffffff', bg = 'none', italic = true, })
       end,
     })
 
@@ -33,6 +33,16 @@ return {
         vim.api.nvim_set_hl(0, 'FlashMatch',   { bg = '#222b66', fg = 'white', bold = false, })
         vim.api.nvim_set_hl(0, 'FlashCurrent', { bg = '#FAFF00', fg = 'black', bold = false, })
         vim.api.nvim_set_hl(0, 'FlashLabel',   { bg = '#5d00ff', fg = 'white', bold = false, })
+      end,
+    })
+
+    -- tzachar/local-highlight.nvim
+    vim.api.nvim_create_augroup('localhighlight', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'localhighlight',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1a1f30', })
       end,
     })
 

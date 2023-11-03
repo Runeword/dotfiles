@@ -446,7 +446,7 @@ NAME: NAME { \
     symbols_l {
       bindings = <
         &kp GRAVE &kp MINUS &kp EQUAL &kp PLUS &mc_pound    &trans &trans &trans &trans &trans
-        &kp EXCL &kp QUESTION &kp HASH &kp STAR &mc_euro    &trans &trans &trans &trans &trans
+        &kp EXCL &kp QUESTION &kp STAR &kp HASH &mc_euro    &trans &trans &trans &trans &trans
         &kp AMPS &kp PIPE &kp UNDER &kp PRCNT &mc_degree    &trans &trans &trans &trans &trans
         &trans &trans &trans &trans
         >;

@@ -94,7 +94,7 @@ vim.api.nvim_create_autocmd('colorscheme', {
   group = 'diagnostic',
   pattern = '*',
   callback = function()
-    -- #0a172e #1a1a3b #1e2633 #424a57 #7a7c9e #222b66
+    -- #0a172e #10141f #1a1a3b #1e2633 #424a57 #7a7c9e #222b66
 
     vim.api.nvim_set_hl(0, 'diagnosticerror',          { bg = 'NONE', fg = '#ff75a9', bold = false, italic = true, })
     vim.api.nvim_set_hl(0, 'diagnosticunderlineerror', { bg = 'NONE', undercurl = true, sp = '#ff75a9', })
@@ -105,9 +105,8 @@ vim.api.nvim_create_autocmd('colorscheme', {
     -- vim.api.nvim_set_hl(0, 'diagnosticfloatinginfo',   { link = 'diagnosticvirtualtextinfo', })
     -- vim.api.nvim_set_hl(0, 'diagnosticfloatingwarn',   { link = 'diagnosticvirtualtextwarn', })
 
-    -- vim.api.nvim_set_hl(0, 'normalfloat',              { bg = 'none', })
     vim.api.nvim_set_hl(0, 'normalfloat',              { bg = '#1e2633', })
-    vim.api.nvim_set_hl(0, 'floatborder',              { bg = '#1e2633', fg = '#10141f', })
+    vim.api.nvim_set_hl(0, 'floatborder',              { bg = '#1e2633', fg = '#1e2633', })
 
     vim.api.nvim_set_hl(0, 'pmenu',                    { bg = 'black', fg = '#7a7c9e', })
     vim.api.nvim_set_hl(0, 'pmenusel',                 { bg = '#1e2633', fg = 'white', })

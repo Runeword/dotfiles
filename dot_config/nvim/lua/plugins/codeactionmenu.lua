@@ -5,11 +5,21 @@ return {
   'weilbith/nvim-code-action-menu',
 
   config = function()
-    -- vim.keymap.set("n", '<leader>ca', '<cmd>CodeActionMenu<Enter>')
-
     vim.g.code_action_menu_show_details = false
     vim.g.code_action_menu_show_diff = true
+    vim.g.code_action_menu_window_border = {
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+      { ' ', 'FloatBorder', },
+    }
   end,
 
   cmd = 'CodeActionMenu',
+
+  vim.keymap.set('n', '<Leader>a', '<cmd>CodeActionMenu<Enter>')
 }

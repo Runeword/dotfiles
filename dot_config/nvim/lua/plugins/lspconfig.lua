@@ -54,8 +54,6 @@ return {
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = buffer, })
 
         -- vim.keymap.set('n', '<Leader>f', vim.lsp.buf.format, { buffer = buffer, })
-        vim.keymap.set('n', '<Leader>a', '<cmd>CodeActionMenu<Enter>',
-          { buffer = buffer, })
 
         -- vim.keymap.set('n', '<leader>r', function() lsp.buf.rename(vim.fn.input('New Name: ')) end, { buffer = buffer })
         -- vim.keymap.set("n", '<ScrollWheelUp>', diagnostic.goto_prev, { buffer = buffer })

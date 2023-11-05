@@ -343,7 +343,7 @@ NAME: NAME { \
     compatible = "zmk,combos";
 
     cb_bspc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&kp BSPC>; require-prior-idle-ms = <150>; };
-    # cb_esc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp ESC>; require-prior-idle-ms = <150>; };
+    // cb_esc { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&kp ESC>; require-prior-idle-ms = <150>; };
     cb_rep_r { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <16 17>; bindings = <&key_repeat>; require-prior-idle-ms = <150>; };
     cb_rep_l { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&key_repeat>; require-prior-idle-ms = <150>; };
     cb_del { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <17 18>; bindings = <&kp DEL>; require-prior-idle-ms = <150>; };

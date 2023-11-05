@@ -60,8 +60,8 @@ vim.keymap.set('',  'q',       '<Nop>')
 -- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
 -- vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
 -- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
--- vim.keymap.set('n', '<Leader>s', '<cmd>silent write<CR>')
--- vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
+vim.keymap.set('n', '<Leader>s', '<cmd>silent write<CR>')
+vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 
 -- Edit
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')

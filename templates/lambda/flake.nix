@@ -10,8 +10,9 @@
             src = super.fetchFromGitHub {
               owner = "aws";
               repo = "aws-sam-cli";
-              rev = "v1.98.0";
-              sha256 = "sha256-ksdNPe5yBoMj4vHCHayfZ5O8BrH8zqUMefJDxvvHOYs=";
+              rev = "v1.100.0";
+              # rev = "f38e17dcb60336dc83893770ec09def8ce637459";
+              sha256 = "sha256-BmYBo3jq6vTZvtLB9/5QtGYOVIVttHcEm2x0oIl1Qs0=";
               # sha256 = pkgs.lib.fakeSha256;
             };
           });

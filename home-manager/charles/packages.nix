@@ -126,6 +126,7 @@
     krita
     # obs-studio
     vlc
+    figma-linux
     # davinci-resolve
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia

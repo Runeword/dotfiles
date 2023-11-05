@@ -20,3 +20,6 @@ sam local start-api --profile <profile>
 
 # Create application
 sam init
+
+# Create application
+sam init --runtime go --package-type Image

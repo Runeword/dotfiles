@@ -193,6 +193,15 @@ NAME: NAME { \
       bindings = <&mo>, <&kp>;
     };
 
+    ht_mod: hold_tap_modifier {
+      compatible = "zmk,behavior-hold-tap";
+      label = "ht_mod";
+      #binding-cells = <2>;
+      flavor = "hold-preferred";
+      tapping-term-ms = <200>;
+      bindings = <&kp>, <&kp>;
+    };
+
     // &ht_mo_sk la_NAV RSFT
     ht_mo_sk: hold_tap_momentary_layer_sticky_modifier {
       compatible = "zmk,behavior-hold-tap";
@@ -430,7 +439,7 @@ NAME: NAME { \
       &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
       &hm_mod_l LALT A &hm_mod_l LGUI O &hm_mod_l LCTL E &hm_mo_l la_SYM_r U &kp I    &kp D &hm_mo_r la_SYM_l H &hm_mod_r RCTL T &hm_mod_r RGUI N &hm_mod_r LALT S
       &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
-      &hm_mo_l la_NUM ENTER &ht_mo la_NAV TAB &sk RSFT &hm_mo_r la_SPE SPACE
+      &hm_mo_l la_NUM ENTER &ht_mo la_NAV TAB &ht_mod LSHFT ESC &hm_mo_r la_SPE SPACE
       >;
     };
 

@@ -7,7 +7,10 @@ return {
 
   opts = {
     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
-    label = { uppercase = false, },
+    label = {
+      uppercase = false,
+      after = {0, 3}
+    },
 
     highlight = {
       backdrop = false,
@@ -46,6 +49,7 @@ return {
           history = true,
           register = true,
           nohlsearch = true,
+          autojump = true,
         },
       },
 
@@ -60,8 +64,7 @@ return {
         jump_labels = false,
         multi_line = true,
         -- label = { exclude = 'hjkliardc', },
-        keys = { 'f', 'F', ';', ',', },
-        -- keys = { 'f', 'F', 't', 'T', ';', ',', },
+        keys = { 'f', 'F', 't', 'T', ';', ',', },
 
         char_actions = function(motion)
           return {
@@ -84,9 +87,17 @@ return {
 
   keys = {
     {
-      't',
+      '<Tab>',
       mode = { 'n', 'x', 'o', },
-      function() require('flash').jump() end,
+      function()
+        require('flash').jump()
+        -- require('flash').jump({
+        --   search = {
+        --     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
+        --     incremental = true,
+        --   },
+        -- })
+      end,
       desc = 'Flash',
     },
     -- {

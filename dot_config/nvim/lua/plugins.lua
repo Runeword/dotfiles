@@ -41,6 +41,7 @@ return {
   { 'windwp/nvim-ts-autotag', },
   { 'tommcdo/vim-exchange', },
   { 'jghauser/mkdir.nvim', },
+  { 'filNaj/tree-setter', },
 
   {
     'tzachar/local-highlight.nvim',

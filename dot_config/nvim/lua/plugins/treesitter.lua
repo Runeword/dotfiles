@@ -15,6 +15,11 @@ return {
         disable_virtual_text = true,
       },
 
+      -- filNaj/tree-setter
+      tree_setter = {
+        enable = true,
+      },
+
       -- p00f/nvim-ts-rainbow
       rainbow = {
         enable = false,

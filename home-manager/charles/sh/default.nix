@@ -3,6 +3,8 @@
     ./aliases.nix
   ];
 
+  home.sessionVariables.DIRENV_LOG_FORMAT="$(tput setaf 0)direnv: %s$(tput sgr0)";
+
   # fzf
   home.sessionVariables._ZO_FZF_OPTS = "--reverse --height 40% --no-separator --border none";
   home.sessionVariables.FZF_DEFAULT_COMMAND = "fd --hidden --follow --no-ignore --exclude .git --exclude node_modules";

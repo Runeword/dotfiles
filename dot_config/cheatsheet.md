@@ -102,36 +102,10 @@ date # Display current date and time
 ### files operations
 
 ```bash
-cd -                                        # Revient au répertoire précédent
-mkdir -p foo                                # Créé un répertoire et ses répertoire parents
-mkdir <directory> && cp $_
-rm -rf foo/*                                # Supprime le contenu du dossier
-rm *<text>*                                 # delete files with the <text> pattern
 pacman -<file> <newfilename>                # Renomme le fichier
 pacman -Qdtq                                # Find out all packages that don’t depend on other packages
 sudo pacman -R $(pacman -Qdtq)              # Remove these unnecessary packages
 downgrade <package>                         # Downgrade the package
-mv <directory> /home/<user>/Documents      # Déplace le répertoire et son contenu
-                                            # déplace les répertoires 1, 2 et 3 et leur contenu
-mv <directory1> <directory2> <directory3> /home/<user>/Documents
-mv <file> <directory>\                                 # Déplace le fichier dans le répertoire
-mv <file> <file> <directory>\                          # Déplace plusieurs fichiers dans le répertoire
-cp -r /<directory>/                                    # Copy directory and his dotfiles
-cp -r ~/Desktop/<directory> ~/Documents/<directory>    # Copie le répertoire en incluant les fichiers cachés
-mkdir -p ~/.local/share/nvim/site/plugin               # Create a directory and its parent directories
-                                                       # (ne pas spécifier les fichiers du répertoire)
-cp /<source-directory>/* /<target-directory>/          # Copie de tous les fichiers d'un répertoire vers un autre répertoire
-cp <file-1> <file-2> /<target-directory>/              # Copy multiple files into a directory
-rm -rf <directory>/*                                   # Supprime tout le contenu du répertoire
-
-scp -r -P <port> <user>@<server>:<chemin/vers/dossier/source> .  # Copie du serveur vers le répetoire courant
-scp <port> <user>@<ip>:/home/<user>/<file-name>.log .            # Copie du serveur vers le répetoire courant
-scp -r -P <port> . <user>@<server>:<chemin/vers/dossier/source>  # Copie du répertoire courant vers le serveur
-rsync --info=progress2 <source> <dest>    # Copie un fichier et donne un % de progression
-rsync --progress <source> <dest>          # Copie un fichier et donne un % de progression
-rsync -avz -e "ssh -p<port>" \
---exclude ".git" --exclude "node_modules" --exclude ".nuxt" --exclude ".env" \
-./tileserver-gl/ <user>@<ip>:/home/<user>/tileserver-gl/
 chmod 777 <file>                          # Donne tous les droits au fichier
 chmod 755 <file>
 unzip <file name>.zip                     # Décompresse le fichier

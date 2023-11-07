@@ -28,3 +28,15 @@ rsync --info=progress2 <source> <dest>
 
 # Copy file with progress
 rsync --progress <source> <dest>
+
+# Synchronize contents of a local directory to a remote directory
+rsync -avz -e "ssh -p<port>" --exclude ".git" --exclude "node_modules" --exclude ".nuxt" --exclude ".env" <local-directory> <user>@<ip>:<remote-directory>
+
+# Copy remote directory to local directory
+scp -r -P <port> <user>@<server>:<remote-directory> <local-directory>
+
+# Copy remote file to local directory
+scp <port> <user>@<ip>:<remote-file> <local-directory>
+
+# Copy local directory to remote directory
+scp -r -P <port> <local-directory> <user>@<server>:<remote-directory>

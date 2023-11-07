@@ -1,0 +1,30 @@
+                                         % shell, file operations
+# Move to the previous directory
+cd -
+
+# Create directory and its parents
+mkdir -p <parent-directory/directory>
+
+# Delete all directory content
+rm -rf <directory>/*
+
+# Delete files with the <text> pattern
+rm *<text>*
+
+# Move multiple directories
+mv <directory1> <directory2> <directory3> <target>
+
+# Copy multiple directories
+mv <directory1> <directory2> <directory3> <target>
+
+# Copy directory and its hidden files
+cp -r <directory> <target>
+
+# Copy all directory content
+cp <directory>/* <target>
+
+# Copy file with progress
+rsync --info=progress2 <source> <dest>
+
+# Copy file with progress
+rsync --progress <source> <dest>

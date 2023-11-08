@@ -6,18 +6,18 @@ return {
   config = function()
     require('various-textobjs').setup({ useDefaultKeymaps = false, })
 
-    vim.keymap.set({ 'o', 'x', }, 'd',
+    vim.keymap.set({ 'o', }, 'd',
       function() require('various-textobjs').diagnostic() end)
     vim.keymap.set({ 'o', 'x', }, 'ak',
-      function() require('various-textobjs').key(false) end)
+      function() require('various-textobjs').key('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'ik',
-      function() require('various-textobjs').key(true) end)
+      function() require('various-textobjs').key('inner') end)
     vim.keymap.set({ 'o', 'x', }, 'av',
-      function() require('various-textobjs').value(false) end)
+      function() require('various-textobjs').value('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'iv',
-      function() require('various-textobjs').value(true) end)
+      function() require('various-textobjs').value('inner') end)
     vim.keymap.set({ 'o', 'x', }, 'iw',
-      function() require('various-textobjs').subword(true) end)
+      function() require('various-textobjs').subword('inner') end)
     -- vim.keymap.set({ 'o', 'x', }, 'aw',
     --   function() require('various-textobjs').subword(false) end)
     -- vim.keymap.set({ 'o', 'x', }, 'ad',

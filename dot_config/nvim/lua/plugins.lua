@@ -67,13 +67,6 @@ return {
   },
 
   {
-    'smjonas/duplicate.nvim',
-    config = function()
-      require('duplicate').setup()
-    end,
-  },
-
-  {
     'glts/vim-textobj-comment',
     dependencies = 'kana/vim-textobj-user',
   },

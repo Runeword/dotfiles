@@ -4,15 +4,15 @@ local remap = { remap = true, }
 vim.keymap.set('x', '<C-n>',      ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n', 'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set({ 'x', 'n' }, '<Space>',    '<Enter>',                                   remap)
+-- vim.keymap.set({ 'x', 'n' }, '<Space>',    '<Enter>',                                   remap)
 
 vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
 vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
-vim.keymap.set('n', '<Right>', '<C-i>')
-vim.keymap.set('n', '<Left>', '<C-o>')
+-- vim.keymap.set('n', '<Right>', '<C-i>')
+-- vim.keymap.set('n', '<Left>', '<C-o>')
 
 vim.keymap.set('n', 'gs', function()
   vim.cmd([[
@@ -50,7 +50,7 @@ vim.keymap.set('n', 'g<Enter>', toggleFold)
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
-vim.keymap.set('n', '<Enter>', '<Nop>')
+-- vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>',   '<Nop>')
 vim.keymap.set('n', '<C-p>',   '<Nop>')
 vim.keymap.set('',  'Q',       '<Nop>')
@@ -233,6 +233,7 @@ vim.keymap.set({ 'n', }, 'gO', appendNewlineAbove, { expr = true, })
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 
 -- Text objects
+
 vim.keymap.set({ 'x', 'o', }, 'a<Space>', 'ap')
 vim.keymap.set({ 'x', 'o', }, 'i<Space>', 'ip')
 vim.keymap.set({ 'o', },      '<Space>',  'ip')
@@ -286,12 +287,8 @@ end)
 vim.keymap.set('n',           '^', 'g^')
 vim.keymap.set('n',           '&', 'g^')
 
-vim.keymap.set({ 'n', 'x', }, '(', function() vim.fn.search('(') end)
-vim.keymap.set({ 'n', 'x', }, ')', function() vim.fn.search('(', 'b') end)
-vim.keymap.set({ 'n', 'x', }, '[', function() vim.fn.search('[') end)
-vim.keymap.set({ 'n', 'x', }, ']', function() vim.fn.search('[', 'b') end)
-vim.keymap.set({ 'n', 'x', }, '{', function() vim.fn.search('{') end)
-vim.keymap.set({ 'n', 'x', }, '}', function() vim.fn.search('{', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '<Enter>', function() vim.fn.search('[([{]') end)
+vim.keymap.set({ 'n', 'x', }, '<S-Enter>', function() vim.fn.search('[([{]', 'b') end)
 
 -- Buffers
 vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>q!<CR>')

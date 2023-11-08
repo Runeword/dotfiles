@@ -29,7 +29,7 @@ return {
 
   config = function()
     vim.keymap.set('n', '<Leader><CR>',     require('fzf-lua').files)
-    vim.keymap.set('n', '<S-CR>',   require('fzf-lua').live_grep_resume)
+    vim.keymap.set('n', '<Leader><S-CR>',   require('fzf-lua').live_grep_resume)
     vim.keymap.set('n', '<Leader>h', require('fzf-lua').help_tags)
     vim.keymap.set('n', '<Leader>k', require('fzf-lua').keymaps)
     vim.keymap.set('n', '<Leader>i', require('fzf-lua').highlights)

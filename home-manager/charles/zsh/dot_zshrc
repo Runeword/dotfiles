@@ -83,6 +83,8 @@ if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
 fi
 
 __on_empty_buffer() {
+  # [[ $#BUFFER == 0 ]] && { eval $1; last_command=$(fc -ln -1); zle reset-prompt; print -s "$last_command"; } || zle $2
+  # [[ $#BUFFER == 0 ]] && { eval $1; ret=$?; zle reset-prompt; return $ret } || zle $2
   [[ $#BUFFER == 0 ]] && { eval $1; zle reset-prompt; } || zle $2
 }
 

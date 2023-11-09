@@ -45,6 +45,7 @@
     pgmodeler
     sioyek
     qdirstat
+    testdisk-qt
 
     # ---------------------------------- Editors
     neovim-nightly
@@ -53,6 +54,7 @@
     tmux
     tmuxPlugins.resurrect
     tmuxPlugins.tmux-fzf
+    yazi
 
     # tmuxKeylocker
 

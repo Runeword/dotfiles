@@ -68,6 +68,7 @@
     # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
     nfm = "nix flake metadata";
     nr = "nix run";
+    np = "nvim $HOME/home-manager/$USER/packages.nix";
     ng = "sudo nix-collect-garbage -d";
     ngd = "nix-env --delete-generations +10";
     ngl = "nix-env --list-generations";

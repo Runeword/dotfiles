@@ -22,3 +22,26 @@
 #
 #   git add "$selected_files"
 # }
+
+__sel_files() {
+  echo "$1" | fzf \
+    --multi --inline-info --reverse --no-separator --border none --cycle --height 100% \
+    --header-first \
+    --header='git diff' \
+    --preview 'git diff --color=always {}' \
+    --preview-window bottom,80%,noborder
+}
+
+gd() {
+  [ $# -gt 0 ] && git diff "$@" && return 0
+
+  local files
+  files=$(git status -s | awk '{print $2}')
+  [ "$files" = "" ] && return 0
+
+  local selected_files
+  selected_files=$(__sel_files "$files")
+  [ "$selected_files" = "" ] && return 0
+
+  echo "$selected_files" | xargs "$EDITOR"
+}

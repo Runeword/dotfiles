@@ -7,13 +7,13 @@
   home.shellAliases = {
     ga = "git add";
     gs = "git status";
+    gn = "nvim $(git status -s | awk '{print $2}')";
     gt = "git stash";
     gtl = "git stash list";
     gty = "git stash apply";
     gpl = "git pull";
     gp = "git push";
     gpo = "git push origin";
-    gd = "git diff";
     gdc = "git diff --cached";
     gc = "git commit";
     gcl = "git clone";

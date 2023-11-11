@@ -96,6 +96,7 @@
     # inputs.src-cli.packages.x86_64-linux.default
     gh
     chezmoi
+    zsh-forgit
 
     # ---------------------------------- Secrets
     bitwarden-cli

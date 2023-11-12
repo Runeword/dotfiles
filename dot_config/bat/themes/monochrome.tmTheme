@@ -17,6 +17,8 @@
                 <string>#d0d0d0</string>
                 <key>caret</key>
                 <string>#FFFFFF</string>
+                <key>lineHighlight</key>
+                <string>#262626</string>
             </dict>
         </dict>
 

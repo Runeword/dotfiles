@@ -1,9 +1,9 @@
-{
+{config, ...}: {
   imports = [
     ./aliases.nix
   ];
 
-  home.sessionVariables.DIRENV_LOG_FORMAT="$(tput setaf 0)direnv: %s$(tput sgr0)";
+  home.sessionVariables.DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
 
   # fzf
   home.sessionVariables._ZO_FZF_OPTS = "--reverse --height 40% --no-separator --border none";
@@ -18,5 +18,9 @@
   --color=info:#d0d0d0,prompt:#ffffff,pointer:#ff75a9 \
   --color=marker:#ff75a9,spinner:#ffffff,header:#535e73 \
   --prompt='  ' \
+  ";
+
+  home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
+  --preview-window border-none \
   ";
 }

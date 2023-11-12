@@ -1,19 +1,6 @@
 #!/bin/sh
 
 __open_file() {
-  # Preview of focussed file or folder
-  __preview_cmd() {
-    if [ -d "$1" ]; then
-      tree -Ca -L 2 "$1" | sed 's/^/  /; 1s/^/\n/'
-    else
-      if command -v bat >/dev/null; then
-        bat --style=plain --color=always "$1" | sed 's/^/  /; 1s/^/\n/'
-      else
-        cat "$1"
-      fi
-    fi
-  }
-
   # Find then select file(s)
   local selected_files
   selected_files=$(
@@ -29,7 +16,7 @@ __open_file() {
         --cycle \
         --height 70% \
         --ansi \
-        --preview "$(typeset -f __preview_cmd); __preview_cmd {}" \
+        --preview "$HOME/home-manager/charles/sh/scripts/fm_preview.sh {}" \
         --preview-window right,55%,border-none,~1 \
         --bind='ctrl-y:execute-silent(wl-copy {})'
   )

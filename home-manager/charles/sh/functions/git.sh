@@ -2,7 +2,7 @@
 #   files=$1
 #
 #   selected_files=$(echo "$files" | fzf \
-#     --multi --inline-info --cycle --height 70% \
+#     --multi --info=inline:'' --cycle --height 70% \
 #     --preview 'git diff --color=always {}' \
 #     --preview-window bottom,80%,noborder
 #   )
@@ -25,7 +25,8 @@
 
 # __sel_files() {
 #   echo "$1" | fzf \
-#     --multi --inline-info --reverse --no-separator --border none --cycle --height 100% \
+#     --multi --reverse --no-separator --border none --cycle --height 100% \
+#     --info=inline:'' \
 #     --header-first \
 #     --header='git diff' \
 #     --preview 'git diff --color=always {}' \

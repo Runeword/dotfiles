@@ -2,7 +2,8 @@
 
 __select_files() {
   echo "$1" | fzf \
-    --multi --inline-info --reverse --no-separator --border none --cycle --height 100% \
+    --multi --reverse --no-separator --border none --cycle --height 100% \
+    --info=inline:'' \
     --header-first \
     --header="$2" \
     --preview 'chezmoi diff --reverse --color=true ~/{}' \
@@ -71,7 +72,8 @@ chf() {
     [ "$files" = "" ] && return 1
 
     selected_files=$(echo "$files" | fzf \
-      --multi --inline-info --reverse --no-separator --border none --cycle --height 70% \
+      --multi --reverse --no-separator --border none --cycle --height 70% \
+      --info=inline:'' \
       --header-first \
       --header="chezmoi forget" \
       --preview '[ -f {} ] && bat --style=plain --color=always {}' \

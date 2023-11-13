@@ -49,6 +49,18 @@ chy() {
   done
 }
 
+ch() {
+  local files
+  files=$(chezmoi status | awk '{print $2}')
+  [ "$files" = "" ] && return 1
+
+  local selected_files
+  selected_files=$(__select_files "$files")
+  [ "$selected_files" = "" ] && return 1
+
+  echo "$selected_files" | xargs "$EDITOR"
+}
+
 chf() {
   if [ $# -gt 0 ]; then
     local selected_files

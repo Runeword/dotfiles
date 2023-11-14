@@ -8,7 +8,7 @@
     gn = "nvim $(git status -s | awk '{print $2}')";
     gs = "git status";
     gpl = "git pull";
-    gps = "git push";
+    gp = "git push";
     gpo = "git push origin";
     # gt = "git stash";
     gt = "git-forgit stash_push"; # git stash push

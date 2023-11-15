@@ -91,7 +91,7 @@ __on_empty_buffer() {
   # [[ $#BUFFER == 0 ]] && { eval $1; ret=$?; zle reset-prompt; return $ret } || zle $2
   if [[ $#BUFFER == 0 ]]; then
     eval $1
-    zle redisplay
+    zle reset-prompt
   else
     zle $2
   fi

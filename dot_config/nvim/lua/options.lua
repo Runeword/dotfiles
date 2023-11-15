@@ -23,7 +23,7 @@ _G.get_statuscol = function()
 end
 vim.o.statuscolumn = "%!v:lua.get_statuscol()"
 
-vim.cmd([[let mapleader = "\<Space>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
+vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 
 o.mouse = 'a'                           -- Enables mouse support
 o.cursorline = true

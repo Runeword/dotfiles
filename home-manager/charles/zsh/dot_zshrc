@@ -34,7 +34,11 @@ bindkey '^[[3;5~' kill-word
 
 # ------------------------------------ Search history
 bindkey '^[OA' history-beginning-search-backward
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 bindkey '^[OB' history-beginning-search-forward
+# bindkey -- "${terminfo[kcuu1]}" history-beginning-search-backward
+# bindkey -- "${terminfo[kcud1]}" history-beginning-search-backward
 
 # ------------------------------------ Complete
 zmodload zsh/complist
@@ -85,7 +89,12 @@ fi
 __on_empty_buffer() {
   # [[ $#BUFFER == 0 ]] && { eval $1; last_command=$(fc -ln -1); zle reset-prompt; print -s "$last_command"; } || zle $2
   # [[ $#BUFFER == 0 ]] && { eval $1; ret=$?; zle reset-prompt; return $ret } || zle $2
-  [[ $#BUFFER == 0 ]] && { eval $1; zle reset-prompt; } || zle $2
+  if [[ $#BUFFER == 0 ]]; then
+    eval $1
+    zle redisplay
+  else
+    zle $2
+  fi
 }
 
 __navi_custom_or_delete() { __on_empty_buffer navi backward-delete-char }

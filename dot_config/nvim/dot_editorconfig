@@ -3,4 +3,4 @@ quote_style = single
 max_line_length = 120
 trailing_table_separator = always
 end_of_line = unset
-align_continuous_similar_call_args = true
+align_continuous_similar_call_args = false

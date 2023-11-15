@@ -4,25 +4,27 @@ local remap = { remap = true, }
 vim.keymap.set('x', '<C-n>',      ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n', 'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
--- vim.keymap.set({ 'x', 'n' }, '<Space>',    '<Enter>',                                   remap)
+vim.keymap.set({ 'x', 'n' }, '<Space>',    '<Enter>',                                   remap)
 
 vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
 vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
--- vim.keymap.set('n', '<Right>', '<C-i>')
--- vim.keymap.set('n', '<Left>', '<C-o>')
+-- vim.keymap.set('n', '<PageUp>', '<C-i>')
+-- vim.keymap.set('n', '<PageDown>', '<C-o>')
+
+-- vim.keymap.set('n', 'gs', function()
+--   vim.o.undoreload = 0
+--   vim.cmd('edit')
+-- end)
 
 vim.keymap.set('n', 'gs', function()
-  vim.cmd([[
-  :let old_undolevels = &undolevels
-  :set undolevels=-1
-  :exe "normal a \<BS>\<Esc>"
-  :let &undolevels = old_undolevels
-  :unlet old_undolevels
-  ]])
-end)
+  local view = vim.fn.winsaveview()
+  vim.o.undoreload = 0
+  vim.cmd('edit')
+  vim.fn.winrestview(view)
+end, { silent = true, })
 
 vim.keymap.set('n', 'i', function()
   if #vim.fn.getline('.') == 0 then
@@ -276,8 +278,16 @@ vim.keymap.set('i', '<C-k>', '<esc>ld$i')
 vim.keymap.set('i', '<C-H>', '<C-w>')
 
 -- Motions
+vim.keymap.set('n', '<C-j>', 'J')
 vim.keymap.set('n', 'k', 'gk')
 vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'J', '4jg^')
+vim.keymap.set('n', 'K', '4kg^')
+-- vim.cmd([[
+-- nnoremap J :<C-u>call search('^.\+')<CR>
+-- nnoremap K :<C-u>call search('^.\+', 'b')<CR>
+-- ]])
+
 vim.keymap.set('n', '0', 'g0')
 vim.keymap.set('n', '$', function()
   vim.fn.execute('normal! g$')
@@ -287,8 +297,8 @@ end)
 vim.keymap.set('n',           '^', 'g^')
 vim.keymap.set('n',           '&', 'g^')
 
-vim.keymap.set({ 'n', 'x', }, '<Enter>', function() vim.fn.search('[([{]') end)
-vim.keymap.set({ 'n', 'x', }, '<S-Enter>', function() vim.fn.search('[([{]', 'b') end)
+-- vim.keymap.set({ 'n', 'x', }, '<Enter>', function() vim.fn.search('[([{]') end)
+-- vim.keymap.set({ 'n', 'x', }, '<S-Enter>', function() vim.fn.search('[([{]', 'b') end)
 
 -- Buffers
 vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>q!<CR>')

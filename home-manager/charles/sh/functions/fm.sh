@@ -1,13 +1,13 @@
 #!/bin/sh
 
 __open_file() {
-  # Find then select file(s)
+  # Select file(s) with fzf
   local selected_files
   selected_files=$(
     find . \
       \( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
       -o -path './.nix-profile' -o -path './node_modules' -o -path './.local' -o -path './.direnv' \) \
-      -prune -o -printf '%P\n' |
+      -prune -o -printf '%P\n' 2> /dev/null |
       tail -n +2 |
       fzf \
         --multi \
@@ -21,39 +21,36 @@ __open_file() {
         --bind='ctrl-y:execute-silent(wl-copy {})'
   )
 
-  # --no-scrollbar
-  # --inline-info \
   # If no selection do nothing
   [ "$selected_files" = "" ] && return 0
 
-  # Check the number of selected files
+  # Check number of selected files
   local num_lines
   num_lines="$(echo "$selected_files" | wc -l)"
 
-  # If single directory selection then cd into it
+  # cd into single directory
   if [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
-    if cd "$selected_files"; then
-      if [ "$BASH_VERSION" != "" ]; then
-        history -s "cd $selected_files"
-      elif [ "$ZSH_VERSION" != "" ]; then
-        print -s "cd $selected_files"
-      fi
-    else
-      echo "Error: could not change directory to $selected_files"
+    if ! cd "$selected_files"; then
+      echo "Fail: could not change directory to $selected_files"
       return 1
     fi
-  else # If single or multiple file selection then open it in editor
-    if echo "$selected_files" | xargs "$EDITOR"; then
-      if [ "$BASH_VERSION" != "" ]; then
-        history -s "$EDITOR $(echo "$selected_files" | xargs)"
-      elif [ "$ZSH_VERSION" != "" ]; then
-        print -s "$EDITOR $(echo "$selected_files" | xargs)"
-      fi
-    else
-      echo "Error: could not open $selected_files with $EDITOR"
+
+    # Then write command in history
+    [ "$BASH_VERSION" != "" ] && history -s "cd $selected_files"
+    [ "$ZSH_VERSION" != "" ] && print -s "cd $selected_files"
+  else
+    # else open files selection in editor
+    if ! echo "$selected_files" | xargs "$EDITOR"; then
+      echo "Fail: could not open $selected_files with $EDITOR"
       return 1
     fi
+
+    # Then write command in history
+    [ "$BASH_VERSION" != "" ] && history -s "$EDITOR $(echo "$selected_files" | xargs)"
+    [ "$ZSH_VERSION" != "" ] && print -s "$EDITOR $(echo "$selected_files" | xargs)"
   fi
+
+  return 0
 }
 
 __ripgrep() {

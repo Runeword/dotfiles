@@ -1,10 +1,10 @@
 local vim = vim
 local remap = { remap = true, }
 
-vim.keymap.set('x', '<C-n>',      ':Norm ')
+vim.keymap.set('x', '<C-n>', ':Norm ')
 vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
-vim.keymap.set('n', 'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set({ 'x', 'n' }, '<Space>',    '<Enter>',                                   remap)
+vim.keymap.set('n', 'g<Space>', '<cmd>silent %s/\\s\\+$//e<CR>')
+vim.keymap.set({ 'x', 'n', }, '<Space>', '<Enter>', remap)
 
 vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
@@ -53,10 +53,10 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 -- Unmap
 -- vim.keymap.set('n', '<Enter>', '<Nop>')
-vim.keymap.set('n', '<C-n>',   '<Nop>')
-vim.keymap.set('n', '<C-p>',   '<Nop>')
-vim.keymap.set('',  'Q',       '<Nop>')
-vim.keymap.set('',  'q',       '<Nop>')
+vim.keymap.set('n', '<C-n>', '<Nop>')
+vim.keymap.set('n', '<C-p>', '<Nop>')
+vim.keymap.set('', 'Q', '<Nop>')
+vim.keymap.set('', 'q', '<Nop>')
 
 -- Save
 -- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
@@ -69,8 +69,8 @@ vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', 'g<Tab>', 'za')
-vim.keymap.set('n', 'U',      '<cmd>u0<CR>')
-vim.keymap.set('n', 'R',      "<cmd>exec 'undo' undotree()['seq_last']<CR>")
+vim.keymap.set('n', 'U', '<cmd>u0<CR>')
+vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
@@ -208,7 +208,7 @@ local function appendCharAfterCursor()
 end
 
 -------------------- Mappings
-vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine,   { expr = true, })
+vim.keymap.set({ 'x', 'n', }, 'ga', appendCharEndLine, { expr = true, })
 vim.keymap.set({ 'x', 'n', }, 'gi', appendCharStartLine, { expr = true, })
 
 -- vim.keymap.set({ 'x', 'n', }, 'ra', appendCharAfterCursor,  { expr = true, })
@@ -238,18 +238,19 @@ vim.keymap.set({ 'n', }, 'gO', appendNewlineAbove, { expr = true, })
 
 vim.keymap.set({ 'x', 'o', }, 'a<Space>', 'ap')
 vim.keymap.set({ 'x', 'o', }, 'i<Space>', 'ip')
-vim.keymap.set({ 'o', },      '<Space>',  'ip')
+vim.keymap.set({ 'o', }, '<Space>', 'ip')
+vim.keymap.set({ 'o', }, '<Enter>', 'ip')
 
-vim.keymap.set({ 'x', 'o', }, 'q',         'iq',  remap)
-vim.keymap.set({ 'x', 'o', }, 'nq',        'inq', remap)
-vim.keymap.set({ 'x', 'o', }, 'oq',        'ioq', remap)
+vim.keymap.set({ 'x', 'o', }, 'q', 'iq', remap)
+vim.keymap.set({ 'x', 'o', }, 'nq', 'inq', remap)
+vim.keymap.set({ 'x', 'o', }, 'oq', 'ioq', remap)
 
-vim.keymap.set({ 'x', 'o', }, 'a',         'ia',  remap)
-vim.keymap.set({ 'x', 'o', }, 'na',        'ina', remap)
-vim.keymap.set({ 'x', 'o', }, 'oa',        'ioa', remap)
+vim.keymap.set({ 'x', 'o', }, 'a', 'ia', remap)
+vim.keymap.set({ 'x', 'o', }, 'na', 'ina', remap)
+vim.keymap.set({ 'x', 'o', }, 'oa', 'ioa', remap)
 
-vim.keymap.set({ 'o', },      'w',         'iw',  remap)
-vim.keymap.set({ 'o', },      'W',         'iW',  remap)
+vim.keymap.set({ 'o', }, 'w', 'iw', remap)
+vim.keymap.set({ 'o', }, 'W', 'iW', remap)
 
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:()', 'i(', remap)
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:))', 'a)', remap)
@@ -263,13 +264,13 @@ vim.keymap.set({ 'o', },      'W',         'iW',  remap)
 
 -- Operators
 -- vim.keymap.set('x', 'p', '"_dP')
-vim.keymap.set({ 'n', 'v', }, 'd',  '"_d')
-vim.keymap.set('n',           'D',  '"_D')
-vim.keymap.set('n',           'dd', '"_dd^')
-vim.keymap.set({ 'n', 'v', }, 'x',  '"_x')
-vim.keymap.set({ 'n', 'v', }, 'm',  'd')
-vim.keymap.set('n',           'M',  'D')
-vim.keymap.set('n',           'mm', 'dd^')
+vim.keymap.set({ 'n', 'v', }, 'd', '"_d')
+vim.keymap.set('n', 'D', '"_D')
+vim.keymap.set('n', 'dd', '"_dd^')
+vim.keymap.set({ 'n', 'v', }, 'x', '"_x')
+vim.keymap.set({ 'n', 'v', }, 'm', 'd')
+vim.keymap.set('n', 'M', 'D')
+vim.keymap.set('n', 'mm', 'dd^')
 
 -- Readline
 vim.keymap.set('i', '<C-a>', '<esc>I')
@@ -294,16 +295,16 @@ vim.keymap.set('n', '$', function()
   vim.o.ve = ''
   vim.o.ve = 'all'
 end)
-vim.keymap.set('n',           '^', 'g^')
-vim.keymap.set('n',           '&', 'g^')
+vim.keymap.set('n', '^', 'g^')
+vim.keymap.set('n', '&', 'g^')
 
 -- vim.keymap.set({ 'n', 'x', }, '<Enter>', function() vim.fn.search('[([{]') end)
 -- vim.keymap.set({ 'n', 'x', }, '<S-Enter>', function() vim.fn.search('[([{]', 'b') end)
 
 -- Buffers
 vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>q!<CR>')
-vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
-vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
+vim.keymap.set('n', '<C-w>', '<cmd>silent bwipeout!<CR>')
+vim.keymap.set('n', '<C-t>', '<cmd>silent enew<CR>')
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
 -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
 

@@ -6,7 +6,9 @@ return {
   config = function()
     require('various-textobjs').setup({ useDefaultKeymaps = false, })
 
-    vim.keymap.set({ 'o', }, 'd',
+    vim.keymap.set({ 'o', 'x', }, 'id',
+      function() require('various-textobjs').diagnostic() end)
+    vim.keymap.set({ 'o', 'x', }, 'ad',
       function() require('various-textobjs').diagnostic() end)
     vim.keymap.set({ 'o', 'x', }, 'ak',
       function() require('various-textobjs').key('outer') end)

@@ -45,7 +45,8 @@ zmodload zsh/complist
 
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*:*:*:*:descriptions' format '%F{245}%d%f'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# shellcheck disable=SC2296
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select interactive
 
@@ -90,26 +91,31 @@ __on_empty_buffer() {
   # [[ $#BUFFER == 0 ]] && { eval $1; last_command=$(fc -ln -1); zle reset-prompt; print -s "$last_command"; } || zle $2
   # [[ $#BUFFER == 0 ]] && { eval $1; ret=$?; zle reset-prompt; return $ret } || zle $2
   if [[ $#BUFFER == 0 ]]; then
-    eval $1
+    eval "$1"
     zle reset-prompt
   else
-    zle $2
+    eval "$2"
   fi
 }
 
-__navi_custom_or_delete() { __on_empty_buffer navi backward-delete-char }
-zle -N __navi_custom_or_delete
-bindkey '^?' __navi_custom_or_delete
+__history_or_delete() { __on_empty_buffer "zle fzf-history-widget; zle accept-line" "zle backward-delete-char"; }
+zle -N __history_or_delete
+bindkey '^?' __history_or_delete
+# bindkey '^[[3;2~' # shift delete
 
-__navi_or_delete() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" backward-delete-char }
-zle -N __navi_or_delete
-bindkey '^[[3;2~' __navi_or_delete
+# __navi_or_space() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" "zle backward-delete-char"; }
+# zle -N __navi_or_space
+# bindkey '^[[3;2~' __navi_or_space
 
-__open_file_or_complete() { __on_empty_buffer __open_file expand-or-complete }
+__navi_custom_or_space() { __on_empty_buffer navi "LBUFFER+=' '; zle autosuggest-fetch"; }
+zle -N __navi_custom_or_space
+bindkey ' ' __navi_custom_or_space
+
+__open_file_or_complete() { __on_empty_buffer __open_file "zle expand-or-complete"; }
 zle -N __open_file_or_complete
 bindkey '^I' __open_file_or_complete
 
-__ripgrep_or_complete() { __on_empty_buffer __ripgrep expand-or-complete }
+__ripgrep_or_complete() { __on_empty_buffer __ripgrep "zle expand-or-complete"; }
 zle -N __ripgrep_or_complete
 bindkey '^[[Z' __ripgrep_or_complete
 
@@ -117,7 +123,8 @@ bindkey '^[[Z' __ripgrep_or_complete
 eval "$(navi widget zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init --no-cmd zsh)"
-if [[ $options[zle] = on ]]; then
+# shellcheck disable=SC2154
+if [[ ${options[zle]} = on ]]; then
   . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/completion.zsh
   . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/key-bindings.zsh
 fi

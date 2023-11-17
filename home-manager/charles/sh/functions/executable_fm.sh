@@ -1,7 +1,7 @@
 #!/bin/sh
 
 __open_file() {
-  # Select file(s) with fzf
+  # Select file(s) with fzf, if no selection do nothing
   local selected_files
   selected_files=$(
     find . \
@@ -16,13 +16,10 @@ __open_file() {
         --cycle \
         --height 70% \
         --ansi \
-        --preview "$HOME/home-manager/charles/sh/scripts/fm_preview.sh {}" \
+        --preview "$HOME/home-manager/$USER/sh/scripts/fm_preview.sh {}" \
         --preview-window right,55%,border-none,~1 \
         --bind='ctrl-y:execute-silent(wl-copy {})'
-  )
-
-  # If no selection do nothing
-  [ "$selected_files" = "" ] && return 0
+  ) || return 0
 
   # Check number of selected files
   local num_lines

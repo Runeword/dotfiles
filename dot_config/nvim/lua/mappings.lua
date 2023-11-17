@@ -2,7 +2,7 @@ local vim = vim
 local remap = { remap = true, }
 
 vim.keymap.set('x', '<C-n>', ':Norm ')
-vim.keymap.set('n', '<Leader>ch', '<cmd>silent !google-chrome-stable %:p<CR>')
+vim.keymap.set('n', '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n', 'g<Space>', '<cmd>silent %s/\\s\\+$//e<CR>')
 vim.keymap.set({ 'x', 'n', }, '<Space>', '<Enter>', remap)
 
@@ -279,11 +279,11 @@ vim.keymap.set('i', '<C-k>', '<esc>ld$i')
 vim.keymap.set('i', '<C-H>', '<C-w>')
 
 -- Motions
-vim.keymap.set('n', '<C-j>', 'J')
-vim.keymap.set('n', 'k', 'gk')
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'J', '4jg^')
-vim.keymap.set('n', 'K', '4kg^')
+vim.keymap.set({ 'x', 'n' }, '<C-j>', 'J')
+vim.keymap.set({ 'x', 'n' }, 'k', 'gk')
+vim.keymap.set({ 'x', 'n' }, 'j', 'gj')
+vim.keymap.set({ 'x', 'n' }, 'J', '4jg^')
+vim.keymap.set({ 'x', 'n' }, 'K', '4kg^')
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
 -- nnoremap K :<C-u>call search('^.\+', 'b')<CR>

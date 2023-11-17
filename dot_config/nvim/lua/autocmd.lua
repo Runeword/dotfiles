@@ -23,7 +23,7 @@ autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) 
 vim.api.nvim_create_autocmd('ExitPre', {
   group = 'cursor',
   command = 'set guicursor=a:ver90',
-  desc = 'Set cursor back to beam when leaving Neovim.',
+  desc = 'Set cursor back to beam when leaving Neovim',
 })
 
 autocmd('TermOpen', {
@@ -33,18 +33,21 @@ autocmd('TermOpen', {
     vim.o.number = false
     vim.cmd('startinsert')
   end,
+  desc = 'Disable relative and absolute line numbers, and start insert mode in terminal buffers'
 })
 
 autocmd({ 'BufWinLeave', }, {
   group = 'view',
   pattern = '*.*',
   command = 'mkview',
+  desc = 'Save cursor position and folds when leaving a buffer',
 })
 
 autocmd({ 'BufWinEnter', }, {
   group = 'view',
   pattern = '*.*',
   command = 'silent! loadview',
+  desc = 'Restore cursor position and folds when entering a buffer'
 })
 
 autocmd('BufWritePost', {
@@ -59,6 +62,7 @@ autocmd('FileType', {
   callback = function()
     vim.keymap.set('n', 'gx', '<C-]>')
   end,
+  desc = 'Use gx instead of <C-]> to follow links for help files'
 })
 
 autocmd('BufWritePost', {
@@ -71,16 +75,16 @@ autocmd({ 'BufWinEnter', 'BufRead', 'BufNewFile', }, {
   group = 'disableAutoComment',
   pattern = '*',
   command = 'setlocal fo-=c fo-=r fo-=o fo+=t',
+  desc = 'Disable auto-commenting for all file types'
 })
 
--- Exclude quickfix buffer from the buffer list
 autocmd('FileType', {
   group = 'quickfix',
   pattern = 'qf',
   command = 'set nobuflisted',
+  desc = 'Exclude quickfix buffer from the buffer list'
 })
 
--- Automatically fitting a quickfix window to 10 lines max and 3 lines min height
 autocmd('FileType', {
   group = 'quickfix',
   pattern = 'qf',
@@ -88,6 +92,7 @@ autocmd('FileType', {
     vim.cmd(math.max(math.min(vim.fn.line('$'), 10), 3) ..
       'wincmd _')
   end,
+  desc = 'Automatically fitting a quickfix window to 10 lines max and 3 lines min height'
 })
 
 vim.api.nvim_create_autocmd('colorscheme', {

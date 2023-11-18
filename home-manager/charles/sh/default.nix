@@ -14,12 +14,13 @@
   --info=inline:'' \
   --border none \
   --color=fg:#d0d0d0,bg:-1,hl:#918fcf \
-  --color=fg+:#ffffff,fg+:regular,bg+:#262626,hl+:#6bdbd8,hl+:regular,query:regular \
+  --color=fg+:#ffffff,fg+:regular,bg+:#0e1c1c,hl+:#6bdbd8,hl+:regular,query:regular \
   --color=info:#d0d0d0,prompt:#ffffff,pointer:#ff75a9 \
   --color=marker:#ff75a9,spinner:#ffffff,header:#535e73 \
   --prompt='  ' \
   ";
   # --color=fg+:#ffffff,fg+:regular,bg+:-1,hl+:#6bdbd8,hl+:regular,query:regular \
+  # --color=fg+:#ffffff,fg+:regular,bg+:#262626,hl+:#6bdbd8,hl+:regular,query:regular \
 
   home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
   --preview-window border-none \

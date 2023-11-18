@@ -7,7 +7,7 @@ __open_file() {
     find . \
       \( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
       -o -path './.nix-profile' -o -path './node_modules' -o -path './.local' -o -path './.direnv' \) \
-      -prune -o -printf '%P\n' 2> /dev/null |
+      -prune -o -printf '%P\n' 2>/dev/null |
       tail -n +2 |
       fzf \
         --multi \
@@ -25,7 +25,7 @@ __open_file() {
   local num_lines
   num_lines="$(echo "$selected_files" | wc -l)"
 
-  # cd into single directory
+  # cd into selected directory
   if [ "$num_lines" -eq 1 ] && [ -d "$selected_files" ]; then
     if ! cd "$selected_files"; then
       echo "Fail: could not change directory to $selected_files"
@@ -36,7 +36,7 @@ __open_file() {
     [ "$BASH_VERSION" != "" ] && history -s "cd $selected_files"
     [ "$ZSH_VERSION" != "" ] && print -s "cd $selected_files"
   else
-    # else open files selection in editor
+    # else open selected files in editor
     if ! echo "$selected_files" | xargs "$EDITOR"; then
       echo "Fail: could not open $selected_files with $EDITOR"
       return 1

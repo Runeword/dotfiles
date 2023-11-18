@@ -20,6 +20,7 @@
     nodePackages.yaml-language-server
     nodePackages.eslint
     lua-language-server
+    selene
     marksman
     ccls
     nil

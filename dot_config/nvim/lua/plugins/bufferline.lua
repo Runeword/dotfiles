@@ -8,10 +8,10 @@ return {
       { silent = true, })
     vim.keymap.set({ 'n', 'x', }, '<C-S-tab>', '<cmd>BufferLineCyclePrev<CR>',
       { silent = true, })
-    vim.keymap.set({ 'n', 'x', }, '<pageup>', '<cmd>BufferLineMovePrev<CR>',
-      { silent = true, })
-    vim.keymap.set({ 'n', 'x', }, '<pagedown>', '<cmd>BufferLineMoveNext<CR>',
-      { silent = true, })
+    -- vim.keymap.set({ 'n', 'x', }, '<pageup>', '<cmd>BufferLineMovePrev<CR>',
+    --   { silent = true, })
+    -- vim.keymap.set({ 'n', 'x', }, '<pagedown>', '<cmd>BufferLineMoveNext<CR>',
+    --   { silent = true, })
 
     vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-1>',
       function() require('bufferline').go_to_buffer(1) end)

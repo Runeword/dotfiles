@@ -10,33 +10,42 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
-local win = nil
-local bufnr
+local window_id = nil
+local buffer_id
 
 function OpenNextDiagnosticInSplit()
   local next_diagnostic = vim.diagnostic.get_next()
+
   if not next_diagnostic then return end
 
-  vim.diagnostic.goto_next()
-  local current_win = vim.api.nvim_get_current_win()   -- Get the current window
+  vim.diagnostic.goto_next({ float = false, })
 
-  -- vim.diagnostic.goto_next({win_id = current_win })
+  local current_window = vim.api.nvim_get_current_win()
 
-  if win and vim.api.nvim_win_is_valid(win) then
-  else
-    -- print('Window does not exist')
-    bufnr = vim.api.nvim_create_buf(false, true)   -- Create a new buffer
-    vim.api.nvim_command('belowright 5 split')       -- Open a new split window
-    win = vim.api.nvim_get_current_win()
-    vim.api.nvim_win_set_buf(0, bufnr)             -- Set the new buffer in the split window
-    vim.api.nvim_buf_set_option(bufnr, 'number', false)
+  -- vim.diagnostic.goto_next({win_id = current_window })
+
+  if not window_id or not vim.api.nvim_win_is_valid(window_id) then
+    -- Create a new buffer
+    buffer_id = vim.api.nvim_create_buf(false, true)
+
+    -- Open a new split window
+    vim.api.nvim_command('belowright 5 split')
+    window_id = vim.api.nvim_get_current_win()
+
+    -- Set the new buffer in the split window
+    vim.api.nvim_win_set_buf(0, buffer_id)
+    vim.api.nvim_buf_set_option(buffer_id, 'number', false)
   end
 
-  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { next_diagnostic.message, })   -- Set the diagnostic message in the new buffer
-  vim.api.nvim_set_current_win(current_win)
+  -- Set the diagnostic message in the new buffer
+  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { next_diagnostic.message, })
+  vim.api.nvim_set_current_win(current_window)
 end
 
--- vim.keymap.set('n', '<leader>z', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
+vim.keymap.set('n', '<PageUp>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
+vim.keymap.set('n', '<PageDown>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
+-- vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
+-- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
 
 -- vim.api.nvim_buf_set_name(bufnr, "specific_file.txt")
 -- local opts = {

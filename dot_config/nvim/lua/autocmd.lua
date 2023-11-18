@@ -33,7 +33,7 @@ autocmd('TermOpen', {
     vim.o.number = false
     vim.cmd('startinsert')
   end,
-  desc = 'Disable relative and absolute line numbers, and start insert mode in terminal buffers'
+  desc = 'Disable relative and absolute line numbers, and start insert mode in terminal buffers',
 })
 
 autocmd({ 'BufWinLeave', }, {
@@ -47,7 +47,7 @@ autocmd({ 'BufWinEnter', }, {
   group = 'view',
   pattern = '*.*',
   command = 'silent! loadview',
-  desc = 'Restore cursor position and folds when entering a buffer'
+  desc = 'Restore cursor position and folds when entering a buffer',
 })
 
 autocmd('BufWritePost', {
@@ -62,7 +62,7 @@ autocmd('FileType', {
   callback = function()
     vim.keymap.set('n', 'gx', '<C-]>')
   end,
-  desc = 'Use gx instead of <C-]> to follow links for help files'
+  desc = 'Use gx instead of <C-]> to follow links for help files',
 })
 
 autocmd('BufWritePost', {
@@ -75,14 +75,14 @@ autocmd({ 'BufWinEnter', 'BufRead', 'BufNewFile', }, {
   group = 'disableAutoComment',
   pattern = '*',
   command = 'setlocal fo-=c fo-=r fo-=o fo+=t',
-  desc = 'Disable auto-commenting for all file types'
+  desc = 'Disable auto-commenting for all file types',
 })
 
 autocmd('FileType', {
   group = 'quickfix',
   pattern = 'qf',
   command = 'set nobuflisted',
-  desc = 'Exclude quickfix buffer from the buffer list'
+  desc = 'Exclude quickfix buffer from the buffer list',
 })
 
 autocmd('FileType', {
@@ -92,7 +92,7 @@ autocmd('FileType', {
     vim.cmd(math.max(math.min(vim.fn.line('$'), 10), 3) ..
       'wincmd _')
   end,
-  desc = 'Automatically fitting a quickfix window to 10 lines max and 3 lines min height'
+  desc = 'Automatically fitting a quickfix window to 10 lines max and 3 lines min height',
 })
 
 vim.api.nvim_create_autocmd('colorscheme', {
@@ -110,28 +110,28 @@ vim.api.nvim_create_autocmd('colorscheme', {
     -- vim.api.nvim_set_hl(0, 'diagnosticfloatinginfo',   { link = 'diagnosticvirtualtextinfo', })
     -- vim.api.nvim_set_hl(0, 'diagnosticfloatingwarn',   { link = 'diagnosticvirtualtextwarn', })
 
-    vim.api.nvim_set_hl(0, 'normalfloat',              { bg = '#1e2633', })
-    vim.api.nvim_set_hl(0, 'floatborder',              { bg = '#1e2633', fg = '#1e2633', })
+    vim.api.nvim_set_hl(0, 'normalfloat',  { bg = '#1e2633', })
+    vim.api.nvim_set_hl(0, 'floatborder',  { bg = '#1e2633', fg = '#1e2633', })
 
-    vim.api.nvim_set_hl(0, 'pmenu',                    { bg = 'black', fg = '#7a7c9e', })
-    vim.api.nvim_set_hl(0, 'pmenusel',                 { bg = '#1e2633', fg = 'white', })
-    vim.api.nvim_set_hl(0, 'pmenusbar',                { bg = 'black', })
-    vim.api.nvim_set_hl(0, 'pmenuthumb',               { bg = '#1e2633', })
+    vim.api.nvim_set_hl(0, 'pmenu',        { bg = 'black', fg = '#7a7c9e', })
+    vim.api.nvim_set_hl(0, 'pmenusel',     { bg = '#1e2633', fg = 'white', })
+    vim.api.nvim_set_hl(0, 'pmenusbar',    { bg = 'black', })
+    vim.api.nvim_set_hl(0, 'pmenuthumb',   { bg = '#1e2633', })
 
-    vim.api.nvim_set_hl(0, 'linenr',                   { bg = 'none', fg = '#4b586e', })
-    vim.api.nvim_set_hl(0, 'cursorlinenr',             { bg = 'none', fg = 'white', })
-    vim.api.nvim_set_hl(0, 'cursorline',               { bg = 'none', })
-    vim.api.nvim_set_hl(0, 'cursorcolumn',             { bg = '#1e2633', })
+    vim.api.nvim_set_hl(0, 'linenr',       { bg = 'none', fg = '#4b586e', })
+    vim.api.nvim_set_hl(0, 'cursorlinenr', { bg = 'none', fg = 'white', })
+    vim.api.nvim_set_hl(0, 'cursorline',   { bg = 'none', })
+    vim.api.nvim_set_hl(0, 'cursorcolumn', { bg = '#1e2633', })
 
-    vim.api.nvim_set_hl(0, 'search',                   { bg = '#5d00ff', })
-    vim.api.nvim_set_hl(0, 'incsearch',                { bg = '#faff00', fg = 'black', })
-    vim.api.nvim_set_hl(0, 'normal',                   { bg = 'none', })
+    vim.api.nvim_set_hl(0, 'search',       { bg = '#5d00ff', })
+    vim.api.nvim_set_hl(0, 'incsearch',    { bg = '#faff00', fg = 'black', })
+    vim.api.nvim_set_hl(0, 'normal',       { bg = 'none', })
 
-    vim.api.nvim_set_hl(0, 'signcolumn',               { bg = 'none', })
-    vim.api.nvim_set_hl(0, 'foldcolumn',               { bg = 'none', })
-    vim.api.nvim_set_hl(0, 'folded',                   { bg = 'none', })
+    vim.api.nvim_set_hl(0, 'signcolumn',   { bg = 'none', })
+    vim.api.nvim_set_hl(0, 'foldcolumn',   { bg = 'none', })
+    vim.api.nvim_set_hl(0, 'folded',       { bg = 'none', })
 
-    vim.api.nvim_set_hl(0, 'nontext',                  { bg = 'none', fg = '#384354', })
-    vim.api.nvim_set_hl(0, 'whitespace',               { bg = 'none', fg = '#384354', })
+    vim.api.nvim_set_hl(0, 'nontext',      { bg = 'none', fg = '#384354', })
+    vim.api.nvim_set_hl(0, 'whitespace',   { bg = 'none', fg = '#384354', })
   end,
 })

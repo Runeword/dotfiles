@@ -11,9 +11,9 @@ vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
 local window_id = nil
-local buffer_id
 
 function OpenNextDiagnosticInSplit()
+  local buffer_id
   local next_diagnostic = vim.diagnostic.get_next()
 
   if not next_diagnostic then return end
@@ -27,6 +27,7 @@ function OpenNextDiagnosticInSplit()
   if not window_id or not vim.api.nvim_win_is_valid(window_id) then
     -- Create a new buffer
     buffer_id = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_name(buffer_id, 'diagnostic_message')
 
     -- Open a new split window
     vim.api.nvim_command('belowright 5 split')
@@ -44,6 +45,14 @@ end
 
 vim.keymap.set('n', '<PageUp>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
 vim.keymap.set('n', '<PageDown>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
+
+vim.keymap.set('n', '<leader>j',
+  function()
+    local buf_id = vim.fn.bufnr('diagnostic_message')
+    vim.api.nvim_buf_delete(buf_id, { force = true, unload = true, })
+  end,
+  { noremap = true, silent = true, })
+
 -- vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
 -- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
 

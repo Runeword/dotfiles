@@ -10,48 +10,51 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
-local window_id = nil
-
 function OpenNextDiagnosticInSplit()
-  local buffer_id
   local next_diagnostic = vim.diagnostic.get_next()
 
   if not next_diagnostic then return end
 
-  vim.diagnostic.goto_next({ float = false, })
+  -- vim.diagnostic.goto_next({ float = false, })
+  vim.api.nvim_win_set_cursor(0, {next_diagnostic.lnum + 1, next_diagnostic.col})
 
   local current_window = vim.api.nvim_get_current_win()
+  local current_buffer = vim.api.nvim_get_current_buf()
 
   -- vim.diagnostic.goto_next({win_id = current_window })
 
-  if not window_id or not vim.api.nvim_win_is_valid(window_id) then
+  local buffer_id = vim.fn.bufnr('diagnostic_message')
+  if buffer_id == -1 then
     -- Create a new buffer
     buffer_id = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_name(buffer_id, 'diagnostic_message')
 
     -- Open a new split window
     vim.api.nvim_command('belowright 5 split')
-    window_id = vim.api.nvim_get_current_win()
 
     -- Set the new buffer in the split window
     vim.api.nvim_win_set_buf(0, buffer_id)
     vim.api.nvim_buf_set_option(buffer_id, 'number', false)
+    vim.api.nvim_buf_set_option(buffer_id, 'filetype', 'diagmsg')
   end
 
   -- Set the diagnostic message in the new buffer
-  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { next_diagnostic.message, })
+  local diagnostic_line = vim.api.nvim_buf_get_lines(current_buffer, next_diagnostic.lnum, next_diagnostic.lnum + 1, false)
+  -- print(vim.inspect(next_diagnostic))
+  print(vim.inspect(buffer_id))
+  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { diagnostic_line[1], next_diagnostic.source .. ' ' .. next_diagnostic.code, next_diagnostic.message, })
   vim.api.nvim_set_current_win(current_window)
 end
 
+-- vim.cmd[[
+--   augroup CloseLastBuffer
+--     autocmd!
+--     autocmd BufDelete * if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 && bufname('%') == 'diagnostic_message' | q | endif
+--   augroup END
+-- ]]
+
 vim.keymap.set('n', '<PageUp>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
 vim.keymap.set('n', '<PageDown>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
-
-vim.keymap.set('n', '<leader>j',
-  function()
-    local buf_id = vim.fn.bufnr('diagnostic_message')
-    vim.api.nvim_buf_delete(buf_id, { force = true, unload = true, })
-  end,
-  { noremap = true, silent = true, })
 
 -- vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
 -- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
@@ -107,7 +110,16 @@ vim.keymap.set('n', 'g<Enter>', toggleFold)
 
 -- vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
-vim.keymap.set('n', '<Esc>', '<Esc>g^')
+-- vim.keymap.set('n', '<Esc>', '<Esc>g^')
+vim.keymap.set('n', '<Esc>',
+function()
+  local buffer_id = vim.fn.bufnr('diagnostic_message')
+    print(buffer_id)
+  if buffer_id ~= -1 then vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, }) end
+vim.fn.execute("normal! \\<Esc>g^")
+end
+)
+
 
 -- Unmap
 -- vim.keymap.set('n', '<Enter>', '<Nop>')

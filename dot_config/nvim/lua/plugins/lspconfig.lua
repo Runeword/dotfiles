@@ -61,8 +61,9 @@ return {
 
         -- vim.keymap.set('n', '<PageUp>', function() return vim.diagnostic.goto_prev({ float = { max_width = 50, }, }) end,
         -- { buffer = buffer, })
-        vim.keymap.set('n', '<PageUp>',   vim.diagnostic.goto_prev, { buffer = buffer, })
-        vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
+
+        -- vim.keymap.set('n', '<PageUp>',   vim.diagnostic.goto_prev, { buffer = buffer, })
+        -- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
 
         vim.keymap.set('n', '<Leader>x', vim.diagnostic.setqflist,
           { noremap = true, silent = true, })

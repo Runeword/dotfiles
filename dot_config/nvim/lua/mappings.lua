@@ -41,10 +41,27 @@ function OpenNextDiagnosticInSplit()
   -- Set the diagnostic message in the new buffer
   local diagnostic_line = vim.api.nvim_buf_get_lines(current_buffer, next_diagnostic.lnum, next_diagnostic.lnum + 1, false)
   -- print(vim.inspect(next_diagnostic))
-  print(vim.inspect(buffer_id))
   vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { diagnostic_line[1], next_diagnostic.source .. ' ' .. next_diagnostic.code, next_diagnostic.message, })
   vim.api.nvim_set_current_win(current_window)
 end
+
+-- local autocmd = vim.api.nvim_create_autocmd
+-- local augroup = vim.api.nvim_create_augroup
+--
+-- augroup('hoho',             { clear = true, })
+
+-- autocmd({ 'BufDelete', 'VimLeave' }, {
+--   group = 'hoho',
+--   callback = function()
+--     print('BufDelete')
+--     -- local buffers = vim.api.nvim_list_bufs()
+--     -- if #buffers == 1 then
+--     local buffer_id = vim.fn.bufnr('diagnostic_message')
+--     if buffer_id ~= -1 then vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, }) end
+--   -- end
+--   end,
+--   desc = '',
+-- })
 
 -- vim.cmd[[
 --   augroup CloseLastBuffer
@@ -114,7 +131,6 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<Esc>',
 function()
   local buffer_id = vim.fn.bufnr('diagnostic_message')
-    print(buffer_id)
   if buffer_id ~= -1 then vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, }) end
 vim.fn.execute("normal! \\<Esc>g^")
 end
@@ -372,7 +388,7 @@ vim.keymap.set('n', '&', 'g^')
 -- vim.keymap.set({ 'n', 'x', }, '<S-Enter>', function() vim.fn.search('[([{]', 'b') end)
 
 -- Buffers
-vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>q!<CR>')
+vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')
 vim.keymap.set('n', '<C-w>', '<cmd>silent bwipeout!<CR>')
 vim.keymap.set('n', '<C-t>', '<cmd>silent enew<CR>')
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })

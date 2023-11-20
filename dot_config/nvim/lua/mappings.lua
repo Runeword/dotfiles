@@ -45,57 +45,15 @@ function OpenNextDiagnosticInSplit()
   vim.api.nvim_set_current_win(current_window)
 end
 
--- local autocmd = vim.api.nvim_create_autocmd
--- local augroup = vim.api.nvim_create_augroup
---
--- augroup('hoho',             { clear = true, })
-
--- autocmd({ 'BufDelete', 'VimLeave' }, {
---   group = 'hoho',
---   callback = function()
---     print('BufDelete')
---     -- local buffers = vim.api.nvim_list_bufs()
---     -- if #buffers == 1 then
---     local buffer_id = vim.fn.bufnr('diagnostic_message')
---     if buffer_id ~= -1 then vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, }) end
---   -- end
---   end,
---   desc = '',
--- })
-
--- vim.cmd[[
---   augroup CloseLastBuffer
---     autocmd!
---     autocmd BufDelete * if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 && bufname('%') == 'diagnostic_message' | q | endif
---   augroup END
--- ]]
-
 vim.keymap.set('n', '<PageUp>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
 vim.keymap.set('n', '<PageDown>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
 
 -- vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
 -- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
 
--- vim.api.nvim_buf_set_name(bufnr, "specific_file.txt")
--- local opts = {
---   relative = 'editor',
---   width = 10,
---   height = 10,
---   row = 20,
---   col = 20,
---   focusable = false,
---   style = 'minimal',
--- }
--- vim.api.nvim_open_win(bufnr, true, opts)     -- Open a new floating window
-
 vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
-
--- vim.keymap.set('n', 'gs', function()
---   vim.o.undoreload = 0
---   vim.cmd('edit')
--- end)
 
 vim.keymap.set('n', 'gs', function()
   local view = vim.fn.winsaveview()

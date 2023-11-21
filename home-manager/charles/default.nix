@@ -18,10 +18,9 @@
 
   programs = {
     home-manager.enable = true;
-
     vscode.enable = true;
-
     jq.enable = true;
+    fuzzel.enable = true;
 
     waybar.enable = true;
     waybar.package = pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -31,10 +30,6 @@
     direnv.enable = true;
     direnv.enableBashIntegration = true;
     direnv.nix-direnv.enable = true;
-
-    fuzzel.enable = true;
-
-    zellij.enable = true;
 
     # obs-studio.enable = true;
     # obs-studio.plugins = with pkgs.obs-studio-plugins; [

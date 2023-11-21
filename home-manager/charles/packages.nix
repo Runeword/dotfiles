@@ -70,6 +70,7 @@
     playerctl
 
     # ---------------------------------- CLI tools
+    git
     awscli2
     lsof
     distrobox

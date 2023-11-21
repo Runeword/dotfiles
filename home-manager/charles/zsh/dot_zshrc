@@ -120,7 +120,7 @@ zle -N __ripgrep_or_complete
 bindkey '^[[Z' __ripgrep_or_complete
 
 # ------------------------------------ Plugins
-export FORGIT_LOG_FZF_OPTS="
+export FORGIT_FZF_DEFAULT_OPTS="
 --exact
 "
 

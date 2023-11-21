@@ -9,9 +9,7 @@
     ./readline.nix
     ./ssh.nix
     ./neovim.nix
-    ./home.nix
     ./packages.nix
-    ./git.nix
     ./bash
     ./sh
     ./zsh
@@ -48,6 +46,18 @@
   };
 
   fonts.fontconfig.enable = true;
+
+  home.username = "charles";
+  home.homeDirectory = "/home/charles";
+  home.stateVersion = "22.11";
+
+  # home.sessionVariables.EDITOR = "nvim";
+  # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
+  home.sessionVariables.VISUAL = "nvim";
+  home.sessionVariables.MANPAGER = "nvim +Man!";
+
+  nixpkgs.overlays = [
+  ];
 
   # home.packages = [ inputs.src-cli.packages.x86_64-linux.default ];
   # xresources.properties."Xft.dpi" = 200;

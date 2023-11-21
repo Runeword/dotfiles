@@ -1,9 +1,4 @@
 {
-  programs.git.enable = true;
-  programs.git.userEmail = "60324746+Runeword@users.noreply.github.com";
-  programs.git.userName = "Runeword";
-  # programs.git.delta.enable = true;
-
   home.shellAliases = {
     gn = "nvim $(git status -s | awk '{print $2}')";
     gs = "git status";

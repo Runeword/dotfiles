@@ -8,7 +8,7 @@
   imports = [
     ./readline.nix
     ./ssh.nix
-    ./neovim.nix
+    # ./neovim.nix
     ./packages.nix
     ./bash
     ./sh
@@ -19,9 +19,6 @@
   programs = {
     home-manager.enable = true;
     vscode.enable = true;
-    jq.enable = true;
-    fuzzel.enable = true;
-
     waybar.enable = true;
     waybar.package = pkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
@@ -46,7 +43,7 @@
   home.homeDirectory = "/home/charles";
   home.stateVersion = "22.11";
 
-  # home.sessionVariables.EDITOR = "nvim";
+  home.sessionVariables.EDITOR = "nvim";
   # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
   home.sessionVariables.VISUAL = "nvim";
   home.sessionVariables.MANPAGER = "nvim +Man!";

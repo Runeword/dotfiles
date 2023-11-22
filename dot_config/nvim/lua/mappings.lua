@@ -41,7 +41,7 @@ function OpenNextDiagnosticInSplit()
   -- Set the diagnostic message in the new buffer
   local diagnostic_line = vim.api.nvim_buf_get_lines(current_buffer, next_diagnostic.lnum, next_diagnostic.lnum + 1, false)
   -- print(vim.inspect(next_diagnostic))
-  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { diagnostic_line[1], next_diagnostic.source .. ' ' .. next_diagnostic.code, next_diagnostic.message, })
+  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { diagnostic_line[1], (next_diagnostic.source or '') .. ' ' .. (next_diagnostic.code or ''), (next_diagnostic.message or ''), })
   vim.api.nvim_set_current_win(current_window)
 end
 

@@ -55,6 +55,7 @@
     tmuxPlugins.resurrect
     tmuxPlugins.tmux-fzf
     yazi
+    fuzzel
 
     # tmuxKeylocker
 
@@ -70,6 +71,7 @@
     playerctl
 
     # ---------------------------------- CLI tools
+    jq
     git
     awscli2
     lsof

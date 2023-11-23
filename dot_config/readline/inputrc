@@ -1,0 +1,14 @@
+set bind-tty-special-chars off
+set colored-stats on
+set completion-ignore-case on
+set show-all-if-ambiguous on
+
+"\C-\b": backward-kill-word
+"\C-i": menu-complete
+"\C-j": unix-line-discard
+"\C-u": kill-whole-line
+"\e[5~": 
+"\e[6~": 
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\e[Z": menu-complete-backward

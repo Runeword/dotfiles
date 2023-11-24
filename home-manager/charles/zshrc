@@ -81,8 +81,8 @@ bindkey '\x1b[13;5u' autosuggest-execute
 # bindkey -M menuselect ' ' undo
 
 # ------------------------------------ Functions
-if [ -d "$HOME/home-manager/$USER/sh/functions" ]; then
-  for file in "$HOME/home-manager/$USER/sh/functions"/*; do
+if [ -d "$HOME/home-manager/$USER/shell/functions" ]; then
+  for file in "$HOME/home-manager/$USER/shell/functions"/*; do
     . "$file"
   done
 fi

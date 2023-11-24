@@ -8,7 +8,7 @@
   programs.zsh.enableAutosuggestions = true;
   programs.zsh.enableCompletion = false;
 
-  programs.zsh.initExtra = builtins.readFile ./.zshrc;
+  programs.zsh.initExtra = builtins.readFile ./zshrc;
   # programs.zsh.initExtraBeforeCompInit = builtins.readFile ./.initExtraBeforeCompInit;
 
   programs.zsh.plugins = [

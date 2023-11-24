@@ -88,12 +88,13 @@
     gomi
     xdragon
     nix-init
-    # tealdeer
     tldr
     navi
     asciinema
     terraform
     ngrok
+    # tealdeer
+    # inputs.src-cli.packages.x86_64-linux.default
 
     # ---------------------------------- Git
     # inputs.src-cli.packages.x86_64-linux.default
@@ -138,6 +139,7 @@
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
     # ---------------------------------- Wayland
+    (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"]; }))
     swaybg
     waypaper
     hyprpaper

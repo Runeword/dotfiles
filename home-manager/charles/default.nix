@@ -11,7 +11,6 @@
     ./aliases.nix
     ./packages.nix
     ./bash
-    ./sh
     ./zsh
     ./dircolors.nix
   ];

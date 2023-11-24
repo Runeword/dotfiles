@@ -8,6 +8,7 @@
   imports = [
     ./ssh.nix
     # ./neovim.nix
+    ./aliases.nix
     ./packages.nix
     ./bash
     ./sh

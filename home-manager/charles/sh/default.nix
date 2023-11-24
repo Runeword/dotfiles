@@ -1,5 +1,5 @@
 {config, ...}: {
   imports = [
-    ./aliases.nix
+    # ./aliases.nix
   ];
 }

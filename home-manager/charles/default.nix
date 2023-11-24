@@ -7,12 +7,12 @@
 }: {
   imports = [
     ./ssh.nix
-    # ./neovim.nix
+    ./neovim.nix
     ./aliases.nix
     ./sessionVariables.nix
     ./packages.nix
-    ./bash
-    ./zsh
+    ./bash.nix
+    ./zsh.nix
     ./dircolors.nix
   ];
 

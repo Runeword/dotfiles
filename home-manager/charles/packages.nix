@@ -70,6 +70,7 @@
     brillo
     playerctl
     ventoy-full
+    dmidecode
 
     # ---------------------------------- CLI tools
     jq

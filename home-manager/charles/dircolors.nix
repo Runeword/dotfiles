@@ -1,7 +1,8 @@
 {
   programs.dircolors.enable = true;
 
-  programs.dircolors.settings = builtins.mapAttrs (name: value: builtins.replaceStrings ["01;"] ["00;"] value) {
+  # programs.dircolors.settings = builtins.mapAttrs (name: value: builtins.replaceStrings ["01;"] ["00;"] value) {
+  programs.dircolors.settings = {
     RESET = "0";
     DIR = "01;34";
     LINK = "01;36";

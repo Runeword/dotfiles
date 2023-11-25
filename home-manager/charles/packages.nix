@@ -69,6 +69,7 @@
     bluetuith
     brillo
     playerctl
+    ventoy-full
 
     # ---------------------------------- CLI tools
     jq
@@ -128,7 +129,6 @@
     showmethekey
     inkscape
     realesrgan-ncnn-vulkan
-    imaginer
     kooha
     krita
     # obs-studio

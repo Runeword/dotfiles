@@ -16,7 +16,7 @@ __open_file() {
         --cycle \
         --height 70% \
         --ansi \
-        --preview "$HOME/home-manager/$USER/sh/scripts/fm_preview.sh {}" \
+        --preview "$HOME/home-manager/$USER/shell/scripts/fm_preview.sh {}" \
         --preview-window right,55%,border-none,~1 \
         --bind='ctrl-y:execute-silent(wl-copy {})'
   ) || return 0

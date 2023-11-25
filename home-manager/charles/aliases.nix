@@ -50,6 +50,8 @@
     oc = "ouch compress";
     ol = "ouch list";
     gparted = "sudo -E gparted";
+    ventoy = "sudo ventoy-web";
+    bios = "sudo dmidecode -s bios-version";
     t = "__switch_session";
 
     # ______________________________________ NIX

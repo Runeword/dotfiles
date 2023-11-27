@@ -27,6 +27,7 @@
     alejandra
     nixpkgs-fmt
     shfmt
+    nixfmt
     shellcheck
     shellharden
     terraform-ls

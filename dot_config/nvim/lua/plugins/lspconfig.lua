@@ -118,7 +118,9 @@ return {
         settings = {
           ['nil'] = {
             formatting = {
-              command = { 'alejandra', }, -- 'nixpkgs-fmt'
+              -- command = { 'alejandra', },
+              -- command = { 'nixfmt', },
+              command = { 'nixpkgs-fmt', },
             },
           },
         },

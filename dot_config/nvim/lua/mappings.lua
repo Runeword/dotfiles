@@ -348,8 +348,8 @@ end)
 vim.keymap.set('n', '^', 'g^')
 vim.keymap.set('n', '&', 'g^')
 
--- vim.keymap.set({ 'n', 'x', }, '<Enter>', function() vim.fn.search('[([{]') end)
--- vim.keymap.set({ 'n', 'x', }, '<S-Enter>', function() vim.fn.search('[([{]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '<BS>', function() vim.fn.search('[([{]') end)
+vim.keymap.set({ 'n', 'x', }, '<S-BS>', function() vim.fn.search('[([{]', 'b') end)
 
 -- Buffers
 vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')

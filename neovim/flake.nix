@@ -6,6 +6,10 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
+  # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
+  # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
+  # inputs.neovim.inputs.nixpkgs.follows = "nixpkgs";
+
   outputs = { self, ... } @ inputs:
     let
       system = "x86_64-linux";

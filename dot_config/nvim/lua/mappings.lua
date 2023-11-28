@@ -10,13 +10,11 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
-function OpenNextDiagnosticInSplit()
-  local next_diagnostic = vim.diagnostic.get_next()
-
-  if not next_diagnostic then return end
+local function openDiagnosticInSplit(diag)
+  if not diag then return end
 
   -- vim.diagnostic.goto_next({ float = false, })
-  vim.api.nvim_win_set_cursor(0, {next_diagnostic.lnum + 1, next_diagnostic.col})
+  vim.api.nvim_win_set_cursor(0, {diag.lnum + 1, diag.col})
 
   local current_window = vim.api.nvim_get_current_win()
   local current_buffer = vim.api.nvim_get_current_buf()
@@ -39,14 +37,22 @@ function OpenNextDiagnosticInSplit()
   end
 
   -- Set the diagnostic message in the new buffer
-  local diagnostic_line = vim.api.nvim_buf_get_lines(current_buffer, next_diagnostic.lnum, next_diagnostic.lnum + 1, false)
-  -- print(vim.inspect(next_diagnostic))
-  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { diagnostic_line[1], (next_diagnostic.source or '') .. ' ' .. (next_diagnostic.code or ''), (next_diagnostic.message or ''), })
+  local diagnostic_line = vim.api.nvim_buf_get_lines(current_buffer, diag.lnum, diag.lnum + 1, false)
+  -- print(vim.inspect(diag))
+  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, { diagnostic_line[1], (diag.source or '') .. ' ' .. (diag.code or ''), (diag.message or ''), })
   vim.api.nvim_set_current_win(current_window)
 end
 
-vim.keymap.set('n', '<PageUp>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
-vim.keymap.set('n', '<PageDown>', OpenNextDiagnosticInSplit, { noremap = true, silent = true, })
+local function nextDiagnostic()
+  openDiagnosticInSplit(vim.diagnostic.get_next())
+end
+
+local function prevDiagnostic()
+  openDiagnosticInSplit(vim.diagnostic.get_prev())
+end
+
+vim.keymap.set('n', '<PageUp>', prevDiagnostic, { noremap = true, silent = true, })
+vim.keymap.set('n', '<PageDown>', nextDiagnostic, { noremap = true, silent = true, })
 
 -- vim.keymap.set('n', '<PageUp>', vim.diagnostic.goto_prev, { buffer = buffer, })
 -- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })

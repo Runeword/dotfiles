@@ -123,6 +123,7 @@ vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', 'g<Tab>', 'za')
 vim.keymap.set('n', 'U', '<cmd>u0<CR>')
 vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
+vim.keymap.set('n', 'c*', '*``cgn')
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 

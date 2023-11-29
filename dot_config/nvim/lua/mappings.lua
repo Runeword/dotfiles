@@ -18,6 +18,7 @@ local function openDiagnosticInSplit(diag)
 
   local current_window = vim.api.nvim_get_current_win()
   local current_buffer = vim.api.nvim_get_current_buf()
+  local current_filetype = vim.api.nvim_buf_get_option(0, 'filetype')
 
   -- vim.diagnostic.goto_next({win_id = current_window })
 
@@ -33,7 +34,7 @@ local function openDiagnosticInSplit(diag)
     -- Set the new buffer in the split window
     vim.api.nvim_win_set_buf(0, buffer_id)
     vim.api.nvim_buf_set_option(buffer_id, 'number', false)
-    vim.api.nvim_buf_set_option(buffer_id, 'filetype', 'diagmsg')
+    vim.api.nvim_buf_set_option(buffer_id, 'filetype', current_filetype)
   end
 
   -- Set the diagnostic message in the new buffer
@@ -93,13 +94,14 @@ vim.keymap.set('n', 'g<Enter>', toggleFold)
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 -- vim.keymap.set('n', '<Esc>', '<Esc>g^')
 vim.keymap.set('n', '<Esc>',
-function()
-  local buffer_id = vim.fn.bufnr('diagnostic_message')
-  if buffer_id ~= -1 then vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, }) end
-vim.fn.execute("normal! \\<Esc>g^")
-end
+  function()
+    local buffer_id = vim.fn.bufnr('diagnostic_message')
+    if buffer_id ~= -1 then
+      vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, })
+    end
+    vim.fn.execute('normal! \\<Esc>g^')
+  end
 )
-
 
 -- Unmap
 -- vim.keymap.set('n', '<Enter>', '<Nop>')

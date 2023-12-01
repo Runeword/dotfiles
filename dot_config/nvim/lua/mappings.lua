@@ -10,6 +10,30 @@ vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
 vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
+-- Display messages in a floating window
+local function displayMessages()
+  local messages = vim.api.nvim_exec2('messages', { output = true }).output
+  local buffer_id = vim.api.nvim_create_buf(false, true)
+
+  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, vim.fn.split(messages, '\n'))
+
+  local width = 80
+  local height = #vim.fn.split(messages, '\n')
+
+  local window_opts = {
+    relative = 'editor',
+    width = width,
+    height = height,
+    row = math.floor((vim.o.lines - height) / 2),
+    col = math.floor((vim.o.columns - width) / 2),
+    style = 'minimal'
+  }
+
+  vim.api.nvim_open_win(buffer_id, true, window_opts)
+end
+
+vim.keymap.set('n', '<Leader>m', function() displayMessages() end, { noremap = true, silent = true })
+
 local function openDiagnosticInSplit(diag)
   if not diag then return end
 

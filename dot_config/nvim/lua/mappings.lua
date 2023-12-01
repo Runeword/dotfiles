@@ -12,13 +12,16 @@ vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
 -- Display messages in a floating window
 local function displayMessages()
-  local messages = vim.api.nvim_exec2('messages', { output = true }).output
-  local buffer_id = vim.api.nvim_create_buf(false, true)
+  local messages_string = vim.fn.split(vim.api.nvim_exec2('silent messages', { output = true }).output, '\n')
+  if next(messages_string) == nil then return end
 
-  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, vim.fn.split(messages, '\n'))
+  local buffer_id = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_name(buffer_id, 'messages')
+
+  vim.api.nvim_buf_set_lines(buffer_id, 0, -1, false, messages_string)
 
   local width = 80
-  local height = #vim.fn.split(messages, '\n')
+  local height = #messages_string
 
   local window_opts = {
     relative = 'editor',
@@ -29,10 +32,11 @@ local function displayMessages()
     style = 'minimal'
   }
 
+  vim.api.nvim_set_option_value('modifiable', false, { buf = buffer_id })
   vim.api.nvim_open_win(buffer_id, true, window_opts)
 end
 
-vim.keymap.set('n', '<Leader>m', function() displayMessages() end, { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>m', displayMessages, { noremap = true, silent = true })
 
 local function openDiagnosticInSplit(diag)
   if not diag then return end
@@ -92,6 +96,7 @@ local function openDiagnosticInSplit(diag)
   vim.api.nvim_buf_add_highlight(buffer_id, -1, severity_highlight[diag.severity], 0,
     diag.col - offset, diag.end_col - offset)
 
+  -- vim.api.nvim_set_option_value('modifiable', false, { buf = buffer_id })
   vim.api.nvim_set_current_win(current_window)
 end
 
@@ -149,6 +154,10 @@ vim.keymap.set('n', '<Esc>',
     local buffer_id = vim.fn.bufnr('diagnostic_message')
     if buffer_id ~= -1 then
       vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, })
+    end
+    local bff = vim.fn.bufnr('messages')
+    if bff ~= -1 then
+      vim.api.nvim_buf_delete(bff, { force = true, unload = false, })
     end
     vim.fn.execute('normal! \\<Esc>g^')
   end

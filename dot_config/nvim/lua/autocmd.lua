@@ -109,6 +109,7 @@ vim.api.nvim_create_autocmd('colorscheme', {
     vim.api.nvim_set_hl(0, 'diagnosticUnderlineInfo', { bg = 'NONE', undercurl = true, sp = '#a6c8ff', })
     vim.api.nvim_set_hl(0, 'diagnosticHint',          { bg = 'NONE', fg = '#adb5bd', bold = false, italic = true, })
     vim.api.nvim_set_hl(0, 'diagnosticUnderlineHint', { bg = 'NONE', undercurl = true, sp = '#adb5bd', })
+    vim.api.nvim_set_hl(0, 'diagnosticUnnecessary', { bg = 'NONE', undercurl = true, sp = '#adb5bd', })
 
     -- vim.api.nvim_set_hl(0, 'diagnosticfloatingerror',  { link = 'diagnosticvirtualtexterror', })
     -- vim.api.nvim_set_hl(0, 'diagnosticfloatinghint',   { link = 'diagnosticvirtualtexthint', })

@@ -145,43 +145,6 @@ NAME: NAME { \
   bindings = <TAP_1>, <TAP_2>, <TAP_3>; \
 };
 
-// #define COMBO_MOD(MOD) \
-// COMBO(cb_R##MOD##_SQT,   50, po_T2 po_R##MOD 0,  <&kp R##MOD(SQT)>)   \
-// COMBO(cb_R##MOD##_COMMA, 50, po_T2 po_R##MOD 1,  <&kp R##MOD(COMMA)>) \
-// COMBO(cb_R##MOD##_DOT,   50, po_T2 po_R##MOD 2,  <&kp R##MOD(DOT)>)   \
-// COMBO(cb_R##MOD##_P,     50, po_T2 po_R##MOD 3,  <&kp R##MOD(P)>)     \
-// COMBO(cb_R##MOD##_Y,     50, po_T2 po_R##MOD 4,  <&kp R##MOD(Y)>)     \
-// \
-// COMBO(cb_L##MOD##_F,     50, po_T1 po_L##MOD 5,  <&kp L##MOD(F)>)     \
-// COMBO(cb_L##MOD##_G,     50, po_T1 po_L##MOD 6,  <&kp L##MOD(G)>)     \
-// COMBO(cb_L##MOD##_C,     50, po_T1 po_L##MOD 7,  <&kp L##MOD(C)>)     \
-// COMBO(cb_L##MOD##_R,     50, po_T1 po_L##MOD 8,  <&kp L##MOD(R)>)     \
-// COMBO(cb_L##MOD##_L,     50, po_T1 po_L##MOD 9,  <&kp L##MOD(L)>)     \
-// \
-// COMBO(cb_R##MOD##_A,     50, po_T2 po_R##MOD 10, <&kp R##MOD(A)>)     \
-// COMBO(cb_R##MOD##_O,     50, po_T2 po_R##MOD 11, <&kp R##MOD(O)>)     \
-// COMBO(cb_R##MOD##_E,     50, po_T2 po_R##MOD 12, <&kp R##MOD(E)>)     \
-// COMBO(cb_R##MOD##_U,     50, po_T2 po_R##MOD 13, <&kp R##MOD(U)>)     \
-// COMBO(cb_R##MOD##_I,     50, po_T2 po_R##MOD 14, <&kp R##MOD(I)>)     \
-// \
-// COMBO(cb_L##MOD##_D,     50, po_T1 po_L##MOD 15, <&kp L##MOD(D)>)     \
-// COMBO(cb_L##MOD##_H,     50, po_T1 po_L##MOD 16, <&kp L##MOD(H)>)     \
-// COMBO(cb_L##MOD##_T,     50, po_T1 po_L##MOD 17, <&kp L##MOD(T)>)     \
-// COMBO(cb_L##MOD##_N,     50, po_T1 po_L##MOD 18, <&kp L##MOD(N)>)     \
-// COMBO(cb_L##MOD##_S,     50, po_T1 po_L##MOD 19, <&kp L##MOD(S)>)     \
-// \
-// COMBO(cb_R##MOD##_SEMI,  50, po_T2 po_R##MOD 20, <&kp R##MOD(SEMI)>)  \
-// COMBO(cb_R##MOD##_Q,     50, po_T2 po_R##MOD 21, <&kp R##MOD(Q)>)     \
-// COMBO(cb_R##MOD##_J,     50, po_T2 po_R##MOD 22, <&kp R##MOD(J)>)     \
-// COMBO(cb_R##MOD##_K,     50, po_T2 po_R##MOD 23, <&kp R##MOD(K)>)     \
-// COMBO(cb_R##MOD##_X,     50, po_T2 po_R##MOD 24, <&kp R##MOD(X)>)     \
-// \
-// COMBO(cb_L##MOD##_B,     50, po_T1 po_L##MOD 25, <&kp L##MOD(B)>)     \
-// COMBO(cb_L##MOD##_M,     50, po_T1 po_L##MOD 26, <&kp L##MOD(M)>)     \
-// COMBO(cb_L##MOD##_W,     50, po_T1 po_L##MOD 27, <&kp L##MOD(W)>)     \
-// COMBO(cb_L##MOD##_V,     50, po_T1 po_L##MOD 28, <&kp L##MOD(V)>)     \
-// COMBO(cb_L##MOD##_Z,     50, po_T1 po_L##MOD 29, <&kp L##MOD(Z)>)
-
 / {
 
   behaviors {
@@ -239,92 +202,9 @@ NAME: NAME { \
       quick-release;
       ignore-modifiers;
      };
-
-    // // SKQ_MACRO(NAME, MACRO)
-
-    // SKQ_MACRO(skqm_tap_num_LC, &mc_hold_num_LC)
-    // SKQ_MACRO(skqm_tap_num_LS, &mc_hold_num_LS)
-    // SKQ_MACRO(skqm_tap_num_LG, &mc_hold_num_LG)
-    // SKQ_MACRO(skqm_tap_num_LA, &mc_hold_num_LA)
-
-    // // TAPDANCE(NAME, TAP_1, TAP_2)
-
-    // TAPDANCE(td_special_a,   &mc_grave_a,      &mc_circumflex_a)
-    // TAPDANCE(td_special_i,   &mc_circumflex_i, &mc_trema_i)
-    // TAPDANCE(td_special_e,      &mc_circumflex_e, &mc_trema_e)
-    // TAPDANCE_3(td_special_u, &mc_circumflex_u, &mc_trema_u)
-
-    // // HOLDTAP_MACRO(NAME, MACRO_HOLD, MACRO_TAP)
-
-    // HOLDTAP_MACRO(ht_LC,     &mc_hold_LC,     &mc_tap_LC)
-    // HOLDTAP_MACRO(ht_LCS,    &mc_hold_LCS,    &mc_tap_LCS)
-    // HOLDTAP_MACRO(ht_RC,     &mc_hold_RC,     &mc_tap_RC)
-    // HOLDTAP_MACRO(ht_RCS,    &mc_hold_RCS,    &mc_tap_RCS)
-    // HOLDTAP_MACRO(ht_LG,     &mc_hold_LG,     &mc_tap_LG)
-    // HOLDTAP_MACRO(ht_LGS,    &mc_hold_LGS,    &mc_tap_LGS)
-    // HOLDTAP_MACRO(ht_RG,     &mc_hold_RG,     &mc_tap_RG)
-    // HOLDTAP_MACRO(ht_RGS,    &mc_hold_RGS,    &mc_tap_RGS)
-    // HOLDTAP_MACRO(ht_LA,     &mc_hold_LA,     &mc_tap_LA)
-    // HOLDTAP_MACRO(ht_LAS,    &mc_hold_LAS,    &mc_tap_LAS)
-    // HOLDTAP_MACRO(ht_RA,     &mc_hold_RA,     &mc_tap_RA)
-    // HOLDTAP_MACRO(ht_RAS,    &mc_hold_RAS,    &mc_tap_RAS)
-    // HOLDTAP_MACRO(ht_LS,     &mc_hold_LS,     &mc_tap_LS)
-    // HOLDTAP_MACRO(ht_RS,     &mc_hold_RS,     &mc_tap_RS)
-
-    // HOLDTAP_MACRO(ht_num_LC, &mc_hold_num_LC, &mc_tap_num_LC)
-    // HOLDTAP_MACRO(ht_num_LS, &mc_hold_num_LS, &mc_tap_num_LS)
-    // HOLDTAP_MACRO(ht_num_LG, &mc_hold_num_LG, &mc_tap_num_LG)
-    // HOLDTAP_MACRO(ht_num_LA, &mc_hold_num_LA, &mc_tap_num_LA)
   };
 
   macros {
-    // // MACRO_HOLD(NAME, BINDINGS)
-
-    // MACRO_HOLD(mc_hold_LC,     &mo la_LMOD &kp LCTRL)
-    // MACRO_HOLD(mc_hold_LCS,    &mo la_LMOD &kp LC(LSHFT))
-    // MACRO_HOLD(mc_hold_RC,     &mo la_RMOD &kp RCTRL)
-    // MACRO_HOLD(mc_hold_RCS,    &mo la_RMOD &kp RC(RSHFT))
-    // MACRO_HOLD(mc_hold_LG,     &mo la_LMOD &kp LGUI)
-    // MACRO_HOLD(mc_hold_LGS,    &mo la_LMOD &kp LG(LSHFT))
-    // MACRO_HOLD(mc_hold_RG,     &mo la_RMOD &kp RGUI)
-    // MACRO_HOLD(mc_hold_RGS,    &mo la_RMOD &kp RG(RSHFT))
-    // MACRO_HOLD(mc_hold_LA,     &mo la_LMOD &kp LALT)
-    // MACRO_HOLD(mc_hold_LAS,    &mo la_LMOD &kp LA(LSHFT))
-    // MACRO_HOLD(mc_hold_RA,     &mo la_RMOD &kp LALT)
-    // MACRO_HOLD(mc_hold_RAS,    &mo la_RMOD &kp LA(RSHFT))
-    // MACRO_HOLD(mc_hold_LS,     &mo la_LMOD &kp LSHFT)
-    // MACRO_HOLD(mc_hold_RS,     &mo la_RMOD &kp RSHFT)
-
-    // MACRO_HOLD(mc_hold_num_LC, &mo la_NUM  &kp LCTRL)
-    // MACRO_HOLD(mc_hold_num_LS, &mo la_NUM  &kp LSHFT)
-    // MACRO_HOLD(mc_hold_num_LG, &mo la_NUM  &kp LGUI)
-    // MACRO_HOLD(mc_hold_num_LA, &mo la_NUM  &kp LALT)
-
-    // // MACRO_TAP(NAME, BINDINGS)
-
-    // MACRO_TAP(mc_tap_LC,  &skq  LCTRL)
-    // MACRO_TAP(mc_tap_LCS, &skqx LC(LSHFT))
-    // MACRO_TAP(mc_tap_RC,  &skq  RCTRL)
-    // MACRO_TAP(mc_tap_RCS, &skqx RC(RSHFT))
-    // MACRO_TAP(mc_tap_LG,  &skq  LGUI)
-    // MACRO_TAP(mc_tap_LGS, &skqx LG(LSHFT))
-    // MACRO_TAP(mc_tap_RG,  &skq  RGUI)
-    // MACRO_TAP(mc_tap_RGS, &skqx RG(RSHFT))
-    // MACRO_TAP(mc_tap_LA,  &skq  LALT)
-    // MACRO_TAP(mc_tap_LAS, &skqx LA(LSHFT))
-    // MACRO_TAP(mc_tap_RA,  &skq  LALT)
-    // MACRO_TAP(mc_tap_RAS, &skqx LA(RSHFT))
-    // MACRO_TAP(mc_tap_LS,  &skq  LSHFT)
-    // MACRO_TAP(mc_tap_RS,  &skq  RSHFT)
-
-    // // can't use two sticky keys like sk and sl in a macro because they are indexed by key position
-    // // https://github.com/zmkfirmware/zmk/issues/1421
-    // // the workaround is to create a custom sticky key behavior with a hold macro as binding
-    // MACRO_TAP(mc_tap_num_LC, &skqm_tap_num_LC 0)
-    // MACRO_TAP(mc_tap_num_LS, &skqm_tap_num_LS 0)
-    // MACRO_TAP(mc_tap_num_LG, &skqm_tap_num_LG 0)
-    // MACRO_TAP(mc_tap_num_LA, &skqm_tap_num_LA 0)
-
     MACRO_TAP(mc_grave_a,      &kp RA(GRAVE)    &kp A)
     MACRO_TAP(mc_grave_e,      &kp RA(GRAVE)    &kp E)
     MACRO_TAP(mc_grave_u,      &kp RA(GRAVE)    &kp U)
@@ -354,80 +234,6 @@ NAME: NAME { \
     cb_rep_l { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <12 13>; bindings = <&key_repeat>; require-prior-idle-ms = <150>; };
     cb_del { layers = <la_DEF la_NAV>; timeout-ms = <30>; key-positions = <17 18>; bindings = <&kp DEL>; require-prior-idle-ms = <150>; };
     cb_caps { layers = <la_DEF>; timeout-ms = <40>; key-positions = <26 27>; bindings = <&caps_word>; };
-    // cb_repeat_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&key_repeat>; };
-    // cb_repeat_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <27 28>; bindings = <&key_repeat>; };
-    // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <21 22>; bindings = <&kp ESC>; };
-    // cb_esc { layers = <la_DEF>; timeout-ms = <30>; key-positions = <11 12>; bindings = <&hm_mod_l LS(LGUI) ESC>; };
-    // cb_repeat { layers = <la_DEF>; timeout-ms = <30>; key-positions = <2 3>; bindings = <&key_repeat>; };
-    // cb_enter_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <11 12 13>; bindings = <&kp ENTER>; };
-    // cb_enter_r { layers = <la_DEF>; timeout-ms = <70>; key-positions = <16 17 18>; bindings = <&kp ENTER>; };
-    // cb_del_l { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <21 22 23>; bindings = <&kp DEL>; };
-    // cb_del_r { layers = <la_DEF la_NAV>; timeout-ms = <70>; key-positions = <26 27 28>; bindings = <&kp DEL>; };
-    // cb_boot_l { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T1 24>; bindings = <&bootloader>; };
-    // cb_boot_r { layers = <la_DEF>; timeout-ms = <30>; key-positions = <po_T2 25>; bindings = <&bootloader>; };
-
-    // // french special characters
-    // cb_special_a { layers = <la_DEF>; timeout-ms = <100>; key-positions = <11 1>; bindings = <&td_special_a>; };
-    // cb_acute_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <12 2>; bindings = <&mc_acute_e>; };
-    // cb_grave_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <13 3>; bindings = <&mc_grave_e>; };
-    // cb_circumflex_o { layers = <la_DEF>; timeout-ms = <100>; key-positions = <21 11>; bindings = <&mc_circumflex_o>; };
-    // cb_special_e { layers = <la_DEF>; timeout-ms = <100>; key-positions = <22 12>; bindings = <&td_special_e>; };
-    // cb_special_u { layers = <la_DEF>; timeout-ms = <100>; key-positions = <23 13>; bindings = <&td_special_u>; };
-    // cb_special_i { layers = <la_DEF>; timeout-ms = <100>; key-positions = <24 14>; bindings = <&td_special_i>; };
-    // cb_cedilla_c { layers = <la_DEF>; timeout-ms = <100>; key-positions = <17 7>; bindings = <&mc_cedilla_c>; };
-
-    // // la_DEF STICKY MODIFIERS
-    // // COMBO_HOLDTAP(NAME, TIMEOUT, POSITION, HOLDTAP)
-    // COMBO_HOLDTAP(cb_LC,  30, po_T1 po_LC, ht_LC)
-    // COMBO_HOLDTAP(cb_LCS, 30, po_T1 po_LC  po_LS, ht_LCS)
-    // COMBO_HOLDTAP(cb_RC,  30, po_T2 po_RC, ht_RC)
-    // COMBO_HOLDTAP(cb_RCS, 30, po_T2 po_RC  po_RS, ht_RCS)
-    // COMBO_HOLDTAP(cb_LG,  30, po_T1 po_LG, ht_LG)
-    // COMBO_HOLDTAP(cb_LGS, 30, po_T1 po_LG  po_LS, ht_LGS)
-    // COMBO_HOLDTAP(cb_RG,  30, po_T2 po_RG, ht_RG)
-    // COMBO_HOLDTAP(cb_RGS, 30, po_T2 po_RG  po_RS, ht_RGS)
-    // COMBO_HOLDTAP(cb_LA,  30, po_T1 po_LA, ht_LA)
-    // COMBO_HOLDTAP(cb_LAS, 30, po_T1 po_LA  po_LS, ht_LAS)
-    // COMBO_HOLDTAP(cb_RA,  30, po_T2 po_RA, ht_RA)
-    // COMBO_HOLDTAP(cb_RAS, 30, po_T2 po_RA  po_RS, ht_RAS)
-    // COMBO_HOLDTAP(cb_LS,  30, po_T1 po_LS, ht_LS)
-    // COMBO_HOLDTAP(cb_RS,  30, po_T2 po_RS, ht_RS)
-
-    // COMBO_MOD(C)
-    // COMBO_MOD(S)
-    // COMBO_MOD(G)
-    // COMBO_MOD(A)
-
-    // // la_NUM CTRL
-    // COMBO(cb_LC_0, 50, po_T0 po_LC 15, <&kp LC(NUMBER_0)>)
-    // COMBO(cb_LC_1, 50, po_T0 po_LC 16, <&kp LC(NUMBER_1)>)
-    // COMBO(cb_LC_2, 50, po_T0 po_LC 17, <&kp LC(NUMBER_2)>)
-    // COMBO(cb_LC_3, 50, po_T0 po_LC 18, <&kp LC(NUMBER_3)>)
-    // COMBO(cb_LC_4, 50, po_T0 po_LC 19, <&kp LC(NUMBER_4)>)
-    // COMBO(cb_LC_5, 50, po_T0 po_LC 5,  <&kp LC(NUMBER_5)>)
-    // COMBO(cb_LC_6, 50, po_T0 po_LC 6,  <&kp LC(NUMBER_6)>)
-    // COMBO(cb_LC_7, 50, po_T0 po_LC 7,  <&kp LC(NUMBER_7)>)
-    // COMBO(cb_LC_8, 50, po_T0 po_LC 8,  <&kp LC(NUMBER_8)>)
-    // COMBO(cb_LC_9, 50, po_T0 po_LC 9,  <&kp LC(NUMBER_9)>)
-
-    // // la_NUM GUI
-    // COMBO(cb_LG_0, 50, po_T0 po_LG 15, <&kp LG(NUMBER_0)>)
-    // COMBO(cb_LG_1, 50, po_T0 po_LG 16, <&kp LG(NUMBER_1)>)
-    // COMBO(cb_LG_2, 50, po_T0 po_LG 17, <&kp LG(NUMBER_2)>)
-    // COMBO(cb_LG_3, 50, po_T0 po_LG 18, <&kp LG(NUMBER_3)>)
-    // COMBO(cb_LG_4, 50, po_T0 po_LG 19, <&kp LG(NUMBER_4)>)
-    // COMBO(cb_LG_5, 50, po_T0 po_LG 5,  <&kp LG(NUMBER_5)>)
-    // COMBO(cb_LG_6, 50, po_T0 po_LG 6,  <&kp LG(NUMBER_6)>)
-    // COMBO(cb_LG_7, 50, po_T0 po_LG 7,  <&kp LG(NUMBER_7)>)
-    // COMBO(cb_LG_8, 50, po_T0 po_LG 8,  <&kp LG(NUMBER_8)>)
-    // COMBO(cb_LG_9, 50, po_T0 po_LG 9,  <&kp LG(NUMBER_9)>)
-
-    // // la_NUM STICKY MODIFIERS
-    // // COMBO_HOLDTAP(NAME, TIME, POS, HT)
-    // COMBO_HOLDTAP(cb_num_LC, 30, po_T0 po_LC, ht_num_LC)
-    // COMBO_HOLDTAP(cb_num_LS, 30, po_T0 po_LS, ht_num_LS)
-    // COMBO_HOLDTAP(cb_num_LG, 30, po_T0 po_LG, ht_num_LG)
-    // COMBO_HOLDTAP(cb_num_LA, 30, po_T0 po_LA, ht_num_LA)
   };
 
   // conditional_layers {
@@ -446,7 +252,7 @@ NAME: NAME { \
       &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
       &hm_mod_l LALT A &hm_mod_l LGUI O &hm_mod_l LCTL E &hm_mo_l la_SYM_r U &kp I    &kp D &hm_mo_r la_SYM_l H &hm_mod_r RCTL T &hm_mod_r RGUI N &hm_mod_r LALT S
       &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
-      &none &hm_mo_l la_NUM ENTER &ht_mo la_NAV TAB &ht_mod LSHFT ESC &hm_mo_r la_SPE SPACE &none
+      &hm_mo_l la_FUN DEL &hm_mo_l la_NUM ENTER &ht_mo la_NAV TAB &ht_mod LSHFT ESC &hm_mo_r la_SPE SPACE &hm_mo_r la_SPE BSPC
       >;
     };
 
@@ -455,7 +261,7 @@ NAME: NAME { \
         &trans &trans &trans &trans &trans                  &kp NUMBER_9 &kp NUMBER_5 &kp NUMBER_6 &kp NUMBER_7 &kp NUMBER_8
         &trans &trans &trans &trans &trans                  &kp NUMBER_0 &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3 &kp NUMBER_4
         &trans &trans &trans &trans &trans                  &kp EQUAL &kp PLUS &kp MINUS &kp SLASH &kp STAR
-        &none &trans &trans &trans &trans &none
+        &trans &trans &trans &trans &trans &trans
         >;
     };
 
@@ -464,7 +270,7 @@ NAME: NAME { \
         &kp GRAVE &kp MINUS &kp EQUAL &kp PLUS &mc_pound    &trans &trans &trans &trans &trans
         &kp EXCL &kp QUESTION &kp STAR &kp HASH &mc_euro    &trans &trans &trans &trans &trans
         &kp AMPS &kp PIPE &kp UNDER &kp PRCNT &mc_degree    &trans &trans &trans &trans &trans
-        &none &trans &trans &trans &trans &none
+        &trans &trans &trans &trans &trans &trans
         >;
     };
 
@@ -473,25 +279,16 @@ NAME: NAME { \
         &trans &trans &trans &trans &trans                  &kp AT &kp LBKT &kp RBKT &kp SLASH &kp BSLH
         &trans &trans &trans &trans &trans                  &kp TILDE &kp LPAR &kp RPAR &kp CARET &kp DLLR
         &trans &trans &trans &trans &trans                  &none &kp LBRC &kp RBRC &mc_trademark &mc_copyright
-        &none &trans &trans &trans &trans &none
+        &trans &trans &trans &trans &trans &trans
         >;
     };
-
-    // navigation {
-    //   bindings = <
-    //     &kp HOME &kp END &kp PG_DN &kp PG_UP &trans      &kp C_PLAY_PAUSE &kp C_PREV &kp C_NEXT &kp C_REWIND &kp C_FAST_FORWARD
-    //     &kp LEFT &kp RIGHT &kp DOWN &kp UP &trans        &trans &trans &trans &trans &trans
-    //     &trans &trans &trans &trans &trans               &kp C_MUTE &kp C_VOL_UP &kp C_VOL_DN &kp C_BRI_UP &kp C_BRI_DN
-    //     &trans &trans &trans &trans
-    //     >;
-    // };
 
     navigation {
       bindings = <
         &kp C_REWIND &kp C_FAST_FORWARD &kp C_PREV &kp C_NEXT &kp C_PLAY_PAUSE &trans &kp PG_UP &kp PG_DN &kp HOME &kp END
         &trans &trans &trans &trans &trans                                     &trans &kp UP &kp DOWN &kp LEFT &kp RIGHT
         &kp C_BRI_DN &kp C_BRI_UP &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE         &trans &trans &trans &trans &trans
-        &none &trans &trans &trans &kp LS(SPACE) &none
+        &trans &trans &trans &trans &kp LS(SPACE) &trans
         >;
     };
 
@@ -500,7 +297,7 @@ NAME: NAME { \
         &mc_circumflex_a &mc_circumflex_o &mc_circumflex_e &mc_circumflex_u &mc_circumflex_i   &trans &trans &mc_cedilla_c &trans &trans
         &mc_grave_a &mc_grave_e &mc_acute_e &mc_grave_u &trans                                 &trans &trans &trans &trans &trans
         &trans &trans &mc_trema_e &mc_trema_u &mc_trema_i                                      &trans &trans &trans &trans &trans
-        &none &trans &trans &trans &trans &none
+        &trans &trans &trans &trans &trans &trans
         >;
     };
 
@@ -509,7 +306,7 @@ NAME: NAME { \
         &trans &trans &trans &trans &trans     &trans &kp F5 &kp F6 &kp F7 &kp F8
         &trans &trans &trans &trans &trans     &trans &kp F1 &kp F2 &kp F3 &kp F4
         &trans &trans &trans &trans &trans     &trans &kp F9 &kp F10 &kp F11 &kp F12
-        &none &trans &trans &trans &trans &none
+        &trans &trans &trans &trans &trans &trans
         >;
     };
 
@@ -518,27 +315,9 @@ NAME: NAME { \
         &none &none &bt BT_PRV &bt BT_NXT &bt BT_CLR                         &none &none &none &none &none
         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &none &none &none &none &none
         &none &none &none &none &none                                        &none &none &none &none &none
-        &none &trans &trans &trans &trans &none
+        &trans &trans &trans &trans &trans &trans
         >;
     };
-
-    // mods_left {
-    //   bindings = <
-    //     &none &none &none &none &none                    &trans &trans &trans &trans &trans
-    //     &kp LALT &kp LGUI &kp LSHFT &kp LCTRL &none      &trans &trans &trans &trans &trans
-    //     &none &none &none &none &none                    &trans &trans &trans &trans &trans
-    //     &trans &trans &trans &trans
-    //     >;
-    // };
-
-    // mods_right {
-    //   bindings = <
-    //     &trans &trans &trans &trans &trans               &none &none &none &none &none
-    //     &trans &trans &trans &trans &trans               &none &kp RCTRL &kp RSHFT &kp RGUI &kp LALT
-    //     &trans &trans &trans &trans &trans               &none &none &none &none &none
-    //     &trans &trans &trans &trans
-    //     >;
-    // };
 
     // tri {
     //   bindings = <

@@ -86,25 +86,25 @@ return {
   end,
 
   keys = {
-    -- {
-    --   '<Tab>',
-    --   mode = { 'n', 'x', 'o', },
-    --   function()
-    --     require('flash').jump()
-    --     -- require('flash').jump({
-    --     --   search = {
-    --     --     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
-    --     --     incremental = true,
-    --     --   },
-    --     -- })
-    --   end,
-    --   desc = 'Flash',
-    -- },
-    -- {
-    --   '<C-s>',
-    --   mode = { 'i', },
-    --   function() require('flash').jump() end,
-    --   desc = 'Flash',
-    -- },
+    {
+      's',
+      mode = { 'n', 'x', 'o', },
+      function()
+        require('flash').jump()
+        -- require('flash').jump({
+        --   search = {
+        --     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
+        --     incremental = true,
+        --   },
+        -- })
+      end,
+      desc = 'Flash',
+    },
+    {
+      '<C-s>',
+      mode = { 'i', },
+      function() require('flash').jump() end,
+      desc = 'Flash',
+    },
   },
 }

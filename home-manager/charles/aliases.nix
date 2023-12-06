@@ -9,13 +9,13 @@
     h = "__zoxide_zi";
     # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     # dua = "$HOME/.screenlayout/dual.sh";
-    wa = "watch progress -q";
+    pr = "watch progress -q";
     mv = "mv --verbose";
     md = "mkdir --parents";
     cp = "cp --recursive --verbose";
-    # b = "br"; # :open_preview
     bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
     bt = "__bluetoothctl";
+    wi = "__nmcli";
     b = "bluetuith";
     l = "command ls --almost-all --color --width 90";
     ll = "command ls -lt --almost-all --color --human-readable --classify";
@@ -26,16 +26,17 @@
     o = "__open_file";
     s = "__ripgrep";
     i = "kitten icat";
-    w = "waypaper";
-    # w = "__wallpaper";
     a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     ".." = "cd ..";
     "..." = "cd ../..";
     ss = "src search";
-    # xc = "xclip -selection c";
-    # xp = "xclip -selection c -o";
     c = "wl-copy";
     p = "wl-paste";
+    # xc = "xclip -selection c";
+    # xp = "xclip -selection c -o";
+    # b = "br"; # :open_preview
+    # w = "waypaper";
+    # w = "__wallpaper";
 
     hm = "hyprctl monitors";
     hhp = "hyprctl hyprpaper preload";

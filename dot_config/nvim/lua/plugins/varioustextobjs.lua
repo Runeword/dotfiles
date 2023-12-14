@@ -20,6 +20,14 @@ return {
       function() require('various-textobjs').value('inner') end)
     vim.keymap.set({ 'o', 'x', }, 'iw',
       function() require('various-textobjs').subword('inner') end)
+
+    vim.keymap.set({ 'o', }, 'k', 'ik', { remap = true, })
+    vim.keymap.set({ 'o', }, 'v', 'iv', { remap = true, })
+
+    vim.keymap.set({ 'o', }, 'w', 'iw', { remap = true, })
+    vim.keymap.set({ 'o', }, 'W', 'iW', { remap = true, })
+
+
     -- vim.keymap.set({ 'o', 'x', }, 'aw',
     --   function() require('various-textobjs').subword(false) end)
     -- vim.keymap.set({ 'o', 'x', }, 'ad',

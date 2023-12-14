@@ -71,7 +71,7 @@
   },
   // -------------------------------------- CLOCK
   "clock": {
-    "format": "{:%H\n%M}",
+    "format": "{:%H\n%M\n\n%d\n%m}",
     "tooltip-format": "{:%a %d %b %Y}",
     "interval": 1
   },

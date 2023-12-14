@@ -362,9 +362,6 @@ vim.keymap.set({ 'x', 'o', }, 'a', 'ia', remap)
 vim.keymap.set({ 'x', 'o', }, 'na', 'ina', remap)
 vim.keymap.set({ 'x', 'o', }, 'oa', 'ioa', remap)
 
-vim.keymap.set({ 'o', }, 'w', 'iw', remap)
-vim.keymap.set({ 'o', }, 'W', 'iW', remap)
-
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:()', 'i(', remap)
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:))', 'a)', remap)
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:{)', 'i{', remap)

@@ -38,9 +38,9 @@
     # w = "waypaper";
     # w = "__wallpaper";
 
-    hm = "hyprctl monitors";
-    hhp = "hyprctl hyprpaper preload";
-    hhw = "hyprctl hyprpaper wallpaper";
+    # hm = "hyprctl monitors";
+    # hhp = "hyprctl hyprpaper preload";
+    # hhw = "hyprctl hyprpaper wallpaper";
     play = "asciinema play";
     "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
     key = "showkey -a";
@@ -71,7 +71,7 @@
     # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
     nfm = "nix flake metadata";
     nr = "nix run";
-    np = "nvim $HOME/home-manager/$USER/packages.nix";
+    hm = "nvim $HOME/home-manager/$USER/packages.nix";
     ng = "sudo nix-collect-garbage -d";
     ngd = "nix-env --delete-generations +10";
     ngl = "nix-env --list-generations";

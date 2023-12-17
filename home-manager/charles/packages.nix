@@ -65,7 +65,7 @@
 
     # ---------------------------------- Hardware
     networkmanagerapplet
-    pw-viz
+    # pw-viz
     bluetuith
     brillo
     playerctl

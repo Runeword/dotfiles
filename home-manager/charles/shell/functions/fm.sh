@@ -4,7 +4,7 @@ __open_file() {
   # Select file(s) with fzf, if no selection do nothing
   local selected_files
   selected_files=$(
-    find . \
+    find -L . \
       \( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
       -o -path './.nix-profile' -o -path './node_modules' -o -path './.local' -o -path './.direnv' \) \
       -prune -o -printf '%P\n' 2>/dev/null |

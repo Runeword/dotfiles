@@ -7,7 +7,7 @@
 }: {
   imports = [
     ./ssh.nix
-    ./neovim.nix
+    # ./neovim.nix
     ./aliases.nix
     ./sessionVariables.nix
     ./packages.nix
@@ -25,7 +25,7 @@
     direnv.enableBashIntegration = true;
     direnv.nix-direnv.enable = true;
 
-    # obs-studio.enable = true;
+    obs-studio.enable = true;
     # obs-studio.plugins = with pkgs.obs-studio-plugins; [
     #   obs-gstreamer
     #   obs-pipewire-audio-capture

@@ -3,11 +3,11 @@ application/x-shellscript=nvim.desktop;
 image/gif=imv-dir.desktop;
 image/png=imv-dir.desktop;
 inode/directory=imv.desktop;imv-dir.desktop;
-image/jpeg=krita_jpeg.desktop;imv-dir.desktop;
+image/jpeg=google-chrome.desktop;krita_jpeg.desktop;imv-dir.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-chrome.desktop;
 application/pdf=google-chrome.desktop;sioyek.desktop;imv.desktop;
 application/x-krita=userapp-krita-GCAKD2.desktop;
-application/x-zerosize=krita_psd.desktop;imv.desktop;
+application/x-zerosize=sioyek.desktop;krita_psd.desktop;imv.desktop;
 
 [Default Applications]
 text/html=google-chrome.desktop

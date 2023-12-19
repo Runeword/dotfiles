@@ -48,7 +48,7 @@
     testdisk-qt
 
     # ---------------------------------- Editors
-    neovim-nightly
+    # neovim-nightly
     kitty
     alacritty
     tmux

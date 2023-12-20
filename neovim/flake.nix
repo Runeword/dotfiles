@@ -1,5 +1,7 @@
 {
   description = "My neovim flake";
+  # nix run $HOME/neovim
+  # nix run "github:Runeword/dotfiles?dir=neovim"
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 

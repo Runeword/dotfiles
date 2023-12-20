@@ -19,7 +19,8 @@
     b = "bluetuith";
     l = "command ls --almost-all --color --width 90";
     ll = "command ls -lt --almost-all --color --human-readable --classify";
-    n = "nix run $HOME/neovim";
+    n = "nix run $HOME/neovim 2>/dev/null";
+    nvim = "nix run $HOME/neovim 2>/dev/null";
     r = "gomi -rf";
     ru = "gomi --restore";
     rd = "rm -rf $HOME/.gomi";

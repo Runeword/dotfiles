@@ -49,6 +49,7 @@
 
     # ---------------------------------- Editors
     # neovim-nightly
+    inputs.neovim-runeword.packages.x86_64-linux.default
     kitty
     alacritty
     tmux

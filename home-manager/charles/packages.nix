@@ -78,6 +78,7 @@
     git
     awscli2
     lsof
+    eza
     distrobox
     fzf
     starship

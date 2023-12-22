@@ -19,7 +19,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "neovim-custom-runeword",
+          "neovim-runeword",
           "neovim-nightly-overlay",
           "nixpkgs"
         ]
@@ -41,7 +41,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "neovim-custom-runeword",
+          "neovim-runeword",
           "neovim-nightly-overlay",
           "hercules-ci-effects",
           "nixpkgs"
@@ -82,7 +82,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
-          "neovim-custom-runeword",
+          "neovim-runeword",
           "neovim-nightly-overlay",
           "nixpkgs"
         ]
@@ -141,32 +141,11 @@
         "type": "github"
       }
     },
-    "neovim-custom-runeword": {
-      "inputs": {
-        "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "dir": "neovim",
-        "lastModified": 1703109755,
-        "narHash": "sha256-K7yrrCmtb5rrL840km4AdDq/68hjegAM9UtMTFmWiVA=",
-        "owner": "Runeword",
-        "repo": "dotfiles",
-        "rev": "d6b7108ccd08e93c82441ea3d5d9cb6694fe9e9b",
-        "type": "github"
-      },
-      "original": {
-        "dir": "neovim",
-        "owner": "Runeword",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "neovim-flake": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "neovim-custom-runeword",
+          "neovim-runeword",
           "neovim-nightly-overlay",
           "nixpkgs"
         ]
@@ -194,7 +173,7 @@
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-flake": "neovim-flake",
         "nixpkgs": [
-          "neovim-custom-runeword",
+          "neovim-runeword",
           "nixpkgs"
         ]
       },
@@ -209,6 +188,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
+        "type": "github"
+      }
+    },
+    "neovim-runeword": {
+      "inputs": {
+        "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "dir": "neovim",
+        "lastModified": 1703193457,
+        "narHash": "sha256-EOOjQFyaIfCiHJR7c18RmmyOofLECr5XNpXaTeVWzlo=",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "rev": "58ec63d7c84f463e710223d8b3af60be8721518d",
+        "type": "github"
+      },
+      "original": {
+        "dir": "neovim",
+        "owner": "Runeword",
+        "repo": "dotfiles",
         "type": "github"
       }
     },
@@ -248,7 +248,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland-contrib": "hyprland-contrib",
-        "neovim-custom-runeword": "neovim-custom-runeword",
+        "neovim-runeword": "neovim-runeword",
         "nixpkgs": "nixpkgs_2"
       }
     },

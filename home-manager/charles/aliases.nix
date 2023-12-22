@@ -17,8 +17,10 @@
     bt = "__bluetoothctl";
     wi = "__nmcli";
     b = "bluetuith";
-    l = "command ls --almost-all --color --width 90";
-    ll = "command ls -lt --almost-all --color --human-readable --classify";
+    # l = "command ls --almost-all --color --width 90";
+    # ll = "command ls -lt --almost-all --color --human-readable --classify";
+    ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
+    l = "exa --all --group-directories-first --sort=time";
     n = "nvim";
     r = "gomi -rf";
     ru = "gomi --restore";

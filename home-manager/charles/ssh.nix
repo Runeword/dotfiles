@@ -1,8 +1,9 @@
 {
   programs.ssh.enable = true;
 
+  programs.ssh.addKeysToAgent = "yes";
+
   programs.ssh.extraConfig = ''
-  AddKeysToAgent yes
   IdentitiesOnly yes
   '';
 

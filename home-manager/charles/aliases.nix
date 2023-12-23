@@ -19,7 +19,19 @@
     b = "bluetuith";
     # l = "command ls --almost-all --color --width 90";
     # ll = "command ls -lt --almost-all --color --human-readable --classify";
-    ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
+    # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
+    ll = ''
+    exa --long --all --color=always --octal-permissions --group-directories-first --total-size --sort=time | fzf \
+    --ansi \
+    --multi \
+    --delimiter : \
+    --reverse \
+    --border none \
+    --cycle \
+    --info=inline:"" \
+    --height 70% \
+    --no-separator \
+    '';
     l = "exa --all --group-directories-first --sort=time";
     n = "nvim";
     r = "gomi -rf";

@@ -2,14 +2,15 @@
 
 if [ -d "$1" ]; then
   if command -v exa >/dev/null; then
-    exa -l "$1" --octal-permissions --color=always --total-size
+    exa -l "$1" --octal-permissions --color=always --total-size | sed 's/^/  /; 1s/^/\n/'
   else
     ls -l "$1"
   fi
+
   tree -Ca -L 2 "$1" | sed 's/^/ /; 1s/^/\n/'
 else
   if command -v exa >/dev/null; then
-    exa -l "$1" --octal-permissions --color=always
+    exa -l "$1" --octal-permissions --color=always | sed 's/^/  /; 1s/^/\n/'
   else
     ls -l "$1"
   fi

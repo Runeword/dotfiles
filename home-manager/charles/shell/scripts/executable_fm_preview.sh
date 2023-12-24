@@ -8,7 +8,7 @@ if [ -d "$1" ]; then
     ls -ld "$1"
   fi
 
-  tree -Ca -L 2 "$1" | sed 's/^/ /; 1s/^/\n/'
+  tree -Ca -L 2 "$1" | sed 's/^/  /; 1s/^/\n/'
 else
   if command -v exa >/dev/null; then
     exa "$1" --long --octal-permissions --color=always |

@@ -117,13 +117,13 @@ return {
         prevParagraphStart()
       end)
 
-    vim.keymap.set({ 'n', 'x', }, '<S-Up>',
+    vim.keymap.set({ 'n', 'x', }, '<C-Up>',
       function()
         jumpParagraph:activate()
         prevParagraphEnd()
       end)
 
-    vim.keymap.set({ 'n', 'x', }, '<S-Down>',
+    vim.keymap.set({ 'n', 'x', }, '<C-Down>',
       function()
         jumpParagraph:activate()
         nextParagraphEnd()

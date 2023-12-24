@@ -389,11 +389,11 @@ vim.keymap.set('i', '<C-k>', '<esc>ld$i')
 vim.keymap.set('i', '<C-H>', '<C-w>')
 
 -- Motions
-vim.keymap.set({ 'x', 'n' }, '<C-j>', 'J')
+-- vim.keymap.set({ 'x', 'n' }, '<C-j>', 'J')
 vim.keymap.set({ 'x', 'n' }, 'k', 'gk')
 vim.keymap.set({ 'x', 'n' }, 'j', 'gj')
-vim.keymap.set({ 'x', 'n' }, 'J', '4jg^')
-vim.keymap.set({ 'x', 'n' }, 'K', '4kg^')
+vim.keymap.set({ 'x', 'n' }, '<S-Down>', '4jg^')
+vim.keymap.set({ 'x', 'n' }, '<S-Up>', '4kg^')
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
 -- nnoremap K :<C-u>call search('^.\+', 'b')<CR>

@@ -1,3 +1,5 @@
+# source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
+
 # ------------------------------------ Word characters
 autoload -U select-word-style
 select-word-style bash
@@ -130,6 +132,6 @@ eval "$(zoxide init --no-cmd zsh)"
 
 # shellcheck disable=SC2154
 if [[ ${options[zle]} = on ]]; then
-  . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/completion.zsh
-  . /nix/store/6a2a0gxng4znly85p03ci3qj0zs65b1b-fzf-0.42.0/share/fzf/key-bindings.zsh
+  . $HOME/bin/fzf/completion.zsh
+  . $HOME/bin/fzf/key-bindings.zsh
 fi

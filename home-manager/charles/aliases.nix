@@ -81,6 +81,7 @@
     nu = "__update_flake_inputs $HOME/nixos";
     nt = "__use_flake_template $HOME/templates";
     nl = "nix flake lock";
+    nv = "nixos-version";
     nw = "nix flake show";
     # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
     nfm = "nix flake metadata";

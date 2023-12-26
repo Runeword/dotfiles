@@ -1,7 +1,7 @@
 {
   # inputs.nixpkgs.url = "github:nixos/nixpkgs";
-  # inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-  inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=b12803b6d90e2e583429bb79b859ca53c348b39a";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  # inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=b12803b6d90e2e583429bb79b859ca53c348b39a";
 
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 

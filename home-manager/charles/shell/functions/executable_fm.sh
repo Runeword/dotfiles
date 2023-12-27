@@ -51,8 +51,7 @@ __open_file() {
 }
 
 __ripgrep() {
-  local selected_files
-  selected_files=$(
+  # local selected_files=$(
   rg \
     --color always \
     --colors 'path:none' \
@@ -75,7 +74,7 @@ __ripgrep() {
       --preview 'bat --style=plain --color=always {1} --highlight-line {2}' \
       --preview-window 'right,55%,border-none,+{2}+3/3,~3' \
       --bind 'enter:become(nvim {1} +{2})'
-  )
+  # )
   # --bind 'enter:execute(echo {1} +{2})+abort'
   # echo $selected_files
 

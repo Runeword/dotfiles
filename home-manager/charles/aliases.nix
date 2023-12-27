@@ -73,6 +73,7 @@
     hs = "home-manager switch --flake $HOME/home-manager";
     hu = "__update_flake_inputs $HOME/home-manager";
     hp = "home-manager packages | fzf --inline-info";
+    hv = "home-manager --version";
     store = "cd /nix/store && __open_file";
     ns = "sudo nixos-rebuild switch --flake $HOME/nixos#$USER";
     ni = "nix-info -m";

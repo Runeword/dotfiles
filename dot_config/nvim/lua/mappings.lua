@@ -187,23 +187,6 @@ vim.keymap.set('n', 'c*', '*``cgn')
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
--------------------- Append newline
-local function appendNewLine(rowOffset)
-  local newLines = {}; for i = 1, vim.v.count1 do newLines[i] = '' end
-  local row = vim.api.nvim_win_get_cursor(0)[1]
-  vim.api.nvim_buf_set_lines(0, row + rowOffset, row + rowOffset, false, newLines)
-end
-
-function _G._appendNewlineBelow() appendNewLine(0) end
-
-function _G._appendNewlineAbove() appendNewLine(-1) end
-
-local function appendNewlineAbove() dot_repeat_wrapper('_appendNewlineAbove') end
-local function appendNewlineBelow() dot_repeat_wrapper('_appendNewlineBelow') end
-
-vim.keymap.set({ 'n', }, 'go', appendNewlineBelow, { expr = true, })
-vim.keymap.set({ 'n', }, 'gO', appendNewlineAbove, { expr = true, })
-
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 

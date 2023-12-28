@@ -135,51 +135,19 @@ function M.appendCharAfterCursor()
   return dot_repeat_wrapper('_appendCharAfterCursor')
 end
 
--- local function getRegister(command)
---   local register = {}
---   register.name = command:match('^"(.)') or vim.v.register
---   register.contents = vim.fn.getreg(register.name)
---   register.type = vim.fn.getregtype(register.name)
---   return register
--- end
 
--- local function putLinewise(command)
---   local register = getRegister(command)
---   local str = register.contents
+-------------------- Append newline
+local function appendNewLine(rowOffset)
+  local newLines = {}; for i = 1, vim.v.count1 do newLines[i] = '' end
+  local row = vim.api.nvim_win_get_cursor(0)[1]
+  vim.api.nvim_buf_set_lines(0, row + rowOffset, row + rowOffset, false, newLines)
+end
 
---   vim.fn.setreg(register.name, str, "V")                                        -- Set register linewise
---   vim.fn.execute("normal! " .. vim.v.count1 .. '"' .. register.name .. command) -- Put register
---   vim.fn.setreg(register.name, register.contents, register.type)                -- Restore register
--- end
+function _G._appendNewlineBelow() appendNewLine(0) end
 
--- local function putCharwise(command)
---   local register = getRegister(command)
---   local str
+function _G._appendNewlineAbove() appendNewLine(-1) end
 
-  -- -- If register type is blockwise-visual then put as usual
-  -- if register.type ~= "V" and register.type ~= "v" then
-  --   vim.fn.execute("normal! " .. vim.v.count1 .. '"' .. register.name .. command)
-  --   return
-  -- end
-
-  -- -- If register type is linewise then remove spaces at both extremities
-  -- if register.type == "V" then
-  --   str = register.contents:gsub("^%s*(.-)%s*$", "%1")
-  -- else
-  --   str = register.contents
-  -- end
-
---   vim.fn.setreg(register.name, str, "v")                                        -- Set register charwise
---   vim.fn.execute("normal! " .. vim.v.count1 .. '"' .. register.name .. command) -- Put register
---   vim.fn.setreg(register.name, register.contents, register.type)                -- Restore register
--- end
-
--- function M.putCharwise(command)
---   return function() putCharwise(command) end
--- end
-
--- function M.putLinewise(command)
---   return function() putLinewise(command) end
--- end
+function M.appendNewlineAbove() dot_repeat_wrapper('_appendNewlineAbove') end
+function M.appendNewlineBelow() dot_repeat_wrapper('_appendNewlineBelow') end
 
 return M

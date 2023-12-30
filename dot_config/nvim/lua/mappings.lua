@@ -42,6 +42,11 @@ vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
 
+-- Undo all changes
+vim.keymap.set('n', 'U', '<cmd>u0<CR>')
+-- Redo all changes
+vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
+-- Delete undo tree
 vim.keymap.set('n', 'gs', function()
   local view = vim.fn.winsaveview()
   vim.o.undoreload = 0
@@ -105,8 +110,6 @@ vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', 'g<Tab>', 'za')
-vim.keymap.set('n', 'U', '<cmd>u0<CR>')
-vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
 vim.keymap.set('n', 'c*', '*``cgn')
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')

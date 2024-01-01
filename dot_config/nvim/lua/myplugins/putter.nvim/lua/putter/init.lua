@@ -3,13 +3,10 @@ local vim = vim
 local M = {}
 
 local namespace = vim.api.nvim_create_namespace('putter')
-local timer = vim.loop.new_timer()
-
-vim.api.nvim_set_hl(0, 'putter', { bg = '#240061', default = true, })
+vim.api.nvim_set_hl(0, 'putter', { bg = '#00226b', default = true, })
 
 local function highlightChange()
-  timer:stop()
-  vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
+  local timer = vim.loop.new_timer()
 
   -- Get the region of the previously changed or yanked text
   local start = vim.api.nvim_buf_get_mark(0, '[')
@@ -19,13 +16,14 @@ local function highlightChange()
   vim.highlight.range(0, namespace, 'putter',
     { start[1] - 1, start[2], },
     { finish[1] - 1, finish[2], },
-    { inclusive = true }
+    { inclusive = true, }
   )
 
   -- Clear highlight after 500ms
   timer:start(500, 0,
     vim.schedule_wrap(
-      function() vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1) end
+      function() vim.api.nvim_buf_clear_namespace(0, namespace, start[1] - 1, finish[1]) end
+    -- function() vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1) end
     )
   )
 end
@@ -70,11 +68,17 @@ local function putCharwise(command)
 end
 
 function M.putCharwise(command)
-  return function() putCharwise(command) highlightChange() end
+  return function()
+    putCharwise(command)
+    highlightChange()
+  end
 end
 
 function M.putLinewise(command)
-  return function() putLinewise(command) highlightChange() end
+  return function()
+    putLinewise(command)
+    highlightChange()
+  end
 end
 
 return M

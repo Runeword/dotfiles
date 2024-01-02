@@ -1,5 +1,7 @@
 local vim = vim
 
+
+
 local M = {}
 local command
 
@@ -68,17 +70,33 @@ local function putCharwise()
   vim.fn.setreg(register.name, register.contents, register.type)                -- Restore register
 end
 
-function M.putCharwise(user_command)
+function M.putCharwiseAfter()
   return function()
-  command = user_command
+    command = 'p'
     putCharwise()
     highlightChange()
   end
 end
 
-function M.putLinewise(user_command)
+function M.putCharwiseBefore()
   return function()
-  command = user_command
+    command = 'P'
+    putCharwise()
+    highlightChange()
+  end
+end
+
+function M.putLinewiseAfter()
+  return function()
+    command = ']p`]'
+    putLinewise()
+    highlightChange()
+  end
+end
+
+function M.putLinewiseBefore()
+  return function()
+    command = ']P`]'
     putLinewise()
     highlightChange()
   end

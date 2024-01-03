@@ -1,9 +1,6 @@
 local vim = vim
 
-
-
 local M = {}
-local command
 
 local namespace = vim.api.nvim_create_namespace('putter')
 vim.api.nvim_set_hl(0, 'putter', { bg = '#00226b', default = true, })
@@ -31,7 +28,7 @@ local function highlightChange()
   )
 end
 
-local function getRegister()
+local function getRegister(command)
   local register = {}
   register.name = command:match('^"(.)') or vim.v.register
   register.contents = vim.fn.getreg(register.name)
@@ -39,8 +36,8 @@ local function getRegister()
   return register
 end
 
-local function putLinewise()
-  local register = getRegister()
+local function putLinewise(command)
+  local register = getRegister(command)
   local str = register.contents
 
   vim.fn.setreg(register.name, str, 'V')                                        -- Set register linewise
@@ -48,8 +45,8 @@ local function putLinewise()
   vim.fn.setreg(register.name, register.contents, register.type)                -- Restore register
 end
 
-local function putCharwise()
-  local register = getRegister()
+local function putCharwise(command)
+  local register = getRegister(command)
   local str
 
   -- If register type is blockwise-visual then put as usual
@@ -71,27 +68,23 @@ local function putCharwise()
 end
 
 function M.putCharwiseAfter()
-    command = 'p'
-    putCharwise()
-    highlightChange()
+  putCharwise('p')
+  highlightChange()
 end
 
 function M.putCharwiseBefore()
-    command = 'P'
-    putCharwise()
-    highlightChange()
+  putCharwise('P')
+  highlightChange()
 end
 
 function M.putLinewiseAfter()
-    command = ']p`]'
-    putLinewise()
-    highlightChange()
+  putLinewise(']p`]')
+  highlightChange()
 end
 
 function M.putLinewiseBefore()
-    command = ']P`]'
-    putLinewise()
-    highlightChange()
+  putLinewise(']P`]')
+  highlightChange()
 end
 
 return M

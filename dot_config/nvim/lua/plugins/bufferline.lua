@@ -4,9 +4,9 @@ return {
   'akinsho/bufferline.nvim',
 
   config = function()
-    vim.keymap.set({ 'n', 'x', }, '<C-tab>', '<cmd>BufferLineCycleNext<CR>',
+    vim.keymap.set({ 'i', 'n', 'x', }, '<C-tab>', '<cmd>BufferLineCycleNext<CR>',
       { silent = true, })
-    vim.keymap.set({ 'n', 'x', }, '<C-S-tab>', '<cmd>BufferLineCyclePrev<CR>',
+    vim.keymap.set({ 'i', 'n', 'x', }, '<C-S-tab>', '<cmd>BufferLineCyclePrev<CR>',
       { silent = true, })
     -- vim.keymap.set({ 'n', 'x', }, '<pageup>', '<cmd>BufferLineMovePrev<CR>',
     --   { silent = true, })

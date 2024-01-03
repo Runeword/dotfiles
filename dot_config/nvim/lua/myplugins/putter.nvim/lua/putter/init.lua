@@ -71,35 +71,27 @@ local function putCharwise()
 end
 
 function M.putCharwiseAfter()
-  return function()
     command = 'p'
     putCharwise()
     highlightChange()
-  end
 end
 
 function M.putCharwiseBefore()
-  return function()
     command = 'P'
     putCharwise()
     highlightChange()
-  end
 end
 
 function M.putLinewiseAfter()
-  return function()
     command = ']p`]'
     putLinewise()
     highlightChange()
-  end
 end
 
 function M.putLinewiseBefore()
-  return function()
     command = ']P`]'
     putLinewise()
     highlightChange()
-  end
 end
 
 return M

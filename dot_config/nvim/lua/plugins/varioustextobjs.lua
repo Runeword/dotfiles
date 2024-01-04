@@ -18,6 +18,8 @@ return {
       function() require('various-textobjs').value('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'iv',
       function() require('various-textobjs').value('inner') end)
+    vim.keymap.set({ 'o', 'x', }, 'aw',
+      function() require('various-textobjs').subword('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'iw',
       function() require('various-textobjs').subword('inner') end)
 

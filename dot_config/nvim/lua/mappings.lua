@@ -47,7 +47,7 @@ vim.keymap.set('n', 'U', '<cmd>u0<CR>')
 -- Redo all changes
 vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
 -- Delete undo tree
-vim.keymap.set('n', 'gs', function()
+vim.keymap.set('n', '<Leader>s', function()
   local view = vim.fn.winsaveview()
   vim.o.undoreload = 0
   vim.cmd('edit')
@@ -103,8 +103,8 @@ vim.keymap.set('', 'q', '<Nop>')
 -- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
 -- vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
 -- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
-vim.keymap.set('n', '<Leader>s', '<cmd>silent write<CR>')
-vim.keymap.set('x', '<Leader>s', '<Esc><cmd>silent write<CR>')
+vim.keymap.set('n', 'gs', '<cmd>silent write<CR>')
+vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
 
 -- Edit
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')

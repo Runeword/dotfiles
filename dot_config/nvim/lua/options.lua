@@ -2,26 +2,30 @@ local vim = vim
 local o = vim.o
 local opt = vim.opt
 
-o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
-o.foldopen = 'search,undo'
--- nvim-treesitter/nvim-treesitter
-o.foldmethod = 'expr'
-o.foldexpr = 'nvim_treesitter#foldexpr()'
--- kevinhwang91/nvim-ufo
-o.foldcolumn = '1'
-o.foldlevel = 99
-o.foldlevelstart = 99
-o.foldenable = true
+--------------------------- Enable fold
 
-local fcs = vim.opt.fillchars:get()
-local function get_fold(lnum)
-  if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then return ' ' end
-  return vim.fn.foldclosed(lnum) == -1 and fcs.foldopen or fcs.foldclose
-end
-_G.get_statuscol = function()
-  return "%s%l " .. get_fold(vim.v.lnum) .. " "
-end
-vim.o.statuscolumn = "%!v:lua.get_statuscol()"
+-- o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
+-- o.foldopen = 'search,undo'
+-- -- nvim-treesitter/nvim-treesitter
+-- o.foldmethod = 'expr'
+-- o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- -- kevinhwang91/nvim-ufo
+-- o.foldcolumn = '1'
+-- o.foldlevel = 99
+-- o.foldlevelstart = 99
+-- o.foldenable = true
+
+-- local fcs = vim.opt.fillchars:get()
+-- local function get_fold(lnum)
+--   if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then return ' ' end
+--   return vim.fn.foldclosed(lnum) == -1 and fcs.foldopen or fcs.foldclose
+-- end
+-- _G.get_statuscol = function()
+--   return "%s%l " .. get_fold(vim.v.lnum) .. " "
+-- end
+-- vim.o.statuscolumn = "%!v:lua.get_statuscol()"
+
+---------------------------
 
 vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 
@@ -58,23 +62,10 @@ o.tabstop = 2                      -- Number of spaces that a <Tab> in the file 
 o.shiftwidth = 2                   -- Number of spaces to use for each step of (auto)indent
 o.hidden = true                    -- Allow switching buffers with unsaved changes
 opt.lazyredraw = true              -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
-
 opt.list = true
 opt.listchars:append "eol:¬,tab:  ,lead: ,multispace:˙,trail:˙"
-
 opt.laststatus = 3
+-- o.cmdheight=0
 
 -- vim.cmd([[color haslo]])
 -- vim.cmd([[colorscheme blaster]])
--- o.relativenumber = true -- Show relative line numbers
--- o.cmdheight=0
--- o.shortmess='a'
--- o.scroll = 5
--- o.timeoutlen = 0
--- opt.fillchars:append("horiz:.")
--- g.mapleader = " "
--- o.formatoptions = "cro"
--- vim.cmd([[filetype plugin indent on]])
--- o.showtabline=2  -- Always display the line with tab page labels
--- opt.iskeyword:remove({ "/", "(", "[", "{" })
--- opt.iskeyword:append({ "/", "(", "[", "{" })

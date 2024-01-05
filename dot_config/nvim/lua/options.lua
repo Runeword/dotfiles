@@ -2,31 +2,6 @@ local vim = vim
 local o = vim.o
 local opt = vim.opt
 
---------------------------- Enable fold
-
--- o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
--- o.foldopen = 'search,undo'
--- -- nvim-treesitter/nvim-treesitter
--- o.foldmethod = 'expr'
--- o.foldexpr = 'nvim_treesitter#foldexpr()'
--- -- kevinhwang91/nvim-ufo
--- o.foldcolumn = '1'
--- o.foldlevel = 99
--- o.foldlevelstart = 99
--- o.foldenable = true
-
--- local fcs = vim.opt.fillchars:get()
--- local function get_fold(lnum)
---   if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then return ' ' end
---   return vim.fn.foldclosed(lnum) == -1 and fcs.foldopen or fcs.foldclose
--- end
--- _G.get_statuscol = function()
---   return "%s%l " .. get_fold(vim.v.lnum) .. " "
--- end
--- vim.o.statuscolumn = "%!v:lua.get_statuscol()"
-
----------------------------
-
 vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 
 o.splitkeep='screen'
@@ -69,3 +44,26 @@ opt.laststatus = 3
 
 -- vim.cmd([[color haslo]])
 -- vim.cmd([[colorscheme blaster]])
+
+--------------------------- Enable fold
+
+-- o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
+-- o.foldopen = 'search,undo'
+-- -- nvim-treesitter/nvim-treesitter
+-- o.foldmethod = 'expr'
+-- o.foldexpr = 'nvim_treesitter#foldexpr()'
+-- -- kevinhwang91/nvim-ufo
+-- o.foldcolumn = '1'
+-- o.foldlevel = 99
+-- o.foldlevelstart = 99
+-- o.foldenable = true
+
+-- local fcs = vim.opt.fillchars:get()
+-- local function get_fold(lnum)
+--   if vim.fn.foldlevel(lnum) <= vim.fn.foldlevel(lnum - 1) then return ' ' end
+--   return vim.fn.foldclosed(lnum) == -1 and fcs.foldopen or fcs.foldclose
+-- end
+-- _G.get_statuscol = function()
+--   return "%s%l " .. get_fold(vim.v.lnum) .. " "
+-- end
+-- vim.o.statuscolumn = "%!v:lua.get_statuscol()"

@@ -117,6 +117,30 @@ return {
         prevParagraphStart()
       end)
 
+    vim.keymap.set({ 'n', 'x', }, '<Tab>',
+      function()
+        jumpParagraph:activate()
+        nextParagraphStart()
+      end)
+
+    vim.keymap.set({ 'n', 'x', }, '<S-Tab>',
+      function()
+        jumpParagraph:activate()
+        prevParagraphStart()
+      end)
+
+    vim.keymap.set({ 'n', 'x', }, '<C-S-Tab>',
+      function()
+        jumpParagraph:activate()
+        prevParagraphEnd()
+      end)
+
+    vim.keymap.set({ 'n', 'x', }, '<C-Tab>',
+      function()
+        jumpParagraph:activate()
+        nextParagraphEnd()
+      end)
+
     vim.keymap.set({ 'n', 'x', }, '<C-Up>',
       function()
         jumpParagraph:activate()

@@ -2,7 +2,7 @@ local vim = vim
 
 return {
   'Exafunction/codeium.vim',
-
+  enabled = false,
   event = 'BufEnter',
 
   config = function()

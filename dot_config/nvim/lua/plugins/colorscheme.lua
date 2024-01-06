@@ -2,9 +2,11 @@ local vim = vim
 
 return {
   'dasupradyumna/midnight.nvim',
+  config = function()
+    vim.cmd.colorscheme 'midnight'
+  end,
 
   lazy = false,
-
   priority = 1000,
 
   init = function()
@@ -22,7 +24,6 @@ return {
         vim.api.nvim_set_hl(0, 'OffscreenPopup', { bg = 'none', })
       end,
     })
-
 
     -- folke/flash.nvim
     vim.api.nvim_create_augroup('flash', { clear = true, })
@@ -162,7 +163,5 @@ return {
         vim.api.nvim_set_hl(0, 'CmpItemKindTypeParameter', { fg = 'NONE', bg = 'NONE', })
       end,
     })
-
-    vim.cmd.colorscheme 'midnight'
   end,
 }

@@ -17,6 +17,7 @@
     bt = "__bluetoothctl";
     wi = "__nmcli";
     b = "bluetuith";
+    f = "fc-list : family style | fzf";
     # l = "command ls --almost-all --color --width 90";
     # ll = "command ls -lt --almost-all --color --human-readable --classify";
     # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";

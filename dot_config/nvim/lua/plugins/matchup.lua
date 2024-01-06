@@ -19,11 +19,22 @@ return {
     vim.g.matchup_matchparen_enabled = 1
     vim.g.matchup_override_vimtex = 1
     vim.g.matchup_matchparen_hi_background = 0
-    vim.g.matchup_matchparen_offscreen = { method = 'popup', fullwidth = 0, highlight = 'OffscreenPopup' }
+    vim.g.matchup_matchparen_offscreen = { method = 'popup', fullwidth = 0, highlight = 'OffscreenPopup', }
+
+    vim.api.nvim_create_augroup('matchup', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'matchup',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'MatchParen',     { fg = '#ffffff', italic = true, })
+        vim.api.nvim_set_hl(0, 'MatchWord',      { underline = true, })
+        vim.api.nvim_set_hl(0, 'OffscreenPopup', { bg = 'none', })
+      end,
+    })
   end,
 
   config = function()
-    vim.keymap.set({ 'n', 'x', }, '%', '<plug>(matchup-%)')
+    vim.keymap.set({ 'n', 'x', }, '%',  '<plug>(matchup-%)')
     vim.keymap.set({ 'n', 'x', }, 'g%', '<plug>(matchup-g%)')
   end,
 }

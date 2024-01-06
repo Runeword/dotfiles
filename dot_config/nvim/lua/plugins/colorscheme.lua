@@ -25,28 +25,28 @@ return {
       end,
     })
 
-    -- folke/flash.nvim
-    vim.api.nvim_create_augroup('flash', { clear = true, })
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = 'flash',
-      pattern = '*',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'FlashMatch',   { bg = '#222b66', fg = 'white', bold = false, })
-        vim.api.nvim_set_hl(0, 'FlashCurrent', { bg = '#FAFF00', fg = 'black', bold = false, })
-        vim.api.nvim_set_hl(0, 'FlashLabel',   { bg = '#5d00ff', fg = 'white', bold = false, })
-      end,
-    })
+    -- -- folke/flash.nvim
+    -- vim.api.nvim_create_augroup('flash', { clear = true, })
+    -- vim.api.nvim_create_autocmd('ColorScheme', {
+    --   group = 'flash',
+    --   pattern = '*',
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, 'FlashMatch',   { bg = '#222b66', fg = 'white', bold = false, })
+    --     vim.api.nvim_set_hl(0, 'FlashCurrent', { bg = '#FAFF00', fg = 'black', bold = false, })
+    --     vim.api.nvim_set_hl(0, 'FlashLabel',   { bg = '#5d00ff', fg = 'white', bold = false, })
+    --   end,
+    -- })
 
-    -- tzachar/local-highlight.nvim
-    vim.api.nvim_create_augroup('localhighlight', { clear = true, })
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = 'localhighlight',
-      pattern = '*',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1d253d', })
-        -- vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1a1f30', })
-      end,
-    })
+    -- -- tzachar/local-highlight.nvim
+    -- vim.api.nvim_create_augroup('localhighlight', { clear = true, })
+    -- vim.api.nvim_create_autocmd('ColorScheme', {
+    --   group = 'localhighlight',
+    --   pattern = '*',
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1d253d', })
+    --     -- vim.api.nvim_set_hl(0, 'LocalHighlight', { bg = '#1a1f30', })
+    --   end,
+    -- })
 
     -- akinsho/bufferline.nvim
     vim.api.nvim_create_augroup('bufferline', { clear = true, })
@@ -68,18 +68,18 @@ return {
       end,
     })
 
-    -- machakann/vim-highlightedyank
-    vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = 'highlightedyank',
-      pattern = '*',
-      callback = function()
-        vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { link = 'Search', default = true, })
-        -- vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { bg = '#222b66', })
-        -- vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { bg = '#00ffa2', fg = 'black', })
-        -- vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { bg = '#ff1994', fg = 'black', })
-      end,
-    })
+    -- -- machakann/vim-highlightedyank
+    -- vim.api.nvim_create_augroup('highlightedyank', { clear = true, })
+    -- vim.api.nvim_create_autocmd('ColorScheme', {
+    --   group = 'highlightedyank',
+    --   pattern = '*',
+    --   callback = function()
+    --     vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { link = 'Search', default = true, })
+    --     -- vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { bg = '#222b66', })
+    --     -- vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { bg = '#00ffa2', fg = 'black', })
+    --     -- vim.api.nvim_set_hl(0, 'HighlightedyankRegion', { bg = '#ff1994', fg = 'black', })
+    --   end,
+    -- })
 
     -- -- tzachar/highlight-undo.nvim
     -- vim.api.nvim_create_augroup('highlightundo', { clear = true, })

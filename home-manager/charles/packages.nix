@@ -38,7 +38,7 @@
   home.file."bin/fzf".source = "${pkgs.fzf}/share/fzf";
 
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["Hack" "DroidSansMono" "SourceCodePro"];})
+    (nerdfonts.override {fonts = ["DroidSansMono" "SourceCodePro" "VictorMono"];})
     python311
     qmk
     gcc

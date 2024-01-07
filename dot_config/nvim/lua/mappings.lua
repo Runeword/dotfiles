@@ -108,15 +108,8 @@ vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
 
 -- Edit
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')
-vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 -- vim.keymap.set('n', 'g<Tab>', 'za')
-
-vim.keymap.set('n', 'c<Tab>', '*``cgn')
-vim.keymap.set('n', 'd<Tab>', '*``dgn')
-vim.keymap.set('n', 'y<Tab>', '*``ygn')
-vim.keymap.set('n', 'c<S-Tab>', '*``cgN')
-vim.keymap.set('n', 'd<S-Tab>', '*``dgN')
-vim.keymap.set('n', 'y<S-Tab>', '*``ygN')
+vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 

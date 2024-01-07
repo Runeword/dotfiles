@@ -13,8 +13,6 @@ return {
   config = function()
     vim.api.nvim_set_keymap('n', 'n', "v:searchforward ? 'n<Plug>Pulse' : 'N<Plug>Pulse'", {noremap = true, expr = true, silent = true})
     vim.api.nvim_set_keymap('n', 'N', "v:searchforward ? 'N<Plug>Pulse' : 'n<Plug>Pulse'", {noremap = true, expr = true, silent = true})
-    vim.keymap.set('n', '*',       '*<Plug>Pulse',              { remap = true, })
-    vim.keymap.set('n', '#',       '#<Plug>Pulse',              { remap = true, })
     vim.keymap.set('c', '<Enter>', 'search_pulse#PulseFirst()', { silent = true, expr = true, })
   end,
 }

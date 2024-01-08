@@ -1,9 +1,5 @@
 local vim = vim
 
-
-
-
-
 return {
   enabled = true,
 

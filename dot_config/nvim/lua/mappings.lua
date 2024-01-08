@@ -110,6 +110,7 @@ vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')
 -- vim.keymap.set('n', 'g<Tab>', 'za')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
+vim.keymap.set('n', 'gV', '`[v`]')
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 

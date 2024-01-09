@@ -1,18 +1,18 @@
 local vim = vim
 local remap = { remap = true, }
 
-vim.keymap.set('x', '<C-n>', ':Norm ')
-vim.keymap.set('n', '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')
-vim.keymap.set('n', 'g<Space>', '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set({ 'x', 'n', }, '<Space>', '<Enter>', remap)
+vim.keymap.set('x',           '<C-n>',      ':Norm ')
+vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')
+vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
+vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   remap)
 
-vim.keymap.set('n', '<Leader>ti', '<cmd>Inspect<CR>')
-vim.keymap.set('n', '<Leader>tt', '<cmd>InspectTree<CR>')
-vim.keymap.set('n', '<Leader>tq', '<cmd>PreviewQuery<CR>')
+vim.keymap.set('n',           '<Leader>ti', '<cmd>Inspect<CR>')
+vim.keymap.set('n',           '<Leader>tt', '<cmd>InspectTree<CR>')
+vim.keymap.set('n',           '<Leader>tq', '<cmd>PreviewQuery<CR>')
 
 -- Display messages in a floating window
 local function displayMessages()
-  local messages_string = vim.fn.split(vim.api.nvim_exec2('silent messages', { output = true }).output, '\n')
+  local messages_string = vim.fn.split(vim.api.nvim_exec2('silent messages', { output = true, }).output, '\n')
   if next(messages_string) == nil then return end
 
   local buffer_id = vim.api.nvim_create_buf(false, true)
@@ -29,16 +29,16 @@ local function displayMessages()
     height = height,
     row = math.floor((vim.o.lines - height) / 2),
     col = math.floor((vim.o.columns - width) / 2),
-    style = 'minimal'
+    style = 'minimal',
   }
 
-  vim.api.nvim_set_option_value('modifiable', false, { buf = buffer_id })
+  vim.api.nvim_set_option_value('modifiable', false, { buf = buffer_id, })
   vim.api.nvim_open_win(buffer_id, true, window_opts)
 end
 
-vim.keymap.set('n', '<Leader>m', displayMessages, { noremap = true, silent = true })
+vim.keymap.set('n', '<Leader>m', displayMessages, { noremap = true, silent = true, })
 
-vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
+vim.keymap.set('n', '<C-i>',     '<C-i>',         { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
 
@@ -96,21 +96,37 @@ vim.keymap.set('n', '<Esc>',
 -- vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
 vim.keymap.set('n', '<C-p>', '<Nop>')
-vim.keymap.set('', 'Q', '<Nop>')
-vim.keymap.set('', 'q', '<Nop>')
+vim.keymap.set('',  'Q',     '<Nop>')
+vim.keymap.set('',  'q',     '<Nop>')
 
 -- Save
 -- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
 -- vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
 -- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
-vim.keymap.set('n', 'gs', '<cmd>silent write<CR>')
-vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
+-- vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
+-- vim.keymap.set('n', 'gs', '<cmd>silent write<CR>')
+-- vim.keymap.set('n', 'gs', '<cmd>write<CR>')
+
+local function write()
+  local start = vim.fn.getpos("'[")
+  local finish = vim.fn.getpos("']")
+
+  vim.cmd('silent! write')
+
+  vim.fn.setpos("'[", start)
+  vim.fn.setpos("']", finish)
+end
+
+vim.keymap.set('n', 'gs', write)
 
 -- Edit
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')
 -- vim.keymap.set('n', 'g<Tab>', 'za')
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
-vim.keymap.set('n', 'gV', '`[v`]')
+vim.keymap.set('n', '<BS>',   '`[v`]')
+-- vim.cmd([[
+-- nnoremap <expr> gh '`[' . strpart(getregtype(), 0, 1) . '`]'
+-- ]])
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
 
@@ -121,16 +137,16 @@ vim.keymap.set('n', 'gV', '`[v`]')
 
 vim.keymap.set({ 'x', 'o', }, 'a<Space>', 'ap')
 vim.keymap.set({ 'x', 'o', }, 'i<Space>', 'ip')
-vim.keymap.set({ 'o', }, '<Space>', 'ip')
-vim.keymap.set({ 'o', }, '<Enter>', 'ip')
+vim.keymap.set({ 'o', },      '<Space>',  'ip')
+vim.keymap.set({ 'o', },      '<Enter>',  'ip')
 
-vim.keymap.set({ 'x', 'o', }, 'q', 'iq', remap)
-vim.keymap.set({ 'x', 'o', }, 'nq', 'inq', remap)
-vim.keymap.set({ 'x', 'o', }, 'oq', 'ioq', remap)
+vim.keymap.set({ 'x', 'o', }, 'q',        'iq',  remap)
+vim.keymap.set({ 'x', 'o', }, 'nq',       'inq', remap)
+vim.keymap.set({ 'x', 'o', }, 'oq',       'ioq', remap)
 
-vim.keymap.set({ 'x', 'o', }, 'a', 'ia', remap)
-vim.keymap.set({ 'x', 'o', }, 'na', 'ina', remap)
-vim.keymap.set({ 'x', 'o', }, 'oa', 'ioa', remap)
+vim.keymap.set({ 'x', 'o', }, 'a',        'ia',  remap)
+vim.keymap.set({ 'x', 'o', }, 'na',       'ina', remap)
+vim.keymap.set({ 'x', 'o', }, 'oa',       'ioa', remap)
 
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:()', 'i(', remap)
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:))', 'a)', remap)
@@ -144,13 +160,13 @@ vim.keymap.set({ 'x', 'o', }, 'oa', 'ioa', remap)
 
 -- Operators
 -- vim.keymap.set('x', 'p', '"_dP')
-vim.keymap.set({ 'n', 'v', }, 'd', '"_d')
-vim.keymap.set('n', 'D', '"_D')
-vim.keymap.set('n', 'dd', '"_dd^')
-vim.keymap.set({ 'n', 'v', }, 'x', '"_x')
-vim.keymap.set({ 'n', 'v', }, 'm', 'd')
-vim.keymap.set('n', 'M', 'D')
-vim.keymap.set('n', 'mm', 'dd^')
+vim.keymap.set({ 'n', 'v', }, 'd',  '"_d')
+vim.keymap.set('n',           'D',  '"_D')
+vim.keymap.set('n',           'dd', '"_dd^')
+vim.keymap.set({ 'n', 'v', }, 'x',  '"_x')
+vim.keymap.set({ 'n', 'v', }, 'm',  'd')
+vim.keymap.set('n',           'M',  'D')
+vim.keymap.set('n',           'mm', 'dd^')
 
 -- Readline
 vim.keymap.set('i', '<C-a>', '<esc>I')
@@ -160,10 +176,10 @@ vim.keymap.set('i', '<C-H>', '<C-w>')
 
 -- Motions
 -- vim.keymap.set({ 'x', 'n' }, '<C-j>', 'J')
-vim.keymap.set({ 'x', 'n' }, 'k', 'gk')
-vim.keymap.set({ 'x', 'n' }, 'j', 'gj')
-vim.keymap.set({ 'x', 'n' }, '<S-Down>', '4jg^')
-vim.keymap.set({ 'x', 'n' }, '<S-Up>', '4kg^')
+vim.keymap.set({ 'x', 'n', }, 'k',       'gk')
+vim.keymap.set({ 'x', 'n', }, 'j',       'gj')
+vim.keymap.set({ 'x', 'n', }, '<S-Down>', '4jg^')
+vim.keymap.set({ 'x', 'n', }, '<S-Up>',  '4kg^')
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
 -- nnoremap K :<C-u>call search('^.\+', 'b')<CR>
@@ -175,16 +191,16 @@ vim.keymap.set('n', '$', function()
   vim.o.ve = ''
   vim.o.ve = 'all'
 end)
-vim.keymap.set('n', '^', 'g^')
-vim.keymap.set('n', '&', 'g^')
+vim.keymap.set('n',           '^', 'g^')
+vim.keymap.set('n',           '&', 'g^')
 
 vim.keymap.set({ 'n', 'x', }, '(', function() vim.fn.search('[([{]') end)
 vim.keymap.set({ 'n', 'x', }, ')', function() vim.fn.search('[([{]', 'b') end)
 
 -- Buffers
 vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')
-vim.keymap.set('n', '<C-w>', '<cmd>silent bwipeout!<CR>')
-vim.keymap.set('n', '<C-t>', '<cmd>silent enew<CR>')
+vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
+vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
 -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
 

@@ -12,7 +12,7 @@ return {
   config = function()
     vim.keymap.set('n', '*',    '<Plug>(asterisk-*)<Plug>Pulse')
     vim.keymap.set('n', '#',    '<Plug>(asterisk-#)<Plug>Pulse')
-    vim.keymap.set('n', '<BS>', '<Plug>(asterisk-z*)cgn')
+    vim.keymap.set('n', 'cn', '<Plug>(asterisk-z*)cgn')
     -- vim.keymap.set('n', '<BS>', '*``cgn')
     -- vim.keymap.set('n', '<S-BS>', '*``cgN')
   end,

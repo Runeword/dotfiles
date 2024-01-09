@@ -1,16 +1,15 @@
 local vim = vim
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
 
-augroup('chezmoi',            { clear = true, })
-augroup('help',               { clear = true, })
-augroup('tmux',               { clear = true, })
-augroup('diagnostic',         { clear = true, })
-augroup('quickfix',           { clear = true, })
-augroup('disableAutoComment', { clear = true, })
-augroup('term',               { clear = true, })
-augroup('view',               { clear = true, })
-augroup('cursor',             { clear = true, })
+vim.api.nvim_create_augroup('chezmoi',            { clear = true, })
+vim.api.nvim_create_augroup('help',               { clear = true, })
+vim.api.nvim_create_augroup('tmux',               { clear = true, })
+vim.api.nvim_create_augroup('diagnostic',         { clear = true, })
+vim.api.nvim_create_augroup('quickfix',           { clear = true, })
+vim.api.nvim_create_augroup('disableAutoComment', { clear = true, })
+vim.api.nvim_create_augroup('term',               { clear = true, })
+vim.api.nvim_create_augroup('view',               { clear = true, })
+vim.api.nvim_create_augroup('cursor',             { clear = true, })
+-- vim.api.nvim_create_augroup('write',              { clear = true, })
 
 -- Prevent escape from moving the cursor one character to the left
 vim.cmd([[
@@ -26,7 +25,7 @@ vim.api.nvim_create_autocmd('ExitPre', {
   desc = 'Set cursor back to beam when leaving Neovim',
 })
 
-autocmd('TermOpen', {
+vim.api.nvim_create_autocmd('TermOpen', {
   group = 'term',
   callback = function()
     vim.o.relativenumber = false
@@ -36,27 +35,56 @@ autocmd('TermOpen', {
   desc = 'Disable relative and absolute line numbers, and start insert mode in terminal buffers',
 })
 
-autocmd({ 'BufWinLeave', }, {
+vim.api.nvim_create_autocmd({ 'BufWinLeave', }, {
   group = 'view',
   pattern = '*.*',
   command = 'mkview',
   desc = 'Save cursor position and folds when leaving a buffer',
 })
 
-autocmd({ 'BufWinEnter', }, {
+vim.api.nvim_create_autocmd({ 'BufWinEnter', }, {
   group = 'view',
   pattern = '*.*',
   command = 'silent! loadview',
   desc = 'Restore cursor position and folds when entering a buffer',
 })
 
-autocmd('BufWritePost', {
+-- vim.api.nvim_create_autocmd('BufWriteCmd', {
+--   group = 'write',
+--   pattern = '*',
+--   nested = true,
+--   callback = function()
+--     local start = vim.fn.getpos("'[")
+--     local finish = vim.fn.getpos("']")
+--     vim.api.nvim_buf_set_var(0, 'start', start)
+--     vim.api.nvim_buf_set_var(0, 'finish', finish)
+--     vim.print(start)
+--     vim.print(finish)
+--     vim.print(finish)
+--   end,
+-- })
+
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   group = 'write',
+--   pattern = '*',
+--   nested = true,
+--   callback = function()
+--     local start = vim.api.nvim_buf_get_var(0, 'start')
+--     local finish = vim.api.nvim_buf_get_var(0, 'finish')
+--     vim.fn.setpos("'[", start)
+--     vim.fn.setpos("']", finish)
+--     vim.print(start)
+--     vim.print(finish)
+--   end,
+-- })
+
+vim.api.nvim_create_autocmd('BufWritePost', {
   group = 'chezmoi',
   pattern = '~/.local/share/chezmoi/*',
   command = 'silent! !chezmoi apply --source-path %',
 })
 
-autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType', {
   group = 'help',
   pattern = 'help',
   callback = function()
@@ -65,27 +93,27 @@ autocmd('FileType', {
   desc = 'Use gx instead of <C-]> to follow links for help files',
 })
 
-autocmd('BufWritePost', {
+vim.api.nvim_create_autocmd('BufWritePost', {
   group = 'tmux',
   pattern = '~/.config/tmux/tmux.conf',
   command = 'silent! !tmux source-file ~/.config/tmux/.tmux.conf',
 })
 
-autocmd({ 'BufWinEnter', 'BufRead', 'BufNewFile', }, {
+vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufRead', 'BufNewFile', }, {
   group = 'disableAutoComment',
   pattern = '*',
   command = 'setlocal fo-=c fo-=r fo-=o fo+=t',
   desc = 'Disable auto-commenting for all file types',
 })
 
-autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType', {
   group = 'quickfix',
   pattern = 'qf',
   command = 'set nobuflisted',
   desc = 'Exclude quickfix buffer from the buffer list',
 })
 
-autocmd('FileType', {
+vim.api.nvim_create_autocmd('FileType', {
   group = 'quickfix',
   pattern = 'qf',
   callback = function()

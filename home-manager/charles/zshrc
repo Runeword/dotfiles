@@ -102,8 +102,8 @@ __on_empty_buffer() {
 
 __history_or_delete() { __on_empty_buffer "zle fzf-history-widget; zle accept-line" "zle backward-delete-char"; }
 zle -N __history_or_delete
-bindkey '^[[3;2~' __history_or_delete
-# bindkey '^?' __history_or_delete
+bindkey '^?' __history_or_delete
+# bindkey '^[[3;2~' __history_or_delete
 
 __navi_or_space() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" "LBUFFER+=' '; zle autosuggest-fetch"; }
 zle -N __navi_or_space

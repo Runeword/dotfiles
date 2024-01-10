@@ -48,10 +48,16 @@ vim.keymap.set('n', 'U', '<cmd>u0<CR>')
 vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
 -- Delete undo tree
 vim.keymap.set('n', '<Leader>s', function()
+  local start = vim.fn.getpos("'[")
+  local finish = vim.fn.getpos("']")
+
   local view = vim.fn.winsaveview()
   vim.o.undoreload = 0
   vim.cmd('edit')
   vim.fn.winrestview(view)
+
+  vim.fn.setpos("'[", start)
+  vim.fn.setpos("']", finish)
 end, { silent = true, })
 
 vim.keymap.set('n', 'i', function()
@@ -105,7 +111,6 @@ vim.keymap.set('',  'q',     '<Nop>')
 -- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
 -- vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
 -- vim.keymap.set('n', 'gs', '<cmd>silent write<CR>')
--- vim.keymap.set('n', 'gs', '<cmd>write<CR>')
 
 local function write()
   local start = vim.fn.getpos("'[")
@@ -176,10 +181,10 @@ vim.keymap.set('i', '<C-H>', '<C-w>')
 
 -- Motions
 -- vim.keymap.set({ 'x', 'n' }, '<C-j>', 'J')
-vim.keymap.set({ 'x', 'n', }, 'k',       'gk')
-vim.keymap.set({ 'x', 'n', }, 'j',       'gj')
+vim.keymap.set({ 'x', 'n', }, 'k',        'gk')
+vim.keymap.set({ 'x', 'n', }, 'j',        'gj')
 vim.keymap.set({ 'x', 'n', }, '<S-Down>', '4jg^')
-vim.keymap.set({ 'x', 'n', }, '<S-Up>',  '4kg^')
+vim.keymap.set({ 'x', 'n', }, '<S-Up>',   '4kg^')
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
 -- nnoremap K :<C-u>call search('^.\+', 'b')<CR>

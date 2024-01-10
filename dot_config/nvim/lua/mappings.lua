@@ -42,10 +42,31 @@ vim.keymap.set('n', '<C-i>',     '<C-i>',         { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
 
+----------------------------------- SAVE
+
+-- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
+-- vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
+-- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
+-- vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
+-- vim.keymap.set('n', 'gs', '<cmd>silent write<CR>')
+
+-- Write while keeping last changes position
+vim.keymap.set('n', 'gs', function()
+  local start = vim.fn.getpos("'[")
+  local finish = vim.fn.getpos("']")
+
+  vim.cmd('silent! write')
+
+  vim.fn.setpos("'[", start)
+  vim.fn.setpos("']", finish)
+end)
+
 -- Undo all changes
 vim.keymap.set('n', 'U', '<cmd>u0<CR>')
+
 -- Redo all changes
 vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
+
 -- Delete undo tree
 vim.keymap.set('n', '<Leader>s', function()
   local start = vim.fn.getpos("'[")
@@ -60,6 +81,9 @@ vim.keymap.set('n', '<Leader>s', function()
   vim.fn.setpos("']", finish)
 end, { silent = true, })
 
+----------------------------------- EDIT
+
+-- When the line is empty, move the cursor to the beginning of the line
 vim.keymap.set('n', 'i', function()
   if #vim.fn.getline('.') == 0 then
     return [["_cc]]
@@ -68,8 +92,11 @@ vim.keymap.set('n', 'i', function()
   end
 end, { expr = true, })
 
+----------------------------------- FOLD
+
+-- Toggle fold
 local isFolded = false
-local function toggleFold()
+vim.keymap.set('n', 'g<Enter>', function()
   if not isFolded then
     vim.api.nvim_feedkeys('zR', 'n', false)
     isFolded = true
@@ -77,52 +104,39 @@ local function toggleFold()
     vim.api.nvim_feedkeys('zM', 'n', false)
     isFolded = false
   end
-end
-
-vim.keymap.set('n', 'g<Enter>', toggleFold)
+end)
 
 -- vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
--- vim.keymap.set('n', '<Esc>', '<Esc>g^')
+
+----------------------------------- ESC
+
 vim.keymap.set('n', '<Esc>',
   function()
+    -- Quit diagnostic window
     local buffer_id = vim.fn.bufnr('diagnostic_message')
     if buffer_id ~= -1 then
       vim.api.nvim_buf_delete(buffer_id, { force = true, unload = false, })
     end
+
+    -- Quit messages window
     local bff = vim.fn.bufnr('messages')
     if bff ~= -1 then
       vim.api.nvim_buf_delete(bff, { force = true, unload = false, })
     end
-    vim.fn.execute('normal! \\<Esc>g^')
+
+    -- Move cursor to the beginning of the line
+    vim.api.nvim_feedkeys(string.format('%c%s', 27, 'g^'), 'n', true) -- <Esc>g^
   end
 )
 
--- Unmap
+----------------------------------- UNMAP
+
 -- vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
 vim.keymap.set('n', '<C-p>', '<Nop>')
 vim.keymap.set('',  'Q',     '<Nop>')
 vim.keymap.set('',  'q',     '<Nop>')
-
--- Save
--- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
--- vim.keymap.set('i', '<C-s>',     '<Esc>`^<cmd>silent write<CR>')
--- vim.keymap.set('x', '<C-s>',     '<Esc><cmd>silent write<CR>')
--- vim.keymap.set('x', 'gs', '<Esc><cmd>silent write<CR>')
--- vim.keymap.set('n', 'gs', '<cmd>silent write<CR>')
-
-local function write()
-  local start = vim.fn.getpos("'[")
-  local finish = vim.fn.getpos("']")
-
-  vim.cmd('silent! write')
-
-  vim.fn.setpos("'[", start)
-  vim.fn.setpos("']", finish)
-end
-
-vim.keymap.set('n', 'gs', write)
 
 -- Edit
 -- vim.keymap.set('i', 'ù',     '<Esc>`^u')
@@ -138,7 +152,7 @@ vim.keymap.set('n', '<BS>',   '`[v`]')
 -- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
 -- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 
--- Text objects
+----------------------------------- TEXT OBJECTS
 
 vim.keymap.set({ 'x', 'o', }, 'a<Space>', 'ap')
 vim.keymap.set({ 'x', 'o', }, 'i<Space>', 'ip')
@@ -163,7 +177,8 @@ vim.keymap.set({ 'x', 'o', }, 'oa',       'ioa', remap)
 -- vim.fn['arpeggio#map']('ox', '', 0, '{}', 'a}')
 -- vim.fn['arpeggio#map']('ox', '', 0, '[]', 'a]')
 
--- Operators
+----------------------------------- OPERATORS
+
 -- vim.keymap.set('x', 'p', '"_dP')
 vim.keymap.set({ 'n', 'v', }, 'd',  '"_d')
 vim.keymap.set('n',           'D',  '"_D')

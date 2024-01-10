@@ -16,6 +16,8 @@ __open_file() {
         --cycle \
         --height 70% \
         --ansi \
+        --header-first \
+        --header=''\''exact !not [!]^prefix [!]suffix$' \
         --preview "$HOME/home-manager/$USER/shell/scripts/fm_preview.sh {}" \
         --preview-window right,55%,border-none,~3 \
         --bind='ctrl-y:execute-silent(wl-copy {})'

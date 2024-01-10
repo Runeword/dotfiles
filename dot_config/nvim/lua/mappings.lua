@@ -38,10 +38,6 @@ end
 
 vim.keymap.set('n', '<Leader>m', displayMessages, { noremap = true, silent = true, })
 
-vim.keymap.set('n', '<C-i>',     '<C-i>',         { silent = true, })
--- vim.keymap.set('n', '<PageUp>', '<C-i>')
--- vim.keymap.set('n', '<PageDown>', '<C-o>')
-
 ----------------------------------- SAVE
 
 -- vim.keymap.set('n', '<C-s>',     '<cmd>silent write<CR>')
@@ -60,6 +56,8 @@ vim.keymap.set('n', 'gs', function()
   vim.fn.setpos("'[", start)
   vim.fn.setpos("']", finish)
 end)
+
+----------------------------------- UNDO / REDO
 
 -- Undo all changes
 vim.keymap.set('n', 'U', '<cmd>u0<CR>')
@@ -94,6 +92,8 @@ end, { expr = true, })
 
 ----------------------------------- FOLD
 
+-- vim.keymap.set('n', 'g<Tab>', 'za')
+
 -- Toggle fold
 local isFolded = false
 vim.keymap.set('n', 'g<Enter>', function()
@@ -106,10 +106,10 @@ vim.keymap.set('n', 'g<Enter>', function()
   end
 end)
 
+----------------------------------- ESC
+
 -- vim.keymap.set('n', '<Leader>t', '<cmd>te<CR>')
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
-
------------------------------------ ESC
 
 vim.keymap.set('n', '<Esc>',
   function()
@@ -138,19 +138,16 @@ vim.keymap.set('n', '<C-p>', '<Nop>')
 vim.keymap.set('',  'Q',     '<Nop>')
 vim.keymap.set('',  'q',     '<Nop>')
 
--- Edit
--- vim.keymap.set('i', 'ù',     '<Esc>`^u')
--- vim.keymap.set('n', 'g<Tab>', 'za')
+----------------------------------- EDIT
+
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
+
 vim.keymap.set('n', '<BS>',   '`[v`]')
 -- vim.cmd([[
 -- nnoremap <expr> gh '`[' . strpart(getregtype(), 0, 1) . '`]'
 -- ]])
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
-
--- vim.api.nvim_buf_add_highlight(0, namespace, 'Visual', row, col, col + 1)
--- vim.api.nvim_buf_clear_namespace(0, namespace, 0, -1)
 
 ----------------------------------- TEXT OBJECTS
 
@@ -188,41 +185,51 @@ vim.keymap.set({ 'n', 'v', }, 'm',  'd')
 vim.keymap.set('n',           'M',  'D')
 vim.keymap.set('n',           'mm', 'dd^')
 
--- Readline
+----------------------------------- READLINE
+
 vim.keymap.set('i', '<C-a>', '<esc>I')
 vim.keymap.set('i', '<C-e>', '<end>')
 vim.keymap.set('i', '<C-k>', '<esc>ld$i')
 vim.keymap.set('i', '<C-H>', '<C-w>')
 
--- Motions
--- vim.keymap.set({ 'x', 'n' }, '<C-j>', 'J')
+--------------------------------- MOTIONS
+
 vim.keymap.set({ 'x', 'n', }, 'k',        'gk')
 vim.keymap.set({ 'x', 'n', }, 'j',        'gj')
 vim.keymap.set({ 'x', 'n', }, '<S-Down>', '4jg^')
 vim.keymap.set({ 'x', 'n', }, '<S-Up>',   '4kg^')
+
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
 -- nnoremap K :<C-u>call search('^.\+', 'b')<CR>
 -- ]])
 
 vim.keymap.set('n', '0', 'g0')
+
 vim.keymap.set('n', '$', function()
   vim.fn.execute('normal! g$')
   vim.o.ve = ''
   vim.o.ve = 'all'
 end)
+
 vim.keymap.set('n',           '^', 'g^')
 vim.keymap.set('n',           '&', 'g^')
 
 vim.keymap.set({ 'n', 'x', }, '(', function() vim.fn.search('[([{]') end)
 vim.keymap.set({ 'n', 'x', }, ')', function() vim.fn.search('[([{]', 'b') end)
 
--- Buffers
+vim.keymap.set('n', '<C-i>',     '<C-i>',         { silent = true, })
+-- vim.keymap.set('n', '<PageUp>', '<C-i>')
+-- vim.keymap.set('n', '<PageDown>', '<C-o>')
+
+---------------------------------- BUFFERS
+
 vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')
 vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
 vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
 -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
 -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
 
--------------------- folke/lazy.nvim
+---------------------------------- folke/lazy.nvim
+
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>')

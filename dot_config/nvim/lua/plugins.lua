@@ -6,7 +6,13 @@ return {
   { 'kana/vim-arpeggio', },
   { 'tpope/vim-abolish', },
   { 'svban/YankAssassin.vim', },
-  { '907th/vim-auto-save',         init = function() vim.g.auto_save = 1 end, },
+  {
+    '907th/vim-auto-save',
+    init = function()
+      vim.g.auto_save = 1
+      vim.g.auto_save_silent = 1
+    end,
+  },
 
   {
     'willothy/flatten.nvim',

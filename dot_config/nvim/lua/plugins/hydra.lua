@@ -100,8 +100,8 @@ return {
       heads = {
         { '<Down>',   nextParagraphStart, },
         { '<Up>',     prevParagraphStart, },
-        { '<C-Up>',   prevParagraphEnd, },
-        { '<C-Down>', nextParagraphEnd, },
+        { '<S-Up>',   prevParagraphEnd, },
+        { '<S-Down>', nextParagraphEnd, },
       },
     })
 
@@ -129,13 +129,13 @@ return {
         prevParagraphStart()
       end)
 
-    vim.keymap.set({ 'n', 'x', }, '<C-Up>',
+    vim.keymap.set({ 'n', 'x', }, '<S-Up>',
       function()
         jumpParagraph:activate()
         prevParagraphEnd()
       end)
 
-    vim.keymap.set({ 'n', 'x', }, '<C-Down>',
+    vim.keymap.set({ 'n', 'x', }, '<S-Down>',
       function()
         jumpParagraph:activate()
         nextParagraphEnd()

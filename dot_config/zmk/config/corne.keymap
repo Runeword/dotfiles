@@ -253,7 +253,7 @@ NAME: NAME { \
       &kp SQT &kp COMMA &kp DOT &kp P &kp Y                                           &kp F &kp G &kp C &kp R &kp L
       &hm_mod_l LALT A &hm_mod_l LGUI O &hm_mod_l LCTL E &hm_mo_l la_SYM_r U &kp I    &kp D &hm_mo_r la_SYM_l H &hm_mod_r RCTL T &hm_mod_r RGUI N &hm_mod_r LALT S
       &kp SEMI &kp Q &kp J &kp K &kp X                                                &kp B &kp M &kp W &kp V &kp Z
-      &hm_mo_l la_FUN DEL &hm_mo_l la_NUM ENTER &ht_mo la_NAV TAB &ht_mod LSHFT ESC &hm_mo_r la_SPE SPACE &hm_mo_r la_SPE BSPC
+      &hm_mo_l la_FUN DEL &hm_mo_l la_NUM ENTER &ht_mo la_NAV TAB &ht_mod LSHFT ESC &hm_mo_r la_SPE SPACE &hm_mo_r la_HAR BSPC
       >;
     };
 
@@ -313,7 +313,7 @@ NAME: NAME { \
 
     hardware {
       bindings = <
-        &none &none &bt BT_PRV &bt BT_NXT &bt BT_CLR                         &none &none &none &none &none
+        &kp A &bt BT_PRV &bt BT_CLR &bt BT_NXT &bt BT_CLR_ALL                &none &none &none &none &none
         &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4     &none &none &none &none &none
         &none &none &none &none &none                                        &none &none &none &none &none
         &trans &trans &trans &trans &trans &trans

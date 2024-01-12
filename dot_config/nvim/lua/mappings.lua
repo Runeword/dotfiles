@@ -151,19 +151,17 @@ vim.keymap.set('n', '<BS>',   '`[v`]')
 
 ----------------------------------- TEXT OBJECTS
 
-vim.keymap.set({ 'o', 'x', }, 'a<Tab>',  'ap')
-vim.keymap.set({ 'o', 'x', }, 'i<Tab>',  'ip')
-vim.keymap.set({ 'o', },      '<Tab>',   'ip')
+vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'ap')
+vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'ip')
+vim.keymap.set({ 'o', }, '<Space>',  'ip')
 
-vim.keymap.set({ 'o', },      '<Space>', 'i<Space>', remap)
+vim.keymap.set({ 'x', 'o', }, 'q',        'iq',  remap)
+vim.keymap.set({ 'x', 'o', }, 'nq',       'inq', remap)
+vim.keymap.set({ 'x', 'o', }, 'oq',       'ioq', remap)
 
-vim.keymap.set({ 'x', 'o', }, 'q',       'iq',       remap)
-vim.keymap.set({ 'x', 'o', }, 'nq',      'inq',      remap)
-vim.keymap.set({ 'x', 'o', }, 'oq',      'ioq',      remap)
-
-vim.keymap.set({ 'x', 'o', }, 'a',       'ia',       remap)
-vim.keymap.set({ 'x', 'o', }, 'na',      'ina',      remap)
-vim.keymap.set({ 'x', 'o', }, 'oa',      'ioa',      remap)
+vim.keymap.set({ 'x', 'o', }, 'a',        'ia',  remap)
+vim.keymap.set({ 'x', 'o', }, 'na',       'ina', remap)
+vim.keymap.set({ 'x', 'o', }, 'oa',       'ioa', remap)
 
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:()', 'i(', remap)
 -- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:))', 'a)', remap)
@@ -216,8 +214,8 @@ end)
 vim.keymap.set('n', '^', 'g^')
 vim.keymap.set('n', '&', 'g^')
 
--- vim.keymap.set({ 'n', 'x', }, '<Space>',   function() vim.fn.search('\\s\\+', 'W') end)
--- vim.keymap.set({ 'n', 'x', }, '<S-Space>', function() vim.fn.search('\\s\\+', 'bW') end)
+-- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'W') end)
+-- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'bW') end)
 vim.keymap.set({ 'n', 'x', }, '(',     function() vim.fn.search('[([{]') end)
 vim.keymap.set({ 'n', 'x', }, ')',     function() vim.fn.search('[([{]', 'b') end)
 

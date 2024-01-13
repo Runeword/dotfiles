@@ -82,11 +82,11 @@
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
     nu = "__update_flake_inputs $HOME/nixos";
     nt = "__use_flake_template $HOME/templates";
-    nl = "nix flake lock";
     nv = "nixos-version";
-    nw = "nix flake show";
+    fl = "nix flake lock";
+    fs = "nix flake show";
+    fm = "nix flake metadata";
     # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
-    nfm = "nix flake metadata";
     nr = "nix run";
     hm = "nvim $HOME/home-manager/$USER/packages.nix";
     ng = "sudo nix-collect-garbage -d";

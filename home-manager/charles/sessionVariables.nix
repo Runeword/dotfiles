@@ -14,12 +14,12 @@
 --preview-window border-none \
 ";
 
-  home.sessionVariables._ZO_FZF_OPTS = "
---reverse \
---height 40% \
---no-separator \
---border none \
-";
+#   home.sessionVariables._ZO_FZF_OPTS = "
+# --reverse \
+# --height 40% \
+# --no-separator \
+# --border none \
+# ";
 
   home.sessionVariables.FZF_DEFAULT_COMMAND = "
 fd \

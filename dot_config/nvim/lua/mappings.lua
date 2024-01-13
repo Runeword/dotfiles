@@ -1,10 +1,9 @@
 local vim = vim
-local remap = { remap = true, }
 
 vim.keymap.set('x',           '<C-n>',      ':Norm ')
 vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   remap)
+vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   { remap = true, })
 
 vim.keymap.set('n',           '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n',           '<Leader>tt', '<cmd>InspectTree<CR>')
@@ -151,24 +150,31 @@ vim.keymap.set('n', '<BS>',   '`[v`]')
 
 ----------------------------------- TEXT OBJECTS
 
-vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'ap')
+vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'ap', { remap = true, })
 vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'ip')
-vim.keymap.set({ 'o', }, '<Space>',  'ip')
+vim.keymap.set({ 'o', },      '<Space>',  'ip')
+vim.keymap.set({ 'o', 'x', }, 'a<Enter>', 'ap')
+vim.keymap.set({ 'o', 'x', }, 'i<Enter>', 'ip')
+vim.keymap.set({ 'o', },      '<Enter>',  'ip')
 
-vim.keymap.set({ 'x', 'o', }, 'q',        'iq',  remap)
-vim.keymap.set({ 'x', 'o', }, 'nq',       'inq', remap)
-vim.keymap.set({ 'x', 'o', }, 'oq',       'ioq', remap)
+vim.keymap.set({ 'x', 'o', }, 'q',        'iq')
+vim.keymap.set({ 'o', },      'b',        'ib')
+vim.keymap.set({ 'o', },      'w',        'iw')
+vim.keymap.set({ 'o', },      '(',        'i(')
+vim.keymap.set({ 'o', },      ')',        'i)')
+vim.keymap.set({ 'o', },      '[',        'i[')
+vim.keymap.set({ 'o', },      ']',        'i]')
+vim.keymap.set({ 'o', },      '{',        'i{')
+vim.keymap.set({ 'o', },      '}',        'i}')
+vim.keymap.set({ 'o', },      '<',        'i<')
+vim.keymap.set({ 'o', },      '>',        'i>')
 
-vim.keymap.set({ 'x', 'o', }, 'a',        'ia',  remap)
-vim.keymap.set({ 'x', 'o', }, 'na',       'ina', remap)
-vim.keymap.set({ 'x', 'o', }, 'oa',       'ioa', remap)
-
--- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:()', 'i(', remap)
--- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:))', 'a)', remap)
--- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:{)', 'i{', remap)
--- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:})', 'a}', remap)
--- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:[)', 'i[', remap)
--- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:])', 'a]', remap)
+-- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:()', 'i(', { remap = true, })
+-- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:))', 'a)', { remap = true, })
+-- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:{)', 'i{', { remap = true, })
+-- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:})', 'a}', { remap = true, })
+-- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:[)', 'i[', { remap = true, })
+-- vim.keymap.set({ 'x', 'o' }, '<Plug>(arpeggio-default:])', 'a]', { remap = true, })
 -- vim.fn['arpeggio#map']('ox', '', 0, '()', 'a)')
 -- vim.fn['arpeggio#map']('ox', '', 0, '{}', 'a}')
 -- vim.fn['arpeggio#map']('ox', '', 0, '[]', 'a]')

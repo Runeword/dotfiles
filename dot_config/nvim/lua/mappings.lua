@@ -150,14 +150,14 @@ vim.keymap.set('n', '<BS>',   '`[v`]')
 
 ----------------------------------- TEXT OBJECTS
 
-vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'ap', { remap = true, })
+vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'ap')
 vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'ip')
 vim.keymap.set({ 'o', },      '<Space>',  'ip')
 vim.keymap.set({ 'o', 'x', }, 'a<Enter>', 'ap')
 vim.keymap.set({ 'o', 'x', }, 'i<Enter>', 'ip')
 vim.keymap.set({ 'o', },      '<Enter>',  'ip')
 
-vim.keymap.set({ 'x', 'o', }, 'q',        'iq')
+vim.keymap.set({ 'o', 'x', }, 'q',        'iq', { remap = true, })
 vim.keymap.set({ 'o', },      'b',        'ib')
 vim.keymap.set({ 'o', },      'w',        'iw')
 vim.keymap.set({ 'o', },      '(',        'i(')

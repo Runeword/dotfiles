@@ -222,10 +222,15 @@ vim.keymap.set('n', '&', 'g^')
 
 -- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'W') end)
 -- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'bW') end)
+vim.keymap.set({ 'n', 'x', }, ',',     function() vim.fn.search('[,.:;]') end)
+vim.keymap.set({ 'n', 'x', }, '<',     function() vim.fn.search('[,.:;]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, 'q',     function() vim.fn.search('[\'"`]') end)
+vim.keymap.set({ 'n', 'x', }, 'Q',     function() vim.fn.search('[\'"`]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '<',     function() vim.fn.search('[,.:;]', 'b') end)
 vim.keymap.set({ 'n', 'x', }, '(',     function() vim.fn.search('[([{]') end)
 vim.keymap.set({ 'n', 'x', }, ')',     function() vim.fn.search('[([{]', 'b') end)
 
-vim.keymap.set('n',           '<C-i>', '<C-i>',                                    { silent = true, })
+vim.keymap.set('n',           '<C-i>', '<C-i>',                                     { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
 

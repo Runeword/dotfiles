@@ -24,6 +24,12 @@ cursor:
 selection:
   save_to_clipboard: true
 
+shell:
+  program: tmux
+  args:
+    - new-session
+    - -A
+
 # ---------------------------- Keymaps
 
 key_bindings:

@@ -22,8 +22,8 @@ return {
       function() require('various-textobjs').subword('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'iw',
       function() require('various-textobjs').subword('inner') end)
-    vim.keymap.set({ 'o', 'x', }, '<BS>',
-      function() require('various-textobjs').lastChange() end)
+    -- vim.keymap.set({ 'o', 'x', }, '<BS>',
+    --   function() require('various-textobjs').lastChange() end)
 
     vim.keymap.set({ 'o', }, 'k', 'ik', { remap = true, })
     vim.keymap.set({ 'o', }, 'v', 'iv', { remap = true, })

@@ -14,13 +14,15 @@ __switch_session() {
   local item_pos
   item_pos=$(tmux list-sessions -F '#{session_id}' | awk '{if ($1 == "'"$session_id"'") print NR}')
 
+# --delimiter=' ' \
 	local session
 	session=$(
 		tmux ls -F "#{session_name}" 2>/dev/null | fzf \
 			--reverse \
 			--cycle \
 			--height 50% \
-			--delimiter=' ' \
+      --no-separator \
+      --info=inline:'' \
 			--bind='tab:down,btab:up' \
       --bind='enter:execute(echo {1})+abort' \
 			${TMUX:+--bind='focus:execute-silent(tmux switch-client -t {1})'} \
@@ -51,6 +53,8 @@ __switch_window() {
 			--cycle \
 			--height 50% \
 			--delimiter=' ' \
+      --no-separator \
+      --info=inline:'' \
 			--bind='tab:down,btab:up' \
 			${TMUX:+--bind='focus:execute-silent(tmux switch-client -t {4}; tmux select-window -t {3})'} \
 			${TMUX:+--bind="load:pos($item_pos)"}

@@ -1,7 +1,7 @@
 local vim = vim
 
 return {
-  enabled = false,
+  enabled = true,
 
   'chrisgrieser/nvim-spider',
 

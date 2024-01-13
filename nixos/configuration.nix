@@ -18,7 +18,7 @@
   security.polkit.enable = true;
   services.fwupd.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.xserver = {
     enable = true;

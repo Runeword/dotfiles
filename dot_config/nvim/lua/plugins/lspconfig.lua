@@ -2,49 +2,9 @@ local vim = vim
 
 return {
   'neovim/nvim-lspconfig',
+  dependencies = { 'hrsh7th/nvim-cmp', },
 
   config = function()
-    -------------------- https://github.com/neovim/nvim-lspconfig/wiki/UI-customization
-    vim.diagnostic.config(
-      {
-        signs = false,
-        update_in_insert = false,
-        -- whynothugo/lsp_lines.nvim
-        -- virtual_lines = { only_current_line = true },
-
-        virtual_text = {
-          prefix = '',
-          spacing = 2,
-        },
-
-        float = {
-          border = {
-            { '',  'FloatBorder', },
-            { '',  'FloatBorder', },
-            { '',  'FloatBorder', },
-            { ' ', 'FloatBorder', },
-            { ' ', 'FloatBorder', },
-            { ' ', 'FloatBorder', },
-            { ' ', 'FloatBorder', },
-            { ' ', 'FloatBorder', },
-          },
-          max_width = 80,
-          header = '',
-          prefix = '',
-          suffix = '',
-          format = function(diag)
-            return string.format(
-              '%s %s\n    %s',
-              diag.source,
-              diag.user_data.lsp.code,
-              diag.message
-            )
-          end,
-        },
-      }
-    )
-
-    -------------------- neovim/nvim-lspconfig
     local function on_attach_server(dfp)
       return function(client, buffer)
         client.server_capabilities.documentFormattingProvider = dfp
@@ -76,14 +36,13 @@ return {
 
     local function set_config(override_opts)
       local default_opts = {
-        -- capabilities = require('cmp_nvim_lsp').default_capabilities(), -- nvim-cmp
+        capabilities = require('cmp_nvim_lsp').default_capabilities(), -- hrsh7th/nvim-cmp
         on_attach = on_attach_server(true),
         ['settings.format.enable'] = true,
         flags = { debounce_text_changes = 0, },
       }
       return vim.tbl_deep_extend('force', default_opts, override_opts or {})
     end
-
 
     local lspconfig = require('lspconfig')
 

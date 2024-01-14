@@ -25,7 +25,7 @@ return {
     -- vim.keymap.set({ 'o', 'x', }, '<BS>',
     --   function() require('various-textobjs').lastChange() end)
 
-    vim.keymap.set({ 'o', }, 'k', 'ik', { remap = true, })
+    -- vim.keymap.set({ 'o', }, 'k', 'ik', { remap = true, })
     vim.keymap.set({ 'o', }, 'v', 'iv', { remap = true, })
 
     vim.keymap.set({ 'o', }, 'w', 'iw', { remap = true, })

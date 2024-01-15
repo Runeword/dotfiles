@@ -3,7 +3,6 @@
     # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
     shn = "shutdown now";
     chrome = "google-chrome-stable";
-    me = "cd /run/media/$USER/";
     # color = "colorpicker"; # X11
     win = "xprop WM_CLASS";
     cd = "__zoxide_z";
@@ -36,8 +35,12 @@
     '';
     l = "exa --all --group-directories-first --sort=time";
     n = "nvim";
+    me = "cd /run/media/$USER/";
     ne = "cd $HOME/.config/nvim/";
     de = "cd $HOME/dev/";
+    ho = "cd $HOME/home-manager/";
+    ".." = "cd ..";
+    "..." = "cd ../..";
     r = "gomi -rf";
     ru = "gomi --restore";
     rd = "rm -rf $HOME/.gomi";
@@ -45,8 +48,6 @@
     s = "__ripgrep";
     i = "kitten icat";
     a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
-    ".." = "cd ..";
-    "..." = "cd ../..";
     ss = "src search";
     c = "wl-copy";
     p = "wl-paste";
@@ -74,7 +75,6 @@
     t = "__switch_session";
 
     # ______________________________________ NIX
-    ho = "cd $HOME/home-manager/";
     hs = "home-manager switch --flake $HOME/home-manager";
     hu = "__update_flake_inputs $HOME/home-manager";
     hv = "home-manager --version";

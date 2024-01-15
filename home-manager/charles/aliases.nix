@@ -22,7 +22,7 @@
     # ll = "command ls -lt --almost-all --color --human-readable --classify";
     # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
     ll = ''
-    exa --long --all --color=always --octal-permissions --group-directories-first --total-size --sort=time | fzf \
+    exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | fzf \
     --ansi \
     --multi \
     --delimiter : \

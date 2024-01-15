@@ -36,7 +36,7 @@
     '';
     l = "exa --all --group-directories-first --sort=time";
     n = "nvim";
-    nv = "cd $HOME/.config/nvim/";
+    ne = "cd $HOME/.config/nvim/";
     de = "cd $HOME/dev/";
     r = "gomi -rf";
     ru = "gomi --restore";
@@ -85,7 +85,7 @@
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
     nu = "__update_flake_inputs $HOME/nixos";
     nt = "__use_flake_template $HOME/templates";
-    # nv = "nixos-version";
+    nv = "nixos-version";
     fl = "nix flake lock";
     fs = "nix flake show";
     fm = "nix flake metadata";

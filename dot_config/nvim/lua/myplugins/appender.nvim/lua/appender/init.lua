@@ -92,25 +92,30 @@ local function appendSingleChar(getColumn)
 end
 
 -------------------- Initialization
-function _G._appendCharEndLine()
+local appender = {}
+
+function appender._appendCharEndLine()
   return appendSingleChar(colAfterLine)
 end
 
-function _G._appendCharStartLine()
+function appender._appendCharStartLine()
   return appendSingleChar(colBeforeLine)
 end
 
-function _G._appendCharBeforeCursor()
+function appender._appendCharBeforeCursor()
   return appendSingleChar(colBeforeCursor)
 end
 
-function _G._appendCharAfterCursor()
+function appender._appendCharAfterCursor()
   return appendSingleChar(colAfterCursor)
 end
 
+-- Export functions
+_G.appender = appender
+
 -------------------- Dot repeat
 local function dot_repeat_wrapper(name)
-  vim.go.operatorfunc = 'v:lua.' .. name
+  vim.go.operatorfunc = 'v:lua.appender.' .. name
   local isVisual = string.match(vim.api.nvim_get_mode().mode, '[vV\22]')
   vim.api.nvim_feedkeys(isVisual and 'g@' or 'g@l', 'n', false)
 end
@@ -143,9 +148,9 @@ local function appendNewLine(rowOffset)
   vim.api.nvim_buf_set_lines(0, row + rowOffset, row + rowOffset, false, newLines)
 end
 
-function _G._appendNewlineBelow() appendNewLine(0) end
+function appender._appendNewlineBelow() appendNewLine(0) end
 
-function _G._appendNewlineAbove() appendNewLine(-1) end
+function appender._appendNewlineAbove() appendNewLine(-1) end
 
 function M.appendNewlineAbove() dot_repeat_wrapper('_appendNewlineAbove') end
 function M.appendNewlineBelow() dot_repeat_wrapper('_appendNewlineBelow') end

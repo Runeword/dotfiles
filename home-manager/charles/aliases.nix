@@ -3,6 +3,7 @@
     # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
     shn = "shutdown now";
     chrome = "google-chrome-stable";
+    me = "cd /run/media/$USER/";
     # color = "colorpicker"; # X11
     win = "xprop WM_CLASS";
     cd = "__zoxide_z";
@@ -35,6 +36,8 @@
     '';
     l = "exa --all --group-directories-first --sort=time";
     n = "nvim";
+    nv = "cd $HOME/.config/nvim/";
+    de = "cd $HOME/dev/";
     r = "gomi -rf";
     ru = "gomi --restore";
     rd = "rm -rf $HOME/.gomi";
@@ -71,9 +74,9 @@
     t = "__switch_session";
 
     # ______________________________________ NIX
+    ho = "cd $HOME/home-manager/";
     hs = "home-manager switch --flake $HOME/home-manager";
     hu = "__update_flake_inputs $HOME/home-manager";
-    hp = "home-manager packages | fzf --inline-info";
     hv = "home-manager --version";
     store = "cd /nix/store && __open_file";
     ns = "sudo nixos-rebuild switch --flake $HOME/nixos#$USER";
@@ -82,13 +85,14 @@
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
     nu = "__update_flake_inputs $HOME/nixos";
     nt = "__use_flake_template $HOME/templates";
-    nv = "nixos-version";
+    # nv = "nixos-version";
     fl = "nix flake lock";
     fs = "nix flake show";
     fm = "nix flake metadata";
     # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
     nr = "nix run";
-    hm = "nvim $HOME/home-manager/$USER/packages.nix";
+    hp = "nvim $HOME/home-manager/$USER/packages.nix";
+    hps = "home-manager packages | fzf --inline-info";
     ng = "sudo nix-collect-garbage -d";
     ngd = "nix-env --delete-generations +10";
     ngl = "nix-env --list-generations";

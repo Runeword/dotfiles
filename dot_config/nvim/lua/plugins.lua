@@ -1,6 +1,6 @@
 local vim = vim
 
-return {
+local plugins = {
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },
@@ -76,3 +76,9 @@ return {
   --   dependencies = { 'mattn/webapi-vim' },
   -- },
 }
+
+-- for key, value in pairs(plugins) do
+--   plugins[key].enabled = false
+-- end
+
+return plugins

@@ -1,6 +1,27 @@
 local vim = vim
 
 local plugins = {
+  {
+    'abeldekat/lazyflex.nvim',
+    enabled = false,
+    import = 'lazyflex.hook',
+    opts = {
+      kw = {
+        'plenary.nvim',
+        'nvim-cmp',
+        'cmp-nvim-lsp',
+        'cmp-buffer',
+        'cmp-path',
+        'cmp-cmdline',
+        'codeium.nvim',
+        'LuaSnip',
+        'cmp_luasnip',
+        'nvim-lspconfig',
+        'midnight',
+      },
+    },
+  },
+
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
   { 'kana/vim-arpeggio', },

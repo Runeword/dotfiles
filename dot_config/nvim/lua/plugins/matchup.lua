@@ -2,6 +2,7 @@ local vim = vim
 
 return {
   'andymass/vim-matchup',
+  enabled = false,
 
   init = function()
     vim.g.loaded_matchit = 1

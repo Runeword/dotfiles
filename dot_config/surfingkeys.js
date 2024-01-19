@@ -5,7 +5,7 @@ api.map('t', 'f');
 api.map('yl', 'yy');
 api.map('yL', 'yY');
 api.map('gh', 'af');
-api.map('H', 'gf');
+api.map('T', 'gf');
 api.map('d', 'yt');
 api.map('w', 'gxT');
 api.map('W', 'gxt');
@@ -19,7 +19,7 @@ api.unmapAllExcept([
   'yl', // Copy current page's URL
   'yL', // Copy all tabs's url
   'gh', // Open a link in active new tab
-  'H',  // Open a link in non-active new tab
+  'T',  // Open a link in non-active new tab
   'd',  // Duplicate current tab
   'w',  // Close tab on right
   'W',  // Close tab on left

@@ -54,7 +54,7 @@ return {
       },
 
       char = {
-        enabled = true,
+        enabled = false,
         config = function(opts)
           opts.autohide = vim.fn.mode(true):find('no') and vim.v.operator == 'y'
           opts.jump_labels = opts.jump_labels and vim.v.count == 0
@@ -97,7 +97,7 @@ return {
 
   keys = {
     {
-      's',
+      't',
       mode = { 'n', 'x', 'o', },
       function()
         require('flash').jump()
@@ -111,7 +111,7 @@ return {
       desc = 'Flash',
     },
     {
-      '<C-s>',
+      '<C-t>',
       mode = { 'i', },
       function() require('flash').jump() end,
       desc = 'Flash',

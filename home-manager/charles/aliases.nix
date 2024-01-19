@@ -38,7 +38,7 @@
     me = "cd /run/media/$USER/";
     ne = "cd $HOME/.config/nvim/";
     de = "cd $HOME/dev/";
-    ho = "cd $HOME/home-manager/";
+    ho = "cd $HOME/home-manager/charles";
     ".." = "cd ..";
     "..." = "cd ../..";
     r = "gomi -rf";

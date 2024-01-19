@@ -1,7 +1,7 @@
 settings.blocklistPattern = /.*youtube.com.*|.*getpocket.com.*|.*mail.google.com.*|.*docs.google.com.*/
 
 // Remap keys
-api.map('h', 'f');
+api.map('t', 'f');
 api.map('yl', 'yy');
 api.map('yL', 'yY');
 api.map('gh', 'af');
@@ -15,7 +15,7 @@ api.map('gW', 'gx0');
 
 api.unmapAllExcept([
   // Remapped keys
-  'h',  // Open a link
+  't',  // Open a link
   'yl', // Copy current page's URL
   'yL', // Copy all tabs's url
   'gh', // Open a link in active new tab

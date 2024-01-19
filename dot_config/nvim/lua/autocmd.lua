@@ -158,6 +158,7 @@ vim.api.nvim_create_autocmd('colorscheme', {
     vim.api.nvim_set_hl(0, 'cursorcolumn', { bg = '#1e2633', })
 
     vim.api.nvim_set_hl(0, 'search',       { bg = '#5d00ff', })
+    vim.api.nvim_set_hl(0, 'CurSearch',    { bg = '#5d00ff', })
     vim.api.nvim_set_hl(0, 'incsearch',    { bg = '#faff00', fg = 'black', })
     vim.api.nvim_set_hl(0, 'normal',       { bg = 'none', })
 

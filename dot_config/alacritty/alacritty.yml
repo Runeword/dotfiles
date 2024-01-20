@@ -25,10 +25,10 @@ selection:
   save_to_clipboard: true
 
 shell:
-  program: tmux
+  program: sh
   args:
-    - new-session
-    - -A
+    - -c
+    - source $HOME/home-manager/$USER/shell/functions/tmux.sh; __attach_unattached_session
 
 # ---------------------------- Keymaps
 

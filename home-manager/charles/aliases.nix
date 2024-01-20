@@ -1,132 +1,150 @@
 {
   home.shellAliases = {
     # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
-    shn = "shutdown now";
-    chrome = "google-chrome-stable";
-    # color = "colorpicker"; # X11
-    win = "xprop WM_CLASS";
-    cd = "__zoxide_z";
-    h = "__zoxide_zi";
-    # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
-    # dua = "$HOME/.screenlayout/dual.sh";
-    pr = "watch progress -q";
-    mv = "mv --verbose";
-    md = "mkdir --parents";
-    cp = "cp --recursive --verbose";
-    bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
-    bt = "__bluetoothctl";
-    wi = "__nmcli";
-    b = "bluetuith";
-    f = "fc-list : family style | fzf";
-    # l = "command ls --almost-all --color --width 90";
-    # ll = "command ls -lt --almost-all --color --human-readable --classify";
-    # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
-    ll = ''
-    exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | fzf \
-    --ansi \
-    --multi \
-    --delimiter : \
-    --reverse \
-    --border none \
-    --cycle \
-    --info=inline:"" \
-    --height 70% \
-    --no-separator \
-    '';
-    l = "exa --all --group-directories-first --sort=time";
-    n = "nvim";
-    me = "cd /run/media/$USER/";
-    ne = "cd $HOME/.config/nvim/";
-    de = "cd $HOME/dev/";
-    ho = "cd $HOME/home-manager/charles";
-    ".." = "cd ..";
-    "..." = "cd ../..";
-    r = "gomi -rf";
-    ru = "gomi --restore";
-    rd = "rm -rf $HOME/.gomi";
-    o = "__open_file";
-    s = "__ripgrep";
-    i = "kitten icat";
-    a = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
-    ss = "src search";
-    c = "wl-copy";
-    p = "wl-paste";
     # xc = "xclip -selection c";
     # xp = "xclip -selection c -o";
     # b = "br"; # :open_preview
     # w = "waypaper";
     # w = "__wallpaper";
-
     # hm = "hyprctl monitors";
     # hhp = "hyprctl hyprpaper preload";
     # hhw = "hyprctl hyprpaper wallpaper";
+    # color = "colorpicker"; # X11
+    # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
+    # dua = "$HOME/.screenlayout/dual.sh";
+    # l = "command ls --almost-all --color --width 90";
+    # ll = "command ls -lt --almost-all --color --human-readable --classify";
+    # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
+    # bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
+
+    shn = "shutdown now";
+    mv = "mv --verbose";
+    md = "mkdir --parents";
+    cp = "cp --recursive --verbose";
+    r = "gomi -rf";
+    ru = "gomi --restore";
+    rd = "rm -rf $HOME/.gomi";
+    cd = "__zoxide_z";
+    cdh = "__zoxide_zi";
+    ".." = "cd ..";
+    "..." = "cd ../..";
+    l = "exa --all --group-directories-first --sort=time";
+    # # ll = ''
+    # # exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | \
+    # # fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --height 70% --no-separator
+    # # '';
+
+    # ______________________________________ CLIPBOARD
+
+    c = "wl-copy";
+    p = "wl-paste";
+
+    # ______________________________________ NETWORK
+
+    b = "bluetuith";
+    bl = "__bluetoothctl";
+    wi = "__nmcli";
+    wo = "nmcli radio wifi on";
+    wf = "nmcli radio wifi off";
+
+    # ______________________________________ UTILITY
+
     play = "asciinema play";
     "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
     key = "showkey -a";
     color = "hyprpicker --autocopy --format=hex";
-    cheat = "navi --cheatsh";
-    tldr = "navi --tldr";
+    bios = "sudo dmidecode -s bios-version";
+    window = "xprop WM_CLASS";
+    progress = "watch progress -q";
+    # alias = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
+    font = "fc-list : family style | fzf";
+    image = "kitten icat";
+
+    # ______________________________________ ARCHIVE
+
     od = "ouch decompress";
     oc = "ouch compress";
     ol = "ouch list";
+
+    # ______________________________________ PROGRAM
+
     gparted = "sudo -E gparted";
     ventoy = "sudo ventoy-web";
-    bios = "sudo dmidecode -s bios-version";
-    t = "__switch_session";
+    chrome = "google-chrome-stable";
+    cheat = "navi --cheatsh";
+    tldr = "navi --tldr";
+    n = "nvim";
 
-    # ______________________________________ NIX
-    hs = "home-manager switch --flake $HOME/home-manager";
-    hu = "__update_flake_inputs $HOME/home-manager";
-    hv = "home-manager --version";
-    store = "cd /nix/store && __open_file";
-    ns = "sudo nixos-rebuild switch --flake $HOME/nixos#$USER";
-    ni = "nix-info -m";
-    nb = "sudo nixos-rebuild boot --flake $HOME/nixos#$USER";
-    nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
-    nu = "__update_flake_inputs $HOME/nixos";
-    nt = "__use_flake_template $HOME/templates";
-    nv = "nixos-version";
-    fl = "nix flake lock";
-    fs = "nix flake show";
-    fm = "nix flake metadata";
-    # nt = "printf 'Enter the template name: ' >&2 && read templateName && nix flake new --template $HOME/templates#$templateName";
-    nr = "nix run";
+    # ______________________________________ PATH
+
+    al = "nvim $HOME/home-manager/$USER/aliases.nix";
+    np = "nvim $HOME/nixos/configuration.nix";
     hp = "nvim $HOME/home-manager/$USER/packages.nix";
-    hps = "home-manager packages | fzf --inline-info";
+    me = "cd /run/media/$USER";
+    ne = "cd $HOME/.config/nvim";
+    de = "cd $HOME/dev";
+    ho = "cd $HOME/home-manager/$USER";
+
+    # ______________________________________ NIXOS
+
+    ns = "sudo nixos-rebuild switch --flake $HOME/nixos#$USER";
+    nb = "sudo nixos-rebuild boot --flake $HOME/nixos#$USER";
+    nu = "__update_flake_inputs $HOME/nixos";
+    nv = "nixos-version";
+    ni = "nix-info -m";
     ng = "sudo nix-collect-garbage -d";
     ngd = "nix-env --delete-generations +10";
     ngl = "nix-env --list-generations";
+    store = "cd /nix/store && __open_file";
+
+    # ______________________________________ NIX
+
+    nr = "nix run";
+    nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
+    nt = "__use_flake_template $HOME/templates";
+
+    # ______________________________________ FLAKE
+
+    fl = "nix flake lock";
+    fs = "nix flake show";
+    fm = "nix flake metadata";
+
+    # ______________________________________ HOME MANAGER
+
+    hs = "home-manager switch --flake $HOME/home-manager";
+    hu = "__update_flake_inputs $HOME/home-manager";
+    hv = "home-manager --version";
+    hps = "home-manager packages | fzf --inline-info";
 
     # ______________________________________ QMK
+
     qc = "(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)";
     qfl = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)";
     qfr = "(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)";
     qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
-    # ______________________________________ NETWORK
-    wo = "nmcli radio wifi on";
-    wf = "nmcli radio wifi off";
-    # nmcli networking off
-    # nmcli networking on
-
     # ______________________________________ CHEZMOI
+
     chd = "chezmoi diff --reverse";
     chi = "chezmoi ignored";
     chc = "chezmoi cd";
 
     # ______________________________________ GO
+
     gog = "go get";
     gomt = "go mod tidy";
     goc = "go clean -modcache";
 
     # ______________________________________ NPM
+
     npl = "npm ls --depth=0";
     npg = "npm ls -g --depth=0";
     npd = "npm run dev";
     npi = "npm i";
 
     # ______________________________________ GIT
+
     gn = "nvim $(git status -s | awk '{print $2}')";
     gs = "git status";
     gpl = "git pull";

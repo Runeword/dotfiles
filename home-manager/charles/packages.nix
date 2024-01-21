@@ -1,10 +1,10 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  ...
+{ pkgs
+, inputs
+, lib
+, ...
 }: {
-  # }: let
+  # }:
+  # let
 
   # tmuxKeylocker = pkgs.tmuxPlugins.mkTmuxPlugin {
   #   pluginName = "tmux-keylocker";
@@ -25,20 +25,22 @@
   #   ref = "refs/heads/nixpkgs-unstable";
   #   rev = "3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16";
   # }) {inherit (pkgs) system;};
+
   # pkgs-old = import (builtins.fetchTarball {
   #   url = "https://github.com/NixOS/nixpkgs/archive/2f04861c8ad1aaa69d532f34b63bb03da9912ae7.tar.gz";
   #   sha256 = "sha256:11dxbmxqcyw87fcyj2dm7d94wax2s1phajwp99rycwjikq3ks8s6";
   #   # sha256 = lib.fakeSha256;
   # }) {inherit (pkgs) system;};
 
-  # in {
+  # in
+  # {
 
   home.file."bin/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file."bin/tmux/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
   home.file."bin/fzf".source = "${pkgs.fzf}/share/fzf";
 
   home.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["DroidSansMono" "SourceCodePro" "VictorMono"];})
+    (nerdfonts.override { fonts = [ "DroidSansMono" "SourceCodePro" "VictorMono" ]; })
     python311
     qmk
     gcc
@@ -56,6 +58,8 @@
     tmux
     tmuxPlugins.resurrect
     tmuxPlugins.tmux-fzf
+    ueberzugpp
+    nnn
     yazi
     fuzzel
 
@@ -143,7 +147,7 @@
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
 
     # ---------------------------------- Wayland
-    (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"]; }))
+    (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; }))
     swaybg
     waypaper
     hyprpaper

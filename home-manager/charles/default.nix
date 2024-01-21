@@ -1,19 +1,19 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
+{ config
+, pkgs
+, lib
+, inputs
+, ...
 }: {
   imports = [
     ./ssh.nix
-    # ./neovim.nix
+    ./overlays.nix
     ./aliases.nix
     ./sessionVariables.nix
     ./packages.nix
     ./bash.nix
     ./zsh.nix
     ./dircolors.nix
+    # ./neovim.nix
   ];
 
   programs = {
@@ -35,9 +35,6 @@
   };
 
   fonts.fontconfig.enable = true;
-
-  nixpkgs.overlays = [
-  ];
 
   home.username = "charles";
   home.homeDirectory = "/home/charles";

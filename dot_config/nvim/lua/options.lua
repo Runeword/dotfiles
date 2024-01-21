@@ -47,6 +47,7 @@ opt.laststatus = 3
 
 --------------------------- Enable fold
 
+o.foldenable = false
 -- o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
 -- o.foldopen = 'search,undo'
 -- -- nvim-treesitter/nvim-treesitter

@@ -29,10 +29,10 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     l = "exa --all --group-directories-first --sort=time";
-    # # ll = ''
-    # # exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | \
-    # # fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --height 70% --no-separator
-    # # '';
+    ll = ''
+    exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | \
+    fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --height 70% --no-separator
+    '';
 
     # ______________________________________ CLIPBOARD
 
@@ -56,7 +56,7 @@
     bios = "sudo dmidecode -s bios-version";
     window = "xprop WM_CLASS";
     progress = "watch progress -q";
-    # alias = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
+    aliases = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     font = "fc-list : family style | fzf";
     image = "kitten icat";
 
@@ -84,6 +84,7 @@
     ne = "cd $HOME/.config/nvim";
     de = "cd $HOME/dev";
     ho = "cd $HOME/home-manager/$USER";
+    co = "cd $HOME/.config";
 
     # ______________________________________ NIXOS
 

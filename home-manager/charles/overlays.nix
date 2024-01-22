@@ -20,5 +20,10 @@
       };
       # });
     })
+    # (self: super: {
+    #   appimage-run = super.appimage-run.overrideAttrs (old: {
+    #     extraPkgs = [ pkgs.libsecret ];
+    #   });
+    # })
   ];
 }

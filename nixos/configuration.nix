@@ -1,8 +1,7 @@
-{
-  pkgs,
-  inputs,
-  lib,
-  ...
+{ pkgs
+, inputs
+, lib
+, ...
 }: {
   nix.package = pkgs.nixFlakes;
 
@@ -78,7 +77,7 @@
   # zsh
   programs.zsh.enable = true;
   users.users.charles.shell = pkgs.zsh;
-  environment.pathsToLink = ["/share/zsh"];
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # thunar
   programs.thunar.enable = true;
@@ -198,9 +197,9 @@
   # printing
   services.printing.enable = true;
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
-  services.printing.drivers = [pkgs.epson-escpr];
+  services.printing.drivers = [ pkgs.epson-escpr ];
 
   # audio
   sound.enable = true;
@@ -218,7 +217,7 @@
   users.users.charles = {
     isNormalUser = true;
     description = "charles";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = [ "networkmanager" "wheel" ];
     # packages = with pkgs; [
     # ];
   };

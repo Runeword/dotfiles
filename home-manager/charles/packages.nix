@@ -49,6 +49,7 @@
     sioyek
     qdirstat
     testdisk-qt
+    appimage-run
 
     # ---------------------------------- Editors
     # neovim-nightly

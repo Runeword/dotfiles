@@ -77,9 +77,10 @@
 
     # ______________________________________ PATH
 
-    al = "nvim $HOME/home-manager/$USER/aliases.nix";
     np = "nvim $HOME/nixos/configuration.nix";
     hp = "nvim $HOME/home-manager/$USER/packages.nix";
+    ov = "nvim $HOME/home-manager/$USER/overlays.nix";
+    al = "nvim $HOME/home-manager/$USER/aliases.nix";
     me = "cd /run/media/$USER";
     ne = "cd $HOME/.config/nvim";
     de = "cd $HOME/dev";

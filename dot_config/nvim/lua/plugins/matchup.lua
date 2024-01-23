@@ -2,13 +2,13 @@ local vim = vim
 
 return {
   'andymass/vim-matchup',
-  enabled = false,
+  enabled = true,
 
   init = function()
     vim.g.loaded_matchit = 1
     vim.g.matchup_matchparen_nomode = 'i'
     vim.g.matchup_mappings_enabled = 0
-    vim.g.matchup_matchparen_pumvisible = 0
+    vim.g.matchup_matchparen_pumvisible = 1
     vim.g.matchup_matchparen_deferred = 1
     vim.g.matchup_matchparen_deferred_show_delay = 50
     vim.g.matchup_matchparen_deferred_hide_delay = 50

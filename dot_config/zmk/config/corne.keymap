@@ -43,7 +43,7 @@ NAME: NAME { \
   compatible = "zmk,behavior-hold-tap"; \
   #binding-cells = <2>; \
   tapping-term-ms = <270>; \
-  quick-tap-ms = <170>; \
+  quick-tap-ms = <200>; \
   global-quick-tap; \
   flavor = "balanced"; \
   bindings = <HOLD>, <TAP>; \
@@ -57,7 +57,7 @@ NAME: NAME { \
   compatible = "zmk,behavior-hold-tap"; \
   #binding-cells = <2>; \
   tapping-term-ms = <270>; \
-  quick-tap-ms = <170>; \
+  quick-tap-ms = <200>; \
   global-quick-tap; \
   flavor = "balanced"; \
   bindings = <HOLD>, <TAP>; \

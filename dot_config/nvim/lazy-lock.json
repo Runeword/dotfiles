@@ -57,6 +57,7 @@
   "vim-auto-save": { "branch": "master", "commit": "2e3e54ea4c0fc946c21b0a4ee4c1c295ba736ee8" },
   "vim-exchange": { "branch": "master", "commit": "784d63083ad7d613aa96f00021cd0dfb126a781a" },
   "vim-highlightedyank": { "branch": "master", "commit": "fa3f57b097e9521ce41a66b6c7cf5d9adea70ea3" },
+  "vim-matchup": { "branch": "master", "commit": "e2cca1747ab175b8d839a5d28679427564643a57" },
   "vim-search-pulse": { "branch": "master", "commit": "3ae2681332c52ed54c443e09d2ef09ae05eaa445" },
   "vim-surround-funk": { "branch": "main", "commit": "688b9c945b66641dab8e355f6ae8f894aa4d842a" },
   "vim-textobj-chainmember": { "branch": "main", "commit": "f14a151c42a14e18a298aec7d943a3c7f43161dc" },

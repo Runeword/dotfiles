@@ -137,6 +137,8 @@
     gog = "go get";
     gomt = "go mod tidy";
     goc = "go clean -modcache";
+    got = "go test";
+    gob = "go build";
 
     # ______________________________________ NPM
 

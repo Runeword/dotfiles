@@ -8,6 +8,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-c
 application/pdf=sioyek.desktop;google-chrome.desktop;imv.desktop;
 application/x-krita=userapp-krita-GCAKD2.desktop;
 application/x-zerosize=sioyek.desktop;krita_psd.desktop;imv.desktop;
+image/svg+xml=org.inkscape.Inkscape.desktop;
 
 [Default Applications]
 text/html=google-chrome.desktop

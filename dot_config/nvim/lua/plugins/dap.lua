@@ -2,6 +2,7 @@ local vim = vim
 
 return {
   'mfussenegger/nvim-dap',
+  dependencies = { 'anuvyklack/hydra.nvim', },
 
   config = function()
     local mappings = require('hydra')({

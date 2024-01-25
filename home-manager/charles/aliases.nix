@@ -36,7 +36,7 @@
 
     # ______________________________________ CLIPBOARD
 
-    c = "wl-copy";
+    c = "!! | wl-copy";
     p = "wl-paste";
 
     # ______________________________________ NETWORK
@@ -59,6 +59,7 @@
     aliases = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     font = "fc-list : family style | fzf";
     image = "kitten icat";
+    path = "echo \"\${PATH//:/\\n}\"";
 
     # ______________________________________ ARCHIVE
 
@@ -111,6 +112,7 @@
     fs = "nix flake show";
     fu = "nix flake update";
     fm = "nix flake metadata";
+    fp = "nix flake metadata --json | jq .path";
 
     # ______________________________________ HOME MANAGER
 

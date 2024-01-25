@@ -68,6 +68,7 @@
                   shellharden
                   terraform-ls
                   gopls
+                  delve
                   rust-analyzer
                   # terraform-lsp
                 ]

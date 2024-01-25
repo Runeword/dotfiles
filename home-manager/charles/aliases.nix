@@ -109,6 +109,7 @@
 
     fl = "nix flake lock";
     fs = "nix flake show";
+    fu = "nix flake update";
     fm = "nix flake metadata";
 
     # ______________________________________ HOME MANAGER

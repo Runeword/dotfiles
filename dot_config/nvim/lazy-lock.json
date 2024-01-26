@@ -5,7 +5,7 @@
   "conform.nvim": { "branch": "master", "commit": "d99b75b4aedf0e912f41c5740a7267de739cddac" },
   "dial.nvim": { "branch": "master", "commit": "27eb570085db2ef44bff4f620d3806039184651c" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
-  "flatten.nvim": { "branch": "main", "commit": "a999f1abd8fa9f8e2447a65726f9f44288c26f3f" },
+  "flatten.nvim": { "branch": "main", "commit": "b275b4688326ed39c3983f5a924c75d388698589" },
   "fzf-lua": { "branch": "main", "commit": "36195a230246fc44e8144ee0b454fc022ac5326b" },
   "gitsigns.nvim": { "branch": "main", "commit": "300a306da9973e81c2c06460f71fd7a079df1f36" },
   "highlight-undo.nvim": { "branch": "main", "commit": "50a6884a8476be04ecce8f1c4ed692c5000ef0a1" },

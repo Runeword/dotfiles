@@ -9,6 +9,7 @@ local plugins = {
 
   {
     'willothy/flatten.nvim',
+    enabled = true,
     config = true,
     lazy = false,
     priority = 1001,

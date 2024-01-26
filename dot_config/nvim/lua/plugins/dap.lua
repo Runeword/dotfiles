@@ -4,53 +4,11 @@ return {
   'mfussenegger/nvim-dap',
   dependencies = {
     'anuvyklack/hydra.nvim',
-    'leoluz/nvim-dap-go',
     -- 'rcarriga/nvim-dap-ui',
     -- 'jbyuki/one-small-step-for-vimkind',
   },
 
-  init = function()
-  end,
-
   config = function()
-    require('dap-go').setup()
-
-    require('dap').configurations.go = {
-      {
-        type = 'go',
-        request = 'launch',
-        name = 'Launch file',
-        program = '${file}',
-      },
-    }
-
-    -- require('dap-go').setup {
-    --  dap_configurations = {
-    --    {
-    --      type = "go",
-    --      name = "Attach remote",
-    --      mode = "remote",
-    --      request = "attach",
-    --      connect = {
-    --        host = "127.0.0.1",
-    --        port = "43000"
-    --      }
-    --    },
-    --  },
-    --  delve = {
-    --    port = "43000"
-    --  },
-    -- }
-
-    -- require('dap-go').configurations.go = {
-    --   {
-    --     type = 'go',
-    --     name = 'Debug',
-    --     request = 'launch',
-    --     program = '${file}',
-    --   },
-    -- }
-
     -- -- nvim lua
 
     -- require('dap').configurations.lua = {

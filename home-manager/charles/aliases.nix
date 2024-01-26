@@ -104,7 +104,6 @@
 
     nr = "nix run";
     nd = "read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName";
-    nt = "__use_flake_template $HOME/templates";
 
     # ______________________________________ FLAKE
 
@@ -113,6 +112,7 @@
     fu = "nix flake update";
     fm = "nix flake metadata";
     fp = "nix flake metadata --json | jq .path";
+    ft = "__use_flake_template $HOME/templates";
 
     # ______________________________________ HOME MANAGER
 
@@ -138,7 +138,8 @@
     # ______________________________________ GO
 
     gog = "go get";
-    gomt = "go mod tidy";
+    gor = "go run";
+    gom = "go mod tidy";
     goc = "go clean -modcache";
     got = "go test";
     gob = "go build";

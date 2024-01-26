@@ -5,6 +5,17 @@ return {
 
   dependencies = 'anuvyklack/keymap-layer.nvim',
 
+  init = function()
+    vim.api.nvim_create_augroup('hydra', { clear = true, })
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      group = 'hydra',
+      pattern = '*',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'HydraHint', { fg = '#ffffff', bg = 'NONE', })
+      end,
+    })
+  end,
+
   config = function()
     -- require('hydra')({
     --   name = 'newline',

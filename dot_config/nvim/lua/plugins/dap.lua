@@ -68,14 +68,19 @@ return {
       },
 
       heads = {
-        { 'n',     require('dap').continue, },
-        { 'o',     require('dap').step_over, },
-        { 'i',     require('dap').step_into, },
-        { 'u',     require('dap').step_out, },
-        { '<Tab>', require('dap').toggle_breakpoint, },
-        { 'r',     require('dap').repl.toggle, },
-        { 'q',     nil,                              { exit = true, }, },
-        { '<Esc>', nil,                              { exit = true, }, },
+        { 'n',       require('dap').continue, },
+        { '<Enter>', require('dap').continue, },
+        { 'c',       require('dap').close, },
+        { 't',       require('dap').terminate, },
+        { 'o',       require('dap').step_over, },
+        { 'i',       require('dap').step_into, },
+        { 'u',       require('dap').step_out, },
+        { '<Tab>',   require('dap').toggle_breakpoint, },
+        { '<C-Tab>',   require('dap').clear_breakpoints, },
+        { 'r',       require('dap').repl.toggle, },
+        -- { 'r',       require('dap').restart, },
+        { 'q',       nil,                              { exit = true, }, },
+        { '<Esc>',   nil,                              { exit = true, }, },
       },
     })
 

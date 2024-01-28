@@ -24,11 +24,11 @@ cursor:
 selection:
   save_to_clipboard: true
 
-shell:
-  program: sh
-  args:
-    - -c
-    - source $HOME/home-manager/$USER/shell/functions/tmux.sh; __attach_unattached_session
+# shell:
+#   program: sh
+#   args:
+#     - -c
+#     - source $HOME/home-manager/$USER/shell/functions/tmux.sh; __attach_unattached_session
 
 # ---------------------------- Keymaps
 

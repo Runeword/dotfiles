@@ -6,9 +6,9 @@ return {
   'chrisgrieser/nvim-spider',
 
   config = function()
-    vim.keymap.set({ 'n', 'o', 'x', }, 'w',
+    vim.keymap.set({ 'n', 'x', 'o', }, 'w',
       "<cmd>lua require('spider').motion('w')<CR>", { desc = 'Spider-w', })
-    vim.keymap.set({ 'n', 'o', 'x', }, 'b',
+    vim.keymap.set({ 'n', 'x', 'o', }, 'b',
       "<cmd>lua require('spider').motion('b')<CR>", { desc = 'Spider-b', })
     vim.keymap.set({ 'n', 'x', 'o', }, 'e',
       "<cmd>lua require('spider').motion('e')<CR>", { desc = 'Spider-e', })

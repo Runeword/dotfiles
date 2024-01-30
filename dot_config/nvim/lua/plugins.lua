@@ -53,11 +53,6 @@ local plugins = {
   },
 
   {
-    'glts/vim-textobj-comment',
-    dependencies = 'kana/vim-textobj-user',
-  },
-
-  {
     'kana/vim-textobj-line',
     dependencies = 'kana/vim-textobj-user',
   },

@@ -18,6 +18,7 @@
     # bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
 
     shn = "shutdown now";
+    s = "setsid";
     mv = "mv --verbose";
     md = "mkdir --parents";
     cp = "cp --recursive --verbose";
@@ -36,7 +37,8 @@
 
     # ______________________________________ CLIPBOARD
 
-    c = "!! | wl-copy";
+    # c = "!! | wl-copy";
+    c = "wl-copy";
     p = "wl-paste";
 
     # ______________________________________ NETWORK

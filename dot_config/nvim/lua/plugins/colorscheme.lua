@@ -1,14 +1,16 @@
 local vim = vim
 
 return {
-  'dasupradyumna/midnight.nvim',
+  'bluz71/vim-nightfly-colors',
+  name = 'nightfly',
+
   -- autocommand will have no effect on previously sourced colorschemes
   -- so it must be added before any colorscheme is sourced :
   -- Use init function to add autocmd highlights
   -- Use config function to add the colorscheme
 
   config = function()
-    vim.cmd.colorscheme 'midnight'
+    vim.cmd.colorscheme 'nightfly'
   end,
 
   lazy = false,

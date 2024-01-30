@@ -158,8 +158,6 @@ vim.keymap.set({ 'o', 'x', }, 'i<Enter>', 'ip')
 vim.keymap.set({ 'o', },      '<Enter>',  'ip')
 
 vim.keymap.set({ 'o', 'x', }, 'q',        'iq', { remap = true, })
-vim.keymap.set({ 'o', },      'b',        'ib')
-vim.keymap.set({ 'o', },      'w',        'iw')
 vim.keymap.set({ 'o', },      '(',        'i(')
 vim.keymap.set({ 'o', },      ')',        'i)')
 vim.keymap.set({ 'o', },      '[',        'i[')
@@ -199,10 +197,11 @@ vim.keymap.set('i', '<C-H>', '<C-w>')
 
 --------------------------------- MOTIONS
 
-vim.keymap.set({ 'x', 'n', }, 'k',        'gk')
-vim.keymap.set({ 'x', 'n', }, 'j',        'gj')
-vim.keymap.set({ 'x', 'n', }, '<S-Down>', '4jg^')
-vim.keymap.set({ 'x', 'n', }, '<S-Up>',   '4kg^')
+vim.keymap.set({ 'x', 'n', }, 'k',   'gk')
+vim.keymap.set({ 'x', 'n', }, 'j',   'gj')
+vim.keymap.set({ 'x', 'n', }, 'J',   '4jg^')
+vim.keymap.set({ 'x', 'n', }, 'K',   '4kg^')
+vim.keymap.set({ 'x', 'n', }, '<C-j>', 'J')
 
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
@@ -224,11 +223,10 @@ vim.keymap.set('n', '&', 'g^')
 -- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'bW') end)
 vim.keymap.set({ 'n', 'x', }, ',',     function() vim.fn.search('[,.:;]') end)
 vim.keymap.set({ 'n', 'x', }, '<',     function() vim.fn.search('[,.:;]', 'b') end)
-vim.keymap.set({ 'n', }, 'q',     function() vim.fn.search('[\'"`]') end)
-vim.keymap.set({ 'n', }, 'Q',     function() vim.fn.search('[\'"`]', 'b') end)
-vim.keymap.set({ 'n', 'x', }, '<',     function() vim.fn.search('[,.:;]', 'b') end)
-vim.keymap.set({ 'n', 'x', }, '(',     function() vim.fn.search('[([{]') end)
-vim.keymap.set({ 'n', 'x', }, ')',     function() vim.fn.search('[([{]', 'b') end)
+vim.keymap.set({ 'n', },      'q',     function() vim.fn.search('[\'"`]') end)
+vim.keymap.set({ 'n', },      'Q',     function() vim.fn.search('[\'"`]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, ')',     function() vim.fn.search('[([{]') end)
+vim.keymap.set({ 'n', 'x', }, '(',     function() vim.fn.search('[([{]', 'b') end)
 
 vim.keymap.set('n',           '<C-i>', '<C-i>',                                     { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')

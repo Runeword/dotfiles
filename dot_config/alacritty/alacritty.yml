@@ -122,7 +122,7 @@ colors:
     magenta: "#7e6fc4"
     red: "#ff75a9"
     white: "#ffffff"
-    yellow: "#ed725c"
+    yellow: "#e3daca"
 
   primary:
     background: "#000000"

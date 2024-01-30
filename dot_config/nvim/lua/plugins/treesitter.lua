@@ -37,7 +37,7 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
-            -- ['f'] = '@function.outer',
+            ['f'] = '@function.outer',
             ['af'] = '@function.outer',
             ['if'] = '@function.inner',
             ['F'] = '@call.outer',

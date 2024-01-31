@@ -117,12 +117,12 @@ colors:
     black: "#7a7c9e"
     blue: "#87AFD7"
     cyan: "#2bcad9"
-    # green: "#3dd4a5"
     green: "#42ad8c"
     magenta: "#7e6fc4"
     red: "#ff75a9"
     white: "#ffffff"
     yellow: "#e3daca"
+    # green: "#3dd4a5"
 
   primary:
     background: "#000000"

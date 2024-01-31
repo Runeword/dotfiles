@@ -2,7 +2,6 @@ local vim = vim
 
 return {
   'bluz71/vim-nightfly-colors',
-  name = 'nightfly',
 
   -- autocommand will have no effect on previously sourced colorschemes
   -- so it must be added before any colorscheme is sourced :
@@ -14,6 +13,7 @@ return {
   end,
 
   lazy = false,
+
   priority = 1000,
 
   init = function()
@@ -48,6 +48,8 @@ return {
 
         vim.api.nvim_set_hl(0, 'nontext',      { bg = 'none', fg = '#384354', })
         vim.api.nvim_set_hl(0, 'whitespace',   { bg = 'none', fg = '#384354', })
+
+        vim.api.nvim_set_hl(0, 'VertSplit',    { bg = 'none', fg = '#1e2633', })
       end,
     })
   end,

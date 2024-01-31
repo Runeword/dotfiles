@@ -108,9 +108,9 @@ return {
       config = {
         hint = { type = 'window', },
         color = 'pink',
+        foreign_keys = 'run',
+        exit = false,
       },
-
-      foreign_keys = 'run',
 
       heads = {
         { 'n',         require('dap').continue, },

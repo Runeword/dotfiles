@@ -10,7 +10,7 @@ return {
   -- Use config function to add the colorscheme
 
   config = function()
-    vim.cmd.colorscheme 'nightfly'
+    vim.cmd.colorscheme('nightfly')
   end,
 
   lazy = false,

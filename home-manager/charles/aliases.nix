@@ -6,7 +6,6 @@
     # b = "br"; # :open_preview
     # w = "waypaper";
     # w = "__wallpaper";
-    # hm = "hyprctl monitors";
     # hhp = "hyprctl hyprpaper preload";
     # hhw = "hyprctl hyprpaper wallpaper";
     # color = "colorpicker"; # X11
@@ -34,6 +33,11 @@
     exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | \
     fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --height 70% --no-separator
     '';
+
+    # ______________________________________ Hyprland
+
+    ym = "hyprctl monitors";
+    yc = "hyprctl clients";
 
     # ______________________________________ CLIPBOARD
 

@@ -27,7 +27,7 @@ return {
       group = 'matchup',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'MatchParen',     { fg = '#ffffff', italic = true, })
+        vim.api.nvim_set_hl(0, 'MatchParen',     { fg = '#ffffff', italic = true, bold = true, })
         vim.api.nvim_set_hl(0, 'MatchWord',      { underline = true, })
         vim.api.nvim_set_hl(0, 'OffscreenPopup', { bg = 'none', })
       end,

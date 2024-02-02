@@ -17,6 +17,8 @@ return {
   priority = 1000,
 
   init = function()
+    vim.g.nightflyTerminalColors = false
+
     vim.api.nvim_create_augroup('builtin', { clear = true, })
     vim.api.nvim_create_autocmd('colorscheme', {
       group = 'builtin',
@@ -41,6 +43,7 @@ return {
         vim.api.nvim_set_hl(0, 'CurSearch',    { bg = '#5d00ff', })
         vim.api.nvim_set_hl(0, 'incsearch',    { bg = '#faff00', fg = 'black', })
         vim.api.nvim_set_hl(0, 'normal',       { bg = 'none', })
+        vim.api.nvim_set_hl(0, 'visual',       { bg = '#012749', })
 
         vim.api.nvim_set_hl(0, 'signcolumn',   { bg = 'none', })
         vim.api.nvim_set_hl(0, 'foldcolumn',   { bg = 'none', })
@@ -50,6 +53,11 @@ return {
         vim.api.nvim_set_hl(0, 'whitespace',   { bg = 'none', fg = '#384354', })
 
         vim.api.nvim_set_hl(0, 'VertSplit',    { bg = 'none', fg = '#1e2633', })
+
+        vim.api.nvim_set_hl(0, 'Error',        { bg = 'none', fg = '#ff75a9', })
+        vim.api.nvim_set_hl(0, 'ErrorMsg',     { bg = 'none', fg = '#ff75a9', })
+        vim.api.nvim_set_hl(0, 'Warning',      { bg = 'none', fg = '#ff9d57', })
+        vim.api.nvim_set_hl(0, 'WarningMsg',   { bg = 'none', fg = '#ff9d57', })
       end,
     })
   end,

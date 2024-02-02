@@ -90,16 +90,17 @@ font:
     # style: SemiBold
   bold_italic:
     # family: SauceCodePro Nerd Font
-    # family: MonaspiceRn Nerd Font
-    family: CaskaydiaMono Nerd Font
+    family: MonaspiceRn Nerd Font
+    # family: CaskaydiaMono Nerd Font
     style: Italic
+    # style: Bold Italic
     # style: SemiBold Italic
   italic:
     # family: SauceCodePro Nerd Font
     # family: MonaspiceRn Nerd Font
+    # style: Light
     family: CaskaydiaMono Nerd Font
     style: Light Italic
-    # style: Light
   normal:
     # family: MonaspiceNe Nerd Font
     # family: MonaspiceRn Nerd Font
@@ -113,6 +114,7 @@ font:
   size: 19
   offset:
     y: 5
+    # x: 1
 
 # ---------------------------- Colors
 

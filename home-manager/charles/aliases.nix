@@ -63,7 +63,7 @@
     window = "xprop WM_CLASS";
     progress = "watch progress -q";
     aliases = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
-    font = "fc-list : family style | fzf";
+    fonts = "fc-list : family style | fzf";
     image = "kitten icat";
     path = "echo \"\${PATH//:/\\n}\"";
 

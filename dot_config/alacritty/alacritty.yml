@@ -83,24 +83,28 @@ key_bindings:
 
 font:
   bold:
-    # family: SauceCodePro Nerd Font
-    family: MonaspiceKr Nerd Font
-    style: Light
-    # style: Regular
+    family: SauceCodePro Nerd Font
+    # family: MonaspiceKr Nerd Font
+    # family: IntoneMono Nerd Font
+    # style: Light
+    style: Regular
     # style: SemiBold
+
   bold_italic:
     # family: SauceCodePro Nerd Font
     family: MonaspiceRn Nerd Font
     # family: CaskaydiaMono Nerd Font
-    style: Italic
+    style: Light
     # style: Bold Italic
     # style: SemiBold Italic
+
   italic:
     # family: SauceCodePro Nerd Font
     # family: MonaspiceRn Nerd Font
     # style: Light
     family: CaskaydiaMono Nerd Font
     style: Light Italic
+
   normal:
     # family: MonaspiceNe Nerd Font
     # family: MonaspiceRn Nerd Font
@@ -111,6 +115,7 @@ font:
     family: SauceCodePro Nerd Font
     style: Regular
     # style: Light
+
   size: 19
   offset:
     y: 5

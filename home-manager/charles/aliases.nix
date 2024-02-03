@@ -57,12 +57,12 @@
 
     play = "asciinema play";
     "rec" = "asciinema rec $HOME/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').cast";
-    key = "showkey -a";
+    keys = "showkey -a";
     color = "hyprpicker --autocopy --format=hex";
     bios = "sudo dmidecode -s bios-version";
     window = "xprop WM_CLASS";
     progress = "watch progress -q";
-    aliases = ''eval "$(alias | fzf --delimiter='=' --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
+    aliases = ''eval "$(alias | fzf --delimiter='=' --height 70% --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     fonts = "fc-list : family style | fzf";
     image = "kitten icat";
     path = "echo \"\${PATH//:/\\n}\"";

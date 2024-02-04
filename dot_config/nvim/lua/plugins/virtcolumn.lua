@@ -2,7 +2,7 @@ local vim = vim
 
 return {
   'lukas-reineke/virt-column.nvim',
-  enabled = true,
+  enabled = false,
 
   config = function()
     require('virt-column').setup({

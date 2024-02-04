@@ -24,6 +24,10 @@ return {
       function() require('various-textobjs').number('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'id',
       function() require('various-textobjs').number('inner') end)
+    vim.keymap.set({ 'o', 'x', }, 'ag',
+      function() require('various-textobjs').entireBuffer() end)
+    vim.keymap.set({ 'o', 'x', }, 'ig',
+      function() require('various-textobjs').entireBuffer() end)
 
     vim.keymap.set({ 'o', }, 'v', 'iv', { remap = true, })
     -- vim.keymap.set({ 'o', }, 'k', 'ik', { remap = true, })

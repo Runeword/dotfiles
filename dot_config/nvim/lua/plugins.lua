@@ -48,10 +48,10 @@ local plugins = {
     dependencies = 'kana/vim-textobj-user',
   },
 
-  {
-    'paulhybryant/vim-textobj-path',
-    dependencies = 'kana/vim-textobj-user',
-  },
+  -- {
+  --   'paulhybryant/vim-textobj-path',
+  --   dependencies = 'kana/vim-textobj-user',
+  -- },
 
   -- { 'smjonas/inc-rename.nvim',
   --   config = function()

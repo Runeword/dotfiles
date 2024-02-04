@@ -1,6 +1,7 @@
+local vim = vim
+
 return {
   'echasnovski/mini.ai',
-
   version = false,
 
   config = function()
@@ -9,7 +10,8 @@ return {
     require('mini.ai').setup({
       custom_textobjects = {
         f = false,
-        a = gen_spec.argument({ brackets = { '%b()', '%b{}', '%b[]' }, }),
+        a = gen_spec.argument({ brackets = { '%b()', '%b{}', '%b[]', }, }),
+        o = { { '%b()', '%b[]', '%b{}', '%b<>', }, '^.().*().$', },
         -- a = gen_spec.argument({ brackets = { '%b()' } }),
         -- o = gen_spec.argument({ brackets = { '%b{}' } }),
         -- e = gen_spec.argument({ brackets = { '%b[]' } }),
@@ -37,5 +39,7 @@ return {
       n_lines = 100,
       search_method = 'cover_or_nearest',
     })
+
+    vim.keymap.set({ 'o', }, 'o', 'io', { remap = true, })
   end,
 }

@@ -161,6 +161,7 @@
 
     # ______________________________________ GIT
 
+    gi = "onefetch";
     gn = "nvim $(git status -s | awk '{print $2}')";
     gs = "git status";
     gpl = "git pull";

@@ -44,21 +44,12 @@ local plugins = {
   },
 
   {
-    'lukas-reineke/virt-column.nvim',
-    enabled = false,
-    config = function()
-      require('virt-column').setup({ char = '▏', })
-      vim.o.colorcolumn = '80'
-    end,
-  },
-
-  {
     'kana/vim-textobj-line',
     dependencies = 'kana/vim-textobj-user',
   },
 
   {
-    'kana/vim-textobj-entire',
+    'paulhybryant/vim-textobj-path',
     dependencies = 'kana/vim-textobj-user',
   },
 

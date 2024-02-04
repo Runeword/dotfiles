@@ -16,6 +16,7 @@ return {
       "<cmd>lua require('spider').motion('ge')<CR>", { desc = 'Spider-ge', })
 
     vim.keymap.set({ 'o', }, 'w', 'iw')
+    vim.keymap.set({ 'o', }, 'W', 'iW')
     vim.keymap.set({ 'o', }, 'b', 'ib')
 
     -- vim.keymap.set({ 'n', }, 'e',  "<CMD>call search('\\>')<CR>",      { silent = true, noremap = true, })

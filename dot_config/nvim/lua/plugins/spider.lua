@@ -17,7 +17,6 @@ return {
 
     vim.keymap.set({ 'o', }, 'w', 'iw')
     vim.keymap.set({ 'o', }, 'W', 'iW')
-    vim.keymap.set({ 'o', }, 'b', 'ib')
 
     -- vim.keymap.set({ 'n', }, 'e',  "<CMD>call search('\\>')<CR>",      { silent = true, noremap = true, })
     -- vim.keymap.set({ 'n', }, 'ge', "<CMD>call search('\\>', 'b')<CR>", { silent = true, noremap = true, })

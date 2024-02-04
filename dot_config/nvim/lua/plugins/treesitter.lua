@@ -1,3 +1,5 @@
+local vim = vim
+
 return {
   'nvim-treesitter/nvim-treesitter',
 
@@ -44,6 +46,8 @@ return {
             ['aF'] = '@call.outer',
             ['iF'] = '@call.inner',
             ['id'] = '@number.inner',
+            ['ib'] = '@block.inner',
+            ['ab'] = '@block.outer',
           },
         },
 
@@ -79,6 +83,8 @@ return {
       --   },
       -- },
     })
+
+    vim.keymap.set({ 'o', }, 'b', 'ib', { remap = true, })
   end,
 
   build = ':TSUpdate',

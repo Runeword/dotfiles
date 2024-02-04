@@ -46,45 +46,35 @@ return {
             ['aF'] = '@call.outer',
             ['iF'] = '@call.inner',
             ['id'] = '@number.inner',
-            ['ib'] = '@block.inner',
             ['ab'] = '@block.outer',
+            ['ib'] = '@block.inner',
+            ['ap'] = '@loop.outer',
+            ['ip'] = '@loop.inner',
+            ['s'] = '@statement.outer',
           },
         },
 
-        move = {
-          enable = true,
-          set_jumps = true,
-          -- goto_next_start = {
-          --   [")"] = "@parameter.inner",
-          -- },
-          -- goto_previous_start = {
-          --   ["("] = "@parameter.inner",
-          -- },
-        },
+        -- move = {
+        --   enable = true,
+        --   set_jumps = true,
+        -- goto_next_start = {
+        --   [")"] = "@parameter.inner",
+        -- },
+        -- goto_previous_start = {
+        --   ["("] = "@parameter.inner",
+        -- },
+        -- },
       },
-
-      -- -- nvim-treesitter/playground
-      -- playground = {
-      --   enable = true,
-      --   disable = {},
-      --   updatetime = 25,       -- Debounced time for highlighting nodes in the playground from source code
-      --   persist_queries = false, -- Whether the query persists across vim sessions
-      --   keybindings = {
-      --     toggle_query_editor = 'o',
-      --     toggle_hl_groups = 'i',
-      --     toggle_injected_languages = 't',
-      --     toggle_anonymous_nodes = 'a',
-      --     toggle_language_display = 'I',
-      --     focus_language = 'f',
-      --     unfocus_language = 'F',
-      --     update = 'R',
-      --     goto_node = '<cr>',
-      --     show_help = '?',
-      --   },
-      -- },
     })
 
+    -- vim.keymap.set({ 'o', 'x', }, 'ib', function()
+    --   require('nvim-treesitter.textobjects.select').select_textobject('@block.inner')
+    -- end)
+    -- vim.keymap.set({ 'o', 'x', }, 'ab', function()
+    --   require('nvim-treesitter.textobjects.select').select_textobject('@block.outer')
+    -- end)
     vim.keymap.set({ 'o', }, 'b', 'ib', { remap = true, })
+    vim.keymap.set({ 'o', }, 'p', 'ip', { remap = true, })
   end,
 
   build = ':TSUpdate',

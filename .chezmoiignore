@@ -2,9 +2,6 @@
 
 !.config
 !home-manager
-!ho
-!ne
-!co
 !nixos
 !templates
 !neovim

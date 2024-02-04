@@ -33,7 +33,7 @@ return {
 
         vim.api.nvim_set_hl(0, 'string', vim.tbl_extend('force',
           vim.api.nvim_get_hl(0, { name = vim.api.nvim_get_hl(0, { name = 'string', }).link, }),
-          { italic = true }))
+          { italic = true, }))
 
         vim.api.nvim_set_hl(0, 'normalfloat',  { bg = '#1e2633', })
         vim.api.nvim_set_hl(0, 'floatborder',  { bg = '#1e2633', fg = '#1e2633', })
@@ -47,6 +47,7 @@ return {
         vim.api.nvim_set_hl(0, 'cursorlinenr', { bg = 'none', fg = 'white', })
         vim.api.nvim_set_hl(0, 'cursorline',   { bg = 'none', })
         vim.api.nvim_set_hl(0, 'cursorcolumn', { bg = '#1e2633', })
+        vim.api.nvim_set_hl(0, 'virtcolumn',   { bg = 'none', fg = '#424a57', })
 
         vim.api.nvim_set_hl(0, 'search',       { bg = '#5d00ff', })
         vim.api.nvim_set_hl(0, 'CurSearch',    { bg = '#5d00ff', })

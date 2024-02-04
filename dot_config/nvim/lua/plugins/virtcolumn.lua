@@ -6,8 +6,10 @@ return {
 
   config = function()
     require('virt-column').setup({
-      char = '▏',
+      char = '',
+      highlight = 'virtcolumn',
     })
+
     vim.o.colorcolumn = '80'
   end,
 }

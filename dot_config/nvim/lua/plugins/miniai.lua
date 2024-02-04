@@ -41,6 +41,6 @@ return {
       search_method = 'cover_or_nearest',
     })
 
-    vim.keymap.set({ 'o', }, 'o', 'io', { remap = true, })
+    vim.keymap.set({ 'o', 'x' }, 'o', 'io', { remap = true, })
   end,
 }

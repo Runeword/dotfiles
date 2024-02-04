@@ -64,6 +64,7 @@
     progress = "watch progress -q";
     aliases = ''eval "$(alias | fzf --delimiter='=' --height 70% --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
     hardware = "hwinfo --short";
+    system = "neofetch";
     fonts = "fc-list : family style | fzf";
     image = "kitten icat";
     path = "echo \"\${PATH//:/\\n}\"";

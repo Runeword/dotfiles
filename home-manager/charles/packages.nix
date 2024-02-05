@@ -160,9 +160,7 @@
     wev
     imv
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    swappy
     satty
-    wallutils
     fnott
     slurp
     grim

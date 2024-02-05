@@ -26,6 +26,7 @@
     rd = "rm -rf $HOME/.gomi";
     cd = "__zoxide_z";
     cdh = "__zoxide_zi";
+    i = "setsid satty --copy-command 'wl-copy' --early-exit --init-tool brush --output-filename ~/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').png --filename";
     ".." = "cd ..";
     "..." = "cd ../..";
     l = "exa --all --group-directories-first --sort=time";
@@ -66,7 +67,6 @@
     hardware = "hwinfo --short";
     system = "neofetch";
     fonts = "fc-list : family style | fzf";
-    image = "kitten icat";
     path = "echo \"\${PATH//:/\\n}\"";
 
     # ______________________________________ ARCHIVE

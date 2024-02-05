@@ -40,7 +40,7 @@
   home.file."bin/fzf".source = "${pkgs.fzf}/share/fzf";
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "DroidSansMono" "SourceCodePro" "VictorMono" ]; })
+    (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono"]; })
     python311
     qmk
     gcc
@@ -130,9 +130,11 @@
     gping
     tree
     erdtree
-    neofetch
-    onefetch
     progress
+    hwinfo
+    onefetch
+    neofetch
+    # stacer
 
     # ---------------------------------- Graphics
     showmethekey
@@ -159,6 +161,8 @@
     imv
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
     swappy
+    satty
+    wallutils
     fnott
     slurp
     grim

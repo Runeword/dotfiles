@@ -65,6 +65,8 @@ key_bindings:
   - { key: Tab, mods: Shift, chars: "\x1b[Z" }
   - { key: Tab, mods: Control, chars: "\x1b[9;5u" }
   - { key: Tab, mods: Control|Shift, chars: "\x1b[9;6u" }
+  - { key: Tab, mods: Control|Alt, chars: "\x1b[9;7u" }
+  - { key: Tab, mods: Control|Alt|Shift, chars: "\x1b[9;8u" }
   - { key: Escape, mods: Control, chars: "\x02\x5b" }
   - { key: Escape, mods: Shift, chars: "\x1b[27;2u" }
 

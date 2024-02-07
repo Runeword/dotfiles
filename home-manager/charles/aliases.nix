@@ -68,6 +68,10 @@
     system = "neofetch";
     fonts = "fc-list : family style | fzf";
     path = "echo \"\${PATH//:/\\n}\"";
+    devices = "sudo libinput list-devices";
+    kb = "pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1";
+    pk = "sudo pkill";
+    pg = "pgrep -x";
 
     # ______________________________________ ARCHIVE
 

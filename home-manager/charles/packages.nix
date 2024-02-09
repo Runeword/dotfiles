@@ -78,6 +78,8 @@
     playerctl
     ventoy-full
     dmidecode
+    libinput
+    evtest
 
     # ---------------------------------- CLI tools
     jq

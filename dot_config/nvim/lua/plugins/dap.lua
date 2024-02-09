@@ -15,17 +15,27 @@ return {
       group = 'dap',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'DapBreakpoint', { fg = '#e4e8f2', })
-        vim.api.nvim_set_hl(0, 'DapLogPoint',   { fg = '#e4e8f2', })
-        vim.api.nvim_set_hl(0, 'DapStopped',    { fg = '#c45661', })
+        vim.api.nvim_set_hl(0, 'DapBreakpoint',          { fg = '#e4e8f2', })
+        vim.api.nvim_set_hl(0, 'DapBreakpointCondition', { fg = '#e4e8f2', })
+        vim.api.nvim_set_hl(0, 'DapLogPoint',            { fg = '#e4e8f2', })
+        vim.api.nvim_set_hl(0, 'DapStopped',             { fg = '#c45661', })
+        -- vim.api.nvim_set_hl(0, 'DapUIFloatBorder',       { link = 'VertSplit', })
+        -- vim.api.nvim_set_hl(0, 'DapUIFloatBorder',    { bg = 'none', fg = '#1e2633', })
       end,
     })
   end,
 
   config = function()
-    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '', })
-    vim.fn.sign_define('DapStopped',    { text = '', texthl = 'DapStopped', linehl = '', numhl = '', })
-    vim.fn.sign_define('DapLogPoint',   { text = '󰍥', texthl = 'DapLogPoint', linehl = '', numhl = '', })
+    vim.fn.sign_define('DapBreakpointCondition',
+      {
+        text = '󰇼',
+        texthl = 'DapBreakpointCondition',
+        linehl = '',
+        numhl = '',
+      })
+    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '', })
+    vim.fn.sign_define('DapStopped',    { text = '󰓗', texthl = 'DapStopped', linehl = '', numhl = '', })
+    vim.fn.sign_define('DapLogPoint',   { text = '󱂅', texthl = 'DapLogPoint', linehl = '', numhl = '', })
 
 
     local mappings = require('hydra')({
@@ -41,23 +51,34 @@ return {
       heads = {
         { 'n',         require('dap').continue, },
         { '<Enter>',   require('dap').continue, },
-        { 'c',         require('dap').close, },
+        { 'x',         require('dap').close, },
         { 't',         require('dap').terminate, },
-        { 'o',         require('dap').step_over, },
+        { 'v',         require('dap').step_over, },
         { 'i',         require('dap').step_into, },
-        { 'u',         require('dap').step_out, },
-        { '<Space>',   require('dap').toggle_breakpoint, },
+        { 'o',         require('dap').step_out, },
+        { 'b',         require('dap').toggle_breakpoint, },
         { '<C-Space>', require('dap').clear_breakpoints, },
-        -- { 'r',         require('dap').repl.toggle, },
+        { 'c',         function() require('dap').toggle_breakpoint(vim.fn.input('Breakpoint condition: ')) end, },
+        { 'l',         function() require('dap').toggle_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, },
+        { 'r',         function() require('dap').repl.toggle({ height = 6, }) end, },
+        { 'p',         require('dap.ui.widgets').preview, },
+        { 'f', function()
+          local widgets = require('dap.ui.widgets')
+          widgets.centered_float(widgets.frames)
+        end, },
+        { 's', function()
+          local widgets = require('dap.ui.widgets')
+          widgets.centered_float(widgets.scopes)
+        end, },
         -- { 'r',       require('dap').restart, },
-        { 'q',         nil,                              { exit = true, }, },
-        { '<Esc>',     nil,                              { exit = true, }, },
+        { 'q',     nil, { exit = true, }, },
+        { '<Esc>', nil, { exit = true, }, },
       },
     })
 
     vim.keymap.set({ 'n', 'x', }, '<Leader>d', function() mappings:activate() end)
 
-    require('dap').set_log_level('TRACE');
+    -- require('dap').set_log_level('TRACE');
 
     -- -- nvim lua
 
@@ -84,7 +105,7 @@ return {
     --   },
     -- }
 
-    -- -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
+    -- -- -- https://github.com/go-delve/delve/blob/master/Documentation/usage/dlv_dap.md
     -- require('dap').configurations.go = {
     --   {
     --     type = 'delve',

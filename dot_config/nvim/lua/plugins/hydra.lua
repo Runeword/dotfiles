@@ -56,28 +56,6 @@ return {
         vim.fn.execute('normal! 5k')
       end)
 
-    -------------------- Switch window
-    local window = require('hydra')({
-      mode = { 'n', },
-
-      config = {
-        hint = false,
-        -- color = 'pink',
-      },
-
-      heads = {
-        -- { '<ESC>', '<C-w>w', { nowait = true, }, },
-        -- { 'q',     '<C-w>w', { nowait = true, }, },
-      },
-    })
-
-    vim.keymap.set({ 'n', 'x', }, '<Leader>w',
-      function()
-        window:activate()
-        local key = vim.api.nvim_replace_termcodes('<C-w>', true, false, true)
-        vim.api.nvim_feedkeys(key .. 'w', 'n', false)
-      end)
-
     -------------------- Jump paragraph
     local nextParagraphStart = function()
       vim.fn.search(

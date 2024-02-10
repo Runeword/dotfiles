@@ -5,7 +5,6 @@ return {
 
   dependencies = {
     'anuvyklack/hydra.nvim',
-    -- 'rcarriga/nvim-dap-ui',
     -- 'jbyuki/one-small-step-for-vimkind',
   },
 
@@ -19,8 +18,6 @@ return {
         vim.api.nvim_set_hl(0, 'DapBreakpointCondition', { fg = '#e4e8f2', })
         vim.api.nvim_set_hl(0, 'DapLogPoint',            { fg = '#e4e8f2', })
         vim.api.nvim_set_hl(0, 'DapStopped',             { fg = '#c45661', })
-        -- vim.api.nvim_set_hl(0, 'DapUIFloatBorder',       { link = 'VertSplit', })
-        -- vim.api.nvim_set_hl(0, 'DapUIFloatBorder',    { bg = 'none', fg = '#1e2633', })
       end,
     })
   end,

@@ -8,14 +8,5 @@ return {
 
   config = function()
     require('dap-go').setup()
-
-    -- require('dap').configurations.go = {
-    --   {
-    --     type = 'go',
-    --     request = 'launch',
-    --     name = 'Launch file',
-    --     program = '${file}',
-    --   },
-    -- }
   end,
 }

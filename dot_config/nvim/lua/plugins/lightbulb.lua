@@ -1,17 +1,25 @@
-local vim = vim
-
 return {
   'kosayoda/nvim-lightbulb',
+  enabled = false,
 
   config = function()
-    vim.fn.sign_define('LightBulbSign', { text = '💡', })
-
-    vim.api.nvim_create_augroup('lightbulb', { clear = true, })
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI', },
-      {
-        group = 'lightbulb',
-        pattern = '*',
-        callback = require('nvim-lightbulb').update_lightbulb,
-      })
+    require('nvim-lightbulb').setup({
+      sign = {
+        enabled = false,
+      },
+      virtual_text = {
+        enabled = true,
+        text = '',
+        pos = 'eol',
+        hl = 'LightBulbVirtualText',
+        hl_mode = 'combine',
+      },
+      autocmd = {
+        enabled = true,
+        updatetime = 50,
+        events = { 'CursorHold', 'CursorHoldI', },
+        pattern = { '*', },
+      },
+    })
   end,
 }

@@ -25,32 +25,43 @@ return {
   end,
 
   config = function()
-    vim.keymap.set({ 'i', 'n', 'x', }, '<C-tab>', '<cmd>BufferLineCycleNext<CR>',
-      { silent = true, })
-    vim.keymap.set({ 'i', 'n', 'x', }, '<C-S-tab>', '<cmd>BufferLineCyclePrev<CR>',
-      { silent = true, })
-    -- vim.keymap.set({ 'n', 'x', }, '<pageup>', '<cmd>BufferLineMovePrev<CR>',
-    --   { silent = true, })
-    -- vim.keymap.set({ 'n', 'x', }, '<pagedown>', '<cmd>BufferLineMoveNext<CR>',
-    --   { silent = true, })
+    vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')
+    vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
+    vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
 
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-1>',
+    -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
+    -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
+
+    vim.keymap.set({ 'n', 'x', }, '<C-tab>', '<cmd>BufferLineCycleNext<CR>',
+      { silent = true, })
+    vim.keymap.set({ 'n', 'x', }, '<C-S-tab>', '<cmd>BufferLineCyclePrev<CR>',
+      { silent = true, })
+    vim.keymap.set({ 'n', 'x', }, '<C-PageDown>', '<cmd>BufferLineCycleNext<CR>',
+      { silent = true, })
+    vim.keymap.set({ 'n', 'x', }, '<C-PageUp>', '<cmd>BufferLineCyclePrev<CR>',
+      { silent = true, })
+    vim.keymap.set({ 'n', 'x', }, '<C-S-PageDown>', '<cmd>BufferLineMoveNext<CR>',
+      { silent = true, })
+    vim.keymap.set({ 'n', 'x', }, '<C-S-PageUp>', '<cmd>BufferLineMovePrev<CR>',
+      { silent = true, })
+
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-1>',
       function() require('bufferline').go_to_buffer(1) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-2>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-2>',
       function() require('bufferline').go_to_buffer(2) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-3>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-3>',
       function() require('bufferline').go_to_buffer(3) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-4>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-4>',
       function() require('bufferline').go_to_buffer(4) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-5>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-5>',
       function() require('bufferline').go_to_buffer(5) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-6>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-6>',
       function() require('bufferline').go_to_buffer(6) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-7>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-7>',
       function() require('bufferline').go_to_buffer(7) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-8>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-8>',
       function() require('bufferline').go_to_buffer(8) end)
-    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<A-9>',
+    vim.keymap.set({ 'n', 't', 'i', 'x', }, '<C-9>',
       function() require('bufferline').go_to_buffer(-1) end)
 
     require('bufferline').setup({
@@ -65,11 +76,6 @@ return {
         modified_icon = '',
         close_icon = '',
       },
-
-      -- highlights = {
-      -- numbers = { fg = '#7a7c9e', bg = 'none', italic = false },
-      -- numbers_selected = { fg = 'white', bg = 'none', italic = false },
-      -- }
     })
   end,
 }

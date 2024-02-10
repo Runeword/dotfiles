@@ -33,7 +33,7 @@ return {
     vim.keymap.set('n', '<Leader>h',     require('fzf-lua').help_tags)
     vim.keymap.set('n', '<Leader>k',     require('fzf-lua').keymaps)
     vim.keymap.set('n', '<Leader>i',     require('fzf-lua').highlights)
-    vim.keymap.set({ 'n', 'x', }, '<leader>ca', function()
+    vim.keymap.set({ 'n', 'x', }, '<leader>a', function()
       require('fzf-lua').lsp_code_actions {
         winopts = {
           relative = 'cursor',

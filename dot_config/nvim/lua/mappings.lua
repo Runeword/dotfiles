@@ -129,6 +129,19 @@ vim.keymap.set('n', '<Esc>',
   end
 )
 
+----------------------------------- WINDOW
+
+vim.keymap.set({ 'n', 'x', }, '<C-Down>',  '<C-w>j')
+vim.keymap.set({ 'n', 'x', }, '<C-Up>',    '<C-w>k')
+vim.keymap.set({ 'n', 'x', }, '<C-Left>',  '<C-w>h')
+vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
+
+-- vim.keymap.set({ 'n', 'x', }, '<C-Down>',
+--   function()
+--     local key = vim.api.nvim_replace_termcodes('<C-w>', true, false, true)
+--     vim.api.nvim_feedkeys(key .. 'w', 'j', false)
+--   end)
+
 ----------------------------------- UNMAP
 
 -- vim.keymap.set('n', '<Enter>', '<Nop>')

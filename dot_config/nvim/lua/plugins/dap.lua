@@ -46,10 +46,19 @@ return {
       },
 
       heads = {
-        { 'n',         require('dap').continue, },
-        { '<Enter>',   require('dap').continue, },
-        { 'x',         require('dap').close, },
-        { 't',         require('dap').terminate, },
+        { 'n',       require('dap').continue, },
+        { '<Enter>', require('dap').continue, },
+        { 'x',       require('dap').close, },
+        { 'X',       require('dap').terminate, },
+        { 't', function()
+          require('dap').run({
+            type = 'go',
+            name = 'Debug test (go.mod)',
+            request = 'launch',
+            mode = 'test',
+            program = './${relativeFileDirname}',
+          })
+        end, },
         { 'v',         require('dap').step_over, },
         { 'i',         require('dap').step_into, },
         { 'o',         require('dap').step_out, },

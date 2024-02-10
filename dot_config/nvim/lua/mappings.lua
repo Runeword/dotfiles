@@ -245,14 +245,6 @@ vim.keymap.set('n',           '<C-i>', '<C-i>',                                 
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
 
----------------------------------- BUFFERS
-
-vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')
-vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
-vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
--- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
--- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
-
 ---------------------------------- folke/lazy.nvim
 
 vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>')

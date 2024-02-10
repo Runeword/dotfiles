@@ -25,7 +25,7 @@ return {
       group = 'builtin',
       pattern = '*',
       callback = function()
-        -- #0a172e #10141f #1a1a3b #1e2633 #424a57 #7a7c9e #222b66
+        -- #0a172e #10141f #012749 #1a1a3b #1e2633 #424a57 #7a7c9e #222b66
 
         -- vim.api.nvim_set_hl(0, 'type', vim.tbl_extend('force',
         --   vim.api.nvim_get_hl(0, { name = 'type', }),
@@ -63,6 +63,8 @@ return {
         vim.api.nvim_set_hl(0, 'whitespace',   { bg = 'none', fg = '#384354', })
 
         vim.api.nvim_set_hl(0, 'VertSplit',    { bg = 'none', fg = '#1e2633', })
+        vim.api.nvim_set_hl(0, 'StatusLine',   { bg = 'none', fg = 'none', })
+        vim.api.nvim_set_hl(0, 'StatusLineNc', { bg = 'none', fg = 'none', })
 
         vim.api.nvim_set_hl(0, 'Error',        { bg = 'none', fg = '#ff75a9', })
         vim.api.nvim_set_hl(0, 'ErrorMsg',     { bg = 'none', fg = '#ff75a9', })

@@ -1,6 +1,6 @@
 return {
   'kosayoda/nvim-lightbulb',
-  enabled = true,
+  enabled = false,
 
   config = function()
     require('nvim-lightbulb').setup({

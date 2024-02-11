@@ -15,6 +15,7 @@ __open_file() {
         --border none \
         --cycle \
         --height 70% \
+        --info=hidden \
         --ansi \
         --header-first \
         --header=''\''exact !not [!]^prefix [!]suffix$' \
@@ -70,9 +71,11 @@ __ripgrep() {
       --reverse \
       --border none \
       --cycle \
-      --info=inline:'' \
+      --info=hidden \
       --height 70% \
       --no-separator \
+      --header-first \
+      --header=''\''exact !not [!]^prefix [!]suffix$' \
       --preview 'bat --style=plain --color=always {1} --highlight-line {2}' \
       --preview-window 'right,55%,border-none,+{2}+3/3,~3' \
       --bind 'enter:become(nvim {1} +{2})'
@@ -100,3 +103,4 @@ __ripgrep() {
 # "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --inline-info --cycle --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";
 # "cd $(fd --type directory --hidden --follow --no-ignore | fzf --cycle)";
 # "xdg-open $(fd --type file --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf)";
+# --info=inline:'' \

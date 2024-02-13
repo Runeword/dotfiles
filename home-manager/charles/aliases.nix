@@ -11,8 +11,11 @@
     # color = "colorpicker"; # X11
     # sin = "$HOME/.screenlayout/single.sh && feh --bg-fill $HOME/.config/Skin\ The\ Remixes.png";
     # dua = "$HOME/.screenlayout/dual.sh";
-    # l = "command ls --almost-all --color --width 90";
-    # ll = "command ls -lt --almost-all --color --human-readable --classify";
+    # l = "exa --all --group-directories-first --sort=time";
+    # ll = ''
+    # exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | \
+    # fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --height 70% --no-separator
+    # '';
     # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
     # bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
 
@@ -26,14 +29,11 @@
     rd = "rm -rf $HOME/.gomi";
     cd = "__zoxide_z";
     cdh = "__zoxide_zi";
+    l = "command ls --almost-all --color --width 90";
+    ll = "command ls -lt --almost-all --color --human-readable --classify | fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:'' --height 70% --no-separator";
     i = "setsid satty --copy-command 'wl-copy' --early-exit --init-tool brush --output-filename ~/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').png --filename";
     ".." = "cd ..";
     "..." = "cd ../..";
-    l = "exa --all --group-directories-first --sort=time";
-    ll = ''
-    exa --long --all --color=always --octal-permissions --group-directories-first --sort=time | \
-    fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --height 70% --no-separator
-    '';
 
     # ______________________________________ Hyprland
 
@@ -132,6 +132,7 @@
     hu = "__update_flake_inputs $HOME/home-manager";
     hv = "home-manager --version";
     hps = "home-manager packages | fzf --inline-info";
+    hpa = "/nix/var/nix/profiles/per-user/$USER/profile";
 
     # ______________________________________ QMK
 

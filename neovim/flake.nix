@@ -69,7 +69,9 @@
                   terraform-ls
                   gopls
                   delve
+                  bashdb
                   rust-analyzer
+                  taplo
                   # terraform-lsp
                 ]
               }

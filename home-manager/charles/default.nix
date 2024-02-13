@@ -12,7 +12,7 @@
     ./packages.nix
     ./bash.nix
     ./zsh.nix
-    ./dircolors.nix
+    # ./dircolors.nix
     # ./neovim.nix
   ];
 

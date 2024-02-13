@@ -45,7 +45,7 @@
     qmk
     gcc
     httrack
-    pgmodeler
+    # pgmodeler
     sioyek
     qdirstat
     testdisk-qt
@@ -86,7 +86,7 @@
     git
     awscli2
     lsof
-    eza
+    lsd
     distrobox
     fzf
     starship
@@ -141,7 +141,7 @@
     # ---------------------------------- Graphics
     showmethekey
     inkscape
-    realesrgan-ncnn-vulkan
+    # realesrgan-ncnn-vulkan
     kooha
     krita
     # obs-studio

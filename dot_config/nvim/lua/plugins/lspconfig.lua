@@ -55,6 +55,7 @@ return {
     lspconfig['rust_analyzer'].setup(set_config())
     lspconfig.marksman.setup(set_config())
     lspconfig.terraformls.setup(set_config())
+    lspconfig.taplo.setup(set_config())
     -- lspconfig['terraform_lsp'].setup(set_config())
     lspconfig.bashls.setup(set_config({ filetypes = { 'sh', 'zsh', }, }))
     lspconfig.cssls.setup(set_config())

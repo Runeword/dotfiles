@@ -51,10 +51,10 @@
                 lib.makeBinPath [
                   nodePackages.vls
                   nodePackages.typescript-language-server
-                  vscode-langservers-extracted
                   nodePackages.bash-language-server
-                  nodePackages.yaml-language-server
                   nodePackages.eslint
+                  vscode-langservers-extracted
+                  yaml-language-server
                   lua-language-server
                   selene
                   marksman

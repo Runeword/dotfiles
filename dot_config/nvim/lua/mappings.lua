@@ -78,17 +78,6 @@ vim.keymap.set('n', '<Leader>s', function()
   vim.fn.setpos("']", finish)
 end, { silent = true, })
 
------------------------------------ EDIT
-
--- When the line is empty, move the cursor to the beginning of the line
-vim.keymap.set('n', 'i', function()
-  if #vim.fn.getline('.') == 0 then
-    return [["_cc]]
-  else
-    return 'i'
-  end
-end, { expr = true, })
-
 ----------------------------------- FOLD
 
 -- vim.keymap.set('n', 'g<Tab>', 'za')
@@ -153,8 +142,18 @@ vim.keymap.set('',  'q',     '<Nop>')
 ----------------------------------- EDIT
 
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
-
 vim.keymap.set('n', '<BS>',   '`[v`]')
+vim.keymap.set('n', 'f', '/')
+
+-- When the line is empty, move the cursor to the beginning of the line
+vim.keymap.set('n', 'i', function()
+  if #vim.fn.getline('.') == 0 then
+    return [["_cc]]
+  else
+    return 'i'
+  end
+end, { expr = true, })
+
 -- vim.cmd([[
 -- nnoremap <expr> gh '`[' . strpart(getregtype(), 0, 1) . '`]'
 -- ]])

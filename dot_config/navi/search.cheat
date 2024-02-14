@@ -1,7 +1,7 @@
 % search
 
 # Find files with the string
-find . | xargs grep <'The Big Brains Company'> -sl
+find . | xargs grep <pattern> -sl
 
 # Find files or directories then select it with fzf
 $(fd --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --reverse --height 40% --no-separator --border none)

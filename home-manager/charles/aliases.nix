@@ -99,10 +99,12 @@
     de = "cd $HOME/dev";
     ho = "cd $HOME/home-manager/$USER";
     co = "cd $HOME/.config";
+    pr = "cd .nix-profile";
 
     # ______________________________________ NIXOS
 
     ns = "sudo nixos-rebuild switch --flake $HOME/nixos#$USER";
+    nsp = "nix-env --switch-profile $(ls /nix/var/nix/profiles/per-user/$USER | fzf)";
     nb = "sudo nixos-rebuild boot --flake $HOME/nixos#$USER";
     nu = "__update_flake_inputs $HOME/nixos";
     nv = "nixos-version";
@@ -131,8 +133,7 @@
     hs = "home-manager switch --flake $HOME/home-manager";
     hu = "__update_flake_inputs $HOME/home-manager";
     hv = "home-manager --version";
-    hps = "home-manager packages | fzf --inline-info";
-    hpa = "/nix/var/nix/profiles/per-user/$USER/profile";
+    hpk = "home-manager packages | fzf --inline-info";
 
     # ______________________________________ QMK
 

@@ -4,9 +4,10 @@ style:
     width_percentage: 10
   comment:
     color: dark_grey
-    width_percentage: 50
+    width_percentage: 30
   snippet:
     color: dark_grey
+    width_percentage: 50
 
 finder:
   command: fzf # equivalent to the --finder option

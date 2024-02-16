@@ -105,6 +105,7 @@
     asciinema
     terraform
     ngrok
+    unzip
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 
@@ -157,6 +158,8 @@
     swaybg
     waypaper
     hyprpaper
+    # hyprshade
+    # wlsunset
     hyprpicker
     wl-clipboard
     wev

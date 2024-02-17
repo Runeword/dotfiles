@@ -79,7 +79,9 @@ keymap = [
 	{ on = [ "s" ],         exec = "search fd",                                            desc = "Search files by name using fd" },
 	{ on = [ "S" ],         exec = "search rg",                                            desc = "Search files by content using ripgrep" },
 	{ on = [ "<C-s>" ],     exec = "search none",                                          desc = "Cancel the ongoing search" },
-	{ on = [ "z" ],         exec = "jump zoxide",                                          desc = "Jump to a directory using zoxide" },
+	# { on = [ "z" ],         exec = "jump zoxide",                                          desc = "Jump to a directory using zoxide" },
+  { on = [ "z", "u" ],         exec = "shell --confirm 'ouch decompress $@'" },
+  { on = [ "z", "d" ],         exec = "shell --confirm 'ouch compress $@'" },
 	{ on = [ "Z" ],         exec = "jump fzf",                                             desc = "Jump to a directory, or reveal a file using fzf" },
 
 	# Linemode

@@ -75,6 +75,10 @@ return {
     -- end)
     vim.keymap.set({ 'o', }, 'b', 'ib', { remap = true, })
     vim.keymap.set({ 'o', }, 'p', 'ip', { remap = true, })
+
+    vim.filetype.add({
+      pattern = { ['.*/hyprland%.conf'] = 'hyprlang', },
+    })
   end,
 
   build = ':TSUpdate',

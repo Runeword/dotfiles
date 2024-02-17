@@ -25,7 +25,6 @@
 
 [opener]
    edit = [
-      # { exec = 'nvim "$@"', desc = "$EDITOR", block = true },
       { exec = '[ -n "$EDITOR" ] && $EDITOR "$@"', desc = "$EDITOR", block = true },
    ]
    open = [

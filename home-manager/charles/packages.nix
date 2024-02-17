@@ -41,6 +41,7 @@
 
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono"]; })
+    maple-mono-NF
     python311
     qmk
     gcc
@@ -158,8 +159,6 @@
     swaybg
     waypaper
     hyprpaper
-    # hyprshade
-    # wlsunset
     hyprpicker
     wl-clipboard
     wev

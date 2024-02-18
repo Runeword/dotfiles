@@ -24,6 +24,7 @@
     mv = "mv --verbose";
     md = "mkdir --parents";
     cp = "cp --recursive --verbose";
+    pwd = "command pwd | tee /dev/tty | wl-copy";
     r = "gomi -rf";
     ru = "gomi --restore";
     rd = "rm -rf $HOME/.gomi";

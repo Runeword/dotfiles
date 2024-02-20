@@ -73,6 +73,7 @@
     kb = "pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1";
     pk = "sudo pkill";
     pg = "pgrep -x";
+    # fcount = ''find . -type d -exec sh -c 'echo -n "$1, "; find "$1" -maxdepth 1 -type f | wc -l' _ {} \; | awk -F, '$2 > 500''';
 
     # ______________________________________ ARCHIVE
 

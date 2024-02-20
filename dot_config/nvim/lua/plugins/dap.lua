@@ -68,6 +68,15 @@ return {
         { 'l',         function() require('dap').toggle_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, },
         { 'r',         function() require('dap').repl.toggle({ height = 6, }) end, },
         { 'p',         require('dap.ui.widgets').preview, },
+        { 't', function()
+          require('dap').run({
+            type = 'go',
+            name = 'Debug test (go.mod)',
+            request = 'launch',
+            mode = 'test',
+            program = './${relativeFileDirname}',
+          })
+        end, },
         { 'f', function()
           local widgets = require('dap.ui.widgets')
           widgets.centered_float(widgets.frames)
@@ -84,7 +93,87 @@ return {
 
     vim.keymap.set({ 'n', 'x', }, '<Leader>d', function() mappings:activate() end)
 
-    -- require('dap').set_log_level('TRACE');
+    require('dap').set_log_level('TRACE');
+
+    -- require('dap').adapters.bashdb = {
+    --   type = 'executable',
+    --   -- command = 'bash-debug-adapter',
+    --   -- command = 'node',
+    --   command = 'bashdb',
+    --   name = 'bashdb',
+    -- }
+
+    -- local dap = require 'dap'
+    -- dap.adapters.sh = {
+    --   type = 'executable',
+    --   -- command = 'bash-debug-adapter',
+    --   name = 'bashdb',
+    --   command = 'bashdb'
+    --   -- command = '/home/charles/.nix-profile/bin/bashdb',
+    -- }
+
+    -- dap.configurations.sh = {
+    --   {
+    --     name = 'Launch Bash debugger',
+    --     type = 'sh',
+    --     request = 'launch',
+    --     program = '${file}',
+    --     cwd = '${fileDirname}',
+    --     pathBashdb = '/nix/store/8yc9r06892bsrcdfw04707g1dqjyhwnv-bashdb-5.0-1.1.2/share/bashdb',
+    --     pathBashdbLib = '/nix/store/8yc9r06892bsrcdfw04707g1dqjyhwnv-bashdb-5.0-1.1.2/share/bashdb/',
+    --     pathBash = 'bash',
+    --     pathCat = 'cat',
+    --     pathMkfifo = 'mkfifo',
+    --     pathPkill = 'pkill',
+    --     env = {},
+    --     args = {},
+    --     -- showDebugOutput = true,
+    --     -- trace = true,
+    --   },
+    -- }
+
+    -- local dap = require('dap')
+
+    --     dap.adapters.bashdb = {
+    --       type = 'executable';
+    --       command = 'bashdb';
+    --       -- command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter';
+    --       name = 'bashdb';
+    --     }
+
+    -- dap.configurations.sh = {
+    --   {
+    --     type = 'bashdb';
+    --     request = 'launch';
+    --     name = "Launch file";
+    --     showDebugOutput = true;
+    --     -- pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb';
+    --     -- pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir';
+    --     pathBashdb = "/nix/store/8yc9r06892bsrcdfw04707g1dqjyhwnv-bashdb-5.0-1.1.2/share/bashdb";
+    --     pathBashdbLib = "/nix/store/8yc9r06892bsrcdfw04707g1dqjyhwnv-bashdb-5.0-1.1.2/share/bashdb/lib";
+    --     trace = true;
+    --     file = "${file}";
+    --     program = "${file}";
+    --     cwd = '${workspaceFolder}';
+    --     pathCat = "cat";
+    --     pathBash = "/bin/bash";
+    --     pathMkfifo = "mkfifo";
+    --     pathPkill = "pkill";
+    --     args = {};
+    --     env = {};
+    --     terminalKind = "integrated";
+    --   }
+    -- }
+
+    -- dap.configurations.sh = {
+    --   {
+    --     name = 'Launch Bash debugger',
+    --     type = 'sh',
+    --     request = 'launch',
+    --     program = '${file}',
+    --     cwd = '${fileDirname}',
+    --   },
+    -- }
 
     -- -- nvim lua
 

@@ -5,8 +5,22 @@ __open_file() {
   local selected_files
   selected_files=$(
     find -L . \
-      \( -path './.git' -o -path './flake-inputs' -o -path './.nix-defexpr' \
-      -o -path './.nix-profile' -o -path './.config/figma-linux/Cache' -o -path './.config/google-chrome' -o -path './go/pkg' -o -name '.cache' -o -name '.tldrc' -o -name 'node_modules' -o -path './.local' -o -path './.direnv' \) \
+      \( -name '.git' \
+      -o -name 'flake-inputs' \
+      -o -name '.nix-defexpr' \
+      -o -name '.nix-profile' \
+      -o -path './.config/figma-linux/Cache' \
+      -o -path './.config/Slack/Cache' \
+      -o -path './.config/Slack/Service Worker' \
+      -o -path './.config/google-chrome' \
+      -o -path './.local/share/navi/cheats' \
+      -o -path './.local/share/containers/storage/overlay' \
+      -o -path './go/pkg' \
+      -o -name '.cache' \
+      -o -name '.tldrc' \
+      -o -name 'node_modules' \
+      -o -path './.local' \
+      -o -name '.direnv' \) \
       -prune -o -printf '%P\n' 2>/dev/null |
       tail -n +2 |
       fzf \

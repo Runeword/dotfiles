@@ -19,16 +19,19 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  services.xserver = {
+  services.greetd = {
     enable = true;
-    # layout = "us";
-    # xkbVariant = "altgr-intl";
-    # videosDrivers = ["nvidia"];
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
+    settings = rec {
+      initial_session = {
+        command = "Hyprland";
+        user = "charles";
+      };
+      default_session = initial_session;
     };
   };
+  environment.etc."greetd/environments".text = ''
+    Hyprland
+  '';
 
   hardware = {
     opengl.enable = true;
@@ -84,9 +87,9 @@
   # thunar
   programs.thunar.enable = true;
   # programs.thunar.plugins = with pkgs.xfce; [
-    # thunar-archive-plugin
-    # thunar-media-tags-plugin
-    # thunar-volman
+  # thunar-archive-plugin
+  # thunar-media-tags-plugin
+  # thunar-volman
   # ];
   # services.gvfs.enable = true; # Mount, trash, and other functionalities
   # services.tumbler.enable = true; # Thumbnail support for images
@@ -149,52 +152,6 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
-
-  # services.xserver = {
-  #   enable = true;
-  #   layout = "us";
-  #   xkbVariant = "altgr-intl";
-  #   # autoRepeatInterval = 150;
-  #   # autoRepeatDelay = 25;
-  #
-  #   # i3
-  #   # displayManager.lightdm.enable = true;
-  #   # displayManager.defaultSession = "none+i3";
-  #   # desktopManager.xterm.enable = false;
-  #   # windowManager.i3.enable = true;
-  #
-  #   # # xfce
-  #   # displayManager.defaultSession = "xfce";
-  #   # desktopManager.xterm.enable = false;
-  #   # desktopManager.xfce = {
-  #   #   enable = true;
-  #   # };
-  #
-  #   # xfce + i3
-  #   windowManager.i3.enable = true;
-  #   displayManager.defaultSession = "xfce+i3";
-  #   desktopManager.xterm.enable = false;
-  #   desktopManager.xfce = {
-  #     enable = true;
-  #     noDesktop = true;
-  #     enableXfwm = false;
-  #   };
-
-  # # xfce + xmonad
-  # desktopManager.xterm.enable = false;
-  # desktopManager.xfce.enable = true;
-  # desktopManager.xfce.noDesktop = true;
-  # desktopManager.xfce.enableXfwm = false;
-  # windowManager.xmonad.enable = true;
-  # windowManager.xmonad.enableContribAndExtras = true;
-  # windowManager.xmonad.extraPackages = haskellPackages : [
-  #       haskellPackages.xmonad-contrib
-  #       haskellPackages.xmonad-extras
-  #       haskellPackages.xmonad
-  #     ];
-  # displayManager.defaultSession = "xfce+xmonad";
-
-  # };
 
   # printing
   services.printing.enable = true;

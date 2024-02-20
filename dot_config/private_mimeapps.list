@@ -1,9 +1,9 @@
 [Added Associations]
-application/x-shellscript=nvim.desktop;
+application/x-shellscript=nvim.desktop;userapp-nvim-EUX2H2.desktop;
 image/gif=imv-dir.desktop;
-image/png=imv-dir.desktop;
+image/png=satty.desktop;imv-dir.desktop;
 inode/directory=imv.desktop;imv-dir.desktop;
-image/jpeg=google-chrome.desktop;krita_jpeg.desktop;imv-dir.desktop;
+image/jpeg=satty.desktop;google-chrome.desktop;krita_jpeg.desktop;imv-dir.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-chrome.desktop;
 application/pdf=sioyek.desktop;google-chrome.desktop;imv.desktop;
 application/x-krita=userapp-krita-GCAKD2.desktop;
@@ -41,5 +41,6 @@ video/x-msvideo=vlc.desktop;imv.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-chrome.desktop
 application/x-krita=userapp-krita-GCAKD2.desktop
 application/x-zerosize=imv.desktop
+application/x-shellscript=userapp-nvim-EUX2H2.desktop
 
 [Removed Associations]

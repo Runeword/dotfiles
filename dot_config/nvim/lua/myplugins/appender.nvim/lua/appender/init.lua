@@ -156,3 +156,12 @@ function M.appendNewlineAbove() dot_repeat_wrapper('_appendNewlineAbove') end
 function M.appendNewlineBelow() dot_repeat_wrapper('_appendNewlineBelow') end
 
 return M
+
+-- local cursor = vim.api.nvim_win_get_cursor(0)
+-- local node = vim.treesitter.get_node()
+-- local start_row, start_col, end_row, end_col = node:range()
+-- -- get node type
+--     print("Node range - Start: " .. start_row .. ":" .. start_col .. " End: " .. end_row .. ":" .. end_col)
+--     local bufnr = vim.api.nvim_get_current_buf()
+--     local highlight_group = "search"  -- Replace with your highlight group
+--        vim.api.nvim_buf_add_highlight(bufnr, -1, highlight_group, start_row, start_col, end_col)

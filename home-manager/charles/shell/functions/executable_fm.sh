@@ -27,6 +27,7 @@ __open_file() {
         --multi \
         --reverse \
         --border none \
+        --info=hidden \
         --cycle \
         --height 70% \
         --ansi \
@@ -36,7 +37,6 @@ __open_file() {
         --preview-window right,55%,border-none,~3 \
         --bind='ctrl-y:execute-silent(wl-copy {})'
   ) || return 0
-  # --info=hidden \
 
   # Check number of selected files
   local num_lines

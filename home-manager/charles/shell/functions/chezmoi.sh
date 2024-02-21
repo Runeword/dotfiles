@@ -39,7 +39,7 @@ chy() {
     files=$(chezmoi status | awk '{print $2}')
     [ "$files" = "" ] && return 1
 
-    selected_files=$(__select_files "$files", "chezmoi apply")
+    selected_files=$(__select_files "$files" "chezmoi apply")
     [ "$selected_files" = "" ] && return 1
   fi
 

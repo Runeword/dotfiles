@@ -108,6 +108,10 @@ __alias_or_delete() { __on_empty_buffer __search_alias "zle backward-delete-char
 zle -N __alias_or_delete
 bindkey '^[[3~' __alias_or_delete
 
+__yazi() { __on_empty_buffer "yazi < $TTY"; }
+zle -N __yazi
+bindkey '\e' __yazi
+
 __history_or_delete() { __on_empty_buffer "zle fzf-history-widget; zle accept-line" "zle backward-delete-char"; }
 zle -N __history_or_delete
 bindkey '^?' __history_or_delete
@@ -124,10 +128,6 @@ bindkey ' ' __navi_custom_or_space
 __open_file_or_complete() { __on_empty_buffer __open_file "zle expand-or-complete"; }
 zle -N __open_file_or_complete
 bindkey '^I' __open_file_or_complete
-
-# myfunc() { yazi; }
-# zle -N myfunc
-# bindkey '\e' myfunc
 
 __ripgrep_or_complete() { __on_empty_buffer __ripgrep "zle expand-or-complete"; }
 zle -N __ripgrep_or_complete

@@ -1,14 +1,4 @@
 [Added Associations]
-application/x-shellscript=nvim.desktop;userapp-nvim-EUX2H2.desktop;
-image/gif=imv-dir.desktop;
-image/png=satty.desktop;imv-dir.desktop;
-inode/directory=imv.desktop;imv-dir.desktop;
-image/jpeg=satty.desktop;google-chrome.desktop;krita_jpeg.desktop;imv-dir.desktop;
-application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-chrome.desktop;
-application/pdf=sioyek.desktop;
-application/x-krita=userapp-krita-GCAKD2.desktop;
-application/x-zerosize=sioyek.desktop;krita_psd.desktop;imv.desktop;
-image/svg+xml=org.inkscape.Inkscape.desktop;
 
 [Default Applications]
 text/html=google-chrome.desktop
@@ -28,7 +18,7 @@ image/bmp=imv.desktop
 image/gif=imv.desktop
 image/jpeg=imv.desktop
 image/png=imv.desktop
-image/svg+xml=imv.desktop
+image/svg+xml=org.inkscape.Inkscape.desktop;
 image/tiff=imv.desktop
 image/vnd.microsoft.icon=imv.desktop
 image/webp=imv.desktop
@@ -42,5 +32,6 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-c
 application/x-krita=userapp-krita-GCAKD2.desktop
 application/x-zerosize=imv.desktop
 application/x-shellscript=userapp-nvim-EUX2H2.desktop
+application/pdf=sioyek.desktop
 
 [Removed Associations]

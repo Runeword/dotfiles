@@ -25,7 +25,6 @@ return {
   end,
 
   config = function()
-    vim.keymap.set({ 'n', 'x', }, '<Leader>q', '<cmd>qa!<CR>')
     vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
     vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
 

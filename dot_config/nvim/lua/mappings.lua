@@ -1,9 +1,20 @@
 local vim = vim
 
+----------------------------------- UNMAP
+
+-- vim.keymap.set('n', '<Enter>', '<Nop>')
+vim.keymap.set('n', '<C-n>', '<Nop>')
+vim.keymap.set('n', '<C-p>', '<Nop>')
+vim.keymap.set('',  'Q',     '<Nop>')
+vim.keymap.set('',  'q',     '<Nop>')
+
+-----------------------------------
+
 vim.keymap.set('x',           '<C-n>',      ':Norm ')
 vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')
 vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
 vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   { remap = true, })
+vim.keymap.set({ 'x', 'n', }, '<Leader>q', '<cmd>qa!<CR>')
 
 vim.keymap.set('n',           '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n',           '<Leader>tt', '<cmd>InspectTree<CR>')
@@ -130,14 +141,6 @@ vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
 --     local key = vim.api.nvim_replace_termcodes('<C-w>', true, false, true)
 --     vim.api.nvim_feedkeys(key .. 'w', 'j', false)
 --   end)
-
------------------------------------ UNMAP
-
--- vim.keymap.set('n', '<Enter>', '<Nop>')
-vim.keymap.set('n', '<C-n>', '<Nop>')
-vim.keymap.set('n', '<C-p>', '<Nop>')
-vim.keymap.set('',  'Q',     '<Nop>')
-vim.keymap.set('',  'q',     '<Nop>')
 
 ----------------------------------- EDIT
 

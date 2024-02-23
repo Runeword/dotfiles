@@ -15,6 +15,7 @@ vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %
 vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
 vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   { remap = true, })
 vim.keymap.set({ 'x', 'n', }, '<Leader>q', '<cmd>qa!<CR>')
+vim.keymap.set({ 'x', 'n', }, 'Q', '<cmd>qa!<CR>')
 
 vim.keymap.set('n',           '<Leader>ti', '<cmd>Inspect<CR>')
 vim.keymap.set('n',           '<Leader>tt', '<cmd>InspectTree<CR>')
@@ -238,8 +239,8 @@ vim.keymap.set('n', '&', 'g^')
 -- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'bW') end)
 vim.keymap.set({ 'n', 'x', }, ',',     function() vim.fn.search('[,.:;]') end)
 vim.keymap.set({ 'n', 'x', }, '<',     function() vim.fn.search('[,.:;]', 'b') end)
-vim.keymap.set({ 'n', },      'q',     function() vim.fn.search('[\'"`]') end)
-vim.keymap.set({ 'n', },      'Q',     function() vim.fn.search('[\'"`]', 'b') end)
+vim.keymap.set({ 'n', },      '\'',     function() vim.fn.search('[\'"`]') end)
+vim.keymap.set({ 'n', },      '"',     function() vim.fn.search('[\'"`]', 'b') end)
 vim.keymap.set({ 'n', 'x', }, '<Tab>',     function() vim.fn.search('[([{]') end)
 vim.keymap.set({ 'n', 'x', }, '<S-Tab>',     function() vim.fn.search('[([{]', 'b') end)
 

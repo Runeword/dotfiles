@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   home.sessionVariables.EDITOR = "nvim";
   home.sessionVariables.VISUAL = "nvim";
@@ -14,12 +13,12 @@
 --preview-window border-none \
 ";
 
-#   home.sessionVariables._ZO_FZF_OPTS = "
-# --reverse \
-# --height 40% \
-# --no-separator \
-# --border none \
-# ";
+  #   home.sessionVariables._ZO_FZF_OPTS = "
+  # --reverse \
+  # --height 40% \
+  # --no-separator \
+  # --border none \
+  # ";
 
   home.sessionVariables.FZF_DEFAULT_COMMAND = "
 fd \
@@ -31,16 +30,27 @@ fd \
 ";
 
   home.sessionVariables.FZF_DEFAULT_OPTS = "
---reverse \
---no-separator \
---info=inline:'' \
---border none \
 --color=fg:#d0d0d0,bg:-1,hl:#918fcf \
 --color=fg+:#ffffff,fg+:regular,bg+:#0e1c1c,hl+:#6bdbd8,hl+:regular,query:regular \
 --color=info:#d0d0d0,prompt:#ffffff,pointer:#ff75a9 \
 --color=marker:#ff75a9,spinner:#ffffff,header:#535e73 \
---prompt='  ' \
 ";
+
+  home.sessionVariables.FZF_CTRL_R_OPTS = "
+--reverse \
+--prompt='  ' \
+--no-separator \
+--info=inline:'' \
+";
+
+  #   home.sessionVariables.FZF_DEFAULT_OPTS = "
+  # --reverse \
+  # --no-separator \
+  # --info=inline:'' \
+  # --border none \
+  # --prompt='  ' \
+  # ";
+
   # --color=fg+:#ffffff,fg+:regular,bg+:-1,hl+:#6bdbd8,hl+:regular,query:regular \
   # --color=fg+:#ffffff,fg+:regular,bg+:#262626,hl+:#6bdbd8,hl+:regular,query:regular \
 }

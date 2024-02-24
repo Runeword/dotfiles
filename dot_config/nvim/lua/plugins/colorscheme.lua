@@ -25,7 +25,7 @@ return {
       group = 'builtin',
       pattern = '*',
       callback = function()
-        -- #0a172e #10141f #012749 #1a1a3b #1e2633 #424a57 #7a7c9e #222b66
+        -- #0a172e #10141f #012749 #1a1a3b #1e2633 #262e3b #424a57 #7a7c9e #222b66
 
         -- vim.api.nvim_set_hl(0, 'type', vim.tbl_extend('force',
         --   vim.api.nvim_get_hl(0, { name = 'type', }),

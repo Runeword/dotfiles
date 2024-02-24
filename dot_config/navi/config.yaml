@@ -1,17 +1,17 @@
 style:
   tag:
-    color: dark_grey # text color. possible values: https://bit.ly/3gloNNI
+    color: grey # text color. possible values: https://bit.ly/3gloNNI
     width_percentage: 10
   comment:
     color: dark_grey
     width_percentage: 30
   snippet:
-    color: dark_grey
+    color: grey
     width_percentage: 50
 
 finder:
   command: fzf # equivalent to the --finder option
-  overrides: --exact -i --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-preview
+  overrides: --exact -i --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-preview --reverse --prompt='  '
   overrides_var: --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-exact
 
 cheats:

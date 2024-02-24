@@ -100,11 +100,7 @@ __on_empty_buffer() {
   fi
 }
 
-__search_alias() {
-  eval "$(alias | fzf --delimiter='=' --height 70% --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"
-}
-
-__alias_or_delete() { __on_empty_buffer __search_alias "zle backward-delete-char"; }
+__alias_or_delete() { __on_empty_buffer __run_alias "zle backward-delete-char"; }
 zle -N __alias_or_delete
 bindkey '^[[3~' __alias_or_delete
 

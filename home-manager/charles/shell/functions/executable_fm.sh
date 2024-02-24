@@ -2,6 +2,7 @@
 
 __open_file() {
   # Select file(s) with fzf, if no selection do nothing
+
   local selected_files
   selected_files=$(
     find -L . \
@@ -23,13 +24,16 @@ __open_file() {
       -o -name '.direnv' \) \
       -prune -o -printf '%P\n' 2>/dev/null |
       tail -n +2 |
-      fzf \
+      fzf-tmux \
+        -p \
+        -h 90% \
+        -w 95% \
+        --prompt='  ' \
         --multi \
         --reverse \
-        --border none \
         --info=hidden \
+        --border sharp \
         --cycle \
-        --height 70% \
         --ansi \
         --header-first \
         --header=''\''exact !not [!]^prefix [!]suffix$' \
@@ -37,6 +41,8 @@ __open_file() {
         --preview-window right,55%,border-none,~3 \
         --bind='ctrl-y:execute-silent(wl-copy {})'
   ) || return 0
+  # --border none \
+  # --height 70% \
 
   # Check number of selected files
   local num_lines
@@ -84,6 +90,7 @@ __ripgrep() {
       --delimiter : \
       --reverse \
       --border none \
+      --prompt='  ' \
       --cycle \
       --info=hidden \
       --height 70% \

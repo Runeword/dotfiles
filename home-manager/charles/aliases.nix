@@ -64,7 +64,7 @@
     bios = "sudo dmidecode -s bios-version";
     window = "xprop WM_CLASS";
     progress = "watch progress -q";
-    aliases = ''eval "$(alias | fzf --delimiter='=' --height 70% --bind "enter:execute(echo {2} | tr -d \"'\")+abort")"'';
+    aliases = "__run_alias";
     hardware = "hwinfo --short";
     system = "neofetch";
     fonts = "fc-list : family style | fzf";

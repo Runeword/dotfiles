@@ -106,7 +106,16 @@ bindkey '^[[3~' __alias_or_delete
 
 __yazi() { __on_empty_buffer "yazi < $TTY"; }
 zle -N __yazi
-bindkey '\e' __yazi
+bindkey '^[' __yazi
+# bindkey '\e' __yazi
+
+# __tmux_copy_mode() { __on_empty_buffer "tmux copy-mode > /dev/null 2>&1"; }
+# zle -N __tmux_copy_mode
+# bindkey '^[' __tmux_copy_mode
+
+__tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "" "send -X search-backward-incremental \"%%%\""'; }
+zle -N __tmux_search
+bindkey '/' __tmux_search
 
 __history_or_delete() { __on_empty_buffer "zle fzf-history-widget; zle accept-line" "zle backward-delete-char"; }
 zle -N __history_or_delete

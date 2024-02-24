@@ -24,15 +24,13 @@ __open_file() {
       -o -name '.direnv' \) \
       -prune -o -printf '%P\n' 2>/dev/null |
       tail -n +2 |
-      fzf-tmux \
-        -p \
-        -h 90% \
-        -w 95% \
+      fzf \
+        --height 70% \
+        --border none \
         --prompt='  ' \
         --multi \
         --reverse \
         --info=hidden \
-        --border sharp \
         --cycle \
         --ansi \
         --header-first \
@@ -41,8 +39,10 @@ __open_file() {
         --preview-window right,55%,border-none,~3 \
         --bind='ctrl-y:execute-silent(wl-copy {})'
   ) || return 0
-  # --border none \
-  # --height 70% \
+  # fzf-tmux \
+  #   -p \
+  #   -h 90% \
+  #   -w 95% \
 
   # Check number of selected files
   local num_lines

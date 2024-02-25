@@ -107,6 +107,7 @@
     terraform
     ngrok
     unzip
+    lux
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 
@@ -147,7 +148,9 @@
     kooha
     krita
     # obs-studio
-    vlc
+    # vlc
+    mpv
+    # mpvScripts.uosc
     figma-linux
     fstl
     # davinci-resolve

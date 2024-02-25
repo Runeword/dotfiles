@@ -6,6 +6,8 @@ __bluetoothctl() {
     --preview-window right,65%,noborder \
     --no-scrollbar \
     --reverse \
+    --prompt='  ' \
+    --info=inline:'' \
     --no-separator \
     --border none \
     --header-first \

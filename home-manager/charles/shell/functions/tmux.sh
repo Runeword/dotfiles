@@ -24,6 +24,8 @@ __switch_session() {
 			--cycle \
 			--height 50% \
       --no-separator \
+      --prompt='  ' \
+      --reverse \
       --info=inline:'' \
 			--bind='tab:down,btab:up' \
       --bind='enter:execute(echo {1})+abort' \
@@ -55,6 +57,8 @@ __switch_window() {
 			--cycle \
 			--height 50% \
 			--delimiter=' ' \
+      --prompt='  ' \
+      --reverse \
       --no-separator \
       --info=inline:'' \
 			--bind='tab:down,btab:up' \

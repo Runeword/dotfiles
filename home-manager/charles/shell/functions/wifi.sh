@@ -8,6 +8,10 @@ __nmcli() {
       --header-lines=1 \
       --preview 'echo {2}' \
       --preview-window right,30%,noborder \
+      --reverse \
+      --prompt='  ' \
+      --no-separator \
+      --info=inline:'' \
       --no-scrollbar \
       --header-first \
       --header='C-ENT  connect     C-r    rescan

@@ -22,6 +22,10 @@
 
   home.sessionVariables.FZF_DEFAULT_COMMAND = "
 fd \
+--reverse \
+--prompt='  ' \
+--no-separator \
+--info=inline:'' \
 --hidden \
 --follow \
 --no-ignore \

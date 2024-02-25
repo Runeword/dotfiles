@@ -15,7 +15,7 @@ __update_flake_inputs() {
 	local selected_inputs
 	selected_inputs=$(
 		echo "$inputs" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --border none --cycle --height 70% \
+			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
 			--preview-window right,75%,noborder
 	)
@@ -42,7 +42,7 @@ __use_flake_template() {
 	local selected_template
 	selected_template=$(
 		echo "$templates" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --border none --cycle --height 70% \
+			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
 			--preview "bat --style=plain --color=always $(nix flake metadata $flake_path --json | jq -r .path)/{}/flake.nix" \
 			--preview-window right,80%,noborder
 	)

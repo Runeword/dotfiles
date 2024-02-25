@@ -36,11 +36,6 @@
     ".." = "cd ..";
     "..." = "cd ../..";
 
-    # ______________________________________ Hyprland
-
-    ym = "hyprctl monitors";
-    yc = "hyprctl clients";
-
     # ______________________________________ CLIPBOARD
 
     # c = "!! | wl-copy";
@@ -70,6 +65,8 @@
     fonts = "fc-list : family style | fzf";
     path = "echo \"\${PATH//:/\\n}\"";
     devices = "sudo libinput list-devices";
+    monitors = "hyprctl monitors";
+    clients = "hyprctl clients";
     kb = "pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1";
     pk = "sudo pkill";
     pg = "pgrep -x";

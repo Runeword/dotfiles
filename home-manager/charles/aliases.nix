@@ -35,6 +35,7 @@
     i = "setsid satty --copy-command 'wl-copy' --early-exit --init-tool brush --output-filename ~/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').png --filename";
     ".." = "cd ..";
     "..." = "cd ../..";
+    xd = "xdg-mime default";
 
     # ______________________________________ CLIPBOARD
 

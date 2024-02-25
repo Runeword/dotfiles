@@ -5,6 +5,7 @@ __select_files() {
     --multi --reverse --no-separator --border none --cycle --height 100% \
     --info=inline:'' \
     --header-first \
+    --prompt='  ' \
     --header="$2" \
     --preview 'chezmoi diff --reverse --color=true ~/{}' \
     --preview-window bottom,80%,noborder
@@ -75,6 +76,7 @@ chf() {
       --multi --reverse --no-separator --border none --cycle --height 70% \
       --info=inline:'' \
       --header-first \
+      --prompt='  ' \
       --header="chezmoi forget" \
       --preview '[ -f {} ] && bat --style=plain --color=always {}' \
       --preview-window right,70%,noborder)

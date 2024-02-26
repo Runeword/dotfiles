@@ -14,13 +14,13 @@ hovered         = { reversed = true }
 preview_hovered = { reversed = true }
 
 # Find
-find_keyword  = { fg = "yellow", italic = true }
-find_position = { fg = "magenta", bg = "reset", italic = true }
+find_keyword  = { bg = "#5d00ff", reversed = false }
+find_position = { italic = true }
 
 # Marker
-marker_selected = { fg = "lightgreen",  bg = "lightgreen" }
-marker_copied   = { fg = "lightyellow", bg = "lightyellow" }
-marker_cut      = { fg = "lightred",    bg = "lightred" }
+marker_selected = { fg = "#5d00ff" }
+marker_copied   = { fg = "yellow" }
+marker_cut      = { fg = "lightred" }
 
 # Tab
 tab_active   = { fg = "white" }
@@ -45,7 +45,7 @@ separator_style = { fg = "darkgray", bg = "darkgray" }
 
 # Mode
 mode_normal = { fg = "black", bg = "lightblue", bold = true }
-mode_select = { fg = "black", bg = "lightgreen", bold = true }
+mode_select = { fg = "black", bg = "green", bold = true }
 mode_unset  = { fg = "black", bg = "lightmagenta", bold = true }
 
 # Progress

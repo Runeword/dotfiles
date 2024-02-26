@@ -2,7 +2,7 @@ local vim = vim
 
 ----------------------------------- UNMAP
 
--- vim.keymap.set('n', '<Enter>', '<Nop>')
+vim.keymap.set('n', '<Enter>', '<Nop>')
 vim.keymap.set('n', '<C-n>', '<Nop>')
 vim.keymap.set('n', '<C-p>', '<Nop>')
 vim.keymap.set('',  'Q',     '<Nop>')
@@ -12,7 +12,8 @@ vim.keymap.set('',  'q',     '<Nop>')
 
 vim.keymap.set('x',           '<C-n>',      ':Norm ')
 vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')
-vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
+-- vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
+vim.keymap.set('n',           'g<Space>',   ':s/\\s\\{2,}/ /g<CR>:nohlsearch<CR>')
 vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   { remap = true, })
 vim.keymap.set({ 'x', 'n', }, '<Leader>q', '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q', '<cmd>qa!<CR>')
@@ -243,6 +244,8 @@ vim.keymap.set({ 'n', },      '\'',     function() vim.fn.search('[\'"`]') end)
 vim.keymap.set({ 'n', },      '"',     function() vim.fn.search('[\'"`]', 'b') end)
 vim.keymap.set({ 'n', 'x', }, '<Tab>',     function() vim.fn.search('[([{]') end)
 vim.keymap.set({ 'n', 'x', }, '<S-Tab>',     function() vim.fn.search('[([{]', 'b') end)
+-- vim.keymap.set({ 'n', 'x', }, '<Tab>',     '<Plug>(buf-surf-forward)')
+-- vim.keymap.set({ 'n', 'x', }, '<S-Tab>',     '<Plug>(buf-surf-back)')
 
 vim.keymap.set('n',           '<C-i>', '<C-i>',                                     { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')

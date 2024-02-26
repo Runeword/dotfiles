@@ -27,7 +27,6 @@ text/css=nvim.desktop
 text/csv=nvim.desktop
 text/javascript=nvim.desktop
 text/plain=nvim.desktop
-video/x-msvideo=vlc.desktop;imv.desktop;
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-chrome.desktop
 application/x-krita=userapp-krita-GCAKD2.desktop
 application/x-zerosize=imv.desktop

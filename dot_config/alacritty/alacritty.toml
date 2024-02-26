@@ -44,15 +44,12 @@ live_config_reload = true
 [colors.normal]
    black = "#000000"
    blue  = "#87AFD7"
-   cyan  = "#58b8b5"
-   # green   = "#42ad8c"
-   green   = "#59ab71"
-   magenta = "#7e6fc4"
+   cyan  = "#5abfad"
+   green   = "#6eb068"
+   magenta = "#9381e3"
    red     = "#ff75a9"
    white   = "#e4e8f2"
    yellow  = "#ffc869"
-   # yellow  = "#ffbb00"
-   # yellow  = "#ed725c"
 
 [keyboard]
    bindings = [

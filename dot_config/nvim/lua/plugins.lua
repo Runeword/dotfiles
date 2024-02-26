@@ -6,6 +6,7 @@ local plugins = {
   { 'kana/vim-arpeggio', },
   { 'tpope/vim-abolish', },
   { 'svban/YankAssassin.vim', },
+  { 'ton/vim-bufsurf', },
 
   {
     'willothy/flatten.nvim',

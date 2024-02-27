@@ -94,7 +94,18 @@
     hp = "nvim $HOME/home-manager/$USER/packages.nix";
     ov = "nvim $HOME/home-manager/$USER/overlays.nix";
     al = "nvim $HOME/home-manager/$USER/aliases.nix";
-    me = "cd /run/media/$USER";
+    me = ''
+      __open_device() {
+        local devices
+        devices=$(ls /run/media/"$USER")
+        if [ "$devices" = "" ]; then return 0; fi
+        local device
+        device=$(echo "$devices" | fzf --reverse --info=hidden --prompt='  ' --no-separator --height 70% --header="C-u unmount device" --header-first --bind='ctrl-u:reload-sync(umount /run/media/"$USER"/{})')
+        if [ "$device" = "" ]; then return 0; fi
+        cd "/run/media/$USER/$device" || return 0
+      }
+      __open_device
+    '';
     ne = "cd $HOME/.config/nvim";
     de = "cd $HOME/dev";
     ho = "cd $HOME/home-manager/$USER";

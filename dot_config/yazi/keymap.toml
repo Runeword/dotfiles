@@ -32,7 +32,7 @@
       { on = ["<PageDown>"], exec = "arrow 100%", desc = "Move cursor down one page" },
 
       { on = ["h"], exec = ["leave", "escape --visual --select"], desc = "Go back to the parent directory" },
-      { on = ["l"], exec = ["enter", "escape --visual --select"], desc = "Enter the child directory" },
+      { on = ["t"], exec = ["enter", "escape --visual --select"], desc = "Enter the child directory" },
 
       { on = ["H"], exec = "back", desc = "Go back to the previous directory" },
       { on = ["L"], exec = "forward", desc = "Go forward to the next directory" },
@@ -69,7 +69,8 @@
       { on = ["P"], exec = "paste --force", desc = "Paste the files (overwrite if the destination exists)" },
       { on = ["-"], exec = "link", desc = "Symlink the absolute path of files" },
       { on = ["_"], exec = "link --relative", desc = "Symlink the relative path of files" },
-      { on = ["d"], exec = ["remove", "escape --visual --select"], desc = "Move the files to the trash" },
+      # { on = ["d"], exec = ["remove", "escape --visual --select"], desc = "Move the files to the trash" },
+      { on = ["dy"], exec = "remove --force", desc = "Cut the selected characters" },
       { on = ["D"], exec = ["remove --permanently", "escape --visual --select"], desc = "Permanently delete the files" },
       { on = ["a"], exec = "create", desc = "Create a file or directory (ends with / for directories)" },
       { on = ["r"], exec = "rename --cursor=before_ext", desc = "Rename a file or directory" },
@@ -82,7 +83,7 @@
       # { on = [ "z" ],         exec = "jump zoxide",                                          desc = "Jump to a directory using zoxide" },
       { on = ["z", "u"], exec = "shell --confirm 'ouch decompress $@'", desc = "Decompress" },
       { on = ["z", "d"], exec = "shell --confirm 'ouch compress $@'", desc = "Compress" },
-      { on = ["Z"], exec = "jump fzf", desc = "Jump to a directory, or reveal a file using fzf" },
+      { on = ["<Tab>"], exec = "jump fzf", desc = "Jump to a directory, or reveal a file using fzf" },
 
       # Linemode
       { on = ["m", "s"], exec = "linemode size", desc = "Set linemode to size" },
@@ -120,7 +121,7 @@
       { on = [",", "S"], exec = "sort size --reverse --dir-first", desc = "Sort by size (reverse)" },
 
       # Tabs
-      { on = ["t"], exec = "tab_create --current", desc = "Create a new tab using the current path" },
+      # { on = ["t"], exec = "tab_create --current", desc = "Create a new tab using the current path" },
 
       { on = ["1"], exec = "tab_switch 0", desc = "Switch to the first tab" },
       { on = ["2"], exec = "tab_switch 1", desc = "Switch to the second tab" },
@@ -205,8 +206,8 @@
       { on = ["a"], exec = "insert --append", desc = "Enter append mode" },
       { on = ["I"], exec = ["move -999", "insert"], desc = "Move to the BOL, and enter insert mode" },
       { on = ["A"], exec = ["move 999", "insert --append"], desc = "Move to the EOL, and enter append mode" },
-      { on = ["v"], exec = "visual", desc = "Enter visual mode" },
-      { on = ["V"], exec = ["move -999", "visual", "move 999"], desc = "Enter visual mode and select all" },
+      # { on = ["v"], exec = "visual", desc = "Enter visual mode" },
+      # { on = ["V"], exec = ["move -999", "visual", "move 999"], desc = "Enter visual mode and select all" },
 
       # Character-wise movement
       { on = ["h"], exec = "move -1", desc = "Move back a character" },
@@ -244,7 +245,8 @@
       { on = ["<A-d>"], exec = "kill forward", desc = "Kill forwards to the end of the current word" },
 
       # Cut/Yank/Paste
-      { on = ["d"], exec = "delete --cut", desc = "Cut the selected characters" },
+      # { on = ["d"], exec = "delete --cut", desc = "Cut the selected characters" },
+      # { on = ["dy"], exec = "remove --force", desc = "Cut the selected characters" },
       { on = ["D"], exec = ["delete --cut", "move 999"], desc = "Cut until the EOL" },
       { on = ["c"], exec = "delete --cut --insert", desc = "Cut the selected characters, and enter insert mode" },
       { on = ["C"], exec = ["delete --cut --insert", "move 999"], desc = "Cut until the EOL, and enter insert mode" },

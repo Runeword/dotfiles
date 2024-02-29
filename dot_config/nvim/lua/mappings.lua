@@ -3,24 +3,26 @@ local vim = vim
 ----------------------------------- UNMAP
 
 vim.keymap.set('n', '<Enter>', '<Nop>')
-vim.keymap.set('n', '<C-n>', '<Nop>')
-vim.keymap.set('n', '<C-p>', '<Nop>')
-vim.keymap.set('',  'Q',     '<Nop>')
-vim.keymap.set('',  'q',     '<Nop>')
+vim.keymap.set('n', '<C-n>',   '<Nop>')
+vim.keymap.set('n', '<C-p>',   '<Nop>')
+vim.keymap.set('',  'Q',       '<Nop>')
+vim.keymap.set('',  'q',       '<Nop>')
 
 -----------------------------------
 
-vim.keymap.set('x',           '<C-n>',      ':Norm ')
-vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')
+vim.keymap.set('x',           '<C-n>',           ':Norm ')
+vim.keymap.set('n',           '<Leader>g',       '<cmd>silent !google-chrome-stable %:p<CR>')
 -- vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set('n',           'g<Space>',   ':s/\\s\\{2,}/ /g<CR>:nohlsearch<CR>')
-vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                   { remap = true, })
-vim.keymap.set({ 'x', 'n', }, '<Leader>q', '<cmd>qa!<CR>')
-vim.keymap.set({ 'x', 'n', }, 'Q', '<cmd>qa!<CR>')
+vim.keymap.set('n',           'g<Space>',        '<cmd>silent s/\\s\\+\\%#\\s*\\|\\s*\\%#\\s\\+/ /g<CR><cmd>nohlsearch<CR>')
+vim.keymap.set('n',           's', function() vim.fn.search('\\s\\+\\ze\\s*') end)
+vim.keymap.set('n',           'S', function() vim.fn.search('\\s\\+\\ze\\s*', 'b') end)
+vim.keymap.set({ 'x', 'n', }, '<Space>',         '<Enter>',                                                                  { remap = true, })
+vim.keymap.set({ 'x', 'n', }, '<Leader>q',       '<cmd>qa!<CR>')
+vim.keymap.set({ 'x', 'n', }, 'Q',               '<cmd>qa!<CR>')
 
-vim.keymap.set('n',           '<Leader>ti', '<cmd>Inspect<CR>')
-vim.keymap.set('n',           '<Leader>tt', '<cmd>InspectTree<CR>')
-vim.keymap.set('n',           '<Leader>tq', '<cmd>PreviewQuery<CR>')
+vim.keymap.set('n',           '<Leader>ti',      '<cmd>Inspect<CR>')
+vim.keymap.set('n',           '<Leader>tt',      '<cmd>InspectTree<CR>')
+vim.keymap.set('n',           '<Leader>tq',      '<cmd>PreviewQuery<CR>')
 
 -- Display messages in a floating window
 local function displayMessages()
@@ -148,7 +150,7 @@ vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
 
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', '<BS>',   '`[v`]')
-vim.keymap.set('n', 'f', '/')
+vim.keymap.set('n', 'f',      '/')
 
 -- When the line is empty, move the cursor to the beginning of the line
 vim.keymap.set('n', 'i', function()
@@ -214,10 +216,10 @@ vim.keymap.set('i', '<C-H>', '<C-w>')
 
 --------------------------------- MOTIONS
 
-vim.keymap.set({ 'x', 'n', }, 'k',   'gk')
-vim.keymap.set({ 'x', 'n', }, 'j',   'gj')
-vim.keymap.set({ 'x', 'n', }, 'J',   '4jg^')
-vim.keymap.set({ 'x', 'n', }, 'K',   '4kg^')
+vim.keymap.set({ 'x', 'n', }, 'k',     'gk')
+vim.keymap.set({ 'x', 'n', }, 'j',     'gj')
+vim.keymap.set({ 'x', 'n', }, 'J',     '4jg^')
+vim.keymap.set({ 'x', 'n', }, 'K',     '4kg^')
 vim.keymap.set({ 'x', 'n', }, '<C-j>', 'J')
 
 -- vim.cmd([[
@@ -238,16 +240,16 @@ vim.keymap.set('n', '&', 'g^')
 
 -- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'W') end)
 -- vim.keymap.set({ 'n', 'x', }, '<Space>', function() vim.fn.search('\\s\\+', 'bW') end)
-vim.keymap.set({ 'n', 'x', }, ',',     function() vim.fn.search('[,.:;]') end)
-vim.keymap.set({ 'n', 'x', }, '<',     function() vim.fn.search('[,.:;]', 'b') end)
-vim.keymap.set({ 'n', },      '\'',     function() vim.fn.search('[\'"`]') end)
-vim.keymap.set({ 'n', },      '"',     function() vim.fn.search('[\'"`]', 'b') end)
-vim.keymap.set({ 'n', 'x', }, '<Tab>',     function() vim.fn.search('[([{]') end)
-vim.keymap.set({ 'n', 'x', }, '<S-Tab>',     function() vim.fn.search('[([{]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, ',',       function() vim.fn.search('[,.:;]') end)
+vim.keymap.set({ 'n', 'x', }, '<',       function() vim.fn.search('[,.:;]', 'b') end)
+vim.keymap.set({ 'n', },      '\'',      function() vim.fn.search('[\'"`]') end)
+vim.keymap.set({ 'n', },      '"',       function() vim.fn.search('[\'"`]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, '<Tab>',   function() vim.fn.search('[([{]') end)
+vim.keymap.set({ 'n', 'x', }, '<S-Tab>', function() vim.fn.search('[([{]', 'b') end)
 -- vim.keymap.set({ 'n', 'x', }, '<Tab>',     '<Plug>(buf-surf-forward)')
 -- vim.keymap.set({ 'n', 'x', }, '<S-Tab>',     '<Plug>(buf-surf-back)')
 
-vim.keymap.set('n',           '<C-i>', '<C-i>',                                     { silent = true, })
+vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
 -- vim.keymap.set('n', '<PageUp>', '<C-i>')
 -- vim.keymap.set('n', '<PageDown>', '<C-o>')
 

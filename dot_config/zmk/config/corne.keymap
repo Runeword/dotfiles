@@ -289,7 +289,7 @@ NAME: NAME { \
         &kp C_PREV &kp C_NEXT &kp C_BRI_DN &kp C_BRI_UP &kp C_PLAY_PAUSE       &trans &kp PG_UP &kp PG_DN &kp HOME &kp END
         &trans &trans &trans &trans &trans                                     &trans &kp UP &kp DOWN &kp LEFT &kp RIGHT
         &trans &trans &kp C_VOL_DN &kp C_VOL_UP &kp C_MUTE                     &trans &trans &trans &trans &trans
-        &trans &trans &trans &trans &kp LS(SPACE) &trans
+        &trans &trans &trans &kp LS(ESC) &kp LS(SPACE) &trans
         >;
     };
 

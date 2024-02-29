@@ -1,5 +1,6 @@
 return {
   'kylechui/nvim-surround',
+  enabled = true,
 
   config = function()
     require('nvim-surround').setup({
@@ -15,7 +16,7 @@ return {
         -- delete = false,
         -- change = false,
         -- visual = false,
-        normal = 's',
+        normal = 'ys',
         delete = 'ds',
         change = 'cs',
         visual = 's',

@@ -150,6 +150,7 @@
     # obs-studio
     # vlc
     mpv
+    libsForQt5.okular
     # mpvScripts.uosc
     figma-linux
     fstl

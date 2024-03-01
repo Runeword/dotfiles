@@ -1,0 +1,4 @@
+[".config/zmk-config"]
+type = "git-repo"
+url = "https://github.com/Runeword/zmk-config.git"
+refreshPeriod = "168h"

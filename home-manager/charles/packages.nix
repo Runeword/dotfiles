@@ -70,6 +70,7 @@
     # ---------------------------------- Browsers
     google-chrome
     firefox
+    tor-browser
 
     # ---------------------------------- Hardware
     networkmanagerapplet
@@ -108,6 +109,7 @@
     ngrok
     unzip
     lux
+    exiftool
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 
@@ -148,7 +150,7 @@
     kooha
     krita
     # obs-studio
-    # vlc
+    vlc
     mpv
     libsForQt5.okular
     # mpvScripts.uosc

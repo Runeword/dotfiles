@@ -1,5 +1,4 @@
 [Added Associations]
-application/pdf=sioyek.desktop
 
 [Default Applications]
 text/html=google-chrome.desktop
@@ -32,6 +31,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document=google-c
 application/x-krita=userapp-krita-GCAKD2.desktop
 application/x-zerosize=imv.desktop
 application/x-shellscript=userapp-nvim-EUX2H2.desktop
-application/pdf=okularApplication_pdf.desktop
+application/pdf=sioyek.desktop
+video/webm=mpv.desktop
 
 [Removed Associations]

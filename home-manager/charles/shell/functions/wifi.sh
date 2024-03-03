@@ -14,10 +14,11 @@ __nmcli() {
       --info=inline:'' \
       --no-scrollbar \
       --header-first \
-      --header='C-ENT  connect     C-r    rescan
-C-u    up          C-o    wifi on/off
-C-d    down
-C-DEL  delete' \
+      --header='
+C-c    connect          C-r    rescan
+C-d    disconnect       C-o    wifi on/off
+C-DEL  delete
+' \
       --bind='enter:execute(echo {2})+abort' \
       --bind='ctrl-c:execute-silent(nmcli connection up {2})+reload(nmcli device wifi)' \
       --bind='ctrl-d:execute-silent(nmcli connection down {3})+reload(nmcli device wifi)' \

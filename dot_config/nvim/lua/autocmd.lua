@@ -15,6 +15,14 @@ vim.api.nvim_create_autocmd('ExitPre', {
   desc = 'Set cursor back to beam when leaving Neovim',
 })
 
+vim.api.nvim_create_augroup('shell', { clear = true, })
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = 'shell',
+  pattern = '*.sh',
+  command = '!chmod +x %',
+  desc = 'Make shell scripts executable after writing',
+})
+
 vim.api.nvim_create_augroup('term', { clear = true, })
 vim.api.nvim_create_autocmd('TermOpen', {
   group = 'term',

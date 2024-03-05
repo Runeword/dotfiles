@@ -159,6 +159,7 @@
     chd = "chezmoi diff --reverse";
     chi = "chezmoi ignored";
     chc = "chezmoi cd";
+    chr = "chezmoi --refresh-externals apply";
 
     # ______________________________________ GO
 

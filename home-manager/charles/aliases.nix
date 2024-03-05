@@ -156,6 +156,7 @@
 
     # ______________________________________ CHEZMOI
 
+    chn = "chezmoi status | awk '{print $2}' | fzf --multi --reverse --cycle --prompt=' ' --height 70% --no-separator --info=inline:'' | xargs nvim";
     chd = "chezmoi diff --reverse";
     chi = "chezmoi ignored";
     chc = "chezmoi cd";

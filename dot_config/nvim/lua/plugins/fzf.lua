@@ -49,9 +49,10 @@ return {
     local actions = require('fzf-lua.actions')
 
     require('fzf-lua').setup({
+      -- 'fzf-native',
       winopts = {
-        fullscreen = true,
-        border = 'none',
+        fullscreen = false,
+        border = 'single',
         preview = {
           layout = 'horizontal',
           horizontal = 'up:70%',
@@ -59,6 +60,15 @@ return {
           delay = 0,
           scrollchars = { '▎', '', },
         },
+      },
+
+      fzf_opts = {
+        -- ['--ansi']         = true,
+        -- ['--info']         = "inline: ",
+        -- ['--height']       = '100%',
+        -- ['--layout']       = 'reverse',
+        -- ['--border']       = 'none',
+        ['--no-separator'] = true,
       },
 
       keymap = {

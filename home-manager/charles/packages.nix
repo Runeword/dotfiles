@@ -165,6 +165,7 @@
     swaybg
     waypaper
     hyprpaper
+    hyprlock
     hyprpicker
     wl-clipboard
     wev

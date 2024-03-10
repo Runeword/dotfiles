@@ -40,6 +40,7 @@ opt.lazyredraw = true              -- When running macros and regexes on a large
 opt.list = true
 opt.listchars:append "eol:¬,tab:  ,lead: ,multispace:˙,trail:˙"
 opt.laststatus = 3
+o.fillchars='eob: '
 -- o.cmdheight=0
 
 -- vim.cmd([[color haslo]])

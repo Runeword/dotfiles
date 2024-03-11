@@ -20,9 +20,9 @@ vim.keymap.set({ 'x', 'n', }, '<Space>',         '<Enter>',                     
 vim.keymap.set({ 'x', 'n', }, '<Leader>q',       '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q',               '<cmd>qa!<CR>')
 
-vim.keymap.set('n',           '<Leader>ti',      '<cmd>Inspect<CR>')
-vim.keymap.set('n',           '<Leader>tt',      '<cmd>InspectTree<CR>')
-vim.keymap.set('n',           '<Leader>tq',      '<cmd>PreviewQuery<CR>')
+-- vim.keymap.set('n',           '<Leader>ti',      '<cmd>Inspect<CR>')
+-- vim.keymap.set('n',           '<Leader>tt',      '<cmd>InspectTree<CR>')
+-- vim.keymap.set('n',           '<Leader>tq',      '<cmd>PreviewQuery<CR>')
 
 -- Display messages in a floating window
 local function displayMessages()

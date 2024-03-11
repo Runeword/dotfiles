@@ -63,11 +63,6 @@ return {
       },
 
       fzf_opts = {
-        -- ['--ansi']         = true,
-        -- ['--info']         = "inline: ",
-        -- ['--height']       = '100%',
-        -- ['--layout']       = 'reverse',
-        -- ['--border']       = 'none',
         ['--no-separator'] = true,
       },
 

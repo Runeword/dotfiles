@@ -15,23 +15,28 @@ return {
       },
     })
 
-    -- local mappings = require('hydra')({
-    --   mode = { 'o', 'n', 'x', },
+    local mappings = require('hydra')({
+      mode = { 'o', 'n', 'x', },
 
-    --   config = {
-    --     hint = { type = 'window', },
-    --     color = 'pink',
-    --     foreign_keys = 'run',
-    --     exit = false,
-    --   },
+      config = {
+        hint = { type = 'window', },
+        color = 'pink',
+        foreign_keys = 'run',
+        exit = false,
+      },
 
-    --   heads = {
-    --     -- { 'o',     require('neotest').summary.toggle(), },
-    --     { 'q',     nil, { exit = true, }, },
-    --     { '<Esc>', nil, { exit = true, }, },
-    --   },
-    -- })
+      heads = {
+        { 't',     require('neotest').summary.toggle, },
+        { 'r',     require('neotest').run.run, },
+        { 'f',     function() require('neotest').run.run(vim.fn.expand('%')) end, },
+        { 'd',     function() require('neotest').run.run({ strategy = 'dap', }) end, },
+        { 's',     require('neotest').run.stop, },
+        { 'a',     require('neotest').run.attach, },
+        { 'q',     nil,                                                              { exit = true, }, },
+        { '<Esc>', nil,                                                              { exit = true, }, },
+      },
+    })
 
-    -- vim.keymap.set({ 'n', 'x', }, '<Leader>t', function() mappings:activate() end)
+    vim.keymap.set({ 'n', 'x', }, '<Leader>t', function() mappings:activate() end)
   end,
 }

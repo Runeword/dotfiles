@@ -5,7 +5,6 @@
     # xp = "xclip -selection c -o";
     # b = "br"; # :open_preview
     # w = "waypaper";
-    # w = "__wallpaper";
     # hhp = "hyprctl hyprpaper preload";
     # hhw = "hyprctl hyprpaper wallpaper";
     # color = "colorpicker"; # X11
@@ -63,6 +62,7 @@
     aliases = "__run_alias";
     hardware = "hwinfo --short";
     system = "neofetch";
+    wallpaper = "__wallpaper";
     fonts = "fc-list : family style | fzf";
     path = "echo \"\${PATH//:/\\n}\"";
     devices = "sudo libinput list-devices";

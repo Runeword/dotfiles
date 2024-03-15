@@ -25,8 +25,9 @@ return {
   end,
 
   config = function()
-    vim.keymap.set('n',           '<C-w>',     '<cmd>silent bwipeout!<CR>')
-    vim.keymap.set('n',           '<C-t>',     '<cmd>silent enew<CR>')
+    vim.keymap.set('n', 'q',     '<cmd>silent bwipeout!<CR>')
+    vim.keymap.set('n', '<C-t>', '<cmd>silent enew<CR>')
+    -- vim.keymap.set('n', '<C-w>', '<cmd>silent bwipeout!<CR>')
 
     -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
     -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })

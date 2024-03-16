@@ -14,12 +14,13 @@ hovered         = { reversed = true }
 preview_hovered = { reversed = true }
 
 # Find
-find_keyword  = { bg = "#5d00ff", reversed = false }
-find_position = { italic = true }
+find_keyword  = { fg = "#5d00ff", reversed = true }
+# find_position = { italic = true }
 
 # Marker
-marker_selected = { fg = "#5d00ff" }
+marker_selected = { fg = "#4600bf" }
 marker_copied   = { fg = "yellow" }
+marker_marked   = { fg = "#5d00ff" }
 marker_cut      = { fg = "lightred" }
 
 # Tab

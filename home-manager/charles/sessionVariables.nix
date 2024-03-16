@@ -6,7 +6,8 @@
   home.sessionVariables.EDITOR = "nvim";
   home.sessionVariables.VISUAL = "nvim";
   home.sessionVariables.MANPAGER = "nvim +Man!";
-  home.sessionVariables.DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
+  # home.sessionVariables.DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
+  home.sessionVariables.DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
   # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
 
   home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
@@ -41,6 +42,13 @@ fd \
 ";
 
   home.sessionVariables.FZF_CTRL_R_OPTS = "
+--reverse \
+--prompt='  ' \
+--no-separator \
+--info=inline:'' \
+";
+
+  home.sessionVariables.FZF_CTRL_T_OPTS = "
 --reverse \
 --prompt='  ' \
 --no-separator \

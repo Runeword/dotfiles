@@ -110,6 +110,7 @@
     unzip
     lux
     exiftool
+    watchexec
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 

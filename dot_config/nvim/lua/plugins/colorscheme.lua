@@ -70,6 +70,7 @@ return {
         vim.api.nvim_set_hl(0, 'ErrorMsg',     { bg = 'none', fg = '#cf4e84', })
         vim.api.nvim_set_hl(0, 'Warning',      { bg = 'none', fg = '#ab6d46', })
         vim.api.nvim_set_hl(0, 'WarningMsg',   { bg = 'none', fg = '#ab6d46', })
+        vim.api.nvim_set_hl(0, 'MsgArea',      { bg = 'none', fg = '#cccccc', })
       end,
     })
   end,

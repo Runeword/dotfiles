@@ -111,6 +111,7 @@
     lux
     exiftool
     watchexec
+    meli
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 

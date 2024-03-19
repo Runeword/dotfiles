@@ -35,11 +35,16 @@ version_format = "${raw}"
 
 [nix_shell]
 format = "$symbol"
-symbol = "[ ](blue)"
+symbol = "[ ](blue)"
 
 [nodejs]
 format = "[$symbol$version](white) "
 symbol = "[󰎙 ](green)"
+version_format = "${raw}"
+
+[python]
+format = "[$symbol$version](white) "
+symbol = "[ ](green)"
 version_format = "${raw}"
 
 [package]

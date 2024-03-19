@@ -60,7 +60,7 @@ return {
     lspconfig.bashls.setup(set_config({ filetypes = { 'sh', 'zsh', }, }))
     lspconfig.cssls.setup(set_config())
     lspconfig.vuels.setup(set_config({ on_attach = on_attach_server(false), }))
-
+    lspconfig.pyright.setup(set_config())
 
     lspconfig.tsserver.setup(set_config(
       {

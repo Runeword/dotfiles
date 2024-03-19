@@ -132,7 +132,7 @@
 
     # ______________________________________ FLAKE
 
-    fl = "nix flake lock";
+    fl = "rm flake.lock && nix flake lock";
     fs = "nix flake show";
     fu = "nix flake update";
     fm = "nix flake metadata";

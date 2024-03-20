@@ -46,7 +46,7 @@
 
     b = "bluetuith";
     bl = "__bluetoothctl";
-    wi = "__nmcli";
+    w = "__nmcli";
     wo = "nmcli radio wifi on";
     wf = "nmcli radio wifi off";
 

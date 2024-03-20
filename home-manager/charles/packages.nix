@@ -124,6 +124,9 @@
     # ---------------------------------- Secrets
     bitwarden-cli
     doppler
+    pass-wayland
+    gnupg
+    gpg-tui
 
     # ---------------------------------- Archivers
     # zip

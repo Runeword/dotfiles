@@ -125,8 +125,8 @@
     bitwarden-cli
     doppler
     pass-wayland
-    gnupg
-    gpg-tui
+    # gnupg
+    # gpg-tui
 
     # ---------------------------------- Archivers
     # zip

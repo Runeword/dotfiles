@@ -38,7 +38,7 @@
   home.file."bin/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file."bin/tmux/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
   home.file."bin/fzf".source = "${pkgs.fzf}/share/fzf";
-  # home.file."bin/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
+  home.file."bin/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono"]; })
@@ -126,8 +126,8 @@
     bitwarden-cli
     doppler
     pass-wayland
-    # gnupg
-    # pinentry-curses
+    gnupg
+    pinentry-curses
     # gpg-tui
 
     # ---------------------------------- Archivers

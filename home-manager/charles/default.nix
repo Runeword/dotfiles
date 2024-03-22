@@ -31,7 +31,7 @@
     direnv.nix-direnv.enable = true;
 
     gpg.enable = true;
-    # gpg.homedir = "${config.home.homeDirectory}/.config/gnupg";
+    gpg.homedir = "${config.home.homeDirectory}/.config/gnupg";
 
     obs-studio.enable = true;
     # obs-studio.plugins = with pkgs.obs-studio-plugins; [

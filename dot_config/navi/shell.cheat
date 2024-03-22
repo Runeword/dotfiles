@@ -41,3 +41,12 @@ scp <port> <user>@<ip>:<remote-file> <local-directory>
 
 # Copy local directory to remote directory
 scp -r -P <port> <local-directory> <user>@<server>:<remote-directory>
+
+# Kill gpg-agent
+gpgconf --kill gpg-agent
+
+# Reload gpg-agent
+gpgconf --reload gpg-agent
+
+# Generate GPG key
+gpg --gen-key

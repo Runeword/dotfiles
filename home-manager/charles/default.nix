@@ -16,10 +16,10 @@
     # ./neovim.nix
   ];
 
-  services.gpg-agent = {
-    enable = true;
-    pinentryPackage = pkgs.pinentry-curses;
-  };
+  # services.gpg-agent = {
+  #   enable = true;
+  #   pinentryPackage = pkgs.pinentry-curses;
+  # };
 
   programs = {
     home-manager.enable = true;
@@ -30,8 +30,8 @@
     direnv.enableBashIntegration = true;
     direnv.nix-direnv.enable = true;
 
-    gpg.enable = true;
-    gpg.homedir = "${config.home.homeDirectory}/.config/gnupg";
+    # gpg.enable = true;
+    # gpg.homedir = "${config.home.homeDirectory}/.config/gnupg";
 
     obs-studio.enable = true;
     # obs-studio.plugins = with pkgs.obs-studio-plugins; [

@@ -45,12 +45,12 @@ separator_close = ""
 separator_style = { fg = "darkgray", bg = "darkgray" }
 
 # Mode
-mode_normal = { fg = "black", bg = "lightblue", bold = true }
+mode_normal = { fg = "white", bg = "black", bold = true }
 mode_select = { fg = "black", bg = "green", bold = true }
-mode_unset  = { fg = "black", bg = "lightmagenta", bold = true }
+mode_unset  = { fg = "black", bg = "red", bold = true }
 
 # Progress
-progress_label  = { bold = true }
+progress_label  = { fg = "white", bg = "white" }
 progress_normal = { fg = "blue", bg = "black" }
 progress_error  = { fg = "red", bg = "black" }
 

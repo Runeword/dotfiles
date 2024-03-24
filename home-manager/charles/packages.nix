@@ -140,6 +140,7 @@
     # ---------------------------------- Analitics
     htop
     btop
+    bottom
     duf
     gping
     tree

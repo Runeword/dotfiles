@@ -248,12 +248,6 @@ vim.keymap.set({ 'n', },      '\'',      function() vim.fn.search('[\'"`]') end)
 vim.keymap.set({ 'n', },      '"',       function() vim.fn.search('[\'"`]', 'b') end)
 -- vim.keymap.set({ 'n', 'x', }, '<Tab>',   function() vim.fn.search('[([{]') end)
 -- vim.keymap.set({ 'n', 'x', }, '<S-Tab>', function() vim.fn.search('[([{]', 'b') end)
-vim.keymap.set({ 'n', 'x', }, '<C-o>',     '<Plug>(buf-surf-forward)')
-vim.keymap.set({ 'n', 'x', }, '<C-i>',     '<Plug>(buf-surf-back)')
-
-vim.keymap.set('n', '<C-i>', '<C-i>', { silent = true, })
--- vim.keymap.set('n', '<PageUp>', '<C-i>')
--- vim.keymap.set('n', '<PageDown>', '<C-o>')
 
 ---------------------------------- folke/lazy.nvim
 

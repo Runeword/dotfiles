@@ -136,7 +136,7 @@
       { on = ["8"], run = "tab_switch 7", desc = "Switch to the eighth tab" },
       { on = ["9"], run = "tab_switch 8", desc = "Switch to the ninth tab" },
 
-      { on = ["<BackTab>"], run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
+      { on = ["<C-BackTab>"], run = "tab_switch -1 --relative", desc = "Switch to the previous tab" },
       { on = ["<C-Tab>"], run = "tab_switch 1 --relative", desc = "Switch to the next tab" },
 
       { on = ["<C-PageUp>"], run = "tab_swap -1", desc = "Swap the current tab with the previous tab" },

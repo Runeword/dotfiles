@@ -22,6 +22,18 @@
     # })
 
     # (self: super: {
+    #   tmux = super.tmux.overrideAttrs (oldAttrs: rec {
+    #     version = "3.0";
+    #     src = super.fetchFromGitHub {
+    #       owner = "tmux";
+    #       repo = "tmux";
+    #       rev = version;
+    #       sha256 = "sha256-yMoKEiST56gdFi7qBwncHltK7FyI04gXzGIWlGO5TMY=";
+    #     };
+    #   });
+    # })
+
+    # (self: super: {
     #   appimage-run = super.appimage-run.overrideAttrs (old: {
     #     extraPkgs = [ pkgs.libsecret ];
     #   });

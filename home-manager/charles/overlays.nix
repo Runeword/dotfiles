@@ -4,17 +4,19 @@
 , ...
 }: {
   nixpkgs.overlays = [
-    (self: super: {
-      tmux = super.tmux.overrideAttrs (old: {
-        src = super.fetchFromGitHub {
-          owner = "tmux";
-          repo = "tmux";
-          rev = "9ae69c3";
-          sha256 = "sha256-RX3RZ0Mcyda7C7im1r4QgUxTnp95nfpGgQ2HRxr0s64=";
-        };
-        patches = [ ];
-      });
-    })
+    # Downgrade tmux to 3.1c so option "set -s extended-keys on" works
+    # https://github.com/tmux/tmux/issues/2705
+    # (self: super: {
+    #   tmux = super.tmux.overrideAttrs (old: {
+    #     src = super.fetchFromGitHub {
+    #       owner = "tmux";
+    #       repo = "tmux";
+    #       rev = "25cae5d";
+    #       sha256 = "sha256-jkGcaghCP4oqw280pLt9XCJEZDZvb9o1sK0grdy/D7s=";
+    #     };
+    #     patches = [ ];
+    #   });
+    # })
 
     # (self: super: {
     #   # yazi = super.yazi.overrideAttrs (old: {

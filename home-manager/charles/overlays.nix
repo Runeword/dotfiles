@@ -4,6 +4,18 @@
 , ...
 }: {
   nixpkgs.overlays = [
+    (self: super: {
+      tmux = super.tmux.overrideAttrs (old: {
+        src = super.fetchFromGitHub {
+          owner = "tmux";
+          repo = "tmux";
+          rev = "9ae69c3";
+          sha256 = "sha256-RX3RZ0Mcyda7C7im1r4QgUxTnp95nfpGgQ2HRxr0s64=";
+        };
+        patches = [ ];
+      });
+    })
+
     # (self: super: {
     #   # yazi = super.yazi.overrideAttrs (old: {
     #   yazi = pkgs.rustPlatform.buildRustPackage {
@@ -19,18 +31,6 @@
     #     # cargoSha256 = "";
     #   };
     #   # });
-    # })
-
-    # (self: super: {
-    #   tmux = super.tmux.overrideAttrs (oldAttrs: rec {
-    #     version = "3.0";
-    #     src = super.fetchFromGitHub {
-    #       owner = "tmux";
-    #       repo = "tmux";
-    #       rev = version;
-    #       sha256 = "sha256-yMoKEiST56gdFi7qBwncHltK7FyI04gXzGIWlGO5TMY=";
-    #     };
-    #   });
     # })
 
     # (self: super: {

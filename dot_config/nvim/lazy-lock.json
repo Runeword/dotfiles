@@ -54,7 +54,6 @@
   "splitjoin.vim": { "branch": "main", "commit": "9b0c30f61f13ba4800a11107648bdd748ad511ba" },
   "stay-in-place.nvim": { "branch": "main", "commit": "0628b6db8970fc731abf9608d6f80659b58932c9" },
   "tfm.nvim": { "branch": "main", "commit": "0fd23be8d4adebcc65a30b3870c2090b97dc1bc2" },
-  "tree-setter": { "branch": "master", "commit": "08c1f2335c8c426a6ef1204bcac9f5e79eb077ef" },
   "vim-abolish": { "branch": "master", "commit": "dcbfe065297d31823561ba787f51056c147aa682" },
   "vim-arpeggio": { "branch": "master", "commit": "01c8fc1a72ef58e490ee0490c65ee313b1b6e843" },
   "vim-asterisk": { "branch": "master", "commit": "77e97061d6691637a034258cc415d98670698459" },

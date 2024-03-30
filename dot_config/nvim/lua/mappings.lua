@@ -139,8 +139,8 @@ vim.keymap.set({ 'n', 'x', }, '<C-Down>',  '<C-w>j')
 vim.keymap.set({ 'n', 'x', }, '<C-Up>',    '<C-w>k')
 vim.keymap.set({ 'n', 'x', }, '<C-Left>',  '<C-w>h')
 vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
-vim.keymap.set({ 'n', 'x', }, '<Tab>',     '<C-w>w')
-vim.keymap.set({ 'n', 'x', }, '<S-Tab>',   '<C-w>W')
+-- vim.keymap.set({ 'n', 'x', }, '<Tab>',     '<C-w>w')
+-- vim.keymap.set({ 'n', 'x', }, '<S-Tab>',   '<C-w>W')
 
 -- vim.keymap.set({ 'n', 'x', }, '<C-Down>',
 --   function()

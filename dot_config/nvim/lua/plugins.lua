@@ -27,7 +27,6 @@ local plugins = {
   { 'windwp/nvim-ts-autotag', },
   { 'tommcdo/vim-exchange', },
   { 'jghauser/mkdir.nvim', },
-  { 'filNaj/tree-setter', },
 
   {
     'ahmedkhalf/project.nvim',

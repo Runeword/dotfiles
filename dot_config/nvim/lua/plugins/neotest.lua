@@ -7,6 +7,7 @@ return {
     'anuvyklack/hydra.nvim',
     'nvim-treesitter/nvim-treesitter',
     'nvim-neotest/neotest-go',
+    'nvim-neotest/nvim-nio',
   },
   config = function()
     require('neotest').setup({

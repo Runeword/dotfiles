@@ -141,6 +141,7 @@
     htop
     btop
     bottom
+    procs
     duf
     gping
     tree

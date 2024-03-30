@@ -32,6 +32,8 @@ return {
     -- vim.keymap.set("n", "<Tab>", "<cmd>bnext<CR>", { silent = true, })
     -- vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<CR>", { silent = true, })
 
+    vim.keymap.set({ 'n', 'x', }, '<C-P>', '<cmd>BufferLineTogglePin<CR>',
+      { silent = true, })
     vim.keymap.set({ 'n', 'x', }, '<C-tab>', '<cmd>BufferLineCycleNext<CR>',
       { silent = true, })
     vim.keymap.set({ 'n', 'x', }, '<C-S-tab>', '<cmd>BufferLineCyclePrev<CR>',
@@ -75,6 +77,11 @@ return {
         buffer_close_icon = '',
         modified_icon = '',
         close_icon = '',
+        groups = {
+          items = {
+            require('bufferline.groups').builtin.pinned:with({ icon = '', }),
+          },
+        },
       },
     })
   end,

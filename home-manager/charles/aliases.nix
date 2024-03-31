@@ -73,6 +73,7 @@
     pg = "pgrep -x";
     btm = "command btm --tree --left_legend";
     procs = "command procs --tree";
+    disk = "sudo nvme smart-log /dev/nvme0n1";
     # fcount = ''find . -type d -exec sh -c 'echo -n "$1, "; find "$1" -maxdepth 1 -type f | wc -l' _ {} \; | awk -F, '$2 > 500''';
 
     # ______________________________________ ARCHIVE

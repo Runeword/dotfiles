@@ -150,6 +150,7 @@
     hwinfo
     onefetch
     neofetch
+    nvme-cli
     # stacer
 
     # ---------------------------------- Graphics

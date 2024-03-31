@@ -151,6 +151,7 @@
     onefetch
     neofetch
     nvme-cli
+    lynis
     # stacer
 
     # ---------------------------------- Graphics

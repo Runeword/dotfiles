@@ -19,6 +19,13 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  services.clamav = {
+    scanner.enable = true;
+    updater.enable = true;
+    fangfrisch.enable = true;
+    daemon.enable = true;
+  };
+
   services.greetd = {
     enable = true;
     settings = rec {

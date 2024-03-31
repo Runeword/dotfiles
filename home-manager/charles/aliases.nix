@@ -68,7 +68,7 @@
     devices = "sudo libinput list-devices";
     monitors = "hyprctl monitors";
     clients = "hyprctl clients";
-    kb = "pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1";
+    keyboard = "pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1";
     pk = "sudo pkill";
     pg = "pgrep -x";
     btm = "command btm --tree --left_legend";

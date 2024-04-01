@@ -113,6 +113,7 @@
     exiftool
     watchexec
     meli
+    extundelete
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 

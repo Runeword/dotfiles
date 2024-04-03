@@ -113,7 +113,10 @@
     exiftool
     watchexec
     meli
+    dust
+    duf
     extundelete
+    foremost
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 
@@ -143,7 +146,6 @@
     btop
     bottom
     procs
-    duf
     gping
     tree
     erdtree

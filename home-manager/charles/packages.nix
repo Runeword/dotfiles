@@ -41,7 +41,7 @@
   home.file."bin/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono"]; })
+    (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono" ]; })
     maple-mono-NF
     python311
     qmk
@@ -86,7 +86,6 @@
 
     # ---------------------------------- CLI tools
     jq
-    git
     awscli2
     lsof
     lsd
@@ -122,6 +121,7 @@
 
     # ---------------------------------- Git
     # inputs.src-cli.packages.x86_64-linux.default
+    git
     gh
     chezmoi
     zsh-forgit

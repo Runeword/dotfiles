@@ -125,6 +125,7 @@
     gh
     chezmoi
     zsh-forgit
+    lazygit
 
     # ---------------------------------- Secrets
     bitwarden-cli

@@ -12,12 +12,12 @@
   home.sessionVariables.AWS_CONFIG_FILE = "$HOME/.config/aws/config";
 
   home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
---preview-window border-none \
---reverse \
---prompt='  ' \
---no-separator \
---info=inline:'' \
-";
+  --exact \
+  --reverse \
+  --prompt='  ' \
+  --no-separator \
+  --info=inline:'' \
+  ";
 
   #   home.sessionVariables._ZO_FZF_OPTS = "
   # --reverse \

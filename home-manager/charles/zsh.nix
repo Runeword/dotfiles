@@ -5,7 +5,7 @@
   ...
 }: {
   programs.zsh.enable = true;
-  programs.zsh.enableAutosuggestions = true;
+  programs.zsh.autosuggestion.enable = true;
   programs.zsh.enableCompletion = false;
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;

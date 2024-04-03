@@ -140,9 +140,6 @@ zle -N __ripgrep_or_complete
 bindkey '^[[Z' __ripgrep_or_complete
 
 # ------------------------------------ Plugins
-export FORGIT_FZF_DEFAULT_OPTS="
---exact
-"
 
 eval "$(navi widget zsh)"
 eval "$(starship init zsh)"

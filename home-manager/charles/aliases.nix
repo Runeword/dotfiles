@@ -27,8 +27,8 @@
     r = "gomi -rf";
     ru = "gomi --restore";
     rd = "rm -rf $HOME/.gomi";
-    cd = "__zoxide_z";
-    cdh = "__zoxide_zi";
+    # cd = "__zoxide_z";
+    # cdh = "__zoxide_zi";
     l = "command ls --almost-all --color --width 90";
     ll = "command ls -lt --almost-all --color --human-readable --classify | fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:'' --prompt='  ' --height 70% --no-separator --header-lines=1";
     i = "setsid satty --copy-command 'wl-copy' --early-exit --init-tool brush --output-filename ~/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').png --filename";

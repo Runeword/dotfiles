@@ -29,8 +29,8 @@
       { run = 'code "$@"', orphan = true, desc = "VSCode" },
    ]
    open = [
-      { run = 'xdg-open "$@"', desc = "Open" },
-      { run = 'okular "$@"', orphan = true, desc = "Okular" },
+      { run = 'setsid xdg-open "$@"', desc = "Open" },
+      { run = 'setsid okular "$@"', orphan = true, desc = "Okular" },
    ]
    reveal = [
       { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },

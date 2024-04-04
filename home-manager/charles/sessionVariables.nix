@@ -17,6 +17,7 @@
   --prompt='  ' \
   --no-separator \
   --info=inline:'' \
+  --preview-window right,75%,border-none \
   ";
 
   #   home.sessionVariables._ZO_FZF_OPTS = "

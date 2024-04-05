@@ -71,7 +71,7 @@ __new_session() {
 	trap 'return' INT
 	printf 'new session : ' && read -r input
 
-	session=$(tmux new-session -d ${input:+-s"$input"} -P -F "#{session_name}" -c "$HOME")
+	session=$(tmux new-session -d ${input:+-s"$input"} -P -F "#{session_name}")
 
 	if [ -n "$TMUX" ]; then
 		tmux switch-client -t "$session"

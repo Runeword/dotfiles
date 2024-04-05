@@ -8,6 +8,11 @@ autocmd CursorMovedI * let CursorColumnI = col('.')
 autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 ]])
 
+-- Quit if buffers list is empty
+vim.cmd([[
+autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
+]])
+
 vim.api.nvim_create_augroup('cursor', { clear = true, })
 vim.api.nvim_create_autocmd('ExitPre', {
   group = 'cursor',

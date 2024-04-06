@@ -122,8 +122,8 @@ keybinding:
     #     return: "<esc>" # return to previous menu, will quit if there's nowhere to return
     #     quitWithoutChangingDirectory: "Q"
     togglePanel: "<disabled>" # goto the next panel
-    prevItem: "k" # go one line up
-    nextItem: "j" # go one line down
+    prevItem: "h" # go one line up
+    nextItem: "t" # go one line down
     prevItem-alt: <disabled> # go one line up
     nextItem-alt: <disabled> # go one line down
     #     prevPage: "," # go to next page in list
@@ -132,8 +132,8 @@ keybinding:
     gotoBottom: "<disabled>" # go to bottom of list
     scrollLeft: "<disabled>" # scroll left within list view
     scrollRight: "<disabled>" # scroll right within list view
-    prevBlock: "<up>" # goto the previous block / panel
-    nextBlock: "<down>" # goto the next block / panel
+    prevBlock: "k" # goto the previous block / panel
+    nextBlock: "j" # goto the next block / panel
     prevBlock-alt: <disabled> # goto the previous block / panel
     nextBlock-alt: <disabled> # goto the next block / panel
 #     jumpToBlock: ["1", "2", "3", "4", "5"] # goto the Nth block / panel
@@ -141,10 +141,10 @@ keybinding:
 #     prevMatch: "N"
 #     optionMenu: <disabled> # show help menu
 #     optionMenu-alt1: "?" # show help menu
-#     select: "<space>"
+    select: "<tab>"
 #     goInto: "<enter>"
 #     openRecentRepos: "<c-r>"
-#     confirm: "<enter>"
+    confirm: "<enter>"
 #     remove: "d"
 #     new: "n"
 #     edit: "e"

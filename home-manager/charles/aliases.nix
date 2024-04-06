@@ -185,6 +185,7 @@
 
     # ______________________________________ GIT
 
+    g = "lazygit";
     gi = "onefetch";
     gn = "nvim $(git status -s | awk '{print $2}')";
     gs = "git status";

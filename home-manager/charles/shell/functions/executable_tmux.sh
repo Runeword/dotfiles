@@ -51,7 +51,7 @@ __switch_window() {
 	item_pos=$(tmux list-windows -a -F '#{window_id}' | awk '{if ($1 == "'$window_id'") print NR}')
 
 	window=$(
-		tmux list-windows -a -F '#{session_name} #{window_name} #{window_id} #{session_id}' 2>/dev/null | fzf \
+		tmux list-windows -a -F '#{session_name}#{window_name} #{window_id} #{session_id}' 2>/dev/null | fzf \
 		  --with-nth='1,2' \
 			--reverse \
 			--cycle \

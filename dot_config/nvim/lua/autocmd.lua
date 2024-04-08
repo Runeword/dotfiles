@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd('BufDelete', {
       return vim.fn.empty(vim.fn.bufname(buf)) == 0 and vim.fn.buflisted(buf) == 1
     end, buffers)
     if #listed_buffers == 1 then
+      vim.cmd('set guicursor=a:ver90')
       vim.cmd('quit')
     end
   end,

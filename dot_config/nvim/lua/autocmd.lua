@@ -8,10 +8,20 @@ autocmd CursorMovedI * let CursorColumnI = col('.')
 autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
 ]])
 
--- Quit if buffers list is empty
-vim.cmd([[
-autocmd BufDelete * if len(filter(range(1, bufnr('$')), '! empty(bufname(v:val)) && buflisted(v:val)')) == 1 | quit | endif
-]])
+vim.api.nvim_create_augroup('quit', { clear = true, })
+vim.api.nvim_create_autocmd('BufDelete', {
+  group = 'quit',
+  callback = function()
+    local buffers = vim.fn.range(1, vim.fn.bufnr('$'))
+    local listed_buffers = vim.tbl_filter(function(buf)
+      return vim.fn.empty(vim.fn.bufname(buf)) == 0 and vim.fn.buflisted(buf) == 1
+    end, buffers)
+    if #listed_buffers == 1 then
+      vim.cmd('quit')
+    end
+  end,
+  desc = 'Quit if buffers list is empty',
+})
 
 vim.api.nvim_create_augroup('cursor', { clear = true, })
 vim.api.nvim_create_autocmd('ExitPre', {

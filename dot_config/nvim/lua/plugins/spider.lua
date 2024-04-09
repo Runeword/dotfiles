@@ -10,21 +10,33 @@ return {
       function()
         require('spider').motion('w', {
           customPatterns = {
+            -- subwordPatterns
             '%w+',
             '%u%l+',
+            -- skipPunctuationPatterns
+            '%f[^%s]%p+%f[%s]',
+            '^%p+%f[%s]',
+            '%f[^%s]%p+$',
+            '^%p+$',
           },
         })
       end, { desc = 'Spider-w', })
 
-      vim.keymap.set({ 'n', 'x', }, 'b',
-        function()
-          require('spider').motion('b', {
-            customPatterns = {
-              '%w+',
-              '%u%l+',
-            },
-          })
-        end, { desc = 'Spider-b', })
+    vim.keymap.set({ 'n', 'x', }, 'b',
+      function()
+        require('spider').motion('b', {
+          customPatterns = {
+            -- subwordPatterns
+            '%w+',
+            '%l%u+',
+            -- skipPunctuationPatterns
+            '%f[^%s]%p+%f[%s]',
+            '^%p+%f[%s]',
+            '%f[^%s]%p+$',
+            '^%p+$',
+          },
+        })
+      end, { desc = 'Spider-b', })
 
     -- vim.keymap.set({ 'n', 'x', }, 'w',
     --   "<cmd>lua require('spider').motion('w')<CR>", { desc = 'Spider-w', })

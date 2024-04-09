@@ -7,7 +7,17 @@ return {
 
   config = function()
     vim.keymap.set({ 'n', 'x', }, 'w',
-      "<cmd>lua require('spider').motion('w')<CR>", { desc = 'Spider-w', })
+      function()
+        require('spider').motion('w', {
+          customPatterns = {
+            '%w+',
+            '%u%l+',
+          },
+        })
+      end, { desc = 'Spider-w', })
+
+    -- vim.keymap.set({ 'n', 'x', }, 'w',
+    --   "<cmd>lua require('spider').motion('w')<CR>", { desc = 'Spider-w', })
     vim.keymap.set({ 'n', 'x', }, 'b',
       "<cmd>lua require('spider').motion('b')<CR>", { desc = 'Spider-b', })
     vim.keymap.set({ 'n', 'x', 'o', }, 'e',

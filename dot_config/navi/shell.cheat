@@ -53,3 +53,6 @@ gpg --gen-key
 
 # Recover deleted files from LUKS-Encrypted device to another device
 sudo foremost -v -q -c /<path>/foremost.conf -i /dev/mapper/<luks-t7rk6-781tn7> -o /run/media/<user>/<device>/<directory>
+
+# Connect to wifi
+nmcli device wifi connect SSID --ask

@@ -191,5 +191,6 @@
     fnott
     slurp
     grim
+    nwg-displays
   ];
 }

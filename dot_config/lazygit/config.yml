@@ -132,8 +132,9 @@ keybinding:
     gotoBottom: "<disabled>" # go to bottom of list
     scrollLeft: "<disabled>" # scroll left within list view
     scrollRight: "<disabled>" # scroll right within list view
-    prevBlock: "<backtab>" # goto the previous block / panel
-    nextBlock: "<tab>" # goto the next block / panel
+    # prevBlock: "<backtab>" # goto the previous block / panel
+    prevBlock: "" # goto the previous block / panel
+    nextBlock: "" # goto the next block / panel
     prevBlock-alt: <up> # goto the previous block / panel
     nextBlock-alt: <down> # goto the next block / panel
 #     jumpToBlock: ["1", "2", "3", "4", "5"] # goto the Nth block / panel
@@ -141,7 +142,7 @@ keybinding:
 #     prevMatch: "N"
 #     optionMenu: <disabled> # show help menu
 #     optionMenu-alt1: "?" # show help menu
-    select: "<space>"
+    select: "<tab>"
 #     goInto: "<enter>"
 #     openRecentRepos: "<c-r>"
     confirm: "<enter>"
@@ -157,8 +158,8 @@ keybinding:
 #     scrollDownMain-alt2: "<c-d>" # main panel scroll down
 #     executeCustomCommand: ":"
 #     createRebaseOptionsMenu: "m"
-#     pushFiles: "P"
-#     pullFiles: "p"
+#     pushFiles: "p"
+#     pullFiles: "P"
 #     refresh: "R"
 #     createPatchOptionsMenu: "<c-p>"
 #     nextTab: "]"

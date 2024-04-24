@@ -56,3 +56,6 @@ sudo foremost -v -q -c /<path>/foremost.conf -i /dev/mapper/<luks-t7rk6-781tn7> 
 
 # Connect to wifi
 nmcli device wifi connect <SSID> --ask
+
+# List gpg directories
+gpgconf --list-dirs

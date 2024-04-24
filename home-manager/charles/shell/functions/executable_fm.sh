@@ -31,6 +31,7 @@ __open_file() {
         --multi \
         --reverse \
         --info=hidden \
+        --no-separator \
         --cycle \
         --ansi \
         --header-first \

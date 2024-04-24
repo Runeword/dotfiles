@@ -9,7 +9,8 @@
   # home.sessionVariables.DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
   # home.sessionVariables.DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
   # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
-  home.sessionVariables.AWS_CONFIG_FILE = "$HOME/.config/aws/config";
+  home.sessionVariables.AWS_CONFIG_FILE = "${config.home.homeDirectory}/.config/aws/config";
+  home.sessionVariables.GNUPGHOME = "${config.home.homeDirectory}/.config/gnupg";
 
   home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
   --exact \

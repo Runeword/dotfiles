@@ -11,6 +11,7 @@
   # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
   home.sessionVariables.AWS_CONFIG_FILE = "${config.home.homeDirectory}/.config/aws/config";
   home.sessionVariables.GNUPGHOME = "${config.home.homeDirectory}/.config/gnupg";
+  home.sessionVariables.PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.config/password-store";
 
   home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
   --exact \

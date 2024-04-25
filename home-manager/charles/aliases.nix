@@ -99,6 +99,7 @@
     hp = "nvim $HOME/home-manager/$USER/packages.nix";
     ov = "nvim $HOME/home-manager/$USER/overlays.nix";
     al = "nvim $HOME/home-manager/$USER/aliases.nix";
+    va = "nvim $HOME/home-manager/$USER/sessionVariables.nix";
     me = ''
       __open_device() {
         local devices

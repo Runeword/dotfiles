@@ -2,3 +2,7 @@
 type = "git-repo"
 url = "git@github.com:Runeword/zmk-config.git"
 refreshPeriod = "168h"
+[".config/password-store"]
+type = "git-repo"
+url = "git@github.com:Runeword/password-store.git"
+refreshPeriod = "168h"

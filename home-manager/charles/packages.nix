@@ -111,11 +111,13 @@
     lux
     exiftool
     watchexec
-    meli
     dust
     duf
     extundelete
     foremost
+    neomutt
+    notmuch
+    lieer
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 

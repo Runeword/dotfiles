@@ -18,8 +18,8 @@
 
     AWS_CONFIG_FILE = "${XDG_CONFIG_HOME}/aws/config";
     NOTMUCH_CONFIG = "${XDG_CONFIG_HOME}/notmuch/config";
+    GNUPGHOME = "${XDG_CONFIG_HOME}/gnupg";
 
-    GNUPGHOME = "${XDG_DATA_HOME}/gnupg";
     PYENV_ROOT = "${XDG_DATA_HOME}/pyenv";
     PASSWORD_STORE_DIR = "${XDG_DATA_HOME}/password-store";
 

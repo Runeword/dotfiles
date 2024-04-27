@@ -3,18 +3,28 @@
 , lib
 , ...
 }: {
-  home.sessionVariables.EDITOR = "nvim";
-  home.sessionVariables.VISUAL = "nvim";
-  home.sessionVariables.MANPAGER = "nvim +Man!";
-  # home.sessionVariables.DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
-  # home.sessionVariables.DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
-  # home.sessionVariables.GRIMBLAST_EDITOR = "swappy";
-  home.sessionVariables.AWS_CONFIG_FILE = "${config.home.homeDirectory}/.config/aws/config";
-  home.sessionVariables.GNUPGHOME = "${config.home.homeDirectory}/.config/gnupg";
-  home.sessionVariables.PASSWORD_STORE_DIR = "${config.home.homeDirectory}/.config/password-store";
-  home.sessionVariables.NOTMUCH_CONFIG = "${config.home.homeDirectory}/.config/notmuch-config";
+  home.sessionVariables = rec {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    MANPAGER = "nvim +Man!";
 
-  home.sessionVariables.FORGIT_FZF_DEFAULT_OPTS = "
+    # XDG Base Directory Specification
+    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CONFIG_DIRS = "/etc/xdg";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_DIRS = "/usr/local/share/:/usr/share/";
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+
+    AWS_CONFIG_FILE = "${XDG_CONFIG_HOME}/aws/config";
+    GNUPGHOME = "${XDG_CONFIG_HOME}/gnupg";
+    PASSWORD_STORE_DIR = "${XDG_CONFIG_HOME}/password-store";
+    NOTMUCH_CONFIG = "${XDG_CONFIG_HOME}/notmuch/config";
+
+    # DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
+    # DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
+
+    FORGIT_FZF_DEFAULT_OPTS = "
   --exact \
   --reverse \
   --prompt='  ' \
@@ -23,14 +33,7 @@
   --preview-window right,75%,border-none \
   ";
 
-  #   home.sessionVariables._ZO_FZF_OPTS = "
-  # --reverse \
-  # --height 40% \
-  # --no-separator \
-  # --border none \
-  # ";
-
-  home.sessionVariables.FZF_DEFAULT_COMMAND = "
+    FZF_DEFAULT_COMMAND = "
 fd \
 --reverse \
 --prompt='  ' \
@@ -43,35 +46,28 @@ fd \
 --exclude node_modules \
 ";
 
-  home.sessionVariables.FZF_DEFAULT_OPTS = "
+    FZF_DEFAULT_OPTS = "
 --color=fg:#d0d0d0,bg:-1,hl:#918fcf \
 --color=fg+:#ffffff,fg+:regular,bg+:#0e1c1c,hl+:#6bdbd8,hl+:regular,query:regular \
 --color=info:#d0d0d0,prompt:#ffffff,pointer:#ff75a9,border:#2f394a \
 --color=marker:#ff75a9,spinner:#ffffff,header:#535e73 \
 ";
 
-  home.sessionVariables.FZF_CTRL_R_OPTS = "
+    FZF_CTRL_R_OPTS = "
 --reverse \
 --prompt='  ' \
 --no-separator \
 --info=inline:'' \
 ";
 
-  home.sessionVariables.FZF_CTRL_T_OPTS = "
+    FZF_CTRL_T_OPTS = "
 --reverse \
 --prompt='  ' \
 --no-separator \
 --info=inline:'' \
 ";
 
-  #   home.sessionVariables.FZF_DEFAULT_OPTS = "
-  # --reverse \
-  # --no-separator \
-  # --info=inline:'' \
-  # --border none \
-  # --prompt='  ' \
-  # ";
-
-  # --color=fg+:#ffffff,fg+:regular,bg+:-1,hl+:#6bdbd8,hl+:regular,query:regular \
-  # --color=fg+:#ffffff,fg+:regular,bg+:#262626,hl+:#6bdbd8,hl+:regular,query:regular \
+    # --color=fg+:#ffffff,fg+:regular,bg+:-1,hl+:#6bdbd8,hl+:regular,query:regular \
+    # --color=fg+:#ffffff,fg+:regular,bg+:#262626,hl+:#6bdbd8,hl+:regular,query:regular \
+  };
 }

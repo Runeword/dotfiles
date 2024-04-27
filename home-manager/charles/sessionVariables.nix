@@ -17,9 +17,16 @@
     XDG_STATE_HOME = "$HOME/.local/state";
 
     AWS_CONFIG_FILE = "${XDG_CONFIG_HOME}/aws/config";
-    GNUPGHOME = "${XDG_CONFIG_HOME}/gnupg";
-    PASSWORD_STORE_DIR = "${XDG_CONFIG_HOME}/password-store";
     NOTMUCH_CONFIG = "${XDG_CONFIG_HOME}/notmuch/config";
+
+    GNUPGHOME = "${XDG_DATA_HOME}/gnupg";
+    PYENV_ROOT = "${XDG_DATA_HOME}/pyenv";
+    PASSWORD_STORE_DIR = "${XDG_DATA_HOME}/password-store";
+
+    # ZDOTDIR = "${XDG_CACHE_HOME}/zsh";
+
+    # NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
+    # TLDR_CACHE_DIR = "${XDG_CACHE_HOME}";
 
     # DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
     # DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';

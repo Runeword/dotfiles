@@ -102,7 +102,7 @@
     gomi
     xdragon
     nix-init
-    tldr
+    # tldr
     navi
     asciinema
     terraform

@@ -1,12 +1,14 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
+{ config
+, pkgs
+, lib
+, ...
 }: {
   programs.zsh.enable = true;
   programs.zsh.autosuggestion.enable = true;
   programs.zsh.enableCompletion = false;
+
+  # programs.zsh.dotDir = "${config.home.sessionVariables.XDG_CONFIG_HOME}/zsh";
+  # programs.zsh.history.path = "${config.home.sessionVariables.XDG_DATA_HOME}/zsh/history";
 
   programs.zsh.initExtra = builtins.readFile ./zshrc;
   # programs.zsh.initExtraBeforeCompInit = builtins.readFile ./.initExtraBeforeCompInit;

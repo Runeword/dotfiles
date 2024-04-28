@@ -1,7 +1,8 @@
 *
-.ssh/*
 
 !.config
+!.ssh
+.ssh/*
 !.ssh/config
 !home-manager
 !nixos

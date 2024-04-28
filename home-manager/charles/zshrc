@@ -1,5 +1,8 @@
 # source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
 
+# zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+# compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+
 # ------------------------------------ Word characters
 autoload -U select-word-style
 select-word-style bash

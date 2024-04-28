@@ -12,8 +12,6 @@
     ./packages.nix
     ./bash.nix
     ./zsh.nix
-    # ./dircolors.nix
-    # ./neovim.nix
   ];
 
   # services.gpg-agent = {
@@ -23,8 +21,6 @@
 
   programs = {
     home-manager.enable = true;
-
-    vscode.enable = true;
 
     direnv.enable = true;
     direnv.enableBashIntegration = true;

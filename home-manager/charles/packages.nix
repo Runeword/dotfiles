@@ -65,6 +65,7 @@
     nnn
     yazi
     fuzzel
+    vscode
 
     # tmuxKeylocker
 

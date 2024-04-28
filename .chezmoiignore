@@ -1,6 +1,7 @@
 *
 
 !.config
+!.ssh/config
 !home-manager
 !nixos
 !templates

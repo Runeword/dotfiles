@@ -1,0 +1,29 @@
+Host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/id_ed25519_home
+  PreferredAuthentications publickey
+  UpdateHostKeys no
+Host gitlab.com
+  HostName gitlab.com
+  IdentityFile ~/.ssh/id_ed25519_home
+  PreferredAuthentications publickey
+  UpdateHostKeys no
+Host gitlab.0.com
+  HostName gitlab.com
+  IdentityFile ~/.ssh/id_ed25519_0
+  PreferredAuthentications publickey
+  UpdateHostKeys no
+
+Host *
+  ForwardAgent no
+  AddKeysToAgent yes
+  Compression no
+  ServerAliveInterval 0
+  ServerAliveCountMax 3
+  HashKnownHosts no
+  UserKnownHostsFile ~/.ssh/known_hosts
+  ControlMaster no
+  ControlPath ~/.ssh/master-%r@%n:%p
+  ControlPersist no
+
+  IdentitiesOnly yes

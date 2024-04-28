@@ -5,7 +5,6 @@
 , ...
 }: {
   imports = [
-    ./ssh.nix
     ./overlays.nix
     ./aliases.nix
     ./sessionVariables.nix

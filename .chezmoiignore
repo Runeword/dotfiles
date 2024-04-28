@@ -3,10 +3,9 @@
 !.config
 !test
 !test/tt
-test/*
 !.ssh
-.ssh/*
 !.ssh/config
+.ssh/*
 !home-manager
 !nixos
 !templates

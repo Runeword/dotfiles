@@ -1,6 +1,10 @@
 *
 
 !.config
+!test
+!test/tt
+test
+test/*
 !.ssh
 .ssh/*
 !.ssh/config

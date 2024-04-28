@@ -9,12 +9,12 @@
     MANPAGER = "nvim +Man!";
 
     # XDG Base Directory Specification
-    XDG_CACHE_HOME = "$HOME/.cache";
+    XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
     XDG_CONFIG_DIRS = "/etc/xdg";
-    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
     XDG_DATA_DIRS = "/usr/local/share/:/usr/share/";
-    XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_STATE_HOME = "$HOME/.local/state";
+    XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
+    XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";
 
     AWS_CONFIG_FILE = "${XDG_CONFIG_HOME}/aws/config";
     NOTMUCH_CONFIG = "${XDG_CONFIG_HOME}/notmuch/config";
@@ -23,7 +23,7 @@
     PYENV_ROOT = "${XDG_DATA_HOME}/pyenv";
     PASSWORD_STORE_DIR = "${XDG_DATA_HOME}/password-store";
 
-    # ZDOTDIR = "${XDG_CACHE_HOME}/zsh";
+    # ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
 
     # NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
     # TLDR_CACHE_DIR = "${XDG_CACHE_HOME}";

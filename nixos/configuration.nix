@@ -63,6 +63,10 @@
   # environment.etc."polkit-gnome-authentication-agent-1".source = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   environment.etc."polkit-kde-authentication-agent-1".source = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
 
+  systemd.tmpfiles.rules = [
+    "L+ /usr/share/fzf - - - - ${pkgs.fzf}/share/fzf"
+  ];
+
   environment.systemPackages = with pkgs; [
     # xfce.xfce4-volumed-pulse
     # pasystray

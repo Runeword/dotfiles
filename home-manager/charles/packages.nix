@@ -1,6 +1,7 @@
 { pkgs
 , inputs
 , lib
+, config
 , ...
 }: {
   # }:
@@ -35,9 +36,10 @@
   # in
   # {
 
-  home.file."bin/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  # home.file."bin/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  home.file."${config.home.sessionVariables.XDG_DATA_HOME}/tmux/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file."bin/tmux/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
-  home.file."bin/fzf".source = "${pkgs.fzf}/share/fzf";
+  # home.file."bin/fzf".source = "${pkgs.fzf}/share/fzf";
   home.file."bin/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [

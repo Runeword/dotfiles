@@ -25,6 +25,6 @@ eval "$(starship init bash)"
 eval "$(zoxide init --no-cmd bash)"
 
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-  . "$HOME/bin/fzf/completion.bash"
-  . "$HOME/bin/fzf/key-bindings.bash"
+  . "$XDG_DATA_DIRS/fzf/completion.bash"
+  . "$XDG_DATA_DIRS/fzf/key-bindings.bash"
 fi

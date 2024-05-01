@@ -65,6 +65,7 @@
 
   systemd.tmpfiles.rules = [
     "L+ /usr/share/fzf - - - - ${pkgs.fzf}/share/fzf"
+    "L+ /usr/bin/pinentry - - - - ${pkgs.pinentry-curses}/bin/pinentry"
   ];
 
   environment.systemPackages = with pkgs; [

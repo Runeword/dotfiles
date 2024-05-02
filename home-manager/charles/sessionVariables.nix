@@ -9,13 +9,14 @@
     MANPAGER = "nvim +Man!";
 
     # XDG Base Directory Specification
-    XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
     XDG_CONFIG_DIRS = "/etc/xdg";
+    XDG_CACHE_HOME = "${config.home.homeDirectory}/.cache";
     XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
-    # XDG_DATA_DIRS = "/usr/local/share/:/usr/share/";
-    XDG_DATA_DIRS = "/usr/share";
     XDG_DATA_HOME = "${config.home.homeDirectory}/.local/share";
     XDG_STATE_HOME = "${config.home.homeDirectory}/.local/state";
+    XDG_BIN_HOME = "${config.home.homeDirectory}/.local/bin";
+    XDG_DATA_DIRS = "/usr/share";
+    # XDG_DATA_DIRS = "/usr/local/share/:/usr/share/";
 
     AWS_CONFIG_FILE = "${XDG_CONFIG_HOME}/aws/config";
     NOTMUCH_CONFIG = "${XDG_CONFIG_HOME}/notmuch/config";
@@ -31,6 +32,8 @@
 
     # DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
     # DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
+
+    FZF_DEFAULT_OPTS_FILE = "";
 
     FORGIT_FZF_DEFAULT_OPTS = "
   --exact \

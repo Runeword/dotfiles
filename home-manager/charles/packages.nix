@@ -46,14 +46,13 @@
     qmk
     gcc
     httrack
-    # pgmodeler
+    pgmodeler
     sioyek
     qdirstat
     testdisk-qt
     appimage-run
 
     # ---------------------------------- Editors
-    # neovim-nightly
     inputs.neovim-runeword.packages.x86_64-linux.default
     kitty
     alacritty
@@ -64,9 +63,8 @@
     nnn
     yazi
     fuzzel
+    anyrun
     vscode
-
-    # tmuxKeylocker
 
     # ---------------------------------- Browsers
     google-chrome

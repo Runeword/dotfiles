@@ -7,6 +7,7 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     MANPAGER = "nvim +Man!";
+    BROWSER = "google-chrome-stable";
 
     # XDG Base Directory Specification
     XDG_CONFIG_DIRS = "/etc/xdg";

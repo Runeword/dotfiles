@@ -38,6 +38,8 @@
 
   home.file."${config.home.sessionVariables.XDG_DATA_HOME}/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file."${config.home.sessionVariables.XDG_DATA_HOME}/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+  # home.file."${config.home.sessionVariables.XDG_DATA_HOME}/fzf".source = "${pkgs.fzf}/share/fzf";
+  # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono" ]; })
@@ -63,7 +65,6 @@
     nnn
     yazi
     fuzzel
-    anyrun
     vscode
 
     # ---------------------------------- Browsers

@@ -97,6 +97,7 @@
 
     np = "nvim $HOME/nixos/configuration.nix";
     hp = "nvim $HOME/home-manager/$USER/packages.nix";
+    hd = "nvim $HOME/home-manager/$USER/default.nix";
     ov = "nvim $HOME/home-manager/$USER/overlays.nix";
     al = "nvim $HOME/home-manager/$USER/aliases.nix";
     va = "nvim $HOME/home-manager/$USER/sessionVariables.nix";

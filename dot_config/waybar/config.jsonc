@@ -1,7 +1,7 @@
 {
   "margin": "0 0 0 0",
   "layer": "top",
-  "width": 31,
+  "width": 32,
   "position": "left",
   "output": [
     "eDP-1",
@@ -133,26 +133,31 @@
       "critical": 15
     },
     "format": "{icon}",
+    "format-charging": "󱐋",
+    "format-plugged": "",
     "format-icons": [
       "",
       "",
       "",
       "",
       ""
-    ]
+    ],
+    "tooltip": false
   },
   // -------------------------------------- NETWORK
   "network#string": {
     "format-wifi": "{signalStrength}",
-    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-ethernet": "{ifname}",
+    "tooltip-format": "{ifname} via {gwaddr}",
     "tooltip-format-wifi": "{essid}  {signalStrength}%  {bandwidthDownOctets}",
-    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-ethernet": "{ifname} {bandwidthDownBytes}",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50,
     "interval": 30
   },
   "network#icon": {
-    "format": "{icon}",
+    "format": "<span size='large'>{icon}</span>",
+    "format-ethernet": "<span size='x-large'>󰈁</span>",
     "format-icons": [
       "󰤯",
       "󰤟",
@@ -160,26 +165,25 @@
       "󰤥",
       "󰤨"
     ],
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "tooltip-format-wifi": "{essid}  {signalStrength}%  {bandwidthDownOctets}",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
+    "tooltip": false,
     "max-length": 50,
     "interval": 30
   },
   // -------------------------------------- VOLUME
   "wireplumber#string": {
     "format": "{volume}",
+    "tooltip": false,
     "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
   },
   "wireplumber#icon": {
-    "format": "{icon}",
+    "format": "<span size='x-large'>{icon}</span>",
     "format-muted": "<span size='x-large'>󰝟</span>",
     "format-icons": [
-      "<span size='x-large'>󰕿</span>",
-      "<span size='x-large'>󰖀</span>",
-      "<span size='x-large'>󰕾</span>"
+      "󰕿",
+      "󰖀",
+      "󰕾"
     ],
+    "tooltip": false,
     "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
   },
   // -------------------------------------- BLUETOOTH
@@ -196,15 +200,12 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
   },
   "bluetooth#icon": {
-    "format": "<span size='large'>󰂯</span>",
-    "format-off": "<span size='large'>󰂲</span>",
-    "format-on": "<span size='large'>󰂯</span>",
+    "format": "<span size='x-large'>󰂯</span>",
+    "format-off": "<span size='x-large'>󰂲</span>",
+    "format-on": "<span size='x-large'>󰂯</span>",
     "format-connected": "<span size='x-large'>󰂰</span>",
-    "format-disabled": "<span size='large'>󰂲</span>",
+    "format-disabled": "<span size='x-large'>󰂲</span>",
     "format-connected-battery": "<span size='x-large'>󰂰</span>",
-    "tooltip-format": "{device_enumerate}",
-    "tooltip-format-connected": "{device_enumerate}",
-    // "tooltip-format-enumerate-connected": "{device_enumerate}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}  {device_battery_percentage}%  {device_address}"
+    "tooltip": false
   }
 }

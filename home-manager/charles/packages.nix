@@ -86,6 +86,7 @@
     # ---------------------------------- CLI tools
     jq
     awscli2
+    # android-tools
     lsof
     lsd
     distrobox
@@ -193,5 +194,6 @@
     slurp
     grim
     nwg-displays
+    ags
   ];
 }

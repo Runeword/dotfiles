@@ -11,6 +11,7 @@
     ./packages.nix
     ./bash.nix
     ./zsh.nix
+    inputs.ags.homeManagerModules.default
   ];
 
   # services.gpg-agent = {
@@ -20,6 +21,17 @@
 
   programs = {
     home-manager.enable = true;
+
+    ags = {
+      enable = true;
+
+      # additional packages to add to gjs's runtime
+      extraPackages = with pkgs; [
+        gtksourceview
+        webkitgtk
+        accountsservice
+      ];
+    };
 
     direnv.enable = true;
     direnv.enableBashIntegration = true;

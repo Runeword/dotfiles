@@ -149,6 +149,6 @@ eval "$(zoxide init --no-cmd zsh)"
 
 # shellcheck disable=SC2154
 if [[ ${options[zle]} = on ]]; then
-  . "$XDG_DATA_DIRS/fzf/completion.zsh"
-  . "$XDG_DATA_DIRS/fzf/key-bindings.zsh"
+  . "/usr/share/fzf/completion.zsh"
+  . "/usr/share/fzf/key-bindings.zsh"
 fi

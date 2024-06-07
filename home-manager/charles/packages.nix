@@ -194,6 +194,5 @@
     slurp
     grim
     nwg-displays
-    ags
   ];
 }

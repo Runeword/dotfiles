@@ -96,8 +96,10 @@
     # ______________________________________ PATH
 
     np = "nvim $HOME/nixos/configuration.nix";
+    nf = "nvim $HOME/nixos/flake.nix";
     hp = "nvim $HOME/home-manager/$USER/packages.nix";
     hd = "nvim $HOME/home-manager/$USER/default.nix";
+    hf = "nvim $HOME/home-manager/flake.nix";
     ov = "nvim $HOME/home-manager/$USER/overlays.nix";
     al = "nvim $HOME/home-manager/$USER/aliases.nix";
     va = "nvim $HOME/home-manager/$USER/sessionVariables.nix";

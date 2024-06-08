@@ -19,6 +19,16 @@
   #   pinentryPackage = pkgs.pinentry-curses;
   # };
 
+  gtk = {
+    enable = true;
+    # font = {
+    # };
+    theme = {
+      package = pkgs.adw-gtk3;
+      name = "adw-gtk3";
+    };
+  };
+
   programs = {
     home-manager.enable = true;
 

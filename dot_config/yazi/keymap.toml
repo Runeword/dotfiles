@@ -32,7 +32,8 @@
       { on = ["<PageDown>"], run = "arrow 100%", desc = "Move cursor down one page" },
 
       { on = ["h"], run = ["leave", "escape --visual --select"], desc = "Go back to the parent directory" },
-      { on = ["t"], run = ["enter", "escape --visual --select"], desc = "Enter the child directory" },
+      # { on = ["t"], run = ["enter", "escape --visual --select"], desc = "Enter the child directory" },
+      { on = ["t"], run = "plugin --sync fast-enter", desc = "Enter the subfolder faster, or open the file directly" },
 
       { on = ["H"], run = "back", desc = "Go back to the previous directory" },
       { on = ["L"], run = "forward", desc = "Go forward to the next directory" },
@@ -60,8 +61,8 @@
       # Operation
       { on = ["o"], run = "open", desc = "Open the selected files" },
       { on = ["O"], run = "open --interactive", desc = "Open the selected files interactively" },
-      { on = ["<Enter>"], run = "open", desc = "Open the selected files" },
-      { on = ["<S-Enter>"], run = "open --interactive", desc = "Open the selected files interactively" },
+      # { on = ["<Enter>"], run = "open", desc = "Open the selected files" },
+      { on = ["<Enter>"], run = "open --interactive", desc = "Open the selected files interactively" },
       { on = ["y"], run = ["yank", "escape --visual --select"], desc = "Copy the selected files" },
       { on = ["Y"], run = ["unyank", "escape --visual --select"], desc = "Cancel the yank status of files" },
       { on = ["x"], run = ["yank --cut", "escape --visual --select"], desc = "Cut the selected files" },

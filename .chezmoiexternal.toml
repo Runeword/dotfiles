@@ -14,3 +14,7 @@ refreshPeriod = "168h"
 type = "git-repo"
 url = "git@github.com:ourongxing/fast-enter.yazi.git"
 refreshPeriod = "168h"
+[".config/yazi/plugins/ouch.yazi"]
+type = "git-repo"
+url = "git@github.com:ndtoan96/ouch.yazi.git"
+refreshPeriod = "168h"

@@ -18,3 +18,15 @@ refreshPeriod = "168h"
 type = "git-repo"
 url = "git@github.com:ndtoan96/ouch.yazi.git"
 refreshPeriod = "168h"
+[".config/yazi/plugins/miller.yazi"]
+type = "git-repo"
+url = "git@github.com:Reledia/miller.yazi.git"
+refreshPeriod = "168h"
+[".config/yazi/plugins/glow.yazi"]
+type = "git-repo"
+url = "git@github.com:Reledia/glow.yazi.git"
+refreshPeriod = "168h"
+[".config/yazi/plugins/searchjump.yazi"]
+type = "git-repo"
+url = "git@github.com:DreamMaoMao/searchjump.yazi.git"
+refreshPeriod = "168h"

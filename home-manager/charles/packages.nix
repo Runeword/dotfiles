@@ -86,6 +86,8 @@
     # ---------------------------------- CLI tools
     jq
     awscli2
+    miller
+    glow
     # android-tools
     lsof
     lsd

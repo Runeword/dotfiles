@@ -78,7 +78,6 @@
    suppress_preload = false
 
 [plugin]
-
    preloaders = [
       { name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },
       # Image
@@ -89,6 +88,7 @@
       # PDF
       { mime = "application/pdf", run = "pdf" },
    ]
+
    previewers = [
       { name = "*/", run = "folder", sync = true },
       # Code
@@ -116,6 +116,16 @@
       { mime = "application/xz", run = "archive" },
       # Fallback
       { name = "*", run = "file" },
+   ]
+
+   prepend_previewers = [
+      # Archive previewer
+      { mime = "application/*zip", run = "ouch" },
+      { mime = "application/x-tar", run = "ouch" },
+      { mime = "application/x-bzip2", run = "ouch" },
+      { mime = "application/x-7z-compressed", run = "ouch" },
+      { mime = "application/x-rar", run = "ouch" },
+      { mime = "application/x-xz", run = "ouch" },
    ]
 
 [input]

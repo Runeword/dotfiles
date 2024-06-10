@@ -10,3 +10,7 @@ refreshPeriod = "168h"
 type = "git-repo"
 url = "git@github.com:DreamMaoMao/fg.yazi.git"
 refreshPeriod = "168h"
+[".config/yazi/plugins/fast-enter.yazi"]
+type = "git-repo"
+url = "git@github.com:ourongxing/fast-enter.yazi.git"
+refreshPeriod = "168h"

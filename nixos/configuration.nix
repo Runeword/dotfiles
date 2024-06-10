@@ -164,6 +164,7 @@
   services.avahi.nssmdns4 = true;
   services.avahi.openFirewall = true;
   services.printing.drivers = [ pkgs.epson-escpr ];
+  # pkgs.gutenprint pkgs.canon-cups-ufr2
 
   # audio
   sound.enable = true;

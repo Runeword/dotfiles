@@ -27,5 +27,5 @@ C-DEL  delete
       --bind='ctrl-r:execute-silent(nmcli device wifi rescan)+reload-sync(nmcli device wifi)'
   ) || return 0
 
-  nmcli device wifi connect "$ssid"
+  nmcli device wifi connect "$ssid" --ask
 }

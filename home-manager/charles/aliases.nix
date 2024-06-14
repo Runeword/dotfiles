@@ -63,7 +63,7 @@
     hardware = "hwinfo --short";
     system = "neofetch";
     wallpaper = "__wallpaper";
-    fonts = "fc-list : family style | fzf";
+    fonts = "fc-list : family style | fzf --reverse --info=hidden --prompt='  ' --no-separator --height 70%";
     path = "echo \"\${PATH//:/\\n}\"";
     devices = "sudo libinput list-devices";
     monitors = "hyprctl monitors";

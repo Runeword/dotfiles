@@ -218,18 +218,74 @@ vim.keymap.set('i', '<C-H>', '<C-w>')
 
 --------------------------------- MOTIONS
 
-vim.keymap.set({ 'x', 'n', }, 'k',     'gk')
-vim.keymap.set({ 'x', 'n', }, 'j',     'gj')
-vim.keymap.set({ 'x', 'n', }, 'J',     '4jg^')
-vim.keymap.set({ 'x', 'n', }, 'K',     '4kg^')
-vim.keymap.set({ 'x', 'n', }, '<C-j>', 'J')
+vim.keymap.set({ 'x', 'n', }, 'k', 'gk')
+vim.keymap.set({ 'x', 'n', }, 'j', 'gj')
+-- vim.keymap.set({ 'x', 'n', }, 'K',     '4kg^')
+-- vim.keymap.set({ 'x', 'n', }, 'J',     '4jg^')
+
+-- vim.keymap.set('n', 'J', function()
+--     vim.cmd('/\\v\\S')
+--     vim.cmd('norm! 4jg^')
+-- end, { noremap = true })
+
+-- vim.keymap.set({'x', 'n', }, 'K', function()
+--     vim.cmd('?\\v^\\S')
+--     vim.cmd('norm! 4kg^')
+-- end, { noremap = true })
+
+vim.keymap.set({ 'x', 'n', }, 'K', function() move_to_non_empty_line('up', 4) end,  { noremap = true, })
+
+vim.keymap.set({ 'x', 'n', }, 'J', function() move_to_non_empty_line('down', 4) end, { noremap = true, })
+
+-- Function to move the cursor up or down and handle empty lines
+function move_to_non_empty_line(direction, lines)
+  local current_line = vim.fn.line('.')
+  local new_line
+
+  if direction == 'up' then
+    new_line = current_line - lines
+  elseif direction == 'down' then
+    new_line = current_line + lines
+  else
+    print("Invalid direction. Use 'up' or 'down'.")
+    return
+  end
+
+  -- Don't move the cursor if we're at the top or bottom of the file
+  if new_line < 1 or new_line > vim.fn.line('$') then
+    return
+  end
+
+  vim.fn.cursor(new_line, 1)
+
+  -- If the current line is empty, move to the next non-empty line
+  if vim.fn.getline('.') == '' then
+    local next_non_empty_line
+    if direction == 'up' then
+      next_non_empty_line = vim.fn.prevnonblank(new_line)
+    else
+      next_non_empty_line = vim.fn.nextnonblank(new_line)
+    end
+    if next_non_empty_line > 0 then
+      vim.fn.cursor(next_non_empty_line, 1)
+    end
+  end
+
+  -- Move the cursor to the first non-blank character of the line
+  local line = vim.fn.getline('.')
+  local first_non_blank_char = line:find('%S')
+  if first_non_blank_char then
+    vim.fn.cursor(0, first_non_blank_char)
+  end
+end
 
 -- vim.cmd([[
 -- nnoremap J :<C-u>call search('^.\+')<CR>
 -- nnoremap K :<C-u>call search('^.\+', 'b')<CR>
 -- ]])
 
-vim.keymap.set('n', '0', 'g0')
+vim.keymap.set({ 'x', 'n', }, '<C-j>', 'J')
+vim.keymap.set('n',           '0',     'g0')
 
 vim.keymap.set('n', '$', function()
   vim.fn.execute('normal! g$')

@@ -35,8 +35,8 @@ return {
           vim.api.nvim_get_hl(0, { name = vim.api.nvim_get_hl(0, { name = 'string', }).link, }),
           { italic = true, }))
 
-        vim.api.nvim_set_hl(0, 'normalfloat',  { bg = '#1e2633', })
-        vim.api.nvim_set_hl(0, 'floatborder',  { bg = '#1e2633', fg = '#1e2633', })
+        vim.api.nvim_set_hl(0, 'normalfloat', { bg = '#1e2633', })
+        vim.api.nvim_set_hl(0, 'floatborder',  { bg = 'none', fg = '#1e2633', })
 
         vim.api.nvim_set_hl(0, 'pmenu',        { bg = 'black', fg = '#7a7c9e', })
         vim.api.nvim_set_hl(0, 'pmenusel',     { bg = '#1e2633', fg = 'white', })

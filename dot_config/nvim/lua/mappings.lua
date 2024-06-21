@@ -235,36 +235,25 @@ vim.keymap.set({ 'x', 'n', }, 'j', 'gj')
 
 local function move_to_non_empty_line(lines)
   local new_line
-  -- new_line = vim.fn.line('.') + lines
 
   if lines > 0 then
-    -- local nextParagraphStart = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW')
     local nextParagraphStart = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'nW')
-    print(vim.fn.line('.'), nextParagraphStart)
+    local nextNonBlank = vim.fn.nextnonblank(vim.fn.line('.') + lines)
 
-    if vim.fn.line('.') + lines < nextParagraphStart then
-      new_line = vim.fn.line('.') + lines
-    else
-      new_line = nextParagraphStart
-    end
-    -- if nextParagraphStart > vim.fn.line('.') + lines then
-    --   new_line = vim.fn.nextnonblank(new_line)
-    -- else
-    --   new_line = nextParagraphStart
-    -- end
+    print(nextNonBlank, nextParagraphStart)
+
+    new_line = nextNonBlank < nextParagraphStart and nextNonBlank or nextParagraphStart
   else
-    -- new_line = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
-    new_line = vim.fn.prevnonblank(new_line)
+    local prevParagraphStart = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
+    local prevNonBlank = vim.fn.prevnonblank(vim.fn.line('.') + lines)
+    new_line = prevNonBlank > prevParagraphStart and prevNonBlank or prevParagraphStart
   end
 
-  vim.fn.cursor(new_line, 1)
   -- Move the cursor to the first non-blank character of the line
-  -- local first_non_blank_char = vim.fn.getline(new_line):find('%S')
-  -- if first_non_blank_char then vim.fn.cursor(new_line, first_non_blank_char) end
+  vim.fn.cursor(new_line, vim.fn.getline(new_line):find('%S') or 1)
 end
 
 vim.keymap.set({ 'x', 'n', }, 'K', function() move_to_non_empty_line(-4) end, { noremap = true, })
-
 vim.keymap.set({ 'x', 'n', }, 'J', function() move_to_non_empty_line(4) end,  { noremap = true, })
 
 -- vim.cmd([[

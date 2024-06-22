@@ -17,7 +17,7 @@
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ inputs.neovim-nightly-overlay.overlay ];
+        overlays = [ inputs.neovim-nightly-overlay.overlay.default ];
       };
     in
 

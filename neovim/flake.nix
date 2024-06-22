@@ -63,7 +63,7 @@
                   nil
                   alejandra
                   nixpkgs-fmt
-                  nixfmt
+                  nixfmt-classic
                   shfmt
                   shellcheck
                   shellharden

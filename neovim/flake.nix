@@ -31,8 +31,8 @@
       packages.${system} =
         let
           myneovim = pkgs.neovim.override {
-            withPython3 = true;
-            withNodeJs = true;
+            # withPython3 = true;
+            # withNodeJs = true;
             # package = pkgs.neovim-nightly;
             # extraPackages = [
             # ];

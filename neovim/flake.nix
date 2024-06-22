@@ -6,7 +6,7 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-  # inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
   # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
   # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
@@ -17,7 +17,7 @@
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = [ inputs.neovim-nightly-overlay.overlay.default ];
+        overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
       };
     in
 

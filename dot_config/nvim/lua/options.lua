@@ -40,8 +40,8 @@ opt.lazyredraw = true  -- When running macros and regexes on a large file, lazy 
 opt.list = true
 opt.listchars:append 'eol:¬,tab:  ,lead: ,multispace:˙,trail:˙'
 opt.laststatus = 3
-opt.spell = true
-opt.spelllang = { 'en_us', }
+-- opt.spell = true
+-- opt.spelllang = { 'en_us', }
 o.fillchars = 'eob: '
 -- o.cmdheight=0
 

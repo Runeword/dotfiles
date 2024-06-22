@@ -62,6 +62,16 @@ return {
     lspconfig.vuels.setup(set_config({ on_attach = on_attach_server(false), }))
     lspconfig.pyright.setup(set_config())
 
+    lspconfig.typos_lsp.setup(set_config(
+      {
+        root_dir = function() return '' end,
+        cmd_env = { RUST_LOG = 'error', },
+        init_options = {
+          diagnosticSeverity = 'Error',
+        },
+      }
+    ))
+
     lspconfig.tsserver.setup(set_config(
       {
         on_attach = on_attach_server(false),
@@ -134,20 +144,21 @@ return {
       callback = function()
         -- #0a172e #10141f #1a1a3b #1e2633 #424a57 #7a7c9e #222b66
 
-        vim.api.nvim_set_hl(0, 'DiagnosticError',            { bg = 'NONE', fg = '#cf4e84', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'DiagnosticError',            { bg = 'NONE', fg = '#cf4e84', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', { bg = 'NONE', fg = '#cf4e84', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError',   { bg = 'NONE', undercurl = true, sp = '#cf4e84', })
-        vim.api.nvim_set_hl(0, 'diagnosticWarn',             { bg = 'NONE', fg = '#ff9d57', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'diagnosticVirtualTextWarn',  { bg = 'NONE', fg = '#ff9d57', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'diagnosticUnderlineWarn',    { bg = 'NONE', undercurl = true, sp = '#ff9d57', })
-        vim.api.nvim_set_hl(0, 'diagnosticInfo',             { bg = 'NONE', fg = '#a6c8ff', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'diagnosticVirtualTextInfo',  { bg = 'NONE', fg = '#a6c8ff', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'diagnosticUnderlineInfo',    { bg = 'NONE', undercurl = true, sp = '#a6c8ff', })
-        vim.api.nvim_set_hl(0, 'diagnosticHint',             { bg = 'NONE', fg = '#adb5bd', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'diagnosticVirtualTextHint',  { bg = 'NONE', fg = '#adb5bd', bold = false, italic = true, })
-        vim.api.nvim_set_hl(0, 'diagnosticUnderlineHint',    { bg = 'NONE', undercurl = true, sp = '#adb5bd', })
-        vim.api.nvim_set_hl(0, 'diagnosticUnnecessary',      { bg = 'NONE', undercurl = true, sp = '#adb5bd', })
+        vim.api.nvim_set_hl(0, 'DiagnosticError', { bg = 'NONE', fg = '#cf4e84', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'DiagnosticError', { bg = 'NONE', fg = '#cf4e84', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError',
+          { bg = 'NONE', fg = '#cf4e84', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'DiagnosticUnderlineError',  { bg = 'NONE', undercurl = true, sp = '#cf4e84', })
+        vim.api.nvim_set_hl(0, 'diagnosticWarn',            { bg = 'NONE', fg = '#ff9d57', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'diagnosticVirtualTextWarn', { bg = 'NONE', fg = '#ff9d57', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'diagnosticUnderlineWarn',   { bg = 'NONE', undercurl = true, sp = '#ff9d57', })
+        vim.api.nvim_set_hl(0, 'diagnosticInfo',            { bg = 'NONE', fg = '#a6c8ff', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'diagnosticVirtualTextInfo', { bg = 'NONE', fg = '#a6c8ff', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'diagnosticUnderlineInfo',   { bg = 'NONE', undercurl = true, sp = '#a6c8ff', })
+        vim.api.nvim_set_hl(0, 'diagnosticHint',            { bg = 'NONE', fg = '#adb5bd', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'diagnosticVirtualTextHint', { bg = 'NONE', fg = '#adb5bd', bold = false, italic = true, })
+        vim.api.nvim_set_hl(0, 'diagnosticUnderlineHint',   { bg = 'NONE', undercurl = true, sp = '#adb5bd', })
+        vim.api.nvim_set_hl(0, 'diagnosticUnnecessary',     { bg = 'NONE', undercurl = true, sp = '#adb5bd', })
 
         -- vim.api.nvim_set_hl(0, 'diagnosticfloatingerror',  { link = 'diagnosticvirtualtexterror', })
         -- vim.api.nvim_set_hl(0, 'diagnosticfloatinghint',   { link = 'diagnosticvirtualtexthint', })

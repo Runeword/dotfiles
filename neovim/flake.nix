@@ -74,6 +74,7 @@
                   taplo
                   black
                   isort
+                  typos-lsp
                   # terraform-lsp
                 ]
               }

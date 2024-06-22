@@ -239,12 +239,9 @@ local function move_to_non_empty_line(lines)
   if lines > 0 then
     local nextParagraphStart = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'nW')
     local nextNonBlank = vim.fn.nextnonblank(vim.fn.line('.') + lines)
-
-    print(nextNonBlank, nextParagraphStart)
-
     new_line = nextNonBlank < nextParagraphStart and nextNonBlank or nextParagraphStart
   else
-    local prevParagraphStart = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
+    local prevParagraphStart = vim.fn.search([[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'nWb')
     local prevNonBlank = vim.fn.prevnonblank(vim.fn.line('.') + lines)
     new_line = prevNonBlank > prevParagraphStart and prevNonBlank or prevParagraphStart
   end

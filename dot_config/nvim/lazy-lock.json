@@ -52,6 +52,7 @@
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "sideways.vim": { "branch": "main", "commit": "1cb0e4d7259dac8bef0dc12b4a7f8e842b32116b" },
   "sniprun": { "branch": "master", "commit": "1420cff041a0582636f63960d7160f7832463c10" },
+  "spellwarn.nvim": { "branch": "main", "commit": "85022f4dfff6dee34e24edc5d745ea978ccd3a81" },
   "splitjoin.vim": { "branch": "main", "commit": "9b0c30f61f13ba4800a11107648bdd748ad511ba" },
   "stay-in-place.nvim": { "branch": "main", "commit": "0628b6db8970fc731abf9608d6f80659b58932c9" },
   "tfm.nvim": { "branch": "main", "commit": "fb0de2c96bf303216ac5d91ce9bdb7f430030f8b" },

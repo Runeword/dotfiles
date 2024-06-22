@@ -216,7 +216,10 @@
         "git-hooks": "git-hooks",
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": [
+          "neovim-runeword",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1718935491,
@@ -235,15 +238,15 @@
     "neovim-runeword": {
       "inputs": {
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "dir": "neovim",
-        "lastModified": 1719092821,
-        "narHash": "sha256-B1a2lpOQiOMENHcqtJEeZ1rxJCuuh3QiREiHrGAGZYg=",
+        "lastModified": 1719093086,
+        "narHash": "sha256-uf+kqN0cMLt7mgWazrnGmySbJOZPYXd28lpV32+cbQ4=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "ae8548d4c17b3f75a7967024dcbbe98574e9ef8d",
+        "rev": "5c540cd5e06e099a50546f7821c86d0bec914b55",
         "type": "github"
       },
       "original": {
@@ -287,22 +290,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1718870667,
-        "narHash": "sha256-jab3Kpc8O1z3qxwVsCMHL4+18n5Wy/HHKyu1fcsF7gs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "9b10b8f00cb5494795e5f51b39210fed4d2b0748",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1718895438,
         "narHash": "sha256-k3JqJrkdoYwE3fHE6xGDY676AYmyh4U2Zw+0Bwe5DLU=",
         "owner": "nixos",
@@ -317,7 +304,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1717196966,
         "narHash": "sha256-yZKhxVIKd2lsbOqYd5iDoUIwsRZFqE87smE2Vzf6Ck0=",
@@ -339,7 +326,7 @@
         "home-manager": "home-manager",
         "hyprland-contrib": "hyprland-contrib",
         "neovim-runeword": "neovim-runeword",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       }
     }
   },

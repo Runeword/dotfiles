@@ -4,12 +4,12 @@ local opt = vim.opt
 
 vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 
-o.splitkeep='screen'
-o.mouse = 'a'                           -- Enables mouse support
+o.splitkeep = 'screen'
+o.mouse = 'a' -- Enables mouse support
 o.cursorline = true
 o.cursorcolumn = false
-o.scrolloff = 5                         -- Minimal number of screen lines to keep above and below the cursor
-o.number = true                         -- Print the line number in front of each line
+o.scrolloff = 5 -- Minimal number of screen lines to keep above and below the cursor
+o.number = true -- Print the line number in front of each line
 o.virtualedit = 'all'
 o.cmdheight = 1
 o.wildcharm = ('\t'):byte()
@@ -19,28 +19,30 @@ o.pumblend = 10
 -- o.pumwidth = 40
 -- o.pumheight = 15
 o.clipboard =
-'unnamedplus'                      -- Have the clipboard be the same as my regular clipboard
-o.updatetime = 50                  -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience
+'unnamedplus'          -- Have the clipboard be the same as my regular clipboard
+o.updatetime = 50      -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience
 o.swapfile = false
-o.termguicolors = true             -- Enables 24-bit RGB color in the Terminal UI
-o.showmode = false                 -- Disable message on the last line (Insert, Replace or Visual mode)
-o.linebreak = true                 -- Do not break words on line wrap
-o.breakindent = true               -- Start wrapped lines indented
-o.ignorecase = true                -- Ignore case in search patterns
-o.smartcase = true                 -- Override the 'ignorecase' option if the search pattern contains upper case characters
+o.termguicolors = true -- Enables 24-bit RGB color in the Terminal UI
+o.showmode = false     -- Disable message on the last line (Insert, Replace or Visual mode)
+o.linebreak = true     -- Do not break words on line wrap
+o.breakindent = true   -- Start wrapped lines indented
+o.ignorecase = true    -- Ignore case in search patterns
+o.smartcase = true     -- Override the 'ignorecase' option if the search pattern contains upper case characters
 o.signcolumn = 'yes:1'
-o.expandtab = true                 -- Use the appropriate number of spaces to insert a <Tab>
-o.smartindent = true               -- Do smart autoindenting when starting a new line
-o.copyindent = true                -- Copy the structure of the existing lines indent when autoindenting a new line
-o.softtabstop = 2                  -- Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>
-o.tabstop = 2                      -- Number of spaces that a <Tab> in the file counts for
-o.shiftwidth = 2                   -- Number of spaces to use for each step of (auto)indent
-o.hidden = true                    -- Allow switching buffers with unsaved changes
-opt.lazyredraw = true              -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
+o.expandtab = true     -- Use the appropriate number of spaces to insert a <Tab>
+o.smartindent = true   -- Do smart autoindenting when starting a new line
+o.copyindent = true    -- Copy the structure of the existing lines indent when autoindenting a new line
+o.softtabstop = 2      -- Number of spaces that a <Tab> counts for while performing editing operations, like inserting a <Tab> or using <BS>
+o.tabstop = 2          -- Number of spaces that a <Tab> in the file counts for
+o.shiftwidth = 2       -- Number of spaces to use for each step of (auto)indent
+o.hidden = true        -- Allow switching buffers with unsaved changes
+opt.lazyredraw = true  -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
 opt.list = true
-opt.listchars:append "eol:¬,tab:  ,lead: ,multispace:˙,trail:˙"
+opt.listchars:append 'eol:¬,tab:  ,lead: ,multispace:˙,trail:˙'
 opt.laststatus = 3
-o.fillchars='eob: '
+opt.spell = true
+opt.spelllang = { 'en_us', }
+o.fillchars = 'eob: '
 -- o.cmdheight=0
 
 -- vim.cmd([[color haslo]])

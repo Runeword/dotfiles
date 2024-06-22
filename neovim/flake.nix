@@ -53,7 +53,7 @@
                   nodePackages.typescript-language-server
                   nodePackages.bash-language-server
                   nodePackages.eslint
-                  nodePackages.pyright
+                  pyright
                   vscode-langservers-extracted
                   yaml-language-server
                   lua-language-server

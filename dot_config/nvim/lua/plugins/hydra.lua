@@ -57,65 +57,65 @@ return {
       end)
 
     -------------------- Jump paragraph
-    local nextParagraphStart = function()
-      vim.fn.search(
-        [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW')
-    end
+    -- local nextParagraphStart = function()
+    --   vim.fn.search(
+    --     [[\(^$\n\s*\zs\S\)\|\(\S\ze\n*\%$\)]], 'sW')
+    -- end
 
-    local nextParagraphEnd = function()
-      vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
-        'sW')
-    end
+    -- local nextParagraphEnd = function()
+    --   vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
+    --     'sW')
+    -- end
 
-    local prevParagraphStart = function()
-      vim.fn.search(
-        [[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
-    end
+    -- local prevParagraphStart = function()
+    --   vim.fn.search(
+    --     [[\(^$\n\s*\zs\S\)\|\(^\%1l\s*\zs\S\)]], 'sWb')
+    -- end
 
-    local prevParagraphEnd = function()
-      vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
-        'sWb')
-    end
+    -- local prevParagraphEnd = function()
+    --   vim.fn.search([[\(\n\s*\)\@<=\S\(.*\n^$\)\@=]],
+    --     'sWb')
+    -- end
 
-    local jumpParagraph = require('hydra')({
-      mode = { 'n', 'x', },
+    -- local jumpParagraph = require('hydra')({
+    --   mode = { 'n', 'x', },
 
-      config = {
-        hint = false,
-        on_enter = function() vim.o.scrolloff = 9999 end,
-        on_exit = function() vim.o.scrolloff = 5 end,
-      },
+    --   config = {
+    --     hint = false,
+    --     on_enter = function() vim.o.scrolloff = 9999 end,
+    --     on_exit = function() vim.o.scrolloff = 5 end,
+    --   },
 
-      heads = {
-        { '<Down>',   nextParagraphStart, },
-        { '<Up>',     prevParagraphStart, },
-        { '<S-Up>',   prevParagraphEnd, },
-        { '<S-Down>', nextParagraphEnd, },
-      },
-    })
+    --   heads = {
+    --     { '<Down>',   nextParagraphStart, },
+    --     { '<Up>',     prevParagraphStart, },
+    --     { '<S-Up>',   prevParagraphEnd, },
+    --     { '<S-Down>', nextParagraphEnd, },
+    --   },
+    -- })
 
-    vim.keymap.set({ 'n', 'x', }, '<Down>',
-      function()
-        jumpParagraph:activate()
-        nextParagraphStart()
-      end)
+    -- vim.keymap.set({ 'n', 'x', }, '<Down>',
+    --   function()
+    --     jumpParagraph:activate()
+    --     nextParagraphStart()
+    --   end)
 
-    vim.keymap.set({ 'n', 'x', }, '<Up>',
-      function()
-        jumpParagraph:activate()
-        prevParagraphStart()
-      end)
+    -- vim.keymap.set({ 'n', 'x', }, '<Up>',
+    --   function()
+    --     jumpParagraph:activate()
+    --     prevParagraphStart()
+    --   end)
 
-    vim.keymap.set({ 'n', 'x', }, '<S-Up>',
-      function()
-        jumpParagraph:activate()
-        prevParagraphEnd()
-      end)
+    -- vim.keymap.set({ 'n', 'x', }, '<S-Up>',
+    --   function()
+    --     jumpParagraph:activate()
+    --     prevParagraphEnd()
+    --   end)
 
-    vim.keymap.set({ 'n', 'x', }, '<S-Down>',
-      function()
-        jumpParagraph:activate()
-        nextParagraphEnd()
-      end)
+    -- vim.keymap.set({ 'n', 'x', }, '<S-Down>',
+    --   function()
+    --     jumpParagraph:activate()
+    --     nextParagraphEnd()
+    --   end)
   end,
 }

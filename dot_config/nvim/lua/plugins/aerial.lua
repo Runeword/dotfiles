@@ -19,6 +19,7 @@ return {
       layout = {
         default_direction = 'prefer_left',
       },
+      filter_kind = false,
     })
   end,
 }

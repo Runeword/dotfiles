@@ -2,24 +2,34 @@ local vim = vim
 
 return {
   'stevearc/aerial.nvim',
-  opts = {},
+
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
   },
+
   config = function()
     require('aerial').setup({
       open_automatic = true,
-      -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+
       on_attach = function(bufnr)
-        -- Jump forwards/backwards with '{' and '}'
         vim.keymap.set('n', '<Up>',   '<cmd>AerialPrev<CR>', { buffer = bufnr, })
         vim.keymap.set('n', '<Down>', '<cmd>AerialNext<CR>', { buffer = bufnr, })
       end,
+
       layout = {
-        default_direction = 'prefer_left',
+        max_width = { 40, 0.2, },
+        width = nil,
+        min_width = 10,
+        win_opts = {},
+        default_direction = 'prefer_right',
+        placement = 'window',
+        resize_to_content = true,
+        preserve_equality = false,
       },
+
       filter_kind = false,
+      show_guides = true,
     })
   end,
 }

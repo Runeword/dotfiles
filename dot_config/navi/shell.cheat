@@ -62,3 +62,12 @@ gpgconf --list-dirs
 
 # List GPG key id
 gpg --list-secret-keys --keyid-format LONG
+
+# Decompress archive
+ouch decompress <archive>
+
+# Compress files
+ouch compress <files>
+
+# List compressed files
+ouch list <archive>

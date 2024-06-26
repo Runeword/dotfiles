@@ -12,6 +12,8 @@ return {
     require('aerial').setup({
       open_automatic = true,
 
+      lazy_load = false,
+
       on_attach = function(bufnr)
         vim.keymap.set('n', '<Up>',   '<cmd>AerialPrev<CR>', { buffer = bufnr, })
         vim.keymap.set('n', '<Down>', '<cmd>AerialNext<CR>', { buffer = bufnr, })

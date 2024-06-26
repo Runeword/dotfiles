@@ -11,8 +11,8 @@ style:
 
 finder:
   command: fzf # equivalent to the --finder option
-  overrides: --exact -i --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-preview --reverse --prompt='  '
-  overrides_var: --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-exact
+  overrides: --exact -i --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --no-preview --reverse --prompt='  ' --bind='tab:down,btab:up'
+  overrides_var: --no-exact --with-nth=3,2,1 --no-separator --height 70% --cycle --info=inline:'' --reverse --prompt=''
 
 cheats:
   paths:

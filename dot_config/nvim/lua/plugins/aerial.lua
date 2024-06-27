@@ -36,6 +36,8 @@ return {
         preserve_equality = false,
       },
 
+      highlight_on_jump = false,
+
       filter_kind = false,
       show_guides = true,
     })

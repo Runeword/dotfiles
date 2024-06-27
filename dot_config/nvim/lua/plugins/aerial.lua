@@ -12,6 +12,12 @@ return {
     require('aerial').setup({
       open_automatic = true,
 
+      backends = { 'lsp', },
+
+      icons = {
+        Boolean = '',
+      },
+
       lazy_load = false,
 
       on_attach = function(bufnr)

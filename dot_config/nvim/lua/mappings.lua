@@ -148,6 +148,73 @@ vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
 --     vim.api.nvim_feedkeys(key .. 'w', 'j', false)
 --   end)
 
+
+-- ----------------------------------- treesitter text object hook
+
+-- local ts = vim.treesitter
+-- local api = vim.api
+
+-- -- Function to get the node at cursor
+-- local function get_node_at_cursor()
+--   local bufnr = api.nvim_get_current_buf()
+--   local row, col = unpack(api.nvim_win_get_cursor(0))
+--   row = row - 1 -- API uses 0-based rows
+
+--   local parser = ts.get_parser(bufnr)
+--   if not parser then return end
+
+--   local root = parser:parse()[1]:root()
+--   return root:named_descendant_for_range(row, col, row, col)
+-- end
+
+-- -- Function to check if cursor is on a specific text object
+-- local function is_cursor_on_text_object(object_type)
+--   local node = get_node_at_cursor()
+--   if not node then return false end
+
+--   return node:type() == object_type
+-- end
+
+-- -- Function to print message when cursor is on specific text object
+-- local function print_message_on_text_object(object_type, message)
+--   if is_cursor_on_text_object(object_type) then
+--     print(message)
+--   end
+-- end
+
+-- -- Function to attach a mapping when cursor is on specific text object
+-- local function attach_mapping_on_text_object(object_type, mode, lhs, rhs, opts)
+--   if is_cursor_on_text_object(object_type) then
+--     local buffer = api.nvim_get_current_buf()
+--     opts = opts or { noremap = true, silent = true, buffer = buffer, }
+--     api.nvim_buf_set_keymap(buffer, mode, lhs, rhs, opts)
+--   else
+--     -- Remove the mapping if it exists and we're not on the text object
+--     pcall(api.nvim_buf_del_keymap, api.nvim_get_current_buf(), mode, lhs)
+--   end
+-- end
+
+-- -- Set up an autocommand to check cursor position
+-- api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
+--   pattern = '*',
+--   callback = function()
+--     -- Example: Print message when cursor is on a function declaration
+--     print_message_on_text_object('function_declaration', 'Cursor is on a function declaration!')
+--     attach_mapping_on_text_object(
+--       'function_declaration',
+--       'n',
+--       '<leader>f',
+--       ":echo 'Function action'<CR>",
+--       { desc = 'Perform action on function', }
+--     )
+
+--     -- You can add more checks for different text objects here
+--     -- For example:
+--     -- print_message_on_text_object("if_statement", "Cursor is on an if statement!")
+--     -- print_message_on_text_object("variable_declaration", "Cursor is on a variable declaration!")
+--   end,
+-- })
+
 ----------------------------------- EDIT
 
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')

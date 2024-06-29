@@ -8,7 +8,22 @@ vim.keymap.set('n', '<C-p>',   '<Nop>')
 vim.keymap.set('',  'Q',       '<Nop>')
 vim.keymap.set('',  'q',       '<Nop>')
 
------------------------------------
+-- -----------------------------------
+
+vim.cmd([[
+" Close the current buffer, quit vim if it's the last buffer
+" Pass argument '!" to do so without asking to save
+function! CloseBufferOrVim(force='')
+  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    exec ("quit" . a:force)
+    quit
+  else
+    exec ("bdelete" . a:force)
+  endif
+endfunction
+
+nnoremap <silent> q :call CloseBufferOrVim('!')<CR>
+]])
 
 vim.keymap.set('x',           '<C-n>',     ':Norm ')
 vim.keymap.set('n',           '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')

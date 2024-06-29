@@ -21,8 +21,10 @@ return {
       lazy_load = false,
 
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<Up>',   '<cmd>AerialPrev<CR>', { buffer = bufnr, })
-        vim.keymap.set('n', '<Down>', '<cmd>AerialNext<CR>', { buffer = bufnr, })
+        vim.keymap.set('n', '<Down>',  '<cmd>AerialNext<CR>', { buffer = bufnr, })
+        vim.keymap.set('n', '<Up>',    '<cmd>AerialPrev<CR>', { buffer = bufnr, })
+        vim.keymap.set('n', '<Tab>',   '<cmd>AerialNext<CR>', { buffer = bufnr, })
+        vim.keymap.set('n', '<S-Tab>', '<cmd>AerialPrev<CR>', { buffer = bufnr, })
       end,
 
       layout = {

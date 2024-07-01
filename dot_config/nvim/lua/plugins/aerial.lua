@@ -10,7 +10,7 @@ return {
 
   config = function()
     require('aerial').setup({
-      open_automatic = true,
+      open_automatic = false,
 
       backends = { 'lsp', },
 

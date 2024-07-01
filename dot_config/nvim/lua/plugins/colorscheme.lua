@@ -31,11 +31,13 @@ return {
         --   vim.api.nvim_get_hl(0, { name = 'type', }),
         --   { italic = true, bold = true, }))
 
+        vim.api.nvim_set_hl(0, 'TreesitterObjectHighlight', { bg = '#1d253d', })
+
         vim.api.nvim_set_hl(0, 'string', vim.tbl_extend('force',
           vim.api.nvim_get_hl(0, { name = vim.api.nvim_get_hl(0, { name = 'string', }).link, }),
           { italic = true, }))
 
-        vim.api.nvim_set_hl(0, 'normalfloat', { bg = '#1e2633', })
+        vim.api.nvim_set_hl(0, 'normalfloat',  { bg = '#1e2633', })
         vim.api.nvim_set_hl(0, 'floatborder',  { bg = 'none', fg = '#1e2633', })
 
         vim.api.nvim_set_hl(0, 'pmenu',        { bg = 'black', fg = '#7a7c9e', })

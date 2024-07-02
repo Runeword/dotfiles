@@ -1,33 +1,34 @@
-local vim = vim
+local api = vim.api
+local ts = vim.treesitter
 
 local M = {}
 
--- Function to select the node under the cursor
 function M.select_node_under_cursor()
-  -- Get the current buffer and cursor position
-  local bufnr = vim.api.nvim_get_current_buf()
-  local cursor = vim.api.nvim_win_get_cursor(0)
-  local row, col = cursor[1] - 1, cursor[2]
+  local bufnr = api.nvim_get_current_buf()
+  local cursor = api.nvim_win_get_cursor(0)
+  local row, col = cursor[1] - 1, cursor[2] -- Convert row to 0-based index
 
-  -- Get the parser and tree for the current buffer
-  local parser = vim.treesitter.get_parser(bufnr)
-  local tree = parser:parse()[1]
+  -- Cache the language tree
+  local lang_tree = ts.get_parser(bufnr)
+  if not lang_tree then return end
 
-  -- Get the node at the cursor position
-  local root = tree:root()
-  local node = root:named_descendant_for_range(row, col, row, col)
+  -- Get the tree for the current position
+  local tree = lang_tree:tree_for_range({row, col, row, col})
+  if not tree then return end
 
+  -- Find the smallest named node at the cursor position
+  local node = tree:root():named_descendant_for_range(row, col, row, col)
   if not node then return end
 
   -- Get the node's range
   local start_row, start_col, end_row, end_col = node:range()
 
   -- Set marks for the start and end of the node
-  vim.api.nvim_buf_set_mark(bufnr, '<', start_row + 1, start_col, {})
-  vim.api.nvim_buf_set_mark(bufnr, '>', end_row + 1, end_col, {})
+  api.nvim_buf_set_mark(bufnr, '<', start_row + 1, start_col, {})
+  api.nvim_buf_set_mark(bufnr, '>', end_row + 1, end_col - 1, {})
 
   -- Visually select the node
-  vim.cmd('normal! gv')
+  api.nvim_command('normal! gv')
 end
 
 return M

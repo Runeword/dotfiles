@@ -163,90 +163,47 @@ vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
 --     vim.api.nvim_feedkeys(key .. 'w', 'j', false)
 --   end)
 
-local api = vim.api
-local ts = vim.treesitter
-
--- Create a namespace for our highlight
-local ns_id = api.nvim_create_namespace('TreesitterObjectHighlight')
-
--- Function to highlight the treesitter object under the cursor
-local function highlight_treesitter_object()
-  -- Clear previous highlights
-  api.nvim_buf_clear_namespace(0, ns_id, 0, -1)
-
-  -- Get current buffer and cursor position
-  local bufnr = api.nvim_get_current_buf()
-  local row, col = unpack(api.nvim_win_get_cursor(0))
-  row = row - 1 -- API uses 0-based rows
-
-  -- Get the treesitter parser and tree for the current buffer
-  local parser = ts.get_parser(bufnr)
-  local tree = parser:parse()[1]
-
-  -- Get the node at the cursor position
-  local root = tree:root()
-  local node = root:named_descendant_for_range(row, col, row, col)
-
-  if node then
-    -- Get the range of the node
-    local start_row, start_col, end_row, end_col = node:range()
-
-    -- Highlight the node
-    api.nvim_buf_set_extmark(bufnr, ns_id, start_row, start_col, {
-      end_row = end_row,
-      end_col = end_col,
-      hl_group = 'Visual',
-    })
-  end
-end
-
--- Create the autocmd
-api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
-  group = api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
-  callback = highlight_treesitter_object,
-})
-
 ----------------------------------------------------------
 
--- Create a namespace for our highlight
-local namespace_id = api.nvim_create_namespace('TreesitterObjectHighlight')
+-- -- Create a namespace for our highlight
+-- local namespace_id = vim.api.nvim_create_namespace('TreesitterObjectHighlight')
 
--- Function to highlight the treesitter object under the cursor
-local function highlight_treesitter_object()
-  -- Clear previous highlights
-  api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
+-- -- Function to highlight the treesitter object under the cursor
+-- local function highlight_treesitter_object()
+--   -- Clear previous highlights
+--   vim.api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
 
-  -- Get current buffer and cursor position
-  local bufnr = api.nvim_get_current_buf()
-  local row, col = unpack(api.nvim_win_get_cursor(0))
-  row = row - 1 -- API uses 0-based rows
+--   -- Get current buffer and cursor position
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+--   row = row - 1 -- API uses 0-based rows
 
-  -- Get the treesitter parser and tree for the current buffer
-  local parser = ts.get_parser(bufnr)
-  local tree = parser:parse()[1]
+--   -- Get the treesitter parser and tree for the current buffer
+--   local parser = vim.treesitter.get_parser(bufnr)
+--   local tree = parser:parse()[1]
 
-  -- Get the node at the cursor position
-  local root = tree:root()
-  local node = root:named_descendant_for_range(row, col, row, col)
+--   -- Get the node at the cursor position
+--   local root = tree:root()
+--   local node = root:named_descendant_for_range(row, col, row, col)
 
-  if node then
-    -- Get the range of the node
-    local start_row, start_col, end_row, end_col = node:range()
+--   if node then
+--     -- Get the range of the node
+--     local start_row, start_col, end_row, end_col = node:range()
 
-    -- Highlight the node
-    api.nvim_buf_set_extmark(bufnr, namespace_id, start_row, start_col, {
-      end_row = end_row,
-      end_col = end_col,
-      hl_group = 'TreesitterObjectHighlight',
-    })
-  end
-end
+--     -- Highlight the node
+--     vim.api.nvim_buf_set_extmark(bufnr, namespace_id, start_row, start_col, {
+--       end_row = end_row,
+--       end_col = end_col,
+--       hl_group = 'TreesitterObjectHighlight',
+--     })
+--   end
+-- end
 
--- Create the autocmd
-api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
-  group = api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
-  callback = highlight_treesitter_object,
-})
+-- -- Create the autocmd
+-- vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
+--   group = vim.api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
+--   callback = highlight_treesitter_object,
+-- })
 
 -- ----------------------------------- treesitter text object hook
 

@@ -10,34 +10,37 @@ vim.keymap.set('',  'q',       '<Nop>')
 
 -- -----------------------------------
 
-local function move_cursor(node)
-  local start_row, start_col, _, _ = node:range()
-  vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col, })
-end
+local function move_to_next_treesitter_node()
+  local current_buffer_id = vim.api.nvim_get_current_buf()
+  local current_buffer_filetype = vim.api.nvim_get_option_value('filetype', { buf = current_buffer_id, })
 
-local function next()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-  local lang = vim.treesitter.language.get_lang(ft)
-  if lang == nil then
+  local ts_lang = vim.treesitter.language.get_lang(current_buffer_filetype)
+  if ts_lang == nil then
     return
   end
-  local parser = vim.treesitter.get_parser(bufnr, lang)
-  local tree = parser:parse()[1]
-  local cursor_line = vim.fn.line('.') - 1
-  local cursor_col = vim.fn.col('.') - 1
-  local query = vim.treesitter.query.parse(lang, '(_) @node')
 
-  for _, node in query:iter_captures(tree:root(), bufnr) do
-    local start_row, start_col, _, _ = node:range()
-    if start_row > cursor_line or (start_row == cursor_line and start_col > cursor_col) then
-      move_cursor(node)
-      return
+  local ts_parser = vim.treesitter.get_parser(current_buffer_id, ts_lang)
+  local ts_tree = ts_parser:parse()[1]
+  local ts_query = vim.treesitter.query.parse(ts_lang, '(_) @node')
+
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+  local cursor_line = cursor_pos[1]
+  local cursor_col = cursor_pos[2]
+
+  for _, ts_node in ts_query:iter_captures(ts_tree:root(), current_buffer_id) do
+    local ts_range = { ts_node:range(), }
+    local row_start = ts_range[1] + 1
+    local col_start = ts_range[2]
+
+    if row_start > cursor_line or (row_start == cursor_line and col_start > cursor_col) then
+      vim.api.nvim_win_set_cursor(0, { row_start, col_start, })
+      break
     end
   end
 end
 
-vim.keymap.set('n', '<Tab>', next)
+vim.keymap.set('n', '<Tab>',  move_to_next_treesitter_node)
+vim.keymap.set('n', '<Down>', move_to_next_treesitter_node)
 
 ----------------------------------------------------
 vim.cmd([[
@@ -195,45 +198,45 @@ vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
 
 ----------------------------------------------------------
 
--- -- Create a namespace for our highlight
--- local namespace_id = vim.api.nvim_create_namespace('TreesitterObjectHighlight')
+-- Create a namespace for our highlight
+local namespace_id = vim.api.nvim_create_namespace('TreesitterObjectHighlight')
 
--- -- Function to highlight the treesitter object under the cursor
--- local function highlight_treesitter_object()
---   -- Clear previous highlights
---   vim.api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
+-- Function to highlight the treesitter object under the cursor
+local function highlight_treesitter_object()
+  -- Clear previous highlights
+  vim.api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
 
---   -- Get current buffer and cursor position
---   local bufnr = vim.api.nvim_get_current_buf()
---   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
---   row = row - 1 -- API uses 0-based rows
+  -- Get current buffer and cursor position
+  local bufnr = vim.api.nvim_get_current_buf()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  row = row - 1 -- API uses 0-based rows
 
---   -- Get the treesitter parser and tree for the current buffer
---   local parser = vim.treesitter.get_parser(bufnr)
---   local tree = parser:parse()[1]
+  -- Get the treesitter parser and tree for the current buffer
+  local parser = vim.treesitter.get_parser(bufnr)
+  local tree = parser:parse()[1]
 
---   -- Get the node at the cursor position
---   local root = tree:root()
---   local node = root:named_descendant_for_range(row, col, row, col)
+  -- Get the node at the cursor position
+  local root = tree:root()
+  local node = root:named_descendant_for_range(row, col, row, col)
 
---   if node then
---     -- Get the range of the node
---     local start_row, start_col, end_row, end_col = node:range()
+  if node then
+    -- Get the range of the node
+    local start_row, start_col, end_row, end_col = node:range()
 
---     -- Highlight the node
---     vim.api.nvim_buf_set_extmark(bufnr, namespace_id, start_row, start_col, {
---       end_row = end_row,
---       end_col = end_col,
---       hl_group = 'TreesitterObjectHighlight',
---     })
---   end
--- end
+    -- Highlight the node
+    vim.api.nvim_buf_set_extmark(bufnr, namespace_id, start_row, start_col, {
+      end_row = end_row,
+      end_col = end_col,
+      hl_group = 'TreesitterObjectHighlight',
+    })
+  end
+end
 
--- -- Create the autocmd
--- vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
---   group = vim.api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
---   callback = highlight_treesitter_object,
--- })
+-- Create the autocmd
+vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
+  group = vim.api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
+  callback = highlight_treesitter_object,
+})
 
 -- ----------------------------------- treesitter text object hook
 

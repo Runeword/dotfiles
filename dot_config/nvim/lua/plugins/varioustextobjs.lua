@@ -8,6 +8,10 @@ return {
 
     vim.keymap.set({ 'o', }, 'd',
       function() require('various-textobjs').diagnostic() end)
+    vim.keymap.set({ 'o', 'x', }, 'id',
+      function() require('various-textobjs').diagnostic() end)
+    vim.keymap.set({ 'o', 'x', }, 'ad',
+      function() require('various-textobjs').diagnostic() end)
     vim.keymap.set({ 'o', 'x', }, 'ak',
       function() require('various-textobjs').key('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'ik',
@@ -19,10 +23,10 @@ return {
     vim.keymap.set({ 'o', 'x', }, 'aw',
       function() require('various-textobjs').subword('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'iw',
-      function() require('various-textobjs').subword('inner') end)
-    vim.keymap.set({ 'o', 'x', }, 'ad',
-      function() require('various-textobjs').number('outer') end)
-    vim.keymap.set({ 'o', 'x', }, 'id',
+    --   function() require('various-textobjs').subword('inner') end)
+    -- vim.keymap.set({ 'o', 'x', }, 'an',
+    --   function() require('various-textobjs').number('outer') end)
+    -- vim.keymap.set({ 'o', 'x', }, 'in',
       function() require('various-textobjs').number('inner') end)
     vim.keymap.set({ 'o', 'x', }, 'ag',
       function() require('various-textobjs').entireBuffer() end)

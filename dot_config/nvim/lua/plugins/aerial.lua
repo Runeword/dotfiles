@@ -3,6 +3,8 @@ local vim = vim
 return {
   'stevearc/aerial.nvim',
 
+  enabled = false,
+
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
@@ -12,7 +14,7 @@ return {
     require('aerial').setup({
       open_automatic = false,
 
-      backends = { 'lsp', },
+      backends = { 'treesitter', },
 
       icons = {
         Boolean = '',
@@ -25,6 +27,7 @@ return {
         vim.keymap.set('n', '<Up>',    '<cmd>AerialPrev<CR>', { buffer = bufnr, })
         vim.keymap.set('n', '<Tab>',   '<cmd>AerialNext<CR>', { buffer = bufnr, })
         vim.keymap.set('n', '<S-Tab>', '<cmd>AerialPrev<CR>', { buffer = bufnr, })
+        vim.keymap.set('n', '<Leader>u', '<cmd>AerialToggle!<CR>', { buffer = bufnr, })
       end,
 
       layout = {

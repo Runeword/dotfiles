@@ -10,7 +10,7 @@ vim.keymap.set('',  'q',       '<Nop>')
 
 -- -----------------------------------
 
-local function move_cursor(capture, node, query)
+local function move_cursor(node)
   local start_row, start_col, _, _ = node:range()
   vim.api.nvim_win_set_cursor(0, { start_row + 1, start_col, })
 end
@@ -18,7 +18,6 @@ end
 local function next()
   local bufnr = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-  -- print(ft)
   local lang = vim.treesitter.language.get_lang(ft)
   if lang == nil then
     return
@@ -27,20 +26,18 @@ local function next()
   local tree = parser:parse()[1]
   local cursor_line = vim.fn.line('.') - 1
   local cursor_col = vim.fn.col('.') - 1
-  local query = vim.treesitter.query.parse(lang, '')
-  -- (string) @string_capture
-  -- (parameters) @parameters_capture
+  local query = vim.treesitter.query.parse(lang, '(_) @node')
 
-  for capture, node in query:iter_captures(tree:root(), bufnr) do
+  for _, node in query:iter_captures(tree:root(), bufnr) do
     local start_row, start_col, _, _ = node:range()
     if start_row > cursor_line or (start_row == cursor_line and start_col > cursor_col) then
-      move_cursor(capture, node, query)
+      move_cursor(node)
       return
     end
   end
 end
 
-vim.keymap.set('n', '<Leader>o', next)
+vim.keymap.set('n', '<Tab>', next)
 
 ----------------------------------------------------
 vim.cmd([[

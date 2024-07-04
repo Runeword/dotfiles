@@ -3,6 +3,8 @@ local vim = vim
 return {
   'AndrewRadev/splitjoin.vim',
 
+  enabled = true,
+
   config = function()
     vim.g.splitjoin_split_mapping = ''
     vim.g.splitjoin_join_mapping = ''

@@ -3,6 +3,8 @@ local vim = vim
 return {
   'chrisgrieser/nvim-various-textobjs',
 
+  enabled = true,
+
   config = function()
     require('various-textobjs').setup({ useDefaultKeymaps = false, })
 
@@ -24,16 +26,16 @@ return {
       function() require('various-textobjs').subword('outer') end)
     vim.keymap.set({ 'o', 'x', }, 'iw',
       function() require('various-textobjs').subword('inner') end)
-    vim.keymap.set({ 'o', 'x', }, 'an',
-    --   function() require('various-textobjs').number('outer') end)
-    -- vim.keymap.set({ 'o', 'x', }, 'in',
-    --   function() require('various-textobjs').number('inner') end)
-    -- vim.keymap.set({ 'o', 'x', }, 'ag',
+    vim.keymap.set({ 'o', 'x', }, 'ax',
+      function() require('various-textobjs').number('outer') end)
+    vim.keymap.set({ 'o', 'x', }, 'ix',
+      function() require('various-textobjs').number('inner') end)
+    vim.keymap.set({ 'o', 'x', }, 'ag',
       function() require('various-textobjs').entireBuffer() end)
     vim.keymap.set({ 'o', 'x', }, 'ig',
       function() require('various-textobjs').entireBuffer() end)
 
-    vim.keymap.set({ 'o', }, 'v', 'iv', { remap = true, })
+    -- vim.keymap.set({ 'o', }, 'v', 'iv', { remap = true, })
     -- vim.keymap.set({ 'o', }, 'k', 'ik', { remap = true, })
 
     -- vim.keymap.set({ 'o', 'x', }, 'aw',

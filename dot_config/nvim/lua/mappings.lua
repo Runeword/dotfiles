@@ -27,7 +27,7 @@ local function move_to_next_treesitter_node()
   local cursor_line = cursor_pos[1]
   local cursor_col = cursor_pos[2]
 
-  for _, ts_node in ts_query:iter_captures(ts_tree:root(), current_buffer_id) do
+  for _, ts_node in ts_query:iter_captures(ts_tree:root(), current_buffer_id, cursor_line - 1) do
     local ts_range = { ts_node:range(), }
     local row_start = ts_range[1] + 1
     local col_start = ts_range[2]
@@ -39,8 +39,44 @@ local function move_to_next_treesitter_node()
   end
 end
 
-vim.keymap.set('n', '<Tab>',  move_to_next_treesitter_node)
-vim.keymap.set('n', '<Down>', move_to_next_treesitter_node)
+local function move_to_prev_treesitter_node()
+  local current_buffer_id = vim.api.nvim_get_current_buf()
+  local current_buffer_filetype = vim.api.nvim_get_option_value('filetype', { buf = current_buffer_id, })
+
+  local ts_lang = vim.treesitter.language.get_lang(current_buffer_filetype)
+  if ts_lang == nil then
+    return
+  end
+
+  local ts_parser = vim.treesitter.get_parser(current_buffer_id, ts_lang)
+  local ts_tree = ts_parser:parse()[1]
+  local ts_query = vim.treesitter.query.parse(ts_lang, '(_) @node')
+
+  local cursor_pos = vim.api.nvim_win_get_cursor(0)
+  local cursor_line = cursor_pos[1]
+  local cursor_col = cursor_pos[2]
+
+  local ts_nodes = {}
+  for _, ts_node in ts_query:iter_captures(ts_tree:root(), current_buffer_id, 0, cursor_line) do
+    table.insert(ts_nodes, 1, ts_node)
+  end
+
+  for i = 1, #ts_nodes do
+    local ts_range = { ts_nodes[i]:range(), }
+    local row_start = ts_range[1] + 1
+    local col_start = ts_range[2]
+
+    if row_start < cursor_line or (row_start == cursor_line and col_start < cursor_col) then
+      vim.api.nvim_win_set_cursor(0, { row_start, col_start, })
+      break
+    end
+  end
+end
+
+vim.keymap.set('n', '<Tab>',   move_to_next_treesitter_node)
+vim.keymap.set('n', '<S-Tab>', move_to_prev_treesitter_node)
+vim.keymap.set('n', '<Down>',  move_to_next_treesitter_node)
+vim.keymap.set('n', '<Up>',    move_to_prev_treesitter_node)
 
 ----------------------------------------------------
 vim.cmd([[

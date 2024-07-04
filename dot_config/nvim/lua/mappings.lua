@@ -400,6 +400,7 @@ vim.keymap.set({ 'n', 'v', }, 'x',  '"_x')
 vim.keymap.set({ 'n', 'v', }, 'm',  'd')
 vim.keymap.set('n',           'M',  'D')
 vim.keymap.set('n',           'mm', 'dd^')
+vim.keymap.set('n',           'vv', 'V')
 
 ----------------------------------- READLINE
 

@@ -45,7 +45,6 @@ return {
             ['F'] = '@call.outer',
             ['aF'] = '@call.outer',
             ['iF'] = '@call.inner',
-            -- ['id'] = '@number.inner',
             ['ab'] = '@block.outer',
             ['ib'] = '@block.inner',
             ['ap'] = '@loop.outer',

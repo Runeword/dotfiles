@@ -62,7 +62,6 @@
     tmuxPlugins.resurrect
     tmuxPlugins.tmux-fzf
     ueberzugpp
-    nnn
     yazi
     fuzzel
     vscode
@@ -86,9 +85,8 @@
     # ---------------------------------- CLI tools
     jq
     awscli2
-    miller
-    glow
-    # android-tools
+    miller # cvs toolbox
+    glow # markdown
     lsof
     lsd
     distrobox
@@ -113,13 +111,13 @@
     lux
     exiftool
     watchexec
-    dust
-    duf
+    dust # disk
+    duf # disk
     extundelete
-    foremost
+    foremost # recovery
     neomutt
     notmuch
-    lieer
+    lieer # gmail sync
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 
@@ -182,7 +180,7 @@
 
     # ---------------------------------- Wayland
     (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; }))
-    swaybg
+    # swaybg
     waypaper
     hyprpaper
     hyprlock

@@ -3,29 +3,30 @@ local ts = vim.treesitter
 
 local M = {}
 
-function M.select_node_under_cursor()
-  local bufnr = api.nvim_get_current_buf()
-  local cursor = api.nvim_win_get_cursor(0)
-  local row, col = cursor[1] - 1, cursor[2] -- Convert row to 0-based index
+function M.select_treesitter_node_under_cursor()
+  local current_buffer_id = api.nvim_get_current_buf()
+  local cursor_pos = api.nvim_win_get_cursor(0)
+  local cursor_line = cursor_pos[1] - 1 -- Convert row to 0-based index
+  local cursor_col = cursor_pos[2]
 
   -- Cache the language tree
-  local lang_tree = ts.get_parser(bufnr)
+  local lang_tree = ts.get_parser(current_buffer_id)
   if not lang_tree then return end
 
   -- Get the tree for the current position
-  local tree = lang_tree:tree_for_range({ row, col, row, col })
+  local tree = lang_tree:tree_for_range({ cursor_line, cursor_col, cursor_line, cursor_col })
   if not tree then return end
 
   -- Find the smallest named node at the cursor position
-  local node = tree:root():named_descendant_for_range(row, col, row, col)
+  local node = tree:root():named_descendant_for_range(cursor_line, cursor_col, cursor_line, cursor_col)
   if not node then return end
 
   -- Get the node's range
   local start_row, start_col, end_row, end_col = node:range()
 
   -- Set marks for the start and end of the node
-  api.nvim_buf_set_mark(bufnr, '<', start_row + 1, start_col, {})
-  api.nvim_buf_set_mark(bufnr, '>', end_row + 1, end_col - 1, {})
+  api.nvim_buf_set_mark(current_buffer_id, '<', start_row + 1, start_col, {})
+  api.nvim_buf_set_mark(current_buffer_id, '>', end_row + 1, end_col - 1, {})
 
   -- Visually select the node
   api.nvim_command('normal! gv')
@@ -96,34 +97,31 @@ end
 
 local namespace_id = api.nvim_create_namespace('TreesitterObjectHighlight')
 
-local function highlight_treesitter_object()
+local function highlight_treesitter_node()
   -- Clear previous highlights
   api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
 
-  -- Get current buffer and cursor position
-  local bufnr = api.nvim_get_current_buf()
-  local cursor_pos = api.nvim_win_get_cursor(0)
-  local row = cursor_pos[1]
-  local col = cursor_pos[2]
-  row = row - 1 -- API uses 0-based rows
+  local current_buffer_id = api.nvim_get_current_buf()
 
+  local cursor_pos = api.nvim_win_get_cursor(0)
+  local cursor_line = cursor_pos[1] - 1 -- API uses 0-based rows
+  local cursor_col = cursor_pos[2]
 
   -- Get the treesitter parser and tree for the current buffer
-  local success, parser = pcall(ts.get_parser, bufnr)
+  local success, ts_parser = pcall(ts.get_parser, current_buffer_id)
   if not success then return end
 
-  local tree = parser:parse()[1]
+  local ts_tree = ts_parser:parse()[1]
 
   -- Get the node at the cursor position
-  local root = tree:root()
-  local node = root:named_descendant_for_range(row, col, row, col)
+  local ts_node = ts_tree:root():named_descendant_for_range(cursor_line, cursor_col, cursor_line, cursor_col)
 
-  if node then
+  if ts_node then
     -- Get the range of the node
-    local start_row, start_col, end_row, end_col = node:range()
+    local start_row, start_col, end_row, end_col = ts_node:range()
 
     -- Highlight the node
-    api.nvim_buf_set_extmark(bufnr, namespace_id, start_row, start_col, {
+    api.nvim_buf_set_extmark(current_buffer_id, namespace_id, start_row, start_col, {
       end_row = end_row,
       end_col = end_col,
       hl_group = 'TreesitterObjectHighlight',
@@ -133,7 +131,7 @@ end
 
 api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
   group = api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
-  callback = highlight_treesitter_object,
+  callback = highlight_treesitter_node,
 })
 
 return M

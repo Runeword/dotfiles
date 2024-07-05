@@ -9,20 +9,17 @@ function M.select_treesitter_node_under_cursor()
   local cursor_line = cursor_pos[1] - 1 -- Convert row to 0-based index
   local cursor_col = cursor_pos[2]
 
-  -- Cache the language tree
-  local lang_tree = ts.get_parser(current_buffer_id)
-  if not lang_tree then return end
+  local success, ts_parser = pcall(ts.get_parser, current_buffer_id)
+  if not success then return end
 
-  -- Get the tree for the current position
-  local tree = lang_tree:tree_for_range({ cursor_line, cursor_col, cursor_line, cursor_col })
-  if not tree then return end
+  local ts_tree = ts_parser:tree_for_range({ cursor_line, cursor_col, cursor_line, cursor_col })
 
   -- Find the smallest named node at the cursor position
-  local node = tree:root():named_descendant_for_range(cursor_line, cursor_col, cursor_line, cursor_col)
-  if not node then return end
+  local ts_node = ts_tree:root():named_descendant_for_range(cursor_line, cursor_col, cursor_line, cursor_col)
+  if not ts_node then return end
 
   -- Get the node's range
-  local start_row, start_col, end_row, end_col = node:range()
+  local start_row, start_col, end_row, end_col = ts_node:range()
 
   -- Set marks for the start and end of the node
   api.nvim_buf_set_mark(current_buffer_id, '<', start_row + 1, start_col, {})
@@ -37,11 +34,10 @@ function M.move_to_next_treesitter_node()
   local current_buffer_filetype = api.nvim_get_option_value('filetype', { buf = current_buffer_id, })
 
   local ts_lang = ts.language.get_lang(current_buffer_filetype)
-  if ts_lang == nil then
-    return
-  end
 
-  local ts_parser = ts.get_parser(current_buffer_id, ts_lang)
+  local success, ts_parser = pcall(ts.get_parser, current_buffer_id, ts_lang)
+  if not success then return end
+
   local ts_tree = ts_parser:parse()[1]
   local ts_query = ts.query.parse(ts_lang, '(_) @node')
 

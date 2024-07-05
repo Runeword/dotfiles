@@ -13,7 +13,7 @@ function M.select_node_under_cursor()
   if not lang_tree then return end
 
   -- Get the tree for the current position
-  local tree = lang_tree:tree_for_range({row, col, row, col})
+  local tree = lang_tree:tree_for_range({ row, col, row, col })
   if not tree then return end
 
   -- Find the smallest named node at the cursor position
@@ -93,5 +93,47 @@ function M.move_to_prev_treesitter_node()
     end
   end
 end
+
+local namespace_id = api.nvim_create_namespace('TreesitterObjectHighlight')
+
+local function highlight_treesitter_object()
+  -- Clear previous highlights
+  api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
+
+  -- Get current buffer and cursor position
+  local bufnr = api.nvim_get_current_buf()
+  local cursor_pos = api.nvim_win_get_cursor(0)
+  local row = cursor_pos[1]
+  local col = cursor_pos[2]
+  row = row - 1 -- API uses 0-based rows
+
+
+  -- Get the treesitter parser and tree for the current buffer
+  local success, parser = pcall(ts.get_parser, bufnr)
+  if not success then return end
+
+  local tree = parser:parse()[1]
+
+  -- Get the node at the cursor position
+  local root = tree:root()
+  local node = root:named_descendant_for_range(row, col, row, col)
+
+  if node then
+    -- Get the range of the node
+    local start_row, start_col, end_row, end_col = node:range()
+
+    -- Highlight the node
+    api.nvim_buf_set_extmark(bufnr, namespace_id, start_row, start_col, {
+      end_row = end_row,
+      end_col = end_col,
+      hl_group = 'TreesitterObjectHighlight',
+    })
+  end
+end
+
+api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', }, {
+  group = api.nvim_create_augroup('TreesitterObjectHighlight', { clear = true, }),
+  callback = highlight_treesitter_object,
+})
 
 return M

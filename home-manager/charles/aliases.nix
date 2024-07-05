@@ -21,7 +21,9 @@
     shn = "shutdown now";
     s = "setsid";
     mv = "mv --verbose";
-    md = "mkdir --parents";
+    mkdir = "mkdir --parents --verbose";
+    rmdir = "rmdir --verbose";
+    md = "mkdir --parents --verbose";
     cp = "cp --recursive --verbose";
     pwd = "command pwd | tee /dev/tty | wl-copy";
     r = "gomi -rf";
@@ -73,8 +75,9 @@
     pg = "pgrep -x";
     btm = "command btm --tree --left_legend";
     procs = "command procs --tree";
-    disk = "lsblk";
-    diskinfo = "sudo nvme smart-log /dev/nvme0n1";
+    disk = "duf";
+    # disk = "lsblk";
+    # diskinfo = "sudo nvme smart-log /dev/nvme0n1";
     audit = "lynis audit system";
     # fcount = ''find . -type d -exec sh -c 'echo -n "$1, "; find "$1" -maxdepth 1 -type f | wc -l' _ {} \; | awk -F, '$2 > 500''';
 

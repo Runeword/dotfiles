@@ -16,7 +16,7 @@ return {
         -- delete = false,
         -- change = false,
         -- visual = false,
-        normal = 'ys',
+        normal = 's',
         delete = 'ds',
         change = 'cs',
         visual = 's',

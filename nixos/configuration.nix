@@ -82,6 +82,7 @@
     gparted
     udisks
     udiskie
+    jmtpfs
   ];
 
   # zsh
@@ -96,13 +97,14 @@
   # thunar-media-tags-plugin
   # thunar-volman
   # ];
-  # services.gvfs.enable = true; # Mount, trash, and other functionalities
+  # services.gvfs.enable = false; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
   # udev
   services.udev.enable = true;
   services.udev.packages = with pkgs; [
     qmk-udev-rules
+    android-udev-rules
   ];
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"

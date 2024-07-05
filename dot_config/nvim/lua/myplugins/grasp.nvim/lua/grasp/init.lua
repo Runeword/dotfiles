@@ -33,12 +33,11 @@ function M.move_to_next_treesitter_node()
   local current_buffer_id = api.nvim_get_current_buf()
   local current_buffer_filetype = api.nvim_get_option_value('filetype', { buf = current_buffer_id, })
 
-  local ts_lang = ts.language.get_lang(current_buffer_filetype)
-
-  local success, ts_parser = pcall(ts.get_parser, current_buffer_id, ts_lang)
+  local success, ts_parser = pcall(ts.get_parser, current_buffer_id)
   if not success then return end
 
   local ts_tree = ts_parser:parse()[1]
+  local ts_lang = ts.language.get_lang(current_buffer_filetype)
   local ts_query = ts.query.parse(ts_lang, '(_) @node')
 
   local cursor_pos = api.nvim_win_get_cursor(0)
@@ -61,13 +60,11 @@ function M.move_to_prev_treesitter_node()
   local current_buffer_id = api.nvim_get_current_buf()
   local current_buffer_filetype = api.nvim_get_option_value('filetype', { buf = current_buffer_id, })
 
-  local ts_lang = ts.language.get_lang(current_buffer_filetype)
-  if ts_lang == nil then
-    return
-  end
+  local success, ts_parser = pcall(ts.get_parser, current_buffer_id)
+  if not success then return end
 
-  local ts_parser = ts.get_parser(current_buffer_id, ts_lang)
   local ts_tree = ts_parser:parse()[1]
+  local ts_lang = ts.language.get_lang(current_buffer_filetype)
   local ts_query = ts.query.parse(ts_lang, '(_) @node')
 
   local cursor_pos = api.nvim_win_get_cursor(0)

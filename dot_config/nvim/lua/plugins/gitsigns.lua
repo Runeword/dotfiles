@@ -3,6 +3,8 @@ local vim = vim
 return {
   'lewis6991/gitsigns.nvim',
 
+  enabled = true,
+
   config = function()
     require('gitsigns').setup({
       current_line_blame_opts = {
@@ -27,37 +29,36 @@ return {
           { buffer = buffer, })
       end,
 
-
       signs = {
         add = {
-          hl = 'GitSignsAdd',
+          -- hl = 'GitSignsAdd',
           text = '+',
-          numhl = 'GitSignsAddNr',
-          linehl = 'GitSignsAddLn',
+          -- numhl = 'GitSignsAddNr',
+          -- linehl = 'GitSignsAddLn',
         },
         change = {
-          hl = 'GitSignsChange',
+          -- hl = 'GitSignsChange',
           text = '~',
-          numhl = 'GitSignsChangeNr',
-          linehl = 'GitSignsChangeLn',
+          -- numhl = 'GitSignsChangeNr',
+          -- linehl = 'GitSignsChangeLn',
         },
         delete = {
-          hl = 'GitSignsDelete',
+          -- hl = 'GitSignsDelete',
           text = '_',
-          numhl = 'GitSignsDeleteNr',
-          linehl = 'GitSignsDeleteLn',
+          -- numhl = 'GitSignsDeleteNr',
+          -- linehl = 'GitSignsDeleteLn',
         },
         topdelete = {
-          hl = 'GitSignsDelete',
+          -- hl = 'GitSignsDelete',
           text = '‾',
-          numhl = 'GitSignsDeleteNr',
-          linehl = 'GitSignsDeleteLn',
+          -- numhl = 'GitSignsDeleteNr',
+          -- linehl = 'GitSignsDeleteLn',
         },
         changedelete = {
-          hl = 'GitSignsChange',
+          -- hl = 'GitSignsChange',
           text = '~',
-          numhl = 'GitSignsChangeNr',
-          linehl = 'GitSignsChangeLn',
+          -- numhl = 'GitSignsChangeNr',
+          -- linehl = 'GitSignsChangeLn',
         },
       },
     })

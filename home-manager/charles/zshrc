@@ -141,6 +141,12 @@ __ripgrep_or_complete() { __on_empty_buffer __ripgrep "zle expand-or-complete"; 
 zle -N __ripgrep_or_complete
 bindkey '^[[Z' __ripgrep_or_complete
 
+_zsh_autosuggest_strategy_custom() {
+  suggestions="test"
+}
+
+ZSH_AUTOSUGGEST_STRATEGY=(custom history completion)
+
 # ------------------------------------ Plugins
 
 eval "$(navi widget zsh)"

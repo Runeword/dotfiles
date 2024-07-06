@@ -142,10 +142,12 @@ zle -N __ripgrep_or_complete
 bindkey '^[[Z' __ripgrep_or_complete
 
 _zsh_autosuggest_strategy_custom() {
-  suggestions="test"
+  suggestion=$(navi --query "$1" --best-match --print)
 }
 
-ZSH_AUTOSUGGEST_STRATEGY=(custom history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(custom)
+
+# ZSH_AUTOSUGGEST_STRATEGY=(custom history completion)
 
 # ------------------------------------ Plugins
 

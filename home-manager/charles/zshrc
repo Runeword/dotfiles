@@ -27,7 +27,10 @@ bindkey '^[OD' backward-char
 bindkey '^[OC' forward-char
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+bindkey "\e[9;5u" forward-word
+bindkey "\e[9;6u" backward-word
 bindkey '^E' end-of-line
+bindkey '^A' beginning-of-line
 bindkey '^A' beginning-of-line
 
 # ------------------------------------ Kill

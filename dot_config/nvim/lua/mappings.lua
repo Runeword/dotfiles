@@ -232,7 +232,6 @@ vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
 
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', '<BS>',   '`[v`]')
-vim.keymap.set('n', 'f',      '/')
 
 -- When the line is empty, move the cursor to the beginning of the line
 vim.keymap.set('n', 'i', function()

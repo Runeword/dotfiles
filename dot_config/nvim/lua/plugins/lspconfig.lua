@@ -65,9 +65,9 @@ return {
     lspconfig.typos_lsp.setup(set_config(
       {
         root_dir = function() return '' end,
-        cmd_env = { RUST_LOG = 'error', },
+        cmd_env = { RUST_LOG = 'Hint', },
         init_options = {
-          diagnosticSeverity = 'Error',
+          diagnosticSeverity = 'hint',
         },
       }
     ))

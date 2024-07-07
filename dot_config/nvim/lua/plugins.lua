@@ -40,6 +40,8 @@ local plugins = {
     dependencies = 'kana/vim-textobj-user',
   },
 
+  -- { 'HiPhish/rainbow-delimiters.nvim', },
+
   -- {
   --   'paulhybryant/vim-textobj-path',
   --   dependencies = 'kana/vim-textobj-user',

@@ -94,8 +94,7 @@ local function highlight_treesitter_node()
   -- Clear previous highlights
   api.nvim_buf_clear_namespace(0, namespace_id, 0, -1)
 
-  -- local mode = api.nvim_get_mode().mode
-  -- if mode == "i" or mode == "c" then return end
+  if api.nvim_get_mode().mode ~= "n" then return end
 
   local current_buffer_id = api.nvim_get_current_buf()
 

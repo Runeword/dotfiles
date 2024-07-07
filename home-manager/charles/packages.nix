@@ -81,6 +81,7 @@
     dmidecode
     libinput
     evtest
+    impala # wifi
 
     # ---------------------------------- CLI tools
     jq

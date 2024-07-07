@@ -9,7 +9,7 @@ return {
     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
     label = {
       uppercase = false,
-      after = { 0, 3, },
+      after = { 0, 2, },
     },
 
     highlight = {
@@ -100,7 +100,11 @@ return {
       't',
       mode = { 'n', 'x', 'o', },
       function()
-        require('flash').jump()
+        require('flash').jump({
+          action = function(match)
+            vim.api.nvim_win_set_cursor(0, { match.pos[1], match.pos[2] - 1, })
+          end,
+        })
         -- require('flash').jump({
         --   search = {
         --     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',

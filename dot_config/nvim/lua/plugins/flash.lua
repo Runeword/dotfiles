@@ -105,12 +105,19 @@ return {
             vim.api.nvim_win_set_cursor(0, { match.pos[1], match.pos[2] - 1, })
           end,
         })
-        -- require('flash').jump({
-        --   search = {
-        --     labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
-        --     incremental = true,
-        --   },
-        -- })
+      end,
+      desc = 'Flash',
+    },
+    {
+      'f',
+      mode = { 'n', 'x', 'o', },
+      function()
+        require('flash').jump({
+          search = {
+            -- labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
+            -- incremental = true,
+          },
+        })
       end,
       desc = 'Flash',
     },

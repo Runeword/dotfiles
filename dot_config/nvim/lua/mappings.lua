@@ -24,13 +24,13 @@ endfunction
 nnoremap <silent> q :call CloseBufferOrVim('!')<CR>
 ]])
 
-vim.keymap.set('x',           '<C-n>',     ':Norm ')
-vim.keymap.set('n',           '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')
+vim.keymap.set('x', '<C-n>',     ':Norm ')
+vim.keymap.set('n', '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')
 -- vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set('n',           'g<Space>',  '<cmd>silent s/\\s\\+\\%#\\s*\\|\\s*\\%#\\s\\+/ /g<CR><cmd>nohlsearch<CR>')
+vim.keymap.set('n', 'g<Space>',  '<cmd>silent s/\\s\\+\\%#\\s*\\|\\s*\\%#\\s\\+/ /g<CR><cmd>nohlsearch<CR>')
 -- vim.keymap.set('n',           's',         function() vim.fn.search('\\s\\+\\ze\\s*') end)
 -- vim.keymap.set('n',           'S',         function() vim.fn.search('\\s\\+\\ze\\s*', 'b') end)
-vim.keymap.set({ 'x', 'n', }, '<Space>',   '<Enter>',                                                                  { remap = true, })
+vim.keymap.set({ 'x', 'n', }, '<Space>',   '<Enter>',      { remap = true, })
 vim.keymap.set({ 'x', 'n', }, '<Leader>q', '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q',         '<cmd>qa!<CR>')
 
@@ -289,7 +289,14 @@ vim.keymap.set({ 'n', 'v', }, 'm',  'd')
 vim.keymap.set('n',           'M',  'D')
 vim.keymap.set('n',           'mm', 'dd^')
 vim.keymap.set('n',           'vv', 'V')
--- vim.keymap.set('n',           'V', '$v``')
+
+-- vim.keymap.set('n',           'V',  'mz$v`z<cmd>delmarks z<CR>')
+vim.keymap.set('n', 'V', function()
+  local current_pos = vim.api.nvim_win_get_cursor(0)
+  vim.api.nvim_win_set_cursor(0, { current_pos[1], #vim.api.nvim_get_current_line(), })
+  vim.api.nvim_feedkeys('v', 'nx', false)
+  vim.api.nvim_win_set_cursor(0, current_pos)
+end)
 
 ----------------------------------- READLINE
 

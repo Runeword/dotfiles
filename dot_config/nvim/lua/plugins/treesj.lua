@@ -3,6 +3,8 @@ local vim = vim
 return {
   'Wansmer/treesj',
 
+  enabled = false,
+
   dependencies = { 'nvim-treesitter/nvim-treesitter', },
 
   config = function()

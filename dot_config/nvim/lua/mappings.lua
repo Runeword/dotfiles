@@ -289,6 +289,7 @@ vim.keymap.set({ 'n', 'v', }, 'm',  'd')
 vim.keymap.set('n',           'M',  'D')
 vim.keymap.set('n',           'mm', 'dd^')
 vim.keymap.set('n',           'vv', 'V')
+-- vim.keymap.set('n',           'V', '$v``')
 
 ----------------------------------- READLINE
 

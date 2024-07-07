@@ -365,6 +365,8 @@ vim.keymap.set({ 'n', 'x', }, ',',  function() vim.fn.search('[,.:;]') end)
 vim.keymap.set({ 'n', 'x', }, '<',  function() vim.fn.search('[,.:;]', 'b') end)
 vim.keymap.set({ 'n', },      '\'', function() vim.fn.search('[\'"`]') end)
 vim.keymap.set({ 'n', },      '"',  function() vim.fn.search('[\'"`]', 'b') end)
+vim.keymap.set({ 'n', 'x', }, ')',   function() vim.fn.search(')') end)
+vim.keymap.set({ 'n', 'x', }, '(',   function() vim.fn.search('(') end)
 -- vim.keymap.set({ 'n', 'x', }, '<Tab>',   function() vim.fn.search('[([{]') end)
 -- vim.keymap.set({ 'n', 'x', }, '<S-Tab>', function() vim.fn.search('[([{]', 'b') end)
 

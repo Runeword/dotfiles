@@ -288,7 +288,7 @@ vim.keymap.set({ 'n', 'v', }, 'x',  '"_x')
 vim.keymap.set({ 'n', 'v', }, 'm',  'd')
 vim.keymap.set('n',           'M',  'D')
 vim.keymap.set('n',           'mm', 'dd^')
-vim.keymap.set('n',           'vv', 'V')
+vim.keymap.set('x',           'v', 'V')
 
 -- vim.keymap.set('n',           'V',  'mz$v`z<cmd>delmarks z<CR>')
 vim.keymap.set('n', 'V', function()

@@ -9,20 +9,58 @@ vim.keymap.set('',  'Q',       '<Nop>')
 vim.keymap.set('',  'q',       '<Nop>')
 
 ----------------------------------------------------
-vim.cmd([[
-" Close the current buffer, quit vim if it's the last buffer
-" Pass argument '!" to do so without asking to save
-function! CloseBufferOrVim(force='')
-  if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    exec ("quit" . a:force)
-    quit
-  else
-    exec ("bdelete" . a:force)
-  endif
-endfunction
+-- vim.cmd([[
+-- " Close the current buffer, quit vim if it's the last buffer
+-- " Pass argument '!" to do so without asking to save
+-- function! CloseBufferOrVim(force='')
+--   if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+--     exec ("quit" . a:force)
+--     quit
+--   else
+--     exec ("bdelete" . a:force)
+--   endif
+-- endfunction
 
-nnoremap <silent> q :call CloseBufferOrVim('!')<CR>
-]])
+-- nnoremap <silent> q :call CloseBufferOrVim('!')<CR>
+-- ]])
+
+-- local function close_buffer_or_vim()
+--   local listed_buffers = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
+
+--   if listed_buffers == 1 then
+--     vim.cmd('quit' .. '!')
+--     vim.cmd('quit')
+--   else
+--     vim.cmd('bdelete' .. '!')
+--   end
+-- end
+
+local function close_buffer_or_vim()
+  local listed_buffers = vim.fn.len(vim.fn.filter(vim.fn.range(1, vim.fn.bufnr('$')), 'buflisted(v:val)'))
+
+  if listed_buffers == 1 then
+    -- If this is the last buffer, quit Vim
+    vim.cmd('quit!')
+  else
+    -- Otherwise, just delete the buffer
+    -- vim.cmd('bdelete!')
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      local buffer_active = vim.fn.bufwinid(buf) ~= -1
+      if buffer_active then
+      print(vim.fn.bufwinid(buf))
+      print(buf, buffer_active)
+      vim.api.nvim_buf_delete(buf, {})
+      end
+      -- if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, 'buflisted') == 1 then
+      --   -- vim.api.nvim_buf_delete(buf, { force = true })
+      --   print('active', buf)
+      -- end
+    end
+  end
+end
+
+-- Set up the keymapping
+vim.keymap.set('n', 'q',         close_buffer_or_vim,                                                        { noremap = true, silent = true, })
 
 vim.keymap.set('x', '<C-n>',     ':Norm ')
 vim.keymap.set('n', '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')
@@ -255,7 +293,7 @@ vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'ip')
 vim.keymap.set({ 'o', 'x', }, '<Space>',  'ip')
 vim.keymap.set({ 'o', 'x', }, 'a<Enter>', 'ap')
 vim.keymap.set({ 'o', 'x', }, 'i<Enter>', 'ip')
-vim.keymap.set({ 'o', }, '<Enter>',  'ip')
+vim.keymap.set({ 'o', },      '<Enter>',  'ip')
 
 vim.keymap.set({ 'o', 'x', }, 'q',        'iq', { remap = true, })
 vim.keymap.set({ 'o', },      '(',        'i(')

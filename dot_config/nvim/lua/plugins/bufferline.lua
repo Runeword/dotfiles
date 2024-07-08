@@ -69,7 +69,7 @@ return {
     require('bufferline').setup({
       options = {
         numbers = function(opts)
-          return string.format('%s', opts.raise(opts.ordinal))
+          return string.format('%s', opts.ordinal)
         end,
         indicator = { style = 'none', },
         separator_style = { '', '', },

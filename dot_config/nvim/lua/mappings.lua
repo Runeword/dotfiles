@@ -43,17 +43,15 @@ local function close_buffer_or_vim()
     vim.cmd('quit!')
   else
     -- Otherwise, just delete the buffer
-    -- vim.cmd('bdelete!')
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
       local buffer_active = vim.fn.bufwinid(buf) ~= -1
       if buffer_active then
-      print(vim.fn.bufwinid(buf))
-      print(buf, buffer_active)
-      vim.api.nvim_buf_delete(buf, {})
+        print(buf)
+        vim.api.nvim_buf_delete(buf, {})
+        break
       end
+
       -- if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, 'buflisted') == 1 then
-      --   -- vim.api.nvim_buf_delete(buf, { force = true })
-      --   print('active', buf)
       -- end
     end
   end

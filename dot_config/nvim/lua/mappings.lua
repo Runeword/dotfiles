@@ -42,17 +42,26 @@ local function close_buffer_or_vim()
     -- If this is the last buffer, quit Vim
     vim.cmd('quit!')
   else
-    -- Otherwise, just delete the buffer
+    -- Otherwise, delete the buffer
     for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-      local buffer_active = vim.fn.bufwinid(buf) ~= -1
-      if buffer_active then
-        print(buf)
+      if vim.fn.bufwinid(buf) ~= -1 then
+        -- Check if there's more than one window
+        local windows = vim.api.nvim_list_wins()
+        if #windows > 1 then
+          for _, win in ipairs(windows) do
+            if win ~= vim.api.nvim_get_current_win() then
+              -- If it's not the current window, close the window and it's buffer
+              vim.api.nvim_win_close(win, false)
+              vim.api.nvim_buf_delete(vim.api.nvim_win_get_buf(win), { force = true, })
+            end
+          end
+        end
+
         vim.api.nvim_buf_delete(buf, {})
         break
       end
 
-      -- if vim.api.nvim_buf_is_valid(buf) and vim.api.nvim_buf_get_option(buf, 'buflisted') == 1 then
-      -- end
+      -- vim.api.nvim_buf_is_valid(buf)
     end
   end
 end

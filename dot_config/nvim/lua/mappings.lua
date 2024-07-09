@@ -47,11 +47,11 @@ local function close_buffer_or_vim()
       if vim.fn.bufwinid(buf) ~= -1 then
         -- Check if there's more than one window
         local windows = vim.api.nvim_list_wins()
+
         if #windows > 1 then
           for _, win in ipairs(windows) do
             if win ~= vim.api.nvim_get_current_win() then
-              -- If it's not the current window, close the window and it's buffer
-              vim.api.nvim_win_close(win, false)
+              -- If it's not the current window, delete it's buffer
               vim.api.nvim_buf_delete(vim.api.nvim_win_get_buf(win), { force = true, })
             end
           end

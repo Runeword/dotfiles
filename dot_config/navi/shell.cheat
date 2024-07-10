@@ -104,3 +104,6 @@ find . -type f | fzf --multi --reverse --prompt='  ' --info=inline:'' --no-separ
 
 # Move files from current directory to destination path
 find . -type f | fzf --multi --reverse --prompt='  ' --info=inline:'' --no-separator --height 70% | rsync -avh --info=progress2 --remove-source-files --files-from=- . <destination-path>
+
+# Open nvim with no plugins
+nvim -u NONE

@@ -35,42 +35,59 @@ vim.keymap.set('',  'q',       '<Nop>')
 --   end
 -- end
 
--- Wipe all the active buffers and close all the windows except the current one
+-- Wipe all the active buffers
 local function close_buffer_or_vim()
   local current_window = vim.api.nvim_get_current_win()
   local listed_buffers_count = 0
+  local active_buffers = {}
 
   for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_valid(buffer) and vim.api.nvim_buf_get_option(buffer, 'buflisted') then
-      listed_buffers_count = listed_buffers_count + 1
-    end
+    if vim.api.nvim_buf_is_valid(buffer) then
+      if vim.api.nvim_buf_get_option(buffer, 'buflisted') then
+        listed_buffers_count = listed_buffers_count + 1
+      end
 
-    -- If buffer is active
-    if vim.fn.bufwinid(buffer) ~= -1 then
-      local windows = vim.api.nvim_list_wins()
+      if vim.fn.bufwinid(buffer) ~= -1 then
+        table.insert(active_buffers, buffer)
+        -- local windows = vim.api.nvim_list_wins()
 
-      for _, window in ipairs(windows) do
-        -- If window is not the current one
-        if vim.api.nvim_win_is_valid(window) and window ~= current_window then
-          local window_buffer = vim.api.nvim_win_get_buf(window)
+        for _, window in ipairs(windows) do
+          -- If window is not the current one
+          if vim.api.nvim_win_is_valid(window) and window ~= current_window then
+            local window_buffer = vim.api.nvim_win_get_buf(window)
 
-          -- Delete it's active buffer
-          if vim.api.nvim_buf_is_valid(window_buffer) then
-            vim.api.nvim_buf_delete(window_buffer, { force = true, })
+            -- Delete it's active buffer
+            if vim.api.nvim_buf_is_valid(window_buffer) then
+              vim.api.nvim_buf_delete(window_buffer, { force = true, })
+            end
           end
         end
       end
     end
   end
 
+  print(vim.inspect(active_buffers))
+  -- local windows = vim.api.nvim_list_wins()
+
+  -- for _, window in ipairs(windows) do
+  --   -- If window is not the current one
+  --   if vim.api.nvim_win_is_valid(window) and window ~= current_window then
+  --     local window_buffer = vim.api.nvim_win_get_buf(window)
+
+  --     -- Delete it's active buffer
+  --     if vim.api.nvim_buf_is_valid(window_buffer) then
+  --       vim.api.nvim_buf_delete(window_buffer, { force = true, })
+  --     end
+  --   end
+  -- end
 
   if listed_buffers_count == 1 then
     vim.cmd('quit!')
   end
 end
 
--- Set up the keymapping
-vim.keymap.set('n', 'q',         close_buffer_or_vim,                                                        { noremap = true, silent = true, })
+vim.keymap.set('n', 'q', close_buffer_or_vim, { noremap = true, silent = true, })
+-- vim.keymap.set('n', 'q',         '<cmd>bdelete<CR>',                                                        { noremap = true, silent = true, })
 
 vim.keymap.set('x', '<C-n>',     ':Norm ')
 vim.keymap.set('n', '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')

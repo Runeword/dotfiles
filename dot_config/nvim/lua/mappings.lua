@@ -9,7 +9,7 @@ vim.keymap.set('',  'Q',       '<Nop>')
 vim.keymap.set('',  'q',       '<Nop>')
 
 -- Wipe all the active buffers, quit vim if it's the last buffer
-local function close_buffer_or_vim()
+local function wipe_active_buffers()
   local buffers_count = 0
   local active_buffers = {}
 
@@ -25,7 +25,7 @@ local function close_buffer_or_vim()
     end
   end
 
-  -- print(vim.inspect(active_buffers))
+  print(vim.inspect(active_buffers))
 
   for _, active_buffer in ipairs(active_buffers) do
     vim.api.nvim_buf_delete(active_buffer, { force = true, })
@@ -36,8 +36,8 @@ local function close_buffer_or_vim()
   end
 end
 
-vim.keymap.set('n', 'q', close_buffer_or_vim, { noremap = true, silent = true, })
--- vim.keymap.set('n', 'q',         '<cmd>bdelete<CR>',                                                        { noremap = true, silent = true, })
+-- vim.keymap.set('n', 'q', wipe_active_buffers)
+vim.keymap.set('n', 'q',         wipe_active_buffers,                                                        { noremap = true, })
 
 vim.keymap.set('x', '<C-n>',     ':Norm ')
 vim.keymap.set('n', '<Leader>g', '<cmd>silent !google-chrome-stable %:p<CR>')

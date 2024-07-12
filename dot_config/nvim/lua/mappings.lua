@@ -8,7 +8,7 @@ vim.keymap.set('n', '<C-p>',   '<Nop>')
 vim.keymap.set('',  'Q',       '<Nop>')
 vim.keymap.set('',  'q',       '<Nop>')
 
--- Wipe all the active buffers
+-- Wipe all the active buffers, quit vim if it's the last buffer
 local function close_buffer_or_vim()
   local buffers_count = 0
   local active_buffers = {}
@@ -265,12 +265,15 @@ end, { expr = true, })
 
 ----------------------------------- TEXT OBJECTS
 
-vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'ap')
-vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'ip')
-vim.keymap.set({ 'o', 'x', }, '<Space>',  'ip')
-vim.keymap.set({ 'o', 'x', }, 'a<Enter>', 'ap')
-vim.keymap.set({ 'o', 'x', }, 'i<Enter>', 'ip')
-vim.keymap.set({ 'o', },      '<Enter>',  'ip')
+vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'aW')
+vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'iW')
+vim.keymap.set({ 'o', },      '<Space>',  'iW')
+vim.keymap.set({ 'o', 'x', }, 'a<CR>',    'ap')
+vim.keymap.set({ 'o', 'x', }, 'i<CR>',    'ip')
+vim.keymap.set({ 'o', },      '<CR>',     'ip')
+vim.keymap.set({ 'o', 'x', }, 'a<Tab>',   'ap')
+vim.keymap.set({ 'o', 'x', }, 'i<Tab>',   'ip')
+vim.keymap.set({ 'o', },      '<Tab>',    'ip')
 
 vim.keymap.set({ 'o', 'x', }, 'q',        'iq', { remap = true, })
 vim.keymap.set({ 'o', },      '(',        'i(')

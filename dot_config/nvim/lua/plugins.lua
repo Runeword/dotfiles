@@ -3,17 +3,8 @@ local vim = vim
 local plugins = {
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
-  { 'kana/vim-arpeggio', },
   { 'tpope/vim-abolish', },
   { 'svban/YankAssassin.vim', },
-
-  {
-    'willothy/flatten.nvim',
-    enabled = true,
-    config = true,
-    lazy = false,
-    priority = 1001,
-  },
 
   {
     'nacro90/numb.nvim',
@@ -22,10 +13,10 @@ local plugins = {
     end,
   },
 
-  -- { 'mbbill/undotree', },
   { 'nvim-treesitter/nvim-treesitter-textobjects', },
   { 'windwp/nvim-ts-autotag', },
   { 'tommcdo/vim-exchange', },
+
   { 'jghauser/mkdir.nvim', },
 
   {
@@ -36,11 +27,21 @@ local plugins = {
   },
 
   {
+    'willothy/flatten.nvim',
+    enabled = true,
+    config = true,
+    lazy = false,
+    priority = 1001,
+  },
+
+  {
     'kana/vim-textobj-line',
     dependencies = 'kana/vim-textobj-user',
   },
 
   -- { 'HiPhish/rainbow-delimiters.nvim', },
+  -- { 'mbbill/undotree', },
+  -- { 'kana/vim-arpeggio', },
 
   -- {
   --   'paulhybryant/vim-textobj-path',

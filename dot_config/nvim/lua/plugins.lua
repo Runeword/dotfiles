@@ -13,7 +13,12 @@ local plugins = {
     end,
   },
 
-  { 'nvim-treesitter/nvim-treesitter-textobjects', },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+    requires = 'nvim-treesitter/nvim-treesitter',
+  },
+
   { 'windwp/nvim-ts-autotag', },
   { 'tommcdo/vim-exchange', },
 

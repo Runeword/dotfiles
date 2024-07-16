@@ -25,6 +25,10 @@ require('lazy').setup(
     { import = 'plugins.core', },
     { import = 'plugins.debug', },
     { import = 'plugins.ui', },
+    { import = 'plugins.search', },
+    { import = 'plugins.textobjects', },
+    { import = 'plugins.motions', },
+    { import = 'plugins.operators', },
   },
 
   {

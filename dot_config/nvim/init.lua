@@ -29,6 +29,7 @@ require('lazy').setup(
     { import = 'plugins.textobjects', },
     { import = 'plugins.motions', },
     { import = 'plugins.operators', },
+    { import = 'plugins.formatters', },
   },
 
   {

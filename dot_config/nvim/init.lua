@@ -30,6 +30,7 @@ require('lazy').setup(
     { import = 'plugins.motions', },
     { import = 'plugins.operators', },
     { import = 'plugins.formatters', },
+    { import = 'plugins.test', },
   },
 
   {

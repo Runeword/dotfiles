@@ -24,6 +24,7 @@ require('lazy').setup(
     { import = 'plugins.completion', },
     { import = 'plugins.core', },
     { import = 'plugins.debug', },
+    { import = 'plugins.buffers', },
     { import = 'plugins.ui', },
     { import = 'plugins.search', },
     { import = 'plugins.textobjects', },

@@ -21,17 +21,18 @@ vim.opt.runtimepath:prepend(lazypath)
 require('lazy').setup(
   {
     { import = 'plugins', },
-    { import = 'plugins.completion', },
     { import = 'plugins.core', },
-    { import = 'plugins.debug', },
-    { import = 'plugins.buffers', },
-    { import = 'plugins.ui', },
-    { import = 'plugins.search', },
-    { import = 'plugins.textobjects', },
-    { import = 'plugins.motions', },
-    { import = 'plugins.operators', },
-    { import = 'plugins.formatters', },
-    { import = 'plugins.test', },
+    { import = 'plugins.minimal', },
+    -- { import = 'plugins.completion', },
+    -- { import = 'plugins.debug', },
+    -- { import = 'plugins.buffers', },
+    -- { import = 'plugins.ui', },
+    -- { import = 'plugins.search', },
+    -- { import = 'plugins.textobjects', },
+    -- { import = 'plugins.motions', },
+    -- { import = 'plugins.operators', },
+    -- { import = 'plugins.formatters', },
+    -- { import = 'plugins.test', },
   },
 
   {

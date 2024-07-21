@@ -2,7 +2,10 @@ local vim = vim
 
 return {
   'neovim/nvim-lspconfig',
+
   dependencies = { 'hrsh7th/nvim-cmp', },
+
+  enabled = true,
 
   config = function()
     local function on_attach_server(dfp)
@@ -34,9 +37,11 @@ return {
       end
     end
 
+    local cmp_exists, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+
     local function set_config(override_opts)
       local default_opts = {
-        capabilities = require('cmp_nvim_lsp').default_capabilities(), -- hrsh7th/nvim-cmp
+        capabilities = cmp_exists and cmp_nvim_lsp.default_capabilities() or {}, -- hrsh7th/nvim-cmp
         on_attach = on_attach_server(true),
         ['settings.format.enable'] = true,
         flags = { debounce_text_changes = 0, },

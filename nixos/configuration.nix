@@ -170,7 +170,6 @@
   # pkgs.gutenprint pkgs.canon-cups-ufr2
 
   # audio
-  sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire.enable = true;
   services.pipewire.audio.enable = true;

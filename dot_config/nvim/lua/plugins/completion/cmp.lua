@@ -2,7 +2,9 @@ local vim = vim
 
 return {
   'hrsh7th/nvim-cmp',
+
   enabled = true,
+
   event = 'InsertEnter',
   -- pin = true,
 
@@ -11,7 +13,6 @@ return {
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    'jcdickinson/codeium.nvim',
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
   },
@@ -70,8 +71,6 @@ return {
   end,
 
   config = function()
-    require('codeium').setup({})
-
     local cmp = require 'cmp'
 
     local has_words_before = function()

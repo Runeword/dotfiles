@@ -3,10 +3,6 @@ local vim = vim
 return {
   { 'nvim-lua/plenary.nvim', },
   { 'nvim-tree/nvim-web-devicons', },
-  { 'tpope/vim-abolish', },
-
-  { 'windwp/nvim-ts-autotag', },
-
   { 'jghauser/mkdir.nvim', },
 
   {

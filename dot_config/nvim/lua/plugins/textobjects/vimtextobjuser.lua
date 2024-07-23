@@ -23,4 +23,13 @@ return {
       -- vim.keymap.set({ 'o', 'x', }, 'inm', '<Plug>(textobj-chainmember-next-i)')
     end,
   },
+  {
+    'glts/vim-textobj-comment',
+    dependencies = 'kana/vim-textobj-user',
+
+    config = function()
+      vim.keymap.set({ 'o', }, 'c', 'ac', { remap = true, })
+      vim.keymap.set({ 'o', }, 'C', 'aC', { remap = true, })
+    end,
+  },
 }

@@ -5,13 +5,6 @@ return {
   { 'nvim-tree/nvim-web-devicons', },
   { 'tpope/vim-abolish', },
 
-  {
-    'nacro90/numb.nvim',
-    config = function()
-      require('numb').setup()
-    end,
-  },
-
   { 'windwp/nvim-ts-autotag', },
 
   { 'jghauser/mkdir.nvim', },

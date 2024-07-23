@@ -3,6 +3,8 @@ local vim = vim
 return {
   'akinsho/bufferline.nvim',
 
+  dependencies = 'nvim-tree/nvim-web-devicons',
+
   init = function()
     vim.api.nvim_create_augroup('bufferline', { clear = true, })
     vim.api.nvim_create_autocmd('ColorScheme', {

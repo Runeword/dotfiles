@@ -64,13 +64,6 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', }, {
   desc = 'Restore cursor position and folds when entering a buffer',
 })
 
-vim.api.nvim_create_augroup('chezmoi', { clear = true, })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  group = 'chezmoi',
-  pattern = '~/.local/share/chezmoi/*',
-  command = 'silent! !chezmoi apply --source-path %',
-})
-
 vim.api.nvim_create_augroup('help', { clear = true, })
 vim.api.nvim_create_autocmd('FileType', {
   group = 'help',

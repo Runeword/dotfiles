@@ -24,12 +24,11 @@ require('lazy').setup(
     { import = 'plugins.core', },
     { import = 'plugins.minimal', },
     { import = 'plugins.completion', },
+    { import = 'plugins.textobjects', },
+    { import = 'plugins.search', },
+    { import = 'plugins.format', },
     { import = 'plugins.debug', },
     { import = 'plugins.ui', },
-    { import = 'plugins.search', },
-    { import = 'plugins.textobjects', },
-    { import = 'plugins.motions', },
-    { import = 'plugins.formatters', },
   },
 
   {

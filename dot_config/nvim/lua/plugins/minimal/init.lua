@@ -7,4 +7,10 @@ return {
     'tommcdo/vim-exchange',
     enabled = true,
   },
+  -- {
+  --   'psjay/buffer-closer.nvim',
+  --   config = function()
+  --     require('buffer-closer').setup()
+  --   end
+  -- }
 }

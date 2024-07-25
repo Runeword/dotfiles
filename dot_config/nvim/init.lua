@@ -28,6 +28,7 @@ require('lazy').setup(
     { import = 'plugins.search', },
     { import = 'plugins.format', },
     { import = 'plugins.debug', },
+    { import = 'plugins.move', },
     { import = 'plugins.ui', },
   },
 

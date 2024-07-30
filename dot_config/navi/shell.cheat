@@ -107,3 +107,9 @@ find . -type f | fzf --multi --reverse --prompt='  ' --info=inline:'' --no-separ
 
 # Open nvim with no plugins
 nvim -u NONE
+
+# Decrypt LUKS encrypted device
+sudo cryptsetup luksOpen /dev/nvme0n1p2 decrypted
+
+# Mount LUKS decrypted device
+sudo mount /dev/decrypted /mnt

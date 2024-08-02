@@ -103,6 +103,7 @@
     gomi
     xdragon
     nix-init
+    cachix
     # tldr
     navi
     asciinema
@@ -114,6 +115,7 @@
     watchexec
     dust # disk
     duf # disk
+    ncdu # disk
     extundelete
     foremost # recovery
     neomutt

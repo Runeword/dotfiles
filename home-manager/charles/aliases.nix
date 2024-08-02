@@ -28,7 +28,8 @@
     pwd = "command pwd | tee /dev/tty | wl-copy";
     r = "gomi -rf";
     ru = "gomi --restore";
-    rd = "rm -rf $HOME/.gomi";
+    rd = "rm -rfv $HOME/.gomi";
+    rt = "rm -rfv $HOME/.local/share/Trash/files";
     # cd = "__zoxide_z";
     # cdh = "__zoxide_zi";
     l = "command ls --almost-all --color --width 90";

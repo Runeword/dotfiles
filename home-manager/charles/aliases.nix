@@ -132,7 +132,7 @@
     nu = "__update_flake_inputs $HOME/nixos";
     nv = "nixos-version";
     ni = "nix-info -m";
-    ng = "sudo nix-collect-garbage -d";
+    ng = "sudo nix-collect-garbage --delete-old --verbose";
     ngd = "nix-env --delete-generations +10";
     ngl = "nix-env --list-generations";
     store = "cd /nix/store && __open_file";

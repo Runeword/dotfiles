@@ -23,10 +23,8 @@
   nix.settings.keep-outputs = true;
   nix.settings.keep-derivations = true;
 
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
+  nix.settings.substituters = ["https://hyprland.cachix.org"];
+  nix.settings.trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
 
   security.polkit.enable = true;
   services.fwupd.enable = true;
@@ -43,32 +41,13 @@
       default_session = initial_session;
     };
   };
+
   environment.etc."greetd/environments".text = ''
     Hyprland
   '';
 
-  hardware = {
-    graphics.enable = true;
-    nvidia.modesetting.enable = true;
-  };
-
-  # programs.hyprland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  #   xwayland.hidpi = true;
-  #   nvidiaPatches = true;
-  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  # };
-
-  # programs.hyprland = {
-  #   enable = true;
-  #   package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  # };
-
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  };
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
   virtualisation.podman.enable = true;
   virtualisation.podman.defaultNetwork.settings.dns_enabled = true;
@@ -131,7 +110,9 @@
 
   # services.clight.enable = true;
 
-  # Bluetooth
+  hardware.graphics.enable = true;
+  hardware.nvidia.modesetting.enable = true;
+
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   # hardware.bluetooth.settings.General.Experimental = true;

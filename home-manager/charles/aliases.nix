@@ -38,6 +38,7 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     xd = "xdg-mime default";
+    pp = "pass git push";
 
     # ______________________________________ CLIPBOARD
 

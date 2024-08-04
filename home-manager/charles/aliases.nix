@@ -38,7 +38,11 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     xd = "xdg-mime default";
+
     pp = "pass git push";
+    pa = "pass insert";
+    pd = "pass rm";
+    pl = "pass git ls-files | sed -e '/^\./d' -e 's/\.gpg$//' | fzf";
 
     # ______________________________________ CLIPBOARD
 

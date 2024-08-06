@@ -42,7 +42,8 @@
     # ______________________________________ PASS
 
     pp = "pass git push";
-    pa = "pass insert";
+    pi = "pass insert";
+    pg = "pass generate";
 
     # ______________________________________ CLIPBOARD
 
@@ -78,7 +79,7 @@
     clients = "hyprctl clients";
     keyboard = "pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1";
     pk = "sudo pkill";
-    pg = "pgrep -x";
+    # pg = "pgrep -x";
     btm = "command btm --tree --left_legend";
     procs = "command procs --tree";
     disk = "duf";

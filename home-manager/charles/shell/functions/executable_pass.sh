@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pc() {
+pl() {
   local files
   files=$(pass git ls-files | sed -e '/^\./d' -e 's/\.gpg$//')
   [ "$files" = "" ] && return 1

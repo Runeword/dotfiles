@@ -153,6 +153,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history custom completion)
 
 # ------------------------------------ Plugins
 
+eval "$(leader init)"
 eval "$(navi widget zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init --no-cmd zsh)"

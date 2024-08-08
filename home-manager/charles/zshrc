@@ -106,9 +106,9 @@ __on_empty_buffer() {
   fi
 }
 
-__alias_or_delete() { __on_empty_buffer __run_alias "zle backward-delete-char"; }
-zle -N __alias_or_delete
-bindkey '^[[3~' __alias_or_delete
+# __alias_or_delete() { __on_empty_buffer __run_alias "zle backward-delete-char"; }
+# zle -N __alias_or_delete
+# bindkey '^[[3~' __alias_or_delete
 
 # __yazi() { __on_empty_buffer "yazi < $TTY"; }
 # zle -N __yazi
@@ -123,7 +123,7 @@ __tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "
 zle -N __tmux_search
 bindkey '/' __tmux_search
 
-# __history_or_delete() { __on_empty_buffer "zle fzf-history-widget; zle accept-line" "zle backward-delete-char"; }
+# __history_or_delete() { __on_empty_buffer "zle fzf-history-widget && zle accept-line" "zle backward-delete-char"; }
 # zle -N __history_or_delete
 # bindkey '^?' __history_or_delete
 # # bindkey '^[[3;2~' __history_or_delete
@@ -140,20 +140,7 @@ __open_file_or_complete() { __on_empty_buffer __open_file "zle expand-or-complet
 zle -N __open_file_or_complete
 bindkey '^I' __open_file_or_complete
 
-leader_widget() {
-  local leader_exit leader_next
-  leader_next=$(SHELL=/bin/zsh BUFFER=$BUFFER CURSOR=$CURSOR leader print)
-  leader_exit=$?
-  zle reset-prompt
-  if [ $leader_exit -eq 3 ]; then
-      BUFFER="${BUFFER}${KEYS}"
-      CURSOR=$((CURSOR + $#KEYS))
-      return "$leader_exit"
-  fi
-  eval "$leader_next"
-}
-
-__leader() { __on_empty_buffer leader_widget; }
+__leader() { __on_empty_buffer __leader_widget; }
 zle -N __leader
 bindkey '^[' __leader
 

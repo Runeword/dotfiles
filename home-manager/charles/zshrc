@@ -110,9 +110,10 @@ __on_empty_buffer() {
 # zle -N __alias_or_delete
 # bindkey '^[[3~' __alias_or_delete
 
-__yazi() { __on_empty_buffer "yazi < $TTY"; }
+__yazi() { __on_empty_buffer "yazi < $TTY" "LBUFFER+=' '; zle autosuggest-fetch"; }
 zle -N __yazi
 bindkey ' ' __yazi
+
 # bindkey '^[' __yazi
 # bindkey '\e' __yazi
 

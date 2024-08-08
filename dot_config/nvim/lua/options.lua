@@ -2,6 +2,9 @@ local vim = vim
 local o = vim.o
 local opt = vim.opt
 
+-- vim.cmd([[color haslo]])
+-- vim.cmd([[colorscheme blaster]])
+
 vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 
 o.splitkeep = 'screen'
@@ -45,12 +48,9 @@ opt.laststatus = 3
 o.fillchars = 'eob: '
 -- o.cmdheight=0
 
--- vim.cmd([[color haslo]])
--- vim.cmd([[colorscheme blaster]])
-
 --------------------------- Enable fold
-
 o.foldenable = false
+
 -- o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
 -- o.foldopen = 'search,undo'
 -- -- nvim-treesitter/nvim-treesitter

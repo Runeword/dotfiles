@@ -110,10 +110,11 @@ __on_empty_buffer() {
 # zle -N __alias_or_delete
 # bindkey '^[[3~' __alias_or_delete
 
-# __yazi() { __on_empty_buffer "yazi < $TTY"; }
-# zle -N __yazi
+__yazi() { __on_empty_buffer "yazi < $TTY"; }
+zle -N __yazi
+bindkey ' ' __yazi
 # bindkey '^[' __yazi
-# # bindkey '\e' __yazi
+# bindkey '\e' __yazi
 
 # __tmux_copy_mode() { __on_empty_buffer "tmux copy-mode > /dev/null 2>&1"; }
 # zle -N __tmux_copy_mode
@@ -128,13 +129,13 @@ bindkey '/' __tmux_search
 # bindkey '^?' __history_or_delete
 # # bindkey '^[[3;2~' __history_or_delete
 
-__navi_or_space() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" "LBUFFER+=' '; zle autosuggest-fetch"; }
-zle -N __navi_or_space
-bindkey '\x1b[32;2u' __navi_or_space
+# __navi_or_space() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" "LBUFFER+=' '; zle autosuggest-fetch"; }
+# zle -N __navi_or_space
+# bindkey '\x1b[32;2u' __navi_or_space
 
-__navi_custom_or_space() { __on_empty_buffer navi "LBUFFER+=' '; zle autosuggest-fetch"; }
-zle -N __navi_custom_or_space
-bindkey ' ' __navi_custom_or_space
+# __navi_custom_or_space() { __on_empty_buffer navi "LBUFFER+=' '; zle autosuggest-fetch"; }
+# zle -N __navi_custom_or_space
+# bindkey ' ' __navi_custom_or_space
 
 __open_file_or_complete() { __on_empty_buffer __open_file "zle expand-or-complete"; }
 zle -N __open_file_or_complete

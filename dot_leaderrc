@@ -1,5 +1,6 @@
 {
   "keys": {
-    "h": "zle fzf-history-widget; zle accept-line"
+    "h": "zle fzf-history-widget && zle accept-line",
+    "a": "__run_alias"
   }
 }

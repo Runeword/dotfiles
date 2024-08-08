@@ -2,6 +2,7 @@ local vim = vim
 
 require('autocmd')
 require('options')
+require('filetype')
 require('mappings')
 
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'

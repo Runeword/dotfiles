@@ -23,6 +23,23 @@
       '';
     };
 
+    # termium = pkgs.stdenv.mkDerivation {
+    #   pname = "termium";
+    #   version = "0.2.1";
+    #   src = pkgs.fetchurl {
+    #     url = "https://github.com/Exafunction/codeium/releases/download/termium-v0.2.1/termium_x86_64-unknown-linux-gnu";
+    #     sha256 = "sha256-DZR+MSIJWkuiKjRtPqzwvj+hXhel71+5HPJ/7G1o+tw=";
+    #   };
+    #   
+    #   dontUnpack = true;
+    #   
+    #   installPhase = ''
+    #     mkdir -p $out/bin
+    #     cp $src $out/bin/termium
+    #     chmod +x $out/bin/termium
+    #   '';
+    # };
+
   # tmuxKeylocker = pkgs.tmuxPlugins.mkTmuxPlugin {
   #   pluginName = "tmux-keylocker";
   #   version = "1.0";
@@ -101,6 +118,7 @@
 
     # ---------------------------------- CLI tools
     leader
+    # termium
     jq
     awscli2
     miller # cvs toolbox

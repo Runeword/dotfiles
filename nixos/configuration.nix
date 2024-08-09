@@ -72,6 +72,7 @@
     # pavucontrol
     # system-config-printer
     # gnome.gnome-disk-utility
+    alsa-utils
     vim
     xarchiver
     # polkit_gnome

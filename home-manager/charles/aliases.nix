@@ -130,6 +130,7 @@
     ho = "cd $HOME/home-manager/$USER";
     co = "cd $HOME/.config";
     pr = "cd .nix-profile";
+    dw = "cd $HOME/Downloads && yazi";
 
     # ______________________________________ NIXOS
 

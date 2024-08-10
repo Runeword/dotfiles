@@ -3,6 +3,8 @@ local vim = vim
 return {
   'nvim-pack/nvim-spectre',
 
+  enabled = false,
+
   dependencies = 'nvim-lua/plenary.nvim',
 
   config = function()

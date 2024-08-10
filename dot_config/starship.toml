@@ -18,7 +18,7 @@ disabled = true
 disabled = true
 
 [directory]
-format = "[$path/](blue) "
+format = "[$path](blue) "
 
 [terraform]
 format = "[$symbol$workspace](white) "

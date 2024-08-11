@@ -119,6 +119,7 @@
     # ---------------------------------- CLI tools
     leader
     # termium
+    qrcp
     jq
     awscli2
     miller # cvs toolbox

@@ -23,6 +23,7 @@ bindkey -r '^W'
 bindkey -r '^Q'
 
 # ------------------------------------ Move
+bindkey '[13;2' accept-line
 bindkey '^[OD' backward-char
 bindkey '^[OC' forward-char
 bindkey '^[[1;5D' backward-word

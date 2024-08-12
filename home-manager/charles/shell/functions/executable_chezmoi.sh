@@ -11,7 +11,7 @@ __select_files() {
     --preview-window bottom,80%,noborder
 }
 
-cha() {
+__chezmoi_add() {
   if [ $# -gt 0 ]; then
     local selected_files
     selected_files=$*
@@ -31,7 +31,7 @@ cha() {
   done
 }
 
-chy() {
+__chezmoi_apply() {
   if [ $# -gt 0 ]; then
     local selected_files
     selected_files=$*
@@ -51,7 +51,7 @@ chy() {
   done
 }
 
-ch() {
+__chezmoi_edit() {
   local files
   files=$(chezmoi status | awk '{print $2}')
   [ "$files" = "" ] && return 1
@@ -63,7 +63,7 @@ ch() {
   echo "$selected_files" | xargs "$EDITOR"
 }
 
-chf() {
+__chezmoi_forget() {
   if [ $# -gt 0 ]; then
     local selected_files
     selected_files=$*

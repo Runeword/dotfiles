@@ -38,12 +38,16 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     xd = "xdg-mime default";
+    f = "fzf --reverse --cycle --prompt=' ' --height 70% --no-separator --info=inline:''";
 
     # ______________________________________ PASS
 
     pp = "pass git push";
     pi = "pass insert";
     pg = "pass generate";
+    pl = "__pass_clip";
+    pc = "__pass_clip";
+    pr = "__pass_rm";
 
     # ______________________________________ CLIPBOARD
 
@@ -129,7 +133,7 @@
     de = "cd $HOME/dev";
     ho = "cd $HOME/home-manager/$USER";
     co = "cd $HOME/.config";
-    pr = "cd .nix-profile";
+    # pr = "cd .nix-profile";
     dw = "cd $HOME/Downloads && yazi";
 
     # ______________________________________ NIXOS
@@ -176,11 +180,14 @@
 
     # ______________________________________ CHEZMOI
 
-    chn = "chezmoi status | awk '{print $2}' | fzf --multi --reverse --cycle --prompt=' ' --height 70% --no-separator --info=inline:'' | xargs nvim";
     chd = "chezmoi diff --reverse";
     chi = "chezmoi ignored";
     chc = "chezmoi cd";
     chr = "chezmoi --refresh-externals apply";
+    cha = "__chezmoi_add";
+    chy = "__chezmoi_apply";
+    chf = "__chezmoi_forget";
+    ch = "__chezmoi_edit";
 
     # ______________________________________ GO
 

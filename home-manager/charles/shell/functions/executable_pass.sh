@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pl() {
+__pass_clip() {
   local files
   files=$(pass git ls-files | sed -e '/^\./d' -e 's/\.gpg$//')
   [ "$files" = "" ] && return 1
@@ -17,7 +17,7 @@ pl() {
   pass --clip "$selected_file"
 }
 
-pd() {
+__pass_rm() {
   local files
   files=$(pass git ls-files | sed -e '/^\./d' -e 's/\.gpg$//')
   [ "$files" = "" ] && return 1

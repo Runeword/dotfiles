@@ -111,9 +111,9 @@ __on_empty_buffer() {
 # zle -N __alias_or_delete
 # bindkey '^[[3~' __alias_or_delete
 
-__yazi() { __on_empty_buffer "yazi < $TTY"; }
-zle -N __yazi
-bindkey '\x1b[27;2u' __yazi
+# __yazi() { __on_empty_buffer "yazi < $TTY"; }
+# zle -N __yazi
+# bindkey '\x1b[27;2u' __yazi
 
 # bindkey '^[' __yazi
 # bindkey '\e' __yazi
@@ -122,30 +122,39 @@ bindkey '\x1b[27;2u' __yazi
 # zle -N __tmux_copy_mode
 # bindkey '^[' __tmux_copy_mode
 
-__tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "" "send -X search-forward-incremental \"%%%\""' LBUFFER+="/"; }
-zle -N __tmux_search
-bindkey '/' __tmux_search
-
 # __history_or_delete() { __on_empty_buffer "zle fzf-history-widget && zle accept-line" "zle backward-delete-char"; }
 # zle -N __history_or_delete
 # bindkey '^?' __history_or_delete
 # # bindkey '^[[3;2~' __history_or_delete
 
+# __navi_custom_or_space() { __on_empty_buffer navi "LBUFFER+=' '; zle autosuggest-fetch"; }
+# zle -N __navi_custom_or_space
+# bindkey ' ' __navi_custom_or_space
+
+# __leader() { __on_empty_buffer __leader_widget; }
+# zle -N __leader
+# bindkey '^[' __leader
+
+__tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "" "send -X search-forward-incremental \"%%%\""' LBUFFER+="/"; }
+zle -N __tmux_search
+bindkey '/' __tmux_search
+
 __navi_or_space() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" "LBUFFER+=' '; zle autosuggest-fetch"; }
 zle -N __navi_or_space
 bindkey '\x1b[32;2u' __navi_or_space
-
-__navi_custom_or_space() { __on_empty_buffer navi "LBUFFER+=' '; zle autosuggest-fetch"; }
-zle -N __navi_custom_or_space
-bindkey ' ' __navi_custom_or_space
 
 __open_file_or_complete() { __on_empty_buffer __open_file "zle expand-or-complete"; }
 zle -N __open_file_or_complete
 bindkey '^I' __open_file_or_complete
 
-__leader() { __on_empty_buffer __leader_widget; }
-zle -N __leader
-bindkey '^[' __leader
+__leader_or_space() { __on_empty_buffer __leader_widget "LBUFFER+=' '; zle autosuggest-fetch"; }
+zle -N __leader_or_space
+bindkey ' ' __leader_or_space
+
+__yazi() { __on_empty_buffer "yazi < $TTY"; }
+zle -N __yazi
+bindkey '^[' __yazi
+bindkey '\x1b[27;2u' __yazi
 
 __ripgrep_or_complete() { __on_empty_buffer __ripgrep "zle expand-or-complete"; }
 zle -N __ripgrep_or_complete

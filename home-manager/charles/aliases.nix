@@ -117,6 +117,7 @@
     ov = "nvim $HOME/home-manager/$USER/overlays.nix";
     al = "nvim $HOME/home-manager/$USER/aliases.nix";
     va = "nvim $HOME/home-manager/$USER/sessionVariables.nix";
+    zs = "nvim $HOME/home-manager/$USER/zshrc";
     me = ''
       __open_device() {
         local devices

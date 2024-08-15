@@ -151,7 +151,12 @@ __leader_or_space() { __on_empty_buffer __leader_widget "LBUFFER+=' '; zle autos
 zle -N __leader_or_space
 bindkey ' ' __leader_or_space
 
-__yazi() { __on_empty_buffer "yazi < $TTY"; }
+# __yazi() { __on_empty_buffer "yazi < $TTY"; }
+# zle -N __yazi
+# bindkey '^[' __yazi
+# bindkey '\x1b[27;2u' __yazi
+
+__yazi() { __on_empty_buffer "__yazi_cd < $TTY"; }
 zle -N __yazi
 bindkey '^[' __yazi
 bindkey '\x1b[27;2u' __yazi

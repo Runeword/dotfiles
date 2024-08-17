@@ -13,10 +13,10 @@ __cd() {
     fi
 }
 
-# __nextd() {
-#   pushd -0 &>/dev/null
-# }
+__nextd() {
+  pushd -0 &>/dev/null
+}
 
-# __prevd() {
-#   pushd +1 &>/dev/null
-# }
+__prevd() {
+  pushd +1 &>/dev/null
+}

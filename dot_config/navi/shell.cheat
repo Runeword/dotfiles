@@ -116,3 +116,6 @@ sudo cryptsetup luksOpen /dev/nvme0n1p2 decrypted
 
 # Mount LUKS decrypted device
 sudo mount /dev/decrypted /mnt
+
+# Show directories history
+dirs

@@ -172,6 +172,8 @@ _zsh_autosuggest_strategy_custom() {
 
 ZSH_AUTOSUGGEST_STRATEGY=(history custom completion)
 
+compdef _cd __cd # Use the built-in cd completion for the custom cd function
+
 # ------------------------------------ Plugins
 
 eval "$(navi widget zsh)"

@@ -39,6 +39,7 @@
     "..." = "cd ../..";
     xd = "xdg-mime default";
     f = "fzf --reverse --cycle --prompt=' ' --height 70% --no-separator --info=inline:''";
+    cd = "__cd";
 
     # ______________________________________ PASS
 

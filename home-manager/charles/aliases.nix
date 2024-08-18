@@ -108,17 +108,6 @@
     tldr = "navi --tldr";
     n = "nvim";
 
-    # ______________________________________ PATH
-
-    np = "nvim $HOME/nixos/configuration.nix";
-    nf = "nvim $HOME/nixos/flake.nix";
-    hp = "nvim $HOME/home-manager/$USER/packages.nix";
-    hd = "nvim $HOME/home-manager/$USER/default.nix";
-    hf = "nvim $HOME/home-manager/flake.nix";
-    ov = "nvim $HOME/home-manager/$USER/overlays.nix";
-    al = "nvim $HOME/home-manager/$USER/aliases.nix";
-    va = "nvim $HOME/home-manager/$USER/sessionVariables.nix";
-    zs = "nvim $HOME/home-manager/$USER/zshrc";
     me = ''
       __open_device() {
         local devices
@@ -131,12 +120,6 @@
       }
       __open_device
     '';
-    ne = "cd $HOME/.config/nvim";
-    de = "cd $HOME/dev";
-    ho = "cd $HOME/home-manager/$USER";
-    co = "cd $HOME/.config";
-    # pr = "cd .nix-profile";
-    dw = "cd $HOME/Downloads && yazi";
 
     # ______________________________________ NIXOS
 

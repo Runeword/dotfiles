@@ -96,31 +96,31 @@ return {
   end,
 
   keys = {
-    {
-      't',
-      mode = { 'n', 'x', 'o', },
-      function()
-        require('flash').jump({
-          action = function(match)
-            vim.api.nvim_win_set_cursor(0, { match.pos[1], match.pos[2] - 1, })
-          end,
-        })
-      end,
-      desc = 'Flash',
-    },
-    {
-      'f',
-      mode = { 'n', 'x', 'o', },
-      function()
-        require('flash').jump({
-          search = {
-            -- labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
-            -- incremental = true,
-          },
-        })
-      end,
-      desc = 'Flash',
-    },
+    -- {
+    --   't',
+    --   mode = { 'n', 'x', 'o', },
+    --   function()
+    --     require('flash').jump({
+    --       action = function(match)
+    --         vim.api.nvim_win_set_cursor(0, { match.pos[1], match.pos[2] - 1, })
+    --       end,
+    --     })
+    --   end,
+    --   desc = 'Flash',
+    -- },
+    -- {
+    --   'f',
+    --   mode = { 'n', 'x', 'o', },
+    --   function()
+    --     require('flash').jump({
+    --       search = {
+    --         -- labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
+    --         -- incremental = true,
+    --       },
+    --     })
+    --   end,
+    --   desc = 'Flash',
+    -- },
     {
       '<C-t>',
       mode = { 'i', },

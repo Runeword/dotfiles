@@ -180,17 +180,6 @@
     qcd = "cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword";
     qd = "(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)";
 
-    # ______________________________________ CHEZMOI
-
-    chd = "chezmoi diff --reverse";
-    chi = "chezmoi ignored";
-    chc = "chezmoi cd";
-    chr = "chezmoi --refresh-externals apply";
-    cha = "__chezmoi_add";
-    chy = "__chezmoi_apply";
-    chf = "__chezmoi_forget";
-    ch = "__chezmoi_edit";
-
     # ______________________________________ GO
 
     gog = "go get";

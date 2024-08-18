@@ -1,3 +1,14 @@
+# ______________________________________ CHEZMOI
+
+alias chd="chezmoi diff --reverse"
+alias chi="chezmoi ignored"
+alias chc="chezmoi cd"
+alias chr="chezmoi --refresh-externals apply"
+alias cha="__chezmoi_add"
+alias chy="__chezmoi_apply"
+alias chf="__chezmoi_forget"
+alias ch="__chezmoi_edit"
+
 # ______________________________________ GIT
 
 alias g="lazygit"

@@ -4,9 +4,12 @@
 # export EDITOR=nvim
 
 # source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
+[ -f "$HOME/.config/aliases" ] && source "$HOME/.config/aliases"
 
 bind -x '"\C-n":"nvim"'
 bind -x '"\C-b":"br -c :open_preview"'
+bind -x '"\C-n":"__nextd"'
+bind -x '"\C-p":"__prevd"'
 
 # unbind alt-number
 for i in "-" {0..9}; do bind -r "\e$i"; done

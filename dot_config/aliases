@@ -1,3 +1,24 @@
+# ______________________________________ DIRECTORIES
+
+alias ne="cd $HOME/.config/nvim"
+alias de="cd $HOME/dev"
+alias ho="cd $HOME/home-manager/$USER"
+alias co="cd $HOME/.config"
+alias dw="cd $HOME/Downloads && yazi"
+# alias pr= "cd .nix-profile"
+
+# ______________________________________ FILES
+
+alias np="nvim $HOME/nixos/configuration.nix"
+alias nf="nvim $HOME/nixos/flake.nix"
+alias hp="nvim $HOME/home-manager/$USER/packages.nix"
+alias hd="nvim $HOME/home-manager/$USER/default.nix"
+alias hf="nvim $HOME/home-manager/flake.nix"
+alias ov="nvim $HOME/home-manager/$USER/overlays.nix"
+alias al="nvim $HOME/home-manager/$USER/aliases.nix"
+alias va="nvim $HOME/home-manager/$USER/sessionVariables.nix"
+alias zs="nvim $HOME/home-manager/$USER/zshrc"
+
 # ______________________________________ CHEZMOI
 
 alias chd="chezmoi diff --reverse"

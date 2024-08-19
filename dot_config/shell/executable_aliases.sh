@@ -1,3 +1,27 @@
+# ______________________________________ CORE
+
+alias shn='shutdown now'
+alias s='setsid'
+alias mv='mv --verbose'
+alias mkdir='mkdir --parents --verbose'
+alias rmdir='rmdir --verbose'
+alias md='mkdir --parents --verbose'
+alias cp='cp --recursive --verbose'
+alias pwd='command pwd | tee /dev/tty | wl-copy'
+alias cd='__zoxide_z'
+alias cdh='__zoxide_zi'
+alias l='command ls --almost-all --color --width 90'
+alias ll='command ls -lt --almost-all --color --human-readable --classify | fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:"" --prompt="  " --height 70% --no-separator --header-lines=1'
+alias i='setsid satty --copy-command "wl-copy" --early-exit --init-tool brush --output-filename ~/Downloads/$(date +"%Y-%m-%d_%H-%M-%S").png --filename'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias xd='xdg-mime default'
+alias f='fzf --reverse --cycle --prompt=" " --height 70% --no-separator --info=inline:""'
+# alias c='!! | wl-copy'
+alias cd='__cd'
+alias c='wl-copy'
+alias p='wl-paste'
+
 # ______________________________________ NIXOS
 
 alias ns='sudo nixos-rebuild switch --flake $HOME/nixos#$USER'

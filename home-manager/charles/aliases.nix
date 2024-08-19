@@ -18,6 +18,8 @@
     # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
     # bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
 
+    # ______________________________________ CORE
+
     shn = "shutdown now";
     s = "setsid";
     mv = "mv --verbose";
@@ -26,10 +28,6 @@
     md = "mkdir --parents --verbose";
     cp = "cp --recursive --verbose";
     pwd = "command pwd | tee /dev/tty | wl-copy";
-    r = "gomi -rf";
-    ru = "gomi --restore";
-    rd = "rm -rfv $HOME/.gomi";
-    rt = "rm -rfv $HOME/.local/share/Trash/files";
     # cd = "__zoxide_z";
     # cdh = "__zoxide_zi";
     l = "command ls --almost-all --color --width 90";
@@ -40,29 +38,9 @@
     xd = "xdg-mime default";
     f = "fzf --reverse --cycle --prompt=' ' --height 70% --no-separator --info=inline:''";
     cd = "__cd";
-
-    # ______________________________________ PASS
-
-    pp = "pass git push";
-    pi = "pass insert";
-    pg = "pass generate";
-    pl = "__pass_clip";
-    pc = "__pass_clip";
-    pr = "__pass_rm";
-
-    # ______________________________________ CLIPBOARD
-
     # c = "!! | wl-copy";
     c = "wl-copy";
     p = "wl-paste";
-
-    # ______________________________________ NETWORK
-
-    b = "bluetuith";
-    bl = "__bluetoothctl";
-    w = "__nmcli";
-    wo = "nmcli radio wifi on";
-    wf = "nmcli radio wifi off";
 
     # ______________________________________ UTILITY
 
@@ -92,12 +70,6 @@
     # diskinfo = "sudo nvme smart-log /dev/nvme0n1";
     audit = "lynis audit system";
     # fcount = ''find . -type d -exec sh -c 'echo -n "$1, "; find "$1" -maxdepth 1 -type f | wc -l' _ {} \; | awk -F, '$2 > 500''';
-
-    # ______________________________________ ARCHIVE
-
-    od = "ouch decompress";
-    oc = "ouch compress";
-    ol = "ouch list";
 
     # ______________________________________ PROGRAM
 

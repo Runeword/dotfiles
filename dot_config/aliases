@@ -1,3 +1,37 @@
+# ______________________________________ NIXOS
+
+alias ns="sudo nixos-rebuild switch --flake $HOME/nixos#$USER"
+alias nsp='nix-env --switch-profile $(ls /nix/var/nix/profiles/per-user/$USER | fzf)'
+alias nb="sudo nixos-rebuild boot --flake $HOME/nixos#$USER"
+alias nu="__update_flake_inputs $HOME/nixos"
+alias nv="nixos-version"
+alias ni="nix-info -m"
+alias ng="sudo nix-collect-garbage --delete-old --verbose"
+alias ngd="nix-env --delete-generations +10"
+alias ngl="nix-env --list-generations"
+alias store="cd /nix/store && __open_file"
+
+# # ______________________________________ NIX
+
+alias nr="nix run"
+alias nd="read -p 'nix develop $HOME#' devShellName && nix develop $HOME#$devShellName"
+
+# # ______________________________________ FLAKE
+
+alias fl="rm -f flake.lock && nix flake lock"
+alias fs="nix flake show"
+alias fu="nix flake update"
+alias fm="nix flake metadata"
+alias fp="nix flake metadata --json | jq .path"
+alias ft="__use_flake_template $HOME/templates"
+
+# # ______________________________________ HOME MANAGER
+
+alias hs="home-manager switch --flake $HOME/home-manager"
+alias hu="__update_flake_inputs $HOME/home-manager"
+alias hv="home-manager --version"
+alias hpk="home-manager packages | fzf --inline-info"
+
 # ______________________________________ DIRECTORIES
 
 alias ne="cd $HOME/.config/nvim"
@@ -66,3 +100,27 @@ alias grh="git-forgit reset_head"      # git reset
 alias gwa="git worktree add"
 alias gwl="git worktree list"
 alias gwr="git worktree remove"
+
+# ______________________________________ GO
+
+alias gog="go get"
+alias gor="go run"
+alias gom="go mod tidy"
+alias goc="go clean -modcache"
+alias got="go test"
+alias gob="go build"
+
+# ______________________________________ NPM
+
+alias npl="npm ls --depth=0"
+alias npg="npm ls -g --depth=0"
+alias npd="npm run dev"
+alias npi="npm i"
+
+# ______________________________________ QMK
+
+alias qc="(cd $HOME/.config/qmk && qmk compile -kb ferris/sweep -km Runeword)"
+alias qfl="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-left)"
+alias qfr="(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)"
+alias qcd="cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword"
+alias qd="(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)"

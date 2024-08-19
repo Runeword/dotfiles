@@ -18,30 +18,6 @@
     # ll = "exa --long --all --octal-permissions --group-directories-first --total-size --sort=time";
     # bb = "br -c ':toggle_hidden;:toggle_perm;:toggle_dates'";
 
-    # ______________________________________ CORE
-
-    shn = "shutdown now";
-    s = "setsid";
-    mv = "mv --verbose";
-    mkdir = "mkdir --parents --verbose";
-    rmdir = "rmdir --verbose";
-    md = "mkdir --parents --verbose";
-    cp = "cp --recursive --verbose";
-    pwd = "command pwd | tee /dev/tty | wl-copy";
-    # cd = "__zoxide_z";
-    # cdh = "__zoxide_zi";
-    l = "command ls --almost-all --color --width 90";
-    ll = "command ls -lt --almost-all --color --human-readable --classify | fzf --ansi --multi --delimiter : --reverse --border none --cycle --info=inline:'' --prompt='  ' --height 70% --no-separator --header-lines=1";
-    i = "setsid satty --copy-command 'wl-copy' --early-exit --init-tool brush --output-filename ~/Downloads/$(date +'%Y-%m-%d_%H-%M-%S').png --filename";
-    ".." = "cd ..";
-    "..." = "cd ../..";
-    xd = "xdg-mime default";
-    f = "fzf --reverse --cycle --prompt=' ' --height 70% --no-separator --info=inline:''";
-    cd = "__cd";
-    # c = "!! | wl-copy";
-    c = "wl-copy";
-    p = "wl-paste";
-
     # ______________________________________ UTILITY
 
     play = "asciinema play";

@@ -22,6 +22,35 @@ alias f='fzf --reverse --cycle --prompt=" " --height 70% --no-separator --info=i
 alias c='wl-copy'
 alias p='wl-paste'
 
+# ______________________________________ UTILITY
+
+alias play='asciinema play'
+alias rec='asciinema rec $HOME/Downloads/$(date +"%Y-%m-%d_%H-%M-%S").cast'
+alias keys="showkey -a"
+alias color="hyprpicker --autocopy --format=hex"
+alias bios="sudo dmidecode -s bios-version"
+alias window="xprop WM_CLASS"
+alias progress="watch progress -q"
+alias aliases="__run_alias"
+alias hardware="hwinfo --short"
+alias system="neofetch"
+alias wallpaper="__wallpaper"
+alias fonts='fc-list : family style | fzf --reverse --prompt="  " --info=inline:"" --no-separator --height 70%'
+alias path='echo "$PATH" | tr ":" "\n"'
+alias devices='sudo libinput list-devices'
+alias monitors='hyprctl monitors'
+alias clients='hyprctl clients'
+alias keyboard='pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1'
+alias pk='sudo pkill'
+# alias pg='pgrep -x'
+alias btm='command btm --tree --left_legend'
+alias procs='command procs --tree'
+alias disk='duf'
+# alias disk='lsblk'
+# alias diskinfo = 'sudo nvme smart-log /dev/nvme0n1'
+alias audit='lynis audit system'
+# alias fcount='find . -type d -exec sh -c '\''echo -n "$1, "; find "$1" -maxdepth 1 -type f | wc -l'\'' _ {} \; | awk -F, '\''$2 > 500'\'''
+
 # ______________________________________ NIXOS
 
 alias ns='sudo nixos-rebuild switch --flake $HOME/nixos#$USER'

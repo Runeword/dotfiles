@@ -11,12 +11,12 @@ alias ngd='nix-env --delete-generations +10'
 alias ngl='nix-env --list-generations'
 alias store='cd /nix/store && __open_file'
 
-# # ______________________________________ NIX
+# ______________________________________ NIX
 
 alias nr='nix run'
 alias nd='read -p "nix develop $HOME#" devShellName && nix develop $HOME#$devShellName'
 
-# # ______________________________________ FLAKE
+# ______________________________________ FLAKE
 
 alias fl='rm -f flake.lock && nix flake lock'
 alias fs='nix flake show'
@@ -25,7 +25,7 @@ alias fm='nix flake metadata'
 alias fp='nix flake metadata --json | jq .path'
 alias ft='__use_flake_template $HOME/templates'
 
-# # ______________________________________ HOME MANAGER
+# ______________________________________ HOME MANAGER
 
 alias hs='home-manager switch --flake $HOME/home-manager'
 alias hu='__update_flake_inputs $HOME/home-manager'
@@ -101,6 +101,15 @@ alias gwa='git worktree add'
 alias gwl='git worktree list'
 alias gwr='git worktree remove'
 
+# ______________________________________ PASS
+
+alias pp='pass git push'
+alias pi='pass insert'
+alias pg='pass generate'
+alias pl='__pass_clip'
+alias pc='__pass_clip'
+alias pr='__pass_rm'
+
 # ______________________________________ GO
 
 alias gog='go get'
@@ -124,3 +133,25 @@ alias qfl='(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl 
 alias qfr='(cd $HOME/.config/qmk && qmk flash -kb ferris/sweep -km Runeword -bl dfu-split-right)'
 alias qcd='cd $HOME/.config/qmk/qmk_firmware/keyboards/ferris/keymaps/Runeword'
 alias qd='(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/sweep -km Runeword)'
+
+# ______________________________________ NETWORK
+
+alias b='bluetuith'
+alias bl='__bluetoothctl'
+alias w='__nmcli'
+alias wo='nmcli radio wifi on'
+alias wf='nmcli radio wifi off'
+
+# ______________________________________ TRASH
+
+alias r='gomi -rf'
+alias ru='gomi --restore'
+alias rd='rm -rfv $HOME/.gomi'
+alias rt='rm -rfv $HOME/.local/share/Trash/files'
+
+# ______________________________________ ARCHIVE
+
+alias od='ouch decompress'
+alias oc='ouch compress'
+alias ol='ouch list'
+

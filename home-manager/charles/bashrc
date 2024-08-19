@@ -4,7 +4,7 @@
 # export EDITOR=nvim
 
 # source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
-[ -f "$HOME/.config/aliases" ] && source "$HOME/.config/aliases"
+[ -f "$HOME/.config/shell/aliases.sh" ] && source "$HOME/.config/shell/aliases.sh"
 
 bind -x '"\C-n":"nvim"'
 bind -x '"\C-b":"br -c :open_preview"'

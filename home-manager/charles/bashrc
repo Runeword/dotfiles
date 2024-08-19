@@ -3,7 +3,7 @@
 # export LS_COLORS
 # export EDITOR=nvim
 
-# source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
+# source "$HOME/.config/shell/scripts/ssh-agent.sh"
 [ -f "$HOME/.config/shell/aliases.sh" ] && source "$HOME/.config/shell/aliases.sh"
 
 bind -x '"\C-n":"nvim"'
@@ -17,8 +17,8 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
-if [ -d "$HOME/home-manager/$USER/shell/functions" ]; then
-	for file in "$HOME/home-manager/$USER/shell/functions"/*; do
+if [ -d "$HOME/.config/shell/functions" ]; then
+	for file in "$HOME/.config/shell/functions"/*; do
 		. "$file"
 	done
 fi

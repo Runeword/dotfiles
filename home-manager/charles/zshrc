@@ -1,5 +1,5 @@
 # source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
-[ -f "$HOME/.config/aliases" ] && source "$HOME/.config/aliases"
+[ -f "$HOME/.config/shell/aliases.sh" ] && source "$HOME/.config/shell/aliases.sh"
 
 # zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 # compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"

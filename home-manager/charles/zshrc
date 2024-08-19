@@ -1,4 +1,4 @@
-# source "$HOME/home-manager/$USER/shell/scripts/ssh-agent.sh"
+# source "$HOME/.config/shell/scripts/ssh-agent.sh"
 [ -f "$HOME/.config/shell/aliases.sh" ] && source "$HOME/.config/shell/aliases.sh"
 
 # zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
@@ -91,8 +91,8 @@ bindkey '\x1b[13;5u' autosuggest-execute
 # bindkey -M menuselect ' ' undo
 
 # ------------------------------------ Functions
-if [ -d "$HOME/home-manager/$USER/shell/functions" ]; then
-  for file in "$HOME/home-manager/$USER/shell/functions"/*; do
+if [ -d "$HOME/.config/shell/functions" ]; then
+  for file in "$HOME/.config/shell/functions"/*; do
     . "$file"
   done
 fi

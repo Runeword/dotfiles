@@ -21,6 +21,7 @@ alias f='fzf --reverse --cycle --prompt=" " --height 70% --no-separator --info=i
 # alias c='!! | wl-copy'
 alias c='wl-copy'
 alias p='wl-paste'
+alias me='__open_device'
 
 # ______________________________________ UTILITY
 
@@ -216,19 +217,6 @@ alias chrome='google-chrome-stable'
 alias cheat='navi --cheatsh'
 alias tldr='navi --tldr'
 alias n='nvim'
-
-# me = ''
-#   __open_device() {
-#     local devices
-#     devices=$(ls /run/media/"$USER")
-#     if [ "$devices" = "" ]; then return 0; fi
-#     local device
-#     device=$(echo "$devices" | fzf --reverse --info=hidden --prompt='  ' --no-separator --height 70% --header="C-u unmount device" --header-first --bind='ctrl-u:reload-sync(umount /run/media/"$USER"/{})')
-#     if [ "$device" = "" ]; then return 0; fi
-#     cd "/run/media/$USER/$device" || return 0
-#   }
-#   __open_device
-# '';
 
 # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
 # xc = "xclip -selection c";

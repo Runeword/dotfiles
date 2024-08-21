@@ -1,3 +1,5 @@
+source "$HOME/.config/shell/variables.sh"
+
 # disable bold in the ls command output
 # LS_COLORS=${LS_COLORS//01;/00;}
 # export LS_COLORS

@@ -6,7 +6,6 @@
 }: {
   imports = [
     ./overlays.nix
-    ./sessionVariables.nix
     ./packages.nix
     ./bash.nix
     ./zsh.nix

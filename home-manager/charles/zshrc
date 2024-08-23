@@ -1,4 +1,4 @@
-[ -f "$XDG_CONFIG_HOME/shell/variables.sh" ] && source "$XDG_CONFIG_HOME/shell/variables.sh"
+[ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
 # source "$XDG_CONFIG_HOME/shell/scripts/ssh-agent.sh"
 

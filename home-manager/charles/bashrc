@@ -1,4 +1,4 @@
-[ -f "$XDG_CONFIG_HOME/shell/variables.sh" ] && source "$XDG_CONFIG_HOME/shell/variables.sh"
+[ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
 # disable bold in the ls command output
 # LS_COLORS=${LS_COLORS//01;/00;}

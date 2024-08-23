@@ -25,7 +25,7 @@ bindkey -r '^W'
 bindkey -r '^Q'
 
 # ------------------------------------ Move
-bindkey '[13;2' accept-line
+bindkey '^[[13;2u' accept-line
 bindkey '^[OD' backward-char
 bindkey '^[OC' forward-char
 bindkey '^[[1;5D' backward-word
@@ -165,7 +165,7 @@ bindkey ' ' __leader_or_space
 __yazi() { __on_empty_buffer "__yazi_cd < $TTY"; }
 zle -N __yazi
 bindkey '^[' __yazi
-bindkey '\x1b[27;2u' __yazi
+# bindkey '\x1b[27;2u' __yazi
 
 __ripgrep_or_complete() { __on_empty_buffer __ripgrep 'zle expand-or-complete'; }
 zle -N __ripgrep_or_complete

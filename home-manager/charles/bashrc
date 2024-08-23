@@ -1,4 +1,4 @@
-source "$HOME/.config/shell/variables.sh"
+[ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
 # disable bold in the ls command output
 # LS_COLORS=${LS_COLORS//01;/00;}
@@ -7,11 +7,11 @@ source "$HOME/.config/shell/variables.sh"
 
 # source "$HOME/.config/shell/scripts/ssh-agent.sh"
 
-# Show completion options on first Tab, cycle through on second Tab
-bind 'set show-all-if-ambiguous on'
-bind 'set menu-complete-display-prefix on'
-bind '"\t": menu-complete'
-bind '"\e[Z": menu-complete-backward' # Shift+Tab for reverse completion
+# # Show completion options on first Tab, cycle through on second Tab
+# bind 'set show-all-if-ambiguous on'
+# bind 'set menu-complete-display-prefix on'
+# bind '"\t": menu-complete'
+# bind '"\e[Z": menu-complete-backward' # Shift+Tab for reverse completion
 
 bind -x '"\C-n":"nvim"'
 bind -x '"\C-b":"br -c :open_preview"'

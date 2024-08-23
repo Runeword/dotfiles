@@ -1,4 +1,4 @@
-[ -f "$HOME/.config/shell/aliases.sh" ] && source "$HOME/.config/shell/variables.sh"
+[ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
 # source "$HOME/.config/shell/scripts/ssh-agent.sh"
 

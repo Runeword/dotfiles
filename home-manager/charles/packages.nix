@@ -149,6 +149,7 @@
     lux
     exiftool
     watchexec
+    atac
 
     # ---------------------------------- Disk
     # dust

@@ -16,6 +16,7 @@ export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
 export ATAC_KEY_BINDINGS="${XDG_CONFIG_HOME}/atac/vim_key_bindings.toml"
+export ATAC_THEME="${XDG_CONFIG_HOME}/atac/theme.toml"
 # ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
 # NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
 # TLDR_CACHE_DIR = "${XDG_CACHE_HOME}";

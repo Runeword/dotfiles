@@ -4,7 +4,7 @@
 exit = "q" # ctrl-c is implemented by default
 
 unselect_request = "h"
-expand_collection = "l"
+expand_collection = "t"
 
 move_request_up = "Ctrl-k"
 move_request_down = "Ctrl-j"
@@ -37,7 +37,7 @@ text_area_mode = "VimEmulation"
 move_cursor_up = "k"
 move_cursor_down = "j"
 move_cursor_left = "h"
-move_cursor_right = "l"
+move_cursor_right = "t"
 
 # Avoids overlapping when in text input (e.g. selecting a collection while creating a new request)
 # Might not happen when using the default config

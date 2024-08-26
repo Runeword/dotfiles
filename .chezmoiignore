@@ -1,6 +1,7 @@
 *
 
 !.config
+!.bashrc
 !.leaderrc
 !.ssh
 !.ssh/config

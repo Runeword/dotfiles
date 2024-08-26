@@ -129,6 +129,7 @@
     distrobox
     fzf
     starship
+    sshs
     zoxide
     bat
     hyperfine

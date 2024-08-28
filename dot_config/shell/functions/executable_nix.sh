@@ -53,26 +53,20 @@ __use_flake_template() {
 }
 
 __home_manager_packages() {
-  local selected
-  selected="$(home-manager packages | fzf --inline-info)"
+    local selected package full_path
 
-  if [ -n "$selected" ]; then
-    local package="$(echo $selected | awk '{print $1}' | sed 's/-[0-9].*//')"
+    selected=$(home-manager packages | fzf --inline-info) || return
+
+    package=$(echo "$selected" | awk '{print $1}' | sed 's/-[0-9].*//')
     echo "Selected package: $package"
-    
-    if ! which "$package" &> /dev/null; then
-      echo "Command '$package' not found in PATH"
-    else
-      local full_path=$(readlink -f $(which $package))
-      if [ -n "$full_path" ]; then
-        echo "Full path: $full_path"
-      else
+
+    if ! full_path=$(command -v "$package"); then
+        echo "Command '$package' not found in PATH"
+    elif ! full_path=$(readlink -f "$full_path"); then
         echo "Could not resolve full path for $package"
-      fi
+    else
+        echo "Full path: $full_path"
     fi
-  else
-    echo "No package selected"
-  fi
 }
 
 # templates=$(nix flake metadata "$flake_path" --json | jq -r .path)

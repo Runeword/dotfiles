@@ -52,6 +52,29 @@ __use_flake_template() {
 	direnv allow
 }
 
+__home_manager_packages() {
+  local selected
+  selected="$(home-manager packages | fzf --inline-info)"
+
+  if [ -n "$selected" ]; then
+    local package="$(echo $selected | awk '{print $1}' | sed 's/-[0-9].*//')"
+    echo "Selected package: $package"
+    
+    if ! which "$package" &> /dev/null; then
+      echo "Command '$package' not found in PATH"
+    else
+      local full_path=$(readlink -f $(which $package))
+      if [ -n "$full_path" ]; then
+        echo "Full path: $full_path"
+      else
+        echo "Could not resolve full path for $package"
+      fi
+    fi
+  else
+    echo "No package selected"
+  fi
+}
+
 # templates=$(nix flake metadata "$flake_path" --json | jq -r .path)
 # --preview '[ -f {} ] && bat --style=plain --color=always {}' \
 # chezmoi diff --reverse --color=true

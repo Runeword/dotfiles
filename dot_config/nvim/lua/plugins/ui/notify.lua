@@ -11,7 +11,7 @@ return {
     require('notify').setup({
       top_down = false,
       background_colour = '#000000',
-      stages = "static",
+      stages = 'static',
     })
 
     vim.notify = require('notify')

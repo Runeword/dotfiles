@@ -55,7 +55,7 @@ __use_flake_template() {
 __home_manager_packages() {
     local selected package full_path
 
-    selected=$(home-manager packages | fzf --inline-info) || return
+    selected=$(home-manager packages | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none) || return
 
     package=$(echo "$selected" | awk '{print $1}' | sed 's/-[0-9].*//')
     echo "Selected package: $package"

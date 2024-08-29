@@ -122,15 +122,7 @@ vim.keymap.set('n', '<Leader>s', function()
   vim.fn.setpos("']", finish)
   local filename = vim.fn.expand('%:t')
 
-  vim.notify(
-    filename,
-    'info',
-    {
-      title = 'Saved',
-      timeout = 1000,
-      render = 'minimal',
-    }
-  )
+  vim.notify(filename, 'info', { title = 'Saved', timeout = 1200, })
 end, { silent = true, })
 
 ----------------------------------- FOLD

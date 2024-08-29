@@ -105,30 +105,33 @@ end)
 vim.keymap.set('n', 'U', function()
     local output = vim.fn.execute('undo 0')
 
-    vim.notify(' ' .. output:gsub('^\n', ''), 'info', { title = ' Undo all', timeout = 1200 })
+    vim.notify(' ' .. output:gsub('^\n', ''), 'info', { title = ' Undo all', timeout = 1200, })
   end,
   { desc = 'Undo all changes', })
 
--- Redo all changes
-vim.keymap.set('n', 'R', "<cmd>exec 'undo' undotree()['seq_last']<CR>")
+vim.keymap.set('n', 'R', function()
+    local output = vim.fn.execute('undo ' .. vim.fn.undotree().seq_last)
 
+    vim.notify(' ' .. output:gsub('^\n', ''), 'info', { title = ' Redo all', timeout = 1200, })
+  end,
+  { desc = 'Redo all changes', })
 
--- Delete undo tree
 vim.keymap.set('n', '<Leader>s', function()
-  local start = vim.fn.getpos("'[")
-  local finish = vim.fn.getpos("']")
+    local start = vim.fn.getpos("'[")
+    local finish = vim.fn.getpos("']")
 
-  local view = vim.fn.winsaveview()
-  vim.o.undoreload = 0
-  vim.cmd('edit')
-  vim.fn.winrestview(view)
+    local view = vim.fn.winsaveview()
+    vim.o.undoreload = 0
+    vim.cmd('edit')
+    vim.fn.winrestview(view)
 
-  vim.fn.setpos("'[", start)
-  vim.fn.setpos("']", finish)
+    vim.fn.setpos("'[", start)
+    vim.fn.setpos("']", finish)
 
-  local filename = vim.fn.expand('%:t')
-  vim.notify(' ' .. filename, 'info', { title = ' Saved', timeout = 1200, })
-end, { silent = true, })
+    local filename = vim.fn.expand('%:t')
+    vim.notify(' ' .. filename, 'info', { title = ' Saved', timeout = 1200, })
+  end,
+  { desc = 'Delete undo tree', })
 
 ----------------------------------- FOLD
 

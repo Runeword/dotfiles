@@ -39,7 +39,6 @@ __open_file() {
         --preview "$HOME/.config/shell/scripts/fm_preview.sh {}" \
         --preview-window right,55%,border-none,~3 \
         --bind='ctrl-y:execute-silent(wl-copy {})' \
-        --sync \
   ) || return 0
   # fzf-tmux \
   #   -p \

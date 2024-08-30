@@ -69,6 +69,18 @@ __home_manager_packages() {
     fi
 }
 
+__home_manager_switch_generation() {
+  local selected_generation
+
+  selected_generation=$(
+  home-manager generations \
+    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+    | awk '{print $NF}' \
+  )
+
+  eval "${selected_generation}/activate"
+}
+
 # templates=$(nix flake metadata "$flake_path" --json | jq -r .path)
 # --preview '[ -f {} ] && bat --style=plain --color=always {}' \
 # chezmoi diff --reverse --color=true

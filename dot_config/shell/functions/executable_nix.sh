@@ -74,9 +74,11 @@ __home_manager_switch_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
     | awk '{print $NF}' \
   )
+
+  [ "$selected_generation" = "" ] && return 1
 
   eval "${selected_generation}/activate"
 }

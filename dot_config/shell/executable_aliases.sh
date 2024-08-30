@@ -84,6 +84,7 @@ alias ft='__use_flake_template $HOME/templates'
 alias hs='home-manager switch --flake $HOME/home-manager'
 alias hu='__update_flake_inputs $HOME/home-manager'
 alias hv='home-manager --version'
+alias hg='__home_manager_switch_generation'
 alias hpk='__home_manager_packages'
 
 # ______________________________________ DIRECTORIES

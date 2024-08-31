@@ -11,7 +11,6 @@ return {
     },
   },
   opts = {
-    yazi_floating_window_winblend = 70,
     keymaps = {
     },
   },

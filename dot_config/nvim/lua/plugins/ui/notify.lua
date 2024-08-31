@@ -2,16 +2,18 @@ local vim = vim
 
 return {
   'rcarriga/nvim-notify',
+  enabled = true,
 
   init = function()
-    -- vim.api.nvim_set_hl(0, "NotifyINFOTitle", { fg = "#ffffff" })
   end,
 
   config = function()
     require('notify').setup({
       top_down = false,
-      background_colour = '#000000',
       stages = 'static',
+      on_open = function(win)
+        vim.api.nvim_win_set_config(win, { border = 'single', })
+      end,
     })
 
     vim.notify = require('notify')

@@ -86,6 +86,7 @@
     qdirstat
     testdisk-qt
     appimage-run
+    bash-completion
 
     # ---------------------------------- Editors
     inputs.neovim-runeword.packages.x86_64-linux.default

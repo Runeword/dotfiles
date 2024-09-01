@@ -2,6 +2,8 @@ set bind-tty-special-chars off
 set colored-stats on
 set completion-ignore-case on
 set show-all-if-ambiguous on
+set visible-stats on
+set page-completions off
 
 "\C-\b": backward-kill-word
 "\C-i": menu-complete

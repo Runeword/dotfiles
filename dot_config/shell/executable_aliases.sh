@@ -74,7 +74,7 @@ alias nd='read -p "nix develop $HOME#" devShellName && nix develop $HOME#$devShe
 
 alias fl='rm -f flake.lock && nix flake lock'
 alias fs='nix flake show'
-alias fu='__update_flake_inputs .'
+alias fu='__update_flake_inputs'
 alias fm='nix flake metadata'
 alias fp='nix flake metadata --json | jq .path'
 alias ft='__use_flake_template $HOME/templates'

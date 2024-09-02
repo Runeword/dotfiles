@@ -1,7 +1,7 @@
 return {
   'OXY2DEV/markview.nvim',
 
-  enabled = true,
+  enabled = false,
 
   dependencies = {
     'nvim-tree/nvim-web-devicons',

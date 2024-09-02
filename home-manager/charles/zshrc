@@ -196,8 +196,8 @@ eval "$(zoxide init --no-cmd zsh)"
 
 # shellcheck disable=SC2154
 if [[ ${options[zle]} = on ]]; then
-  . "$/usr/share/fzf/completion.bash"
-  . "$/usr/share/fzf/key-bindings.bash"
+  . "/usr/share/fzf/completion.bash"
+  . "/usr/share/fzf/key-bindings.bash"
 fi
 
 [ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"

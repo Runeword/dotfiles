@@ -68,9 +68,13 @@
 
   in
   {
+  home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+  home.file.".local/share/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
 
-  home.file."${builtins.getEnv "XDG_DATA_HOME"}/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
-  home.file."${builtins.getEnv "XDG_DATA_HOME"}/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+  # home.file."${builtins.getEnv "XDG_DATA_HOME"}/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  # home.file."${builtins.getEnv "XDG_DATA_HOME"}/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+  # home.file."${builtins.getEnv "XDG_DATA_HOME"}/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
   # home.file."${config.home.sessionVariables.XDG_DATA_HOME}/fzf".source = "${pkgs.fzf}/share/fzf";
   # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 

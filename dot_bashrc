@@ -36,8 +36,8 @@ eval "$(starship init bash)"
 eval "$(zoxide init --no-cmd bash)"
 
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-  . "$XDG_DATA_DIRS/fzf/completion.bash"
-  . "$XDG_DATA_DIRS/fzf/key-bindings.bash"
+  . "/usr/share/fzf/completion.bash"
+  . "/usr/share/fzf/key-bindings.bash"
 fi
 
 [ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"

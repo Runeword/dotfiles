@@ -1,4 +1,5 @@
 [ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
+# [ -f "$XDG_DATA_HOME/bash-completion/bash_completion" ] && source "$XDG_DATA_HOME/bash-completion/bash_completion"
 
 # disable bold in the ls command output
 # LS_COLORS=${LS_COLORS//01;/00;}
@@ -35,8 +36,8 @@ eval "$(starship init bash)"
 eval "$(zoxide init --no-cmd bash)"
 
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-  . "/usr/share/fzf/completion.bash"
-  . "/usr/share/fzf/key-bindings.bash"
+  . "$XDG_DATA_DIRS/fzf/completion.bash"
+  . "$XDG_DATA_DIRS/fzf/key-bindings.bash"
 fi
 
 [ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"

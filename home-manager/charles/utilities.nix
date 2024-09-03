@@ -19,19 +19,25 @@
     # xdragon
     # showmethekey
 
+    hyprpicker   # Color picker
+    wev          # Event viewer
+    imv          # Image viewer
+
+    # Essentials
     (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; }))
-    waypaper
-    hyprpaper
-    hyprlock
-    hyprpicker
-    wl-clipboard
-    wev
-    imv
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    satty
-    fnott
-    slurp
-    grim
-    nwg-displays
+    wl-clipboard # Clipboard
+    hyprlock     # Screen locker
+    fnott        # Notification daemon
+    nwg-displays # Monitor manager
+
+    # Wallpaper
+    waypaper     # Wallpaper setter
+    hyprpaper    # Wallpaper backend
+
+    # Screenshot
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast # Screenshot
+    grim         # Grimblast dependency
+    satty        # Screenshot annotation
+    slurp        # Region selector
   ];
 }

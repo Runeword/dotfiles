@@ -110,7 +110,6 @@
     tor-browser
 
     # ---------------------------------- Hardware
-    networkmanagerapplet
     # pw-viz
     bluetuith
     brillo
@@ -228,22 +227,5 @@
     # davinci-resolve
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
-
-    # ---------------------------------- Wayland
-    (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; }))
-    # swaybg
-    waypaper
-    hyprpaper
-    hyprlock
-    hyprpicker
-    wl-clipboard
-    wev
-    imv
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    satty
-    fnott
-    slurp
-    grim
-    nwg-displays
   ];
 }

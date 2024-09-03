@@ -2,6 +2,11 @@
   "keys": {
     "h": "zle fzf-history-widget && zle accept-line",
     "a": "__run_alias",
-    "c": "navi --path ~/.local/share/navi/cheats"
+    "n": {
+      "name": "navi",
+      "keys": {
+        "c": "navi --path ~/.local/share/navi/cheats"
+      }
+    }
   }
 }

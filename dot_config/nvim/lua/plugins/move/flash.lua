@@ -108,19 +108,19 @@ return {
     --   end,
     --   desc = 'Flash',
     -- },
-    -- {
-    --   'f',
-    --   mode = { 'n', 'x', 'o', },
-    --   function()
-    --     require('flash').jump({
-    --       search = {
-    --         -- labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
-    --         -- incremental = true,
-    --       },
-    --     })
-    --   end,
-    --   desc = 'Flash',
-    -- },
+    {
+      'f',
+      mode = { 'n', 'x', 'o', },
+      function()
+        require('flash').jump({
+          search = {
+            -- labels = ',pyaoeuidhtnsfgcrl;qjkxbmwvz',
+            -- incremental = true,
+          },
+        })
+      end,
+      desc = 'Flash',
+    },
     {
       '<C-t>',
       mode = { 'i', },

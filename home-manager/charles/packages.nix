@@ -97,14 +97,6 @@
     # bash-completion
 
     # ---------------------------------- Editors
-    inputs.neovim-runeword.packages.x86_64-linux.default
-    kitty
-    alacritty
-    tmux
-    tmuxPlugins.resurrect
-    tmuxPlugins.tmux-fzf
-    ueberzugpp
-    yazi
     vscode
 
     # ---------------------------------- Browsers

@@ -103,6 +103,8 @@ end)
 ----------------------------------- UNDO / REDO
 
 vim.keymap.set('n', 'U', function()
+    if #vim.fn.undotree().entries == 0 then return end
+
     local output = vim.fn.execute('undo 0')
 
     vim.notify('' .. output:gsub('^\n', ''), 'info',
@@ -111,16 +113,18 @@ vim.keymap.set('n', 'U', function()
   { desc = 'Undo all changes', })
 
 vim.keymap.set('n', 'R', function()
-  if vim.fn.undotree().seq_last == 0 then return end
+    if #vim.fn.undotree().entries == 0 then return end
 
-  local output = vim.fn.execute('undo ' .. vim.fn.undotree().seq_last)
+    local output = vim.fn.execute('undo ' .. vim.fn.undotree().seq_last)
 
-  vim.notify('' .. output:gsub('^\n', ''), 'info',
-    { icon = '󰑎', render = 'wrapped-compact', timeout = 1200, })
+    vim.notify('' .. output:gsub('^\n', ''), 'info',
+      { icon = '󰑎', render = 'wrapped-compact', timeout = 1200, })
   end,
   { desc = 'Redo all changes', })
 
 vim.keymap.set('n', '<Leader>s', function()
+    if #vim.fn.undotree().entries == 0 then return end
+
     local start = vim.fn.getpos("'[")
     local finish = vim.fn.getpos("']")
 

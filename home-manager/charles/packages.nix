@@ -6,23 +6,6 @@
 # }: {
   }:
   let
-    leader = pkgs.stdenv.mkDerivation {
-      pname = "leader";
-      version = "0.3.2";
-      src = pkgs.fetchurl {
-        url = "https://github.com/dhamidi/leader/releases/download/v0.3.2/leader.linux.amd64";
-        sha256 = "sha256-lwOChHRvDvOm371v5xZUXS//6Dgn4CljioMrIBbWgwY=";
-      };
-      
-      dontUnpack = true;
-      
-      installPhase = ''
-        mkdir -p $out/bin
-        cp $src $out/bin/leader
-        chmod +x $out/bin/leader
-      '';
-    };
-
     # termium = pkgs.stdenv.mkDerivation {
     #   pname = "termium";
     #   version = "0.2.1";
@@ -86,6 +69,8 @@
     gcc
     httrack
     pgmodeler
+    chezmoi
+    progress
 
     sioyek      # PDF viewer
 
@@ -128,6 +113,7 @@
     nix-init
     cachix
     # tldr
+    # tealdeer
     asciinema # Terminal recorder
     terraform
     ngrok
@@ -135,46 +121,40 @@
     watchexec
     atac
 
-    # ---------------------------------- Disk
-    # dust
-    # duf 
+    # Disk
     ncdu 
     qdirstat    # Disk usage viewer
+    erdtree     # Disk usage
+    # dust
+    # duf 
     # gdu 
     # diskonaut 
 
-
+    # Email
     neomutt # Email client
     notmuch # Email search and tag
-    lieer # Gmail sync
-    # tealdeer
-    # inputs.src-cli.packages.x86_64-linux.default
+    lieer   # Gmail sync
 
-    # ---------------------------------- Git
-    # inputs.src-cli.packages.x86_64-linux.default
+    # Git
     git
     gh
-    chezmoi
     zsh-forgit
     lazygit
     gitui
+    # inputs.src-cli.packages.x86_64-linux.default
 
     # ---------------------------------- Secrets
     bitwarden-cli
     doppler
-    pass-wayland
-    gnupg
-    pinentry-curses
-    # gpg-tui
 
-    # ---------------------------------- Analitics
+    # Monitoring
     htop
     btop
     bottom
     procs
     gping
-    erdtree  # Disk usage
-    progress
+
+    # Info
     hwinfo   # Hardware info
     onefetch # Git info
     neofetch # System info
@@ -194,7 +174,9 @@
     libsForQt5.okular
     # mpvScripts.uosc
     figma-linux
-    fstl
+
+    fstl # .stl file viewer
+
     # davinci-resolve
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia

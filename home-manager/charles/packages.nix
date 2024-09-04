@@ -89,7 +89,8 @@
 
     sioyek      # PDF viewer
     qdirstat    # Disk usage viewer
-    testdisk-qt # Recovery
+
+    testdisk-qt # Data Recovery
 
     showmethekey
     appimage-run
@@ -111,34 +112,22 @@
     evtest
 
     # ---------------------------------- CLI tools
-    leader
     # termium
     qrcp
-    jq
     awscli2
     miller # cvs toolbox
     glow # markdown
     lsof
     lsd
     distrobox
-    fzf
-    starship
     sshs
-    zoxide
-    bat
     hyperfine
-    wget
-    ripgrep
-    fd
-    gomi
     nix-init
     cachix
     # tldr
-    navi
     asciinema
     terraform
     ngrok
-    unzip
     lux
     exiftool
     watchexec
@@ -189,15 +178,15 @@
     bottom
     procs
     gping
-    tree
-    erdtree
+    erdtree  # Disk usage
     progress
-    hwinfo
-    onefetch
-    neofetch
-    nvme-cli
-    lynis
-    # stacer
+    hwinfo   # Hardware info
+    onefetch # Git info
+    neofetch # System info
+    nvme-cli # NVMe storage devices manager
+
+    # lynis  # System health scan
+    # stacer # System Optimization
 
     # ---------------------------------- Graphics
     inkscape

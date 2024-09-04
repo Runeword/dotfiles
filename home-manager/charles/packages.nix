@@ -86,11 +86,14 @@
     gcc
     httrack
     pgmodeler
-    sioyek
-    qdirstat
-    testdisk-qt
+
+    sioyek      # PDF viewer
+    qdirstat    # Disk usage viewer
+    testdisk-qt # Recovery
+
     showmethekey
     appimage-run
+    hyprpicker           # Color picker
     # bash-completion
 
     # ---------------------------------- Editors

@@ -89,6 +89,7 @@
     sioyek
     qdirstat
     testdisk-qt
+    showmethekey
     appimage-run
     # bash-completion
 
@@ -101,7 +102,6 @@
     tmuxPlugins.tmux-fzf
     ueberzugpp
     yazi
-    fuzzel
     vscode
 
     # ---------------------------------- Browsers
@@ -110,15 +110,10 @@
     tor-browser
 
     # ---------------------------------- Hardware
-    # pw-viz
-    bluetuith
-    brillo
-    playerctl
     ventoy-full
     dmidecode
     libinput
     evtest
-    impala # wifi
 
     # ---------------------------------- CLI tools
     leader
@@ -137,12 +132,10 @@
     zoxide
     bat
     hyperfine
-    wl-screenrec
     wget
     ripgrep
     fd
     gomi
-    xdragon
     nix-init
     cachix
     # tldr
@@ -212,7 +205,6 @@
     # stacer
 
     # ---------------------------------- Graphics
-    showmethekey
     inkscape
     # realesrgan-ncnn-vulkan
     kooha

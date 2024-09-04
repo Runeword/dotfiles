@@ -88,9 +88,12 @@
     pgmodeler
 
     sioyek      # PDF viewer
-    qdirstat    # Disk usage viewer
 
-    testdisk-qt # Data Recovery
+    # Recovery
+    testdisk-qt # GUI Recovery tool
+    extundelete # Recover deleted files from an ext3 or ext4 partition
+    foremost    # Recover files based on their headers and footers
+    exiftool    # Meta information reader/writer
 
     showmethekey
     appimage-run
@@ -125,11 +128,10 @@
     nix-init
     cachix
     # tldr
-    asciinema
+    asciinema # Terminal recorder
     terraform
     ngrok
-    lux
-    exiftool
+    lux # Video downloader
     watchexec
     atac
 
@@ -137,14 +139,14 @@
     # dust
     # duf 
     ncdu 
+    qdirstat    # Disk usage viewer
     # gdu 
     # diskonaut 
 
-    extundelete
-    foremost # recovery
-    neomutt
-    notmuch
-    lieer # gmail sync
+
+    neomutt # Email client
+    notmuch # Email search and tag
+    lieer # Gmail sync
     # tealdeer
     # inputs.src-cli.packages.x86_64-linux.default
 
@@ -164,13 +166,6 @@
     gnupg
     pinentry-curses
     # gpg-tui
-
-    # ---------------------------------- Archivers
-    # zip
-    # unzip
-    # p7zip
-    ouch
-    xarchiver
 
     # ---------------------------------- Analitics
     htop

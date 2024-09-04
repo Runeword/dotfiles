@@ -7,7 +7,7 @@
   imports = [
     ./overlays.nix
     ./packages.nix
-    ./utilities.nix
+    ./desktop.nix
     ./bash.nix
     ./zsh.nix
     inputs.ags.homeManagerModules.default

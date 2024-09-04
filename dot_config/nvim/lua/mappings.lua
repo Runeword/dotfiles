@@ -111,10 +111,12 @@ vim.keymap.set('n', 'U', function()
   { desc = 'Undo all changes', })
 
 vim.keymap.set('n', 'R', function()
-    local output = vim.fn.execute('undo ' .. vim.fn.undotree().seq_last)
+  if vim.fn.undotree().seq_last == 0 then return end
 
-    vim.notify('' .. output:gsub('^\n', ''), 'info',
-      { icon = '󰑎', render = 'wrapped-compact', timeout = 1200, })
+  local output = vim.fn.execute('undo ' .. vim.fn.undotree().seq_last)
+
+  vim.notify('' .. output:gsub('^\n', ''), 'info',
+    { icon = '󰑎', render = 'wrapped-compact', timeout = 1200, })
   end,
   { desc = 'Redo all changes', })
 

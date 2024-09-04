@@ -9,28 +9,28 @@
   {
   home.packages = with pkgs; [
     # fuzzel # App launcher
-    # pw-viz # Pipewire graph editor
 
-    # Essentials
+    # Essential
     wl-clipboard         # Clipboard
     xdragon              # Drag and drop
 
-    # Terminal Tools
-    hyprpicker           # Color picker
-    wev                  # Event viewer
+    # Viewers
     imv                  # Image viewer
-    wl-screenrec         # Screen recorder
+    wev                  # Event viewer
 
     # Interface
     (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; })) # Bar
     hyprlock             # Screen locker
     fnott                # Notification daemon
 
-    # Hardware manager/control
+    # Hardware managers
     networkmanagerapplet # Network manager
     nwg-displays         # Monitor manager
     impala               # Wifi manager
     bluetuith            # Bluetooth manager
+    # pw-viz             # Pipewire graph editor
+
+    # Controllers
     brillo               # Brightness control
     playerctl            # Media players control
 
@@ -38,7 +38,8 @@
     waypaper             # Wallpaper setter
     hyprpaper            # Wallpaper backend
 
-    # Screenshot
+    # Screen capture
+    wl-screenrec         # Screen recorder
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast # Screenshot
     grim                 # Grimblast dependency
     satty                # Screenshot annotation

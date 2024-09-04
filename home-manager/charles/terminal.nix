@@ -33,6 +33,13 @@
     jq
     gomi
 
+    # Archivers
+    ouch
+    xarchiver
+    # zip
+    # unzip
+    # p7zip
+
     # Utilities
     wl-clipboard         # Copy/paste
     xdragon              # Drag and drop

@@ -24,34 +24,30 @@
   in
   {
   home.packages = with pkgs; [
-    # Editors
-    inputs.neovim-runeword.packages.x86_64-linux.default
-    alacritty
-    kitty
-    tmux
-    tmuxPlugins.resurrect
-    tmuxPlugins.tmux-fzf
-    ueberzugpp
-    yazi
+    inputs.neovim-runeword.packages.x86_64-linux.default # Text editor
+    alacritty             # Terminal emulator
+    kitty                 # Terminal emulator
+    yazi                  # File manager
+    tmux                  # Sessions, windows and panes manager
+    tmuxPlugins.tmux-fzf  # Fuzzy search tmux sessions, windows and panes
+    tmuxPlugins.resurrect # Save and restore tmux environment
+    ueberzugpp            # Images support for terminal
+    wl-clipboard          # Copy/paste
+    xdragon               # Drag and drop
 
     # Coreutils
-    fzf
-    bat
-    wget
-    ripgrep
-    fd
-    tree
-    jq
+    bat                  # cat
+    ripgrep              # grep
+    fd                   # find
+    zoxide               # cd
+    gomi                 # rm
+    fzf                  # Fuzzy finder
+    tree                 # Directory structure
+    wget                 # download
+    jq                   # JSON processor
 
-    # Apps
-    leader
-    navi
-    zoxide
-    gomi
-
-    # Utilities
-    wl-clipboard         # Copy/paste
-    xdragon              # Drag and drop
+    leader               # Leader key
+    navi                 # Cheat sheet
 
     # Archivers
     ouch

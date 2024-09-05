@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# This function prompts the user to select one or more inputs from a specified Nix flake
+# Prompts the user to select one or more inputs from a specified Nix flake
 # then updates the selected inputs.
-# It exits the function if there are no inputs or no inputs are selected.
+# It exits the function if there is no inputs or no inputs are selected.
 __update_flake_inputs() {
 	local flake_path="$1"
 	local flake_metadata
@@ -26,11 +26,9 @@ __update_flake_inputs() {
 	done
 }
 
-# "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir
-
-# This function allows the user to select a template from a specified Nix flake
+# Allows the user to select a template from a specified Nix flake
 # then adds the template to .envrc so direnv can load it.
-# It exits the function if there are no templates or no template is selected.
+# It exits the function if there is no templates or no template is selected.
 __use_flake_template() {
 	local flake_path="$1"
 
@@ -52,6 +50,7 @@ __use_flake_template() {
 	direnv allow
 }
 
+# Interactively selects a package from Home Manager and return its full path
 __home_manager_packages() {
     local selected package full_path
 
@@ -69,6 +68,7 @@ __home_manager_packages() {
     fi
 }
 
+# Interactively selects and switch to a home manager generation
 __home_manager_switch_generation() {
   local selected_generation
 
@@ -83,6 +83,7 @@ __home_manager_switch_generation() {
   eval "${selected_generation}/activate"
 }
 
+# Interactively selects and remove a home manager generation
 __home_manager_remove_generation() {
   local selected_generation
 
@@ -97,6 +98,7 @@ __home_manager_remove_generation() {
   home-manager remove-generations "$selected_generation"
 }
 
+# "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir
 # templates=$(nix flake metadata "$flake_path" --json | jq -r .path)
 # --preview '[ -f {} ] && bat --style=plain --color=always {}' \
 # chezmoi diff --reverse --color=true

@@ -74,7 +74,7 @@ __home_manager_switch_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header="home-manager switch-generation" \
     | awk '{print $NF}' \
   )
 
@@ -89,7 +89,7 @@ __home_manager_remove_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header="home-manager remove-generations" \
     | awk '{print $5}'
   )
 

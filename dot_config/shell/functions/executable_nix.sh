@@ -15,7 +15,7 @@ __update_flake_inputs() {
 	local selected_inputs
 	selected_inputs=$(
 		echo "$inputs" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header="nix flake lock --update-input"\
+			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="nix flake lock --update-input"\
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
 			--preview-window right,75%,noborder
 	)
@@ -54,7 +54,7 @@ __use_flake_template() {
 __home_manager_packages() {
     local selected package full_path
 
-    selected=$(home-manager packages | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --header="home-manager packages") || return
+    selected=$(home-manager packages | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --header-first --header="home-manager packages") || return
 
     package=$(echo "$selected" | awk '{print $1}' | sed 's/-[0-9].*//')
     echo "Selected package: $package"
@@ -74,7 +74,7 @@ __home_manager_switch_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header="home-manager switch-generation" \
+    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="home-manager switch-generation" \
     | awk '{print $NF}' \
   )
 
@@ -89,7 +89,7 @@ __home_manager_remove_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header="home-manager remove-generations" \
+    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="home-manager remove-generations" \
     | awk '{print $5}'
   )
 

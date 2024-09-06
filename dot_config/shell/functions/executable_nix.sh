@@ -15,7 +15,7 @@ __update_flake_inputs() {
 	local selected_inputs
 	selected_inputs=$(
 		echo "$inputs" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header="nix flake lock --update-input"\
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
 			--preview-window right,75%,noborder
 	)
@@ -54,7 +54,7 @@ __use_flake_template() {
 __home_manager_packages() {
     local selected package full_path
 
-    selected=$(home-manager packages | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none) || return
+    selected=$(home-manager packages | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --header="home-manager packages") || return
 
     package=$(echo "$selected" | awk '{print $1}' | sed 's/-[0-9].*//')
     echo "Selected package: $package"

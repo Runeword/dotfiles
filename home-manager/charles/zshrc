@@ -137,6 +137,10 @@ __on_empty_buffer() {
 # zle -N __leader
 # bindkey '^[' __leader
 
+__last_command_or_delete() { __on_empty_buffer "BUFFER=${history[$((HISTCMD-1))]}; zle accept-line" 'zle backward-delete-char'; }
+zle -N __last_command_or_delete
+bindkey '^[[3;2~' __last_command_or_delete
+
 __ls() { __on_empty_buffer 'command ls --almost-all --color --width 90;' 'zle accept-line'; }
 zle -N __ls
 bindkey '^M' __ls

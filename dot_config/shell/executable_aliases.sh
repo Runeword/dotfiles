@@ -85,7 +85,7 @@ alias hs='home-manager switch --flake $HOME/home-manager'
 alias hu='__update_flake_inputs $HOME/home-manager'
 alias hv='home-manager --version'
 alias hgs='__home_manager_switch_generation'
-alias hgd='__home_manager_switch_generation'
+alias hgd='__home_manager_remove_generation'
 alias hg='home-manager expire-generations "-7 days"'
 alias hpk='__home_manager_packages'
 

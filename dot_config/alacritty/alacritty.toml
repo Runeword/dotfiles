@@ -78,6 +78,7 @@ live_config_reload = true
       { chars = "\u001B[13;5u", key = "Return", mods = "Control" },
       { chars = "\u001B[13;6u", key = "Return", mods = "Control|Shift" },
       { chars = "\u001B[13;4u", key = "Return", mods = "Alt|Shift" },
+      { chars = "\u001B[3;2~", key = "Backspace", mods = "Shift" },
       { chars = "\u001B[32;2u", key = "Space", mods = "Shift" },
       { chars = "\u001B\u001B[Z", key = "Tab", mods = "Alt|Shift" },
       { chars = "\u001B[Z", key = "Tab", mods = "Shift" },

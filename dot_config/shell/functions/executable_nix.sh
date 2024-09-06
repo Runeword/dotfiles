@@ -89,13 +89,13 @@ __home_manager_remove_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
-    | awk '{print $5}' \
+    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+    | awk '{print $5}'
   )
 
   [ "$selected_generation" = "" ] && return 1
 
-  home-manager remove-generations "$selected_generation"
+  echo "$selected_generation" | xargs home-manager remove-generations
 }
 
 # "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir

@@ -101,6 +101,7 @@ alias st='cd /nix/store'
 
 # ______________________________________ FILES
 
+alias nl='fc -s nvim'
 alias np='nvim $HOME/nixos/configuration.nix'
 alias nf='nvim $HOME/nixos/flake.nix'
 alias hp='nvim $HOME/home-manager/$USER/packages.nix'

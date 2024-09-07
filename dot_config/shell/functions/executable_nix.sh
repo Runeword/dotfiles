@@ -15,7 +15,7 @@ __update_flake_inputs() {
 	local selected_inputs
 	selected_inputs=$(
 		echo "$inputs" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="nix flake lock --update-input"\
+			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="nix flake lock --update-input"\
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
 			--preview-window right,75%,noborder
 	)
@@ -89,7 +89,7 @@ __home_manager_remove_generation() {
 
   selected_generation=$(
   home-manager generations \
-    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="home-manager remove-generations" \
+    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="home-manager remove-generations" \
     | awk '{print $5}'
   )
 

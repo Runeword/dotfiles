@@ -7,6 +7,7 @@ __select_files() {
     --header-first \
     --prompt='  ' \
     --header="$2" \
+    --bind='ctrl-a:select-all' \
     --preview 'chezmoi diff --reverse --color=true ~/{}' \
     --preview-window bottom,80%,noborder
 }

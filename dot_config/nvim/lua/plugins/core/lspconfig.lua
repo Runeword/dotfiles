@@ -32,7 +32,7 @@ return {
           { noremap = true, silent = true, })
 
         -- vim.keymap.set('n', '<Leader>l', diagnostic.setloclist, { noremap = true, silent = true })
-        -- lsp.buf.formatting_seq_sync(nil, 6000, { 'tsserver', 'html', 'cssls', 'vuels', 'eslint' })
+        -- lsp.buf.formatting_seq_sync(nil, 6000, { 'ts_ls', 'html', 'cssls', 'vuels', 'eslint' })
         -- lsp.buf.formatting_seq_sync
       end
     end
@@ -77,7 +77,7 @@ return {
       }
     ))
 
-    lspconfig.tsserver.setup(set_config(
+    lspconfig['ts_ls'].setup(set_config(
       {
         on_attach = on_attach_server(false),
         autostart = true,

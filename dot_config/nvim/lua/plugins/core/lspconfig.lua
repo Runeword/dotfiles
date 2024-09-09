@@ -91,8 +91,7 @@ return {
           ['nil'] = {
             formatting = {
               -- command = { 'alejandra', },
-              -- command = { 'nixfmt', },
-              command = { 'nixpkgs-fmt', },
+              command = { 'nixfmt', },
             },
           },
         },

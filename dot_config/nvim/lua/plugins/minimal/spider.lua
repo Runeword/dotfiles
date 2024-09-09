@@ -6,6 +6,16 @@ return {
   'chrisgrieser/nvim-spider',
 
   config = function()
+    vim.keymap.set({ 'n', 'x', }, 'W',
+    function()
+      require('spider').motion('w', {
+        customPatterns = {
+          -- Match one or more characters that are neither word characters nor whitespace characters
+          '[^%w%s]+',
+        },
+      })
+    end, {})
+
     vim.keymap.set({ 'n', 'x', }, 'w',
       function()
         require('spider').motion('w', {

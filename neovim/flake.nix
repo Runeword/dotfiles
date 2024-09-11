@@ -3,21 +3,21 @@
   # nix run $HOME/neovim
   # nix run "github:Runeword/dotfiles?dir=neovim"
 
-  # nixConfig = {
-  #   extra-substituters = [
-  #     "https://your-cache-name.cachix.org"
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     "your-cache-name.cachix.org-1:your-public-key"
-  #   ];
-  # };
+  nixConfig = {
+    extra-substituters = [
+      "https://runeword-neovim.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
+    ];
+  };
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-  # inputs.cachix.url = "github:cachix/cachix";
+  inputs.cachix.url = "github:cachix/cachix";
 
   # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
   # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";

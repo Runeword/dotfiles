@@ -2,9 +2,10 @@ local vim = vim
 
 return {
   'mfussenegger/nvim-dap',
+  enabled = false,
 
   dependencies = {
-    'anuvyklack/hydra.nvim',
+    -- 'anuvyklack/hydra.nvim',
     -- 'jbyuki/one-small-step-for-vimkind',
   },
 

@@ -2,7 +2,7 @@ local vim = vim
 
 return {
   'jbyuki/one-small-step-for-vimkind',
-  enabled = true,
+  enabled = false,
 
   dependencies = { 'mfussenegger/nvim-dap', },
 

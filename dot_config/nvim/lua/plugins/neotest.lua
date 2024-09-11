@@ -2,6 +2,8 @@ local vim = vim
 
 return {
   'nvim-neotest/neotest',
+  enabled = false,
+
   dependencies = {
     'nvim-lua/plenary.nvim',
     'anuvyklack/hydra.nvim',

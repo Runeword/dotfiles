@@ -1,0 +1,4 @@
+% cachix
+
+# Push build to cachix
+cachix push <cachix-cache> result

@@ -1,9 +1,8 @@
 local vim = vim
 
 return {
-  'anuvyklack/hydra.nvim',
-
-  dependencies = 'anuvyklack/keymap-layer.nvim',
+  'nvimtools/hydra.nvim',
+  enabled = false,
 
   init = function()
     vim.api.nvim_create_augroup('hydra', { clear = true, })

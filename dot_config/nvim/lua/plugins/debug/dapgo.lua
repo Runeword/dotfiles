@@ -2,7 +2,7 @@ local vim = vim
 
 return {
   'leoluz/nvim-dap-go',
-  enabled = true,
+  enabled = false,
 
   dependencies = { 'mfussenegger/nvim-dap', },
 

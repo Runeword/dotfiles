@@ -2,6 +2,19 @@
   "keys": {
     "h": "zle fzf-history-widget && zle accept-line",
     "a": "__run_alias",
+    "f": {
+      "name": "flake",
+      "keys": {
+        "l": "rm -f flake.lock && nix flake lock",
+        "s": "nix flake show",
+        "p": "nix path-info --json | jq",
+        "d": "nix store delete $(nix path-info --json | jq -r '.[].path')",
+        "r": "nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')",
+        "u": "__update_flake_inputs .",
+        "m": "nix flake metadata",
+        "t": "__use_flake_template $HOME/templates"
+      }
+    },
     "n": {
       "name": "navi",
       "keys": {

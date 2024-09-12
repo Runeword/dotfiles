@@ -55,8 +55,8 @@ alias audit='lynis audit system'
 # ______________________________________ NIXOS
 
 alias ns='sudo nixos-rebuild switch --flake $HOME/nixos#$USER'
-alias nsp='nix-env --switch-profile $(ls /nix/var/nix/profiles/per-user/$USER | fzf)'
-alias nb='sudo nixos-rebuild boot --flake $HOME/nixos#$USER'
+alias np='nix-env --switch-profile $(ls /nix/var/nix/profiles/per-user/$USER | fzf)'
+alias nbo='sudo nixos-rebuild boot --flake $HOME/nixos#$USER'
 alias nu='__update_flake_inputs $HOME/nixos'
 alias nv='nixos-version'
 alias ni='nix-info -m'
@@ -68,16 +68,20 @@ alias store='cd /nix/store && __open_file'
 # ______________________________________ NIX
 
 alias nr='nix run'
+alias nb='nix build'
 alias nd='read -p "nix develop $HOME#" devShellName && nix develop $HOME#$devShellName'
 
 # ______________________________________ FLAKE
 
-alias fl='rm -f flake.lock && nix flake lock'
-alias fs='nix flake show'
-alias fu='__update_flake_inputs'
-alias fm='nix flake metadata'
-alias fp='nix flake metadata --json | jq .path'
-alias ft='__use_flake_template $HOME/templates'
+# alias fl='rm -f flake.lock && nix flake lock'
+# alias fs='nix flake show'
+# alias fp='nix path-info --json | jq'
+# # alias fsd='nix store delete $(nix path-info --json | jq -r '.[].path')'
+# # alias fr='nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')'
+# alias fu='__update_flake_inputs'
+# alias fm='nix flake metadata'
+# # alias fp='nix flake metadata --json | jq .path'
+# alias ft='__use_flake_template $HOME/templates'
 
 # ______________________________________ HOME MANAGER
 
@@ -102,7 +106,7 @@ alias st='cd /nix/store'
 # ______________________________________ FILES
 
 alias nl='fc -s nvim'
-alias np='nvim $HOME/nixos/configuration.nix'
+alias nc='nvim $HOME/nixos/configuration.nix'
 alias nf='nvim $HOME/nixos/flake.nix'
 alias hp='nvim $HOME/home-manager/$USER/packages.nix'
 alias hd='nvim $HOME/home-manager/$USER/default.nix'

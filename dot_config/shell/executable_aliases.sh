@@ -67,7 +67,7 @@ alias store='cd /nix/store && __open_file'
 
 # ______________________________________ NIX
 
-alias nr='nix run'
+alias nr='nix run --verbose'
 alias nb='nix build'
 alias nd='read -p "nix develop $HOME#" devShellName && nix develop $HOME#$devShellName'
 

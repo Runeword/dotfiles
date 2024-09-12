@@ -3,14 +3,10 @@
   # nix run $HOME/neovim
   # nix run "github:Runeword/dotfiles?dir=neovim"
 
-  nixConfig = {
-    extra-substituters = [
-      "https://runeword-neovim.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
-    ];
-  };
+  nixConfig.extra-substituters = [ "https://runeword-neovim.cachix.org" ];
+  nixConfig.extra-trusted-public-keys = [
+    "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
+  ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -23,7 +19,8 @@
   # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
   # inputs.neovim.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, ... } @ inputs:
+  outputs =
+    { self, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import inputs.nixpkgs {

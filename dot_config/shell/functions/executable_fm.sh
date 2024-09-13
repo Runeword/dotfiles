@@ -29,6 +29,7 @@ __open_file() {
         --border none \
         --prompt='  ' \
         --multi \
+        --scheme=path \
         --reverse \
         --info=hidden \
         --no-separator \

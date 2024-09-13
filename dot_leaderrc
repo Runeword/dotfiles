@@ -1,6 +1,6 @@
 {
   "keys": {
-    "h": "zle fzf-history-widget && zle accept-line",
+    "y": "zle fzf-history-widget && zle accept-line",
     "a": "__run_alias",
     "f": {
       "name": "flake",
@@ -15,7 +15,24 @@
         "t": "__use_flake_template $HOME/templates"
       }
     },
+    "h": {
+      "name": "home manager",
+      "keys": {
+        "p": "nvim $HOME/home-manager/$USER/packages.nix",
+        "d": "nvim $HOME/home-manager/$USER/default.nix",
+        "f": "nvim $HOME/home-manager/flake.nix",
+        "o": "nvim $HOME/home-manager/$USER/overlays.nix",
+        "z": "nvim $HOME/home-manager/$USER/zshrc"
+      }
+    },
     "n": {
+      "name": "nixos",
+      "keys": {
+        "c": "nvim $HOME/nixos/configuration.nix",
+        "f": "nvim $HOME/nixos/flake.nix"
+      }
+    },
+    "c": {
       "name": "navi",
       "keys": {
         "c": "navi --path ~/.local/share/navi/cheats"

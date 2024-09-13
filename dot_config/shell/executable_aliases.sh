@@ -106,13 +106,6 @@ alias st='cd /nix/store'
 # ______________________________________ FILES
 
 alias nl='fc -s nvim'
-alias nc='nvim $HOME/nixos/configuration.nix'
-alias nf='nvim $HOME/nixos/flake.nix'
-alias hp='nvim $HOME/home-manager/$USER/packages.nix'
-alias hd='nvim $HOME/home-manager/$USER/default.nix'
-alias hf='nvim $HOME/home-manager/flake.nix'
-alias ov='nvim $HOME/home-manager/$USER/overlays.nix'
-alias zs='nvim $HOME/home-manager/$USER/zshrc'
 alias al='nvim $HOME/.config/shell/aliases.sh'
 alias va='nvim $HOME/.config/shell/variables.sh'
 

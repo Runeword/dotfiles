@@ -97,8 +97,6 @@ alias hl='__home_manager_packages'
 
 alias ne='cd $HOME/.config/nvim'
 alias de='cd $HOME/dev'
-alias ho='cd $HOME/home-manager/$USER'
-alias co='cd $HOME/.config'
 alias dw='cd $HOME/Downloads && yazi'
 alias st='cd /nix/store'
 # alias pr= 'cd .nix-profile'

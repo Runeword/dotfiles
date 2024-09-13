@@ -18,9 +18,10 @@
     "h": {
       "name": "home manager",
       "keys": {
+        "u": "cd $HOME/home-manager/$USER",
+        "f": "nvim $HOME/home-manager/flake.nix",
         "p": "nvim $HOME/home-manager/$USER/packages.nix",
         "d": "nvim $HOME/home-manager/$USER/default.nix",
-        "f": "nvim $HOME/home-manager/flake.nix",
         "o": "nvim $HOME/home-manager/$USER/overlays.nix",
         "z": "nvim $HOME/home-manager/$USER/zshrc"
       }

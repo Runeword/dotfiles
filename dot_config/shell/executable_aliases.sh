@@ -55,14 +55,14 @@ alias audit='lynis audit system'
 # ______________________________________ NIXOS
 
 alias ns='sudo nixos-rebuild switch --flake $HOME/nixos#$USER'
-alias np='nix-env --switch-profile $(ls /nix/var/nix/profiles/per-user/$USER | fzf)'
 alias nbo='sudo nixos-rebuild boot --flake $HOME/nixos#$USER'
 alias nu='__update_flake_inputs $HOME/nixos'
 alias nv='nixos-version'
 alias ni='nix-info -m'
-alias ng='sudo nix-collect-garbage --delete-old --verbose'
+# alias ng='nix-env --list-generations'
+alias ng='nix profile history --profile /nix/var/nix/profiles/system'
 alias ngd='nix-env --delete-generations +10'
-alias ngl='nix-env --list-generations'
+alias ngda='sudo nix-collect-garbage --delete-old --verbose'
 alias store='cd /nix/store && __open_file'
 
 # ______________________________________ NIX
@@ -88,10 +88,10 @@ alias nd='read -p "nix develop $HOME#" devShellName && nix develop $HOME#$devShe
 alias hs='home-manager switch --flake $HOME/home-manager'
 alias hu='__update_flake_inputs $HOME/home-manager'
 alias hv='home-manager --version'
-alias hgs='__home_manager_switch_generation'
-alias hgr='__home_manager_remove_generation'
-alias hge='home-manager expire-generations "-7 days"'
-alias hl='__home_manager_packages'
+alias hg='__home_manager_switch_generation'
+alias hgd='__home_manager_remove_generation'
+alias hgda='home-manager expire-generations "-7 days"'
+alias hp='__home_manager_packages'
 
 # ______________________________________ DIRECTORIES
 
@@ -103,7 +103,7 @@ alias st='cd /nix/store'
 
 # ______________________________________ FILES
 
-alias nl='fc -s nvim'
+alias nn='fc -s nvim'
 alias al='nvim $HOME/.config/shell/aliases.sh'
 alias va='nvim $HOME/.config/shell/variables.sh'
 

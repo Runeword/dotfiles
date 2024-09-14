@@ -98,6 +98,50 @@ __home_manager_remove_generation() {
   echo "$selected_generation" | xargs home-manager remove-generations
 }
 
+__nixos_remove_generations() {
+# List all generations
+generations=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | sort -n)
+
+# Use fzf to select generations
+selected=$(printf '%s\n' "$generations" | fzf --multi --height=50% --layout=reverse --border \
+  --header="Select generations to delete (use TAB to multi-select, ENTER to confirm)" \
+  --preview="echo 'This will delete the selected generation(s)'")
+
+# Check if any generations were selected
+[ "$selected" = "" ] && return 1
+
+# Extract generation numbers
+to_delete=$(printf '%s\n' "$selected" | awk '{print $1}')
+
+# Confirm deletion
+echo "You are about to delete the following generations:"
+printf '%s\n' "$selected"
+printf "Are you sure you want to proceed? (y/N) "
+read -r reply
+echo
+
+case "$reply" in
+  [Yy]*)
+    # Delete selected generations
+    for gen in $to_delete; do
+      sudo nix-env -p /nix/var/nix/profiles/system --delete-generations "$gen"
+      echo "Deleted generation $gen"
+    done
+
+    # Run garbage collection
+    sudo nix-collect-garbage -d
+
+    # Rebuild boot menu
+    sudo nixos-rebuild boot
+
+    echo "Deletion complete. Boot menu has been updated."
+    ;;
+  *)
+    echo "Operation cancelled."
+    ;;
+esac
+}
+
 # "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir
 # templates=$(nix flake metadata "$flake_path" --json | jq -r .path)
 # --preview '[ -f {} ] && bat --style=plain --color=always {}' \

@@ -98,24 +98,22 @@ __home_manager_remove_generations() {
   echo "$selected_generation" | xargs home-manager remove-generations
 }
 
+# Interactively selects and remove one or more nixos generations
 __nixos_remove_generations() {
-
   local nixos_generations
   nixos_generations=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations)
 
-  selected_generations=$(echo "$nixos_generations" \
+  selected_generations=$(
+  echo "$nixos_generations" \
     | fzf --multi --height=50% --layout=reverse --border --header="nix-env -p /nix/var/nix/profiles/system --delete-generations <generations>" \
     | awk '{print $1}'
   )
 
-[ "$selected_generations" = "" ] && return 1
+  [ "$selected_generations" = "" ] && return 1
 
-    for gen in $selected_generations; do
-      sudo nix-env -p /nix/var/nix/profiles/system --delete-generations "$gen"
-      echo "Deleted generation $gen"
-    done
+  echo "$selected_generations" | xargs sudo nix-env -p /nix/var/nix/profiles/system --delete-generations
 
-    sudo nixos-rebuild boot
+  sudo /run/current-system/bin/switch-to-configuration boot
 }
 
 # "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir

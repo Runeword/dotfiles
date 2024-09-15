@@ -83,63 +83,39 @@ __home_manager_switch_generation() {
   eval "${selected_generation}/activate"
 }
 
-# Interactively selects and remove a home manager generation
-__home_manager_remove_generation() {
-  local selected_generation
+# Interactively selects and remove one or more home manager generations
+__home_manager_remove_generations() {
+  local selected_generations
 
-  selected_generation=$(
+  selected_generations=$(
   home-manager generations \
     | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="home-manager remove-generations" \
     | awk '{print $5}'
   )
 
-  [ "$selected_generation" = "" ] && return 1
+  [ "$selected_generations" = "" ] && return 1
 
   echo "$selected_generation" | xargs home-manager remove-generations
 }
 
 __nixos_remove_generations() {
-# List all generations
-generations=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations | sort -n)
 
-# Use fzf to select generations
-selected=$(printf '%s\n' "$generations" | fzf --multi --height=50% --layout=reverse --border \
-  --header="Select generations to delete (use TAB to multi-select, ENTER to confirm)" \
-  --preview="echo 'This will delete the selected generation(s)'")
+  local nixos_generations
+  nixos_generations=$(sudo nix-env -p /nix/var/nix/profiles/system --list-generations)
 
-# Check if any generations were selected
-[ "$selected" = "" ] && return 1
+  selected_generations=$(echo "$nixos_generations" \
+    | fzf --multi --height=50% --layout=reverse --border --header="nix-env -p /nix/var/nix/profiles/system --delete-generations <generations>" \
+    | awk '{print $1}'
+  )
 
-# Extract generation numbers
-to_delete=$(printf '%s\n' "$selected" | awk '{print $1}')
+[ "$selected_generations" = "" ] && return 1
 
-# Confirm deletion
-echo "You are about to delete the following generations:"
-printf '%s\n' "$selected"
-printf "Are you sure you want to proceed? (y/N) "
-read -r reply
-echo
-
-case "$reply" in
-  [Yy]*)
-    # Delete selected generations
-    for gen in $to_delete; do
+    for gen in $selected_generations; do
       sudo nix-env -p /nix/var/nix/profiles/system --delete-generations "$gen"
       echo "Deleted generation $gen"
     done
 
-    # Run garbage collection
-    sudo nix-collect-garbage -d
-
-    # Rebuild boot menu
     sudo nixos-rebuild boot
-
-    echo "Deletion complete. Boot menu has been updated."
-    ;;
-  *)
-    echo "Operation cancelled."
-    ;;
-esac
 }
 
 # "dir": "contrib", "owner": "sourcegraph", "repo": "src-cli", "type": "github" type:owner/repo?dir=dir

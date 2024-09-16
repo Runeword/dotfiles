@@ -105,14 +105,14 @@ __nixos_switch_generation() {
 
   selected_generation=$(
   echo "$nixos_generations" \
-    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="sudo /nix/var/nix/profiles/system-<generation>-link/bin/switch-to-configuration switch" \
+    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --header="nix-env --profile /nix/var/nix/profiles/system --switch-generation <generation>" \
     | awk '{print $1}' \
   )
 
   [ "$selected_generation" = "" ] && return 1
 
   echo "Switching to generation $selected_generation"
-  sudo /nix/var/nix/profiles/system-"$selected_generation"-link/bin/switch-to-configuration switch
+  sudo nix-env --profile /nix/var/nix/profiles/system --switch-generation "$selected_generation"
 }
 
 # Interactively selects and remove one or more nixos generations

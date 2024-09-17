@@ -1,5 +1,5 @@
 settings.blocklistPattern = /.*getpocket.com.*|.*mail.google.com.*|.*docs.google.com.*/
-chrome.storage.local.set({"noPdfViewer": 1})
+// chrome.storage.local.set({"noPdfViewer": 1})
 
 // Remap keys
 api.map('t', 'f');
@@ -34,7 +34,7 @@ api.unmapAllExcept([
   '?'   // Show usage
 ]);
 
-api.Hints.setCharacters('aoeuidtnsqjkmwvpyfgcr');
+api.Hints.setCharacters = 'aoeuidtnsqjkmwvpyfgcr';
 
 const hintsCss = "font-size: 11pt; font-family: 'JetBrains Mono NL', 'Cascadia Code', 'Helvetica Neue', Helvetica, Arial, sans-serif; border: 0px;";
 

@@ -122,7 +122,7 @@ __nixos_remove_generations() {
 
   selected_generations=$(
   echo "$nixos_generations" \
-    | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="nix-env -p /nix/var/nix/profiles/system --delete-generations <generations>" \
+    | fzf --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="nix-env -p /nix/var/nix/profiles/system --delete-generations <generations>" \
     | awk '{print $1}'
   )
 

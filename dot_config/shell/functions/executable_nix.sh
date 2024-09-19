@@ -101,7 +101,7 @@ __home_manager_remove_generations() {
 # Interactively selects and switch to a nixos generation
 __nixos_switch_generation() {
   local nixos_generations selected_generations
-  nixos_generations=$(sudo nix-env  --list-generations --profile /nix/var/nix/profiles/system)
+  nixos_generations=$(sudo nix-env  --list-generations --profile /nix/var/nix/profiles/system | sort -rn)
 
   selected_generation=$(
   echo "$nixos_generations" \
@@ -112,13 +112,13 @@ __nixos_switch_generation() {
   [ "$selected_generation" = "" ] && return 1
 
   echo "Switching to generation $selected_generation"
-  sudo nix-env --profile /nix/var/nix/profiles/system --switch-generation "$selected_generation"
+  sudo /nix/var/nix/profiles/system-"$selected_generation"-link/bin/switch-to-configuration switch
 }
 
 # Interactively selects and remove one or more nixos generations
 __nixos_remove_generations() {
   local nixos_generations selected_generations
-  nixos_generations=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system)
+  nixos_generations=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | sort -rn)
 
   selected_generations=$(
   echo "$nixos_generations" \

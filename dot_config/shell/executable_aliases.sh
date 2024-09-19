@@ -18,6 +18,7 @@ alias l='command ls -lt --almost-all --color --human-readable --classify | fzf -
 alias i='setsid satty --copy-command "wl-copy" --early-exit --init-tool brush --output-filename ~/Downloads/$(date +"%Y-%m-%d_%H-%M-%S").png --filename'
 alias xd='xdg-mime default'
 alias f='fzf --reverse --cycle --prompt=" " --height 70% --no-separator --info=inline:""'
+alias ss='systemctl --type=service --state=running | fzf --reverse --cycle --prompt=" " --height 70% --no-separator --info=inline:"" --header-lines=1'
 # alias c='!! | wl-copy'
 alias c='wl-copy'
 alias p='wl-paste'

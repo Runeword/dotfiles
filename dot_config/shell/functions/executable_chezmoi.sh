@@ -6,6 +6,7 @@ __select_files() {
     --info=inline:'' \
     --header-first \
     --prompt='  ' \
+    --scheme=path \
     --header="$2" \
     --bind='ctrl-a:select-all' \
     --preview 'chezmoi diff --reverse --color=true ~/{}' \
@@ -78,6 +79,7 @@ __chezmoi_forget() {
       --info=inline:'' \
       --header-first \
       --prompt='  ' \
+      --scheme=path \
       --header="chezmoi forget" \
       --preview '[ -f {} ] && bat --style=plain --color=always {}' \
       --preview-window right,70%,noborder)

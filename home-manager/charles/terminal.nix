@@ -1,10 +1,11 @@
-{ pkgs
-, inputs
-, lib
-, config
-, ...
-  }:
-  let
+{
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
+}:
+let
   leader = pkgs.stdenv.mkDerivation {
     pname = "leader";
     version = "0.3.2";
@@ -12,17 +13,17 @@
       url = "https://github.com/dhamidi/leader/releases/download/v0.3.2/leader.linux.amd64";
       sha256 = "sha256-lwOChHRvDvOm371v5xZUXS//6Dgn4CljioMrIBbWgwY=";
     };
-    
+
     dontUnpack = true;
-    
+
     installPhase = ''
       mkdir -p $out/bin
       cp $src $out/bin/leader
       chmod +x $out/bin/leader
     '';
   };
-  in
-  {
+in
+{
   home.packages = with pkgs; [
     inputs.neovim-runeword.packages.x86_64-linux.default # Text editor
     alacritty             # Terminal emulator
@@ -35,19 +36,19 @@
     wl-clipboard          # Copy/paste
     xdragon               # Drag and drop
 
-    # Coreutils
-    bat                  # cat
-    ripgrep              # grep
-    fd                   # find
-    zoxide               # cd
-    gomi                 # rm
-    fzf                  # Fuzzy finder
-    tree                 # Directory structure
-    wget                 # download
-    jq                   # JSON processor
+                          # Coreutils
+    bat                   # cat
+    ripgrep               # grep
+    fd                    # find
+    zoxide                # cd
+    gomi                  # rm
+    fzf                   # Fuzzy finder
+    tree                  # Directory structure
+    wget                  # Download
+    jq                    # JSON processor
 
-    leader               # Leader key
-    navi                 # Cheat sheet
+    leader                # Leader key
+    navi                  # Cheat sheet
 
     # Archivers
     ouch
@@ -64,5 +65,12 @@
 
     # UI
     starship
+
+    # Monitoring
+    htop
+    btop
+    bottom
+    procs
+    gping
   ];
 }

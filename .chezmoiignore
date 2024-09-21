@@ -3,6 +3,7 @@
 !.config
 !.leaderrc
 !.ssh
+!.github
 !.ssh/config
 .ssh/*
 !home-manager

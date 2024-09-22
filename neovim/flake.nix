@@ -3,9 +3,13 @@
   # nix run $HOME/neovim
   # nix run "github:Runeword/dotfiles?dir=neovim"
 
-  nixConfig.extra-substituters = [ "https://runeword-neovim.cachix.org" ];
+  nixConfig.extra-substituters = [
+    "https://runeword-neovim.cachix.org"
+    "https://nix-community.cachix.org"
+  ];
   nixConfig.extra-trusted-public-keys = [
     "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

@@ -74,7 +74,7 @@
                   shfmt
                   shellcheck
                   shellharden
-                  terraform-ls
+                  # terraform-ls
                   gopls
                   delve
                   rust-analyzer

@@ -83,7 +83,7 @@
                   delve
                   rust-analyzer
                   taplo
-                  # black
+                  black
                   isort
                   typos-lsp
                   # terraform-lsp

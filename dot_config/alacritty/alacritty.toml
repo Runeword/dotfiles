@@ -52,6 +52,14 @@ live_config_reload = true
    white  = "#e4e8f2"
    yellow = "#d9b26f"
 
+[[hints.enabled]]
+   regex = "(http:|https:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+   command = "xdg-open"
+
+[hints.enabled.binding]
+   key = "U"
+   mods = "Alt"
+
 [keyboard]
    bindings = [
       { action = "ResetFontSize", key = "Equals", mods = "Control" },

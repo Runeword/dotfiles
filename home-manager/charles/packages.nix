@@ -51,6 +51,11 @@
 
   in
   {
+  # home.file.".config".source = "dotfiles";
+  # dotfiles = config.lib.file.mkOutOfStoreSymlink ./dotfiles;
+
+  # home.file.".config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config";
+
   home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
   # home.file.".local/share/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
@@ -143,16 +148,9 @@
     gitui
     # inputs.src-cli.packages.x86_64-linux.default
 
-    # ---------------------------------- Secrets
+    # Secrets
     bitwarden-cli
     doppler
-
-    # Monitoring
-    htop
-    btop
-    bottom
-    procs
-    gping
 
     # Info
     hwinfo   # Hardware info

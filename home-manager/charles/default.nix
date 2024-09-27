@@ -21,15 +21,12 @@
   #   pinentryPackage = pkgs.pinentry-curses;
   # };
 
-  gtk = {
-    enable = true;
-    # font = {
-    # };
-    theme = {
-      package = pkgs.adw-gtk3;
-      name = "adw-gtk3";
-    };
-  };
+  gtk.enable = true;
+  gtk.theme.package = pkgs.adw-gtk3;
+  gtk.theme.name = "adw-gtk3";
+  gtk.iconTheme.name = "Adwaita";
+  gtk.iconTheme.package = pkgs.adwaita-icon-theme;
+
 
   home.sessionVariables = {
     XDG_DATA_DIRS = "/usr/local/share:/usr/share";

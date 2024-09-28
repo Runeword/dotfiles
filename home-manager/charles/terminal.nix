@@ -50,6 +50,18 @@ in
     leader                # Leader key
     navi                  # Cheat sheet
 
+    # Secrets
+    doppler
+    bitwarden-cli
+
+    # Git
+    git
+    # gh
+    zsh-forgit
+    # lazygit
+    # gitui
+    # inputs.src-cli.packages.x86_64-linux.default
+
     # Archivers
     ouch
     xarchiver

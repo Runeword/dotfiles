@@ -63,7 +63,8 @@ alias ni='nix-info -m'
 alias ng='__nixos_switch_generation'
 alias ngd='__nixos_remove_generations'
 alias ngda='nix-env --delete-generations +10'
-# alias ngda='sudo nix-collect-garbage --delete-old --verbose'
+# alias ncg='sudo nix-collect-garbage --delete-old --verbose'
+alias ncg='nix-collect-garbage'
 alias store='cd /nix/store && __open_file'
 
 # ______________________________________ NIX

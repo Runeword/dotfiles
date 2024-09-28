@@ -140,18 +140,6 @@
     notmuch # Email search and tag
     lieer   # Gmail sync
 
-    # Git
-    git
-    gh
-    zsh-forgit
-    lazygit
-    gitui
-    # inputs.src-cli.packages.x86_64-linux.default
-
-    # Secrets
-    bitwarden-cli
-    doppler
-
     # Info
     hwinfo   # Hardware info
     onefetch # Git info

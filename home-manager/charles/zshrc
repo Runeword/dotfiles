@@ -188,7 +188,7 @@ zle -N __ripgrep_or_complete
 bindkey '^[[Z' __ripgrep_or_complete
 
 _zsh_autosuggest_strategy_custom() {
-  suggestion=$(grep -h -m1 -E "^[^#%]*$(printf '%s' "$1" | sed 's/[]\[\^\$\.\*\(\)\\]/\\&/g')" ~/.config/navi/* | head -n 1)
+  suggestion=$(grep -h -m1 -E "^[^#%]*$(printf '%s' "$1" | sed 's/[]\[\^\$\.\*\{\}\(\)\\]/\\&/g')" ~/.config/navi/* | head -n 1)
   # suggestion=$(navi --query "$1" --best-match --print) # navi does not support non-interactive mode https://github.com/denisidoro/navi/issues/808
 }
 

@@ -51,10 +51,7 @@
 
   in
   {
-  # home.file.".config".source = "dotfiles";
-  # dotfiles = config.lib.file.mkOutOfStoreSymlink ./dotfiles;
-
-  # home.file.".config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config";
+  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/my-nvim-config";
 
   home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";

@@ -1,7 +1,5 @@
 {
   description = "My neovim flake";
-  # nix run $HOME/neovim
-  # nix run "github:Runeword/dotfiles?dir=neovim"
 
   nixConfig.extra-substituters = [
     "https://runeword-neovim.cachix.org"
@@ -13,10 +11,8 @@
   ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-
   inputs.cachix.url = "github:cachix/cachix";
 
   # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
@@ -31,70 +27,73 @@
         inherit system;
         overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
       };
-    in
 
-    rec {
-      apps.${system} = rec {
-        nvim.type = "app";
-        nvim.program = "${packages.${system}.default}/bin/nvim";
-        default = nvim;
+      myneovim = pkgs.neovim.override {
+        # withPython3 = true;
+        # withNodeJs = true;
+        # package = pkgs.neovim-nightly;
+        # extraPackages = [
+        # ];
       };
 
-      packages.${system} =
-        let
-          myneovim = pkgs.neovim.override {
-            # withPython3 = true;
-            # withNodeJs = true;
-            # package = pkgs.neovim-nightly;
-            # extraPackages = [
-            # ];
-          };
-        in
-
-        rec {
-          default = neovim-deps;
-          neovim-deps = pkgs.symlinkJoin {
-            name = "neovim";
-            paths = [ myneovim ];
-            buildInputs = [ pkgs.makeWrapper ];
-            postBuild = with pkgs; ''
-              rm $out/bin/nvim
-              BINPATH=${
-                lib.makeBinPath [
-                  nodePackages.vls
-                  nodePackages.typescript-language-server
-                  nodePackages.bash-language-server
-                  nodePackages.eslint
-                  pyright
-                  vscode-langservers-extracted
-                  yaml-language-server
-                  lua-language-server
-                  selene
-                  marksman
-                  ccls
-                  nil
-                  alejandra
-                  nixfmt-rfc-style
-                  shfmt
-                  shellcheck
-                  shellharden
-                  terraform-ls
-                  gopls
-                  delve
-                  rust-analyzer
-                  taplo
-                  black
-                  isort
-                  typos-lsp
-                  # terraform-lsp
-                ]
-              }
-              makeWrapper ${myneovim}/bin/nvim $out/bin/nvim --prefix PATH : $BINPATH
-            '';
-          };
+      neovim-deps = pkgs.symlinkJoin {
+        name = "neovim";
+        paths = [ myneovim ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = with pkgs; ''
+          rm $out/bin/nvim
+          BINPATH=${
+            lib.makeBinPath [
+              nodePackages.vls
+              nodePackages.typescript-language-server
+              nodePackages.bash-language-server
+              nodePackages.eslint
+              pyright
+              vscode-langservers-extracted
+              yaml-language-server
+              lua-language-server
+              selene
+              marksman
+              ccls
+              nil
+              alejandra
+              nixfmt-rfc-style
+              shfmt
+              shellcheck
+              shellharden
+              terraform-ls
+              gopls
+              delve
+              rust-analyzer
+              taplo
+              black
+              isort
+              typos-lsp
+            ]
+          }
+          makeWrapper ${myneovim}/bin/nvim $out/bin/nvim --prefix PATH : $BINPATH
+        '';
+      };
+    in
+    {
+      apps.${system} = {
+        nvim = {
+          type = "app";
+          program = "${neovim-deps}/bin/nvim";
         };
+        default = self.apps.${system}.nvim;
+      };
+
+      packages.${system} = {
+        default = neovim-deps;
+        neovim-deps = neovim-deps;
+      };
     };
 }
+
+# Run the flake :
+# nix run "github:Runeword/dotfiles?dir=neovim"
+# nix run $HOME/neovim
 
 # {
 #   description = "My own Neovim flake";

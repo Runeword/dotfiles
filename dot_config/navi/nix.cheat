@@ -2,3 +2,6 @@
 
 # Push build to cachix
 cachix push <cachix-cache> result
+
+# Build
+nix build --option substituters https://runeword-neovim.cachix.org --option trusted-public-keys runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4=

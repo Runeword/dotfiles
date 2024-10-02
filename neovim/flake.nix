@@ -27,21 +27,19 @@
         overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
       };
 
-      myneovim = pkgs.neovim.override {
+      neovim-override = pkgs.neovim.override {
         # withPython3 = true;
         # withNodeJs = true;
         # package = pkgs.neovim-nightly;
-        # extraPackages = [
-        # ];
       };
 
-      neovim-deps = pkgs.symlinkJoin {
+      neovim-with-dependencies = pkgs.symlinkJoin {
         name = "neovim";
-        paths = [ myneovim ];
+        paths = [ neovim-override ];
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = with pkgs; ''
           rm $out/bin/nvim
-          makeWrapper ${myneovim}/bin/nvim $out/bin/nvim --prefix PATH : ${
+          makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
               nodePackages.vls
               nodePackages.typescript-language-server
@@ -77,13 +75,13 @@
       apps.${system} = {
         default = {
           type = "app";
-          program = "${neovim-deps}/bin/nvim";
+          program = "${neovim-with-dependencies}/bin/nvim";
         };
       };
 
       packages.${system} = {
-        default = neovim-deps;
-        neovim-deps = neovim-deps;
+        default = neovim-with-dependencies;
+        runeword-neovim = neovim-with-dependencies;
       };
     };
 }

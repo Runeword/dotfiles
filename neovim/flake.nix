@@ -13,7 +13,6 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.cachix.url = "github:cachix/cachix";
 
   # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
   # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
@@ -42,7 +41,7 @@
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = with pkgs; ''
           rm $out/bin/nvim
-          BINPATH=${
+          makeWrapper ${myneovim}/bin/nvim $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
               nodePackages.vls
               nodePackages.typescript-language-server
@@ -71,17 +70,15 @@
               typos-lsp
             ]
           }
-          makeWrapper ${myneovim}/bin/nvim $out/bin/nvim --prefix PATH : $BINPATH
         '';
       };
     in
     {
       apps.${system} = {
-        nvim = {
+        default = {
           type = "app";
           program = "${neovim-deps}/bin/nvim";
         };
-        default = self.apps.${system}.nvim;
       };
 
       packages.${system} = {

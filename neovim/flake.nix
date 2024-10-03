@@ -39,7 +39,14 @@
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = with pkgs; ''
           rm $out/bin/nvim
-          makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
+          makeWrapper ${writeShellScript "nvim-wrapper" ''
+            #!/usr/bin/env bash
+            if [ ! -e "$HOME/.config/nvim" ]; then
+              mkdir -p "$HOME/.config"
+              ln -s ${./my-nvim-config} "$HOME/.config/nvim"
+            fi
+            exec ${neovim-override}/bin/nvim "$@"
+          ''} $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
               nodePackages.vls
               nodePackages.typescript-language-server

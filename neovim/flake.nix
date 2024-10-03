@@ -5,6 +5,7 @@
     "https://runeword-neovim.cachix.org"
     "https://nix-community.cachix.org"
   ];
+
   nixConfig.extra-trusted-public-keys = [
     "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -43,7 +44,7 @@
             #!/usr/bin/env bash
             if [ ! -e "$HOME/.config/nvim" ]; then
               mkdir -p "$HOME/.config"
-              ln -s ${./my-nvim-config} "$HOME/.config/nvim"
+              ln -s ${./config} "$HOME/.config/nvim"
             fi
             exec ${neovim-override}/bin/nvim "$@"
           ''} $out/bin/nvim --prefix PATH : ${

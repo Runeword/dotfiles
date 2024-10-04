@@ -49,6 +49,7 @@
             exec ${neovim-override}/bin/nvim "$@"
           ''} $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
+              fzf
               nodePackages.vls
               nodePackages.typescript-language-server
               nodePackages.bash-language-server

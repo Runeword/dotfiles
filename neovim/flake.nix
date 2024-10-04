@@ -42,7 +42,7 @@
           rm $out/bin/nvim
           makeWrapper ${writeShellScript "nvim-wrapper" ''
             #!/usr/bin/env bash
-            ln -sfn "${self}/config" "$HOME/.config/nvim"
+            # ln -sfn "${self}/config" "$HOME/.config/nvim"
             exec ${neovim-override}/bin/nvim "$@"
           ''} $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [

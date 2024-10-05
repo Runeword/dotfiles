@@ -13,7 +13,10 @@ return {
         client.server_capabilities.documentFormattingProvider = dfp
         client.server_capabilities.semanticTokensProvider = nil
 
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = buffer, })
+        vim.keymap.set('n', 'gd', function()
+          if not vim.lsp.buf.definition() then vim.lsp.buf.declaration() end
+        end, { buffer = buffer, })
+
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = buffer, })
 
         -- vim.keymap.set('n', '<Leader>f', vim.lsp.buf.format, { buffer = buffer, })

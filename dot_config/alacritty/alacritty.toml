@@ -57,7 +57,7 @@ live_config_reload = true
    command = "xdg-open"
 
 [hints.enabled.binding]
-   key = "U"
+   key = "L"
    mods = "Alt"
 
 [keyboard]

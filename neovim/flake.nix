@@ -39,6 +39,7 @@
         paths = [ neovim-override ];
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = with pkgs; ''
+          rm $out/bin/nvim
           makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
               fzf

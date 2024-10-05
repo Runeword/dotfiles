@@ -2,11 +2,13 @@ local vim = vim
 
 ----------------------------------- UNMAP
 
-vim.keymap.set('n', '<Enter>', '<Nop>')
-vim.keymap.set('n', '<C-n>',   '<Nop>')
-vim.keymap.set('n', '<C-p>',   '<Nop>')
-vim.keymap.set('',  'Q',       '<Nop>')
-vim.keymap.set('',  'q',       '<Nop>')
+vim.keymap.set('n', '<Enter>',    '<Nop>')
+vim.keymap.set('n', '<C-n>',      '<Nop>')
+vim.keymap.set('n', '<C-p>',      '<Nop>')
+vim.keymap.set('',  'Q',          '<Nop>')
+vim.keymap.set('',  'q',          '<Nop>')
+
+vim.keymap.set('n',  '<Leader>hd', '<cmd>checkhealth vim.deprecated<CR>')
 
 -- Wipe all the active buffers, quit vim if it's the last buffer
 local function wipe_active_buffers()

@@ -11,6 +11,7 @@ return {
       custom_textobjects = {
         f = false,
         b = false,
+        p = false,
         a = gen_spec.argument({ brackets = { '%b()', '%b{}', '%b[]', }, }),
         o = { { '%b()', '%b[]', '%b{}', '%b<>', }, '^.().*().$', },
         -- a = gen_spec.argument({ brackets = { '%b()' } }),

@@ -242,14 +242,19 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1728085245,
-        "narHash": "sha256-D/gSH5wTeYv9c13Hs0qk3+EOFCEbjNfNZrJCHsp6zhM=",
-        "path": "/home/charles/neovim",
-        "type": "path"
+        "dir": "neovim",
+        "lastModified": 1728161691,
+        "narHash": "sha256-FBJzNj957YVPIj1uLioISUverUPwuZsdCk7O5rYt4iI=",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "rev": "f53c16d9733f46849661c112e0ccb257ae528e25",
+        "type": "github"
       },
       "original": {
-        "path": "/home/charles/neovim",
-        "type": "path"
+        "dir": "neovim",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "neovim-src": {

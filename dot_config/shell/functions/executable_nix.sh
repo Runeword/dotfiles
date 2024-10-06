@@ -95,12 +95,12 @@ __home_manager_remove_generations() {
 
   [ "$selected_generations" = "" ] && return 1
 
-  echo "$selected_generation" | xargs home-manager remove-generations
+  echo "$selected_generations" | xargs home-manager remove-generations
 }
 
 # Interactively selects and switch to a nixos generation
 __nixos_switch_generation() {
-  local nixos_generations selected_generations
+  local nixos_generations selected_generation
   nixos_generations=$(sudo nix-env  --list-generations --profile /nix/var/nix/profiles/system | sort -rn)
 
   selected_generation=$(

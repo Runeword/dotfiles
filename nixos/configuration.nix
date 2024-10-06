@@ -137,6 +137,8 @@
   location.longitude = 2.352222;
   location.latitude = 48.856613;
 
+  xdg.mime.enable = lib.mkForce false;
+
   # Setup keyfile
   boot.initrd.secrets."/crypto_keyfile.bin" = null;
 

@@ -27,7 +27,6 @@
   gtk.iconTheme.name = "Adwaita";
   gtk.iconTheme.package = pkgs.adwaita-icon-theme;
 
-
   home.sessionVariables = {
     XDG_DATA_DIRS = "/usr/local/share:/usr/share";
     XDG_CONFIG_DIRS = "/etc/xdg";
@@ -37,6 +36,8 @@
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
   };
+
+  xdg.mime.enable = false;
 
   programs = {
     home-manager.enable = true;

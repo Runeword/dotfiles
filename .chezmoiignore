@@ -4,6 +4,7 @@
 !.leaderrc
 !.ssh
 !.github
+!dev
 !.ssh/config
 .ssh/*
 !home-manager

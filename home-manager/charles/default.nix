@@ -24,6 +24,9 @@
   gtk.enable = true;
   gtk.theme.package = pkgs.adw-gtk3;
   gtk.theme.name = "adw-gtk3";
+  gtk.cursorTheme.package = pkgs.adwaita-icon-theme;
+  gtk.cursorTheme.name = "Adwaita";
+  gtk.cursorTheme.size = 40;
   gtk.iconTheme.name = "Adwaita";
   gtk.iconTheme.package = pkgs.adwaita-icon-theme;
 

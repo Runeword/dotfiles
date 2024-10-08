@@ -35,7 +35,9 @@
     "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
   ];
 
+  security.sudo.enable = true;
   security.polkit.enable = true;
+
   services.fwupd.enable = true;
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -204,13 +206,20 @@
   # user
   users.users.charles = {
     isNormalUser = true;
-    description = "charles";
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
     # packages = with pkgs; [
     # ];
+  };
+
+  users.users.zod = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are

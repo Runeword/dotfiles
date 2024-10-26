@@ -40,7 +40,7 @@
     XDG_BIN_HOME = "$HOME/.local/bin";
   };
 
-  xdg.mime.enable = false;
+  xdg.mime.enable = true;
 
   programs = {
     home-manager.enable = true;

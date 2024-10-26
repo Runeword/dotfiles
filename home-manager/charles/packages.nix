@@ -65,6 +65,7 @@
 
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono" ]; })
+    inputs.alacritty-runeword.packages.x86_64-linux.default
     maple-mono-NF
     python311
     qmk
@@ -73,6 +74,7 @@
     pgmodeler
     chezmoi
     progress
+    # rquickshare
 
     sioyek      # PDF viewer
 
@@ -92,7 +94,7 @@
 
     # ---------------------------------- Browsers
     google-chrome
-    firefox
+    # firefox
     tor-browser
 
     # ---------------------------------- Hardware

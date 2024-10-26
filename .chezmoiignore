@@ -4,6 +4,7 @@
 !.leaderrc
 !.ssh
 !.github
+!.term
 !dev
 !.ssh/config
 .ssh/*

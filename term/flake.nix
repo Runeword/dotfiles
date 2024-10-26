@@ -1,5 +1,5 @@
 {
-  description = "Alacritty with cowsay";
+  description = "Alacritty with additional packages";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -17,26 +17,31 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        alacrittyWithCowsay = pkgs.symlinkJoin {
-          name = "alacritty-with-cowsay";
-          paths = [
-            pkgs.alacritty
-            pkgs.cowsay
-          ];
+        additionalPackages = with pkgs; [
+          cowsay
+          yazi
+        ];
+
+        alacrittyWithPackages = pkgs.symlinkJoin {
+          name = "alacritty-with-packages";
+          paths = [ pkgs.alacritty ] ++ additionalPackages;
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
             wrapProgram $out/bin/alacritty \
-              --prefix PATH : ${pkgs.cowsay}/bin
+              --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages}
           '';
         };
 
       in
       {
-        packages.default = alacrittyWithCowsay;
+        packages = {
+          default = alacrittyWithPackages;
+          runeword-alacritty = alacrittyWithPackages;
+        };
 
         apps.default = {
           type = "app";
-          program = "${alacrittyWithCowsay}/bin/alacritty";
+          program = "${alacrittyWithPackages}/bin/alacritty";
         };
       }
     );

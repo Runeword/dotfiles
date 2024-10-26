@@ -26,7 +26,7 @@ in
 {
   home.packages = with pkgs; [
     inputs.neovim-runeword.packages.x86_64-linux.default # Text editor
-    alacritty             # Terminal emulator
+    # alacritty             # Terminal emulator
     kitty                 # Terminal emulator
     tmux                  # Sessions, windows and panes manager
     tmuxPlugins.tmux-fzf  # Fuzzy search tmux sessions, windows and panes

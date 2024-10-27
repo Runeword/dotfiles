@@ -22,15 +22,16 @@
           yazi
         ];
 
-        alacrittyWithPackages = pkgs.symlinkJoin {
-          name = "alacritty-with-packages";
-          paths = [ pkgs.alacritty ] ++ additionalPackages;
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            wrapProgram $out/bin/alacritty \
-              --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages}
-          '';
-        };
+        alacrittyWithPackages =
+          pkgs.runCommand "alacritty-with-packages"
+            {
+              nativeBuildInputs = [ pkgs.makeWrapper ];
+            }
+            ''
+              mkdir -p $out/bin
+              makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
+                --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages}
+            '';
 
       in
       {

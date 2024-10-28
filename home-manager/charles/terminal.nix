@@ -26,7 +26,6 @@ in
 {
   home.packages = with pkgs; [
     inputs.neovim-runeword.packages.x86_64-linux.default # Text editor
-    # alacritty             # Terminal emulator
     kitty                 # Terminal emulator
     tmux                  # Sessions, windows and panes manager
     tmuxPlugins.tmux-fzf  # Fuzzy search tmux sessions, windows and panes
@@ -36,53 +35,14 @@ in
     xdragon               # Drag and drop
     # bemenu
 
-                          # Coreutils
-    bat                   # cat
-    ripgrep               # grep
-    fd                    # find
-    zoxide                # cd
-    gomi                  # rm
-    fzf                   # Fuzzy finder
-    tree                  # Directory structure
-    wget                  # Download
-    jq                    # JSON processor
-
-    leader                # Leader key
-    navi                  # Cheat sheet
-
     # Secrets
     doppler
     bitwarden-cli
-
-    # Git
-    git
-    # gh
-    zsh-forgit
-    # lazygit
-    # gitui
-    # inputs.src-cli.packages.x86_64-linux.default
-
-    # Archivers
-    ouch
-    xarchiver
-    unzip
-    # zip
-    # p7zip
 
     # Secrets
     pass-wayland
     gnupg
     pinentry-curses
     # gpg-tui
-
-    # UI
-    starship
-
-    # Monitoring
-    htop
-    btop
-    bottom
-    procs
-    gping
   ];
 }

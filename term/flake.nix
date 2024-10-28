@@ -19,7 +19,38 @@
 
         additionalPackages = with pkgs; [
           cowsay
-          yazi
+          yazi       # file manager
+          leader     # leader key
+          navi       # cheat sheet
+          git        # versioning
+          zsh-forgit # fuzzy git
+          starship   # prompt
+          #_______________________________ Coreutils
+          bat
+          zoxide
+          gomi
+          ripgrep
+          fd
+          fzf
+          tree
+          wget
+          jq
+          #_______________________________ Monitoring
+          htop
+          btop
+          procs
+          gping
+          #_______________________________ Archivers
+          ouch
+          xarchiver
+          unzip
+
+          # zip
+          # p7zip
+          # gh
+          # lazygit
+          # gitui
+          # inputs.src-cli.packages.x86_64-linux.default
         ];
 
         alacrittyWithPackages =

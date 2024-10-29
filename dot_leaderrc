@@ -35,7 +35,9 @@
             "c": "nvim $HOME/nixos/configuration.nix",
             "f": "nvim $HOME/nixos/flake.nix"
           }
-        }
+        },
+        "a": "nvim $HOME/.config/shell/aliases.sh",
+        "v": "nvim $HOME/.config/shell/variables.sh"
       }
     },
     "c": {

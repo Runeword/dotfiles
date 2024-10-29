@@ -15,22 +15,27 @@
         "t": "__use_flake_template $HOME/templates"
       }
     },
-    "h": {
-      "name": "home manager",
+    "o": {
+      "name": "open",
       "keys": {
-        "u": "cd $HOME/home-manager/$USER",
-        "f": "nvim $HOME/home-manager/flake.nix",
-        "p": "nvim $HOME/home-manager/$USER/packages.nix",
-        "d": "nvim $HOME/home-manager/$USER/default.nix",
-        "o": "nvim $HOME/home-manager/$USER/overlays.nix",
-        "z": "nvim $HOME/home-manager/$USER/zshrc"
-      }
-    },
-    "n": {
-      "name": "nixos",
-      "keys": {
-        "c": "nvim $HOME/nixos/configuration.nix",
-        "f": "nvim $HOME/nixos/flake.nix"
+        "h": {
+          "name": "home manager",
+          "keys": {
+            "u": "cd $HOME/home-manager/$USER",
+            "f": "nvim $HOME/home-manager/flake.nix",
+            "p": "nvim $HOME/home-manager/$USER/packages.nix",
+            "d": "nvim $HOME/home-manager/$USER/default.nix",
+            "o": "nvim $HOME/home-manager/$USER/overlays.nix",
+            "z": "nvim $HOME/home-manager/$USER/zshrc"
+          }
+        },
+        "n": {
+          "name": "nixos",
+          "keys": {
+            "c": "nvim $HOME/nixos/configuration.nix",
+            "f": "nvim $HOME/nixos/flake.nix"
+          }
+        }
       }
     },
     "c": {

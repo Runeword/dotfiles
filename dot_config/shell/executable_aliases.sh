@@ -106,8 +106,6 @@ alias st='cd /nix/store'
 # ______________________________________ FILES
 
 alias nn='fc -s nvim'
-alias al='nvim $HOME/.config/shell/aliases.sh'
-alias va='nvim $HOME/.config/shell/variables.sh'
 
 # ______________________________________ CHEZMOI
 

@@ -1,0 +1,12 @@
+[package]
+name = "flx"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde_json = "1.0"
+dialoguer = "0.10"
+
+[[bin]]
+name = "flx"
+path = "./main.rs"

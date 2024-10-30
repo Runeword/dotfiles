@@ -15,6 +15,13 @@ use crossterm::{
     terminal::{disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen},
 };
 
+fn fuzzy_match(pattern: &str, text: &str) -> bool {
+    let pattern = pattern.to_lowercase();
+    let text = text.to_lowercase();
+    let mut text_chars = text.chars();
+    pattern.chars().all(|p| text_chars.any(|t| t == p))
+}
+
 fn update_flake_inputs(flake_path: &str) -> io::Result<()> {
     // Get flake metadata
     let output = Command::new("nix")
@@ -44,15 +51,27 @@ fn update_flake_inputs(flake_path: &str) -> io::Result<()> {
     let mut selected = 0;
     let mut list_state = ListState::default();
     list_state.select(Some(selected));
+    let mut search_query = String::new();
+    let mut filtered_inputs: Vec<String> = inputs.clone();
 
     loop {
         terminal.draw(|f| {
             let chunks = Layout::default()
-                .direction(Direction::Horizontal)
-                .constraints([Constraint::Percentage(30), Constraint::Percentage(70)].as_ref())
+                .direction(Direction::Vertical)
+                .constraints([Constraint::Length(3), Constraint::Min(0)].as_ref())
                 .split(f.size());
 
-            let items: Vec<ListItem> = inputs
+            let search_input = Paragraph::new(search_query.as_ref())
+                .style(Style::default().fg(Color::Yellow))
+                .block(Block::default().borders(Borders::ALL).title("Search"));
+            f.render_widget(search_input, chunks[0]);
+
+            let inner_chunks = Layout::default()
+                .direction(Direction::Horizontal)
+                .constraints([Constraint::Percentage(30), Constraint::Percentage(70)].as_ref())
+                .split(chunks[1]);
+
+            let items: Vec<ListItem> = filtered_inputs
                 .iter()
                 .map(|i| ListItem::new(i.as_str()))
                 .collect();
@@ -62,9 +81,9 @@ fn update_flake_inputs(flake_path: &str) -> io::Result<()> {
                 .highlight_style(Style::default().add_modifier(Modifier::REVERSED))
                 .highlight_symbol("> ");
 
-            f.render_stateful_widget(list, chunks[0], &mut list_state);
+            f.render_stateful_widget(list, inner_chunks[0], &mut list_state);
 
-            let input_info = if let Some(input) = inputs.get(selected) {
+            let input_info = if let Some(input) = filtered_inputs.get(selected) {
                 let input_data = &flake_metadata["locks"]["nodes"][input];
                 let mut info = String::new();
                 info.push_str(&format!("Input: {}\n\n", input));
@@ -98,31 +117,49 @@ fn update_flake_inputs(flake_path: &str) -> io::Result<()> {
                 .block(Block::default().title("Preview").borders(Borders::ALL))
                 .wrap(Wrap { trim: true });
 
-            f.render_widget(preview, chunks[1]);
+            f.render_widget(preview, inner_chunks[1]);
         })?;
 
         if let Event::Key(key) = event::read()? {
             match key.code {
                 KeyCode::Char('q') => break,
                 KeyCode::Down => {
-                    selected = (selected + 1) % inputs.len();
+                    selected = (selected + 1) % filtered_inputs.len();
                     list_state.select(Some(selected));
                 },
                 KeyCode::Up => {
-                    selected = (selected + inputs.len() - 1) % inputs.len();
+                    selected = (selected + filtered_inputs.len() - 1) % filtered_inputs.len();
                     list_state.select(Some(selected));
                 },
                 KeyCode::Enter => {
-                    // Update selected input
-                    let input = &inputs[selected];
-                    println!("Updating input: {}", input);
-                    let status = Command::new("nix")
-                        .args(&["flake", "lock", "--update-input", input, flake_path])
-                        .status()?;
+                    if let Some(input) = filtered_inputs.get(selected) {
+                        println!("Updating input: {}", input);
+                        let status = Command::new("nix")
+                            .args(&["flake", "lock", "--update-input", input, flake_path])
+                            .status()?;
 
-                    if !status.success() {
-                        eprintln!("Failed to update input: {}", input);
+                        if !status.success() {
+                            eprintln!("Failed to update input: {}", input);
+                        }
                     }
+                },
+                KeyCode::Char(c) => {
+                    search_query.push(c);
+                    filtered_inputs = inputs.iter()
+                        .filter(|input| fuzzy_match(&search_query, input))
+                        .cloned()
+                        .collect();
+                    selected = 0;
+                    list_state.select(Some(selected));
+                },
+                KeyCode::Backspace => {
+                    search_query.pop();
+                    filtered_inputs = inputs.iter()
+                        .filter(|input| fuzzy_match(&search_query, input))
+                        .cloned()
+                        .collect();
+                    selected = 0;
+                    list_state.select(Some(selected));
                 },
                 _ => {}
             }

@@ -43,10 +43,9 @@ live_config_reload = true
 
 [colors.normal]
    black = "#000000"
-   blue  = "#98b8d9"
+   blue  = "#9bb7c4"
+   cyan  = "#6097bf"
    green = "#5f9e6f"
-   # cyan    = "#1d99cf"
-   cyan    = "#3490c9"
    magenta = "#8856c4"
    red    = "#ff75a9"
    white  = "#e4e8f2"

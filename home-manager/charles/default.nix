@@ -10,7 +10,6 @@
     ./overlays.nix
     ./packages.nix
     ./desktop.nix
-    ./terminal.nix
     ./bash.nix
     ./zsh.nix
     inputs.ags.homeManagerModules.default

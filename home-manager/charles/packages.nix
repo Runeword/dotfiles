@@ -1,27 +1,28 @@
-{ pkgs
-, inputs
-, lib
-, config
-, ...
+{
+  pkgs,
+  inputs,
+  lib,
+  config,
+  ...
 # }: {
-  }:
-  let
-    # termium = pkgs.stdenv.mkDerivation {
-    #   pname = "termium";
-    #   version = "0.2.1";
-    #   src = pkgs.fetchurl {
-    #     url = "https://github.com/Exafunction/codeium/releases/download/termium-v0.2.1/termium_x86_64-unknown-linux-gnu";
-    #     sha256 = "sha256-DZR+MSIJWkuiKjRtPqzwvj+hXhel71+5HPJ/7G1o+tw=";
-    #   };
-    #   
-    #   dontUnpack = true;
-    #   
-    #   installPhase = ''
-    #     mkdir -p $out/bin
-    #     cp $src $out/bin/termium
-    #     chmod +x $out/bin/termium
-    #   '';
-    # };
+}:
+let
+  # termium = pkgs.stdenv.mkDerivation {
+  #   pname = "termium";
+  #   version = "0.2.1";
+  #   src = pkgs.fetchurl {
+  #     url = "https://github.com/Exafunction/codeium/releases/download/termium-v0.2.1/termium_x86_64-unknown-linux-gnu";
+  #     sha256 = "sha256-DZR+MSIJWkuiKjRtPqzwvj+hXhel71+5HPJ/7G1o+tw=";
+  #   };
+  #   
+  #   dontUnpack = true;
+  #   
+  #   installPhase = ''
+  #     mkdir -p $out/bin
+  #     cp $src $out/bin/termium
+  #     chmod +x $out/bin/termium
+  #   '';
+  # };
 
   # tmuxKeylocker = pkgs.tmuxPlugins.mkTmuxPlugin {
   #   pluginName = "tmux-keylocker";
@@ -49,8 +50,8 @@
   #   # sha256 = lib.fakeSha256;
   # }) {inherit (pkgs) system;};
 
-  in
-  {
+in
+{
   home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
 
   home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
@@ -64,7 +65,14 @@
   # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "SourceCodePro" "VictorMono" "Monaspace" "CascadiaMono" ]; })
+    (nerdfonts.override {
+      fonts = [
+        "SourceCodePro"
+        "VictorMono"
+        "Monaspace"
+        "CascadiaMono"
+      ];
+    })
     inputs.alacritty-runeword.packages.x86_64-linux.default
     maple-mono-NF
     python311
@@ -77,17 +85,17 @@
     whatsie
     # rquickshare
 
-    sioyek      # PDF viewer
+    sioyek # PDF viewer
 
     # Recovery
     testdisk-qt # GUI Recovery tool
     extundelete # Recover deleted files from an ext3 or ext4 partition
-    foremost    # Recover files based on their headers and footers
-    exiftool    # Meta information reader/writer
+    foremost # Recover files based on their headers and footers
+    exiftool # Meta information reader/writer
 
     showmethekey
     appimage-run
-    hyprpicker           # Color picker
+    hyprpicker # Color picker
     # bash-completion
 
     # ---------------------------------- Editors
@@ -103,6 +111,24 @@
     dmidecode
     libinput
     evtest
+
+    # ---------------------------------- Terminal
+    inputs.neovim-runeword.packages.x86_64-linux.default # Text editor
+    kitty # Terminal emulator
+    tmux # Sessions, windows and panes manager
+    tmuxPlugins.tmux-fzf # Fuzzy search tmux sessions, windows and panes
+    tmuxPlugins.resurrect # Save and restore tmux environment
+    # bemenu
+
+    # Secrets
+    doppler
+    bitwarden-cli
+
+    # Secrets
+    pass-wayland
+    gnupg
+    pinentry-curses
+    # gpg-tui
 
     # ---------------------------------- CLI tools
     # termium
@@ -127,9 +153,9 @@
     atac
 
     # Disk
-    ncdu 
-    qdirstat    # Disk usage viewer
-    erdtree     # Disk usage
+    ncdu
+    qdirstat # Disk usage viewer
+    erdtree # Disk usage
     # dust
     # duf 
     # gdu 
@@ -138,10 +164,10 @@
     # Email
     neomutt # Email client
     notmuch # Email search and tag
-    lieer   # Gmail sync
+    lieer # Gmail sync
 
     # Info
-    hwinfo   # Hardware info
+    hwinfo # Hardware info
     onefetch # Git info
     neofetch # System info
     nvme-cli # NVMe storage devices manager

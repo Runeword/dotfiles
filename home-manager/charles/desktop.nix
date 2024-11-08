@@ -10,10 +10,6 @@
   home.packages = with pkgs; [
     # fuzzel # App launcher
 
-    # Essential
-    wl-clipboard         # Clipboard
-    xdragon              # Drag and drop
-
     # Viewers
     imv                  # Image viewer
     wev                  # Event viewer
@@ -22,6 +18,7 @@
     (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; })) # Bar
     hyprlock             # Screen locker
     fnott                # Notification daemon
+    # deadd-notification-center
 
     # Hardware managers
     networkmanagerapplet # Network manager

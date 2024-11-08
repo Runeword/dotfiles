@@ -42,6 +42,9 @@
           git        # versioning
           zsh-forgit # fuzzy git
           starship   # prompt
+          wl-clipboard          # Copy/paste
+          xdragon               # Drag and drop
+          ueberzugpp            # Images support for terminal
           #_______________________________ Coreutils
           bat
           zoxide

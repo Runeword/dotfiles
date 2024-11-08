@@ -30,9 +30,6 @@
     tmux                  # Sessions, windows and panes manager
     tmuxPlugins.tmux-fzf  # Fuzzy search tmux sessions, windows and panes
     tmuxPlugins.resurrect # Save and restore tmux environment
-    ueberzugpp            # Images support for terminal
-    wl-clipboard          # Copy/paste
-    xdragon               # Drag and drop
     # bemenu
 
     # Secrets

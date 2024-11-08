@@ -74,6 +74,7 @@
     pgmodeler
     chezmoi
     progress
+    whatsie
     # rquickshare
 
     sioyek      # PDF viewer

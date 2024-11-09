@@ -85,16 +85,6 @@ alias nd='read -p "nix develop $HOME#" devShellName && nix develop $HOME#$devShe
 # # alias fp='nix flake metadata --json | jq .path'
 # alias ft='__use_flake_template $HOME/templates'
 
-# ______________________________________ HOME MANAGER
-
-alias hs='home-manager switch --flake $HOME/home-manager'
-alias hu='__update_flake_inputs $HOME/home-manager'
-alias hv='home-manager --version'
-alias hgs='__home_manager_switch_generation'
-alias hgr='__home_manager_remove_generations'
-alias hgd='home-manager expire-generations "-7 days"'
-alias hp='__home_manager_packages'
-
 # ______________________________________ DIRECTORIES
 
 alias ne='cd $HOME/.config/nvim'

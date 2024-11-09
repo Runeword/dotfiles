@@ -35,13 +35,13 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         additionalPackages = with pkgs; [
-          cowsay
-          yazi       # file manager
-          leader     # leader key
-          navi       # cheat sheet
-          git        # versioning
-          zsh-forgit # fuzzy git
-          starship   # prompt
+          cowsay                # cowsay
+          yazi                  # file manager
+          leader                # leader key
+          navi                  # cheat sheet
+          git                   # versioning
+          zsh-forgit            # fuzzy git
+          starship              # prompt
           wl-clipboard          # Copy/paste
           xdragon               # Drag and drop
           ueberzugpp            # Images support for terminal
@@ -64,6 +64,16 @@
           ouch
           xarchiver
           unzip
+          #_______________________________ Fonts
+          maple-mono-NF
+          (nerdfonts.override {
+            fonts = [
+              "SourceCodePro"
+              "VictorMono"
+              "Monaspace"
+              "CascadiaMono"
+            ];
+          })
 
           # zip
           # p7zip

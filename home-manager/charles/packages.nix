@@ -65,16 +65,7 @@ in
   # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "SourceCodePro"
-        "VictorMono"
-        "Monaspace"
-        "CascadiaMono"
-      ];
-    })
     inputs.alacritty-runeword.packages.x86_64-linux.default
-    maple-mono-NF
     python311
     qmk
     gcc

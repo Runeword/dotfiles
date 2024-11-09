@@ -36,23 +36,23 @@ export FORGIT_FZF_DEFAULT_OPTS="
 --info=inline:'' \
 --preview-window right,75%,border-none \
 ";
-export FZF_DEFAULT_COMMAND="
-fd \
---reverse \
---prompt='  ' \
---no-separator \
---info=inline:'' \
---hidden \
---follow \
---no-ignore \
---exclude .git \
---exclude node_modules \
-";
+# export FZF_DEFAULT_COMMAND="
+# fd \
+# --reverse \
+# --prompt='  ' \
+# --no-separator \
+# --info=inline:'' \
+# --hidden \
+# --follow \
+# --no-ignore \
+# --exclude .git \
+# --exclude node_modules \
+# ";
 export FZF_DEFAULT_OPTS="
---color=fg:#d0d0d0,bg:-1,hl:#918fcf \
---color=fg+:#ffffff,fg+:regular,bg+:#0e1c1c,hl+:#6bdbd8,hl+:regular,query:regular \
---color=info:#d0d0d0,prompt:#ffffff,pointer:#ff75a9,border:#2f394a \
---color=marker:#ff75a9,spinner:#ffffff,header:#535e73 \
+--color=fg:#d0d0d0,bg:-1,hl:#ffffff \
+--color=fg+:#ffffff,fg+:regular,bg+:#142920,hl+:#67d6a9,hl+:regular,query:italic \
+--color=info:#d0d0d0,prompt:#ffffff,pointer:#67d6a9,border:#2f394a \
+--color=marker:#57b58f,spinner:#ffffff,header:#535e73 \
 ";
 export FZF_CTRL_R_OPTS="
 --reverse \

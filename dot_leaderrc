@@ -15,6 +15,13 @@
         "t": "__use_flake_template $HOME/templates"
       }
     },
+    "h": {
+      "name": "home-manager",
+      "keys": {
+        "s":"__home_manager_switch_generation",
+        "r":"__home_manager_remove_generations"
+      }
+    },
     "o": {
       "name": "open",
       "keys": {

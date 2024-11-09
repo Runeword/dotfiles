@@ -26,11 +26,11 @@
       },
       "locked": {
         "dir": "term",
-        "lastModified": 1731056117,
-        "narHash": "sha256-OqBPoV7GLuS5ws/uwkACmDfdFaMqH/qC1o977qJWLnU=",
+        "lastModified": 1731185605,
+        "narHash": "sha256-ZUZ1N7FzDq/GxY78QSzeYDJlh0om4StCA8ZBs3KAPAc=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "592039ede644b0326798d765b624e55dff6e723e",
+        "rev": "38b212fd946762ac6ca3f00fea4d4e60a382a25a",
         "type": "github"
       },
       "original": {

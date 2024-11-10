@@ -19,27 +19,6 @@
         "type": "github"
       }
     },
-    "alacritty-runeword": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "dir": "term",
-        "lastModified": 1731238945,
-        "narHash": "sha256-CnzezEpHBNOtw31YbN8zLf6Oa+eagCY0KReclquDVj4=",
-        "owner": "Runeword",
-        "repo": "dotfiles",
-        "rev": "4d1d07bb55c2fb3b625a092620cd89f226641565",
-        "type": "github"
-      },
-      "original": {
-        "dir": "term",
-        "owner": "Runeword",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -278,7 +257,7 @@
     "neovim-runeword": {
       "inputs": {
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "dir": "neovim",
@@ -330,22 +309,6 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1729665710,
-        "narHash": "sha256-AlcmCXJZPIlO5dmFzV3V2XF6x/OpNWUV8Y/FMPGd8Z4=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2768c7d042a37de65bb1b5b3268fc987e534c49d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1727802920,
         "narHash": "sha256-HP89HZOT0ReIbI7IJZJQoJgxvB2Tn28V6XS3MNKnfLs=",
         "owner": "nixos",
@@ -360,7 +323,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1730785428,
         "narHash": "sha256-Zwl8YgTVJTEum+L+0zVAWvXAGbWAuXHax3KzuejaDyo=",
@@ -376,14 +339,51 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1729665710,
+        "narHash": "sha256-AlcmCXJZPIlO5dmFzV3V2XF6x/OpNWUV8Y/FMPGd8Z4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2768c7d042a37de65bb1b5b3268fc987e534c49d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
-        "alacritty-runeword": "alacritty-runeword",
         "home-manager": "home-manager",
         "hyprland-contrib": "hyprland-contrib",
         "neovim-runeword": "neovim-runeword",
+        "nixpkgs": "nixpkgs_3",
+        "runeword-terminal": "runeword-terminal"
+      }
+    },
+    "runeword-terminal": {
+      "inputs": {
+        "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "dir": "term",
+        "lastModified": 1731239767,
+        "narHash": "sha256-JxzeWFtB/ySBylr7pW6YR3XaEbeGoS95HLQsHFPwRcE=",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "rev": "5d62f95e6d4fb82fa9a5941b90fd97940ab5a418",
+        "type": "github"
+      },
+      "original": {
+        "dir": "term",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "systems": {

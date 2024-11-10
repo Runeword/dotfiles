@@ -35,16 +35,16 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         additionalPackages = with pkgs; [
-          cowsay                # cowsay
-          yazi                  # file manager
-          leader                # leader key
-          navi                  # cheat sheet
-          git                   # versioning
-          zsh-forgit            # fuzzy git
-          starship              # prompt
-          wl-clipboard          # Copy/paste
-          xdragon               # Drag and drop
-          ueberzugpp            # Images support for terminal
+          cowsay # cowsay
+          yazi # file manager
+          leader # leader key
+          navi # cheat sheet
+          git # versioning
+          zsh-forgit # fuzzy git
+          starship # prompt
+          wl-clipboard # Copy/paste
+          xdragon # Drag and drop
+          ueberzugpp # Images support for terminal
           #_______________________________ Coreutils
           bat
           zoxide
@@ -65,15 +65,15 @@
           xarchiver
           unzip
           #_______________________________ Fonts
-          maple-mono-NF
-          (nerdfonts.override {
-            fonts = [
-              "SourceCodePro"
-              "VictorMono"
-              "Monaspace"
-              "CascadiaMono"
-            ];
-          })
+          # maple-mono-NF
+          # (nerdfonts.override {
+          #   fonts = [
+          #     "SourceCodePro"
+          #     "VictorMono"
+          #     "Monaspace"
+          #     "CascadiaMono"
+          #   ];
+          # })
 
           # zip
           # p7zip
@@ -91,7 +91,21 @@
             ''
               mkdir -p $out/bin
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
-                --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages}
+                --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages} \
+                --set FONTCONFIG_FILE ${
+                  pkgs.makeFontsConf {
+                    fontDirectories = [
+                      (pkgs.nerdfonts.override {
+                        fonts = [
+                          "SourceCodePro"
+                          "VictorMono"
+                          "Monaspace"
+                          "CascadiaMono"
+                        ];
+                      })
+                    ];
+                  }
+                }
             '';
 
       in

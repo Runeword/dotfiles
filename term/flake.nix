@@ -15,6 +15,8 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
+        pkgs = nixpkgs.legacyPackages.${system};
+
         customPackages.leader = pkgs.stdenv.mkDerivation {
           pname = "leader";
           version = "0.3.2";
@@ -31,8 +33,6 @@
             chmod +x $out/bin/leader
           '';
         };
-
-        pkgs = nixpkgs.legacyPackages.${system};
 
         extraPackages = with pkgs; [
           cowsay # cowsay
@@ -78,9 +78,9 @@
           (pkgs.nerdfonts.override {
             fonts = [
               "SourceCodePro"
-              "VictorMono"
               "Monaspace"
               "CascadiaMono"
+              # "VictorMono"
             ];
           })
         ];

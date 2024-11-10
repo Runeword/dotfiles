@@ -79,7 +79,6 @@
   "memory#string": {
     "interval": 2,
     "tooltip": false,
-    "on-click": "kitty --override background_opacity=1 --class floating btop",
     "states": {
       "warning": 30,
       "critical": 90
@@ -89,7 +88,6 @@
   "memory#icon": {
     "interval": 2,
     "tooltip": false,
-    "on-click": "kitty --override background_opacity=1 --class floating btop",
     "states": {
       "warning": 30,
       "critical": 90
@@ -100,7 +98,6 @@
   "cpu#string": {
     "interval": 2,
     "tooltip": false,
-    "on-click": "kitty --override background_opacity=1 --class floating btop",
     "states": {
       "warning": 20,
       "critical": 90
@@ -110,7 +107,6 @@
   "cpu#icon": {
     "interval": 2,
     "tooltip": false,
-    "on-click": "kitty --override background_opacity=1 --class floating btop",
     "states": {
       "warning": 20,
       "critical": 90
@@ -172,8 +168,7 @@
   // -------------------------------------- VOLUME
   "wireplumber#string": {
     "format": "{volume}",
-    "tooltip": false,
-    "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
+    "tooltip": false
   },
   "wireplumber#icon": {
     "format": "<span size='x-large'>{icon}</span>",
@@ -183,8 +178,7 @@
       "󰖀",
       "󰕾"
     ],
-    "tooltip": false,
-    "on-click": "kitty --override background_opacity=1 --class floating alsamixer"
+    "tooltip": false
   },
   // -------------------------------------- BLUETOOTH
   "bluetooth#string": {

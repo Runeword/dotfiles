@@ -180,16 +180,6 @@ in
 
     fstl # .stl file viewer
 
-    maple-mono-NF
-    (nerdfonts.override {
-      fonts = [
-        "SourceCodePro"
-        "VictorMono"
-        "Monaspace"
-        "CascadiaMono"
-      ];
-    })
-
     # davinci-resolve
     # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
     # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia

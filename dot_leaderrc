@@ -1,6 +1,7 @@
 {
   "keys": {
-    "y": "zle fzf-history-widget && zle accept-line",
+    "r": "zle fzf-history-widget && zle accept-line",
+    "y": "__yazi_cd",
     "a": "__run_alias",
     "f": {
       "name": "flake",

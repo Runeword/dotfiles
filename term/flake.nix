@@ -86,7 +86,7 @@
         ];
 
         wrappedAlacritty =
-          pkgs.runCommand "alacritty-with-packages"
+          pkgs.runCommand "wrappedAlacritty"
             {
               nativeBuildInputs = [ pkgs.makeWrapper ];
             }

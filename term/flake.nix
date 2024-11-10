@@ -35,9 +35,9 @@
         };
 
         extraPackages = with pkgs; [
+          customPackages.leader # leader key
           cowsay # cowsay
           yazi # file manager
-          customPackages.leader # leader key
           navi # cheat sheet
           git # versioning
           zsh-forgit # fuzzy git
@@ -45,6 +45,7 @@
           wl-clipboard # Copy/paste
           xdragon # Drag and drop
           ueberzugpp # Images support for terminal
+
           #_______________________________ Coreutils
           bat
           zoxide
@@ -55,11 +56,13 @@
           tree
           wget
           jq
+
           #_______________________________ Monitoring
           htop
           btop
           procs
           gping
+
           #_______________________________ Archivers
           ouch
           xarchiver

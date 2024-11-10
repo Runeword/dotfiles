@@ -101,7 +101,7 @@
       {
         packages = {
           default = alacrittyWithPackages;
-          runeword-alacritty = alacrittyWithPackages;
+          runeword-terminal = alacrittyWithPackages;
         };
 
         apps.default = {

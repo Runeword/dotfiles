@@ -54,7 +54,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "neovim-runeword",
+          "runeword-neovim",
           "neovim-nightly-overlay",
           "nixpkgs"
         ]
@@ -76,7 +76,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "neovim-runeword",
+          "runeword-neovim",
           "neovim-nightly-overlay",
           "hercules-ci-effects",
           "nixpkgs"
@@ -118,12 +118,12 @@
         "flake-compat": "flake-compat_2",
         "gitignore": "gitignore",
         "nixpkgs": [
-          "neovim-runeword",
+          "runeword-neovim",
           "neovim-nightly-overlay",
           "nixpkgs"
         ],
         "nixpkgs-stable": [
-          "neovim-runeword",
+          "runeword-neovim",
           "neovim-nightly-overlay",
           "nixpkgs"
         ]
@@ -145,7 +145,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "neovim-runeword",
+          "runeword-neovim",
           "neovim-nightly-overlay",
           "git-hooks",
           "nixpkgs"
@@ -169,7 +169,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
-          "neovim-runeword",
+          "runeword-neovim",
           "neovim-nightly-overlay",
           "nixpkgs"
         ]
@@ -236,7 +236,7 @@
         "hercules-ci-effects": "hercules-ci-effects",
         "neovim-src": "neovim-src",
         "nixpkgs": [
-          "neovim-runeword",
+          "runeword-neovim",
           "nixpkgs"
         ]
       },
@@ -251,27 +251,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "type": "github"
-      }
-    },
-    "neovim-runeword": {
-      "inputs": {
-        "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "dir": "neovim",
-        "lastModified": 1728161691,
-        "narHash": "sha256-FBJzNj957YVPIj1uLioISUverUPwuZsdCk7O5rYt4iI=",
-        "owner": "Runeword",
-        "repo": "dotfiles",
-        "rev": "f53c16d9733f46849661c112e0ccb257ae528e25",
-        "type": "github"
-      },
-      "original": {
-        "dir": "neovim",
-        "owner": "Runeword",
-        "repo": "dotfiles",
         "type": "github"
       }
     },
@@ -309,11 +288,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1727802920,
-        "narHash": "sha256-HP89HZOT0ReIbI7IJZJQoJgxvB2Tn28V6XS3MNKnfLs=",
+        "lastModified": 1730785428,
+        "narHash": "sha256-Zwl8YgTVJTEum+L+0zVAWvXAGbWAuXHax3KzuejaDyo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "27e30d177e57d912d614c88c622dcfdb2e6e6515",
+        "rev": "4aa36568d413aca0ea84a1684d2d46f55dbabad7",
         "type": "github"
       },
       "original": {
@@ -325,11 +304,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1730785428,
-        "narHash": "sha256-Zwl8YgTVJTEum+L+0zVAWvXAGbWAuXHax3KzuejaDyo=",
+        "lastModified": 1727802920,
+        "narHash": "sha256-HP89HZOT0ReIbI7IJZJQoJgxvB2Tn28V6XS3MNKnfLs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4aa36568d413aca0ea84a1684d2d46f55dbabad7",
+        "rev": "27e30d177e57d912d614c88c622dcfdb2e6e6515",
         "type": "github"
       },
       "original": {
@@ -360,9 +339,30 @@
         "ags": "ags",
         "home-manager": "home-manager",
         "hyprland-contrib": "hyprland-contrib",
-        "neovim-runeword": "neovim-runeword",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
+        "runeword-neovim": "runeword-neovim",
         "runeword-terminal": "runeword-terminal"
+      }
+    },
+    "runeword-neovim": {
+      "inputs": {
+        "neovim-nightly-overlay": "neovim-nightly-overlay",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "dir": "neovim",
+        "lastModified": 1731240962,
+        "narHash": "sha256-ZFB2aWGmjwMIr5GJqtYW5lItIaI7HNbtnfHHe2ZQPSw=",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "rev": "d3c517c289633d6997bd9064075717878da90e9f",
+        "type": "github"
+      },
+      "original": {
+        "dir": "neovim",
+        "owner": "Runeword",
+        "repo": "dotfiles",
+        "type": "github"
       }
     },
     "runeword-terminal": {
@@ -372,11 +372,11 @@
       },
       "locked": {
         "dir": "term",
-        "lastModified": 1731239767,
-        "narHash": "sha256-JxzeWFtB/ySBylr7pW6YR3XaEbeGoS95HLQsHFPwRcE=",
+        "lastModified": 1731240962,
+        "narHash": "sha256-ZFB2aWGmjwMIr5GJqtYW5lItIaI7HNbtnfHHe2ZQPSw=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "5d62f95e6d4fb82fa9a5941b90fd97940ab5a418",
+        "rev": "d3c517c289633d6997bd9064075717878da90e9f",
         "type": "github"
       },
       "original": {

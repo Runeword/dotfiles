@@ -15,7 +15,7 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        leader = pkgs.stdenv.mkDerivation {
+        customPackages.leader = pkgs.stdenv.mkDerivation {
           pname = "leader";
           version = "0.3.2";
           src = pkgs.fetchurl {
@@ -34,10 +34,10 @@
 
         pkgs = nixpkgs.legacyPackages.${system};
 
-        additionalPackages = with pkgs; [
+        extraPackages = with pkgs; [
           cowsay # cowsay
           yazi # file manager
-          leader # leader key
+          customPackages.leader # leader key
           navi # cheat sheet
           git # versioning
           zsh-forgit # fuzzy git
@@ -64,16 +64,6 @@
           ouch
           xarchiver
           unzip
-          #_______________________________ Fonts
-          # maple-mono-NF
-          # (nerdfonts.override {
-          #   fonts = [
-          #     "SourceCodePro"
-          #     "VictorMono"
-          #     "Monaspace"
-          #     "CascadiaMono"
-          #   ];
-          # })
 
           # zip
           # p7zip
@@ -83,7 +73,8 @@
           # inputs.src-cli.packages.x86_64-linux.default
         ];
 
-        fontDir = [
+        extraFonts = [
+          # maple-mono-NF
           (pkgs.nerdfonts.override {
             fonts = [
               "SourceCodePro"
@@ -102,8 +93,8 @@
             ''
               mkdir -p $out/bin
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
-                --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages} \
-                --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = fontDir; }}
+                --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
+                --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }}
             '';
 
       in

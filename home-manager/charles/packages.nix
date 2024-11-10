@@ -104,7 +104,7 @@ in
     evtest
 
     # ---------------------------------- Terminal
-    inputs.neovim-runeword.packages.x86_64-linux.default # Text editor
+    inputs.runeword-neovim.packages.x86_64-linux.default # Text editor
     kitty # Terminal emulator
     tmux # Sessions, windows and panes manager
     tmuxPlugins.tmux-fzf # Fuzzy search tmux sessions, windows and panes

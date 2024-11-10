@@ -141,9 +141,13 @@ __last_command_or_delete() { __on_empty_buffer "BUFFER=${history[$((HISTCMD-1))]
 zle -N __last_command_or_delete
 bindkey '^[[3;2~' __last_command_or_delete
 
-__ls_or_space() { __on_empty_buffer 'command ls --almost-all --color --width 90;' "LBUFFER+=' '; zle autosuggest-fetch"; }
-zle -N __ls_or_space
-bindkey ' ' __ls_or_space
+# __ls_or_space() { __on_empty_buffer 'command ls --almost-all --color --width 90;' "LBUFFER+=' '; zle autosuggest-fetch"; }
+# zle -N __ls_or_space
+# bindkey ' ' __ls_or_space
+
+__leader_or_space() { __on_empty_buffer __leader_widget "LBUFFER+=' '; zle autosuggest-fetch"; }
+zle -N __leader_or_space
+bindkey ' ' __leader_or_space
 
 __leader_or_accept() { __on_empty_buffer __leader_widget 'zle accept-line'; }
 zle -N __leader_or_accept
@@ -178,10 +182,9 @@ bindkey '^I' __open_file_or_complete
 # bindkey '^[' __yazi
 # bindkey '\x1b[27;2u' __yazi
 
-__yazi() { __on_empty_buffer "__yazi_cd < $TTY"; }
-zle -N __yazi
-bindkey '^[' __yazi
-# bindkey '\x1b[27;2u' __yazi
+# __yazi() { __on_empty_buffer "__yazi_cd < $TTY"; }
+# zle -N __yazi
+# bindkey '^[' __yazi
 
 __ripgrep_or_complete() { __on_empty_buffer __ripgrep 'zle expand-or-complete'; }
 zle -N __ripgrep_or_complete

@@ -85,7 +85,7 @@
           })
         ];
 
-        alacrittyWithPackages =
+        wrappedAlacritty =
           pkgs.runCommand "alacritty-with-packages"
             {
               nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -100,13 +100,13 @@
       in
       {
         packages = {
-          default = alacrittyWithPackages;
-          runeword-terminal = alacrittyWithPackages;
+          default = wrappedAlacritty;
+          wrappedAlacritty = wrappedAlacritty;
         };
 
         apps.default = {
           type = "app";
-          program = "${alacrittyWithPackages}/bin/alacritty";
+          program = "${wrappedAlacritty}/bin/alacritty";
         };
       }
     );

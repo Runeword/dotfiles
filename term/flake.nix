@@ -83,6 +83,17 @@
           # inputs.src-cli.packages.x86_64-linux.default
         ];
 
+        fontDir = [
+          (pkgs.nerdfonts.override {
+            fonts = [
+              "SourceCodePro"
+              "VictorMono"
+              "Monaspace"
+              "CascadiaMono"
+            ];
+          })
+        ];
+
         alacrittyWithPackages =
           pkgs.runCommand "alacritty-with-packages"
             {
@@ -92,20 +103,7 @@
               mkdir -p $out/bin
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
                 --prefix PATH : ${pkgs.lib.makeBinPath additionalPackages} \
-                --set FONTCONFIG_FILE ${
-                  pkgs.makeFontsConf {
-                    fontDirectories = [
-                      (pkgs.nerdfonts.override {
-                        fonts = [
-                          "SourceCodePro"
-                          "VictorMono"
-                          "Monaspace"
-                          "CascadiaMono"
-                        ];
-                      })
-                    ];
-                  }
-                }
+                --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = fontDir; }}
             '';
 
       in

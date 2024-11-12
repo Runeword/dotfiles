@@ -182,9 +182,7 @@ alias qd='(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/
 
 alias b='bluetuith'
 alias bl='__bluetoothctl'
-alias w='__nmcli'
-alias wo='nmcli radio wifi on'
-alias wf='nmcli radio wifi off'
+alias w='__nmcli_wifi_connect'
 
 # ______________________________________ TRASH
 

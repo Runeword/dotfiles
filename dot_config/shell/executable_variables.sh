@@ -48,11 +48,13 @@ export FORGIT_FZF_DEFAULT_OPTS="
 # --exclude .git \
 # --exclude node_modules \
 # ";
+
+# --color=marker:#57b58f,spinner:#ffffff,header:#535e73 \
 export FZF_DEFAULT_OPTS="
 --color=fg:#d0d0d0,bg:-1,hl:#ffffff \
 --color=fg+:#ffffff,fg+:regular,bg+:#142920,hl+:#67d6a9,hl+:regular,query:italic \
 --color=info:#d0d0d0,prompt:#ffffff,pointer:#67d6a9,border:#2f394a \
---color=marker:#57b58f,spinner:#ffffff,header:#535e73 \
+--color=marker:#458f71,spinner:#ffffff,header:#535e73 \
 ";
 export FZF_CTRL_R_OPTS="
 --reverse \

@@ -13,41 +13,51 @@
 
   inputs.runeword-neovim.url = "github:Runeword/dotfiles?dir=neovim";
   inputs.runeword-terminal.url = "github:Runeword/dotfiles?dir=term";
+
   inputs.ags.url = "github:Aylur/ags";
+  inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
 
   # inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   # inputs.nixified-ai.url = "github:nixified-ai/flake";
 
-  outputs = {self, ...} @ inputs: let
-    system = "x86_64-linux";
-  in {
-    homeConfigurations.charles = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        # overlays = [
-        #   inputs.neovim-nightly-overlay.overlay
-        # ];
+  outputs =
+    { self, ... }@inputs:
+    let
+      system = "x86_64-linux";
+    in
+    {
+      homeConfigurations.charles = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [
+            inputs.hyprpanel.overlay
+            #   inputs.neovim-nightly-overlay.overlay
+          ];
+        };
+
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+
+        modules = [
+          ./charles
+        ];
       };
 
-      extraSpecialArgs = {inherit inputs;};
+      homeConfigurations.zod = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
 
-      modules = [
-        ./charles
-      ];
-    };
+        extraSpecialArgs = {
+          inherit inputs;
+        };
 
-    homeConfigurations.zod = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
+        modules = [
+          ./zod
+        ];
       };
-
-      extraSpecialArgs = {inherit inputs;};
-
-      modules = [
-        ./zod
-      ];
     };
-  };
 }

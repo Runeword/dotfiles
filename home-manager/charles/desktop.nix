@@ -16,6 +16,7 @@
 
     # Interface
     (waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; })) # Bar
+    hyprpanel
     hyprlock             # Screen locker
     fnott                # Notification daemon
     # deadd-notification-center

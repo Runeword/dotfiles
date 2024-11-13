@@ -165,6 +165,14 @@ __tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "
 zle -N __tmux_search
 bindkey '/' __tmux_search
 
+__cheatsheet_or_esc() { __on_empty_buffer navi; }
+zle -N __cheatsheet_or_esc
+bindkey '^[' __cheatsheet_or_esc
+
+__history_or_esc() { __on_empty_buffer "zle fzf-history-widget && zle accept-line"; }
+zle -N __history_or_esc
+bindkey '\u001B[27;2u' __history_or_esc
+
 # __navi_or_space() { __on_empty_buffer "navi --path ~/.local/share/navi/cheats" "LBUFFER+=' '; zle autosuggest-fetch"; }
 # zle -N __navi_or_space
 # bindkey '\x1b[32;2u' __navi_or_space

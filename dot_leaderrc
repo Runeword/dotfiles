@@ -1,8 +1,13 @@
 {
   "keys": {
-    "r": "zle fzf-history-widget && zle accept-line",
     "y": "__yazi_cd",
-    "a": "__run_alias",
+    "s": {
+      "name": "search",
+      "keys": {
+        "a": "__run_alias",
+        "c": "navi --path ~/.local/share/navi/cheats"
+      }
+    },
     "w": {
       "name": "wifi",
       "keys": {
@@ -61,12 +66,6 @@
         },
         "a": "nvim $HOME/.config/shell/aliases.sh",
         "v": "nvim $HOME/.config/shell/variables.sh"
-      }
-    },
-    "c": {
-      "name": "navi",
-      "keys": {
-        "c": "navi --path ~/.local/share/navi/cheats"
       }
     }
   }

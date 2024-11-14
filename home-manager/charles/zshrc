@@ -177,9 +177,9 @@ bindkey '\u001B[27;2u' __history_or_esc
 # zle -N __navi_or_space
 # bindkey '\x1b[32;2u' __navi_or_space
 
-__navi_custom_or_space() { __on_empty_buffer navi "LBUFFER+=' '; zle autosuggest-fetch"; }
-zle -N __navi_custom_or_space
-bindkey '\x1b[32;2u' __navi_custom_or_space
+__ls_or_space() { __on_empty_buffer 'command ls --almost-all --color --width 90;' "LBUFFER+=' '; zle autosuggest-fetch"; }
+zle -N __ls_or_space
+bindkey '\x1b[32;2u' __ls_or_space
 
 __open_file_or_complete() { __on_empty_buffer __open_file 'zle expand-or-complete'; }
 zle -N __open_file_or_complete

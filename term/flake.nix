@@ -17,6 +17,23 @@
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
+        tmuxWithPlugins = pkgs.tmux.overrideAttrs (oldAttrs: {
+          nativeBuildInputs = (oldAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeWrapper ];
+          buildInputs = oldAttrs.buildInputs ++ [
+            pkgs.tmuxPlugins.vim-tmux-navigator
+            pkgs.tmuxPlugins.resurrect
+            pkgs.tmuxPlugins.continuum
+          ];
+
+          postInstall =
+            (oldAttrs.postInstall or "")
+            + ''
+              wrapProgram $out/bin/tmux \
+                --set TMUX_PLUGIN_MANAGER_PATH "$out/share/tmux-plugins" \
+                --add-flags "-f $HOME/.config/tmux/tmux.conf"
+            '';
+        });
+
         customPackages.leader = pkgs.stdenv.mkDerivation {
           pname = "leader";
           version = "0.3.2";
@@ -45,6 +62,7 @@
           wl-clipboard # Copy/paste
           xdragon # Drag and drop
           ueberzugpp # Images support for terminal
+          tmuxWithPlugins
 
           #_______________________________ Coreutils
           bat

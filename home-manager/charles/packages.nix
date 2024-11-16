@@ -112,6 +112,8 @@ in
     tmuxPlugins.resurrect # Save and restore tmux environment
     # bemenu
 
+    inputs.walker.packages.x86_64-linux.default
+
     # Secrets
     doppler
     bitwarden-cli

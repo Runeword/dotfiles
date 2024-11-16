@@ -1,4 +1,11 @@
 {
+  nixConfig.extra-substituters = [
+    "https://walker-git.cachix.org"
+  ];
+  nixConfig.extra-trusted-public-keys = [
+    "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+  ];
+
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   inputs.home-manager.url = "github:nix-community/home-manager";
@@ -16,6 +23,7 @@
 
   inputs.ags.url = "github:Aylur/ags";
   inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+  inputs.walker.url = "github:abenz1267/walker";
 
   # inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   # inputs.nixified-ai.url = "github:nixified-ai/flake";

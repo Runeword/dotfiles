@@ -13,6 +13,7 @@
     ./bash.nix
     ./zsh.nix
     inputs.ags.homeManagerModules.default
+    inputs.walker.homeManagerModules.default
   ];
 
   # services.gpg-agent = {
@@ -28,6 +29,21 @@
   gtk.cursorTheme.size = 24;
   gtk.iconTheme.name = "Adwaita";
   gtk.iconTheme.package = pkgs.adwaita-icon-theme;
+
+  programs.walker = {
+    enable = true;
+    runAsService = true;
+
+    config = {
+      search.placeholder = "Example";
+      ui.fullscreen = true;
+      list = {
+        height = 200;
+      };
+      websearch.prefix = "?";
+      switcher.prefix = "/";
+    };
+  };
 
   home.sessionVariables = {
     XDG_DATA_DIRS = "/usr/local/share:/usr/share";

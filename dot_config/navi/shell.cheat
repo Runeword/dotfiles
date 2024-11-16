@@ -119,3 +119,6 @@ sudo mount /dev/decrypted /mnt
 
 # Show directories history
 dirs
+
+# Run the command in a new session and in the background
+setsid <command> &

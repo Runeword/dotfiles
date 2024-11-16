@@ -56,6 +56,7 @@ in
 
   home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+
   # home.file.".local/share/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
 
   # home.file."${builtins.getEnv "XDG_DATA_HOME"}/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";

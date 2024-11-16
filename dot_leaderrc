@@ -31,6 +31,22 @@
         "t": "__use_flake_template $HOME/templates"
       }
     },
+    "n": {
+      "name": "nixos",
+      "keys": {
+        "s": "sudo nixos-rebuild switch --flake $HOME/nixos#$USER",
+        "b": "sudo nixos-rebuild boot --flake $HOME/nixos#$USER",
+        "u": "__update_flake_inputs $HOME/nixos",
+        "v": "nixos-version",
+        "i": "nix-info -m",
+        "g": "__nixos_switch_generation",
+        "r": "__nixos_remove_generations",
+        "d": "nix-env --delete-generations +10",  
+        "c": "sudo nix-collect-garbage",
+        "o": "sudo nix-collect-garbage --delete-old --verbose",
+        "f": "cd /nix/store && __open_file"
+      }
+    },
     "h": {
       "name": "home-manager",
       "keys": {

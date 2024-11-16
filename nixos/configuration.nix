@@ -24,6 +24,7 @@
 
   nix.settings.keep-outputs = true;
   nix.settings.keep-derivations = true;
+  nix.settings.accept-flake-config = true;
 
   nix.settings.trusted-users = [
     "root"

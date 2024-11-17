@@ -110,6 +110,8 @@ in
     tmux # Sessions, windows and panes manager
     tmuxPlugins.tmux-fzf # Fuzzy search tmux sessions, windows and panes
     tmuxPlugins.resurrect # Save and restore tmux environment
+    lazygit
+    lazydocker
     # bemenu
 
     inputs.walker.packages.x86_64-linux.default

@@ -53,20 +53,6 @@ alias disk='duf'
 alias audit='lynis audit system'
 # alias fcount='find . -type d -exec sh -c '\''echo -n "$1, "; find "$1" -maxdepth 1 -type f | wc -l'\'' _ {} \; | awk -F, '\''$2 > 500'\'''
 
-# ______________________________________ NIXOS
-
-alias ns='sudo nixos-rebuild switch --flake $HOME/nixos#$USER'
-alias nbo='sudo nixos-rebuild boot --flake $HOME/nixos#$USER'
-alias nu='__update_flake_inputs $HOME/nixos'
-alias nv='nixos-version'
-alias ni='nix-info -m'
-alias ngs='__nixos_switch_generation'
-alias ngr='__nixos_remove_generations'
-alias ngd='nix-env --delete-generations +10'
-alias nc='sudo nix-collect-garbage'
-alias ncd='sudo nix-collect-garbage --delete-old --verbose'
-alias store='cd /nix/store && __open_file'
-
 # ______________________________________ NIX
 
 alias nr='nix run --verbose'

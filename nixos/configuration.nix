@@ -5,7 +5,8 @@
   ...
 }:
 {
-  nix.package = pkgs.nixFlakes;
+  # nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixVersions.latest;
 
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
 

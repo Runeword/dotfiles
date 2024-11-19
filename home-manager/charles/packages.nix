@@ -57,10 +57,13 @@ in
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/term/tmux/tmux.conf";
     recursive = true;
   };
+
   # Save and restore tmux environment
   home.file.".config/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   # Fuzzy search tmux sessions, windows and panes
   home.file.".config/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+
+  home.file.".config/zsh/plugins/zsh-autosuggestions".source = "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
 
   # home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
   # home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";

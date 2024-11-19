@@ -38,7 +38,7 @@ __open_file() {
         --header-first \
         --header=''\''exact !not [!]^prefix [!]suffix$' \
         --preview "$HOME/.config/shell/scripts/fm_preview.sh {}" \
-        --preview-window right,55%,border-none,~3 \
+        --preview-window right,55%,border-none,~2 \
         --bind='ctrl-y:execute-silent(wl-copy {})' \
   ) || return 0
   # fzf-tmux \

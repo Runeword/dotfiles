@@ -83,6 +83,7 @@ in
     chezmoi
     progress
     whatsie
+    zsh
     # rquickshare
 
     sioyek # PDF viewer

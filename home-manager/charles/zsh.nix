@@ -10,7 +10,7 @@
   # programs.zsh.dotDir = "${config.home.sessionVariables.XDG_CONFIG_HOME}/zsh";
   # programs.zsh.history.path = "${config.home.sessionVariables.XDG_DATA_HOME}/zsh/history";
 
-  programs.zsh.initExtra = builtins.readFile ./zshrc;
+  # programs.zsh.initExtra = builtins.readFile ./zshrc;
   # programs.zsh.initExtraBeforeCompInit = builtins.readFile ./.initExtraBeforeCompInit;
 
   programs.zsh.plugins = [

@@ -7,6 +7,7 @@
 !term
 !dev
 !.zshrc
+!.bashrc
 !.ssh/config
 .ssh/*
 !home-manager

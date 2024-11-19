@@ -53,9 +53,17 @@ let
 in
 {
   home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
+  home.file.".config/tmux/tmux.conf" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/term/tmux/tmux.conf";
+    recursive = true;
+  };
+  # Save and restore tmux environment
+  home.file.".config/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  # Fuzzy search tmux sessions, windows and panes
+  home.file.".config/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
 
-  home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
-  home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
+  # home.file.".local/share/tmux/plugins/resurrect".source = "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect";
+  # home.file.".local/share/tmux/plugins/tmux-fzf".source = "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf";
 
   # home.file.".local/share/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
 
@@ -108,8 +116,6 @@ in
     inputs.runeword-neovim.packages.x86_64-linux.default # Text editor
     kitty # Terminal emulator
     tmux # Sessions, windows and panes manager
-    tmuxPlugins.tmux-fzf # Fuzzy search tmux sessions, windows and panes
-    tmuxPlugins.resurrect # Save and restore tmux environment
     lazygit
     lazydocker
     # bemenu

@@ -97,10 +97,10 @@
     jmtpfs
   ];
 
-  # zsh
-  programs.zsh.enable = true;
-  users.users.charles.shell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
+  # # zsh
+  # programs.zsh.enable = true;
+  # users.users.charles.shell = pkgs.zsh;
+  # environment.pathsToLink = [ "/share/zsh" ];
 
   # thunar
   programs.thunar.enable = true;

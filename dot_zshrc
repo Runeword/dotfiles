@@ -33,29 +33,28 @@ bindkey -r '^W'
 bindkey -r '^Q'
 
 # ------------------------------------ Move
-bindkey '^[[13;2u' accept-line
-bindkey '^[OD' backward-char
-bindkey '^[OC' forward-char
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
-bindkey "\e[9;5u" forward-word
-bindkey "\e[9;6u" backward-word
-bindkey '^E' end-of-line
-bindkey '^A' beginning-of-line
-bindkey '^A' beginning-of-line
+bindkey '^[[13;2u' accept-line  # Shift+Enter
+bindkey '^[OD' backward-char    # Left Arrow
+bindkey '^[OC' forward-char     # Right Arrow
+bindkey '^[[1;5D' backward-word # Ctrl+Left Arrow
+bindkey '^[[1;5C' forward-word  # Ctrl+Right Arrow
+bindkey "\e[9;5u" forward-word  # Ctrl+Tab
+bindkey "\e[9;6u" backward-word # Ctrl+Shift+Tab
+bindkey '^E' end-of-line        # Ctrl+E
+bindkey '^A' beginning-of-line  # Ctrl+A
 
 # ------------------------------------ Kill
-bindkey '^U' kill-buffer
-bindkey '^J' backward-kill-line
-bindkey '^K' kill-line
-bindkey '^H' backward-kill-word
-bindkey '^[[3;5~' kill-word
+bindkey '^U' kill-buffer        # Ctrl+U
+bindkey '^J' backward-kill-line # Ctrl+J
+bindkey '^K' kill-line          # Ctrl+K
+bindkey '^H' backward-kill-word # Ctrl+H
+bindkey '^[[3;5~' kill-word     # Ctrl+Delete
 
 # ------------------------------------ Search history
-bindkey '^[OA' history-beginning-search-backward
-bindkey '^[[A' history-beginning-search-backward
-bindkey '^[[B' history-beginning-search-forward
-bindkey '^[OB' history-beginning-search-forward
+bindkey '^[OA' history-beginning-search-backward # Up Arrow
+bindkey '^[[A' history-beginning-search-backward # Up Arrow
+bindkey '^[[B' history-beginning-search-forward  # Down Arrow
+bindkey '^[OB' history-beginning-search-forward  # Down Arrow
 # bindkey -- "${terminfo[kcuu1]}" history-beginning-search-backward
 # bindkey -- "${terminfo[kcud1]}" history-beginning-search-backward
 

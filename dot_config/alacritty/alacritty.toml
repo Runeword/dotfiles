@@ -6,6 +6,7 @@ live_config_reload = true
 
 [cursor]
    blink_interval = 500
+   blink_timeout = 0
    thickness      = 0.01
    style          = { blinking = "Always", shape = "Beam" }
 

@@ -6,6 +6,7 @@
 !.github
 !term
 !dev
+!.zshrc
 !.ssh/config
 .ssh/*
 !home-manager

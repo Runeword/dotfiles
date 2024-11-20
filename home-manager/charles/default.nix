@@ -56,6 +56,8 @@
 
   xdg.mime.enable = true;
 
+  programs.rofi.enable = true;
+
   programs = {
     home-manager.enable = true;
 

@@ -1,8 +1,8 @@
 live_config_reload = true
 
-[shell]
-   program = "zsh"
-   args = ["-l", "-c", "SHELL=$(which zsh); export SHELL; source $HOME/.config/shell/functions/tmux.sh; __attach_unattached_session"]
+# [shell]
+#    program = "zsh"
+#    args = ["-l", "-c", "SHELL=$(which zsh); export SHELL; source $HOME/.config/shell/functions/tmux.sh; __attach_unattached_session"]
 
 [cursor]
    blink_interval = 500

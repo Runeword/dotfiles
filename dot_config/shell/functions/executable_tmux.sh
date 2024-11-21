@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 __switch_session() {
   if [ "$(tmux list-sessions 2>/dev/null)" = "" ]; then

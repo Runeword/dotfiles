@@ -40,6 +40,7 @@ __open_file() {
         --preview "$HOME/.config/shell/scripts/fm_preview.sh {}" \
         --preview-window right,55%,border-none,~2 \
         --bind='ctrl-y:execute-silent(wl-copy {})' \
+        --bind='ctrl-a:select-all' \
   ) || return 0
   # fzf-tmux \
   #   -p \

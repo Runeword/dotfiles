@@ -205,24 +205,17 @@
   # services.pipewire.lowLatency.enable = true;
   # services.pipewire.jack.enable = true;
 
-  # user
-  users.users.charles = {
-    isNormalUser = true;
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    # packages = with pkgs; [
-    # ];
-  };
+  users.users.charles.isNormalUser = true;
+  users.users.charles.extraGroups = [
+    "networkmanager"
+    "wheel"
+  ];
 
-  users.users.zod = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-    ];
-  };
+  users.users.zod.isNormalUser = true;
+  users.users.zod.extraGroups = [
+    "wheel"
+    "networkmanager"
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

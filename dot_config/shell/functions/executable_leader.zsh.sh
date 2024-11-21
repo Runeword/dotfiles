@@ -1,3 +1,5 @@
+#!/bin/sh
+
 __leader_widget() {
   local leader_exit leader_next
   leader_next=$(SHELL=/bin/zsh BUFFER=$BUFFER CURSOR=$CURSOR leader print)

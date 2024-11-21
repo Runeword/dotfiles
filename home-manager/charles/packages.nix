@@ -96,6 +96,8 @@ in
     extundelete # Recover deleted files from an ext3 or ext4 partition
     foremost # Recover files based on their headers and footers
     exiftool # Meta information reader/writer
+    onlyoffice-desktopeditors
+    gh
 
     showmethekey
     appimage-run

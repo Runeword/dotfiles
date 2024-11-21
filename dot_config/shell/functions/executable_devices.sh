@@ -1,3 +1,5 @@
+#!/bin/sh
+
 __open_device() {
   local devices
   devices=$(ls /run/media/"$USER")

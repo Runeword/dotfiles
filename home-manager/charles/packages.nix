@@ -98,6 +98,7 @@ in
     exiftool # Meta information reader/writer
     onlyoffice-desktopeditors
     gh
+    aider-chat
 
     showmethekey
     appimage-run

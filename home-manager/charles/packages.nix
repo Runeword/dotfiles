@@ -99,6 +99,7 @@ in
     onlyoffice-desktopeditors
     gh
     aider-chat
+    bws
 
     showmethekey
     appimage-run

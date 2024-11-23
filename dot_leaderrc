@@ -8,6 +8,12 @@
         "c": "navi --path ~/.local/share/navi/cheats"
       }
     },
+    "a": {
+      "name": "aider",
+      "keys": {
+        "g": "aider --model gemini/gemini-1.5-pro-latest"
+      }
+    },
     "w": {
       "name": "wifi",
       "keys": {
@@ -41,7 +47,7 @@
         "i": "nix-info -m",
         "g": "__nixos_switch_generation",
         "r": "__nixos_remove_generations",
-        "d": "nix-env --delete-generations +10",  
+        "d": "nix-env --delete-generations +10",
         "c": "sudo nix-collect-garbage",
         "o": "sudo nix-collect-garbage --delete-old --verbose",
         "f": "cd /nix/store && __open_file"

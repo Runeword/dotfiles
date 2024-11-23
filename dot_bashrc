@@ -33,6 +33,7 @@ fi
 eval "$(navi widget bash)"
 eval "$(starship init bash)"
 eval "$(zoxide init --no-cmd bash)"
+eval "$(direnv hook bash)"
 
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
   . "/usr/share/fzf/completion.bash"

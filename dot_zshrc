@@ -235,6 +235,7 @@ bindkey '^N' __nextd_widget
 eval "$(navi widget zsh)"
 eval "$(starship init zsh)"
 eval "$(zoxide init --no-cmd zsh)"
+eval "$(direnv hook zsh)"
 
 # shellcheck disable=SC2154
 if [[ ${options[zle]} = on ]]; then

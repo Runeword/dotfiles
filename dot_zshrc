@@ -224,11 +224,11 @@ compdef _files __chezmoi_add
 
 __prevd_widget() { __prevd; zle reset-prompt; }
 zle -N __prevd_widget
-bindkey '^P' __prevd_widget
+bindkey '^[[5~' __prevd_widget
 
 __nextd_widget() { __nextd; zle reset-prompt; }
 zle -N __nextd_widget
-bindkey '^N' __nextd_widget
+bindkey '^[[6~' __nextd_widget
 
 # ------------------------------------ Plugins
 

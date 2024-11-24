@@ -23,6 +23,7 @@ alias ss='systemctl --type=service --state=running | fzf --reverse --cycle --pro
 alias c='wl-copy'
 alias p='wl-paste'
 alias me='__open_device'
+alias bu='__bitwarden_unlock'
 
 # ______________________________________ UTILITY
 
@@ -120,7 +121,7 @@ alias gkf='git-forgit checkout_file'   # git checkout
 alias gct='git-forgit checkout_tag'    # git checkout
 alias gco='git-forgit checkout_commit' # git checkout
 alias gc='git commit'
-alias gcl='git clone'
+alias gcl='__git_clone'
 alias gcp='git-forgit cherry_pick'     # git cherry-pick
 alias gm='git merge'
 alias grb='git-forgit rebase'          # git rebase

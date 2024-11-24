@@ -53,6 +53,7 @@
   "printer.nvim": { "branch": "master", "commit": "bdd5310075f9d4fe5d4270b7dc75188347fa9353" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "sideways.vim": { "branch": "main", "commit": "3cfe62d57e59e4c86812e2559fb56796655fd4da" },
+  "smear-cursor.nvim": { "branch": "main", "commit": "fc19c4a91b9adcb49ec6415b70a37e2b07c15f09" },
   "sniprun": { "branch": "master", "commit": "67ac2d84d03f3b857d59571ff5fefb6080dffa2d" },
   "splitjoin.vim": { "branch": "main", "commit": "f72d59c9f5d4c8b865e0abfeee98f85b47fe5a3a" },
   "stay-in-place.nvim": { "branch": "main", "commit": "0628b6db8970fc731abf9608d6f80659b58932c9" },

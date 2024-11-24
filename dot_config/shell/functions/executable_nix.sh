@@ -15,14 +15,14 @@ __update_flake_inputs() {
 	local selected_inputs
 	selected_inputs=$(
 		echo "$inputs" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="nix flake lock --update-input"\
+			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="nix flake update"\
 			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
 			--preview-window right,75%,noborder
 	)
 	[ -z "$selected_inputs" ] && return 1
 
 	for i in $(echo "$selected_inputs" | xargs); do
-		nix flake lock --update-input "$i" "$flake_path"
+		nix flake update "$i" "$flake_path"
 	done
 }
 

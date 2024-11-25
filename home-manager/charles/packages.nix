@@ -87,6 +87,7 @@ in
     progress
     whatsie
     zsh
+    android-studio
     # rquickshare
 
     sioyek # PDF viewer
@@ -128,7 +129,7 @@ in
     lazydocker
     # bemenu
 
-    inputs.walker.packages.x86_64-linux.default
+    # inputs.walker.packages.x86_64-linux.default
 
     # Secrets
     doppler

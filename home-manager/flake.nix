@@ -1,10 +1,10 @@
 {
   nixConfig.extra-substituters = [
-    "https://walker-git.cachix.org"
+    # "https://walker-git.cachix.org"
     "https://runeword-neovim.cachix.org"
   ];
   nixConfig.extra-trusted-public-keys = [
-    "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+    # "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
     "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
   ];
 
@@ -25,7 +25,7 @@
 
   inputs.ags.url = "github:Aylur/ags";
   inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-  inputs.walker.url = "github:abenz1267/walker";
+  # inputs.walker.url = "github:abenz1267/walker";
 
   # inputs.src-cli.url = "github:sourcegraph/src-cli?dir=contrib";
   # inputs.nixified-ai.url = "github:nixified-ai/flake";

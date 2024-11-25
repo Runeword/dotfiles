@@ -24,6 +24,7 @@ alias c='wl-copy'
 alias p='wl-paste'
 alias me='__open_device'
 alias bu='__bitwarden_unlock'
+alias env='env | f'
 
 # ______________________________________ UTILITY
 
@@ -121,7 +122,8 @@ alias gkf='git-forgit checkout_file'   # git checkout
 alias gct='git-forgit checkout_tag'    # git checkout
 alias gco='git-forgit checkout_commit' # git checkout
 alias gc='git commit'
-alias gcl='__git_clone'
+alias gcd='__git_clone Documents/dev'
+alias gcc='__git_clone Documents/clones'
 alias gcp='git-forgit cherry_pick'     # git cherry-pick
 alias gm='git merge'
 alias grb='git-forgit rebase'          # git rebase

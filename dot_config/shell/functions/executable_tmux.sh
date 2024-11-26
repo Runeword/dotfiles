@@ -1,6 +1,6 @@
 #!/bin/sh
 
-__switch_session() {
+__tmux_switch_session() {
   if [ "$(tmux list-sessions 2>/dev/null)" = "" ]; then
 		trap 'return' INT
 		printf 'new session name : ' && read -r input
@@ -42,7 +42,7 @@ __switch_session() {
   fi
 }
 
-__switch_window() {
+__tmux_switch_window() {
 	local item_pos
 	local window_id
 	local window
@@ -67,7 +67,7 @@ __switch_window() {
 	)
 }
 
-__new_session() {
+__tmux_new_session() {
 	trap 'return' INT
 	printf 'new session : ' && read -r input
 
@@ -80,12 +80,12 @@ __new_session() {
 	fi
 }
 
-__kill_session() {
+__tmux_kill_session() {
   tmux switch-client -n
   tmux kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session
 }
 
-__attach_unattached_session() {
+__tmux_attach_unattached_session() {
   local unattached_session
   unattached_session=$(tmux ls -F '#{session_name}|#{?session_attached,attached,not attached}' 2>/dev/null | awk -F'|' '/not attached/ {print $1}' | head -1) 2>/dev/null
 

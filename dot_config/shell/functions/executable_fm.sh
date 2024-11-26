@@ -5,26 +5,9 @@ __open_file() {
 
   local selected_files
   selected_files=$(
-    find -L . \
-      \( -name '.git' \
-      -o -name 'flake-inputs' \
-      -o -name '.nix-defexpr' \
-      -o -name '.nix-profile' \
-      -o -path './.config/figma-linux/Cache' \
-      -o -path './.config/Slack/Cache' \
-      -o -path './.config/Slack/Service Worker' \
-      -o -path './.config/google-chrome' \
-      -o -path './.local/share/navi/cheats' \
-      -o -path './.local/share/containers/storage/overlay' \
-      -o -path './go/pkg' \
-      -o -name '.cache' \
-      -o -name '.tldrc' \
-      -o -name 'node_modules' \
-      -o -path './.local' \
-      -o -name '.direnv' \) \
-      -prune -o -printf '%P\n' 2>/dev/null |
-      tail -n +2 |
+      fd -0 | \
       fzf \
+        --read0 \
         --height 70% \
         --border none \
         --prompt='  ' \
@@ -76,6 +59,26 @@ __open_file() {
   return 0
 }
 
+# find -L . \
+#   \( -name '.git' \
+#   -o -name 'flake-inputs' \
+#   -o -name '.nix-defexpr' \
+#   -o -name '.nix-profile' \
+#   -o -path './.config/figma-linux/Cache' \
+#   -o -path './.config/Slack/Cache' \
+#   -o -path './.config/Slack/Service Worker' \
+#   -o -path './.config/google-chrome' \
+#   -o -path './.local/share/navi/cheats' \
+#   -o -path './.local/share/containers/storage/overlay' \
+#   -o -path './go/pkg' \
+#   -o -name '.cache' \
+#   -o -name '.tldrc' \
+#   -o -name 'node_modules' \
+#   -o -path './.local' \
+#   -o -name '.direnv' \) \
+#   -prune -o -printf '%P\n' 2>/dev/null |
+#   tail -n +2 |
+
 __ripgrep() {
   # local selected_files=$(
   rg \
@@ -120,6 +123,10 @@ __ripgrep() {
   # 	echo "Error: could not open $selected_files with $EDITOR"
   # 	return 1
   # fi
+}
+
+__mkdir_cd() {
+  mkdir --parents --verbose "$1" && cd "$1" || exit
 }
 
 # --color "hl:-1:underline,hl+:-1:underline:reverse" \

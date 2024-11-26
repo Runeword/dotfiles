@@ -5,7 +5,11 @@ __open_file() {
 
   local selected_files
   selected_files=$(
-      fd -0 | \
+      fd \
+        -0 \
+        --hidden \
+        --strip-cwd-prefix \
+        | \
       fzf \
         --read0 \
         --height 70% \

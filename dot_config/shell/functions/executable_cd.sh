@@ -1,5 +1,3 @@
-#!/bin/sh
-
 __cd() {
     local target="$@"
     if [[ -z "$target" ]]; then

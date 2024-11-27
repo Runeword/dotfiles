@@ -13,7 +13,7 @@
     # ./bash.nix
     # ./zsh.nix
     inputs.ags.homeManagerModules.default
-    inputs.walker.homeManagerModules.default
+    # inputs.walker.homeManagerModules.default
   ];
 
   # services.gpg-agent = {

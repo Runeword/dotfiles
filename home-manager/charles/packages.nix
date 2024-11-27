@@ -134,6 +134,7 @@ in
     # Secrets
     doppler
     bitwarden-cli
+    rbw
 
     # Secrets
     pass-wayland

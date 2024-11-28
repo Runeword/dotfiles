@@ -8,12 +8,6 @@
         "c": "navi --path ~/.local/share/navi/cheats"
       }
     },
-    "a": {
-      "name": "aider",
-      "keys": {
-        "g": "aider --model gemini/gemini-1.5-pro-latest"
-      }
-    },
     "w": {
       "name": "wifi",
       "keys": {
@@ -71,6 +65,7 @@
         "h": {
           "name": "home manager",
           "keys": {
+            "r": "__open_recent",
             "u": "cd $HOME/home-manager/$USER",
             "f": "nvim $HOME/home-manager/flake.nix",
             "p": "nvim $HOME/home-manager/$USER/packages.nix",

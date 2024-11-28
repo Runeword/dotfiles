@@ -23,7 +23,7 @@
   inputs.runeword-neovim.url = "github:Runeword/dotfiles?dir=neovim";
   inputs.runeword-terminal.url = "github:Runeword/dotfiles?dir=term";
 
-  inputs.ags.url = "github:Aylur/ags";
+  # inputs.ags.url = "github:Aylur/ags";
   inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   # inputs.walker.url = "github:abenz1267/walker";
 

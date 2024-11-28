@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # ______________________________________ CORE
 
 alias shn='shutdown now'

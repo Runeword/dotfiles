@@ -17,7 +17,6 @@ export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/config"
 export GNUPGHOME="${XDG_CONFIG_HOME}/gnupg"
 export PYENV_ROOT="${XDG_DATA_HOME}/pyenv"
-export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
 export ATAC_KEY_BINDINGS="${XDG_CONFIG_HOME}/atac/vim_key_bindings.toml"
 export ATAC_THEME="${XDG_CONFIG_HOME}/atac/theme.toml"
 export NIXOS_CONFIG="${XDG_CONFIG_HOME}/nixos/configuration.nix"
@@ -26,6 +25,10 @@ export NIXOS_CONFIG="${XDG_CONFIG_HOME}/nixos/configuration.nix"
 # TLDR_CACHE_DIR = "${XDG_CACHE_HOME}";
 # DIRENV_LOG_FORMAT = "$(tput setaf 0)direnv: %s$(tput sgr0)";
 # DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
+
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
+GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"
+export GEMINI_API_KEY
 
 # _____________________________________________ FZF
 

@@ -13,6 +13,9 @@ export HISTORY_IGNORE="(! *)"
 
 [ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
+GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"
+export GEMINI_API_KEY
+
 source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # source "$XDG_CONFIG_HOME/shell/scripts/ssh-agent.sh"
@@ -104,6 +107,8 @@ bindkey '\x1b[13;5u' autosuggest-execute
 # bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # bindkey -M menuselect '\r' .accept-line
 # bindkey -M menuselect ' ' undo
+
+[ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"
 
 # ------------------------------------ Functions
 if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
@@ -243,5 +248,3 @@ if [[ ${options[zle]} = on ]]; then
   . "/usr/share/fzf/completion.zsh"
   . "/usr/share/fzf/key-bindings.zsh"
 fi
-
-[ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"

@@ -136,6 +136,7 @@ alias grh='git-forgit reset_head'      # git reset
 alias gwa='git worktree add'
 alias gwl='git worktree list'
 alias gwr='git worktree remove'
+alias ai='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest'
 
 # ______________________________________ PASS
 

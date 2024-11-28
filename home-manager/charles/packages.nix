@@ -175,9 +175,9 @@ in
     # diskonaut 
 
     # Email
-    neomutt # Email client
-    notmuch # Email search and tag
-    lieer # Gmail sync
+    # neomutt # Email client
+    # notmuch # Email search and tag
+    # lieer # Gmail sync
 
     # Info
     hwinfo # Hardware info

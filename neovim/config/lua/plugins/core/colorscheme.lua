@@ -39,6 +39,7 @@ return {
 
         vim.api.nvim_set_hl(0, 'normalfloat',  { bg = '#1e2633', })
         vim.api.nvim_set_hl(0, 'floatborder',  { bg = 'none', fg = '#1e2633', })
+        vim.api.nvim_set_hl(0, 'tablinefill',  { bg = 'none', })
 
         vim.api.nvim_set_hl(0, 'pmenu',        { bg = 'black', fg = '#7a7c9e', })
         vim.api.nvim_set_hl(0, 'pmenusel',     { bg = '#1e2633', fg = 'white', })

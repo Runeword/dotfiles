@@ -70,9 +70,8 @@
     #   ];
     # };
 
-    direnv.enable = true;
-    direnv.enableBashIntegration = true;
-    direnv.nix-direnv.enable = true;
+    # direnv.enable = true;
+    # direnv.nix-direnv.enable = true;
 
     # gpg.enable = true;
     # gpg.homedir = "${config.home.homeDirectory}/.config/gnupg";

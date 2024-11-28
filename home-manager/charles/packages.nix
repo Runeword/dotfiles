@@ -132,9 +132,10 @@ in
     # inputs.walker.packages.x86_64-linux.default
 
     # Secrets
-    doppler
-    bitwarden-cli
-    rbw
+    # doppler
+    # bitwarden-cli
+    # rbw
+    infisical
 
     # Secrets
     pass-wayland

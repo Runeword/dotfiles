@@ -27,8 +27,6 @@ export NIXOS_CONFIG="${XDG_CONFIG_HOME}/nixos/configuration.nix"
 # DIRENV_LOG_FORMAT = ''echo -e "\e[90mdirenv: %s\e[0m"'';
 
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
-GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"
-export GEMINI_API_KEY
 
 # _____________________________________________ FZF
 

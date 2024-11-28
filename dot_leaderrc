@@ -62,10 +62,10 @@
     "o": {
       "name": "open",
       "keys": {
+        "r": "__open_recent",
         "h": {
           "name": "home manager",
           "keys": {
-            "r": "__open_recent",
             "u": "cd $HOME/home-manager/$USER",
             "f": "nvim $HOME/home-manager/flake.nix",
             "p": "nvim $HOME/home-manager/$USER/packages.nix",

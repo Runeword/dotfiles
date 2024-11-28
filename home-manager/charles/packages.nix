@@ -109,6 +109,8 @@ in
 
     # ---------------------------------- Editors
     vscode
+    direnv
+    nix-direnv
 
     # ---------------------------------- Browsers
     google-chrome

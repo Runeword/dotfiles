@@ -10,8 +10,6 @@
     ./overlays.nix
     ./packages.nix
     ./desktop.nix
-    # ./bash.nix
-    # ./zsh.nix
     inputs.ags.homeManagerModules.default
     # inputs.walker.homeManagerModules.default
   ];

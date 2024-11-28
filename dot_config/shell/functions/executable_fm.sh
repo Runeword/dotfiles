@@ -133,6 +133,48 @@ __mkdir_cd() {
   mkdir --parents --verbose "$1" && cd "$1" || exit
 }
 
+# __open_recent() {
+# # Create a temporary file
+# tempfile=$(mktemp)
+
+# # Run nvim to write old files to the temporary file
+# nvim -es -c 'redir! => myfiles | silent oldfiles | redir END | call writefile(split(myfiles, "\n"), "'$tempfile'")' -c 'q'
+
+# # Use fzf to display the contents of the temporary file
+# cat "$tempfile" | fzf
+
+# # Clean up the temporary file
+# rm "$tempfile"
+# }
+
+__open_recent() {
+  tempfile=$(mktemp)
+  trap 'rm -f "$tempfile"' EXIT
+
+  nvim -es "+redir! > $tempfile" '+oldfiles' '+redir END' '+qall'
+
+  sed -n '/^[[:space:]]*[0-9]*:[[:space:]]*/s/^[[:space:]]*[0-9]*:[[:space:]]*//p' "$tempfile" |
+
+  while IFS= read -r file; do
+      # Skip man pages and non-existent files
+      case "$file" in
+          man:*) continue ;;
+      esac
+      [ -f "$file" ] && printf '%s\n' "$file"
+  done | sort | uniq |
+  fzf \
+  --reverse \
+  --prompt='  ' \
+  --no-separator \
+  --info=inline:'' \
+  --no-scrollbar \
+  --header-first \
+  --header='open recent' | {
+      IFS= read -r selected_file
+      [ -n "$selected_file" ] && nvim "$selected_file"
+  }
+}
+
 # --color "hl:-1:underline,hl+:-1:underline:reverse" \
 # --bind 'enter:become(vim {1} +{2})'
 # "cd $(fd --type directory --hidden --follow --no-ignore --exclude .git --exclude node_modules | fzf --inline-info --cycle --preview 'ls -AxF {} | head -$FZF_PREVIEW_LINES' --preview-window right,50%,noborder --no-scrollbar)";

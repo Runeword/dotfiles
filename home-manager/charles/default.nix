@@ -10,7 +10,7 @@
     ./overlays.nix
     ./packages.nix
     ./desktop.nix
-    inputs.ags.homeManagerModules.default
+    # inputs.ags.homeManagerModules.default
     # inputs.walker.homeManagerModules.default
   ];
 
@@ -59,16 +59,16 @@
   programs = {
     home-manager.enable = true;
 
-    ags = {
-      enable = true;
+    # ags = {
+    #   enable = true;
 
-      # additional packages to add to gjs's runtime
-      extraPackages = with pkgs; [
-        gtksourceview
-        webkitgtk
-        accountsservice
-      ];
-    };
+    #   # additional packages to add to gjs's runtime
+    #   extraPackages = with pkgs; [
+    #     gtksourceview
+    #     webkitgtk
+    #     accountsservice
+    #   ];
+    # };
 
     direnv.enable = true;
     direnv.enableBashIntegration = true;

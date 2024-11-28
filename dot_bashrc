@@ -24,6 +24,8 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
+[ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"
+
 if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
   for file in "$XDG_CONFIG_HOME/shell/functions"/*; do
     . "$file"
@@ -39,5 +41,3 @@ if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
   . "/usr/share/fzf/completion.bash"
   . "/usr/share/fzf/key-bindings.bash"
 fi
-
-[ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"

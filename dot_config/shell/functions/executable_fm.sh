@@ -168,6 +168,7 @@ __open_recent() {
   --no-separator \
   --info=inline:'' \
   --no-scrollbar \
+  --height 70% \
   --header-first \
   --header='open recent' | {
       IFS= read -r selected_file

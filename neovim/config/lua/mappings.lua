@@ -19,29 +19,21 @@ vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                          
 vim.keymap.set({ 'x', 'n', }, '<Leader>q',  '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q',          '<cmd>qa!<CR>')
 
-vim.keymap.set('n',           '<Leader>m',  require('functions').displayMessages,                                       { noremap = true, silent = true, })
 
------------------------------------ UNDO
+vim.keymap.set('n',           '<Leader>m', require('functions').displayMessages, { noremap = true, silent = true, })
 
-vim.keymap.set('n', 'U',         require('functions').undoAllChanges, { desc = 'Undo all changes', })
-vim.keymap.set('n', 'R',         require('functions').redoAllChanges, { desc = 'Redo all changes', })
-vim.keymap.set('n', '<Leader>s', require('functions').deleteUndoTree, { desc = 'Delete undo tree', })
+vim.keymap.set('n',           'R',         require('functions').redoAllChanges,  { desc = 'Redo all changes', })
+vim.keymap.set('n',           '<Leader>s', require('functions').deleteUndoTree,  { desc = 'Delete undo tree', })
 
------------------------------------ FOLD
+vim.keymap.set('n',           'g<Enter>',  require('functions').toggleFold,      { desc = 'Toggle fold', })
 
-vim.keymap.set('n', 'g<Enter>',  require('functions').toggleFold,     { desc = 'Toggle fold', })
+vim.keymap.set('t',           '<Esc>',     [[<C-\><C-n>]])
+vim.keymap.set('n',           '<Esc>',     require('functions').cancel)
 
------------------------------------ ESCAPE
-
-vim.keymap.set('t', '<Esc>',     [[<C-\><C-n>]])
-vim.keymap.set('n', '<Esc>',     require('functions').cancel)
-
------------------------------------ WINDOW
-
-vim.keymap.set({ 'n', 'x', }, '<C-Down>',  '<C-w>j')
-vim.keymap.set({ 'n', 'x', }, '<C-Up>',    '<C-w>k')
-vim.keymap.set({ 'n', 'x', }, '<C-Left>',  '<C-w>h')
-vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l')
+vim.keymap.set({ 'n', 'x', }, '<C-Down>',  '<C-w>j',                             { desc = 'Move window down', })
+vim.keymap.set({ 'n', 'x', }, '<C-Up>',    '<C-w>k',                             { desc = 'Move window up', })
+vim.keymap.set({ 'n', 'x', }, '<C-Left>',  '<C-w>h',                             { desc = 'Move window left', })
+vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l',                             { desc = 'Move window right', })
 
 ----------------------------------- EDIT
 
@@ -50,7 +42,6 @@ vim.keymap.set('n', '<BS>',   '`[v`]')
 vim.keymap.set('n', 'i',      require('functions').insert, { expr = true, })
 
 ----------------------------------- TEXT OBJECTS
-
 vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'aW')
 vim.keymap.set({ 'o', 'x', }, 'i<Space>', 'iW')
 vim.keymap.set({ 'o', },      '<Space>',  'iW')

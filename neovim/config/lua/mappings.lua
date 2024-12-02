@@ -30,10 +30,15 @@ vim.keymap.set('n',           'g<Enter>',  require('functions').toggleFold,     
 vim.keymap.set('t',           '<Esc>',     [[<C-\><C-n>]])
 vim.keymap.set('n',           '<Esc>',     require('functions').cancel)
 
-vim.keymap.set({ 'n', 'x', }, '<C-Down>',  '<C-w>j',                             { desc = 'Move window down', })
-vim.keymap.set({ 'n', 'x', }, '<C-Up>',    '<C-w>k',                             { desc = 'Move window up', })
-vim.keymap.set({ 'n', 'x', }, '<C-Left>',  '<C-w>h',                             { desc = 'Move window left', })
-vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l',                             { desc = 'Move window right', })
+vim.keymap.set({ 'n', 'x', }, '<C-Down>',  '<C-w>j',                             { desc = 'Focus bottom window', })
+vim.keymap.set({ 'n', 'x', }, '<C-Up>',    '<C-w>k',                             { desc = 'Focus top window', })
+vim.keymap.set({ 'n', 'x', }, '<C-Left>',  '<C-w>h',                             { desc = 'Focus left window', })
+vim.keymap.set({ 'n', 'x', }, '<C-Right>', '<C-w>l',                             { desc = 'Focus right window', })
+
+-- vim.keymap.set('n',           '<C-S-Down>',  ':resize +3<CR>',                     { desc = 'Resize window down', })
+-- vim.keymap.set('n',           '<C-Up>',    ':resize -3<CR>',                     { desc = 'Resize window up', })
+vim.keymap.set('n', '<C-S-Left>',  ':vertical resize +3<CR>', { desc = 'Resize window left', })
+vim.keymap.set('n', '<C-S-Right>', ':vertical resize -3<CR>', { desc = 'Resize window right', })
 
 ----------------------------------- EDIT
 
@@ -73,14 +78,7 @@ vim.keymap.set({ 'n', 'v', }, 'm',  'd')
 vim.keymap.set('n',           'M',  'D')
 vim.keymap.set('n',           'mm', 'dd^')
 vim.keymap.set('x',           'v',  'V')
-
--- vim.keymap.set('n',           'V',  'mz$v`z<cmd>delmarks z<CR>')
-vim.keymap.set('n', 'V', function()
-  local current_pos = vim.api.nvim_win_get_cursor(0)
-  vim.api.nvim_win_set_cursor(0, { current_pos[1], #vim.api.nvim_get_current_line(), })
-  vim.api.nvim_feedkeys('v', 'nx', false)
-  vim.api.nvim_win_set_cursor(0, current_pos)
-end)
+vim.keymap.set('n',           'V',  require('functions').visualSelectToEndOfline)
 
 ----------------------------------- READLINE
 
@@ -156,6 +154,8 @@ vim.keymap.set('n', '<leader>l', '<cmd>Lazy<CR>')
 -- ]])
 
 -- vim.keymap.set('n', '<BS>', '"_ciw')
+
+-- vim.keymap.set('n',           'V',  'mz$v`z<cmd>delmarks z<CR>')
 
 ----------------------------------- SAVE
 

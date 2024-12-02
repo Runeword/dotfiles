@@ -7,6 +7,7 @@ local opt = vim.opt
 
 vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
 
+o.splitright = true
 o.splitkeep = 'screen'
 o.mouse = 'a' -- Enables mouse support
 o.cursorline = true
@@ -50,7 +51,9 @@ o.fillchars = 'eob: '
 -- o.cmdheight=0
 
 --------------------------- Enable fold
+
 o.foldenable = false
+o.wrap = false
 
 -- o.fillchars = [[eob: ,fold: ,foldopen:-,foldclose:+]]
 -- o.foldopen = 'search,undo'

@@ -152,6 +152,13 @@ function M.insert()
   end
 end
 
+function M.visualSelectToEndOfline()
+  local current_pos = vim.api.nvim_win_get_cursor(0)
+  vim.api.nvim_win_set_cursor(0, { current_pos[1], #vim.api.nvim_get_current_line(), })
+  vim.api.nvim_feedkeys('v', 'nx', false)
+  vim.api.nvim_win_set_cursor(0, current_pos)
+end
+
 -------------------- Fold
 
 local isFolded = false

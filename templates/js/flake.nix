@@ -15,11 +15,10 @@
 
       js = pkgs.mkShell {
         packages = [
-          pkgs.nodePackages.typescript
-          pkgs.nodejs-19_x
+          pkgs.typescript
+          pkgs.nodejs-23_x
           pkgs.deno
           pkgs.nodePackages.pnpm
-          pkgs.nodePackages.npm
         ];
       };
     };

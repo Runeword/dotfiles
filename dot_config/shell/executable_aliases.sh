@@ -48,7 +48,7 @@ alias devices='sudo libinput list-devices'
 alias monitors='hyprctl monitors'
 alias clients='hyprctl clients'
 alias keyboard='pgrep -x evtest > /dev/null && sudo pkill evtest || sudo setsid evtest --grab /dev/input/event1 > /dev/null 2>&1'
-alias pk='sudo pkill'
+# alias pk='sudo pkill'
 # alias pg='pgrep -x'
 alias btm='command btm --tree --left_legend'
 alias procs='command procs --tree'
@@ -146,6 +146,8 @@ alias pg='pass generate'
 alias pl='__pass_clip'
 alias pc='__pass_clip'
 alias pr='__pass_rm'
+alias pk='gpgconf --reload gpg-agent'
+alias pu='pass show GEMINI_API_KEY > /dev/null'
 
 # ______________________________________ GO
 

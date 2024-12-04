@@ -1,3 +1,9 @@
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
+# shellcheck disable=SC1094
+# shellcheck disable=SC1090
+# shellcheck disable=SC1091
+
 autoload -Uz compinit
 compinit
 
@@ -117,7 +123,7 @@ fi
 __on_empty_buffer() {
   # [[ $#BUFFER == 0 ]] && { eval $1; last_command=$(fc -ln -1); zle reset-prompt; print -s "$last_command"; } || zle $2
   # [[ $#BUFFER == 0 ]] && { eval $1; ret=$?; zle reset-prompt; return $ret } || zle $2
-  if [[ $#BUFFER == 0 ]]; then
+  if [[ -z "$BUFFER" ]]; then
     eval "$1"
     zle reset-prompt
   else
@@ -240,8 +246,13 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --no-cmd zsh)"
 eval "$(direnv hook zsh)"
 
-# shellcheck disable=SC2154
 if [[ ${options[zle]} = on ]]; then
   . "/usr/share/fzf/completion.zsh"
   . "/usr/share/fzf/key-bindings.zsh"
 fi
+
+handle_interrupt() {
+    echo ''
+}
+trap 'handle_interrupt' SIGINT
+pass show GEMINI_API_KEY > /dev/null

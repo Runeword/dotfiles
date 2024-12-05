@@ -192,7 +192,7 @@ function M.wipe_active_buffers()
     end
   end
 
-  print(vim.inspect(active_buffers))
+  -- print(vim.inspect(active_buffers))
 
   for _, active_buffer in ipairs(active_buffers) do
     vim.api.nvim_buf_delete(active_buffer, { force = true, })

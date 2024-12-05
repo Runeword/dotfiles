@@ -11,6 +11,7 @@ vim.keymap.set('',            'q',          '<Nop>')
 vim.keymap.set('n',           '<Leader>hd', '<cmd>checkhealth vim.deprecated<CR>')
 
 vim.keymap.set('n',           'q',          require('functions').wipe_active_buffers,                                   { noremap = true, })
+-- vim.keymap.set('n',           'q',          '<cmd>q<CR>',                                   { noremap = true, })
 
 vim.keymap.set('x',           '<C-n>',      ':Norm ')
 vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')

@@ -2,6 +2,8 @@ local vim = vim
 
 return {
   'junegunn/fzf',
+  enabled = false,
+
   config = function()
     vim.cmd [[
       autocmd! FileType fzf

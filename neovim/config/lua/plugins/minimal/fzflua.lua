@@ -2,7 +2,7 @@ local vim = vim
 
 return {
   'ibhagwan/fzf-lua',
-  enabled = false,
+  enabled = true,
 
   config = function()
     vim.keymap.set('n', '<Leader><Tab>',        require('fzf-lua').files)

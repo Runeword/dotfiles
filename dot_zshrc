@@ -251,8 +251,8 @@ if [[ ${options[zle]} = on ]]; then
   . "/usr/share/fzf/key-bindings.zsh"
 fi
 
-handle_interrupt() {
-    echo ''
-}
-trap 'handle_interrupt' SIGINT
-pass show GEMINI_API_KEY > /dev/null
+# handle_interrupt() {
+#     echo ''
+# }
+# trap 'handle_interrupt' SIGINT
+# pass show GEMINI_API_KEY > /dev/null

@@ -7,7 +7,9 @@ return {
 
   config = function()
     local neocodeium = require('neocodeium')
-    neocodeium.setup()
+    neocodeium.setup({
+      silent = true,
+    })
 
     vim.keymap.set('i', '<C-CR>', neocodeium.accept)
     vim.keymap.set('i', '<C-w>', neocodeium.accept_word)

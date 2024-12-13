@@ -3,7 +3,7 @@ local vim = vim
 return {
   'Exafunction/codeium.vim',
 
-  enabled = true,
+  enabled = false,
 
   event = 'BufEnter',
 
@@ -22,5 +22,7 @@ return {
   config = function()
     vim.g.codeium_disable_bindings = 1
     vim.keymap.set('i', '<C-CR>', function() return vim.fn['codeium#Accept']() end, { expr = true, })
+    -- vim.keymap.set('i', '<C-w>', function() return vim.fn['codeium#AcceptNextWord']() end, { expr = true, })
+    -- vim.keymap.set('i', '<C-e>', function() return vim.fn['codeium#AcceptNextLine']() end, { expr = true, })
   end,
 }

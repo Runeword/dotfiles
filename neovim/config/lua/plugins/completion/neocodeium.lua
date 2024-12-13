@@ -1,4 +1,5 @@
 local vim = vim
+
 return {
   'monkoose/neocodeium',
   event = 'VeryLazy',

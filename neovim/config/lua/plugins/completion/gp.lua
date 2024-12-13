@@ -28,7 +28,7 @@ return {
     end
 
     vim.keymap.set({ 'n', 'i', }, '<Leader>n', '<cmd>GpChatNew<cr>', keymapOptions('New Chat'))
-    -- vim.keymap.set('v', '<C-g>p', ":<C-u>'<,'>GpChatPaste<cr>", keymapOptions('Visual Chat Paste'))
+    -- vim.keymap.set('v', '<Leader>n', ":<C-u>'<,'>GpChatPaste<cr>", keymapOptions('Visual Chat Paste'))
 
     -- vim.keymap.set({ 'n', 'i', }, '<C-g>c', '<cmd>GpChatNew<cr>', keymapOptions('New Chat'))
     -- vim.keymap.set({ 'n', 'i', }, '<C-g>t', '<cmd>GpChatToggle<cr>', keymapOptions('Toggle Chat'))

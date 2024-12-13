@@ -114,7 +114,7 @@ in
 
     # ---------------------------------- Browsers
     google-chrome
-    # firefox
+    firefox
     tor-browser
 
     # ---------------------------------- Hardware
@@ -129,6 +129,7 @@ in
     tmux # Sessions, windows and panes manager
     lazygit
     lazydocker
+    docker-compose
     # bemenu
 
     # inputs.walker.packages.x86_64-linux.default

@@ -83,10 +83,11 @@ vim.keymap.set('n',           'V',  require('functions').visualSelectToEndOfline
 
 ----------------------------------- READLINE
 
-vim.keymap.set('i', '<C-a>', '<esc>I')
-vim.keymap.set('i', '<C-e>', '<end>')
-vim.keymap.set('i', '<C-k>', '<esc>ld$i')
-vim.keymap.set('i', '<C-H>', '<C-w>')
+vim.keymap.set('i', '<C-a>', '<ESC>I')
+vim.keymap.set('i', '<C-e>', '<END>')
+vim.keymap.set('i', '<C-k>', '<ESC>ld$i')
+vim.keymap.set('i', '<C-j>', '<C-u>')
+vim.keymap.set('i', '<C-u>', '<C-o>S')
 
 --------------------------------- MOTIONS
 

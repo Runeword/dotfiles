@@ -96,11 +96,11 @@ return {
         },
       },
 
-      mapping = cmp.mapping.preset.insert({
+      mapping = {
+      -- ['<C-Space>'] = cmp.mapping.complete(),
+      -- ['<C-e>'] = cmp.mapping.abort(),
         ['<S-Up>'] = cmp.mapping.scroll_docs(-4),
         ['<S-Down>'] = cmp.mapping.scroll_docs(4),
-        -- ['<C-Space>'] = cmp.mapping.complete(),
-        -- ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true, }),
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -115,7 +115,6 @@ return {
             fallback()
           end
         end, { 'i', 's', }),
-
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -125,7 +124,7 @@ return {
             fallback()
           end
         end, { 'i', 's', }),
-      }),
+      },
 
       formatting = {
         format = function(entry, vim_item)

@@ -50,6 +50,7 @@ let
   #   # sha256 = lib.fakeSha256;
   # }) {inherit (pkgs) system;};
 
+  windsurf = pkgs.callPackage ./windsurf.nix { };
 in
 {
   home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
@@ -111,10 +112,11 @@ in
     vscode
     direnv
     nix-direnv
+    (lib.hiPrio windsurf)
 
     # ---------------------------------- Browsers
     google-chrome
-    firefox
+    # firefox
     tor-browser
 
     # ---------------------------------- Hardware

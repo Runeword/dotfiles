@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 format = "$directory"
 right_format = "$git_branch$all$nix_shell"
 
@@ -18,7 +18,7 @@ disabled = true
 disabled = true
 
 [directory]
-format = "[$path](blue) "
+format = "[$path](italic fg:blue bg:#1e2633) "
 
 [terraform]
 format = "[$symbol$workspace](white) "

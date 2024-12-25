@@ -1,4 +1,4 @@
-add_newline = true
+add_newline = false
 format = "$directory"
 right_format = "$git_branch$all$nix_shell"
 

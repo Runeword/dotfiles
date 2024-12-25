@@ -4,6 +4,9 @@
 # shellcheck disable=SC1090
 # shellcheck disable=SC1091
 
+# Exit if not interactive shell
+[[ $- != *i* ]] && return
+
 autoload -Uz compinit
 compinit
 
@@ -17,6 +20,19 @@ setopt SHARE_HISTORY
 setopt INC_APPEND_HISTORY
 export HISTORY_IGNORE="(! *)"
 
+
+# ------------------------------------ ZSH hooks
+autoload -Uz add-zsh-hook
+
+# starship option 'add_newline = true' has weird behavior in zsh, use this instead 
+__add_newline() {
+    echo ""
+}
+
+# Use the precmd hook to execute the __add_newline function just before the prompt is displayed
+add-zsh-hook precmd __add_newline
+
+# ------------------------------------ ENV variables
 [ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
 source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -121,10 +137,12 @@ if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
 fi
 
 __on_empty_buffer() {
-  # [[ $#BUFFER == 0 ]] && { eval $1; last_command=$(fc -ln -1); zle reset-prompt; print -s "$last_command"; } || zle $2
-  # [[ $#BUFFER == 0 ]] && { eval $1; ret=$?; zle reset-prompt; return $ret } || zle $2
-  if [[ -z "$BUFFER" ]]; then
+  if [[ "$BUFFER" = "" ]]; then
     eval "$1"
+    local precmd
+    for precmd in $precmd_functions; do
+      $precmd
+    done
     zle reset-prompt
   else
     eval "$2"

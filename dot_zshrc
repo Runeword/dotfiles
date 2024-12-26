@@ -5,7 +5,7 @@
 # shellcheck disable=SC1091
 
 # Exit if not interactive shell
-[[ $- != *i* ]] && return
+[[ -o interactive ]] || { echo "Not an interactive shell"; return; }
 
 autoload -Uz compinit
 compinit
@@ -24,9 +24,11 @@ export HISTORY_IGNORE="(! *)"
 # ------------------------------------ ZSH hooks
 autoload -Uz add-zsh-hook
 
-# starship option 'add_newline = true' has weird behavior in zsh, use this instead 
+# starship option 'add_newline = true' has weird behavior
+# use the following code instead to add a newline before the prompt
+
 __add_newline() {
-    echo ""
+  echo ""
 }
 
 # Use the precmd hook to execute the __add_newline function just before the prompt is displayed
@@ -137,16 +139,18 @@ if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
 fi
 
 __on_empty_buffer() {
-  if [[ "$BUFFER" = "" ]]; then
-    eval "$1"
-    local precmd
-    for precmd in $precmd_functions; do
-      $precmd
-    done
-    zle reset-prompt
-  else
-    eval "$2"
+  if [[ -n "$BUFFER" ]]; then
+      eval "$2"
+      return
   fi
+
+  if eval "$1"; then
+    for precmd_function in $precmd_functions; do
+      $precmd_function
+    done
+  fi
+
+  zle reset-prompt
 }
 
 # __alias_or_delete() { __on_empty_buffer __run_alias "zle backward-delete-char"; }

@@ -31,24 +31,29 @@ __update_flake_inputs() {
 # then adds the template to .envrc so direnv can load it.
 # It exits the function if there is no templates or no template is selected.
 __use_flake_template() {
-	local flake_path="$1"
+  local flake_path="$1"
 
-	local templates
-	templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
-	[ -z "$templates" ] && return 1
+  local templates
+  templates=$(nix flake show "$flake_path" --json | jq --raw-output '.templates | keys[]')
+  [ -z "$templates" ] && return 1
 
-	# --no-info --cycle \
-	local selected_template
-	selected_template=$(
-		echo "$templates" | fzf \
-			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
-			--preview "bat --style=plain --color=always $(nix flake metadata $flake_path --json | jq -r .path)/{}/flake.nix" \
-			--preview-window right,80%,noborder
-	)
-	[ -z "$selected_template" ] && return 1
+  # --no-info --cycle \
+  local selected_template
+  selected_template=$(
+  echo "$templates" | fzf \
+    --multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% \
+    --preview "bat --style=plain --color=always $(nix flake metadata $flake_path --json | jq -r .path)/{}/flake.nix" \
+    --preview-window right,80%,noborder
+  )
+  [ -z "$selected_template" ] && return 1
 
-	echo "use flake \"$flake_path/$selected_template\"" >>.envrc
-	direnv allow
+  nix flake init --template "$flake_path"/#"$selected_template"
+
+  printf "use flake ." >> .envrc
+  printf ".direnv/" >> .gitignore
+  # echo "use flake \"$flake_path/$selected_template\"" >>.envrc
+
+  direnv allow
 }
 
 # Interactively selects a package from Home Manager and return its full path

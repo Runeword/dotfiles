@@ -28,7 +28,7 @@ __open_file() {
         --preview-window right,55%,border-none,~2 \
         --bind='ctrl-y:execute-silent(wl-copy {})' \
         --bind='ctrl-a:select-all' \
-  ) || return 0
+  ) || return 1
   # fzf-tmux \
   #   -p \
   #   -h 90% \

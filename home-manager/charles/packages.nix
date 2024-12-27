@@ -130,6 +130,7 @@ in
     kitty # Terminal emulator
     tmux # Sessions, windows and panes manager
     lazygit
+    git-graph
     lazydocker
     docker-compose
     # bemenu

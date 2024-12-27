@@ -50,8 +50,10 @@ __use_flake_template() {
   nix flake init --template "$flake_path"/#"$selected_template"
 
   printf "use flake ." >> .envrc
-  printf ".direnv/" >> .gitignore
   # echo "use flake \"$flake_path/$selected_template\"" >>.envrc
+  if ! grep "^\.direnv/$" .gitignore > /dev/null 2>&1; then
+    echo ".direnv/" >> .gitignore
+  fi
 
   direnv allow
 }

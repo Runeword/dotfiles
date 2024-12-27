@@ -2,22 +2,32 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
   outputs =
-    { self, ... }@inputs:
+    { self, nixpkgs }:
     let
-      pkgs = import inputs.nixpkgs {
-        system = "x86_64-linux";
-      };
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
-      devShells.x86_64-linux = {
-        default = pkgs.mkShell {
-          packages = [
-            pkgs.typescript
-            pkgs.nodejs_23
-            pkgs.deno
-            pkgs.nodePackages.pnpm
-          ];
-        };
-      };
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in
+        {
+          default = pkgs.mkShell {
+            packages = [
+              pkgs.typescript
+              pkgs.nodejs_23
+              pkgs.deno
+              pkgs.nodePackages.pnpm
+            ];
+          };
+        }
+      );
     };
 }

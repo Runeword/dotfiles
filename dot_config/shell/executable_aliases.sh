@@ -108,6 +108,7 @@ alias gs='git status'
 alias gpl='git pull'
 alias gp='git push'
 alias gpo='git push origin'
+alias gpd='git push origin --delete'   # delete remote branch
 alias gt='git-forgit stash_push'       # git stash push
 alias gtl='git-forgit stash_show'      # git stash list
 alias gty='git stash apply'

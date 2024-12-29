@@ -100,13 +100,13 @@ vim.keymap.set({ 'x', 'n', }, 'J',     function() require('functions').move_to_n
 vim.keymap.set({ 'x', 'n', }, '<C-j>', 'J')
 vim.keymap.set('n',           '0',     'g0')
 
-vim.keymap.set('n', '$', function()
-  vim.fn.execute('normal! g$')
-  vim.o.ve = ''
-  vim.o.ve = 'all'
-end)
+-- vim.keymap.set('n', '$', function()
+--   vim.fn.execute('normal! g$')
+--   vim.o.ve = ''
+--   vim.o.ve = 'all'
+-- end)
 
-vim.keymap.set('n',           '^',  'g^')
+-- vim.keymap.set('n',           '^',  'g^')
 vim.keymap.set('n',           '&',  'g^')
 
 vim.keymap.set({ 'n', 'x', }, ',',  function() vim.fn.search('[,.:;]') end)

@@ -249,13 +249,39 @@ _zsh_autosuggest_strategy_custom() {
 }
 
 __navi_git() {
-  local selected_command
-  selected_command=$(navi --print --path ~/.config/navi/git-aliases.cheat \
-    --fzf-overrides="--exact -i --bind one:accept --with-nth=2,3 --nth=1 --no-separator --height 70% --cycle --info=inline:'' --no-preview --reverse --prompt='  ' --bind='tab:down,btab:up'") \
-    || { LBUFFER+=g; zle reset-prompt; return 1; }
+	local selected_command
+	selected_command=$(< ~/.config/navi/git-aliases fzf -i \
+		--with-nth=1,2 \
+		--print-query \
+		--nth=1 \
+		--no-info \
+		--no-separator \
+		--delimiter=$'\t' \
+		--cycle \
+		--no-preview \
+		--reverse \
+		--prompt='  ' \
+		--bind 'one:accept,zero:accept' \
+		--bind='tab:down,btab:up' \
+		--height 70% \
+	)
+	# --bind 'one:accept,zero:print-query' \
+	# --bind 'one:accept,zero:abort' \
 
-  LBUFFER+="$selected_command "
-  return 1
+	if [ $? -eq 0 ]; then
+		LBUFFER+=$(echo "$selected_command " | awk -F '\t' 'NR==2 {print $2}')
+	elif [ "$selected_command" ]; then
+		LBUFFER+=g$(echo "$selected_command" | sed -n '1p')
+	fi
+
+	# if [ $? -eq 0 ]; then
+	# 	LBUFFER+=$(echo -e "$selected_command" | cut -f 2)
+	# elif [ "$selected_command" ]; then
+	# 	LBUFFER+=g"$selected_command"
+	# fi
+
+	# zle reset-prompt;
+	return 1
 }
 
 __git_widget() { __on_empty_buffer "__navi_git" 'LBUFFER+=g; zle reset-prompt'; }

@@ -45,6 +45,7 @@
               typescript-language-server
               bash-language-server
               eslint
+							eslint_d
 							vue-language-server
               pyright
               vscode-langservers-extracted

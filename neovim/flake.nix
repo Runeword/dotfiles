@@ -42,9 +42,9 @@
             lib.makeBinPath [
               fzf
               sox
-              nodePackages.typescript-language-server
-              nodePackages.bash-language-server
-              nodePackages.eslint
+              typescript-language-server
+              bash-language-server
+              eslint
 							vue-language-server
               pyright
               vscode-langservers-extracted

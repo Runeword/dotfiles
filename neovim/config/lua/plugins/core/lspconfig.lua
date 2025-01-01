@@ -54,10 +54,10 @@ return {
 
     local lspconfig = require('lspconfig')
 
-    lspconfig.eslint.setup(set_config())
     lspconfig['lua_ls'].setup(set_config())
     lspconfig.yamlls.setup(set_config())
     lspconfig.ccls.setup(set_config())
+		lspconfig.eslint.setup(set_config())
     lspconfig.jsonls.setup(set_config())
     lspconfig.gopls.setup(set_config())
     lspconfig['rust_analyzer'].setup(set_config())
@@ -67,7 +67,8 @@ return {
     -- lspconfig['terraform_lsp'].setup(set_config())
     lspconfig.bashls.setup(set_config({ filetypes = { 'sh', 'zsh', }, }))
     lspconfig.cssls.setup(set_config())
-    lspconfig.vuels.setup(set_config({ on_attach = on_attach_server(false), }))
+    -- lspconfig.vuels.setup(set_config({ on_attach = on_attach_server(false), }))
+		lspconfig.volar.setup(set_config({ on_attach = on_attach_server(false), }))
     lspconfig.pyright.setup(set_config())
 
     lspconfig.typos_lsp.setup(set_config(

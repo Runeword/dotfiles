@@ -251,7 +251,7 @@ _zsh_autosuggest_strategy_custom() {
 __navi_git() {
 	local selected_command
 	selected_command=$(< ~/.config/navi/git-aliases fzf -i \
-		--with-nth=1,2 \
+		--with-nth=1,2,3 \
 		--print-query \
 		--nth=1 \
 		--no-info \
@@ -265,8 +265,10 @@ __navi_git() {
 		--bind='tab:down,btab:up' \
 		--height 70% \
 	)
+  # --exact \
 	# --bind 'one:accept,zero:print-query' \
 	# --bind 'one:accept,zero:abort' \
+  # --tabstop=1 \
 
 	if [ $? -eq 0 ]; then
 		LBUFFER+=$(echo "$selected_command " | awk -F '\t' 'NR==2 {print $2}')

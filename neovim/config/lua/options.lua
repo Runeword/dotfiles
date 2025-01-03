@@ -42,7 +42,7 @@ o.shiftwidth = 2       -- Number of spaces to use for each step of (auto)indent
 o.hidden = true        -- Allow switching buffers with unsaved changes
 opt.lazyredraw = true  -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
 opt.list = true
-opt.listchars:append 'eol:¬,tab:  ,lead: ,multispace:˙,trail:˙'
+opt.listchars:append 'eol:¬,nbsp:•,tab:  ,lead: ,multispace:˙,trail:˙'
 opt.laststatus = 3
 opt.showcmd = false
 -- opt.spell = true

@@ -46,6 +46,7 @@ vim.keymap.set('n', '<C-S-Right>', ':vertical resize -3<CR>', { desc = 'Resize w
 vim.keymap.set('i', '<C-BS>', '<Esc>cvb')
 vim.keymap.set('n', '<BS>',   '`[v`]')
 vim.keymap.set('n', 'i',      require('functions').insert, { expr = true, })
+vim.keymap.set('i', '<C-Space>', '<C-V>u00A0')
 
 ----------------------------------- TEXT OBJECTS
 vim.keymap.set({ 'o', 'x', }, 'a<Space>', 'aW')

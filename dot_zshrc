@@ -248,39 +248,7 @@ _zsh_autosuggest_strategy_custom() {
   # suggestion=$(navi --query "$1" --best-match --print) # navi does not support non-interactive mode https://github.com/denisidoro/navi/issues/808
 }
 
-__navi_git() {
-	local selected_command
-  selected_command=$(< ~/.config/navi/git-aliases \
-    column \
-    --table \
-    --separator $'\t' \
-    --output-separator $'\u00A0' \
-    | fzf -i \
-    --with-nth=1,2,3 \
-    --print-query \
-    --exact \
-    --nth=1 \
-    --no-info \
-    --no-separator \
-    --delimiter=$'\u00A0' \
-    --cycle \
-    --no-preview \
-    --reverse \
-    --prompt='  ' \
-    --bind 'one:accept,zero:accept,tab:accept' \
-    --height 70% \
-  )
-
-	if [ $? -eq 0 ]; then
-    LBUFFER+=$(echo "$selected_command" | awk -F $'\u00A0' '{ if (NR==2) { sub(/[[:space:]]+$/, "", $2); print $2 " " } }')
-	elif [ "$selected_command" ]; then
-		LBUFFER+=g$(echo "$selected_command" | sed -n '1p')
-	fi
-
-	return 1
-}
-
-__git_widget() { __on_empty_buffer "__navi_git" 'LBUFFER+=g; zle reset-prompt'; }
+__git_widget() { __on_empty_buffer "__git_aliases" 'LBUFFER+=g; zle reset-prompt'; }
 
 zle -N __git_widget
 bindkey 'g' __git_widget

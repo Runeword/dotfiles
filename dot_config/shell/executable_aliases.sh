@@ -99,26 +99,6 @@ alias chy='__chezmoi_apply'
 alias chf='__chezmoi_forget'
 alias ch='__chezmoi_edit'
 
-# ______________________________________ GIT
-
-alias g='lazygit'
-alias gi='onefetch'
-# alias gn='git status -s | awk "{print \$2}" | xargs -r nvim'
-alias gt='git-forgit stash_push'       # git stash push
-alias gtl='git-forgit stash_show'      # git stash list
-alias gbd='git-forgit branch_delete'   # git branch -d
-alias gbl='git-forgit blame'           # git blame
-alias gco='git-forgit checkout_commit' # git checkout
-alias gcd='__git_clone Documents/dev'
-alias gcc='__git_clone Documents/clones'
-# alias gcp='git-forgit cherry_pick'     # git cherry-pick
-alias grb='git-forgit rebase'          # git rebase
-alias gr='git reset'
-alias grh='git-forgit reset_head'      # git reset
-# alias grh='git reset HEAD~1'
-alias gwa='git worktree add'
-alias gwl='git worktree list'
-alias gwr='git worktree remove'
 alias ai='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest'
 
 # ______________________________________ PASS

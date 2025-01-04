@@ -1,27 +1,43 @@
+g	  lazygit
 in 	git init                                  	New repository
+if	onefetch
 ad 	git-forgit add                            	Stage changes
 lo 	git-forgit log                            	List commits
 b  	git branch                                	List branches
 bn 	git checkout -b BranchName                	Switch to new branch
 br 	git branch --move --force BranchNewName   	Rename branch
+bd	git-forgit branch_delete
 bdl	git branch --delete --force BranchLocal   	Delete local branch
 bdr	git push origin --delete BranchRemote     	Delete remote branch
+bl	git-forgit blame
 cm 	git commit -m                             	Commit changes
+cd	__git_clone Documents/dev
+cc	__git_clone Documents/clones
 m  	git merge BranchName                      	Merge BranchName into current branch
 ko 	git checkout
+cp	git-forgit cherry_pick
 kb 	git-forgit checkout_branch
 kf 	git-forgit checkout_file
 kt 	git-forgit checkout_tag
+kc	git-forgit checkout_commit
 su 	git status                                	Show files status
+gn	git status -s | awk "{print \$2}" | xargs -r nvim
 st 	git stash --include-untracked             	Stash staged + unstaged + untracked
 stu	git stash --include-untracked --keep-index	Stash unstaged + untracked
 sty	git stash apply                           	Apply changes from last stash
+stp	git-forgit stash_push
+stl	git-forgit stash_show
 ps 	git push
 pl 	git pull
+rb	git-forgit rebase
 re 	git restore                               	Remove changes
 res	git restore --staged                      	Unstage changes
+rt	git-forgit reset_head
 rts	git reset --soft HEAD~<n>                 	Revert last n commit and keep their changes as unstaged
 rth	git reset --hard HEAD~<n>                 	Revert last n commit and remove their changes
 cl 	git clean --force -d                      	Remove untracked files
 di 	git-forgit diff                           	Show changes
 dc 	git diff --cached                         	Show staged changes
+wa	git worktree add
+wl	git worktree list
+wr	git worktree remove

@@ -38,5 +38,7 @@ __git_aliases() {
     LBUFFER+=g$(echo "$selected_command" | sed -n '1p' | sed 's/[^[:alpha:]]//g')
   fi
 
+  zle autosuggest-fetch
+
   return 1
 }

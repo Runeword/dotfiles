@@ -31,11 +31,8 @@ in
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     }))
 
-    (pkgs.nerdfonts.override {
-      fonts = [
-        "DroidSansMono"
-      ];
-    })
+    nerd-fonts.droid-sans-mono
+
     hyprpanel
     hyprlock # Screen locker
     fnott # Notification daemon

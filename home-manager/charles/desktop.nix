@@ -27,9 +27,10 @@ in
     wev # Event viewer
 
     # Interface
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    }))
+    # (waybar.overrideAttrs (oldAttrs: {
+    #   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    # }))
+    waybar
 
     nerd-fonts.droid-sans-mono
 

@@ -5,6 +5,7 @@
       "name": "search",
       "keys": {
         "a": "__run_alias",
+        "n": "navi",
         "c": "navi --path ~/.local/share/navi/cheats"
       }
     },

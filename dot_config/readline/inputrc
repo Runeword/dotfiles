@@ -5,7 +5,8 @@ set show-all-if-ambiguous on
 set visible-stats on
 set page-completions off
 
-"\C-\b": backward-kill-word
+# "\C-\b": backward-kill-word
+"\u001B[127;5u": backward-kill-word
 "\C-i": menu-complete
 "\C-j": unix-line-discard
 "\C-u": kill-whole-line

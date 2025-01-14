@@ -210,9 +210,9 @@ __tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "
 zle -N __tmux_search
 bindkey '/' __tmux_search
 
-__cheatsheet_or_esc() { __on_empty_buffer navi; }
-zle -N __cheatsheet_or_esc
-bindkey '^[' __cheatsheet_or_esc
+__clear_or_esc() { __on_empty_buffer 'clear -x'; }
+zle -N __clear_or_esc
+bindkey '^[' __clear_or_esc
 
 __history_or_esc() { __on_empty_buffer "zle fzf-history-widget && zle accept-line"; }
 zle -N __history_or_esc

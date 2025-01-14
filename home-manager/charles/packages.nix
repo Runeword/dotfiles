@@ -110,13 +110,14 @@ in
 
     # ---------------------------------- Editors
     vscode
+		# vscode-extensions.dbaeumer.vscode-eslint
     direnv
     nix-direnv
     (lib.hiPrio windsurf)
 
     # ---------------------------------- Browsers
     google-chrome
-    # firefox
+    firefox
     tor-browser
 
     # ---------------------------------- Hardware

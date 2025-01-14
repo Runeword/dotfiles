@@ -20,6 +20,7 @@
               pkgs.nodejs_23
               pkgs.deno
               pkgs.nodePackages.pnpm
+              pkgs.nodePackages.npm
             ];
           };
         }

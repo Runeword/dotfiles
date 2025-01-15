@@ -99,9 +99,6 @@ in
     foremost # Recover files based on their headers and footers
     exiftool # Meta information reader/writer
     onlyoffice-desktopeditors
-    gh
-    aider-chat
-    bws
 
     showmethekey
     appimage-run
@@ -142,6 +139,7 @@ in
     # doppler
     # bitwarden-cli
     # rbw
+    bws
     infisical
 
     # Secrets

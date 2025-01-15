@@ -78,8 +78,8 @@ bindkey '^A' beginning-of-line  # Ctrl+A
 bindkey '^U' kill-buffer                   # Ctrl+U
 bindkey '^J' backward-kill-line            # Ctrl+J
 bindkey '^K' kill-line                     # Ctrl+K
-bindkey '^H' backward-kill-word          # Ctrl+H
-# bindkey '\u001B[127;5u' backward-kill-word # Ctrl+Backspace
+# bindkey '^H' backward-kill-word          # Ctrl+H
+bindkey '^[[27;5;127~' backward-kill-word # Ctrl+Backspace
 bindkey '^[[3;5~' kill-word                # Ctrl+Delete
 
 # ------------------------------------ Search history

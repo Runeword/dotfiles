@@ -28,6 +28,7 @@ alias me='__open_device'
 alias bu='__bitwarden_unlock'
 alias env='env | f'
 alias t='__tmux_attach_unattached_session'
+alias k='__kill_processes'
 
 # ______________________________________ UTILITY
 

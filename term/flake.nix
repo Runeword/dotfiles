@@ -42,9 +42,10 @@
           git # versioning
           zsh-forgit # fuzzy git
           starship # prompt
-          wl-clipboard # Copy/paste
-          xdragon # Drag and drop
-          ueberzugpp # Images support for terminal
+          wl-clipboard # copy/paste
+          xdragon # drag and drop
+          ueberzugpp # images support for terminal
+          aider-chat # ai
 
           #_______________________________ Coreutils
           bat

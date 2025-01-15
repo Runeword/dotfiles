@@ -126,11 +126,6 @@ in
     # ---------------------------------- Terminal
     inputs.runeword-neovim.packages.x86_64-linux.default # Text editor
     kitty # Terminal emulator
-    tmux # Sessions, windows and panes manager
-    lazygit
-    git-graph
-    lazydocker
-    docker-compose
     # bemenu
 
     # inputs.walker.packages.x86_64-linux.default
@@ -150,25 +145,18 @@ in
 
     # ---------------------------------- CLI tools
     # termium
-    qrcp
-    awscli2
-    miller # cvs toolbox
-    glow # markdown
+    # lsd
     lsof
-    lsd
-    distrobox
-    sshs
-    hyperfine
+
     nix-init
     cachix
     # tldr
     # tealdeer
     asciinema # Terminal recorder
-    terraform
-    ngrok
     lux # Video downloader
-    watchexec
-    atac
+
+    # watchexec
+    # atac
 
     # Disk
     ncdu
@@ -184,10 +172,6 @@ in
     # notmuch # Email search and tag
     # lieer # Gmail sync
 
-    # Info
-    hwinfo # Hardware info
-    onefetch # Git info
-    neofetch # System info
     nvme-cli # NVMe storage devices manager
 
     # lynis  # System health scan

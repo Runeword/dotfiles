@@ -15,7 +15,13 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        # pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+          };
+        };
 
         customPackages.leader = pkgs.stdenv.mkDerivation {
           pname = "leader";
@@ -46,7 +52,7 @@
           ueberzugpp # images support for terminal
           aider-chat # ai
           qrcp # mobile QR files transfer
-          # ngrok
+          ngrok
           awscli2
 
           #_______________________________ Coreutils
@@ -83,7 +89,7 @@
           lazydocker
           docker-compose
           distrobox
-          # terraform
+          terraform
 
           #_______________________________ Files
           miller # cvs toolbox

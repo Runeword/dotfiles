@@ -1,6 +1,6 @@
 {
   "keys": {
-    "y": "__yazi_cd",
+    "y": "__yazi_cd < $TTY",
     "s": {
       "name": "search",
       "keys": {

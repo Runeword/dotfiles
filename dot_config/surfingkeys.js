@@ -1,4 +1,4 @@
-settings.blocklistPattern = /.*getpocket.com.*|.*mail.google.com.*|.*docs.google.com.*/
+settings.blocklistPattern = /.*getpocket\.com.*|.*mail\.google\.com.*|.*docs\.google\.com.*/i;
 // chrome.storage.local.set({"noPdfViewer": 1})
 
 // Remap keys

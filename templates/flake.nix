@@ -1,33 +1,39 @@
 {
-  outputs = {self}: {
-    templates = {
-      js.path = ./js;
-      js.description = "js";
-      js.welcomeText = "js";
+  outputs =
+    { self }:
+    {
+      templates = {
+        js.path = ./js;
+        js.description = "js";
+        js.welcomeText = "js";
 
-      proto.path = ./proto;
-      proto.description = "proto";
-      proto.welcomeText = "proto";
+        node.path = ./node;
+        node.description = "node";
+        node.welcomeText = "node";
 
-      firebase.path = ./firebase;
-      firebase.description = "firebase";
-      firebase.welcomeText = "firebase";
+        proto.path = ./proto;
+        proto.description = "proto";
+        proto.welcomeText = "proto";
 
-      go.path = ./go;
-      go.description = "go";
-      go.welcomeText = "go";
+        firebase.path = ./firebase;
+        firebase.description = "firebase";
+        firebase.welcomeText = "firebase";
 
-      py.path = ./py;
-      py.description = "py";
-      py.welcomeText = "py";
+        go.path = ./go;
+        go.description = "go";
+        go.welcomeText = "go";
 
-      lambda.path = ./lambda;
-      lambda.description = "lambda";
-      lambda.welcomeText = "lambda";
+        py.path = ./py;
+        py.description = "py";
+        py.welcomeText = "py";
 
-      rust.path = ./rust;
-      rust.description = "rust";
-      rust.welcomeText = "rust";
+        lambda.path = ./lambda;
+        lambda.description = "lambda";
+        lambda.welcomeText = "lambda";
+
+        rust.path = ./rust;
+        rust.description = "rust";
+        rust.welcomeText = "rust";
+      };
     };
-  };
 }

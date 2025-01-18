@@ -10,7 +10,8 @@ bd	git-forgit branch_delete
 bdl	git branch --delete --force BranchLocal   	Delete local branch
 bdr	git push origin --delete BranchRemote     	Delete remote branch
 bl	git-forgit blame
-cm 	git commit -m                             	Commit changes
+co 	git commit -m                             	Commit changes
+ca	git commit --amend -m                     	Change message of last commit
 cd	__git_clone Documents/dev
 cc	__git_clone Documents/clones
 m  	git merge BranchName                      	Merge BranchName into current branch

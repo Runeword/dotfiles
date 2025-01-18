@@ -100,7 +100,7 @@ alias chy='__chezmoi_apply'
 alias chf='__chezmoi_forget'
 alias ch='__chezmoi_edit'
 
-alias ai='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest'
+alias ai='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest --no-auto-commits'
 
 # ______________________________________ PASS
 

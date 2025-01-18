@@ -10,8 +10,8 @@ bd	git-forgit branch_delete
 bdl	git branch --delete --force BranchLocal   	Delete local branch
 bdr	git push origin --delete BranchRemote     	Delete remote branch
 bl	git-forgit blame
-co 	git commit -m                             	Commit changes
-ca	git commit --amend -m                     	Change message of last commit
+co 	git commit --message                      	Commit changes
+ca	git commit --amend --message              	Change message of last commit
 cd	__git_clone Documents/dev
 cc	__git_clone Documents/clones
 m  	git merge BranchName                      	Merge BranchName into current branch
@@ -22,7 +22,7 @@ kf 	git-forgit checkout_file
 kt 	git-forgit checkout_tag
 kc	git-forgit checkout_commit
 s 	git status                                	Show files status
-n 	git status -s | awk "{print \$2}" | xargs -r nvim
+n 	git status --short | awk "{print \$2}" | xargs -r nvim
 ta 	git stash --include-untracked             	Stash staged + unstaged + untracked
 tu	git stash --include-untracked --keep-index	Stash unstaged + untracked
 ty	git stash apply                           	Apply changes from last stash
@@ -31,6 +31,7 @@ ts	git-forgit stash_show
 ps 	git push
 pl 	git pull
 rb	git-forgit rebase
+rb	git-forgit rebase --interactive           	Interactive rebase
 re 	git restore                               	Remove changes
 res	git restore --staged                      	Unstage changes
 rt	git-forgit reset_head
@@ -38,7 +39,7 @@ rts	git reset --soft HEAD~<n>                 	Revert last n commit and keep the
 rth	git reset --hard HEAD~<n>                 	Revert last n commit and remove their changes
 cl 	git clean --force -d                      	Remove untracked files
 di 	git-forgit diff                           	Show changes
-dc 	git diff --cached                         	Show staged changes
+dc	git-forgit diff --cached                  	Show staged changes
 wa	git worktree add
 wl	git worktree list
 wr	git worktree remove

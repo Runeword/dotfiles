@@ -100,7 +100,8 @@ alias chy='__chezmoi_apply'
 alias chf='__chezmoi_forget'
 alias ch='__chezmoi_edit'
 
-alias ai='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest --no-auto-commits'
+alias aig='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest --no-auto-commits'
+alias aiq='export GROQ_API_KEY="$(pass show GROQ_API_KEY)"; aider --model groq/llama3-70b-8192 --no-auto-commits'
 
 # ______________________________________ PASS
 

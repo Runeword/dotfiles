@@ -14,8 +14,8 @@
   "gtk-layer-shell": true,
   "ipc": false,
   "modules-left": [
-    "clock",
-    "tray"
+    "clock"
+    // "tray"
     //   "custom/bottomLeftDarkTrans",
     //   "custom/topRightDarkTrans"
   ],

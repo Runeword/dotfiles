@@ -4,9 +4,9 @@ if	onefetch
 ad 	git-forgit add                            	Stage changes
 lo 	git-forgit log                            	List commits
 b  	git branch                                	List branches
-bn 	git checkout -b BranchName                	Switch to new branch
+bn 	git checkout -b BranchName                	Create a new branch and switch to it
 br 	git branch --move --force BranchNewName   	Rename branch
-bd	git-forgit branch_delete
+bd	git-forgit branch_delete                  	Delete local branch
 bdl	git branch --delete --force BranchLocal   	Delete local branch
 bdr	git push origin --delete BranchRemote     	Delete remote branch
 bl	git-forgit blame
@@ -15,7 +15,6 @@ ca	git commit --amend --message              	Change message of last commit
 cd	__git_clone Documents/dev
 cc	__git_clone Documents/clones
 m  	git merge BranchName                      	Merge BranchName into current branch
-ko 	git checkout
 cp	git-forgit cherry_pick
 kb 	git-forgit checkout_branch
 kf 	git-forgit checkout_file
@@ -23,21 +22,22 @@ kt 	git-forgit checkout_tag
 kc	git-forgit checkout_commit
 s 	git status                                	Show files status
 n 	git status --short | awk "{print \$2}" | xargs -r nvim
-ta 	git stash --include-untracked             	Stash staged + unstaged + untracked
-tu	git stash --include-untracked --keep-index	Stash unstaged + untracked
+tp	git-forgit stash_push                      	Stash selected files
+ts	git stash push --staged                   	Stash staged
+tus	git stash push                            	Stash staged + unstaged
+tuus 	git stash push --include-untracked        	Stash staged + unstaged + untracked
+tuu	git stash push --include-untracked --keep-index	Stash unstaged + untracked
 ty	git stash apply                           	Apply changes from last stash
-tp	git-forgit stash_push
-ts	git-forgit stash_show
+tw	git-forgit stash_show
 ps 	git push
 pl 	git pull
 rb	git-forgit rebase
 rb	git-forgit rebase --interactive           	Interactive rebase
-re 	git restore                               	Remove changes
-res	git restore --staged                      	Unstage changes
-rt	git-forgit reset_head
+reu	git-forgit checkout_file                  	'git restore': Discard unstaged changes, equivalent of 'git checkout --'
+res	git-forgit reset_head                     	'git restore --staged': Discard staged changes
 rts	git reset --soft HEAD~<n>                 	Revert last n commit and keep their changes as unstaged
 rth	git reset --hard HEAD~<n>                 	Revert last n commit and remove their changes
-cl 	git clean --force -d                      	Remove untracked files
+cl 	git-forgit clean --force -d               	Delete untracked files and directories
 di 	git-forgit diff                           	Show changes
 dc	git-forgit diff --cached                  	Show staged changes
 wa	git worktree add

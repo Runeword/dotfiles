@@ -19,6 +19,7 @@ disabled = true
 
 [directory]
 format = "[$path](italic fg:blue bg:#1e2633) "
+truncate_to_repo = false
 
 [terraform]
 format = "[$symbol$workspace](white) "

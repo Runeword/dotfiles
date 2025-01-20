@@ -129,6 +129,7 @@ alias npl='npm ls --depth=0'
 alias npg='npm ls -g --depth=0'
 alias npd='npm run dev'
 alias npi='npm i'
+alias nest='npx nest'
 
 # ______________________________________ QMK
 

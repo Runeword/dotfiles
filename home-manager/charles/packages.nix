@@ -89,6 +89,7 @@ in
     whatsie
     zsh
     android-studio
+    git
     # rquickshare
 
     sioyek # PDF viewer

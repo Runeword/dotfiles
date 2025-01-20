@@ -83,7 +83,8 @@
           }
         },
         "a": "nvim $HOME/.config/shell/aliases.sh",
-        "v": "nvim $HOME/.config/shell/variables.sh"
+        "v": "nvim $HOME/.config/shell/variables.sh",
+        "m": "cd /run/media/$USER"
       }
     }
   }

@@ -27,6 +27,7 @@ __git_aliases() {
     --cycle \
     --no-preview \
     --reverse \
+    --no-sort \
     --prompt='  ' \
     --bind 'one:accept,zero:accept,tab:accept' \
     --height 70% \

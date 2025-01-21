@@ -21,17 +21,30 @@ vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                          
 vim.keymap.set({ 'x', 'n', }, '<Leader>q',  '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q',          '<cmd>qa!<CR>')
 
-vim.keymap.set('n', '<S-Down>', function()
-  local success, _ = pcall(vim.cmd, 'cnext')
-  if not success then
-    vim.cmd('cfirst')
+local function is_quickfix_open()
+  for _, win in ipairs(vim.fn.getwininfo()) do
+    if win.quickfix == 1 then
+      return true
+    end
+  end
+  return false
+end
+
+vim.keymap.set('n', '<Tab>', function()
+  if is_quickfix_open() then
+    local success, _ = pcall(vim.cmd, 'cnext')
+    if not success then
+      vim.cmd('cfirst')
+    end
   end
 end, { desc = 'Navigate to next quickfix item' })
 
-vim.keymap.set('n', '<S-Up>', function()
-  local success, _ = pcall(vim.cmd, 'cprevious')
-  if not success then
-    vim.cmd('clast')
+vim.keymap.set('n', '<S-Tab>', function()
+  if is_quickfix_open() then
+    local success, _ = pcall(vim.cmd, 'cprevious')
+    if not success then
+      vim.cmd('clast')
+    end
   end
 end, { desc = 'Navigate to previous quickfix item' })
 

@@ -21,6 +21,22 @@ vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                          
 vim.keymap.set({ 'x', 'n', }, '<Leader>q',  '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q',          '<cmd>qa!<CR>')
 
+vim.keymap.set('n', '<S-Down>', function()
+  local success, _ = pcall(vim.cmd, 'cnext')
+  if not success then
+    vim.cmd('cfirst')
+  end
+end, { desc = 'Navigate to next quickfix item' })
+
+vim.keymap.set('n', '<S-Up>', function()
+  local success, _ = pcall(vim.cmd, 'cprevious')
+  if not success then
+    vim.cmd('clast')
+  end
+end, { desc = 'Navigate to previous quickfix item' })
+
+-- vim.keymap.set( 'n', '<S-PageDown>',          '<cmd>cfirst<CR>')
+-- vim.keymap.set( 'n', '<S-PageUp>',          '<cmd>clast<CR>')
 
 vim.keymap.set('n',           '<Leader>m', require('functions').displayMessages, { noremap = true, silent = true, })
 

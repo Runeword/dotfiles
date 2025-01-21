@@ -105,3 +105,10 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
   desc = 'Automatically fitting a quickfix window to 10 lines max and 3 lines min height',
 })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'qf',
+  callback = function()
+    vim.schedule(function() vim.cmd('cfirst') end)
+  end,
+  desc = 'Automatically open the first item in the quickfix window',
+})

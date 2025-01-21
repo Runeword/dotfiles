@@ -13,9 +13,20 @@ return {
         client.server_capabilities.documentFormattingProvider = dfp
         client.server_capabilities.semanticTokensProvider = nil
 
-        vim.keymap.set('n', 'gd', function()
-          if not vim.lsp.buf.definition() then vim.lsp.buf.declaration() end
-        end, { buffer = buffer, })
+   vim.keymap.set('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<cr>', { buffer = buffer, })
+   vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { buffer = buffer, })
+   vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { buffer = buffer, })
+   vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { buffer = buffer, })
+   vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { buffer = buffer, })
+   vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { buffer = buffer, })
+   vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { buffer = buffer, })
+   -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', { buffer = buffer, })
+   -- vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', { buffer = buffer, })
+   -- vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', { buffer = buffer, })
+
+        -- vim.keymap.set('n', 'gd', function()
+        --   if not vim.lsp.buf.definition() then vim.lsp.buf.declaration() end
+        -- end, { buffer = buffer, })
 
         -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = buffer, })
 
@@ -31,8 +42,8 @@ return {
         -- vim.keymap.set('n', '<PageUp>',   vim.diagnostic.goto_prev, { buffer = buffer, })
         -- vim.keymap.set('n', '<PageDown>', vim.diagnostic.goto_next, { buffer = buffer, })
 
-        vim.keymap.set('n', '<Leader>x', vim.diagnostic.setqflist,
-          { noremap = true, silent = true, })
+        -- vim.keymap.set('n', '<Leader>x', vim.diagnostic.setqflist,
+          -- { noremap = true, silent = true, })
 
         -- vim.keymap.set('n', '<Leader>l', diagnostic.setloclist, { noremap = true, silent = true })
         -- lsp.buf.formatting_seq_sync(nil, 6000, { 'ts_ls', 'html', 'cssls', 'vuels', 'eslint' })

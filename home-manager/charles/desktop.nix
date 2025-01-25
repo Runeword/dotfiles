@@ -40,7 +40,6 @@ in
     # deadd-notification-center
 
     # Hardware managers
-    networkmanagerapplet # Network manager
     nwg-displays # Monitor manager
     impala # Wifi manager
     bluetuith # Bluetooth manager

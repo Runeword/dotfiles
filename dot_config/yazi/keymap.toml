@@ -33,7 +33,8 @@
 
       { on = ["h"], run = ["leave", "escape --visual --select"], desc = "Go back to the parent directory" },
       # { on = ["t"], run = ["enter", "escape --visual --select"], desc = "Enter the child directory" },
-      { on = ["t"], run = "plugin --sync fast-enter", desc = "Enter the subfolder faster, or open the file directly" },
+      # { on = ["t"], run = "plugin --sync fast-enter", desc = "Enter the subfolder faster, or open the file directly" },
+      { on = ["t"], run = "plugin fast-enter", desc = "Enter the subfolder faster, or open the file directly" },
 
       { on = ["H"], run = "back", desc = "Go back to the previous directory" },
       { on = ["T"], run = "forward", desc = "Go forward to the next directory" },

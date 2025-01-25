@@ -122,3 +122,6 @@ dirs
 
 # Run the command in a new session and in the background
 setsid <command> &
+
+# Update available networks
+nmcli device wifi rescan

@@ -26,7 +26,7 @@ refreshPeriod = "168h"
 type = "git-repo"
 url = "git@github.com:DreamMaoMao/searchjump.yazi.git"
 refreshPeriod = "168h"
-[".config/bypass-paywalls-chrome"]
-type = "git-repo"
-url = "git@github.com:iamadamdev/bypass-paywalls-chrome"
-refreshPeriod = "168h"
+# [".config/bypass-paywalls-chrome"]
+# type = "git-repo"
+# url = "git@github.com:iamadamdev/bypass-paywalls-chrome"
+# refreshPeriod = "168h"

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+# export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share:/var/lib/flatpak/exports/share:${HOME}/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CACHE_HOME="${HOME}/.cache"
 export XDG_CONFIG_HOME="${HOME}/.config"

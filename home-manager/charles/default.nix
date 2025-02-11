@@ -19,14 +19,19 @@
   #   pinentryPackage = pkgs.pinentry-curses;
   # };
 
+  services.network-manager-applet.enable = true;
+
   gtk.enable = true;
   gtk.theme.package = pkgs.adw-gtk3;
   gtk.theme.name = "adw-gtk3";
   gtk.cursorTheme.package = pkgs.adwaita-icon-theme;
-  gtk.cursorTheme.name = "Adwaita";
+  gtk.cursorTheme.name = "adwaita-icon-theme";
   gtk.cursorTheme.size = 24;
-  gtk.iconTheme.name = "Adwaita";
-  gtk.iconTheme.package = pkgs.adwaita-icon-theme;
+  # gtk.cursorTheme.name = "Adwaita";
+  # gtk.iconTheme.package = pkgs.adwaita-icon-theme;
+  # gtk.iconTheme.name = "adwaita-icon-theme";
+  gtk.iconTheme.package = pkgs.hicolor-icon-theme;
+  gtk.iconTheme.name = "hicolor";
 
   # programs.walker = {
   #   enable = true;

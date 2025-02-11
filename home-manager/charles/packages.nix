@@ -112,6 +112,7 @@ in
     direnv
     nix-direnv
     (lib.hiPrio windsurf)
+    code-cursor
 
     # ---------------------------------- Browsers
     google-chrome

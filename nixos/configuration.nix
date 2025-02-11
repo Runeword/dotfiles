@@ -112,6 +112,8 @@
   # services.gvfs.enable = false; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
 
+  services.flatpak.enable = true;
+
   # udev
   services.udev.enable = true;
   services.udev.packages = with pkgs; [
@@ -209,12 +211,14 @@
   users.users.charles.extraGroups = [
     "networkmanager"
     "wheel"
+    "docker"
   ];
 
   users.users.zod.isNormalUser = true;
   users.users.zod.extraGroups = [
     "wheel"
     "networkmanager"
+    "docker"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

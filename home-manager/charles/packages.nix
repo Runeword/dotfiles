@@ -90,6 +90,8 @@ in
     zsh
     android-studio
     git
+    cloneit
+    nix-prefetch-docker
     # rquickshare
 
     sioyek # PDF viewer

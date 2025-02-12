@@ -3,3 +3,5 @@
 	name = Runeword
 [push]
 	default = current
+[init]
+	defaultBranch = main

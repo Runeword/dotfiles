@@ -21,16 +21,16 @@ kb 	git-forgit checkout_branch
 kf 	git-forgit checkout_file
 kt 	git-forgit checkout_tag
 kc	git-forgit checkout_commit
-s 	git status                                	Show files status
+t 	git status                                	Show files status
 n	git ls-files --others --exclude-standard --modified | xargs -r nvim
 e 	nvim ~/.config/navi/git-aliases
-tp	git-forgit stash_push                      	Stash selected files
-ts	git stash push --staged                   	Stash staged
-tus	git stash push                            	Stash staged + unstaged
-tuus 	git stash push --include-untracked        	Stash staged + unstaged + untracked
-tuu	git stash push --include-untracked --keep-index	Stash unstaged + untracked
-ty	git stash apply                           	Apply changes from last stash
-tw	git-forgit stash_show
+s	git stash push                                      	Stash staged + unstaged
+sf	git-forgit stash_push                              	Stash selected files
+ss	git stash push --staged                           	Stash staged
+ssuu	git stash push --include-untracked              	Stash staged + unstaged + untracked
+suu	git stash push --include-untracked --keep-index   	Stash unstaged + untracked
+sy	git stash apply                                   	Apply changes from last stash
+sl	git-forgit stash_show
 ps 	git push
 pl 	git pull
 rm	git rm -rf                                	Remove file

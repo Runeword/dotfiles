@@ -11,8 +11,9 @@ return {
         sh = { 'shfmt', 'shellharden', },
         zsh = { 'shfmt', 'shellharden', }, -- 'beautysh'
         python = { 'isort', 'black', },
-				javascript = { 'prettier' },
-				typescript = { 'prettier' },
+        javascript = { 'prettier', },
+        typescript = { 'prettier', },
+        typescriptreact = { 'prettier', },
       },
 
       formatters = {

@@ -92,6 +92,8 @@ in
     git
     cloneit
     nix-prefetch-docker
+    gmailctl
+    postman
     # rquickshare
 
     sioyek # PDF viewer

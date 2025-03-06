@@ -166,6 +166,7 @@ alias chrome='google-chrome-stable'
 alias cheat='navi --cheatsh'
 alias tldr='navi --tldr'
 alias n='nvim'
+alias db='setsid appimage-run $HOME/AppImages/Chat2DB-Local-latest.AppImage'
 
 # up = "up(){ realesrgan-ncnn-vulkan -i \"$1\" -o output.png; }; up";
 # xc = "xclip -selection c";

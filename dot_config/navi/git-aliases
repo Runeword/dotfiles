@@ -23,16 +23,16 @@ kt 	git-forgit checkout_tag
 kc	git-forgit checkout_commit
 ko	git checkout --ours FileName              	Resolve merge conflict by keeping our version
 t 	git status                                	Show files status
-nu	git ls-files --others --exclude-standard --modified | xargs -r nvim	    Open unstaged files in neovim
+nu	git ls-files --others --exclude-standard --modified | xargs -r nvim    	Open unstaged files in neovim
 ns	git diff --name-only --cached | xargs -r nvim                          	Open staged files in neovim
 e 	nvim ~/.config/navi/git-aliases
-s 	git stash push                                     	Stash staged + unstaged
-sf	git-forgit stash_push                              	Stash selected files
+s 	git stash push                                    	Stash staged + unstaged
 ss	git stash push --staged                           	Stash staged
 sa	git stash push --include-untracked                	Stash staged + unstaged + untracked
 su	git stash push --include-untracked --keep-index   	Stash unstaged + untracked
 sy	git stash apply                                   	Apply changes from last stash
-sl	git-forgit stash_show
+sl	git-forgit stash_show                             	List stashes
+sf	git-forgit stash_push                             	Stash selected files
 ps 	git push
 pl 	git pull
 rm	git rm -rf                                	Remove file
@@ -43,7 +43,7 @@ res	git-forgit reset_head                     	Delete staged (git restore --stag
 reu	git-forgit checkout_file                  	Delete unstaged (git checkout --), (git restore)
 rts	git reset --soft HEAD~<n>                 	Revert last n commit and unstage their changes
 rth	git reset --hard HEAD~<n>                 	Revert last n commit and delete their changes
-cln 	git-forgit clean --force -d               	Delete untracked files and directories
+cln	git-forgit clean --force -d               	Delete untracked files and directories
 dd 	git-forgit diff                           	Show unstaged changes
 dc	git-forgit diff --cached                  	Show staged changes
 wa	git worktree add

@@ -32,15 +32,16 @@ sa	git stash push --include-untracked                	Stash staged + unstaged + 
 su	git stash push --include-untracked --keep-index   	Stash unstaged + untracked
 sy	git stash apply                                   	Apply changes from last stash
 sl	git-forgit stash_show                             	List stashes
+sc	git stash clear                                   	Delete all stashes
 sf	git-forgit stash_push                             	Stash selected files
 ps 	git push
 pl 	git pull
+r	git-forgit checkout_file                    	Delete unstaged (git checkout --), (git restore)
 rm	git rm -rf                                	Remove file
 rb	git-forgit rebase
 rb	git-forgit rebase --interactive           	Interactive rebase
 reh	git reset --hard                          	Delete staged + unstaged
 res	git-forgit reset_head                     	Delete staged (git restore --staged)
-reu	git-forgit checkout_file                  	Delete unstaged (git checkout --), (git restore)
 rts	git reset --soft HEAD~<n>                 	Revert last n commit and unstage their changes
 rth	git reset --hard HEAD~<n>                 	Revert last n commit and delete their changes
 cln	git-forgit clean --force -d               	Delete untracked files and directories

@@ -94,6 +94,7 @@ in
     nix-prefetch-docker
     gmailctl
     postman
+    sqlite
     # rquickshare
 
     sioyek # PDF viewer

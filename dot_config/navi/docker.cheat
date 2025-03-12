@@ -204,5 +204,8 @@ docker volume prune
 # Remove unused images
 docker image prune
 
+# Remove unused networks
+docker network prune
+
 # Remove unused containers
 docker container prune

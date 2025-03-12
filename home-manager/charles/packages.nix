@@ -95,7 +95,10 @@ in
     gmailctl
     postman
     sqlite
+    # claude-code
     # rquickshare
+
+    ffuf
 
     sioyek # PDF viewer
 

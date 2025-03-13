@@ -23,10 +23,10 @@ kt 	git-forgit checkout_tag
 kc	git-forgit checkout_commit
 ko	git checkout --ours FileName              	Resolve merge conflict by keeping our version
 t 	git status                                	Show files status
-nu	git ls-files --others --exclude-standard --modified | xargs -r nvim    	Open unstaged files in neovim
-ns	git diff --name-only --cached | xargs -r nvim                          	Open staged files in neovim
+nu	__git_open_unstaged                       	Open unstaged files in neovim
+ns	__git_open_staged                         	Open staged files in neovim
 e 	nvim ~/.config/navi/git-aliases
-s 	git stash push                                    	Stash staged + unstaged
+sp 	git stash push                                    	Stash staged + unstaged
 ss	git stash push --staged                           	Stash staged
 sa	git stash push --include-untracked                	Stash staged + unstaged + untracked
 su	git stash push --include-untracked --keep-index   	Stash unstaged + untracked

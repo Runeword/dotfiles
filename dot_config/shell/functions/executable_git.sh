@@ -8,6 +8,30 @@ __git_clone() {
   cd "$base_dir/$(basename "$repo_url" .git)" || return # Change into the cloned directory
 }
 
+__git_open_unstaged() {
+  git ls-files --others --exclude-standard --modified \
+    | fzf \
+    --multi --reverse --no-separator --border none --cycle --height 70% \
+    --info=inline:'' \
+    --header-first \
+    --prompt='  ' \
+    --scheme=path \
+    --bind='ctrl-a:select-all' \
+    | xargs -r nvim
+}
+
+__git_open_staged() {
+  git diff --name-only --cached \
+    | fzf \
+    --multi --reverse --no-separator --border none --cycle --height 70% \
+    --info=inline:'' \
+    --header-first \
+    --prompt='  ' \
+    --scheme=path \
+    --bind='ctrl-a:select-all' \
+    | xargs -r nvim
+}
+
 __git_aliases() {
   local selected_command
   selected_command=$(< ~/.config/navi/git-aliases \

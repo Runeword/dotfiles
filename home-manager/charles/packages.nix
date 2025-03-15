@@ -95,6 +95,8 @@ in
     gmailctl
     postman
     sqlite
+    impala
+    iwgtk
     # claude-code
     # rquickshare
 

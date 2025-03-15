@@ -143,7 +143,8 @@ alias qd='(cd $HOME/.config/qmk && qmk generate-compilation-database -kb ferris/
 
 alias b='bluetuith'
 alias bl='__bluetoothctl'
-alias w='__nmcli_wifi_connect'
+alias w='setsid iwgtk > /dev/null 2>&1'
+# alias w='__nmcli_wifi_connect'
 
 # ______________________________________ TRASH
 

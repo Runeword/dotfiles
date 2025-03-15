@@ -154,8 +154,17 @@
 
   # network
   networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
-  networking.wireless.iwd.enable = true;
+  # Disable NetworkManager
+  networking.networkmanager.enable = false;
+  # Enable iwd as standalone
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      General = {
+        EnableNetworkConfiguration = true;
+      };
+    };
+  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -209,7 +218,7 @@
 
   users.users.charles.isNormalUser = true;
   users.users.charles.extraGroups = [
-    "networkmanager"
+    "network"
     "wheel"
     "docker"
   ];
@@ -217,7 +226,7 @@
   users.users.zod.isNormalUser = true;
   users.users.zod.extraGroups = [
     "wheel"
-    "networkmanager"
+    "network"
     "docker"
   ];
 
@@ -240,7 +249,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

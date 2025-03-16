@@ -53,7 +53,7 @@ __chezmoi_apply() {
   done
 }
 
-__chezmoi_edit() {
+__chezmoi_status() {
   local files
   files=$(chezmoi status | awk '{print $2}')
   [ "$files" = "" ] && return 1
@@ -65,13 +65,34 @@ __chezmoi_edit() {
   echo "$selected_files" | xargs "$EDITOR"
 }
 
+__chezmoi_managed() {
+  local files
+  files=$(chezmoi managed --include=files)
+  [ "$files" = "" ] && return 1
+
+  local selected_files
+  selected_files=$(echo "$files" | fzf \
+    --multi --reverse --no-separator --border none --cycle --height 70% \
+    --info=inline:'' \
+    --header-first \
+    --prompt='  ' \
+    --scheme=path \
+    --header="chezmoi managed --include=files" \
+    --bind='ctrl-a:select-all' \
+    --preview 'bat --style=plain --color=always {}' \
+    --preview-window right,70%,noborder)
+  [ "$selected_files" = "" ] && return 1
+
+  echo "$selected_files" | xargs "$EDITOR"
+}
+
 __chezmoi_forget() {
   if [ $# -gt 0 ]; then
     local selected_files
     selected_files=$*
   else
     local files
-    files=$(chezmoi managed)
+    files=$(chezmoi managed --include=files)
     [ "$files" = "" ] && return 1
 
     selected_files=$(echo "$files" | fzf \
@@ -81,7 +102,8 @@ __chezmoi_forget() {
       --prompt='  ' \
       --scheme=path \
       --header="chezmoi forget" \
-      --preview '[ -f {} ] && bat --style=plain --color=always {}' \
+      --bind='ctrl-a:select-all' \
+      --preview 'bat --style=plain --color=always {}' \
       --preview-window right,70%,noborder)
     [ "$selected_files" = "" ] && return 1
   fi

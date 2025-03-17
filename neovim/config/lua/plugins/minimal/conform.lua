@@ -14,6 +14,7 @@ return {
         javascript = { 'prettier', },
         typescript = { 'prettier', },
         typescriptreact = { 'prettier', },
+        go = { 'gofmt', },
       },
 
       formatters = {

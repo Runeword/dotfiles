@@ -62,7 +62,6 @@
               shellharden
               terraform-ls
               gopls
-              gofmt
               delve
               rust-analyzer
               taplo

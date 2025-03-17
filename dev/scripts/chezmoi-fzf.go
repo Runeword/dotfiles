@@ -78,17 +78,17 @@ func printUsage() {
 	fmt.Println("  forget   Forget files from chezmoi")
 }
 
-// runFzf runs fzf with the given options and returns selected items
-func runFzf(files []string, header, preview, previewPos string, height string) ([]string, error) {
+// selectFilesWithDiff selects files using fzf with diff preview
+func selectFilesWithDiff(files []string, header string) ([]string, error) {
 	if len(files) == 0 {
 		return nil, fmt.Errorf("no files to select")
 	}
 
 	fzfArgs := []string{
-		"--height", height,
+		"--height", "100%",
 		"--header", header,
-		"--preview", preview,
-		"--preview-window", previewPos + ",noborder",
+		"--preview", "chezmoi diff --reverse --color=true ~/{}",
+		"--preview-window", "bottom,80%,noborder",
 	}
 
 	// Add common options
@@ -99,6 +99,7 @@ func runFzf(files []string, header, preview, previewPos string, height string) (
 	}
 
 	fzfCmd := exec.Command("fzf", fzfArgs...)
+
 	fzfCmd.Stdin = strings.NewReader(strings.Join(files, "\n"))
 	fzfCmd.Stderr = os.Stderr
 
@@ -123,58 +124,68 @@ func runFzf(files []string, header, preview, previewPos string, height string) (
 	return selected, nil
 }
 
-// selectFilesWithDiff selects files using fzf with diff preview
-func selectFilesWithDiff(files []string, header string) ([]string, error) {
-	preview := "chezmoi diff --reverse --color=true ~/{}"
-	previewPos := "bottom,80%"
-	return runFzf(files, header, preview, previewPos, "100%")
-}
-
 // selectFilesWithPreview selects files using fzf with file content preview
 func selectFilesWithPreview(files []string, header string) ([]string, error) {
-	preview := "bat --style=plain --color=always {} 2>/dev/null || cat {}"
-	previewPos := "right,70%"
-	return runFzf(files, header, preview, previewPos, "70%")
-}
+	if len(files) == 0 {
+		return nil, fmt.Errorf("no files to select")
+	}
 
-// runCommand runs a command with given args and streams output
-func runCommand(cmd string, args ...string) error {
-	command := exec.Command(cmd, args...)
-	command.Stdout = os.Stdout
-	command.Stderr = os.Stderr
-	return command.Run()
-}
+	fzfArgs := []string{
+		"--height", "70%",
+		"--header", header,
+		"--preview", "bat --style=plain --color=always {} 2>/dev/null || cat {}",
+		"--preview-window", "right,70%,noborder",
+	}
 
-// runWithOutput runs a command and returns its output
-func runWithOutput(cmd string, args ...string) ([]string, error) {
-	command := exec.Command(cmd, args...)
+	// Add common options
+	for _, opt := range strings.Split(fzfCommonOpts, " ") {
+		if opt != "" {
+			fzfArgs = append(fzfArgs, opt)
+		}
+	}
+
+	fzfCmd := exec.Command("fzf", fzfArgs...)
+
+	fzfCmd.Stdin = strings.NewReader(strings.Join(files, "\n"))
+	fzfCmd.Stderr = os.Stderr
+
 	var out bytes.Buffer
-	command.Stdout = &out
-	command.Stderr = os.Stderr
+	fzfCmd.Stdout = &out
 
-	err := command.Run()
+	err := fzfCmd.Run()
 	if err != nil {
+		// Exit code 130 means user canceled selection (Ctrl+C)
+		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 130 {
+			return nil, nil
+		}
 		return nil, err
 	}
 
-	var lines []string
+	var selected []string
 	scanner := bufio.NewScanner(&out)
 	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
+		selected = append(selected, scanner.Text())
 	}
 
-	return lines, nil
+	return selected, nil
 }
 
 // getChezmoiStatus gets the status of files from chezmoi
 func getChezmoiStatus() ([]string, error) {
-	output, err := runWithOutput("chezmoi", "status")
+	cmd := exec.Command("chezmoi", "status")
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = os.Stderr
+
+	err := cmd.Run()
 	if err != nil {
 		return nil, err
 	}
 
 	var files []string
-	for _, line := range output {
+	scanner := bufio.NewScanner(&out)
+	for scanner.Scan() {
+		line := scanner.Text()
 		parts := strings.Fields(line)
 		if len(parts) >= 2 {
 			files = append(files, parts[1])
@@ -186,118 +197,107 @@ func getChezmoiStatus() ([]string, error) {
 
 // getChezmoiManaged gets the list of files managed by chezmoi
 func getChezmoiManaged() ([]string, error) {
-	return runWithOutput("chezmoi", "managed", "--include=files")
-}
+	cmd := exec.Command("chezmoi", "managed", "--include=files")
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = os.Stderr
 
-// openInEditor opens the selected files in the user's editor
-func openInEditor(selected []string) error {
-	if len(selected) == 0 {
-		return nil // User canceled or no files selected
-	}
-
-	editor := os.Getenv("EDITOR")
-	if editor == "" {
-		editor = "vim" // Default editor
-	}
-
-	return runCommand(editor, selected...)
-}
-
-// getHomePaths converts relative paths to absolute paths in the home directory
-func getHomePaths(files []string) ([]string, error) {
-	if len(files) == 0 {
-		return nil, nil
-	}
-
-	homeDir, err := os.UserHomeDir()
+	err := cmd.Run()
 	if err != nil {
 		return nil, err
 	}
 
-	var paths []string
-	for _, file := range files {
-		paths = append(paths, filepath.Join(homeDir, file))
-	}
-	return paths, nil
-}
-// processChezmoiFiles handles the common pattern of getting files,
-// selecting them with fzf, and running a chezmoi command on them
-func processChezmoiFiles(getFilesFn func() ([]string, error), selectFn func([]string, string) ([]string, error),
-	header string, cmdName string, needsHomePath bool) error {
-	files, err := getFilesFn()
-	if err != nil {
-		return err
+	var files []string
+	scanner := bufio.NewScanner(&out)
+	for scanner.Scan() {
+		files = append(files, scanner.Text())
 	}
 
-	selected, err := selectFn(files, header)
-	if err != nil {
-		return err
-	}
-
-	if len(selected) == 0 {
-		return nil // User canceled or no files selected
-	}
-
-	if needsHomePath {
-		paths, err := getHomePaths(selected)
-		if err != nil {
-			return err
-		}
-
-		for _, path := range paths {
-			err = runCommand("chezmoi", cmdName, path)
-			if err != nil {
-				return err
-			}
-		}
-		return nil
-	}
-
-	// If we don't need to prepend home path, just run the command directly on selected files
-	cmdArgs := append([]string{cmdName}, selected...)
-	return runCommand("chezmoi", cmdArgs...)
+	return files, nil
 }
 
 // chezmoiAdd adds files to chezmoi
 func chezmoiAdd(args []string) error {
+	var filesToAdd []string
+
 	if len(args) > 0 {
-		// If args provided, use them directly
-		paths, err := getHomePaths(args)
+		filesToAdd = args
+	} else {
+		files, err := getChezmoiStatus()
 		if err != nil {
 			return err
 		}
 
-		for _, path := range paths {
-			err = runCommand("chezmoi", "add", path)
-			if err != nil {
-				return err
-			}
+		filesToAdd, err = selectFilesWithDiff(files, "chezmoi add")
+		if err != nil {
+			return err
 		}
-		return nil
+
+		if len(filesToAdd) == 0 {
+			return nil // User canceled or no files selected
+		}
 	}
 
-	return processChezmoiFiles(getChezmoiStatus, selectFilesWithDiff, "chezmoi add", "add", true)
+	for _, file := range filesToAdd {
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return err
+		}
+		fullPath := filepath.Join(homeDir, file)
+
+		cmd := exec.Command("chezmoi", "add", fullPath)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+
+		err = cmd.Run()
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // chezmoiApply applies changes to files
 func chezmoiApply(args []string) error {
+	var filesToApply []string
+
 	if len(args) > 0 {
-		// If args provided, use them directly
-		paths, err := getHomePaths(args)
+		filesToApply = args
+	} else {
+		files, err := getChezmoiStatus()
 		if err != nil {
 			return err
 		}
 
-		for _, path := range paths {
-			err = runCommand("chezmoi", "apply", path)
-			if err != nil {
-				return err
-			}
+		filesToApply, err = selectFilesWithDiff(files, "chezmoi apply")
+		if err != nil {
+			return err
 		}
-		return nil
+
+		if len(filesToApply) == 0 {
+			return nil // User canceled or no files selected
+		}
 	}
 
-	return processChezmoiFiles(getChezmoiStatus, selectFilesWithDiff, "chezmoi apply", "apply", true)
+	for _, file := range filesToApply {
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return err
+		}
+		fullPath := filepath.Join(homeDir, file)
+
+		cmd := exec.Command("chezmoi", "apply", fullPath)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+
+		err = cmd.Run()
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // chezmoiStatus shows status of files and opens them in editor
@@ -312,7 +312,21 @@ func chezmoiStatus(args []string) error {
 		return err
 	}
 
-	return openInEditor(selected)
+	if len(selected) == 0 {
+		return nil // User canceled or no files selected
+	}
+
+	editor := os.Getenv("EDITOR")
+	if editor == "" {
+		editor = "vim" // Default editor
+	}
+
+	editorCmd := exec.Command(editor, selected...)
+	editorCmd.Stdin = os.Stdin
+	editorCmd.Stdout = os.Stdout
+	editorCmd.Stderr = os.Stderr
+
+	return editorCmd.Run()
 }
 
 // chezmoiManaged selects and edits files managed by chezmoi
@@ -327,27 +341,61 @@ func chezmoiManaged(args []string) error {
 		return err
 	}
 
-	return openInEditor(selected)
+	if len(selected) == 0 {
+		return nil // User canceled or no files selected
+	}
+
+	editor := os.Getenv("EDITOR")
+	if editor == "" {
+		editor = "vim" // Default editor
+	}
+
+	editorCmd := exec.Command(editor, selected...)
+	editorCmd.Stdin = os.Stdin
+	editorCmd.Stdout = os.Stdout
+	editorCmd.Stderr = os.Stderr
+
+	return editorCmd.Run()
 }
 
 // chezmoiForget forgets files from chezmoi
 func chezmoiForget(args []string) error {
+	var filesToForget []string
+
 	if len(args) > 0 {
-		// If args provided, use them directly
-		paths, err := getHomePaths(args)
+		filesToForget = args
+	} else {
+		files, err := getChezmoiManaged()
 		if err != nil {
 			return err
 		}
 
-		for _, path := range paths {
-			err = runCommand("chezmoi", "forget", path)
-			if err != nil {
-				return err
-			}
+		filesToForget, err = selectFilesWithPreview(files, "chezmoi forget")
+		if err != nil {
+			return err
 		}
-		return nil
+
+		if len(filesToForget) == 0 {
+			return nil // User canceled or no files selected
+		}
 	}
 
-	return processChezmoiFiles(getChezmoiManaged, selectFilesWithPreview, "chezmoi forget", "forget", true)
-}
+	for _, file := range filesToForget {
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return err
+		}
+		fullPath := filepath.Join(homeDir, file)
 
+		cmd := exec.Command("chezmoi", "forget", fullPath)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+
+		err = cmd.Run()
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}

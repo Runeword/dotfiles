@@ -3,7 +3,7 @@ local vim = vim
 return {
   'stevearc/aerial.nvim',
 
-  enabled = false,
+  enabled = true,
 
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
@@ -16,17 +16,29 @@ return {
 
       backends = { 'treesitter', },
 
-      icons = {
-        Boolean = '',
-      },
-
       lazy_load = false,
 
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<Down>',  '<cmd>AerialNext<CR>', { buffer = bufnr, })
-        vim.keymap.set('n', '<Up>',    '<cmd>AerialPrev<CR>', { buffer = bufnr, })
-        vim.keymap.set('n', '<Tab>',   '<cmd>AerialNext<CR>', { buffer = bufnr, })
-        vim.keymap.set('n', '<S-Tab>', '<cmd>AerialPrev<CR>', { buffer = bufnr, })
+        vim.keymap.set('n', '<Tab>', function()
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          vim.cmd('AerialNext')
+        end, { buffer = bufnr, })
+
+        vim.keymap.set('n', '<S-Tab>', function()
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          vim.cmd('AerialPrev')
+        end, { buffer = bufnr, })
+
+        vim.keymap.set('n', '<Down>', function()
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          vim.cmd('AerialNext')
+        end, { buffer = bufnr, })
+
+        vim.keymap.set('n', '<Up>', function()
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          vim.cmd('AerialPrev')
+        end, { buffer = bufnr, })
+
         vim.keymap.set('n', '<Leader>u', '<cmd>AerialToggle!<CR>', { buffer = bufnr, })
       end,
 

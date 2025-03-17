@@ -20,22 +20,22 @@ return {
 
       on_attach = function(bufnr)
         vim.keymap.set('n', '<Tab>', function()
-          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false, }) end
           vim.cmd('AerialNext')
         end, { buffer = bufnr, })
 
         vim.keymap.set('n', '<S-Tab>', function()
-          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false, }) end
           vim.cmd('AerialPrev')
         end, { buffer = bufnr, })
 
         vim.keymap.set('n', '<Down>', function()
-          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false, }) end
           vim.cmd('AerialNext')
         end, { buffer = bufnr, })
 
         vim.keymap.set('n', '<Up>', function()
-          if not require('aerial').is_open() then require('aerial').toggle({ focus = false }) end
+          if not require('aerial').is_open() then require('aerial').toggle({ focus = false, }) end
           vim.cmd('AerialPrev')
         end, { buffer = bufnr, })
 
@@ -47,7 +47,7 @@ return {
         width = nil,
         min_width = 10,
         win_opts = {},
-        default_direction = 'prefer_right',
+        default_direction = 'right',
         placement = 'window',
         resize_to_content = true,
         preserve_equality = false,

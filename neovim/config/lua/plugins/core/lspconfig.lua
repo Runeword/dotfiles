@@ -82,15 +82,15 @@ return {
 		lspconfig.volar.setup(set_config({ on_attach = on_attach_server(false), }))
     lspconfig.pyright.setup(set_config())
 
-    lspconfig.typos_lsp.setup(set_config(
-      {
-        root_dir = function() return '' end,
-        cmd_env = { RUST_LOG = 'Hint', },
-        init_options = {
-          diagnosticSeverity = 'hint',
-        },
-      }
-    ))
+    -- lspconfig.typos_lsp.setup(set_config(
+    --   {
+    --     root_dir = function() return '' end,
+    --     cmd_env = { RUST_LOG = 'Hint', },
+    --     init_options = {
+    --       diagnosticSeverity = 'hint',
+    --     },
+    --   }
+    -- ))
 
     lspconfig['ts_ls'].setup(set_config(
       {

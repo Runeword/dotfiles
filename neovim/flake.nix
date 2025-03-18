@@ -67,7 +67,8 @@
               taplo
               black
               isort
-              typos-lsp
+              harper
+              # typos-lsp
             ]
           }
         '';

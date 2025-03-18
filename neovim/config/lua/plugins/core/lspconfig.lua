@@ -79,7 +79,7 @@ return {
     lspconfig.cssls.setup(set_config())
     lspconfig.volar.setup(set_config({ on_attach = on_attach_server(false), }))
     lspconfig.pyright.setup(set_config())
-    lspconfig.harper_ls.setup(set_config())
+    lspconfig.harper_ls.setup(set_config({ filetypes = { 'markdown', }, }))
 
     lspconfig['ts_ls'].setup(set_config(
       {

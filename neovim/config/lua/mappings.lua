@@ -3,6 +3,7 @@ local vim = vim
 ----------------------------------- UNMAP
 
 vim.keymap.set('n',           '<Enter>',    '<Nop>')
+vim.keymap.set('n',           '<Space>',    '<Nop>')
 vim.keymap.set('n',           '<C-n>',      '<Nop>')
 vim.keymap.set('n',           '<C-p>',      '<Nop>')
 vim.keymap.set('',            'Q',          '<Nop>')
@@ -17,7 +18,8 @@ vim.keymap.set('x',           '<C-n>',      ':Norm ')
 vim.keymap.set('n',           '<Leader>g',  '<cmd>silent !google-chrome-stable %:p<CR>')
 -- vim.keymap.set('n',           'g<Space>',   '<cmd>silent s/\\s\\+\\%#\\s*\\|\\s*\\%#\\s\\+/ /g<CR><cmd>nohlsearch<CR>')
 vim.keymap.set('n',           'g<Space>',   '<cmd>silent %s/\\s\\+$//e<CR>')
-vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                                                  { remap = true, })
+-- vim.keymap.set({ 'x', 'n', }, '<Space>',    '<Enter>',                                                                  { remap = true, })
+vim.keymap.set({ 'x', 'n', }, '<Enter>',    '<Space>',                                                                  { remap = true, })
 vim.keymap.set({ 'x', 'n', }, '<Leader>q',  '<cmd>qa!<CR>')
 vim.keymap.set({ 'x', 'n', }, 'Q',          '<cmd>qa!<CR>')
 

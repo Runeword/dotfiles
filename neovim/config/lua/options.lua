@@ -5,7 +5,8 @@ local opt = vim.opt
 -- vim.cmd([[color haslo]])
 -- vim.cmd([[colorscheme blaster]])
 
-vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
+-- vim.cmd([[let mapleader = "\<Enter>"]]) -- vim.cmd([[let mapleader = "\<BS>"]])
+vim.cmd([[let mapleader = "\<Space>"]])
 
 o.splitright = true
 o.splitkeep = 'screen'

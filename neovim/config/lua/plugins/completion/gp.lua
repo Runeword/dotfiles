@@ -2,6 +2,8 @@ local vim = vim
 return {
   'robitx/gp.nvim',
 
+  enabled = false,
+
   config = function()
     require('gp').setup({
       openai_api_key = { 'pass', 'show', 'OPENAI_API_KEY', },
@@ -27,7 +29,7 @@ return {
       }
     end
 
-    vim.keymap.set({ 'n', 'i', }, '<Leader>n', '<cmd>GpChatNew<cr>', keymapOptions('New Chat'))
+    vim.keymap.set({ 'n', }, '<Leader>n', '<cmd>GpChatNew<cr>', keymapOptions('New Chat'))
     -- vim.keymap.set('v', '<Leader>n', ":<C-u>'<,'>GpChatPaste<cr>", keymapOptions('Visual Chat Paste'))
 
     -- vim.keymap.set({ 'n', 'i', }, '<C-g>c', '<cmd>GpChatNew<cr>', keymapOptions('New Chat'))

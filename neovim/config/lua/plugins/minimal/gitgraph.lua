@@ -1,6 +1,8 @@
 return {
   'isakbm/gitgraph.nvim',
 
+  enabled = false,
+
   opts = {
     symbols = {
       merge_commit = 'M',

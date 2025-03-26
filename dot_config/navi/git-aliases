@@ -40,8 +40,8 @@ r	git-forgit checkout_file                    	Delete unstaged (git checkout --)
 rm	git rm -rf                                	Remove file
 rb	git-forgit rebase
 rb	git-forgit rebase --interactive           	Interactive rebase
-reh	git reset --hard                          	Delete staged + unstaged
-res	git-forgit reset_head                     	Delete staged (git restore --staged)
+rh	git reset --hard                          	Delete staged + unstaged
+ru	git-forgit reset_head                     	Unstage changes (git restore --staged)
 rts	git reset --soft HEAD~<n>                 	Revert last n commit and unstage their changes
 rth	git reset --hard HEAD~<n>                 	Revert last n commit and delete their changes
 cln	git-forgit clean --force -d               	Delete untracked files and directories

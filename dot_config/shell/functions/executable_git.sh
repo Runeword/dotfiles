@@ -9,6 +9,8 @@ __git_clone() {
 }
 
 __git_open_unstaged() {
+  local repo_root
+  repo_root="$(git rev-parse --show-toplevel)"
   git ls-files --others --exclude-standard --modified \
     | fzf \
     --multi --reverse --no-separator --border none --cycle --height 70% \
@@ -17,10 +19,13 @@ __git_open_unstaged() {
     --prompt='  ' \
     --scheme=path \
     --bind='ctrl-a:select-all' \
+    | sed "s|^|$repo_root/|" \
     | xargs -r nvim
 }
 
 __git_open_staged() {
+  local repo_root
+  repo_root="$(git rev-parse --show-toplevel)"
   git diff --name-only --cached \
     | fzf \
     --multi --reverse --no-separator --border none --cycle --height 70% \
@@ -29,6 +34,7 @@ __git_open_staged() {
     --prompt='  ' \
     --scheme=path \
     --bind='ctrl-a:select-all' \
+    | sed "s|^|$repo_root/|" \
     | xargs -r nvim
 }
 

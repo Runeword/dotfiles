@@ -101,7 +101,7 @@ live_config_reload = true
       { chars = "\u001B[9;7u", key = "Tab", mods = "Control|Alt" },
       { chars = "\u001B[9;8u", key = "Tab", mods = "Control|Alt|Shift" },
       { chars = "\u0002[", key = "Escape", mods = "Control" },
-      { chars = "\u001B[27;2u", key = "Escape", mods = "Shift" },
+      { chars = "\u001b", key = "Escape", mods = "Shift" },
 
       { chars = "\u001B[48;5u", key = "Key0", mods = "Control" },
       { chars = "\u001B[49;5u", key = "Key1", mods = "Control" },

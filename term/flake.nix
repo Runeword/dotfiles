@@ -145,25 +145,24 @@
           # pkgs.nerd-fonts.victor-mono
         ];
 
-        # Custom Alacritty with configuration
-        customAlacritty = pkgs.symlinkJoin {
-          name = "alacritty-with-config";
-          paths = [ pkgs.alacritty ];
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            # Create config directory
-            mkdir -p $out/.config/alacritty
+        customAlacritty =
+          pkgs.runCommand "alacritty"
+            {
+              nativeBuildInputs = [ pkgs.makeWrapper ];
+            }
+            ''
+              mkdir -p $out/bin
+              mkdir -p $out/.config/alacritty
 
-            # Link alacritty configuration
-            ln -s ${builtins.toString ./alacritty/alacritty.toml} $out/.config/alacritty/alacritty.toml
+              # Link alacritty configuration
+              ln -s ${builtins.toString ./alacritty/alacritty.toml} $out/.config/alacritty/alacritty.toml
 
-            # Wrap alacritty binary to use our config and include all extra packages
-            wrapProgram $out/bin/alacritty \
-              --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
-              --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
-              --set XDG_CONFIG_HOME "$out/.config"
-          '';
-        };
+              # Create wrapper script
+              makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
+                --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
+                --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
+                --set XDG_CONFIG_HOME "$out/.config"
+            '';
 
       in
       {

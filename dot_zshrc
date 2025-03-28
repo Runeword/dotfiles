@@ -137,7 +137,7 @@ bindkey '\x1b[13;5u' autosuggest-execute
 
 # ------------------------------------ Functions
 if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
-  for file in "$XDG_CONFIG_HOME/shell/functions"/*.*; do
+  for file in "$XDG_CONFIG_HOME/shell/functions"/*.sh; do
     . "$file"
   done
 fi

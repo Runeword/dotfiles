@@ -40,7 +40,7 @@ __git_open_staged() {
 
 __git_aliases() {
   local selected_command
-  selected_command=$(< ~/.config/navi/git-aliases \
+  selected_command=$(< ~/.config/shell/functions/git-aliases \
     column \
     --table \
     --separator $'\t' \

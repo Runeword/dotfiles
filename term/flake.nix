@@ -58,6 +58,7 @@
             # Wrap tmux binary to use our config
             wrapProgram $out/bin/tmux \
               --set XDG_CONFIG_HOME "$out/.config"
+              # --add-flags "-f ${builtins.toString ./tmux/tmux.conf}"
           '';
         };
 

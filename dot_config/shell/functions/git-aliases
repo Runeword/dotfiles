@@ -25,7 +25,7 @@ ko	git checkout --ours FileName              	Resolve merge conflict by keeping 
 t 	git status                                	Show files status
 nu	__git_open_unstaged                       	Open unstaged files in neovim
 ns	__git_open_staged                         	Open staged files in neovim
-e 	nvim ~/.config/navi/git-aliases
+e 	nvim ~/.config/shell/functions/git-aliases
 sp 	git stash push                                    	Stash staged + unstaged
 ss	git stash push --staged                           	Stash staged
 sa	git stash push --include-untracked                	Stash staged + unstaged + untracked

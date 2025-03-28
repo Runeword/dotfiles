@@ -27,7 +27,7 @@ stty -ixon
 [ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"
 
 if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
-  for file in "$XDG_CONFIG_HOME/shell/functions"/*; do
+  for file in "$XDG_CONFIG_HOME/shell/functions"/*.*; do
     . "$file"
   done
 fi

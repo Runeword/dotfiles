@@ -40,14 +40,22 @@
           '';
         };
 
-        # Custom tmux with configuration
         customTmux = pkgs.symlinkJoin {
           name = "tmux-with-config";
           paths = [ pkgs.tmux ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
-            mkdir -p $out/.config/tmux
+            # Create config directory
+            mkdir -p $out/.config/tmux/plugins
+
+            # Link tmux configuration
             ln -s ${builtins.toString ./tmux/tmux.conf} $out/.config/tmux/tmux.conf
+
+            # Link tmux plugins
+            ln -s ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
+            ln -s ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/.config/tmux/plugins/tmux-fzf
+
+            # Wrap tmux binary to use our config
             wrapProgram $out/bin/tmux \
               --set XDG_CONFIG_HOME "$out/.config"
           '';
@@ -58,7 +66,7 @@
           cowsay # cowsay
           yazi # file manager
           navi # cheat sheet
-          customTmux # Custom tmux with configuration
+          customTmux
           starship # prompt
           wl-clipboard # copy/paste
           xdragon # drag and drop

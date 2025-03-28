@@ -43,9 +43,7 @@
         mkOutOfStoreSymlink =
           path:
           let
-            relPath = builtins.substring (builtins.stringLength (toString ./.)) (builtins.stringLength (
-              toString path
-            )) (toString path);
+            relPath = pkgs.lib.removePrefix (toString ./.) (toString path);
             homePath = "/home/charles/term${relPath}";
           in
           pkgs.runCommandLocal "out-of-store-symlink-${builtins.baseNameOf path}"
@@ -65,7 +63,7 @@
           postBuild = ''
             mkdir -p $out/.config/tmux/plugins
 
-            ln -sf ${mkOutOfStoreSymlink (builtins.toString ./tmux/tmux.conf)}/${builtins.baseNameOf (toString ./tmux/tmux.conf)} $out/.config/tmux/tmux.conf
+            ln -sf ${mkOutOfStoreSymlink (toString ./tmux/tmux.conf)}/${builtins.baseNameOf ./tmux/tmux.conf} $out/.config/tmux/tmux.conf
 
             ln -s ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
             ln -s ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/.config/tmux/plugins/tmux-fzf

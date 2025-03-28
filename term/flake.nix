@@ -145,28 +145,36 @@
           # pkgs.nerd-fonts.victor-mono
         ];
 
-        wrappedAlacritty =
-          pkgs.runCommand "wrappedAlacritty"
-            {
-              nativeBuildInputs = [ pkgs.makeWrapper ];
-            }
-            ''
-              mkdir -p $out/bin
-              makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
-                --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
-                --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }}
-            '';
+        # Custom Alacritty with configuration
+        customAlacritty = pkgs.symlinkJoin {
+          name = "alacritty-with-config";
+          paths = [ pkgs.alacritty ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            # Create config directory
+            mkdir -p $out/.config/alacritty
+
+            # Link alacritty configuration
+            ln -s ${builtins.toString ./alacritty/alacritty.yml} $out/.config/alacritty/alacritty.yml
+
+            # Wrap alacritty binary to use our config and include all extra packages
+            wrapProgram $out/bin/alacritty \
+              --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
+              --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
+              --set XDG_CONFIG_HOME "$out/.config"
+          '';
+        };
 
       in
       {
         packages = {
-          default = wrappedAlacritty;
-          wrappedAlacritty = wrappedAlacritty;
+          default = customAlacritty;
+          customAlacritty = customAlacritty;
         };
 
         apps.default = {
           type = "app";
-          program = "${wrappedAlacritty}/bin/alacritty";
+          program = "${customAlacritty}/bin/alacritty";
         };
       }
     );

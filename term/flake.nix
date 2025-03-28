@@ -155,7 +155,7 @@
             mkdir -p $out/.config/alacritty
 
             # Link alacritty configuration
-            ln -s ${builtins.toString ./alacritty/alacritty.yml} $out/.config/alacritty/alacritty.yml
+            ln -s ${builtins.toString ./alacritty/alacritty.toml} $out/.config/alacritty/alacritty.toml
 
             # Wrap alacritty binary to use our config and include all extra packages
             wrapProgram $out/bin/alacritty \

@@ -40,25 +40,35 @@
           '';
         };
 
+        mkOutOfStoreSymlink =
+          path:
+          let
+            absolutePath = toString path;
+          in
+          pkgs.runCommandLocal "out-of-store-symlink-${builtins.baseNameOf path}"
+            {
+              allowSubstitutes = false;
+              preferLocalBuild = true;
+            }
+            ''
+              mkdir -p $out
+              ln -s ${absolutePath} $out/${builtins.baseNameOf path}
+            '';
+
         customTmux = pkgs.symlinkJoin {
           name = "tmux-with-config";
           paths = [ pkgs.tmux ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
-            # Create config directory
             mkdir -p $out/.config/tmux/plugins
 
-            # Link tmux configuration
-            ln -s ${builtins.toString ./tmux/tmux.conf} $out/.config/tmux/tmux.conf
+            ln -sf ${mkOutOfStoreSymlink (builtins.toString ./tmux/tmux.conf)}/tmux.conf $out/.config/tmux/tmux.conf
 
-            # Link tmux plugins
             ln -s ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
             ln -s ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/.config/tmux/plugins/tmux-fzf
 
-            # Wrap tmux binary to use our config
             wrapProgram $out/bin/tmux \
               --set XDG_CONFIG_HOME "$out/.config"
-              # --add-flags "-f ${builtins.toString ./tmux/tmux.conf}"
           '';
         };
 
@@ -170,11 +180,18 @@
         packages = {
           default = customAlacritty;
           customAlacritty = customAlacritty;
+          customTmux = customTmux;
         };
 
-        apps.default = {
-          type = "app";
-          program = "${customAlacritty}/bin/alacritty";
+        apps = {
+          default = {
+            type = "app";
+            program = "${customAlacritty}/bin/alacritty";
+          };
+          customTmux = {
+            type = "app";
+            program = "${customTmux}/bin/tmux";
+          };
         };
       }
     );

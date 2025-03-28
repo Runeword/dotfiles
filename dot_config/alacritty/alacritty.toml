@@ -1,3 +1,6 @@
+# run alacritty using default settings for debug purposes
+# alacritty --config-file /dev/null
+
 [general]
 live_config_reload = true
 

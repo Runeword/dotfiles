@@ -16,7 +16,7 @@ __update_flake_inputs() {
 	selected_inputs=$(
 		echo "$inputs" | fzf \
 			--multi --info=inline:'' --reverse --no-separator --prompt='  ' --border none --cycle --height 70% --header-first --bind='ctrl-a:select-all' --header="nix flake update"\
-			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\"'" \
+			--preview "echo '$flake_metadata' | jq --color-output '.locks.nodes.\"{}\" | . + {\"lastModified\": (.locked.lastModified | if . then (. | strftime(\"%Y-%m-%d %H:%M:%S\")) else null end)}'"\
 			--preview-window right,75%,noborder
 	)
 	[ -z "$selected_inputs" ] && return 1

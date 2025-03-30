@@ -42,21 +42,19 @@
         mkOutOfStoreSymlink =
           path:
           let
-            relPath = pkgs.lib.removePrefix (toString ./.) (toString path);
-            homePath = "${toString /home/charles/term}${relPath}";
             fileName = builtins.baseNameOf path;
-            derivation =
-              pkgs.runCommandLocal "out-of-store-symlink-${fileName}"
-                {
-                  allowSubstitutes = false;
-                  preferLocalBuild = true;
-                }
-                ''
-                  mkdir -p $out
-                  ln -s ${homePath} $out/${fileName}
-                '';
           in
-          "${derivation}/${fileName}";
+          "${
+            pkgs.runCommandLocal "out-of-store-symlink-${fileName}"
+              {
+                allowSubstitutes = false;
+                preferLocalBuild = true;
+              }
+              ''
+                mkdir -p $out
+                ln -s ${toString /home/charles/term}${pkgs.lib.removePrefix (toString ./.) (toString path)} $out/${fileName}
+              ''
+          }/${fileName}";
 
         customTmux = pkgs.symlinkJoin {
           name = "tmux-with-config";

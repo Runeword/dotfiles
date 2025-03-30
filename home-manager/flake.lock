@@ -408,11 +408,11 @@
       },
       "locked": {
         "dir": "term",
-        "lastModified": 1743179361,
-        "narHash": "sha256-JElLP4zxBo7e3rnyUeJQZnzSYCIhnN343AdZwjGqZaA=",
+        "lastModified": 1743374815,
+        "narHash": "sha256-+mMPK1FBJLNo9JRCoxBQrMmU7AnMGUfLHXwVgY2ex34=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "9ff64e7540b3c71dd4eea761de507c1b3ffb40b9",
+        "rev": "642e1953f7f153021edc21822d6d6a5ed8424086",
         "type": "github"
       },
       "original": {

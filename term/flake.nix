@@ -15,7 +15,6 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        # pkgs = nixpkgs.legacyPackages.${system};
         pkgs = import nixpkgs {
           inherit system;
           config = {
@@ -44,17 +43,20 @@
           path:
           let
             relPath = pkgs.lib.removePrefix (toString ./.) (toString path);
-            homePath = "/home/charles/term${relPath}";
+            homePath = "${toString /home/charles/term}${relPath}";
+            fileName = builtins.baseNameOf path;
+            derivation =
+              pkgs.runCommandLocal "out-of-store-symlink-${fileName}"
+                {
+                  allowSubstitutes = false;
+                  preferLocalBuild = true;
+                }
+                ''
+                  mkdir -p $out
+                  ln -s ${homePath} $out/${fileName}
+                '';
           in
-          pkgs.runCommandLocal "out-of-store-symlink-${builtins.baseNameOf path}"
-            {
-              allowSubstitutes = false;
-              preferLocalBuild = true;
-            }
-            ''
-              mkdir -p $out
-              ln -s ${homePath} $out/${builtins.baseNameOf path}
-            '';
+          "${derivation}/${fileName}";
 
         customTmux = pkgs.symlinkJoin {
           name = "tmux-with-config";
@@ -63,7 +65,7 @@
           postBuild = ''
             mkdir -p $out/.config/tmux/plugins
 
-            ln -sf ${mkOutOfStoreSymlink (toString ./tmux/tmux.conf)}/${builtins.baseNameOf ./tmux/tmux.conf} $out/.config/tmux/tmux.conf
+            ln -sf ${mkOutOfStoreSymlink (toString ./tmux/tmux.conf)} $out/.config/tmux/tmux.conf
 
             ln -s ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
             ln -s ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/.config/tmux/plugins/tmux-fzf
@@ -142,19 +144,9 @@
         ];
 
         extraFonts = [
-          # maple-mono-NF
-          # (pkgs.nerdfonts.override {
-          #   fonts = [
-          #     "SourceCodePro"
-          #     "Monaspace"
-          #     "CascadiaMono"
-          #     # "VictorMono"
-          #   ];
-          # })
           pkgs.nerd-fonts.sauce-code-pro
           pkgs.nerd-fonts.monaspace
           pkgs.nerd-fonts.caskaydia-mono
-          # pkgs.nerd-fonts.victor-mono
         ];
 
         customAlacritty =

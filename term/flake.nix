@@ -156,10 +156,8 @@
               mkdir -p $out/bin
               mkdir -p $out/.config/alacritty
 
-              # Link alacritty configuration
-              ln -s ${builtins.toString ./alacritty/alacritty.toml} $out/.config/alacritty/alacritty.toml
+              ln -sf ${mkOutOfStoreSymlink (toString ./alacritty/alacritty.toml)} $out/.config/alacritty/alacritty.toml
 
-              # Create wrapper script
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
                 --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
                 --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \

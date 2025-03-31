@@ -14,6 +14,15 @@ rec {
     dmidecode
     libinput
     evtest
+    cloneit
+    nix-prefetch-docker
+    gmailctl
+    sqlite
+    progress
+    qmk
+    httrack
+    chezmoi
+    # impala
 
     # Coreutils
     bat

@@ -2,9 +2,7 @@
 { pkgs, lib }:
 
 rec {
-  # List of packages for the environment
   environment = with pkgs; [
-    # Terminal tools
     cowsay
     yazi # file manager
     navi # cheat sheet
@@ -12,10 +10,6 @@ rec {
     wl-clipboard # copy/paste
     xdragon # drag and drop
     ueberzugpp # images support for terminal
-    aider-chat # ai
-    qrcp # mobile QR files transfer
-    ngrok
-    awscli2
 
     # Coreutils
     bat
@@ -35,6 +29,12 @@ rec {
     procs
     gping
     hyperfine # benchmarking
+    lsof
+
+    # Development
+    atac
+    ngrok
+    awscli2
 
     # Archivers
     ouch
@@ -61,6 +61,21 @@ rec {
     hwinfo # Hardware info
     onefetch # Git info
     neofetch # System info
+
+    # Nix
+    nix-init
+    cachix
+
+    # Multimedia
+    asciinema # Terminal recorder
+    lux # Video downloader
+    qrcp # mobile QR files transfer
+
+    # Disk
+    ncdu
+    qdirstat # Disk usage viewer
+    erdtree # Disk usage
+    nvme-cli # NVMe storage devices manager
 
     # Custom packages
     leader
@@ -91,4 +106,3 @@ rec {
     extraFonts = fonts;
   };
 }
-

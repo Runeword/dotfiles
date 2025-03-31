@@ -78,8 +78,11 @@ rec {
     nvme-cli # NVMe storage devices manager
 
     # Custom packages
-    leader
-    tmux
+    (import ./leader.nix { inherit pkgs; })
+    (import ./tmux.nix {
+      inherit pkgs;
+      inherit (lib) mkOutOfStoreSymlink;
+    })
   ];
 
   # Fonts collection
@@ -88,15 +91,6 @@ rec {
     pkgs.nerd-fonts.monaspace
     pkgs.nerd-fonts.caskaydia-mono
   ];
-
-  # Custom leader package
-  leader = import ./leader.nix { inherit pkgs; };
-
-  # Custom tmux with configuration
-  tmux = import ./tmux.nix {
-    inherit pkgs;
-    inherit (lib) mkOutOfStoreSymlink;
-  };
 
   # Custom alacritty with additional packages and configuration
   alacritty = import ./alacritty.nix {

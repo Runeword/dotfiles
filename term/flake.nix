@@ -22,45 +22,28 @@
           };
         };
 
-        mkOutOfStoreSymlink = import ./lib/mkOutOfStoreSymlink.nix { inherit pkgs; };
+        lib = import ./lib { inherit pkgs; };
 
-        customPackages.leader = import ./packages/leader.nix { inherit pkgs; };
-
-        customTmux = import ./packages/tmux.nix {
+        packages = import ./packages {
           inherit pkgs;
-          inherit mkOutOfStoreSymlink;
-        };
-
-        packagesModule = import ./modules/packages.nix {
-          inherit pkgs;
-          inherit customTmux;
-        };
-        extraPackages = packagesModule.extraPackages ++ [ customPackages.leader ];
-        extraFonts = packagesModule.extraFonts;
-
-        customAlacritty = import ./packages/alacritty.nix {
-          inherit pkgs;
-          inherit mkOutOfStoreSymlink;
-          inherit extraPackages;
-          inherit extraFonts;
+          inherit lib;
         };
 
       in
       {
         packages = {
-          default = customAlacritty;
-          customAlacritty = customAlacritty;
-          customTmux = customTmux;
+          default = packages.alacritty;
+          inherit (packages) alacritty tmux leader;
         };
 
         apps = {
           default = {
             type = "app";
-            program = "${customAlacritty}/bin/alacritty";
+            program = "${packages.alacritty}/bin/alacritty";
           };
-          customTmux = {
+          tmux = {
             type = "app";
-            program = "${customTmux}/bin/tmux";
+            program = "${packages.tmux}/bin/tmux";
           };
         };
       }

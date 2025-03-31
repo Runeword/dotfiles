@@ -85,18 +85,10 @@ rec {
     })
   ];
 
-  # Fonts collection
-  fonts = [
-    pkgs.nerd-fonts.sauce-code-pro
-    pkgs.nerd-fonts.monaspace
-    pkgs.nerd-fonts.caskaydia-mono
-  ];
-
   # Custom alacritty with additional packages and configuration
   alacritty = import ./alacritty.nix {
     inherit pkgs;
     inherit (lib) mkOutOfStoreSymlink;
     extraPackages = environment;
-    extraFonts = fonts;
   };
 }

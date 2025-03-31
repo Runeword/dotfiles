@@ -115,12 +115,6 @@ in
     firefox
     tor-browser
 
-    # ---------------------------------- Hardware
-    ventoy-full
-    dmidecode
-    libinput
-    evtest
-
     # ---------------------------------- Terminal
     inputs.runeword-neovim.packages.x86_64-linux.default # Text editor
     kitty # Terminal emulator

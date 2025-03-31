@@ -14,9 +14,9 @@ let
   #     url = "https://github.com/Exafunction/codeium/releases/download/termium-v0.2.1/termium_x86_64-unknown-linux-gnu";
   #     sha256 = "sha256-DZR+MSIJWkuiKjRtPqzwvj+hXhel71+5HPJ/7G1o+tw=";
   #   };
-  #   
+  #
   #   dontUnpack = true;
-  #   
+  #
   #   installPhase = ''
   #     mkdir -p $out/bin
   #     cp $src $out/bin/termium
@@ -53,9 +53,11 @@ let
   windsurf = pkgs.callPackage ./windsurf.nix { };
 in
 {
-  home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
+  home.file.".config/nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
 
-  home.file.".config/zsh/plugins/zsh-autosuggestions".source = "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
+  home.file.".config/zsh/plugins/zsh-autosuggestions".source =
+    "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
 
   # home.file.".local/share/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
 
@@ -66,22 +68,15 @@ in
   home.packages = with pkgs; [
     inputs.runeword-terminal.packages.x86_64-linux.default
     python311
-    qmk
     gcc
-    httrack
-    pgmodeler
-    chezmoi
-    progress
-    whatsie
-    zsh
-    android-studio
+
     git
-    cloneit
-    nix-prefetch-docker
-    gmailctl
+    zsh
+
+    pgmodeler
+    whatsie
+    android-studio
     postman
-    sqlite
-    impala
     iwgtk
     # claude-code
     # rquickshare
@@ -104,7 +99,7 @@ in
 
     # ---------------------------------- Editors
     vscode
-		# vscode-extensions.dbaeumer.vscode-eslint
+    # vscode-extensions.dbaeumer.vscode-eslint
     direnv
     nix-direnv
     (lib.hiPrio windsurf)

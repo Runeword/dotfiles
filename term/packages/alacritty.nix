@@ -3,9 +3,15 @@
   pkgs,
   mkOutOfStoreSymlink,
   extraPackages,
-  extraFonts,
 }:
 
+let
+  extraFonts = [
+    pkgs.nerd-fonts.sauce-code-pro
+    pkgs.nerd-fonts.monaspace
+    pkgs.nerd-fonts.caskaydia-mono
+  ];
+in
 pkgs.runCommand "alacritty"
   {
     nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -21,4 +27,3 @@ pkgs.runCommand "alacritty"
       --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
       --set XDG_CONFIG_HOME "$out/.config"
   ''
-

@@ -141,40 +141,6 @@ in
     pinentry-curses
     # gpg-tui
 
-    # ---------------------------------- CLI tools
-    # termium
-    # lsd
-    lsof
-
-    nix-init
-    cachix
-    # tldr
-    # tealdeer
-    asciinema # Terminal recorder
-    lux # Video downloader
-
-    # watchexec
-    # atac
-
-    # Disk
-    ncdu
-    qdirstat # Disk usage viewer
-    erdtree # Disk usage
-    # dust
-    # duf 
-    # gdu 
-    # diskonaut 
-
-    # Email
-    # neomutt # Email client
-    # notmuch # Email search and tag
-    # lieer # Gmail sync
-
-    nvme-cli # NVMe storage devices manager
-
-    # lynis  # System health scan
-    # stacer # System Optimization
-
     # ---------------------------------- Graphics
     inkscape
     # realesrgan-ncnn-vulkan

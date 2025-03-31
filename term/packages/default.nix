@@ -10,6 +10,10 @@ rec {
     wl-clipboard # copy/paste
     xdragon # drag and drop
     ueberzugpp # images support for terminal
+    ventoy-full
+    dmidecode
+    libinput
+    evtest
 
     # Coreutils
     bat

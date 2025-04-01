@@ -33,7 +33,12 @@
       {
         packages = {
           default = packages.alacritty;
-          inherit (packages) alacritty tmux leader;
+          inherit (packages)
+            alacritty
+            tmux
+            leader
+            zsh
+            ;
         };
 
         apps = {
@@ -44,6 +49,10 @@
           tmux = {
             type = "app";
             program = "${packages.tmux}/bin/tmux";
+          };
+          zsh = {
+            type = "app";
+            program = "${packages.zsh}/bin/zsh";
           };
         };
       }

@@ -108,4 +108,17 @@ rec {
     inherit (lib) mkOutOfStoreSymlink;
     extraPackages = extraPackages;
   };
+  
+  # Export individual packages
+  tmux = import ./tmux.nix {
+    inherit pkgs;
+    inherit (lib) mkOutOfStoreSymlink;
+  };
+  
+  leader = import ./leader.nix { inherit pkgs; };
+  
+  zsh = import ./zsh.nix {
+    inherit pkgs;
+    inherit (lib) mkOutOfStoreSymlink;
+  };
 }

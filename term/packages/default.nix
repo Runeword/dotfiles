@@ -2,7 +2,7 @@
 { pkgs, lib }:
 
 rec {
-  environment = with pkgs; [
+  extraPackages = with pkgs; [
     cowsay
     yazi # file manager
     navi # cheat sheet
@@ -92,6 +92,10 @@ rec {
 
     # Custom packages
     (import ./leader.nix { inherit pkgs; })
+    (import ./zsh.nix {
+      inherit pkgs;
+      inherit (lib) mkOutOfStoreSymlink;
+    })
     (import ./tmux.nix {
       inherit pkgs;
       inherit (lib) mkOutOfStoreSymlink;
@@ -102,6 +106,6 @@ rec {
   alacritty = import ./alacritty.nix {
     inherit pkgs;
     inherit (lib) mkOutOfStoreSymlink;
-    extraPackages = environment;
+    extraPackages = extraPackages;
   };
 }

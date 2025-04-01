@@ -68,6 +68,7 @@ in
     gcc
 
     git
+    zsh
 
     pgmodeler
     whatsie

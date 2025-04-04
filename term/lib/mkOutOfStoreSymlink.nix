@@ -6,17 +6,9 @@
 
 path:
 let
-  fileName = builtins.baseNameOf path;
+  pathStr = toString path;
+  name = builtins.baseNameOf pathStr;
+  fullPath = "${toString workspacePath}/${pathStr}";
 in
-"${
-  pkgs.runCommandLocal "out-of-store-symlink-${fileName}"
-    {
-      allowSubstitutes = false;
-      preferLocalBuild = true;
-    }
-    ''
-      mkdir -p $out
-      ln -s ${toString workspacePath}/${toString path} $out/${fileName}
-    ''
-}/${fileName}"
+pkgs.runCommandLocal name {} ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out''
 

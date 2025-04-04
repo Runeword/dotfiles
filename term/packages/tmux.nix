@@ -6,12 +6,12 @@ pkgs.symlinkJoin {
   paths = [ pkgs.tmux ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    mkdir -p $out/.config/tmux/plugins
+    mkdir -p $out/.config
 
-    ln -sf ${mkOutOfStoreSymlink "config/tmux/tmux.conf"} $out/.config/tmux/tmux.conf
+    ln -sf ${mkOutOfStoreSymlink "config/tmux"} $out/.config/tmux
 
-    ln -s ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
-    ln -s ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/.config/tmux/plugins/tmux-fzf
+    # ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
+    # ln -sf ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/.config/tmux/plugins/tmux-fzf
 
     wrapProgram $out/bin/tmux \
       --set XDG_CONFIG_HOME "$out/.config"

@@ -17,10 +17,9 @@ pkgs.runCommand "alacritty"
     nativeBuildInputs = [ pkgs.makeWrapper ];
   }
   ''
-    mkdir -p $out/bin
-    mkdir -p $out/.config/alacritty
+    mkdir -p $out/.config
 
-    ln -sf ${mkOutOfStoreSymlink "config/alacritty/alacritty.toml"} $out/.config/alacritty/alacritty.toml
+    ln -sf ${mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
 
     makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
       --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \

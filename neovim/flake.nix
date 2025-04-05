@@ -26,6 +26,15 @@
         overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
       };
 
+      mkOutOfStoreSymlink = 
+        path:
+        let
+          pathStr = toString path;
+          name = builtins.baseNameOf pathStr;
+          fullPath = "${toString /home/charles/neovim}/${pathStr}";
+        in
+        pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
+
       neovim-override = pkgs.neovim.override {
         # withPython3 = true;
         # withNodeJs = true;
@@ -37,6 +46,9 @@
         paths = [ neovim-override ];
         buildInputs = [ pkgs.makeWrapper ];
         postBuild = with pkgs; ''
+          mkdir -p $out/.config
+          ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+
           rm $out/bin/nvim
           makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
@@ -70,7 +82,8 @@
               harper
               # typos-lsp
             ]
-          }
+          } \
+	  --set XDG_CONFIG_HOME "$out/.config"
         '';
       };
     in

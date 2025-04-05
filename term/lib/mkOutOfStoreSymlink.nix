@@ -10,4 +10,4 @@ let
   name = builtins.baseNameOf pathStr;
   fullPath = "${toString workspacePath}/${pathStr}";
 in
-pkgs.runCommandLocal name {} ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out''
+pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out''

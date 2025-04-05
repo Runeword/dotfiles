@@ -50,10 +50,10 @@
             type = "app";
             program = "${packages.tmux}/bin/tmux";
           };
-          zsh = {
-            type = "app";
-            program = "${packages.zsh}/bin/zsh";
-          };
+          # zsh = {
+          #   type = "app";
+          #   program = "${packages.zsh}/bin/zsh";
+          # };
         };
       }
     );

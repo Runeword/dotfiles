@@ -53,8 +53,8 @@ let
   windsurf = pkgs.callPackage ./windsurf.nix { };
 in
 {
-  home.file.".config/nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
+  # home.file.".config/nvim".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
   home.file.".config/zsh/plugins/zsh-autosuggestions".source =
     "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
 

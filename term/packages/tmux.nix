@@ -6,13 +6,24 @@ pkgs.symlinkJoin {
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
     mkdir -p $out/.config
-
     ln -sf ${mkOutOfStoreSymlink "config/tmux"} $out/.config/tmux
 
-    mkdir -p $out/share/tmux-plugins
+    # Create wrapper scripts for tmux-resurrect
+    mkdir -p $out/bin
 
-    ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/share/tmux-plugins/resurrect
-    ln -sf ${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf $out/share/tmux-plugins/tmux-fzf
+    # Save script
+    cat > $out/bin/tmux-resurrect-save << EOF
+    #!/bin/sh
+    exec ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/scripts/save.sh "\$@"
+    EOF
+    chmod +x $out/bin/tmux-resurrect-save
+
+    # Restore script
+    cat > $out/bin/tmux-resurrect-restore << EOF
+    #!/bin/sh
+    exec ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/scripts/restore.sh "\$@"
+    EOF
+    chmod +x $out/bin/tmux-resurrect-restore
 
     wrapProgram $out/bin/tmux \
     --set XDG_CONFIG_HOME "$out/.config"

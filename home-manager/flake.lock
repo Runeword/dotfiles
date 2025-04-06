@@ -402,16 +402,16 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "dir": "term",
-        "lastModified": 1743927998,
-        "narHash": "sha256-9P5atBZRYUE2AGVHD0fZd92tn1ZBbNAqF2N9ZZAg4WY=",
+        "dir": "terminal",
+        "lastModified": 1743973650,
+        "narHash": "sha256-wYyc6MRYpNsZrbOQPf/fMQ/5AfJmgr0rHX2V+YEnmYQ=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "82d2d24475e9ecf8b70681968addfa613ecc4967",
+        "rev": "6c374d92d04e6925b8b1675215679b5ba7004686",
         "type": "github"
       },
       "original": {
-        "dir": "term",
+        "dir": "terminal",
         "owner": "Runeword",
         "repo": "dotfiles",
         "type": "github"

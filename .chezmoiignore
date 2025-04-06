@@ -4,7 +4,6 @@
 !.leaderrc
 !.ssh
 !.github
-!term
 !terminal
 !dev
 !.zshrc

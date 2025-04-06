@@ -5,7 +5,7 @@ return {
 
   -- 'Runeword/appender.nvim',
 
-  dir = '~/.config/nvim/lua/myplugins/appender.nvim',
+  dir = vim.fn.stdpath("config") .. "/lua/myplugins/appender.nvim",
 
   config = function()
     vim.keymap.set({ 'x', 'n', }, 'ga', require('appender').appendCharEndLine,   { expr = true, })

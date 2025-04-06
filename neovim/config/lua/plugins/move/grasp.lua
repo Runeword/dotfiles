@@ -1,7 +1,7 @@
 local vim = vim
 
 return {
-  dir = '~/.config/nvim/lua/myplugins/grasp.nvim',
+  dir = vim.fn.stdpath("config") .. "/lua/myplugins/grasp.nvim",
 
   config = function()
     vim.keymap.set({ 'x', 'o', }, '<Tab>',   require('grasp').select_treesitter_node_under_cursor)

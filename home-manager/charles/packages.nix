@@ -70,7 +70,7 @@ in
     gcc
 
     git
-    zsh
+    # zsh
 
     pgmodeler
     whatsie

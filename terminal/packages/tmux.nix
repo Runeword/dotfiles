@@ -26,6 +26,7 @@ pkgs.symlinkJoin {
     chmod +x $out/bin/tmux-resurrect-restore
 
     wrapProgram $out/bin/tmux \
-    --set XDG_CONFIG_HOME "$out/.config"
+    --set XDG_CONFIG_HOME "$out/.config" \
+    --set SHELL "${pkgs.zsh}/bin/zsh"
   '';
 }

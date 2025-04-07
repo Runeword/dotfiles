@@ -14,6 +14,5 @@ pkgs.symlinkJoin {
 
     wrapProgram $out/bin/zsh \
       --set ZDOTDIR $out/etc \
-      # --add-flags "-i"
   '';
 }

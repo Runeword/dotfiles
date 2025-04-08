@@ -92,14 +92,8 @@ rec {
 
     # Custom packages
     (import ./leader.nix { inherit pkgs; })
-    (import ./zsh.nix {
-      inherit pkgs;
-      inherit (lib) mkOutOfStoreSymlink;
-    })
-    (import ./tmux.nix {
-      inherit pkgs;
-      inherit (lib) mkOutOfStoreSymlink;
-    })
+    zsh
+    tmux
   ];
 
   # Custom alacritty with additional packages and configuration
@@ -109,16 +103,17 @@ rec {
     extraPackages = extraPackages;
   };
   
-  # Export individual packages
+  # Initialize individual packages first to avoid circular dependencies
+  zsh = import ./zsh.nix {
+    inherit pkgs;
+    inherit (lib) mkOutOfStoreSymlink;
+  };
+  
+  # Export tmux with proper zsh dependency
   tmux = import ./tmux.nix {
     inherit pkgs;
     inherit (lib) mkOutOfStoreSymlink;
   };
   
   leader = import ./leader.nix { inherit pkgs; };
-  
-  zsh = import ./zsh.nix {
-    inherit pkgs;
-    inherit (lib) mkOutOfStoreSymlink;
-  };
 }

@@ -6,17 +6,23 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
-        # Initialize nixpkgs
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
 
-        # Helper function for creating symlinks to config files
-        mkOutOfStoreSymlink = path:
+        # Helper function for symlinks
+        mkOutOfStoreSymlink =
+          path:
           let
             pathStr = toString path;
             name = builtins.baseNameOf pathStr;
@@ -24,59 +30,56 @@
           in
           pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
 
-        # Basic packages that don't depend on anything custom
-        standardExtraPackages = import ./packages/extraPackages.nix { inherit pkgs; };
+        # Build packages in dependency order
+        zsh = import ./packages/zsh.nix { inherit pkgs mkOutOfStoreSymlink; };
 
-        # Define packages in order of dependency
-        customZsh = import ./packages/zsh.nix { 
-          inherit pkgs mkOutOfStoreSymlink; 
-        };
-        
-        customTmux = import ./packages/tmux.nix { 
-          pkgs = pkgs // { zsh = customZsh; }; 
-          inherit mkOutOfStoreSymlink; 
-        };
-        
-        customLeader = import ./packages/leader.nix { 
-          inherit pkgs; 
-        };
-
-        # Build alacritty with all other packages
-        customAlacritty = import ./packages/alacritty.nix {
-          pkgs = pkgs // { 
-            zsh = customZsh;
-            tmux = customTmux;
-            leader = customLeader;
-          };
+        tmux = import ./packages/tmux.nix {
           inherit mkOutOfStoreSymlink;
-          extraPackages = standardExtraPackages ++ [
-            customZsh
-            customTmux
-            customLeader
-          ];
+          pkgs = pkgs // {
+            zsh = zsh;
+          };
         };
 
-      in {
+        leader = import ./packages/leader.nix { inherit pkgs; };
+
+        # Package list for Alacritty
+        packageList = (import ./packages/extraPackages.nix { inherit pkgs; }) ++ [
+          zsh
+          tmux
+          leader
+        ];
+
+        # Build Alacritty with the complete package list
+        alacritty = import ./packages/alacritty.nix {
+          inherit mkOutOfStoreSymlink;
+          pkgs = pkgs;
+          extraPackages = packageList;
+        };
+
+      in
+      {
         packages = {
-          default = customAlacritty;
-          alacritty = customAlacritty;
-          tmux = customTmux;
-          leader = customLeader;
-          zsh = customZsh;
+          default = alacritty;
+          inherit
+            alacritty
+            tmux
+            leader
+            zsh
+            ;
         };
 
         apps = {
           default = {
             type = "app";
-            program = "${customAlacritty}/bin/alacritty";
+            program = "${alacritty}/bin/alacritty";
           };
           tmux = {
             type = "app";
-            program = "${customTmux}/bin/tmux";
+            program = "${tmux}/bin/tmux";
           };
           zsh = {
             type = "app";
-            program = "${customZsh}/bin/zsh";
+            program = "${zsh}/bin/zsh";
           };
         };
       }

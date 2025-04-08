@@ -1,5 +1,8 @@
 { pkgs, mkOutOfStoreSymlink }:
 
+let
+  customZsh = import ./zsh.nix { inherit pkgs mkOutOfStoreSymlink; };
+in
 pkgs.symlinkJoin {
   name = "tmux-with-config";
   paths = [ pkgs.tmux ];
@@ -27,6 +30,6 @@ pkgs.symlinkJoin {
 
     wrapProgram $out/bin/tmux \
     --set XDG_CONFIG_HOME "$out/.config" \
-    --set SHELL "${pkgs.zsh}/bin/zsh"
+    --set TMUX_SHELL ${customZsh}/bin/zsh
   '';
 }

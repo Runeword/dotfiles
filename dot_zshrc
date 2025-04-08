@@ -105,6 +105,7 @@ zstyle ':completion:*' menu select interactive
 
 bindkey -M menuselect '^I' vi-down-line-or-history
 bindkey -M menuselect '^[[Z' vi-up-line-or-history
+bindkey -M menuselect '^[' send-break
 
 setopt MENU_COMPLETE
 # bindkey -v '^?' backward-delete-char

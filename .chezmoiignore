@@ -6,7 +6,6 @@
 !.github
 !terminal
 !dev
-!.zshrc
 !.bashrc
 !.ssh/config
 .ssh/*

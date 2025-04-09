@@ -40,8 +40,6 @@ add-zsh-hook precmd __add_newline
 # ------------------------------------ ENV variables
 [ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
-source "$XDG_CONFIG_HOME/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
 # source "$XDG_CONFIG_HOME/shell/scripts/ssh-agent.sh"
 
 # zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"

@@ -55,8 +55,8 @@ in
 {
   # home.file.".config/nvim".source =
   #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
-  home.file.".config/zsh/plugins/zsh-autosuggestions".source =
-    "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
+  # home.file.".config/zsh/plugins/zsh-autosuggestions".source =
+  #   "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
 
   # home.file.".local/share/bash-completion/bash_completion".source = "${pkgs.bash-completion}/share/bash-completion/bash_completion";
 
@@ -68,8 +68,10 @@ in
     inputs.runeword-terminal.packages.x86_64-linux.default
     python311
     gcc
+    obsidian
 
     git
+    gitleaks
     # zsh
 
     pgmodeler

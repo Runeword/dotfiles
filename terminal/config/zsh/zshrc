@@ -41,6 +41,7 @@ add-zsh-hook precmd __add_newline
 [ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
 
 # source "$XDG_CONFIG_HOME/shell/scripts/ssh-agent.sh"
+source "$(command -v zsh-autosuggestions)"
 
 # zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 # compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"

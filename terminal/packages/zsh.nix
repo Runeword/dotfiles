@@ -6,10 +6,12 @@ pkgs.symlinkJoin {
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
     mkdir -p $out/bin
+    
+    ln -sf ${pkgs.zsh-autosuggestions} $out/zsh-autosuggestions
 
     ln -sf ${mkOutOfStoreSymlink "config/zsh/zshrc"} $out/.zshrc
 
     wrapProgram $out/bin/zsh \
-      --set ZDOTDIR $out \
+    --set ZDOTDIR "$out" \
   '';
 }

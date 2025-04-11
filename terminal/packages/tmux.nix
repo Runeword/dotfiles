@@ -2,31 +2,19 @@
 
 pkgs.symlinkJoin {
   name = "tmux-with-config";
-  paths = [ pkgs.tmux ];
+  paths = [
+    pkgs.tmux
+  ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    mkdir -p $out/.config
+    mkdir -p $out/.config/tmux/plugins
+
     ln -sf ${mkOutOfStoreSymlink "config/tmux"} $out/.config/tmux
 
-    # Create wrapper scripts for tmux-resurrect
-    mkdir -p $out/bin
-
-    # Save script
-    cat > $out/bin/tmux-resurrect-save << EOF
-    #!/bin/sh
-    exec ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/scripts/save.sh "\$@"
-    EOF
-    chmod +x $out/bin/tmux-resurrect-save
-
-    # Restore script
-    cat > $out/bin/tmux-resurrect-restore << EOF
-    #!/bin/sh
-    exec ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect/scripts/restore.sh "\$@"
-    EOF
-    chmod +x $out/bin/tmux-resurrect-restore
+    ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
 
     wrapProgram $out/bin/tmux \
-    --set XDG_CONFIG_HOME "$out/.config" \
-    --set TMUX_SHELL ${pkgs.zsh}/bin/zsh
+      --set XDG_CONFIG_HOME "$out/.config" \
+      --set TMUX_SHELL ${pkgs.zsh}/bin/zsh
   '';
 }

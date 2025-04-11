@@ -21,6 +21,7 @@ with pkgs; [
   qmk
   httrack
   chezmoi
+  gh
 
   # Coreutils
   bat

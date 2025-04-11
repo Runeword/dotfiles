@@ -1,4 +1,3 @@
-# Custom Alacritty with additional packages and configuration
 {
   pkgs,
   mkOutOfStoreSymlink,

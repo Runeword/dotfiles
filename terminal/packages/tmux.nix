@@ -8,8 +8,11 @@ pkgs.symlinkJoin {
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
     mkdir -p $out/.config/tmux/plugins
+    mkdir -p $out/.config/shell/functions
 
     ln -sf ${mkOutOfStoreSymlink "config/tmux/tmux.conf"} $out/.config/tmux/tmux.conf
+
+    ln -sf ${mkOutOfStoreSymlink "config/shell/functions/tmux.sh"} $out/.config/shell/functions/tmux.sh
 
     ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
 

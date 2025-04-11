@@ -9,7 +9,7 @@ pkgs.symlinkJoin {
   postBuild = ''
     mkdir -p $out/.config/tmux/plugins
 
-    ln -sf ${mkOutOfStoreSymlink "config/tmux"} $out/.config/tmux
+    ln -sf ${mkOutOfStoreSymlink "config/tmux/tmux.conf"} $out/.config/tmux/tmux.conf
 
     ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
 

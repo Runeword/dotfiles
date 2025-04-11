@@ -93,7 +93,7 @@ alias nn='fc -s nvim'
 
 alias chd="chezmoi diff --reverse"
 alias chi='chezmoi ignored'
-alias chc='chezmoi cd'
+alias chc='__chezmoi_cd'
 alias che='chezmoi --refresh-externals apply'
 alias cha='__chezmoi_add'
 alias chy='__chezmoi_apply'

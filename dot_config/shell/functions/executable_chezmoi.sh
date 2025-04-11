@@ -65,6 +65,10 @@ __chezmoi_status() {
   echo "$selected_files" | xargs "$EDITOR"
 }
 
+__chezmoi_cd() {
+  cd "$(chezmoi source-path)" || exit
+}
+
 __chezmoi_managed() {
   local files
   files=$(chezmoi managed --include=files)

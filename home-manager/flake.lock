@@ -382,11 +382,11 @@
       },
       "locked": {
         "dir": "neovim",
-        "lastModified": 1743934620,
-        "narHash": "sha256-XNP0C/GJtbqz4Z+dQYmunmezRiQupv5yCjMbKV3ixNw=",
+        "lastModified": 1744480270,
+        "narHash": "sha256-+zenNjZg5PURYmisvmbUTbABsJxDmcjnRO89dCSY6bo=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "cffbd8561bfe72b211042718a726ec2a7aef2337",
+        "rev": "1391bb23cc259a9699d47baf01077b7ba873c14e",
         "type": "github"
       },
       "original": {
@@ -403,11 +403,11 @@
       },
       "locked": {
         "dir": "terminal",
-        "lastModified": 1744478581,
-        "narHash": "sha256-sBKy5acREiv2eBB4xXL3JP8+TD9ZTP8VwsvHAG/tAUM=",
+        "lastModified": 1744480270,
+        "narHash": "sha256-+zenNjZg5PURYmisvmbUTbABsJxDmcjnRO89dCSY6bo=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "7a74a31ac5052e1bb09d2b4657b2e455fcd4c8c4",
+        "rev": "1391bb23cc259a9699d47baf01077b7ba873c14e",
         "type": "github"
       },
       "original": {

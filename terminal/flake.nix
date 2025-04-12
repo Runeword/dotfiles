@@ -38,7 +38,7 @@
           pkgs.nerd-fonts.caskaydia-mono
         ];
 
-        extraPackages = (import ./packages/extraPackages.nix { inherit pkgs; });
+        extraPackages = (import ./packages/packages.nix { inherit pkgs; });
 
         alacritty =
           pkgs.runCommand "alacritty"

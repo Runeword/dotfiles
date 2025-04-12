@@ -1,17 +1,25 @@
-hr	__home_manager_remove_generations                               	home-manager - remove generations
-hp	__home_manager_packages                                         	home-manager - list packages
-hv	home-manager --version                                          	home-manager - show version
-hs	home-manager switch --flake $HOME/home-manager                  	home-manager - build and activate configuration
-hu	__update_flake_inputs $HOME/home-manager                        	home-manager - update flake inputs
-hd	home-manager expire-generations '-7 days'                       	home-manager - delete old generations
-ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER"
-nb	sudo nixos-rebuild boot --flake $HOME/nixos#$USER"
-nu	__update_flake_inputs $HOME/nixos"
-nv	nixos-version"
-ni	nix-info -m"
-ng	__nixos_switch_generation"
-nr	__nixos_remove_generations"
-nd	nix-env --delete-generations +10"
-nc	sudo nix-collect-garbage"
-no	sudo nix-collect-garbage --delete-old --verbose"
-nf	cd /nix/store && __open_file"
+hr	__home_manager_remove_generations                               	home-manager    remove generations
+hp	__home_manager_packages                                         	home-manager    list packages
+hv	home-manager --version                                          	home-manager    show version
+hs	home-manager switch --flake $HOME/home-manager                  	home-manager    build and activate configuration
+hu	__update_flake_inputs $HOME/home-manager                        	home-manager    update flake inputs
+hd	home-manager expire-generations '-7 days'                       	home-manager    delete old generations
+ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER             	nixos
+nb	sudo nixos-rebuild boot --flake $HOME/nixos#$USER               	nixos
+nu	__update_flake_inputs $HOME/nixos                               	nixos
+nv	nixos-version
+ni	nix-info -m
+ng	__nixos_switch_generation
+nr	__nixos_remove_generations
+nd	nix-env --delete-generations +10
+nc	sudo nix-collect-garbage
+no	sudo nix-collect-garbage --delete-old --verbose
+nf	cd /nix/store && __open_file
+fl	rm -f flake.lock && nix flake lock
+fs	nix flake show
+fp	nix path-info --json | jq
+fd	nix store delete $(nix path-info --json | jq -r '.[].path')
+fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')
+fu	__update_flake_inputs .
+fm	nix flake metadata
+ft	__use_flake_template $HOME/templates

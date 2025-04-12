@@ -9,16 +9,6 @@
         "c": "navi --path ~/.local/share/navi/cheats"
       }
     },
-    "w": {
-      "name": "wifi",
-      "keys": {
-        "t": "__nmcli_wifi_toggle",
-        "c": "__nmcli_wifi_connect",
-        "u": "__nmcli_connection_up",
-        "d": "__nmcli_connection_down",
-        "x": "__nmcli_connection_delete"
-      }
-    },
     "o": {
       "name": "open",
       "keys": {

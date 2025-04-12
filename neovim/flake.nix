@@ -31,7 +31,8 @@
         let
           pathStr = toString path;
           name = builtins.baseNameOf pathStr;
-          fullPath = "${builtins.toString ./.}/${pathStr}";
+          fullPath = "${builtins.toString /home/charles/neovim}/${pathStr}";
+          # fullPath = "${builtins.toString ./.}/${pathStr}";
         in
         pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
 

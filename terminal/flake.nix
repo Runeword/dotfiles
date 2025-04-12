@@ -25,7 +25,8 @@
           let
             pathStr = toString path;
             name = builtins.baseNameOf pathStr;
-            fullPath = "${builtins.toString ./.}/${pathStr}";
+            # fullPath = "${builtins.toString ./.}/${pathStr}"; # not working when using the flake as input in home manager
+            fullPath = "${builtins.toString /home/charles/terminal}/${pathStr}";
           in
           pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
 

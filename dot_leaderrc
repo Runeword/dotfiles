@@ -48,18 +48,6 @@
         "f": "cd /nix/store && __open_file"
       }
     },
-    "h": {
-      "name": "home-manager",
-      "keys": {
-        "g": "__home_manager_switch_generation",
-        "r": "__home_manager_remove_generations",
-        "p": "__home_manager_packages",
-        "v": "home-manager --version",
-        "s": "home-manager switch --flake $HOME/home-manager",
-        "u": "__update_flake_inputs $HOME/home-manager",
-        "d": "home-manager expire-generations '-7 days'"
-      }
-    },
     "o": {
       "name": "open",
       "keys": {

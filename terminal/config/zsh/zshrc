@@ -195,13 +195,13 @@ bindkey '^[[3;2~' __last_command_or_delete
 # zle -N __ls_or_space
 # bindkey ' ' __ls_or_space
 
-__leader_or_space() { __on_empty_buffer __leader_widget "LBUFFER+=' '; zle autosuggest-fetch"; }
-zle -N __leader_or_space
-bindkey ' ' __leader_or_space
+# __leader_or_space() { __on_empty_buffer __leader_widget "LBUFFER+=' '; zle autosuggest-fetch"; }
+# zle -N __leader_or_space
+# bindkey ' ' __leader_or_space
 
-__leader_or_accept() { __on_empty_buffer __leader_widget 'zle accept-line'; }
-zle -N __leader_or_accept
-bindkey '^M' __leader_or_accept
+# __leader_or_accept() { __on_empty_buffer __leader_widget 'zle accept-line'; }
+# zle -N __leader_or_accept
+# bindkey '^M' __leader_or_accept
 
 # __ls() { __on_empty_buffer 'command ls --almost-all --color --width 90;' 'zle accept-line'; }
 # zle -N __ls
@@ -263,6 +263,11 @@ __git_widget() { __on_empty_buffer "__aliases g $HOME/.config/shell/functions/gi
 
 zle -N __git_widget
 bindkey 'g' __git_widget
+
+__aliases_widget() { __on_empty_buffer "__aliases ' ' $HOME/.config/shell/functions/git-aliases" 'LBUFFER+= ; zle reset-prompt; zle autosuggest-fetch'; }
+
+zle -N __aliases_widget
+bindkey ' ' __aliases_widget
 
 ZSH_AUTOSUGGEST_STRATEGY=(history custom completion)
 

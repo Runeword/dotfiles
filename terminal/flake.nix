@@ -60,12 +60,12 @@
       {
         packages = {
           default = alacritty;
-          inherit
-            alacritty
+          # inherit
+            # alacritty
             # tmux
             # leader
             # zsh
-            ;
+            # ;
         };
 
         apps = {

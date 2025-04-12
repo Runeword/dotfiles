@@ -18,7 +18,7 @@ pkgs.runCommand "alacritty"
   ''
     mkdir -p $out/.config
 
-    ln -sf ${mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
+    ln -sf ${mkOutOfStoreSymlink "alacritty"} $out/.config/alacritty
 
     makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
       --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \

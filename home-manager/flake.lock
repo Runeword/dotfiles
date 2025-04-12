@@ -403,11 +403,11 @@
       },
       "locked": {
         "dir": "terminal",
-        "lastModified": 1744475086,
-        "narHash": "sha256-UURh6uVco+LLn0dHKer5MGHue3+9c98G4gr6IBcroPo=",
+        "lastModified": 1744475538,
+        "narHash": "sha256-rWrXhjMu386nxsEzx8xycl+dGa2q/KBKA9ghLhXJnJs=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "9b42da3dc09943d88e4161ffecdc038f98cc677e",
+        "rev": "843c7817e981d3942426373be2fe03eb30ff21d5",
         "type": "github"
       },
       "original": {

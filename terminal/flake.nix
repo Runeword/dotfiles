@@ -38,6 +38,8 @@
           pkgs.nerd-fonts.caskaydia-mono
         ];
 
+        extraPackages = (import ./packages/extraPackages.nix { inherit pkgs; });
+
         alacritty =
           pkgs.runCommand "alacritty"
             {
@@ -49,8 +51,9 @@
               ln -sf ${mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
 
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
-                --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
-                --set XDG_CONFIG_HOME "$out/.config"
+              --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
+              --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
+              --set XDG_CONFIG_HOME "$out/.config"
             '';
       in
       {

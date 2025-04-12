@@ -50,6 +50,8 @@
 
               ln -sf ${mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
 
+              # use makeWrapper instead of wrapProgram to preserve the original process name 'alacritty'
+              # wrapProgram would have named it alacritty-wrapped instead
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
               --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
               --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \

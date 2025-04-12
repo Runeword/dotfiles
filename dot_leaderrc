@@ -19,59 +19,10 @@
         "x": "__nmcli_connection_delete"
       }
     },
-    "f": {
-      "name": "flake",
-      "keys": {
-        "l": "rm -f flake.lock && nix flake lock",
-        "s": "nix flake show",
-        "p": "nix path-info --json | jq",
-        "d": "nix store delete $(nix path-info --json | jq -r '.[].path')",
-        "r": "nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')",
-        "u": "__update_flake_inputs .",
-        "m": "nix flake metadata",
-        "t": "__use_flake_template $HOME/templates"
-      }
-    },
-    "n": {
-      "name": "nixos",
-      "keys": {
-        "s": "sudo nixos-rebuild switch --flake $HOME/nixos#$USER",
-        "b": "sudo nixos-rebuild boot --flake $HOME/nixos#$USER",
-        "u": "__update_flake_inputs $HOME/nixos",
-        "v": "nixos-version",
-        "i": "nix-info -m",
-        "g": "__nixos_switch_generation",
-        "r": "__nixos_remove_generations",
-        "d": "nix-env --delete-generations +10",
-        "c": "sudo nix-collect-garbage",
-        "o": "sudo nix-collect-garbage --delete-old --verbose",
-        "f": "cd /nix/store && __open_file"
-      }
-    },
     "o": {
       "name": "open",
       "keys": {
         "r": "__open_recent",
-        "h": {
-          "name": "home manager",
-          "keys": {
-            "u": "cd $HOME/home-manager/$USER",
-            "f": "nvim $HOME/home-manager/flake.nix",
-            "p": "nvim $HOME/home-manager/$USER/packages.nix",
-            "d": "nvim $HOME/home-manager/$USER/default.nix",
-            "o": "nvim $HOME/home-manager/$USER/overlays.nix",
-            "z": "nvim $HOME/home-manager/$USER/zshrc"
-          }
-        },
-        "n": {
-          "name": "nixos",
-          "keys": {
-            "c": "nvim $HOME/nixos/configuration.nix",
-            "f": "nvim $HOME/nixos/flake.nix"
-          }
-        },
-        "a": "nvim $HOME/.config/shell/aliases.sh",
-        "v": "nvim $HOME/.config/shell/variables.sh",
         "m": "cd /run/media/$USER"
       }
     }

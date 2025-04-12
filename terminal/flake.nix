@@ -1,28 +1,21 @@
 {
-  description = "Alacritty with additional packages";
+  description = "Alacritty with configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-    }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
+  outputs = { self, nixpkgs, flake-utils }:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
 
-        # Helper function for symlinks
-        mkOutOfStoreSymlink =
-          path:
+        # Helper function for symlinks - same as in your Neovim config
+        mkOutOfStoreSymlink = path:
           let
             pathStr = toString path;
             name = builtins.baseNameOf pathStr;
@@ -30,42 +23,28 @@
           in
           pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
 
-        # # Build packages in dependency order
-        # zsh = import ./packages/zsh.nix { inherit pkgs mkOutOfStoreSymlink; };
-
-        # tmux = import ./packages/tmux.nix {
-        #   inherit mkOutOfStoreSymlink;
-        #   pkgs = pkgs // {
-        #     zsh = zsh;
-        #   };
-        # };
-
-        # leader = import ./packages/leader.nix { inherit pkgs; };
-
-        # Package list for Alacritty
-        packageList = (import ./packages/extraPackages.nix { inherit pkgs; }) ++ [
-          # zsh
-          # tmux
-          # leader
+        extraFonts = [
+          pkgs.nerd-fonts.sauce-code-pro
+          pkgs.nerd-fonts.monaspace
+          pkgs.nerd-fonts.caskaydia-mono
         ];
 
-        # Build Alacritty with the complete package list
-        alacritty = import ./packages/alacritty.nix {
-          inherit mkOutOfStoreSymlink;
-          pkgs = pkgs;
-          extraPackages = packageList;
-        };
-
+        alacritty = pkgs.runCommand "alacritty" {
+          nativeBuildInputs = [ pkgs.makeWrapper ];
+        } ''
+          mkdir -p $out/bin $out/.config
+          
+          # Link to your alacritty config, exactly as Neovim does with its config
+          ln -sf ${mkOutOfStoreSymlink "alacritty"} $out/.config/alacritty
+          
+          makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
+            --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
+            --set XDG_CONFIG_HOME "$out/.config"
+        '';
       in
       {
         packages = {
           default = alacritty;
-          # inherit
-            # alacritty
-            # tmux
-            # leader
-            # zsh
-            # ;
         };
 
         apps = {
@@ -73,14 +52,6 @@
             type = "app";
             program = "${alacritty}/bin/alacritty";
           };
-          # tmux = {
-          #   type = "app";
-          #   program = "${tmux}/bin/tmux";
-          # };
-          # zsh = {
-          #   type = "app";
-          #   program = "${zsh}/bin/zsh";
-          # };
         };
       }
     );

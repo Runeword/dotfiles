@@ -1,0 +1,6 @@
+hr	__home_manager_remove_generations                 	Remove generations
+hp	__home_manager_packages                           	List packages
+hv	home-manager --version                            	Show home-manager version
+hs	home-manager switch --flake $HOME/home-manager    	Switch to flake
+hu	__update_flake_inputs $HOME/home-manager          	Update flake
+hd	home-manager expire-generations '-7 days'         	Expire generations

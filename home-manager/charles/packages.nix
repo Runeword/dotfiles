@@ -69,10 +69,8 @@ in
     python311
     gcc
     obsidian
-    gh
 
     git
-    gitleaks
     # zsh
 
     pgmodeler

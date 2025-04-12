@@ -1,6 +1,6 @@
 g  	lazygit
-gh	gh repo create NAME --private --clone     	New private github repo
-ghp	gh repo create NAME --public --clone      	New public github repo
+h	gh repo create NAME --private --clone     	New private github repo
+hp	gh repo create NAME --public --clone      	New public github repo
 in 	git init                                  	New repository
 if	onefetch
 ad 	git-forgit add                            	Stage changes

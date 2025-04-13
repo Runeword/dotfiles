@@ -59,7 +59,7 @@ __use_flake_template() {
 }
 
 # Interactively selects a package from Home Manager and return its full path
-__home_manager_packages() {
+__home_manager_packages_list() {
     local selected package full_path
 
     selected=$(home-manager packages | fzf --info=inline:'' --reverse --no-separator --prompt='  ' --border none --header-first --header="home-manager packages") || return
@@ -77,7 +77,7 @@ __home_manager_packages() {
 }
 
 # Interactively selects and switch to a home manager generation
-__home_manager_switch_generation() {
+__home_manager_generation_switch() {
   local selected_generation
 
   selected_generation=$(
@@ -92,7 +92,7 @@ __home_manager_switch_generation() {
 }
 
 # Interactively selects and remove one or more home manager generations
-__home_manager_remove_generations() {
+__home_manager_generation_remove() {
   local selected_generations
 
   selected_generations=$(
@@ -107,7 +107,7 @@ __home_manager_remove_generations() {
 }
 
 # Interactively selects and switch to a nixos generation
-__nixos_switch_generation() {
+__nixos_generation_switch() {
   local nixos_generations selected_generation
   nixos_generations=$(sudo nix-env  --list-generations --profile /nix/var/nix/profiles/system | sort -rn)
 
@@ -124,7 +124,7 @@ __nixos_switch_generation() {
 }
 
 # Interactively selects and remove one or more nixos generations
-__nixos_remove_generations() {
+__nixos_generation_remove() {
   local nixos_generations selected_generations
   nixos_generations=$(sudo nix-env --list-generations --profile /nix/var/nix/profiles/system | sort -rn)
 

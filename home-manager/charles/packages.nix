@@ -50,7 +50,19 @@ let
   #   # sha256 = lib.fakeSha256;
   # }) {inherit (pkgs) system;};
 
-  windsurf = pkgs.callPackage ./windsurf.nix { };
+  # windsurf = pkgs.callPackage ./windsurf.nix { };
+
+  # https://issues.chromium.org/issues/397720842
+  pkgs-pin-google-chrome =
+    import
+      (builtins.fetchTarball {
+        url = "https://github.com/NixOS/nixpkgs/archive/6c5c5f5100281f8f4ff23f13edd17d645178c87c.tar.gz";
+        sha256 = "sha256:0wadw34slm7qh4ig3snwkls2sgkyz1yl5x9wqdzvyr8254arlspx";
+      })
+      {
+        config.allowUnfree = true;
+        system = pkgs.system;
+      };
 in
 {
   # home.file.".config/nvim".source =
@@ -102,11 +114,12 @@ in
     # vscode-extensions.dbaeumer.vscode-eslint
     direnv
     nix-direnv
-    (lib.hiPrio windsurf)
+    # (lib.hiPrio windsurf)
+    windsurf
     code-cursor
 
     # ---------------------------------- Browsers
-    google-chrome
+    pkgs-pin-google-chrome.google-chrome
     firefox
     tor-browser
 

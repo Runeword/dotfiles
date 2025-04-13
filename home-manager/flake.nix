@@ -21,7 +21,10 @@
   ## inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
   inputs.runeword-neovim.url = "github:Runeword/dotfiles?dir=neovim";
+  # inputs.runeword-neovim.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.runeword-terminal.url = "github:Runeword/dotfiles?dir=terminal";
+  # inputs.runeword-terminal.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   # inputs.ags.url = "github:Aylur/ags";

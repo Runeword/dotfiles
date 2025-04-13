@@ -1,22 +1,21 @@
-hr	__home_manager_remove_generations                               	home-manager    remove generations
-hp	__home_manager_packages                                         	home-manager    list packages
-hv	home-manager --version                                          	home-manager    show version
-hs	home-manager switch --flake $HOME/home-manager                  	home-manager    build and activate configuration
-hu	__update_flake_inputs $HOME/home-manager                        	home-manager    update flake inputs
-hd	home-manager expire-generations '-7 days'                       	home-manager    delete old generations
-ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER             	nixos
-nb	sudo nixos-rebuild boot --flake $HOME/nixos#$USER               	nixos
-nu	__update_flake_inputs $HOME/nixos                               	nixos
-nv	nixos-version
-ni	nix-info -m
-ng	__nixos_switch_generation
-nr	__nixos_remove_generations
-nd	nix-env --delete-generations +10
-nc	sudo nix-collect-garbage
-no	sudo nix-collect-garbage --delete-old --verbose
-nf	cd /nix/store && __open_file
-fl	rm -f flake.lock && nix flake lock
-fs	nix flake show
+hr	__home_manager_generation_remove                        	home-manager    generation        remove
+hs	__home_manager_generation_switch                        	home-manager    generation        switch
+hp	__home_manager_packages_list                            	home-manager    packages          list
+hu	__update_flake_inputs $HOME/home-manager                	home-manager    inputs            update
+hs	home-manager switch --flake $HOME/home-manager          	home-manager    config            build/activate
+hd	home-manager expire-generations '-7 days'               	home-manager    generation        remove old
+hv	home-manager --version                                  	home-manager    version
+ng	__nixos_generation_switch                               	nixos           generation        switch
+nr	__nixos_generation_remove                               	nixos           generation        remove
+nu	__update_flake_inputs $HOME/nixos                       	nixos           inputs            update
+ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER     	nixos           config            build/boot/activate
+ns	sudo nixos-rebuild boot --flake $HOME/nixos#$USER       	nixos           config            build/boot
+nv	nixos-version                                           	nixos           version
+ni	nix-info -m                                             	nix             version
+no	sudo nix-collect-garbage --verbose --delete-old          	nix             store             clean
+nf	cd /nix/store && __open_file                            	
+fl	rm -f flake.lock && nix flake lock                      	
+fs	nix flake show                                          	
 fp	nix path-info --json | jq
 fd	nix store delete $(nix path-info --json | jq -r '.[].path')
 fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')

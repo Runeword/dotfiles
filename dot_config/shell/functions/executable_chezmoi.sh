@@ -13,7 +13,10 @@ __select_files() {
     --preview-window bottom,80%,noborder
 }
 
-__chezmoi_add() {
+__chezmoi() {
+  local operation="$1"
+  shift
+
   if [ $# -gt 0 ]; then
     local selected_files
     selected_files=$*
@@ -22,35 +25,21 @@ __chezmoi_add() {
     files=$(chezmoi status | awk '{print $2}')
     [ "$files" = "" ] && return 1
 
-    selected_files=$(__select_files "$files" "chezmoi add")
+    selected_files=$(__select_files "$files" "chezmoi $operation")
     [ "$selected_files" = "" ] && return 1
   fi
 
-  # "$(echo "$selected_files" | xargs)" | while IFS= read -r i; do chezmoi add "$HOME/$i"; done
-
   for i in $(echo "$selected_files" | xargs); do
-    chezmoi add "$HOME/$i"
+    chezmoi "$operation" "$HOME/$i"
   done
 }
 
+__chezmoi_add() {
+  __chezmoi "add" "$@"
+}
+
 __chezmoi_apply() {
-  if [ $# -gt 0 ]; then
-    local selected_files
-    selected_files=$*
-  else
-    local files
-    files=$(chezmoi status | awk '{print $2}')
-    [ "$files" = "" ] && return 1
-
-    selected_files=$(__select_files "$files" "chezmoi apply")
-    [ "$selected_files" = "" ] && return 1
-  fi
-
-  # "$(echo "$selected_files" | xargs)" | while IFS= read -r i; do chezmoi apply "$HOME/$i"; done
-
-  for i in $(echo "$selected_files" | xargs); do
-    chezmoi apply "$HOME/$i"
-  done
+  __chezmoi "apply" "$@"
 }
 
 __chezmoi_status() {

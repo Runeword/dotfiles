@@ -14,28 +14,31 @@ __select_files() {
 }
 
 __chezmoi() {
-  local operation="$1"
-  shift
+  local chezmoi_cmd="$1"
+  local operation="$2"
+  shift 2
 
-  if [ $# -gt 0 ]; then
-    local selected_files
-    selected_files=$*
-  else
+  if ! $chezmoi_cmd "$operation" "$@" 2>/dev/null; then
     local files
-    files=$(chezmoi status | awk '{print $2}')
+    files=$($chezmoi_cmd status | awk '{print $2}')
     [ "$files" = "" ] && return 1
 
-    selected_files=$(__select_files "$files" "chezmoi $operation")
+    local selected_files
+    selected_files=$(__select_files "$files" "$chezmoi_cmd $operation")
     [ "$selected_files" = "" ] && return 1
-  fi
 
-  for i in $(echo "$selected_files" | xargs); do
-    chezmoi "$operation" "$HOME/$i"
-  done
+    for i in $(echo "$selected_files" | xargs); do
+      $chezmoi_cmd "$operation" "$@" "$HOME/$i"
+    done
+  fi
+}
+
+__chezmoi_public() {
+  __chezmoi "chezmoi" "$@"
 }
 
 __chezmoi_private() {
-  __chezmoi --source ~/.local/share/chezmoi-private --config ~/.config/chezmoi-private/chezmoi.toml "$@"
+  __chezmoi "chezmoi --source ~/.local/share/chezmoi-private --config ~/.config/chezmoi-private/chezmoi.toml" "$@"
 }
 
 __chezmoi_status() {

@@ -34,13 +34,13 @@ __chezmoi() {
   done
 }
 
-__chezmoi_add() {
-  __chezmoi "add" "$@"
-}
+# __chezmoi_private_add() {
+#   __chezmoi --source ~/.local/share/chezmoi-private --config ~/.config/chezmoi-private/chezmoi.toml add "$@"
+# }
 
-__chezmoi_apply() {
-  __chezmoi "apply" "$@"
-}
+# __chezmoi_private_apply() {
+#   __chezmoi --source ~/.local/share/chezmoi-private --config ~/.config/chezmoi-private/chezmoi.toml apply "$@"
+# }
 
 __chezmoi_status() {
   local files

@@ -2,13 +2,34 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"os/exec"
 	"strings"
 )
 
-func selectFiles(files string, header string) (string, error) {
+func getArgs() (cmd string, files []string, flags[]string, error error) {
+	flag.Parse()
+	args := flag.Args()
+	if len(args) < 1 {
+		return "", nil, nil, fmt.Errorf("Usage: chezmoi-fzf <chezmoi-cmd> [files...] [flags...]")
+	}
+
+	cmd = args[0]
+
+	for i := 1; i < len(args); i++ {
+		if strings.HasPrefix(args[i], "-") {
+			flags = append(flags, args[i])
+		} else {
+			files = append(files, args[i])
+		}
+	}
+
+	return cmd, files, flags, nil
+}
+
+func selectFiles(paths string, header string) (targets string, error error) {
 	cmd := exec.Command("fzf",
 		"--multi",
 		"--reverse",
@@ -26,7 +47,7 @@ func selectFiles(files string, header string) (string, error) {
 		"--preview-window", "bottom,80%,noborder",
 	)
 
-	cmd.Stdin = strings.NewReader(files)
+	cmd.Stdin = strings.NewReader(paths)
 	cmd.Stderr = os.Stderr
 	output, err := cmd.Output()
 	if err != nil {
@@ -35,44 +56,73 @@ func selectFiles(files string, header string) (string, error) {
 	return strings.TrimSpace(string(output)), nil
 }
 
-func chezmoi(operation string, args []string) error {
-	var selectedFiles string
-	if len(args) > 0 {
-		selectedFiles = strings.Join(args, " ")
-	} else {
-		cmd := exec.Command("chezmoi", "status")
-		output, err := cmd.Output()
-		if err != nil {
-			return err
-		}
+func getFiles() (files []string, error error) {
+	cmd := exec.Command("chezmoi", "status")
+	output, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
 
-		scanner := bufio.NewScanner(strings.NewReader(string(output)))
-		var files []string
-		for scanner.Scan() {
-			fields := strings.Fields(scanner.Text())
-			if len(fields) >= 2 {
-				files = append(files, fields[1])
-			}
-		}
-
-		if len(files) == 0 {
-			return fmt.Errorf("no files to process")
-		}
-
-		selectedFiles, err = selectFiles(strings.Join(files, "\n"), "chezmoi "+operation)
-		if err != nil {
-			return err
-		}
-		if selectedFiles == "" {
-			return fmt.Errorf("no files selected")
+	scanner := bufio.NewScanner(strings.NewReader(string(output)))
+	for scanner.Scan() {
+		fields := strings.Fields(scanner.Text())
+		if len(fields) >= 2 {
+			files = append(files, fields[1])
 		}
 	}
 
-	for _, file := range strings.Fields(selectedFiles) {
-		cmd := exec.Command("chezmoi", operation, os.ExpandEnv("$HOME/"+file))
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		if err := cmd.Run(); err != nil {
+	if len(files) == 0 {
+		return nil, fmt.Errorf("no files to process")
+	}
+
+	return files, nil
+}
+
+func selectPaths(cmd string) (selectedFiles string, error error) {
+	files, err := getFiles()
+
+	if err != nil {
+		return "", err
+	}
+
+	selectedFiles, err = selectFiles(strings.Join(files, "\n"), cmd)
+	if err != nil {
+		return "", err
+	}
+
+	if selectedFiles == "" {
+		return "", fmt.Errorf("no files selected")
+	}
+
+	return
+}
+
+func executeChezmoiCommand(cmd string, flags []string, path string) error {
+	fullPath := os.ExpandEnv("$HOME/" + path)
+
+	command := exec.Command(cmd, append(flags, fullPath)...)
+	command.Stdout = os.Stdout
+	command.Stderr = os.Stderr
+
+	return command.Run()
+}
+
+func chezmoi() error {
+	cmd, targets, flags, err := getArgs()
+	if err != nil {
+		return err
+	}
+
+	paths := strings.Join(targets, " ")
+	if paths == "" {
+		paths, err = selectPaths(cmd)
+		if err != nil {
+			return err
+		}
+	}
+
+	for _, path := range strings.Fields(paths) {
+		if err := executeChezmoiCommand(cmd, flags, path); err != nil {
 			return err
 		}
 	}
@@ -81,13 +131,7 @@ func chezmoi(operation string, args []string) error {
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "Usage: chezmoi-fzf <operation> [files...]")
-		os.Exit(1)
-	}
-
-	operation := os.Args[1]
-	if err := chezmoi(operation, os.Args[2:]); err != nil {
+	if err := chezmoi(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

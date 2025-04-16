@@ -22,3 +22,27 @@ fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')     
 fu	__update_flake_inputs .                                                      	flake           inputs            update
 fm	nix flake metadata                                                           	flake           metadata
 ft	__use_flake_template $HOME/templates                                         	flake           templates         use
+gb	go build                                                                     	go
+gg	go get                                                                       	go
+gr	go run                                                                       	go
+gm	go mod tidy                                                                  	go
+gc	go clean -modcache                                                           	go
+gt	go test                                                                      	go
+pp	pass git push                                                                	pass
+pi	pass insert                                                                  	pass
+pg	pass generate                                                                	pass
+pc	__pass_clip                                                                  	pass
+pr	__pass_rm                                                                    	pass
+pk	gpgconf --reload gpg-agent                                                   	pass
+pu	pass show GEMINI_API_KEY > /dev/null                                         	pass
+cd	chezmoi diff --reverse                                                       	chezmoi
+ci	chezmoi ignored                                                              	chezmoi
+cc	__chezmoi_cd                                                                 	chezmoi
+ce	chezmoi --refresh-externals apply                                            	chezmoi
+ca	__chezmoi add                                                                	chezmoi
+cy	__chezmoi apply                                                              	chezmoi
+cf	__chezmoi_forget                                                             	chezmoi
+cs	__chezmoi_status                                                             	chezmoi
+cm	__chezmoi_managed                                                            	chezmoi
+cpa	__chezmoi_private add                                                        	chezmoi
+cpy	__chezmoi_private apply                                                      	chezmoi

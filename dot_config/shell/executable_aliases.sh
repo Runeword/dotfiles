@@ -1,4 +1,6 @@
 #!/bin/sh
+# navi --path ~/.local/share/navi/cheats
+# __open_recent
 
 # ______________________________________ CORE
 
@@ -29,6 +31,7 @@ alias bu='__bitwarden_unlock'
 alias env='env | f'
 alias t='__tmux_attach_unattached_session'
 alias k='__kill_processes'
+alias y='__yazi_cd < $TTY'
 
 # ______________________________________ UTILITY
 

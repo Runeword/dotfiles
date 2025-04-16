@@ -92,44 +92,8 @@ alias st='cd /nix/store'
 
 alias nn='fc -s nvim'
 
-# ______________________________________ CHEZMOI
-
-alias chd="chezmoi diff --reverse"
-alias chi='chezmoi ignored'
-alias chc='__chezmoi_cd'
-alias che='chezmoi --refresh-externals apply'
-alias cha='__chezmoi add'
-alias chy='__chezmoi apply'
-# alias cha='__chezmoi_public add'
-# alias chy='__chezmoi_public apply'
-alias chpa='__chezmoi_private add'
-alias chpy='__chezmoi_private apply'
-alias chf='__chezmoi_forget'
-alias chs='__chezmoi_status'
-alias chm='__chezmoi_managed'
-
 alias aig='export GEMINI_API_KEY="$(pass show GEMINI_API_KEY)"; aider --model gemini/gemini-1.5-pro-latest --no-auto-commits'
 alias aiq='export GROQ_API_KEY="$(pass show GROQ_API_KEY)"; aider --model groq/llama3-70b-8192 --no-auto-commits'
-
-# ______________________________________ PASS
-
-alias pp='pass git push'
-alias pi='pass insert'
-alias pg='pass generate'
-alias pl='__pass_clip'
-alias pc='__pass_clip'
-alias pr='__pass_rm'
-alias pk='gpgconf --reload gpg-agent'
-alias pu='pass show GEMINI_API_KEY > /dev/null'
-
-# ______________________________________ GO
-
-alias gog='go get'
-alias gor='go run'
-alias gom='go mod tidy'
-alias goc='go clean -modcache'
-alias got='go test'
-alias gob='go build'
 
 # ______________________________________ NPM
 

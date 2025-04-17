@@ -5,11 +5,11 @@ pkgs.symlinkJoin {
   paths = [ pkgs.bash ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    mkdir -p $out/bin $out/.config
+    mkdir -p $out/bin
 
     ln -sf ${mkOutOfStoreSymlink "config/bash/bashrc"} $out/.bashrc
 
     wrapProgram $out/bin/bash \
-      --set XDG_CONFIG_HOME "$out/.config"
+      --add-flags "--rcfile $out/.bashrc"
   '';
-} 
+}

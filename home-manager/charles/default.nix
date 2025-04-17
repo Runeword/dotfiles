@@ -9,6 +9,7 @@
   imports = [
     ./overlays.nix
     ./packages.nix
+    ./apps.nix
     ./desktop.nix
     # inputs.ags.homeManagerModules.default
     # inputs.walker.homeManagerModules.default

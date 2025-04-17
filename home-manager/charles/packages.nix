@@ -79,16 +79,17 @@ in
     obsidian
 
     git
+    direnv
+    nix-direnv
+    ffuf
 
     pgmodeler
     whatsie
     android-studio
     postman
-    iwgtk
+
     # claude-code
     # rquickshare
-
-    ffuf
 
     sioyek # PDF viewer
 
@@ -107,8 +108,6 @@ in
     # ---------------------------------- Editors
     vscode
     # vscode-extensions.dbaeumer.vscode-eslint
-    direnv
-    nix-direnv
     # (lib.hiPrio windsurf)
     windsurf
     code-cursor

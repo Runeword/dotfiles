@@ -16,7 +16,6 @@ __open_file() {
         --border none \
         --prompt='  ' \
         --multi \
-        --scheme=path \
         --reverse \
         --info=hidden \
         --no-separator \
@@ -30,6 +29,7 @@ __open_file() {
         --bind='ctrl-a:select-all' \
         --bind='ctrl-o:execute(nohup setsid cursor {} > /dev/null 2>&1 &)' \
   ) || return 1
+  # --scheme=path \
   # fzf-tmux \
   #   -p \
   #   -h 90% \

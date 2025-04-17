@@ -1,12 +1,11 @@
 {
   pkgs,
   inputs,
-  lib,
-  config,
+  # lib,
+  # config,
   ...
 }:
-let
-in
+# let
 # waybarwithfont = pkgs.waybar.overrideAttrs (oldAttrs: {
 #   nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkgs.nerdfonts.override {
 #   fonts = [ "DroidSansMono" ];
@@ -18,10 +17,9 @@ in
 #       ln -s ${customFont}/share/fonts/* $out/share/fonts/
 #     '';
 # });
+# in
 {
   home.packages = with pkgs; [
-    # fuzzel # App launcher
-
     # Viewers
     imv # Image viewer
     wev # Event viewer
@@ -43,18 +41,18 @@ in
     nwg-displays # Monitor manager
     impala # Wifi manager
     bluetuith # Bluetooth manager
-    # pw-viz             # Pipewire graph editor
 
     # Controllers
     brillo # Brightness control
     playerctl # Media players control
+    iwgtk # Network manager
 
     # Wallpaper
     waypaper # Wallpaper setter
     hyprpaper # Wallpaper backend
 
     # Screen capture
-    # wl-screenrec         # Screen recorder
+    # wl-screenrec # Screen recorder
     inputs.hyprland-contrib.packages.${pkgs.system}.grimblast # Screenshot
     grim # Grimblast dependency
     satty # Screenshot annotation

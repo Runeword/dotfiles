@@ -28,34 +28,9 @@
           pkgs.nerd-fonts.caskaydia-mono
         ];
 
-        commonPackages = (import ./packages/packages.nix { inherit pkgs; }) ++ [
-        ];
+        packages = import ./packages { inherit pkgs utils system; };
 
-        linuxPackages = pkgs.lib.optionals (system == "x86_64-linux" || system == "aarch64-linux") (
-          import ./packages/linux-packages.nix { inherit pkgs; }
-        );
-
-        zsh = import ./packages/zsh.nix {
-          inherit pkgs;
-          mkOutOfStoreSymlink = utils.mkOutOfStoreSymlink;
-        };
-        tmux = import ./packages/tmux.nix {
-          inherit pkgs;
-          mkOutOfStoreSymlink = utils.mkOutOfStoreSymlink;
-        };
-        bash = import ./packages/bash.nix {
-          inherit pkgs;
-          mkOutOfStoreSymlink = utils.mkOutOfStoreSymlink;
-        };
-
-        extraPackages =
-          commonPackages
-          ++ linuxPackages
-          ++ [
-            zsh
-            tmux
-            bash
-          ];
+        extraPackages = packages.common ++ packages.linux ++ packages.custom;
 
         alacritty =
           pkgs.runCommand "alacritty"

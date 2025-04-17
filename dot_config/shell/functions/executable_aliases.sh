@@ -17,8 +17,31 @@ __run_alias() {
 }
 
 __aliases() {
-  local prefix_char="${1:-g}"
-  local aliases_file="${2:-$HOME/.config/shell/functions/git-aliases}"
+  local prefix_char="g"
+  local aliases_file="$HOME/.config/shell/functions/git-aliases"
+  local execute=0
+
+  # Parse arguments
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      -e|--execute)
+        execute=1
+        shift
+        ;;
+      -p|--prefix)
+        prefix_char="$2"
+        shift 2
+        ;;
+      -f|--file)
+        aliases_file="$2"
+        shift 2
+        ;;
+      *)
+        break
+        ;;
+    esac
+  done
+
   local selected_command
   selected_command=$(< "$aliases_file" \
     column \
@@ -45,6 +68,10 @@ __aliases() {
 
   if [ $? -eq 0 ]; then
     LBUFFER+=$(echo "$selected_command" | awk -F $'\u00A0' '{ if (NR==2) { sub(/[[:space:]]+$/, "", $2); print $2 " " } }')
+    
+    if [ "$execute" = "1" ]; then
+      zle accept-line
+    fi
   elif [ "$selected_command" ]; then
     LBUFFER+="${prefix_char}"$(echo "$selected_command" | sed -n '1p' | sed 's/[^[:alpha:]]//g')
   fi

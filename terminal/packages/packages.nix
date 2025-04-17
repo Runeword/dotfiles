@@ -6,13 +6,8 @@ with pkgs; [
   yazi # file manager
   navi # cheat sheet
   starship # prompt
-  wl-clipboard # copy/paste
-  xdragon # drag and drop
   ueberzugpp # images support for terminal
-  ventoy-full
   dmidecode
-  libinput
-  evtest
   cloneit
   nix-prefetch-docker
   gmailctl
@@ -71,7 +66,6 @@ with pkgs; [
   glow # markdown
 
   # Info
-  hwinfo # Hardware info
   onefetch # Git info
   neofetch # System info
 
@@ -88,7 +82,13 @@ with pkgs; [
   ncdu
   qdirstat # Disk usage viewer
   erdtree # Disk usage
-  nvme-cli # NVMe storage devices manager
 
-  # Custom packages are handled separately in flake.nix
+  # Linux specific
+  wl-clipboard # copy/paste
+  xdragon # drag and drop
+  nvme-cli # NVMe storage devices manager
+  hwinfo # Hardware info
+  evtest
+  libinput
+  ventoy-full
 ] 

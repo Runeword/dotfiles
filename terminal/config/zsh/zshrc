@@ -208,14 +208,15 @@ bindkey '^[[3;2~' __last_command_or_delete
 # zle -N __ls
 # bindkey '^M' __ls
 
-__tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "" "send -X search-forward-incremental \"%%%\""' LBUFFER+="/"; }
-zle -N __tmux_search
-bindkey '/' __tmux_search
-
-# __navi_or_esc() { __on_empty_buffer _navi_widget; }
-# zle -N __navi_or_esc
-# bindkey '^[' __navi_or_esc
+# __tmux_search() { __on_empty_buffer 'tmux copy-mode; tmux command-prompt -i -p "" "send -X search-forward-incremental \"%%%\""' LBUFFER+="/"; }
+# zle -N __tmux_search
+# bindkey '/' __tmux_search
 bindkey '^[' _navi_widget
+
+## __navi_or_esc() { __on_empty_buffer _navi_widget; }
+## zle -N __navi_or_esc
+## bindkey '^[' __navi_or_esc
+# bindkey '^[' _navi_widget
 
 # __clear_or_esc() { __on_empty_buffer 'clear -x'; }
 # zle -N __clear_or_esc
@@ -256,17 +257,17 @@ _zsh_autosuggest_strategy_custom() {
   # suggestion=$(navi --query "$1" --best-match --print) # navi does not support non-interactive mode https://github.com/denisidoro/navi/issues/808
 }
 
-__git_widget() { __on_empty_buffer "__aliases g $HOME/.config/shell/functions/git-aliases" 'LBUFFER+=g; zle reset-prompt; zle autosuggest-fetch'; }
+__git_widget() { __on_empty_buffer "__aliases --prefix g --file $HOME/.config/shell/functions/git-aliases" 'LBUFFER+=g; zle reset-prompt; zle autosuggest-fetch'; }
 
 zle -N __git_widget
 bindkey 'g' __git_widget
 
-__aliases_or_space() { __on_empty_buffer "__aliases ' ' $HOME/.config/shell/functions/leader-aliases" "LBUFFER+=' '; zle reset-prompt; zle autosuggest-fetch"; }
+__aliases_or_space() { __on_empty_buffer "__aliases --prefix ' ' --file $HOME/.config/shell/functions/leader-aliases" "LBUFFER+=' '; zle reset-prompt; zle autosuggest-fetch"; }
 
 zle -N __aliases_or_space
 bindkey ' ' __aliases_or_space
 
-__aliases_or_accept() { __on_empty_buffer "__aliases '^M' $HOME/.config/shell/functions/leader-aliases" 'zle accept-line'; }
+__aliases_or_accept() { __on_empty_buffer "__aliases --execute --prefix '^M' --file $HOME/.config/shell/functions/leader-aliases" 'zle accept-line'; }
 zle -N __aliases_or_accept
 bindkey '^M' __aliases_or_accept
 

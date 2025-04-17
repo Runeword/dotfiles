@@ -12,7 +12,7 @@ ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER                          
 ns	sudo nixos-rebuild boot --flake $HOME/nixos#$USER                            	nixos           config            build/boot
 nv	nixos-version                                                                	nixos           version
 ni	nix-info -m                                                                  	nixos           info
-no	sudo nix-collect-garbage --verbose --delete-old                              	nix             store             clean
+nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             store             clean
 nf	cd /nix/store && __open_file                                                 	nix             store             list
 fl	nix flake lock --recreate-lock-file                                          	flake           lock              recreate
 fs	nix flake show                                                               	flake           outputs           show

@@ -333,6 +333,38 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1744463964,
+        "narHash": "sha256-LWqduOgLHCFxiTNYi3Uj5Lgz0SR+Xhw3kr/3Xd0GPTM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2631b0b7abcea6e640ce31cd78ea58910d31e650",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1744463964,
+        "narHash": "sha256-LWqduOgLHCFxiTNYi3Uj5Lgz0SR+Xhw3kr/3Xd0GPTM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "2631b0b7abcea6e640ce31cd78ea58910d31e650",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
@@ -346,9 +378,7 @@
     "runeword-neovim": {
       "inputs": {
         "neovim-nightly-overlay": "neovim-nightly-overlay",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "dir": "neovim",
@@ -369,17 +399,15 @@
     "runeword-terminal": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "dir": "terminal",
-        "lastModified": 1744553025,
-        "narHash": "sha256-/acCVxbz5I/1LB8G/9h42QQ9IkDXBZASiUMO5d2OgnQ=",
+        "lastModified": 1744911543,
+        "narHash": "sha256-q+gAcFAKZTkyfLZGyiSraknUMTuiveT+wS5kV594tao=",
         "owner": "Runeword",
         "repo": "dotfiles",
-        "rev": "16db54d3537033b431c56ee76fee19b1f1c6cbd7",
+        "rev": "4cc87f984b37c8ce45dca47c140ed028176651fe",
         "type": "github"
       },
       "original": {

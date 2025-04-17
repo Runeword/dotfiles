@@ -82,13 +82,4 @@ with pkgs; [
   ncdu
   qdirstat # Disk usage viewer
   erdtree # Disk usage
-
-  # Linux specific
-  wl-clipboard # copy/paste
-  xdragon # drag and drop
-  nvme-cli # NVMe storage devices manager
-  hwinfo # Hardware info
-  evtest
-  libinput
-  ventoy-full
 ] 

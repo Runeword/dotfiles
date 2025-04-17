@@ -1,4 +1,8 @@
-{ pkgs, utils, system }:
+{
+  pkgs,
+  utils,
+  system,
+}:
 
 let
   common = (import ./packages.nix { inherit pkgs; }) ++ [
@@ -31,4 +35,4 @@ let
 in
 {
   inherit common linux custom;
-} 
+}

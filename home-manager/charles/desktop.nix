@@ -32,6 +32,10 @@
 
     nerd-fonts.droid-sans-mono
 
+    showmethekey
+    appimage-run
+    hyprpicker # Color picker
+
     hyprpanel
     hyprlock # Screen locker
     fnott # Notification daemon

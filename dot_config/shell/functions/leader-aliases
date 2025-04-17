@@ -1,5 +1,5 @@
 hr	__home_manager_generation_remove                                             	home-manager    generation        remove
-hs	__home_manager_generation_switch                                             	home-manager    generation        switch
+hg	__home_manager_generation_switch                                             	home-manager    generation        switch
 hp	__home_manager_packages_list                                                 	home-manager    packages          list
 hu	__update_flake_inputs $HOME/home-manager                                     	home-manager    inputs            update
 hs	home-manager switch --flake $HOME/home-manager                               	home-manager    config            build/activate

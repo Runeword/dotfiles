@@ -39,9 +39,11 @@
         ];
 
         zsh = import ./packages/zsh.nix { inherit pkgs mkOutOfStoreSymlink; };
+        tmux = import ./packages/tmux.nix { inherit pkgs mkOutOfStoreSymlink; };
 
         extraPackages = (import ./packages/packages.nix { inherit pkgs; }) ++ [
           zsh
+          tmux
         ];
 
         alacritty =

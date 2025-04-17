@@ -1,3 +1,5 @@
+oa	nvim ~/.config/shell/functions/leader-aliases                                	open            aliases
+oh	nvim ~/home-manager/charles/packages.nix                                     	open            packages
 hgr	__home_manager_generation_remove                                             	home-manager    generation        remove
 hgs	__home_manager_generation_switch                                             	home-manager    generation        switch
 hp	__home_manager_packages_list                                                 	home-manager    packages          list
@@ -16,7 +18,7 @@ nd	sudo nix-collect-garbage --verbose --delete-old                              
 nf	cd /nix/store && __open_file                                                 	nix             store             list
 nb	nix build                                                                    	flake           package           build
 nr	nix run                                                                      	flake           application       run
-fl	nix flake lock --recreate-lock-file                                          	flake           lock              recreate
+fl	nix flake update                                                            	flake           lock              recreate
 fs	nix flake show                                                               	flake           outputs           show
 fp	nix path-info --json | jq                                                    	flake           references        show
 fd	nix store delete $(nix path-info --json | jq -r '.[].path')                  	flake           references        delete

@@ -6,64 +6,52 @@
   ...
 # }: {
 }:
-let
-  # termium = pkgs.stdenv.mkDerivation {
-  #   pname = "termium";
-  #   version = "0.2.1";
-  #   src = pkgs.fetchurl {
-  #     url = "https://github.com/Exafunction/codeium/releases/download/termium-v0.2.1/termium_x86_64-unknown-linux-gnu";
-  #     sha256 = "sha256-DZR+MSIJWkuiKjRtPqzwvj+hXhel71+5HPJ/7G1o+tw=";
-  #   };
-  #
-  #   dontUnpack = true;
-  #
-  #   installPhase = ''
-  #     mkdir -p $out/bin
-  #     cp $src $out/bin/termium
-  #     chmod +x $out/bin/termium
-  #   '';
-  # };
+# let
+# termium = pkgs.stdenv.mkDerivation {
+#   pname = "termium";
+#   version = "0.2.1";
+#   src = pkgs.fetchurl {
+#     url = "https://github.com/Exafunction/codeium/releases/download/termium-v0.2.1/termium_x86_64-unknown-linux-gnu";
+#     sha256 = "sha256-DZR+MSIJWkuiKjRtPqzwvj+hXhel71+5HPJ/7G1o+tw=";
+#   };
+#
+#   dontUnpack = true;
+#
+#   installPhase = ''
+#     mkdir -p $out/bin
+#     cp $src $out/bin/termium
+#     chmod +x $out/bin/termium
+#   '';
+# };
 
-  # tmuxKeylocker = pkgs.tmuxPlugins.mkTmuxPlugin {
-  #   pluginName = "tmux-keylocker";
-  #   version = "1.0";
-  #   src = pkgs.fetchFromGitHub {
-  #     owner = "TheSast";
-  #     repo = "tmux-keylocker";
-  #     rev = "c98dfd0956b458a8e71304f3532e8c3053df9555";
-  #     sha256 = "sha256-AdVPL7tZxTJ05Q9b41ejCw/2kFNXrrsKkAIm8MAlbdw=";
-  #     # sha256 = lib.fakeSha256;
-  #   };
-  # };
+# tmuxKeylocker = pkgs.tmuxPlugins.mkTmuxPlugin {
+#   pluginName = "tmux-keylocker";
+#   version = "1.0";
+#   src = pkgs.fetchFromGitHub {
+#     owner = "TheSast";
+#     repo = "tmux-keylocker";
+#     rev = "c98dfd0956b458a8e71304f3532e8c3053df9555";
+#     sha256 = "sha256-AdVPL7tZxTJ05Q9b41ejCw/2kFNXrrsKkAIm8MAlbdw=";
+#     # sha256 = lib.fakeSha256;
+#   };
+# };
 
-  # pkgs-old = import (builtins.fetchGit {
-  #   # Descriptive name to make the store path easier to identify
-  #   name = "pkgs-old";
-  #   url = "https://github.com/NixOS/nixpkgs/";
-  #   ref = "refs/heads/nixpkgs-unstable";
-  #   rev = "3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16";
-  # }) {inherit (pkgs) system;};
+# pkgs-old = import (builtins.fetchGit {
+#   # Descriptive name to make the store path easier to identify
+#   name = "pkgs-old";
+#   url = "https://github.com/NixOS/nixpkgs/";
+#   ref = "refs/heads/nixpkgs-unstable";
+#   rev = "3c3b3ab88a34ff8026fc69cb78febb9ec9aedb16";
+# }) {inherit (pkgs) system;};
 
-  # pkgs-old = import (builtins.fetchTarball {
-  #   url = "https://github.com/NixOS/nixpkgs/archive/2f04861c8ad1aaa69d532f34b63bb03da9912ae7.tar.gz";
-  #   sha256 = "sha256:11dxbmxqcyw87fcyj2dm7d94wax2s1phajwp99rycwjikq3ks8s6";
-  #   # sha256 = lib.fakeSha256;
-  # }) {inherit (pkgs) system;};
+# pkgs-old = import (builtins.fetchTarball {
+#   url = "https://github.com/NixOS/nixpkgs/archive/2f04861c8ad1aaa69d532f34b63bb03da9912ae7.tar.gz";
+#   sha256 = "sha256:11dxbmxqcyw87fcyj2dm7d94wax2s1phajwp99rycwjikq3ks8s6";
+#   # sha256 = lib.fakeSha256;
+# }) {inherit (pkgs) system;};
 
-  # windsurf = pkgs.callPackage ./windsurf.nix { };
-
-  # https://issues.chromium.org/issues/397720842
-  pkgs-pin-google-chrome =
-    import
-      (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/6c5c5f5100281f8f4ff23f13edd17d645178c87c.tar.gz";
-        sha256 = "sha256:0wadw34slm7qh4ig3snwkls2sgkyz1yl5x9wqdzvyr8254arlspx";
-      })
-      {
-        config.allowUnfree = true;
-        system = pkgs.system;
-      };
-in
+# windsurf = pkgs.callPackage ./windsurf.nix { };
+# in
 {
   # home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/neovim/config";
   # home.file.".config/zsh/plugins/zsh-autosuggestions".source = "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions";
@@ -76,22 +64,14 @@ in
     inputs.runeword-terminal.packages.x86_64-linux.default
     python311
     gcc
-    obsidian
 
     git
     direnv
     nix-direnv
     ffuf
 
-    pgmodeler
-    whatsie
-    android-studio
-    postman
-
     # claude-code
     # rquickshare
-
-    sioyek # PDF viewer
 
     # Recovery
     testdisk-qt # GUI Recovery tool
@@ -100,27 +80,11 @@ in
     exiftool # Meta information reader/writer
     onlyoffice-desktopeditors
 
-    showmethekey
-    appimage-run
-    hyprpicker # Color picker
     # bash-completion
-
-    # ---------------------------------- Editors
-    vscode
-    # vscode-extensions.dbaeumer.vscode-eslint
-    # (lib.hiPrio windsurf)
-    windsurf
-    code-cursor
-
-    # ---------------------------------- Browsers
-    pkgs-pin-google-chrome.google-chrome
-    firefox
-    tor-browser
 
     # ---------------------------------- Terminal
     inputs.runeword-neovim.packages.x86_64-linux.default # Text editor
     kitty # Terminal emulator
-    # bemenu
 
     # inputs.walker.packages.x86_64-linux.default
 
@@ -136,23 +100,5 @@ in
     gnupg
     pinentry-curses
     # gpg-tui
-
-    # ---------------------------------- Graphics
-    inkscape
-    # realesrgan-ncnn-vulkan
-    kooha
-    krita
-    # obs-studio
-    vlc
-    mpv
-    libsForQt5.okular
-    # mpvScripts.uosc
-    figma-linux
-
-    fstl # .stl file viewer
-
-    # davinci-resolve
-    # inputs.nixified-ai.packages.x86_64-linux.invokeai-nvidia
-    # inputs.nixified-ai.packages.x86_64-linux.koboldai-nvidia
   ];
 }

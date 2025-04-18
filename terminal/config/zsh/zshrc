@@ -275,7 +275,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history custom completion)
 
 compdef _cd __cd # Use the built-in cd completion for the custom cd function
 compdef _cd __mkdir_cd
-compdef _files __chezmoi_add
+compdef _files __chezmoi add
 
 __prevd_widget() { __prevd; zle reset-prompt; }
 zle -N __prevd_widget

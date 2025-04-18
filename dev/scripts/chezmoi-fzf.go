@@ -2,18 +2,17 @@ package main
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"os"
 	"os/exec"
 	"strings"
 )
 
-func getArgs() (cmd string, files []string, flags[]string, error error) {
-	flag.Parse()
-	args := flag.Args()
+func getArgs() (cmd string, flags []string, targets []string, err error) {
+	args := os.Args[1:]
+
 	if len(args) < 1 {
-		return "", nil, nil, fmt.Errorf("Usage: chezmoi-fzf <chezmoi-cmd> [files...] [flags...]")
+		return "", nil, nil, fmt.Errorf("Usage: chezmoi-fzf <cmd> [flags...] [targets...]")
 	}
 
 	cmd = args[0]
@@ -22,43 +21,16 @@ func getArgs() (cmd string, files []string, flags[]string, error error) {
 		if strings.HasPrefix(args[i], "-") {
 			flags = append(flags, args[i])
 		} else {
-			files = append(files, args[i])
+			targets = append(targets, args[i])
 		}
 	}
 
-	return cmd, files, flags, nil
+	return cmd, flags, targets, nil
 }
 
-func selectFiles(paths string, header string) (targets string, error error) {
-	cmd := exec.Command("fzf",
-		"--multi",
-		"--reverse",
-		"--no-separator",
-		"--border", "none",
-		"--cycle",
-		"--height", "100%",
-		"--info=inline:''",
-		"--header-first",
-		"--prompt='  '",
-		"--scheme=path",
-		"--header="+header,
-		"--bind=ctrl-a:select-all",
-		"--preview", "chezmoi diff --reverse --color=true ~/{}",
-		"--preview-window", "bottom,80%,noborder",
-	)
-
-	cmd.Stdin = strings.NewReader(paths)
-	cmd.Stderr = os.Stderr
-	output, err := cmd.Output()
-	if err != nil {
-		return "", err
-	}
-	return strings.TrimSpace(string(output)), nil
-}
-
-func getFiles() (files []string, error error) {
-	cmd := exec.Command("chezmoi", "status")
-	output, err := cmd.Output()
+func getModifiedFiles() (files []string, err error) {
+	statusCmd := exec.Command("chezmoi", "status")
+	output, err := statusCmd.Output()
 	if err != nil {
 		return nil, err
 	}
@@ -78,51 +50,78 @@ func getFiles() (files []string, error error) {
 	return files, nil
 }
 
-func selectPaths(cmd string) (selectedFiles string, error error) {
-	files, err := getFiles()
-
-	if err != nil {
-		return "", err
-	}
-
-	selectedFiles, err = selectFiles(strings.Join(files, "\n"), cmd)
-	if err != nil {
-		return "", err
-	}
-
-	if selectedFiles == "" {
-		return "", fmt.Errorf("no files selected")
-	}
-
-	return
+func createFzfCommand(chezmoiCmd string) *exec.Cmd {
+	return exec.Command("fzf",
+		"--multi",
+		"--reverse",
+		"--no-separator",
+		"--border", "none",
+		"--cycle",
+		"--height", "100%",
+		"--info=inline:''",
+		"--header-first",
+		"--prompt='  '",
+		"--scheme=path",
+		"--header="+chezmoiCmd,
+		"--bind=ctrl-a:select-all",
+		"--preview", "chezmoi diff --reverse --color=true ~/{}",
+		"--preview-window", "bottom,80%,noborder",
+	)
 }
 
-func executeChezmoiCommand(cmd string, flags []string, path string) error {
-	fullPath := os.ExpandEnv("$HOME/" + path)
+func selectChezmoiTargets(cmd string) ([]string, error) {
+	files, err := getModifiedFiles()
+	if err != nil {
+		return nil, err
+	}
 
-	command := exec.Command(cmd, append(flags, fullPath)...)
-	command.Stdout = os.Stdout
-	command.Stderr = os.Stderr
+	fzf := createFzfCommand(cmd)
+	fzf.Stdin = strings.NewReader(strings.Join(files, "\n"))
+	fzf.Stderr = os.Stderr
 
-	return command.Run()
+	output, err := fzf.Output()
+	if err != nil {
+		return nil, err
+	}
+
+	selectedTargets := strings.TrimSpace(string(output))
+	if selectedTargets == "" {
+		return nil, fmt.Errorf("no files selected")
+	}
+
+	return strings.Fields(selectedTargets), nil
 }
 
-func chezmoi() error {
-	cmd, targets, flags, err := getArgs()
+func executeChezmoiCommand(cmd string, target string, flags []string) error {
+	args := append([]string{cmd}, flags...)
+	args = append(args, os.ExpandEnv("$HOME/"+target))
+
+	execCmd := exec.Command("chezmoi", args...)
+	execCmd.Stdout = os.Stdout
+	execCmd.Stderr = os.Stderr
+
+	return execCmd.Run()
+}
+
+func chezmoiWrapper() error {
+	cmd, flags, targets, err := getArgs()
 	if err != nil {
 		return err
 	}
 
-	paths := strings.Join(targets, " ")
-	if paths == "" {
-		paths, err = selectPaths(cmd)
+	// fmt.Println(cmd, flags, targets)
+	// os.Exit(1)
+
+	if len(targets) == 0 {
+		selectedTargets, err := selectChezmoiTargets(cmd)
 		if err != nil {
 			return err
 		}
+		targets = selectedTargets
 	}
 
-	for _, path := range strings.Fields(paths) {
-		if err := executeChezmoiCommand(cmd, flags, path); err != nil {
+	for _, target := range targets {
+		if err := executeChezmoiCommand(cmd, target, flags); err != nil {
 			return err
 		}
 	}
@@ -131,7 +130,7 @@ func chezmoi() error {
 }
 
 func main() {
-	if err := chezmoi(); err != nil {
+	if err := chezmoiWrapper(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}

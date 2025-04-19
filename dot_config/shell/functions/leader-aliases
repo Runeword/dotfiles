@@ -50,3 +50,8 @@ cs	__chezmoi_status                                                             
 cm	__chezmoi_managed                                                            	chezmoi
 cpa	__chezmoi_private add                                                        	chezmoi
 cpy	__chezmoi_private apply                                                      	chezmoi
+ap	aws configure list-profiles                                                  	aws          profiles          list
+al	aws lambda list-functions --profile <profile>                                	aws          lambda            list
+ab	sam build                                                                    	aws          lambda            build
+as	sam local start-api --profile <profile>                                      	aws          lambda            start/local
+ai	sam init --runtime go --package-type Image                                   	aws          lambda            init/go

@@ -115,7 +115,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
-    vim.keymap.del('n', 'K')
+    -- vim.keymap.del('n', 'K')
     vim.keymap.del('n', 'grn')
     vim.keymap.del({ 'n', 'v', }, 'gra')
     vim.keymap.del('n', 'grr')

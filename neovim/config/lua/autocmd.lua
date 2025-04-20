@@ -112,3 +112,16 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
   desc = 'Automatically open the first item in the quickfix window',
 })
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function()
+    vim.keymap.del('n', 'K')
+    vim.keymap.del('n', 'grn')
+    vim.keymap.del({ 'n', 'v', }, 'gra')
+    vim.keymap.del('n', 'grr')
+    vim.keymap.del('n', 'gri')
+    vim.keymap.del('n', 'gO')
+    vim.keymap.del('i', '<C-s>')
+  end,
+  desc = 'Remove LSP default global keymaps',
+})

@@ -5,6 +5,8 @@ return {
 
   build = 'sh ./install.sh',
 
+  enabled = false,
+
   config = function()
     require('sniprun').setup({
       snipruncolors = {

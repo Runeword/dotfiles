@@ -18,9 +18,9 @@ return {
         vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { buffer = buffer, })
         vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { buffer = buffer, })
         vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { buffer = buffer, })
-        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { buffer = buffer, })
+        vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.references()<cr>', { buffer = buffer, })
         vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { buffer = buffer, })
-        -- vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', { buffer = buffer, })
+        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<cr>', { buffer = buffer, })
         -- vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', { buffer = buffer, })
         -- vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', { buffer = buffer, })
 

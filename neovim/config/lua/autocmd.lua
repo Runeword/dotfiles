@@ -115,12 +115,12 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function()
-    vim.keymap.del('n', 'grn')
-    vim.keymap.del({ 'n', 'v', }, 'gra')
-    vim.keymap.del('n', 'grr')
-    vim.keymap.del('n', 'gri')
-    vim.keymap.del('n', 'gO')
-    vim.keymap.del('i', '<C-s>')
+    pcall(vim.keymap.del, 'n', 'grn')
+    pcall(vim.keymap.del, { 'n', 'v', }, 'gra')
+    pcall(vim.keymap.del, 'n', 'grr')
+    pcall(vim.keymap.del, 'n', 'gri')
+    pcall(vim.keymap.del, 'n', 'gO')
+    pcall(vim.keymap.del, 'i', '<C-s>')
   end,
   desc = 'Remove LSP default global keymaps',
 })

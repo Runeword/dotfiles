@@ -1,0 +1,57 @@
+oa	nvim ~/.config/shell/functions/leader-aliases                                	open            aliases
+oh	nvim ~/home-manager/charles/packages.nix                                     	open            packages
+hgr	__home_manager_generation_remove                                             	home-manager    generation        remove
+hgs	__home_manager_generation_switch                                             	home-manager    generation        switch
+hp	__home_manager_packages_list                                                 	home-manager    packages          list
+hu	__update_flake_inputs $HOME/home-manager                                     	home-manager    inputs            update
+hs	home-manager switch --flake $HOME/home-manager                               	home-manager    config            build/activate
+hd	home-manager expire-generations '-7 days'                                    	home-manager    generation        remove old
+hv	home-manager --version                                                       	home-manager    version
+ngs	__nixos_generation_switch                                                    	nixos           generation        switch
+ngr	__nixos_generation_remove                                                    	nixos           generation        remove
+nu	__update_flake_inputs $HOME/nixos                                            	nixos           inputs            update
+ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER                          	nixos           config            build/boot/activate
+ns	sudo nixos-rebuild boot --flake $HOME/nixos#$USER                            	nixos           config            build/boot
+nv	nixos-version                                                                	nixos           version
+ni	nix-info -m                                                                  	nixos           info
+nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             store             clean
+nf	cd /nix/store && __open_file                                                 	nix             store             list
+nb	nix build                                                                    	flake           package           build
+nr	nix run                                                                      	flake           application       run
+fl	nix flake update                                                            	flake           lock              recreate
+fs	nix flake show                                                               	flake           outputs           show
+fp	nix path-info --json | jq                                                    	flake           references        show
+fd	nix store delete $(nix path-info --json | jq -r '.[].path')                  	flake           references        delete
+fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')     	flake           referrers         show
+fu	__update_flake_inputs .                                                      	flake           inputs            update
+fm	nix flake metadata                                                           	flake           metadata
+ft	__use_flake_template $HOME/templates                                         	flake           templates         use
+gb	go build                                                                     	go
+gg	go get                                                                       	go
+gr	go run                                                                       	go
+gm	go mod tidy                                                                  	go
+gc	go clean -modcache                                                           	go
+gt	go test                                                                      	go
+pp	pass git push                                                                	pass
+pi	pass insert                                                                  	pass
+pg	pass generate                                                                	pass
+pc	__pass_clip                                                                  	pass
+pr	__pass_rm                                                                    	pass
+pk	gpgconf --reload gpg-agent                                                   	pass
+pu	pass show GEMINI_API_KEY > /dev/null                                         	pass
+cd	chezmoi diff --reverse                                                       	chezmoi
+ci	chezmoi ignored                                                              	chezmoi
+cc	__chezmoi_cd                                                                 	chezmoi
+ce	chezmoi --refresh-externals apply                                            	chezmoi
+ca	__chezmoi add                                                                	chezmoi
+cy	__chezmoi apply                                                              	chezmoi
+cf	__chezmoi_forget                                                             	chezmoi
+cs	__chezmoi_status                                                             	chezmoi
+cm	__chezmoi_managed                                                            	chezmoi
+cpa	__chezmoi_private add                                                        	chezmoi
+cpy	__chezmoi_private apply                                                      	chezmoi
+ap	aws configure list-profiles                                                  	aws          profiles          list
+al	aws lambda list-functions --profile <profile>                                	aws          lambda            list
+ab	sam build                                                                    	aws          lambda            build
+as	sam local start-api --profile <profile>                                      	aws          lambda            start/local
+ai	sam init --runtime go --package-type Image                                   	aws          lambda            init/go

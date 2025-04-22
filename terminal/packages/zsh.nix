@@ -11,8 +11,10 @@ pkgs.symlinkJoin {
     mkdir -p $out/bin
 
     ln -sf ${mkOutOfStoreSymlink "config/zsh/zshrc"} $out/.zshrc
+    ln -sf ${mkOutOfStoreSymlink "config/shell"} $out/shell
 
     wrapProgram $out/bin/zsh \
-      --set ZDOTDIR "$out"
+      --set ZDOTDIR "$out" \
+      --set XDG_CONFIG_HOME "$out"
   '';
 }

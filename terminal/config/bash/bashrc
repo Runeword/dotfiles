@@ -1,11 +1,11 @@
-[ -f "$HOME/.config/shell/variables.sh" ] && source "$HOME/.config/shell/variables.sh"
+[ -f "$HOME/terminal/config/shell/variables.sh" ] && source "$HOME/terminal/config/shell/variables.sh"
 
 # disable bold in the ls command output
 # LS_COLORS=${LS_COLORS//01;/00;}
 # export LS_COLORS
 # export EDITOR=nvim
 
-# source "$XDG_CONFIG_HOME/shell/scripts/ssh-agent.sh"
+# source "$HOME/terminal/config/shell/scripts/ssh-agent.sh"
 
 # # Show completion options on first Tab, cycle through on second Tab
 # bind 'set show-all-if-ambiguous on'
@@ -24,10 +24,10 @@ for i in "-" {0..9}; do bind -r "\e$i"; done
 # unbind ctrl-s and ctrl-q (terminal scroll lock)
 stty -ixon
 
-[ -f "$XDG_CONFIG_HOME/shell/aliases.sh" ] && source "$XDG_CONFIG_HOME/shell/aliases.sh"
+[ -f "$HOME/terminal/config/shell/aliases.sh" ] && source "$HOME/terminal/config/shell/aliases.sh"
 
-if [ -d "$XDG_CONFIG_HOME/shell/functions" ]; then
-  for file in "$XDG_CONFIG_HOME/shell/functions"/*.sh; do
+if [ -d "$HOME/terminal/config/shell/functions" ]; then
+  for file in "$HOME/terminal/config/shell/functions"/*.sh; do
     . "$file"
   done
 fi

@@ -15,6 +15,5 @@ pkgs.symlinkJoin {
 
     wrapProgram $out/bin/zsh \
       --set ZDOTDIR "$out" \
-      --set XDG_CONFIG_HOME "$out"
   '';
 }

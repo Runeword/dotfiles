@@ -8,10 +8,9 @@ pkgs.symlinkJoin {
     mkdir -p $out/bin
 
     ln -sf ${mkOutOfStoreSymlink "config/bash/bashrc"} $out/.bashrc
-    ln -sf ${mkOutOfStoreSymlink "config/shell"} $out
+    ln -sf ${mkOutOfStoreSymlink "config/shell"} $out/shell
 
     wrapProgram $out/bin/bash \
       --add-flags "--rcfile $out/.bashrc" \
-      --set XDG_CONFIG_HOME "$out"
   '';
 }

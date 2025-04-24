@@ -32,6 +32,10 @@
 
         extraPackages = packages.common ++ packages.linux ++ packages.custom;
 
+        findFlakeDir = pkgs.writeScriptBin "find-flake-dir" ''
+          ${builtins.readFile ./lib/find-flake-dir.sh}
+        '';
+
         alacritty =
           pkgs.runCommand "alacritty"
             {
@@ -48,7 +52,7 @@
               --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
               --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
               --set XDG_CONFIG_HOME "$out/.config" \
-              --set FLAKE_DIR "/home/charles/terminal"
+              --run 'export FLAKE_DIR="$(${findFlakeDir}/bin/find-flake-dir)"'
             '';
       in
       {

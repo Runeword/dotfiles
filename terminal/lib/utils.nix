@@ -1,8 +1,7 @@
 { pkgs }:
 
 {
-  mkOutOfStoreSymlink =
-    path:
+  mkOutOfStoreSymlink = path:
     let
       pathStr = toString path;
       name = builtins.baseNameOf pathStr;

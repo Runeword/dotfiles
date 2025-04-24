@@ -47,8 +47,8 @@
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
               --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
               --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
-              --set FLAKE_DIR "/home/charles/terminal" \
-              --add-flags "--config-file $out/.config/alacritty/alacritty.toml"
+              --set XDG_CONFIG_HOME "$out/.config" \
+              --set FLAKE_DIR "${utils.flakePath}"
             '';
       in
       {

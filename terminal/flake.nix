@@ -48,7 +48,6 @@
               --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
               --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
               --set XDG_CONFIG_HOME "$out/.config" \
-              --set FLAKE_DIR "${utils.flakePath}"
             '';
       in
       {

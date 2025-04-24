@@ -12,5 +12,6 @@ pkgs.symlinkJoin {
 
     wrapProgram $out/bin/bash \
       --add-flags "--rcfile $out/.bashrc" \
+      --set BASH_CONFIG "$out"
   '';
 }

@@ -19,7 +19,7 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [
-            (import ./overlays/lib.nix { inherit pkgs; flakePath = "/home/charles/terminal"; })
+            (import ./overlays/lib.nix { flakePath = "/home/charles/terminal"; })
           ];
         };
 

@@ -22,6 +22,15 @@ export ATAC_KEY_BINDINGS="${XDG_CONFIG_HOME}/atac/vim_key_bindings.toml"
 export ATAC_THEME="${XDG_CONFIG_HOME}/atac/theme.toml"
 export NIXOS_CONFIG="${XDG_CONFIG_HOME}/nixos/configuration.nix"
 export DIRENV_LOG_FORMAT=
+
+# export CARGO_HOME="$XDG_DATA_HOME"/cargo
+# export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
+# export GOPATH="$XDG_DATA_HOME"/go
+# export NODE_REPL_HISTORY="$XDG_STATE_HOME"/node_repl_history
+# export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME"/npm/config/npm-init.js
+# export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+# export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+
 # ZDOTDIR = "${XDG_CONFIG_HOME}/zsh";
 # NPM_CONFIG_PREFIX = "${XDG_DATA_HOME}/npm";
 # TLDR_CACHE_DIR = "${XDG_CACHE_HOME}";

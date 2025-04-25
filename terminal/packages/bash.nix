@@ -1,4 +1,4 @@
-{ pkgs, mkOutOfStoreSymlink }:
+{ pkgs }:
 
 pkgs.symlinkJoin {
   name = "bash-with-config";
@@ -8,8 +8,8 @@ pkgs.symlinkJoin {
     mkdir -p $out/bin
     mkdir -p $out/.config/bash
 
-    ln -sf ${mkOutOfStoreSymlink "config/bash/bashrc"} $out/.config/bash/.bashrc
-    ln -sf ${mkOutOfStoreSymlink "config/shell"} $out/.config/shell
+    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/bash/bashrc"} $out/.config/bash/.bashrc
+    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/shell"} $out/.config/shell
 
     wrapProgram $out/bin/bash \
       --add-flags "--rcfile $out/.config/bash/.bashrc" \

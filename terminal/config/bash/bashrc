@@ -5,6 +5,8 @@
 # export LS_COLORS
 # export EDITOR=nvim
 
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+
 # source "$OUT/.config/shell/scripts/ssh-agent.sh"
 
 # # Show completion options on first Tab, cycle through on second Tab

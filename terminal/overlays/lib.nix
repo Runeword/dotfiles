@@ -2,7 +2,8 @@
 
 final: prev: {
   lib = prev.lib // {
-    mkOutOfStoreSymlink = path:
+    mkOutOfStoreSymlink =
+      path:
       let
         pathStr = toString path;
         name = builtins.baseNameOf pathStr;
@@ -10,4 +11,4 @@ final: prev: {
       in
       pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
   };
-} 
+}

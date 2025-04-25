@@ -13,17 +13,6 @@ compinit
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
-mkdir -p "$XDG_STATE_HOME/zsh"
-HISTFILE="$XDG_STATE_HOME/zsh/history"
-HISTSIZE=10000
-SAVEHIST=10000
-setopt EXTENDED_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
-export HISTORY_IGNORE="(! *)"
-
 
 # ------------------------------------ ZSH hooks
 autoload -Uz add-zsh-hook
@@ -40,6 +29,17 @@ add-zsh-hook precmd __add_newline
 
 # ------------------------------------ ENV variables
 [ -f "$OUT/.config/shell/variables.sh" ] && source "$OUT/.config/shell/variables.sh"
+
+mkdir -p "$XDG_STATE_HOME/zsh"
+HISTFILE="$XDG_STATE_HOME/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+export HISTORY_IGNORE="(! *)"
 
 # source "$OUT/.config/shell/scripts/ssh-agent.sh"
 # source "$OUT"/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh

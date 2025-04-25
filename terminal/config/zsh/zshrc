@@ -38,12 +38,12 @@ __add_newline() {
 add-zsh-hook precmd __add_newline
 
 # ------------------------------------ ENV variables
-[ -f "$ZDOTDIR/.config/shell/variables.sh" ] && source "$ZDOTDIR/.config/shell/variables.sh"
+[ -f "$OUT/.config/shell/variables.sh" ] && source "$OUT/.config/shell/variables.sh"
 
-# source "$ZDOTDIR/.config/shell/scripts/ssh-agent.sh"
-# source "$ZDOTDIR"/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source "$ZDOTDIR"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source "$ZDOTDIR/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# source "$OUT/.config/shell/scripts/ssh-agent.sh"
+# source "$OUT"/zsh-autosuggestions/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$OUT"/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source "$OUT/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 # compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
@@ -136,11 +136,11 @@ bindkey '\x1b[13;5u' autosuggest-execute
 # bindkey -M menuselect '\r' .accept-line
 # bindkey -M menuselect ' ' undo
 
-[ -f "$ZDOTDIR/.config/shell/aliases.sh" ] && source "$ZDOTDIR/.config/shell/aliases.sh"
+[ -f "$OUT/.config/shell/aliases.sh" ] && source "$OUT/.config/shell/aliases.sh"
 
 # ------------------------------------ Functions
-if [ -d "$ZDOTDIR/.config/shell/functions" ]; then
-  for file in "$ZDOTDIR/.config/shell/functions"/*.sh; do
+if [ -d "$OUT/.config/shell/functions" ]; then
+  for file in "$OUT/.config/shell/functions"/*.sh; do
     . "$file"
   done
 fi
@@ -257,17 +257,17 @@ _zsh_autosuggest_strategy_custom() {
   # suggestion=$(navi --query "$1" --best-match --print) # navi does not support non-interactive mode https://github.com/denisidoro/navi/issues/808
 }
 
-__git_widget() { __on_empty_buffer "__aliases --prefix g --file $ZDOTDIR/.config/shell/functions/git-aliases" 'LBUFFER+=g; zle reset-prompt; zle autosuggest-fetch'; }
+__git_widget() { __on_empty_buffer "__aliases --prefix g --file $OUT/.config/shell/functions/git-aliases" 'LBUFFER+=g; zle reset-prompt; zle autosuggest-fetch'; }
 
 zle -N __git_widget
 bindkey 'g' __git_widget
 
-__aliases_or_space() { __on_empty_buffer "__aliases --prefix ' ' --file $ZDOTDIR/.config/shell/functions/leader-aliases" "LBUFFER+=' '; zle reset-prompt; zle autosuggest-fetch"; }
+__aliases_or_space() { __on_empty_buffer "__aliases --prefix ' ' --file $OUT/.config/shell/functions/leader-aliases" "LBUFFER+=' '; zle reset-prompt; zle autosuggest-fetch"; }
 
 zle -N __aliases_or_space
 bindkey ' ' __aliases_or_space
 
-__aliases_or_accept() { __on_empty_buffer "__aliases --execute --prefix '^M' --file $ZDOTDIR/.config/shell/functions/leader-aliases" 'zle accept-line'; }
+__aliases_or_accept() { __on_empty_buffer "__aliases --execute --prefix '^M' --file $OUT/.config/shell/functions/leader-aliases" 'zle accept-line'; }
 zle -N __aliases_or_accept
 bindkey '^M' __aliases_or_accept
 

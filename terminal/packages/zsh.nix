@@ -15,7 +15,7 @@ pkgs.symlinkJoin {
     ln -sf ${mkOutOfStoreSymlink "config/shell"} $out/.config/shell
 
     wrapProgram $out/bin/zsh \
-      --set OUT "$out" \
-      --set ZDOTDIR "$out/.config/zsh"
+      --set ZDOTDIR "$out/.config/zsh" \
+      --set OUT "$out"
   '';
 }

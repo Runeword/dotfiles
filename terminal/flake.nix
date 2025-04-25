@@ -30,14 +30,12 @@
         ];
 
         extraPackages =
-          (import ./packages/packages-common.nix { inherit pkgs; })
-          ++ pkgs.lib.optionals (system == "x86_64-linux" || system == "aarch64-linux") (
-            import ./packages/packages-linux.nix { inherit pkgs; }
-          )
+          (import ./packages/commons.nix { inherit pkgs; })
+          ++ (import ./packages/linux.nix { inherit pkgs system; })
           ++ [
-            (import ./packages/zsh.nix { inherit pkgs; })
-            (import ./packages/tmux.nix { inherit pkgs; })
-            (import ./packages/bash.nix { inherit pkgs; })
+            (import ./packages/wrappers/zsh.nix { inherit pkgs; })
+            (import ./packages/wrappers/tmux.nix { inherit pkgs; })
+            (import ./packages/wrappers/bash.nix { inherit pkgs; })
           ];
 
         alacritty =

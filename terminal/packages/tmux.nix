@@ -18,6 +18,7 @@ pkgs.symlinkJoin {
 
     wrapProgram $out/bin/tmux \
       --set XDG_CONFIG_HOME "$out/.config" \
-      --set TMUX_SHELL ${pkgs.zsh}/bin/zsh
+      --set TMUX_SHELL ${pkgs.zsh}/bin/zsh \
+      # --add-flags "-f $out/.config/tmux/tmux.conf"
   '';
 }

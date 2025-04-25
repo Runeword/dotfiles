@@ -17,6 +17,7 @@ with pkgs; [
   httrack
   chezmoi
   gh
+  xdg-ninja
 
   # Coreutils
   bat

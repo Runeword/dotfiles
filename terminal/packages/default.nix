@@ -1,6 +1,5 @@
 {
   pkgs,
-  utils,
   system,
 }:
 
@@ -15,15 +14,12 @@ let
   custom = [
     (import ./zsh.nix {
       inherit pkgs;
-      mkOutOfStoreSymlink = utils.mkOutOfStoreSymlink;
     })
     (import ./tmux.nix {
       inherit pkgs;
-      mkOutOfStoreSymlink = utils.mkOutOfStoreSymlink;
     })
     (import ./bash.nix {
       inherit pkgs;
-      mkOutOfStoreSymlink = utils.mkOutOfStoreSymlink;
     })
   ];
 in

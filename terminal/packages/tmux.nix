@@ -2,9 +2,7 @@
 
 pkgs.symlinkJoin {
   name = "tmux-with-config";
-  paths = [
-    pkgs.tmux
-  ];
+  paths = [ pkgs.tmux ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
     mkdir -p $out/.config/tmux/plugins

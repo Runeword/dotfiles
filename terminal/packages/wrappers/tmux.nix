@@ -1,5 +1,9 @@
 { pkgs }:
 
+let
+  zsh = import ./zsh.nix { inherit pkgs; };
+in
+
 pkgs.symlinkJoin {
   name = "tmux-with-config";
   paths = [ pkgs.tmux ];
@@ -15,7 +19,7 @@ pkgs.symlinkJoin {
     ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
 
     wrapProgram $out/bin/tmux \
-      --set TMUX_SHELL ${pkgs.zsh}/bin/zsh \
+      --set TMUX_SHELL ${zsh}/bin/zsh \
       --set TMUX_OUT "$out" \
       --add-flags "-f $out/.config/tmux/tmux.conf"
   '';

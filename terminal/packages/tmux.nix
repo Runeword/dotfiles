@@ -17,8 +17,8 @@ pkgs.symlinkJoin {
     ln -sf ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
 
     wrapProgram $out/bin/tmux \
-      --set XDG_CONFIG_HOME "$out/.config" \
       --set TMUX_SHELL ${pkgs.zsh}/bin/zsh \
-      # --add-flags "-f $out/.config/tmux/tmux.conf"
+      --set TMUX_OUT "$out" \
+      --add-flags "-f $out/.config/tmux/tmux.conf"
   '';
 }

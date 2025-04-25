@@ -1,4 +1,4 @@
-{ pkgs, mkOutOfStoreSymlink }:
+{ pkgs }:
 
 pkgs.symlinkJoin {
   name = "zsh-with-config";
@@ -11,8 +11,8 @@ pkgs.symlinkJoin {
     mkdir -p $out/bin
     mkdir -p $out/.config/zsh
 
-    ln -sf ${mkOutOfStoreSymlink "config/zsh/zshrc"} $out/.config/zsh/.zshrc
-    ln -sf ${mkOutOfStoreSymlink "config/shell"} $out/.config/shell
+    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/zsh/zshrc"} $out/.config/zsh/.zshrc
+    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/shell"} $out/.config/shell
 
     wrapProgram $out/bin/zsh \
       --set ZDOTDIR "$out/.config/zsh" \

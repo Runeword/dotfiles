@@ -18,9 +18,13 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            (import ./lib/overlays.nix {
+              inherit pkgs;
+              flakePath = "/home/charles/terminal";
+            })
+          ];
         };
-
-        utils = import ./lib/utils.nix { inherit pkgs; };
 
         extraFonts = [
           pkgs.nerd-fonts.sauce-code-pro
@@ -28,7 +32,7 @@
           pkgs.nerd-fonts.caskaydia-mono
         ];
 
-        packages = import ./packages { inherit pkgs utils system; };
+        packages = import ./packages { inherit pkgs system; };
 
         extraPackages = packages.common ++ packages.linux ++ packages.custom;
 
@@ -40,7 +44,7 @@
             ''
               mkdir -p $out/bin $out/.config
 
-              ln -sf ${utils.mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
+              ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
 
               # use makeWrapper instead of wrapProgram to preserve the original process name 'alacritty'
               # wrapProgram would have named it alacritty-wrapped instead

@@ -42,6 +42,7 @@ o.tabstop = 2          -- Number of spaces that a <Tab> in the file counts for
 o.shiftwidth = 2       -- Number of spaces to use for each step of (auto)indent
 o.hidden = true        -- Allow switching buffers with unsaved changes
 opt.lazyredraw = true  -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
+opt.viminfofile = vim.fn.stdpath("cache") .. "/viminfo" -- Set viminfofile to XDG cache directory
 opt.list = true
 opt.listchars:append 'eol:¬,nbsp:•,tab:  ,lead: ,multispace:˙,trail:˙'
 opt.laststatus = 3

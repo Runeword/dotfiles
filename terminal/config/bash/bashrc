@@ -1,3 +1,6 @@
+# shellcheck disable=SC1091
+
+[ -f "$OUT/.config/shell/xdg.sh" ] && source "$OUT/.config/shell/xdg.sh"
 [ -f "$OUT/.config/shell/variables.sh" ] && source "$OUT/.config/shell/variables.sh"
 
 # disable bold in the ls command output

@@ -28,7 +28,7 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/npmrc"
 mkdir -p "${XDG_CONFIG_HOME}/npm/config"
 export NPM_CONFIG_INIT_MODULE="${XDG_CONFIG_HOME}/npm/config/npm-init.js"
 
-mkdir -p "${XDG_DATA_HOME}"
+mkdir -p "$XDG_DATA_HOME"
 export NODE_REPL_HISTORY="${XDG_DATA_HOME}/node_repl_history"
 
 mkdir -p "${XDG_CONFIG_HOME}/aws"
@@ -71,7 +71,7 @@ export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc"
 mkdir -p "${XDG_STATE_HOME}/less"
 export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
 
-mkdir -p "${XDG_CACHE_HOME}"
+mkdir -p "$XDG_CACHE_HOME"
 export ICEAUTHORITY="${XDG_CACHE_HOME}/ICEauthority"
 
 mkdir -p "${XDG_CACHE_HOME}/X11"
@@ -82,3 +82,9 @@ export MINIKUBE_HOME="${XDG_DATA_HOME}/minikube"
 
 mkdir -p "${XDG_CONFIG_HOME}/java"
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME}/java"
+
+mkdir -p "${XDG_CONFIG_HOME}/kube"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/config"
+
+mkdir -p "${XDG_CONFIG_HOME}/helm"
+export HELM_CONFIG_HOME="$XDG_CONFIG_HOME/helm"

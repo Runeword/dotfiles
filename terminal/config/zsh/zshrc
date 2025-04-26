@@ -28,6 +28,7 @@ __add_newline() {
 add-zsh-hook precmd __add_newline
 
 # ------------------------------------ ENV variables
+[ -f "$OUT/.config/shell/xdg.sh" ] && source "$OUT/.config/shell/xdg.sh"
 [ -f "$OUT/.config/shell/variables.sh" ] && source "$OUT/.config/shell/variables.sh"
 
 mkdir -p "$XDG_STATE_HOME/zsh"

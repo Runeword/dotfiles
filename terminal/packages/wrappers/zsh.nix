@@ -8,12 +8,10 @@ pkgs.symlinkJoin {
   ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
+    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/zsh/zshrc") "/.config/zsh/.zshrc"}
+    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/shell") "/.config/shell"}
+
     mkdir -p $out/bin
-    mkdir -p $out/.config/zsh
-
-    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/zsh/zshrc"} $out/.config/zsh/.zshrc
-    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/shell"} $out/.config/shell
-
     wrapProgram $out/bin/zsh \
       --set ZDOTDIR "$out/.config/zsh" \
       --set OUT "$out"

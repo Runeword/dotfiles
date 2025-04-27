@@ -5,8 +5,8 @@ pkgs.symlinkJoin {
   paths = [ pkgs.bash ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    ${pkgs.lib.mkFile "./../../" "config/bash/bashrc" ".config/bash/.bashrc"}
-    ${pkgs.lib.mkFile "./../../" "config/shell" ".config/shell"}
+    ${pkgs.lib.mkLink "config/bash/bashrc" ".config/bash/.bashrc"}
+    ${pkgs.lib.mkLink "config/shell" ".config/shell"}
 
     mkdir -p $out/bin
     wrapProgram $out/bin/bash \

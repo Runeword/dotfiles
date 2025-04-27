@@ -5,12 +5,10 @@ pkgs.symlinkJoin {
   paths = [ pkgs.bash ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
+    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/bash/bashrc") "/.config/bash/.bashrc"}
+    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/shell") "/.config/shell"}
+
     mkdir -p $out/bin
-    mkdir -p $out/.config/bash
-
-    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/bash/bashrc"} $out/.config/bash/.bashrc
-    ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/shell"} $out/.config/shell
-
     wrapProgram $out/bin/bash \
       --add-flags "--rcfile $out/.config/bash/.bashrc" \
       --set OUT "$out"

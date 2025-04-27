@@ -8,8 +8,8 @@ pkgs.symlinkJoin {
   ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    ${pkgs.lib.mkFile "./../.." "config/zsh/zshrc" ".config/zsh/.zshrc"}
-    ${pkgs.lib.mkFile "./../.." "config/shell" ".config/shell"}
+    ${pkgs.lib.mkLink "config/zsh/zshrc" ".config/zsh/.zshrc"}
+    ${pkgs.lib.mkLink "config/shell" ".config/shell"}
 
     mkdir -p $out/bin
     wrapProgram $out/bin/zsh \

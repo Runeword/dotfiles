@@ -44,12 +44,11 @@
               nativeBuildInputs = [ pkgs.makeWrapper ];
             }
             ''
-              mkdir -p $out/bin $out/.config
-
-              ln -sf ${pkgs.lib.mkOutOfStoreSymlink "config/alacritty"} $out/.config/alacritty
+              ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/alacritty") ".config/alacritty"}
 
               # use makeWrapper instead of wrapProgram to preserve the original process name 'alacritty'
               # wrapProgram would have named it alacritty-wrapped instead
+              mkdir -p $out/bin
               makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
               --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
               --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \

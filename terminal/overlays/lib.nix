@@ -2,14 +2,16 @@
 
 final: prev: {
   lib = prev.lib // {
-    mkOutOfStoreSymlink =
-      path:
-      let
-        pathStr = toString path;
-        name = builtins.baseNameOf pathStr;
-        fullPath = "${flakePath}/${pathStr}";
-      in
-      prev.runCommandLocal name { } ''ln -s ${prev.lib.escapeShellArg fullPath} $out'';
+    # mkOutOfStoreSymlink =
+    #   path:
+    #   let
+    #     pathStr = toString path;
+    #     name = builtins.baseNameOf pathStr;
+    #     fullPath = "${flakePath}/${pathStr}";
+    #   in
+    #   prev.runCommandLocal name { } ''ln -s ${prev.lib.escapeShellArg fullPath} $out'';
+
+    flakePath = "${flakePath}";
 
     mkLink = source: target: ''
       mkdir -p $(dirname $out/${target})

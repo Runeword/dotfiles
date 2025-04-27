@@ -12,8 +12,8 @@ final: prev: {
       prev.runCommandLocal name { } ''ln -s ${prev.lib.escapeShellArg fullPath} $out'';
 
     mkLink = source: target: ''
-      mkdir -p $(dirname $out${target})
-      ln -sf ${source} $out${target}
+      mkdir -p $(dirname $out/${target})
+      ln -sf ${source} $out/${target}
     '';
   };
 }

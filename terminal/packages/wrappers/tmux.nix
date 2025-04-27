@@ -9,9 +9,9 @@ pkgs.symlinkJoin {
   paths = [ pkgs.tmux ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/tmux/tmux.conf") "/.config/tmux/tmux.conf"}
-    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/shell/functions/tmux.sh") "/.config/shell/functions/tmux.sh"}
-    ${pkgs.lib.mkLink "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect" "/.config/tmux/plugins/resurrect"}
+    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/tmux/tmux.conf") ".config/tmux/tmux.conf"}
+    ${pkgs.lib.mkLink (pkgs.lib.mkOutOfStoreSymlink "config/shell/functions/tmux.sh") ".config/shell/functions/tmux.sh"}
+    ${pkgs.lib.mkLink "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect" ".config/tmux/plugins/resurrect"}
 
     # cp ${pkgs.lib.cleanSource ./../../config/tmux/tmux.conf} $out/.config/tmux/tmux.conf
     # cp ${pkgs.lib.cleanSource ./../../config/shell/functions/tmux.sh} $out/.config/shell/functions/tmux.sh

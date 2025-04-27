@@ -17,9 +17,10 @@ pkgs.symlinkJoin {
     # cp ${pkgs.lib.cleanSource ./../../config/shell/functions/tmux.sh} $out/.config/shell/functions/tmux.sh
     # cp -r ${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect $out/.config/tmux/plugins/resurrect
 
+    mkdir -p $out/bin
     wrapProgram $out/bin/tmux \
-      --set TMUX_SHELL ${zsh}/bin/zsh \
-      --set TMUX_OUT "$out" \
-      --add-flags "-f $out/.config/tmux/tmux.conf"
+    --set TMUX_SHELL ${zsh}/bin/zsh \
+    --set TMUX_OUT "$out" \
+    --add-flags "-f $out/.config/tmux/tmux.conf"
   '';
 }

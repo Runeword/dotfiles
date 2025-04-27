@@ -44,7 +44,7 @@
               nativeBuildInputs = [ pkgs.makeWrapper ];
             }
             ''
-              ${pkgs.lib.mkLink "/home/charles/terminal/config/alacritty" ".config/alacritty"}
+              ${pkgs.lib.mkLink "${pkgs.lib.flakePath}/config/alacritty" ".config/alacritty"}
 
               # use makeWrapper instead of wrapProgram to preserve the original process name 'alacritty'
               # wrapProgram would have named it alacritty-wrapped instead

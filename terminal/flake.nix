@@ -19,7 +19,7 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [
-            (import ./overlays/lib.nix { flakePath = "/home/charles/terminal"; })
+            (import ./overlays/lib.nix { flakePath = "/home/charles/terminal"; inherit self; })
           ];
         };
 
@@ -44,7 +44,7 @@
               nativeBuildInputs = [ pkgs.makeWrapper ];
             }
             ''
-              ${pkgs.lib.mkLink "${pkgs.lib.flakePath}/config/alacritty" ".config/alacritty"}
+              ${pkgs.lib.mkFile "./" "config/alacritty" ".config/alacritty"}
 
               # use makeWrapper instead of wrapProgram to preserve the original process name 'alacritty'
               # wrapProgram would have named it alacritty-wrapped instead

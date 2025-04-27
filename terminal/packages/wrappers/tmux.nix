@@ -9,8 +9,8 @@ pkgs.symlinkJoin {
   paths = [ pkgs.tmux ];
   buildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
-    ${pkgs.lib.mkLink "${pkgs.lib.flakePath}/config/tmux/tmux.conf" ".config/tmux/tmux.conf"}
-    ${pkgs.lib.mkLink "${pkgs.lib.flakePath}/config/shell/functions/tmux.sh" ".config/shell/functions/tmux.sh"}
+    ${pkgs.lib.mkFile "./../../" "config/tmux/tmux.conf" ".config/tmux/tmux.conf"}
+    ${pkgs.lib.mkFile "./../../" "config/shell/functions/tmux.sh" ".config/shell/functions/tmux.sh"}
     ${pkgs.lib.mkLink "${pkgs.tmuxPlugins.resurrect}/share/tmux-plugins/resurrect" ".config/tmux/plugins/resurrect"}
 
     mkdir -p $out/bin

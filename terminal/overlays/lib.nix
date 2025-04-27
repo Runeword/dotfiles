@@ -16,7 +16,7 @@ final: prev: {
 
     mkFile = rootPath: source: target:
       if builtins.hasAttr "rev" self
-        then final.lib.mkCopy (prev.lib.cleanSource (rootPath + "/" + source)) target 
+        then final.lib.mkCopy (prev.lib.cleanSource (rootPath + source)) target 
         else final.lib.mkLink "${flakePath}/${source}" target;
   };
 }

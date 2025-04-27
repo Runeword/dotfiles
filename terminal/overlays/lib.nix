@@ -1,17 +1,8 @@
-{ flakePath }:
+{ flakePath, self }:
 
 final: prev: {
   lib = prev.lib // {
     flakePath = "${flakePath}";
-
-    # mkOutOfStoreSymlink =
-    #   path:
-    #   let
-    #     pathStr = toString path;
-    #     name = builtins.baseNameOf pathStr;
-    #     fullPath = "${flakePath}/${pathStr}";
-    #   in
-    #   prev.runCommandLocal name { } ''ln -s ${prev.lib.escapeShellArg fullPath} $out'';
 
     mkLink = source: target: ''
       mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
@@ -22,5 +13,10 @@ final: prev: {
       mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
       cp -r ${prev.lib.escapeShellArg source} $out/${prev.lib.escapeShellArg target}
     '';
+
+    mkFile = rootPath: source: target:
+      if builtins.hasAttr "rev" self
+        then final.lib.mkCopy (prev.lib.cleanSource (rootPath + "/" + source)) target 
+        else final.lib.mkLink "${flakePath}/${source}" target;
   };
 }

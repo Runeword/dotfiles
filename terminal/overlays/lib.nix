@@ -15,5 +15,10 @@ final: prev: {
       mkdir -p $(dirname $out/${target})
       ln -sf ${source} $out/${target}
     '';
+
+    mkCopy = source: target: ''
+      mkdir -p $(dirname $out/${target})
+      cp -r ${source} $out/${target}
+    '';
   };
 }

@@ -4,14 +4,23 @@ final: prev: {
   lib = prev.lib // {
     flakePath = "${flakePath}";
 
+    # mkOutOfStoreSymlink =
+    #   path:
+    #   let
+    #     pathStr = toString path;
+    #     name = builtins.baseNameOf pathStr;
+    #     fullPath = "${flakePath}/${pathStr}";
+    #   in
+    #   prev.runCommandLocal name { } ''ln -s ${prev.lib.escapeShellArg fullPath} $out'';
+
     mkLink = source: target: ''
-      mkdir -p $(dirname ${prev.lib.escapeShellArg "$out/${target}"})
-      ln -sf ${prev.lib.escapeShellArg source} ${prev.lib.escapeShellArg "$out/${target}"}
+      mkdir -p $(dirname $out/${target})
+      ln -sf ${source} $out/${target}
     '';
 
     mkCopy = source: target: ''
-      mkdir -p $(dirname ${prev.lib.escapeShellArg "$out/${target}"})
-      cp -r ${prev.lib.escapeShellArg source} ${prev.lib.escapeShellArg "$out/${target}"}
+      mkdir -p $(dirname $out/${target})
+      cp -r ${source} $out/${target}
     '';
   };
 }

@@ -2,8 +2,6 @@
 
 final: prev: {
   lib = prev.lib // {
-    flakePath = "${flakePath}";
-
     mkLink = source: target: ''
       mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
       ln -sf ${prev.lib.escapeShellArg (flakePath + "/" + source)} $out/${prev.lib.escapeShellArg target}

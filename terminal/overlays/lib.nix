@@ -11,7 +11,7 @@ final: prev: {
 
     mkCopy = source: target: ''
       mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
-      cp -r ${prev.lib.escapeShellArg source} $out/${prev.lib.escapeShellArg target}
+      cp -r ${prev.lib.escapeShellArg (prev.lib.cleanSource source)} $out/${prev.lib.escapeShellArg target}
     '';
 
     mkFile = rootPath: source: target:

@@ -6,12 +6,11 @@ pkgs.symlinkJoin {
     pkgs.zsh
     pkgs.zsh-autosuggestions
   ];
-  buildInputs = [ pkgs.makeWrapper ];
+  nativeBuildInputs = [ pkgs.makeWrapper ];
   postBuild = ''
     ${pkgs.lib.mkLink "config/zsh/zshrc" ".config/zsh/.zshrc"}
     ${pkgs.lib.mkLink "config/shell" ".config/shell"}
 
-    mkdir -p $out/bin
     wrapProgram $out/bin/zsh \
       --set ZDOTDIR "$out/.config/zsh" \
       --set OUT "$out"

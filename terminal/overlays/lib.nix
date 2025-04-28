@@ -1,10 +1,10 @@
-{ flakePath, self }:
+{ rootStr, self }:
 
 final: prev: {
   lib = prev.lib // {
-    mkLink = source: target: ''
-      mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
-      ln -sf ${prev.lib.escapeShellArg (flakePath + "/" + source)} $out/${prev.lib.escapeShellArg target}
+    mkLink = sourceStr: targetStr: ''
+      mkdir -p $(dirname $out/${prev.lib.escapeShellArg targetStr})
+      ln -sf ${prev.lib.escapeShellArg (rootStr + "/" + sourceStr)} $out/${prev.lib.escapeShellArg targetStr}
     '';
 
     mkCopy = source: target: ''
@@ -17,6 +17,6 @@ final: prev: {
       if builtins.hasAttr "rev" self then
         final.lib.mkCopy (rootPath + source) target
       else
-        final.lib.mkLink (flakePath + "/" + source) target;
+        final.lib.mkLink source target;
   };
 }

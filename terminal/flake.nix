@@ -19,7 +19,7 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [
-            (import ./overlays/lib.nix { flakePath = "/home/charles/terminal"; inherit self; })
+            (import ./overlays/lib.nix { rootStr = "/home/charles/terminal"; inherit self; })
           ];
         };
 

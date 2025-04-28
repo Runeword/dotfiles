@@ -6,7 +6,7 @@ final: prev: {
 
     mkLink = source: target: ''
       mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
-      ln -sf ${prev.lib.escapeShellArg source} $out/${prev.lib.escapeShellArg target}
+      ln -sf ${prev.lib.escapeShellArg "${flakePath}/${source}"} $out/${prev.lib.escapeShellArg target}
     '';
 
     mkCopy = source: target: ''

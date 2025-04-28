@@ -6,7 +6,7 @@ final: prev: {
 
     mkLink = source: target: ''
       mkdir -p $(dirname $out/${prev.lib.escapeShellArg target})
-      ln -sf ${prev.lib.escapeShellArg "${flakePath}/${source}"} $out/${prev.lib.escapeShellArg target}
+      ln -sf ${prev.lib.escapeShellArg (flakePath + "/" + source)} $out/${prev.lib.escapeShellArg target}
     '';
 
     mkCopy = source: target: ''
@@ -14,9 +14,11 @@ final: prev: {
       cp -r ${prev.lib.escapeShellArg (prev.lib.cleanSource source)} $out/${prev.lib.escapeShellArg target}
     '';
 
-    mkFile = rootPath: source: target:
-      if builtins.hasAttr "rev" self
-        then final.lib.mkCopy (prev.lib.cleanSource (rootPath + source)) target 
-        else final.lib.mkLink "${flakePath}/${source}" target;
+    mkFile =
+      rootPath: source: target:
+      if builtins.hasAttr "rev" self then
+        final.lib.mkCopy (rootPath + source) target
+      else
+        final.lib.mkLink (flakePath + "/" + source) target;
   };
 }

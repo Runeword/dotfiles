@@ -16,6 +16,7 @@ nv	nixos-version                                                                
 ni	nix-info -m                                                                  	nixos           info
 nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             store             clean
 nf	cd /nix/store && __open_file                                                 	nix             store             list
+np	readlink -f result                                                           	flake           path              show
 nb	nix build                                                                    	flake           package           build
 nr	nix run                                                                      	flake           application       run
 fl	nix flake update                                                            	flake           lock              recreate

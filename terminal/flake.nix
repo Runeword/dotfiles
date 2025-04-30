@@ -19,7 +19,10 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [
-            (import ./overlays/lib.nix { rootStr = "/home/charles/terminal"; inherit self; })
+            (import ./overlays/lib.nix {
+              rootStr = "/home/charles/terminal";
+              inherit self;
+            })
           ];
         };
 
@@ -38,33 +41,30 @@
             (import ./packages/wrappers/bash.nix { inherit pkgs; })
           ];
 
-        alacritty =
-          pkgs.runCommand "alacritty"
-            {
-              nativeBuildInputs = [ pkgs.makeWrapper ];
-            }
-            ''
-              ${pkgs.lib.mkLink "config/alacritty" ".config/alacritty"}
-              ${pkgs.lib.mkLink "extraConfig/bat" ".config/bat"}
+        alacritty = import ./packages/wrappers/alacritty.nix {
+          inherit pkgs extraPackages extraFonts;
+        };
 
-              # use makeWrapper instead of wrapProgram to preserve the original process name 'alacritty'
-              # wrapProgram would have named it alacritty-wrapped instead
-              mkdir -p $out/bin
-              makeWrapper ${pkgs.alacritty}/bin/alacritty $out/bin/alacritty \
-              --prefix PATH : ${pkgs.lib.makeBinPath extraPackages} \
-              --set FONTCONFIG_FILE ${pkgs.makeFontsConf { fontDirectories = extraFonts; }} \
-              --add-flags "--config-file $out/.config/alacritty/alacritty.toml" \
-            '';
+        zsh = pkgs.symlinkJoin {
+          name = "zsh";
+          paths = extraPackages;
+        };
+
       in
       {
         packages = {
           default = alacritty;
+          zsh = zsh;
         };
 
         apps = {
           default = {
             type = "app";
             program = "${alacritty}/bin/alacritty";
+          };
+          zsh = {
+            type = "app";
+            program = "${zsh}/bin/zsh";
           };
         };
       }

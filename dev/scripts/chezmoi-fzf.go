@@ -80,11 +80,11 @@ func executeChezmoiCommand(args []string) error {
 }
 
 func chezmoiWrapper() error {
-	if len(os.Args) < 2 {
+	chezmoiArgs := os.Args[1:]
+
+	if len(chezmoiArgs) == 0 {
 		return fmt.Errorf("Usage: chezmoi-fzf <cmd> [args...]")
 	}
-
-	chezmoiArgs := os.Args[1:]
 
 	if len(chezmoiArgs) == 1 {
 		selectedFiles, err := selectChezmoiTargets(chezmoiArgs[0])

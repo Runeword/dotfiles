@@ -30,7 +30,7 @@ func getModifiedFiles() (files []string, err error) {
 	return files, nil
 }
 
-func createFzfCommand(chezmoiCmd string) *exec.Cmd {
+func createFzfCommand(action string) *exec.Cmd {
 	return exec.Command("fzf",
 		"--multi",
 		"--reverse",
@@ -38,24 +38,24 @@ func createFzfCommand(chezmoiCmd string) *exec.Cmd {
 		"--border", "none",
 		"--cycle",
 		"--height", "100%",
-		"--info=inline:''",
+		"--info=inline:",
 		"--header-first",
-		"--prompt='  '",
+		"--prompt=  ",
 		"--scheme=path",
-		"--header="+chezmoiCmd,
+		"--header=chezmoi "+action,
 		"--bind=ctrl-a:select-all",
 		"--preview", "chezmoi diff --reverse --color=true ~/{}",
 		"--preview-window", "bottom,80%,noborder",
 	)
 }
 
-func selectChezmoiTargets(cmd string) ([]string, error) {
+func selectChezmoiTargets(action string) ([]string, error) {
 	files, err := getModifiedFiles()
 	if err != nil {
 		return nil, err
 	}
 
-	fzf := createFzfCommand(cmd)
+	fzf := createFzfCommand(action)
 	fzf.Stdin = strings.NewReader(strings.Join(files, "\n"))
 	fzf.Stderr = os.Stderr
 

@@ -80,23 +80,25 @@ func executeChezmoiCommand(args []string) error {
 }
 
 func chezmoiWrapper() error {
-	chezmoiArgs := os.Args[1:]
+	args := os.Args[1:]
 
 	// if no action
-	if len(chezmoiArgs) == 0 {
-		return fmt.Errorf("Usage: chezmoi-fzf <cmd> [args...]")
+	if len(args) == 0 {
+		return fmt.Errorf("Usage: chezmoi-fzf <cmd> [targets...] [flags...]")
 	}
 
 	// if no targets
-	if len(chezmoiArgs) == 1 {
-		targets, err := selectChezmoiTargets(chezmoiArgs[0])
+	if len(args) == 1 {
+		// select targets
+		targets, err := selectChezmoiTargets(args[0])
 		if err != nil {
 			return err
 		}
-		chezmoiArgs = append(chezmoiArgs, targets...)
+		// add targets
+		args = append(args, targets...)
 	}
 
-	return executeChezmoiCommand(chezmoiArgs)
+	return executeChezmoiCommand(args)
 }
 
 func main() {

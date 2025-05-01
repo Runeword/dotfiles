@@ -8,24 +8,11 @@ import (
 	"strings"
 )
 
-func getArgs() (cmd string, flags []string, targets []string, err error) {
-	args := os.Args[1:]
-
-	if len(args) < 1 {
-		return "", nil, nil, fmt.Errorf("Usage: chezmoi-fzf <cmd> [flags...] [targets...]")
+func getArgs() (cmd string, args []string, err error) {
+	if len(os.Args) < 2 {
+		return "", nil, fmt.Errorf("Usage: chezmoi-fzf <cmd> [args...]")
 	}
-
-	cmd = args[0]
-
-	for i := 1; i < len(args); i++ {
-		if strings.HasPrefix(args[i], "-") {
-			flags = append(flags, args[i])
-		} else {
-			targets = append(targets, args[i])
-		}
-	}
-
-	return cmd, flags, targets, nil
+	return os.Args[1], os.Args[2:], nil
 }
 
 func getModifiedFiles() (files []string, err error) {
@@ -92,41 +79,29 @@ func selectChezmoiTargets(cmd string) ([]string, error) {
 	return strings.Fields(selectedTargets), nil
 }
 
-func executeChezmoiCommand(cmd string, target string, flags []string) error {
-	args := append([]string{cmd}, flags...)
-	args = append(args, os.ExpandEnv("$HOME/"+target))
-
-	execCmd := exec.Command("chezmoi", args...)
+func executeChezmoiCommand(cmd string, args []string) error {
+	chezmoiArgs := append([]string{cmd}, args...)
+	execCmd := exec.Command("chezmoi", chezmoiArgs...)
 	execCmd.Stdout = os.Stdout
 	execCmd.Stderr = os.Stderr
-
 	return execCmd.Run()
 }
 
 func chezmoiWrapper() error {
-	cmd, flags, targets, err := getArgs()
+	cmd, args, err := getArgs()
 	if err != nil {
 		return err
 	}
 
-	// fmt.Println(cmd, flags, targets)
-	// os.Exit(1)
-
-	if len(targets) == 0 {
+	if len(args) == 0 {
 		selectedTargets, err := selectChezmoiTargets(cmd)
 		if err != nil {
 			return err
 		}
-		targets = selectedTargets
+		args = selectedTargets
 	}
 
-	for _, target := range targets {
-		if err := executeChezmoiCommand(cmd, target, flags); err != nil {
-			return err
-		}
-	}
-
-	return nil
+	return executeChezmoiCommand(cmd, args)
 }
 
 func main() {

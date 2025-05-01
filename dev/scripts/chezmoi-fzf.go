@@ -80,6 +80,10 @@ func executeChezmoiCommand(args []string) error {
 }
 
 func chezmoiWrapper() error {
+	// os.Args[0]  program name
+	// os.Args[1]  chezmoi action
+	// os.Args[1:] chezmoi args
+
 	chezmoiArgs := os.Args[1:]
 
 	if len(chezmoiArgs) == 0 {

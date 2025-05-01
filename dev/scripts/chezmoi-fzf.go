@@ -8,11 +8,12 @@ import (
 	"strings"
 )
 
-func getArgs() ([]string, error) {
+func getArgs() []string {
 	if len(os.Args) < 2 {
-		return nil, fmt.Errorf("Usage: chezmoi-fzf <cmd> [args...]")
+		fmt.Fprintln(os.Stderr, "Usage: chezmoi-fzf <cmd> [args...]")
+		os.Exit(1)
 	}
-	return os.Args[1:], nil
+	return os.Args[1:]
 }
 
 func getModifiedFiles() (files []string, err error) {
@@ -87,24 +88,14 @@ func executeChezmoiCommand(args []string) error {
 }
 
 func chezmoiWrapper() error {
-	args, err := getArgs()
-	if err != nil {
-		return err
-	}
-
-	if len(args) == 0 {
-		return fmt.Errorf("Usage: chezmoi-fzf <cmd> [args...]")
-	}
-
-	cmd := args[0]
+	args := getArgs()
 	if len(args) == 1 {
-		selectedTargets, err := selectChezmoiTargets(cmd)
+		targets, err := selectChezmoiTargets(args[0])
 		if err != nil {
 			return err
 		}
-		args = append([]string{cmd}, selectedTargets...)
+		args = append(args, targets...)
 	}
-
 	return executeChezmoiCommand(args)
 }
 

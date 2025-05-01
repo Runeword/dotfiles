@@ -8,14 +8,6 @@ import (
 	"strings"
 )
 
-func getArgs() []string {
-	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, "Usage: chezmoi-fzf <cmd> [args...]")
-		os.Exit(1)
-	}
-	return os.Args[1:]
-}
-
 func getModifiedFiles() (files []string, err error) {
 	statusCmd := exec.Command("chezmoi", "status")
 	output, err := statusCmd.Output()
@@ -88,15 +80,22 @@ func executeChezmoiCommand(args []string) error {
 }
 
 func chezmoiWrapper() error {
-	args := getArgs()
-	if len(args) == 1 {
-		targets, err := selectChezmoiTargets(args[0])
+	if len(os.Args) < 2 {
+		return fmt.Errorf("Usage: chezmoi-fzf <cmd> [args...]")
+	}
+
+	chezmoiArgs := os.Args[1:]
+
+	if len(chezmoiArgs) == 1 {
+		selectedFiles, err := selectChezmoiTargets(chezmoiArgs[0])
 		if err != nil {
 			return err
 		}
-		args = append(args, targets...)
+
+		chezmoiArgs = append(chezmoiArgs, selectedFiles...)
 	}
-	return executeChezmoiCommand(args)
+
+	return executeChezmoiCommand(chezmoiArgs)
 }
 
 func main() {

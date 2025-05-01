@@ -13,6 +13,7 @@ return {
         python = { 'isort', 'black', },
         javascript = { 'prettier', },
         typescript = { 'prettier', },
+        html = { 'prettier', },
         typescriptreact = { 'prettier', },
         go = { 'gofmt', },
       },

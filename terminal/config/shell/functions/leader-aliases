@@ -54,7 +54,6 @@ gko	git checkout --ours FileName              	Resolve merge conflict by keeping
 gt 	git status                                	Show files status
 gnu	__git_open_unstaged                       	Open unstaged files in neovim
 gns	__git_open_staged                         	Open staged files in neovim
-ge 	nvim ~/.config/shell/functions/git-aliases
 gsp 	git stash push                                    	Stash staged + unstaged
 gss	git stash push --staged                           	Stash staged
 gsa	git stash push --include-untracked                	Stash staged + unstaged + untracked

@@ -27,12 +27,64 @@ fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')     
 fu	__update_flake_inputs .                                                      	flake           inputs            update
 fm	nix flake metadata                                                           	flake           metadata
 ft	__use_flake_template $HOME/templates                                         	flake           templates         use
-gb	go build                                                                     	go
-gg	go get                                                                       	go
-gr	go run                                                                       	go
-gm	go mod tidy                                                                  	go
-gc	go clean -modcache                                                           	go
-gt	go test                                                                      	go
+gg  	lazygit
+gin 	git init                                  	New repository
+gif	onefetch
+gad 	git-forgit add                            	Stage changes
+gat 	git add --intent-to-add                   	Track changes
+glo 	git-forgit log                            	List commits
+gb  	git branch                                	List branches
+gbn 	git checkout -b BranchName                	Create a new branch and switch to it
+gbr 	git branch --move --force BranchNewName   	Rename branch
+gbd	git-forgit branch_delete                  	Delete local branch
+gbdl	git branch --delete --force BranchLocal   	Delete local branch
+gbdr	git push origin --delete BranchRemote     	Delete remote branch
+gbl	git-forgit blame
+gco 	git commit --message                      	Commit changes
+gca	git commit --amend --message              	Change message of last commit
+gcl	__git_clone Documents/dev
+gcld	cloneit                                   	Download github directories or files
+gm 	git merge BranchName                      	Merge BranchName into current branch
+gcp	git-forgit cherry_pick
+gkb 	git-forgit checkout_branch
+gkf 	git-forgit checkout_file
+gkt 	git-forgit checkout_tag
+gkc	git-forgit checkout_commit
+gko	git checkout --ours FileName              	Resolve merge conflict by keeping our version
+gt 	git status                                	Show files status
+gnu	__git_open_unstaged                       	Open unstaged files in neovim
+gns	__git_open_staged                         	Open staged files in neovim
+ge 	nvim ~/.config/shell/functions/git-aliases
+gsp 	git stash push                                    	Stash staged + unstaged
+gss	git stash push --staged                           	Stash staged
+gsa	git stash push --include-untracked                	Stash staged + unstaged + untracked
+gsu	git stash push --include-untracked --keep-index   	Stash unstaged + untracked
+gsy	git stash apply                                   	Apply changes from last stash
+gsl	git-forgit stash_show                             	List stashes
+gsc	git stash clear                                   	Delete all stashes
+gsf	git-forgit stash_push                             	Stash selected files
+gps 	git push
+gpl 	git pull
+gr	git-forgit checkout_file                    	Delete unstaged (git checkout --), (git restore)
+grm	git rm -rf                                	Remove file
+grb	git-forgit rebase
+grb	git-forgit rebase --interactive           	Interactive rebase
+grh	git reset --hard                          	Delete staged + unstaged
+gru	git-forgit reset_head                     	Unstage changes (git restore --staged)
+grts	git reset --soft HEAD~<n>                 	Revert last n commit and unstage their changes
+grth	git reset --hard HEAD~<n>                 	Revert last n commit and delete their changes
+gcln	git-forgit clean --force -d               	Delete untracked files and directories
+gdd 	git-forgit diff                           	Show unstaged changes
+gdc	git-forgit diff --cached                  	Show staged changes
+gwa	git worktree add
+gwl	git worktree list
+gwr	git worktree remove
+gob	go build                                                                     	go
+gog	go get                                                                       	go
+gor	go run                                                                       	go
+gom	go mod tidy                                                                  	go
+goc	go clean -modcache                                                           	go
+got	go test                                                                      	go
 pp	pass git push                                                                	pass
 pi	pass insert                                                                  	pass
 pg	pass generate                                                                	pass

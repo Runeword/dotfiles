@@ -253,10 +253,10 @@ _zsh_autosuggest_strategy_custom() {
   # suggestion=$(navi --query "$1" --best-match --print) # navi does not support non-interactive mode https://github.com/denisidoro/navi/issues/808
 }
 
-__git_widget() { __on_empty_buffer "__aliases --prefix g --file $OUT/.config/shell/functions/git-aliases" 'LBUFFER+=g; zle reset-prompt; zle autosuggest-fetch'; }
+# __git_widget() { __on_empty_buffer "__aliases --prefix g --file $OUT/.config/shell/functions/git-aliases" 'LBUFFER+=g; zle reset-prompt; zle autosuggest-fetch'; }
 
-zle -N __git_widget
-bindkey 'g' __git_widget
+# zle -N __git_widget
+# bindkey 'g' __git_widget
 
 __aliases_or_space() { __on_empty_buffer "__aliases --prefix ' ' --file $OUT/.config/shell/functions/leader-aliases" "LBUFFER+=' '; zle reset-prompt; zle autosuggest-fetch"; }
 

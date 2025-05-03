@@ -27,57 +27,58 @@ fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')     
 fu	__update_flake_inputs .                                                      	flake           inputs            update
 fm	nix flake metadata                                                           	flake           metadata
 ft	__use_flake_template $HOME/templates                                         	flake           templates         use
-gg  	lazygit
-gin 	git init                                  	New repository
-gif	onefetch
-gad 	git-forgit add                            	Stage changes
-gat 	git add --intent-to-add                   	Track changes
-glo 	git-forgit log                            	List commits
-gb  	git branch                                	List branches
-gbn 	git checkout -b BranchName                	Create a new branch and switch to it
-gbr 	git branch --move --force BranchNewName   	Rename branch
-gbd	git-forgit branch_delete                  	Delete local branch
-gbdl	git branch --delete --force BranchLocal   	Delete local branch
-gbdr	git push origin --delete BranchRemote     	Delete remote branch
-gbl	git-forgit blame
-gco 	git commit --message                      	Commit changes
-gca	git commit --amend --message              	Change message of last commit
-gcl	__git_clone Documents/dev
-gcld	cloneit                                   	Download github directories or files
-gm 	git merge BranchName                      	Merge BranchName into current branch
-gcp	git-forgit cherry_pick
-gkb 	git-forgit checkout_branch
-gkf 	git-forgit checkout_file
-gkt 	git-forgit checkout_tag
-gkc	git-forgit checkout_commit
-gko	git checkout --ours FileName              	Resolve merge conflict by keeping our version
-gt 	git status                                	Show files status
-gnu	__git_open_unstaged                       	Open unstaged files in neovim
-gns	__git_open_staged                         	Open staged files in neovim
-gsp 	git stash push                                    	Stash staged + unstaged
-gss	git stash push --staged                           	Stash staged
-gsa	git stash push --include-untracked                	Stash staged + unstaged + untracked
-gsu	git stash push --include-untracked --keep-index   	Stash unstaged + untracked
-gsy	git stash apply                                   	Apply changes from last stash
-gsl	git-forgit stash_show                             	List stashes
-gsc	git stash clear                                   	Delete all stashes
-gsf	git-forgit stash_push                             	Stash selected files
-gps 	git push
-gpl 	git pull
-gr	git-forgit checkout_file                    	Delete unstaged (git checkout --), (git restore)
-grm	git rm -rf                                	Remove file
-grb	git-forgit rebase
-grb	git-forgit rebase --interactive           	Interactive rebase
-grh	git reset --hard                          	Delete staged + unstaged
-gru	git-forgit reset_head                     	Unstage changes (git restore --staged)
-grts	git reset --soft HEAD~<n>                 	Revert last n commit and unstage their changes
-grth	git reset --hard HEAD~<n>                 	Revert last n commit and delete their changes
-gcln	git-forgit clean --force -d               	Delete untracked files and directories
-gdd 	git-forgit diff                           	Show unstaged changes
-gdc	git-forgit diff --cached                  	Show staged changes
-gwa	git worktree add
-gwl	git worktree list
-gwr	git worktree remove
+g   	lazygit                                         	git
+gi  	git init                                        	git                 repo                init
+gf  	onefetch                                        	git                 repo                info
+gl  	git-forgit log                                  	git                 commit              list
+ga  	git-forgit add                                  	git                 file                stage
+ga  	git add --intent-to-add File                     	git                 file                track
+gt  	git status                                      	git                 file                list
+gb  	git branch --list                               	git                 branch              list
+gbn 	git switch --create NewBranch                   	git                 branch              new
+gbr 	git branch --move --force OldName NewName       	git                 branch              rename
+gm  	git merge Branch                                	git                 branch              merge
+gbd 	git branch --delete --force BranchLocal         	git                 branch local        delete
+gbd 	git-forgit branch_delete                        	git                 branch local        delete
+gbdr	git push origin --delete BranchRemote           	git                 branch remote       delete
+gbl 	git-forgit blame                                	git
+gcn 	git commit --message Message                     	git                 commit              new
+gcm 	git commit --message --amend                    	git                 message             update
+gcl 	__git_clone Documents/dev                       	git                 repo                clone
+gcf 	cloneit                                         	git                 Download github directories or files
+gcp 	git-forgit cherry_pick                          	git
+gkb 	git-forgit checkout_branch                      	git
+gkf 	git-forgit checkout_file                        	git
+gkt 	git-forgit checkout_tag                         	git
+gkc 	git-forgit checkout_commit                      	git
+gko 	git checkout --ours FileName                    	git                 Resolve merge conflict by keeping our version
+gnu 	__git_open_unstaged                             	git                 Open unstaged files in neovim
+gns 	__git_open_staged                               	git                 Open staged files in neovim
+gsp 	git stash push                                  	git                 Stash staged + unstaged
+gss 	git stash push --staged                         	git                 Stash staged
+gsa 	git stash push --include-untracked              	git                 Stash staged + unstaged + untracked
+gsu 	git stash push --include-untracked --keep-index 	git                 Stash unstaged + untracked
+gsy 	git stash apply                                 	git                 Apply changes from last stash
+gsl 	git-forgit stash_show                           	git                 List stashes
+gsc 	git stash clear                                 	git                 Delete all stashes
+gsf 	git-forgit stash_push                           	git                 Stash selected files
+gps 	git push                                        	git
+gpl 	git pull                                        	git
+gr  	git-forgit checkout_file                        	git                 Discard (git checkout --, git restore)
+gr  	git restore --staged                            	git                 Unstage
+grm 	git rm -rf                                      	git                 Remove untracked
+grb 	git-forgit rebase                               	git
+grb 	git-forgit rebase --interactive                 	git                 Interactive rebase
+grh 	git reset --hard                                	git                 Delete staged + unstaged
+gru 	git-forgit reset_head                           	git                 Unstage changes (git restore --staged)
+grts	git reset --soft HEAD~<n>                       	git                 Revert last n commit and unstage their changes
+grth	git reset --hard HEAD~<n>                       	git                 Revert last n commit and delete their changes
+gcln	git-forgit clean --force -d                     	git                 Delete untracked files and directories
+gdd 	git-forgit diff                                 	git                 Show unstaged changes
+gdc 	git-forgit diff --cached                        	git                 Show staged changes
+gwa 	git worktree add                                	git
+gwl 	git worktree list                               	git
+gwr 	git worktree remove                             	git
 gob	go build                                                                     	go
 gog	go get                                                                       	go
 gor	go run                                                                       	go

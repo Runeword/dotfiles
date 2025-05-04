@@ -195,8 +195,8 @@ docker rmi -f `docker images -q`
 docker volume rm \
 `docker volume ls -q -f dangling=true`
 
-# Remove unused containers, networks, images
-docker system prune
+# Remove unused containers, networks, images, build cache, volumes
+docker system prune --volumes
 
 # Remove unused volumes
 docker volume prune

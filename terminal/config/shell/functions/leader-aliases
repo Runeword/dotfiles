@@ -42,8 +42,8 @@ gbd 	git branch --delete --force BranchLocal         	git                 branch
 gbd 	git-forgit branch_delete                        	git                 branch local        delete
 gbdr	git push origin --delete BranchRemote           	git                 branch remote       delete
 gbl 	git-forgit blame                                	git
-gcm 	git commit --message Message                     	git                 commit              new
-gca 	git commit --message --amend                    	git                 message             update
+gcm 	git commit --message Message                    	git                 commit              new
+gca 	git commit --message --amend NewMessage         	git                 message             update
 gcl 	__git_clone Documents/dev                       	git                 repo                clone
 gcf 	cloneit                                         	git                 Download github directories or files
 gcp 	git-forgit cherry_pick                          	git

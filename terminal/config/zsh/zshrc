@@ -263,7 +263,7 @@ __aliases_or_space() { __on_empty_buffer "__aliases --prefix ' ' --file $OUT/.co
 zle -N __aliases_or_space
 bindkey ' ' __aliases_or_space
 
-__aliases_or_accept() { __on_empty_buffer "__aliases --execute --prefix '^M' --file $OUT/.config/shell/functions/leader-aliases" 'zle accept-line'; }
+__aliases_or_accept() { __on_empty_buffer "__aliases --prefix '^M' --file $OUT/.config/shell/functions/leader-aliases" 'zle accept-line'; }
 zle -N __aliases_or_accept
 bindkey '^M' __aliases_or_accept
 

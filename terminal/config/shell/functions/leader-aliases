@@ -34,34 +34,35 @@ gl  	git-forgit log                                  	git                 commit
 ga  	git-forgit add                                  	git                 file                stage	x
 xga  	git add --intent-to-add File                     	git                 file                track
 gt  	git status                                      	git                 file                list	x
+gkb 	git-forgit checkout_branch                      	git                 branch              switch	x
 gb  	git branch --list                               	git                 branch              list	x
 gbn 	git switch --create NewBranch                   	git                 branch              new
 gbr 	git branch --move --force OldName NewName       	git                 branch              rename
 gm  	git merge Branch                                	git                 branch              merge
-gbd 	git branch --delete --force BranchLocal         	git                 branch local        delete
-gbd 	git-forgit branch_delete                        	git                 branch local        delete
-gbdr	git push origin --delete BranchRemote           	git                 branch remote       delete
+gbd 	git branch --delete --force BranchLocal         	git                 branch              delete local
+gbd 	git-forgit branch_delete                        	git                 branch              delete local	x
+gbdr	git push origin --delete BranchRemote           	git                 branch              delete remote
 gbl 	git-forgit blame                                	git
 gcm 	git commit --message Message                    	git                 commit              new
-gca 	git commit --message --amend NewMessage         	git                 message             update
-gcl 	__git_clone Documents/dev                       	git                 repo                clone	x
-gcf 	cloneit                                         	git                 Download github directories or files
+gca 	git commit --message --amend NewMessage         	git                 commit              edit message
+gcl 	__git_clone Documents/dev                       	git                 clone               repo	x
+gcf 	cloneit                                         	git                 clone           dir/file	x
 gcp 	git-forgit cherry_pick                          	git
-gkb 	git-forgit checkout_branch                      	git
-gkf 	git-forgit checkout_file                        	git
+gkf 	git-forgit checkout_file                          git
 gkt 	git-forgit checkout_tag                         	git
 gkc 	git-forgit checkout_commit                      	git
-gko 	git checkout --ours FileName                    	git                 Resolve merge conflict by keeping our version
-gnu 	__git_open_unstaged                             	git                 Open unstaged files in neovim	x
-gns 	__git_open_staged                               	git                 Open staged files in neovim	x
-gsp 	git stash push                                  	git                 Stash staged + unstaged
-gss 	git stash push --staged                         	git                 Stash staged
-gsa 	git stash push --include-untracked              	git                 Stash staged + unstaged + untracked
-gsu 	git stash push --include-untracked --keep-index 	git                 Stash unstaged + untracked
-gsy 	git stash apply                                 	git                 Apply changes from last stash
-gsl 	git-forgit stash_show                           	git                 List stashes
-gsc 	git stash clear                                 	git                 Delete all stashes
-gsf 	git-forgit stash_push                           	git                 Stash selected files
+gko 	git checkout --ours FileName                    	git                 merge conflict                keep our	x
+gnu 	__git_open_unstaged                             	git                 open                          unstaged	x
+gns 	__git_open_staged                               	git                 open                            staged	x
+gnu 	__git_open_all                                  	git                 open         staged/unstaged/untracked	x
+gss 	git stash push --staged                         	git                 stash                           staged	x
+gsp 	git stash push                                  	git                 stash                  staged/unstaged	x
+gsa 	git stash push --include-untracked              	git                 stash        untracked/staged/unstaged	x
+gsu 	git stash push --include-untracked --keep-index 	git                 stash               untracked/unstaged	x
+gsy 	git stash apply                                 	git                 stash                       apply last	x
+gsl 	git-forgit stash_show                           	git                 stash                             list	x
+gsc 	git stash clear                                 	git                 stash                       delete all
+gsf 	git-forgit stash_push                           	git                 stash                             push	x
 gps 	git push                                        	git
 gpl 	git pull                                        	git
 gr  	git-forgit checkout_file                        	git                 Discard (git checkout --, git restore)

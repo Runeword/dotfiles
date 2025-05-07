@@ -117,6 +117,7 @@ alias b='bluetuith'
 alias bl='__bluetoothctl'
 alias w='setsid iwgtk > /dev/null 2>&1'
 # alias w='__nmcli_wifi_connect'
+alias code='setsid code &> /dev/null 2>&1'
 
 # ______________________________________ TRASH
 

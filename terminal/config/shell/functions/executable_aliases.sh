@@ -17,8 +17,8 @@ __run_alias() {
 }
 
 __aliases() {
-  local prefix_char="g"
-  local aliases_file="$XDG_CONFIG_HOME/shell/functions/git-aliases"
+  local prefix_char
+  local aliases_file
 
   # Parse arguments
   while [ $# -gt 0 ]; do

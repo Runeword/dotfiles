@@ -52,8 +52,8 @@ gkf 	git-forgit checkout_file                        	git
 gkt 	git-forgit checkout_tag                         	git
 gkc 	git-forgit checkout_commit                      	git
 gko 	git checkout --ours FileName                    	git                 Resolve merge conflict by keeping our version
-gnu 	__git_open_unstaged                             	git                 Open unstaged files in neovim
-gns 	__git_open_staged                               	git                 Open staged files in neovim
+gnu 	__git_open_unstaged                             	git                 Open unstaged files in neovim	x
+gns 	__git_open_staged                               	git                 Open staged files in neovim	x
 gsp 	git stash push                                  	git                 Stash staged + unstaged
 gss 	git stash push --staged                         	git                 Stash staged
 gsa 	git stash push --include-untracked              	git                 Stash staged + unstaged + untracked

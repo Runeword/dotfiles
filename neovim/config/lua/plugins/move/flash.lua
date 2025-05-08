@@ -25,17 +25,26 @@ return {
     },
 
     prompt = {
-      enabled = true,
-      prefix = { { '🦘 ', 'FlashPromptIcon', }, },
+      enabled = false,
+      prefix = { { '>', 'FlashPromptIcon', }, },
 
       win_config = {
-        relative = 'win',
-        width = 20,
+        relative = 'cursor',
+        width = 2,
         height = 1,
-        col = math.ceil(vim.api.nvim_win_get_width(0) / 2),
-        row = math.ceil(vim.api.nvim_win_get_height(0) / 2),
+        col = 1, -- 2 columns to the right of the cursor
+        row = 0, -- 1 row below the cursor
         zindex = 1000,
       },
+
+      -- win_config = {
+      --   relative = 'win',
+      --   width = 20,
+      --   height = 1,
+      --   col = math.ceil(vim.api.nvim_win_get_width(0) / 2),
+      --   row = math.ceil(vim.api.nvim_win_get_height(0) / 2),
+      --   zindex = 1000,
+      -- },
     },
 
     modes = {
@@ -88,9 +97,9 @@ return {
       group = 'flash',
       pattern = '*',
       callback = function()
-        vim.api.nvim_set_hl(0, 'FlashMatch',   { bg = '#222b66', fg = 'white', bold = false, })
-        vim.api.nvim_set_hl(0, 'FlashCurrent', { bg = '#FAFF00', fg = 'black', bold = false, })
-        vim.api.nvim_set_hl(0, 'FlashLabel',   { bg = '#5d00ff', fg = 'white', bold = false, })
+        vim.api.nvim_set_hl(0, 'FlashMatch', { bg = '#222b66', fg = 'white', bold = false, })
+        vim.api.nvim_set_hl(0, 'FlashCurrent', { bg = '#49f5b0', fg = 'black', bold = false, })
+        vim.api.nvim_set_hl(0, 'FlashLabel', { bg = '#5d00ff', fg = 'white', bold = false, })
       end,
     })
   end,
@@ -109,7 +118,7 @@ return {
     --   desc = 'Flash',
     -- },
     {
-      'f',
+      't',
       mode = { 'n', 'x', 'o', },
       function()
         require('flash').jump({

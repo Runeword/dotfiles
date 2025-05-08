@@ -11,15 +11,4 @@ tasks:
       - aliases-fzf/**/*.go
     generates:
       - "{{.HOME}}/.nix-profile/bin/chezmoi-fzf"
-      - "{{.HOME}}/.nix-profile/bin/aliases-fzf"
-
-  watch:
-    desc: Watch for changes and rebuild
-    cmds:
-      - task --watch build
-    sources:
-      - chezmoi-fzf/**/*.go
-      - aliases-fzf/**/*.go
-    generates:
-      - "{{.HOME}}/.nix-profile/bin/chezmoi-fzf"
       - "{{.HOME}}/.nix-profile/bin/aliases-fzf" 

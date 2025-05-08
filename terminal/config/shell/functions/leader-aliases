@@ -1,4 +1,4 @@
-oa	nvim ~/.config/shell/functions/leader-aliases                                	open            aliases	x
+oa	nvim ~/terminal/config/shell/functions/leader-aliases                        	open            aliases	x
 oh	nvim ~/home-manager/charles/packages.nix                                     	open            packages	x
 hgr	__home_manager_generation_remove                                             	home-manager    generation        remove	x
 hgs	__home_manager_generation_switch                                             	home-manager    generation        switch	x
@@ -108,18 +108,20 @@ cm	__chezmoi_managed                                                            
 cpa	__chezmoi_private add                                                        	chezmoi	x
 cpy	__chezmoi_private apply                                                      	chezmoi	x
 ap	aws configure list-profiles                                                  	aws          profiles          list
-al	aws lambda list-functions --profile Profile                                 	aws          lambda            list
+al	aws lambda list-functions --profile Profile                                  	aws          lambda            list
 ab	sam build                                                                    	aws          lambda            build
 as	sam local start-api --profile <profile>                                      	aws          lambda            start/local
 ai	sam init --runtime go --package-type Image                                   	aws          lambda            init/go
-dsl	docker system df                                                            	docker       system            list	x
+dsl	docker system df                                                             	docker       system            list	x
 dsp	docker system prune --force --all --volumes                                  	docker       system            remove unused containers, networks, images, volumes, build cache	x
 dnl	docker network ls                                                            	docker       network           list	x
 dnp	docker network prune --force                                                 	docker       network           remove unused	x
 dvl	docker volume ls                                                             	docker       volume            list	x
 dvp	docker volume prune --force --all                                            	docker       volume            remove unused	x
-dcs	docker compose stop                                                         	docker       compose           stop	x
+dcs	docker compose stop                                                          	docker       compose           stop	x
 dcl	docker container ls --all                                                    	docker       container         list	x
 dcp	docker container prune --force                                               	docker       container         remove unused	x
 dil	docker image ls --all                                                        	docker       image             list	x
 dip	docker image prune --force --all                                             	docker       image             remove unused	x
+tw	task --watch build &                                                         	task         watch	x
+tk	pkill -f "task --watch build"                                                	task         kill	x

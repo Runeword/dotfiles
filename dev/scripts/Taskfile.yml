@@ -1,0 +1,25 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Build both Go scripts
+    cmds:
+      - cd chezmoi-fzf && go build -o {{.HOME}}/.nix-profile/bin/chezmoi-fzf .
+      - cd aliases-fzf && go build -o {{.HOME}}/.nix-profile/bin/aliases-fzf .
+    sources:
+      - chezmoi-fzf/**/*.go
+      - aliases-fzf/**/*.go
+    generates:
+      - "{{.HOME}}/.nix-profile/bin/chezmoi-fzf"
+      - "{{.HOME}}/.nix-profile/bin/aliases-fzf"
+
+  watch:
+    desc: Watch for changes and rebuild
+    cmds:
+      - task --watch build
+    sources:
+      - chezmoi-fzf/**/*.go
+      - aliases-fzf/**/*.go
+    generates:
+      - "{{.HOME}}/.nix-profile/bin/chezmoi-fzf"
+      - "{{.HOME}}/.nix-profile/bin/aliases-fzf" 

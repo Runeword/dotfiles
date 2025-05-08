@@ -1,6 +1,6 @@
 add_newline = false
-format = "$directory"
-right_format = "$git_branch$all$nix_shell"
+format = "$golang$rust$lua$package$terraform$nodejs$python$nix_shell$shell$directory"
+right_format = "$git_branch$all"
 
 [character]
 disabled = true
@@ -18,11 +18,12 @@ disabled = true
 disabled = true
 
 [directory]
-format = "[$path](italic fg:blue bg:#1e2633) "
+format = "[$path](italic fg:blue) "
+# format = "[$path](italic fg:blue bg:#1e2633) "
 truncate_to_repo = false
 
 [terraform]
-format = "[$symbol$workspace](white) "
+format = "[$symbol$workspace]()"
 symbol = "[󱁢 ](purple)"
 
 [git_branch]
@@ -30,43 +31,44 @@ format = "[$symbol$branch](white) "
 symbol = "[󰊢 ](black)"
 
 [golang]
-format = "[$symbol$version](white) "
-symbol = "[󰟓 ](cyan)"
+format = "[$symbol](cyan)"
+symbol = "󰟓 "
 version_format = "${raw}"
 
 [nix_shell]
-format = "$symbol"
-symbol = "[ ](blue)"
+disabled = true
+format = "[$symbol](blue)"
+symbol = "󱄅 "
 
 [nodejs]
-format = "[$symbol$version](white) "
+format = "[$symbol](white)"
 symbol = "[󰎙 ](green)"
 version_format = "${raw}"
 
 [python]
-format = "[$symbol$version](white) "
+format = "[$symbol](white)"
 symbol = "[ ](green)"
 version_format = "${raw}"
 
 [package]
 disabled = true
-format = "[$symbol$version](white) "
+format = "[$symbol](white)"
 symbol = "[󰫈 ](purple)"
 version_format = "${raw}"
 
 [rust]
-format = "[$symbol$version](white) "
+format = "[$symbol](white)"
 symbol = "[󱘗](yellow) "
 version_format = "${raw}"
 
 [lua]
-format = "[$symbol$version](white) "
+format = "[$symbol](white)"
 symbol = "[󰢱 ](purple) "
 version_format = "${raw}"
 
 [shell]
-disabled = true
-format = "[$indicator](white) "
-bash_indicator = "b"
-fish_indicator = "f"
-zsh_indicator = "z"
+disabled = false
+format = "[$indicator](italic fg:#7b899c)"
+bash_indicator = "b "
+fish_indicator = "f "
+zsh_indicator = "z "

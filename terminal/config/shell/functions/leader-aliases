@@ -123,5 +123,5 @@ dcl	docker container ls --all                                                   
 dcp	docker container prune --force                                               	docker       container         remove unused	x
 dil	docker image ls --all                                                        	docker       image             list	x
 dip	docker image prune --force --all                                             	docker       image             remove unused	x
-tw	task --watch build &                                                         	task         watch	x
+tw	task --watch build > /dev/null 2>&1 &                                        	task         watch	x
 tk	pkill -f "task --watch build"                                                	task         kill	x

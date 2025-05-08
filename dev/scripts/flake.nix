@@ -13,7 +13,7 @@
         default = pkgs.mkShell {
           packages = [
             pkgs.go
-            pkgs.air
+            pkgs.go-task
           ];
         };
       };

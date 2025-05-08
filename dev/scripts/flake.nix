@@ -15,6 +15,9 @@
             pkgs.go
             pkgs.go-task
           ];
+          shellHook = ''
+            echo "tw, tk"
+          '';
         };
       };
     };

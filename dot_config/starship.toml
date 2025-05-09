@@ -18,8 +18,8 @@ disabled = true
 disabled = true
 
 [directory]
-format = "[$path](italic fg:blue) "
-# format = "[$path](italic fg:blue bg:#1e2633) "
+# format = "[$path](italic fg:blue) "
+format = "[$path](italic fg:blue bg:#1e2633) "
 truncate_to_repo = false
 
 [terraform]
@@ -67,7 +67,7 @@ symbol = "[󰢱 ](purple) "
 version_format = "${raw}"
 
 [shell]
-disabled = false
+disabled = true
 format = "[$indicator](italic fg:#7b899c)"
 bash_indicator = "b "
 fish_indicator = "f "

@@ -1,6 +1,8 @@
 add_newline = false
-format = "$golang$rust$lua$package$terraform$nodejs$python$nix_shell$shell$directory[▕](fg:#3F5EFB bg:#1e2633) "
-right_format = "$git_branch$all"
+format = "$directory[▕](fg:#583ffb bg:#1e2633) "
+right_format = "$git_branch"
+# format = "$golang$rust$lua$package$terraform$nodejs$python$nix_shell$shell$directory[▕](fg: #583ffb bg:#1e2633) "
+# right_format = "$git_branch$all"
 
 [character]
 disabled = true
@@ -18,7 +20,7 @@ disabled = true
 disabled = true
 
 [directory]
-format = "[$path](italic fg:#80a2ff bg:#1e2633)"
+format = "[ $path](italic fg:#7d9ed6 bg:#1e2633)"
 truncate_to_repo = false
 
 [terraform]

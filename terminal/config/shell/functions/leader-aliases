@@ -83,7 +83,7 @@ gwr 	git worktree remove                             	git
 gob	go build                                                                     	go
 gog	go get                                                                       	go
 gor	go run                                                                       	go
-gom	go mod tidy                                                                  	go
+gom	go mod tidy                                                                  	go	x
 goc	go clean -modcache                                                           	go
 got	go test                                                                      	go
 pp	pass git push                                                                	pass
@@ -123,5 +123,6 @@ dcl	docker container ls --all                                                   
 dcp	docker container prune --force                                               	docker       container         remove unused	x
 dil	docker image ls --all                                                        	docker       image             list	x
 dip	docker image prune --force --all                                             	docker       image             remove unused	x
-tw	task --watch build > /dev/null 2>&1 &                                        	task         watch	x
+xtw	task --watch build > /dev/null 2>&1 &                                        	task         watch
+tw	tmux split-window -v -l 8 -d 'task --watch build'                            	task         watch	x
 tk	pkill -f "task --watch build"                                                	task         kill	x

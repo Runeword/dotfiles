@@ -31,7 +31,7 @@ func parseFlags() string {
 	return aliasesFile
 }
 
-func readAliasesFile(filepath string) []string {
+func readFile(filepath string) []string {
 	file, err := os.Open(filepath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error opening file: %v\n", err)
@@ -57,8 +57,8 @@ func readAliasesFile(filepath string) []string {
 	return commands
 }
 
-func createFzfCommand(aliases []string) (*exec.Cmd, error) {
-	options := []string{
+func createFzfCommand() (*exec.Cmd) {
+	return exec.Command("fzf",
 		"--with-nth=1,2,3",
 		"--print-query",
 		"--query=^",
@@ -74,14 +74,16 @@ func createFzfCommand(aliases []string) (*exec.Cmd, error) {
 		"--prompt=  ",
 		"--bind=one:accept,zero:accept,tab:accept",
 		"--height=70%",
+		)
 	}
 
-	fzf := exec.Command("fzf", options...)
+func selectCommand(aliases []string) (string, error) {
+	fzf := createFzfCommand()
 	fzf.Stderr = os.Stderr
 
 	stdin, err := fzf.StdinPipe()
 	if err != nil {
-		return nil, fmt.Errorf("error creating stdin pipe: %v", err)
+		return "", fmt.Errorf("error creating stdin pipe: %v", err)
 	}
 
 	go func() {
@@ -90,15 +92,6 @@ func createFzfCommand(aliases []string) (*exec.Cmd, error) {
 			fmt.Fprintln(stdin, alias)
 		}
 	}()
-
-	return fzf, nil
-}
-
-func runFzf(aliases []string) (string, error) {
-	fzf, err := createFzfCommand(aliases)
-	if err != nil {
-		return "", err
-	}
 
 	output, err := fzf.Output()
 	if err != nil {
@@ -144,9 +137,10 @@ func processFzfOutput(output string) {
 }
 
 func main() {
-	aliasesFile := parseFlags()
-	aliases := readAliasesFile(aliasesFile)
-	output, err := runFzf(aliases)
+	filePath := parseFlags()
+	commands := readFile(filePath)
+
+	output, err := selectCommand(commands)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)

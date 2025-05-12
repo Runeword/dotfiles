@@ -17,11 +17,9 @@ type Alias struct {
 	Execute     bool
 }
 
-func main() {
-	var prefixChar string
+func parseFlags() string {
 	var aliasesFile string
 
-	flag.StringVar(&prefixChar, "p", "", "Prefix character")
 	flag.StringVar(&aliasesFile, "f", "", "Aliases file path")
 	flag.Parse()
 
@@ -30,21 +28,25 @@ func main() {
 		os.Exit(1)
 	}
 
-	file, err := os.Open(aliasesFile)
+	return aliasesFile
+}
+
+func readAliasesFile(filepath string) []string {
+	file, err := os.Open(filepath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error opening file: %v\n", err)
 		os.Exit(1)
 	}
 	defer file.Close()
 
-	var aliases []string
+	var commands []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if line == "" {
+		if line == "" || strings.HasPrefix(line, "# ") {
 			continue
 		}
-		aliases = append(aliases, line)
+		commands = append(commands, line)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -52,6 +54,10 @@ func main() {
 		os.Exit(1)
 	}
 
+	return commands
+}
+
+func createFzfCommand(aliases []string) (*exec.Cmd, error) {
 	options := []string{
 		"--with-nth=1,2,3",
 		"--print-query",
@@ -70,13 +76,12 @@ func main() {
 		"--height=70%",
 	}
 
-	cmd := exec.Command("fzf", options...)
-	cmd.Stderr = os.Stderr
+	fzf := exec.Command("fzf", options...)
+	fzf.Stderr = os.Stderr
 
-	stdin, err := cmd.StdinPipe()
+	stdin, err := fzf.StdinPipe()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error creating stdin pipe: %v\n", err)
-		os.Exit(1)
+		return nil, fmt.Errorf("error creating stdin pipe: %v", err)
 	}
 
 	go func() {
@@ -86,23 +91,33 @@ func main() {
 		}
 	}()
 
-	output, err := cmd.Output()
+	return fzf, nil
+}
+
+func runFzf(aliases []string) (string, error) {
+	fzf, err := createFzfCommand(aliases)
+	if err != nil {
+		return "", err
+	}
+
+	output, err := fzf.Output()
 	if err != nil {
 		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 130 {
 			os.Exit(0)
 		}
-		fmt.Fprintf(os.Stderr, "Error running fzf: %v\n", err)
-		os.Exit(1)
+		return "", fmt.Errorf("error running fzf: %v", err)
 	}
 
-	outputStr := string(output)
-	lines := strings.Split(outputStr, "\n")
+	return string(output), nil
+}
+
+func processFzfOutput(output string) {
+	lines := strings.Split(output, "\n")
 	if len(lines) == 0 {
 		return
 	}
 
 	if len(lines) <= 2 && lines[0] != "" {
-
 		query := strings.TrimPrefix(lines[0], "^")
 		query = strings.Map(func(r rune) rune {
 			if unicode.IsLetter(r) {
@@ -126,4 +141,15 @@ func main() {
 	if len(fields) > 3 && strings.TrimSpace(fields[len(fields)-1]) == "x" {
 		fmt.Print("\n")
 	}
+}
+
+func main() {
+	aliasesFile := parseFlags()
+	aliases := readAliasesFile(aliasesFile)
+	output, err := runFzf(aliases)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%v\n", err)
+		os.Exit(1)
+	}
+	processFzfOutput(output)
 }

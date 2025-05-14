@@ -18,37 +18,44 @@ type Alias struct {
 }
 
 func parseFlags() string {
-	var aliasesFile string
-
-	flag.StringVar(&aliasesFile, "f", "", "Aliases file path")
+	// Get filePath
+	var filePath string
+	flag.StringVar(&filePath, "f", "", "Commands file path")
 	flag.Parse()
 
-	if aliasesFile == "" {
-		fmt.Fprintln(os.Stderr, "Error: aliases file path is required")
+	if filePath == "" {
+		fmt.Fprintln(os.Stderr, "Error: commands file path is required")
 		os.Exit(1)
 	}
 
-	return aliasesFile
+	return filePath
 }
 
 func readFile(filepath string) []string {
+	// Open file at given path
 	file, err := os.Open(filepath)
+	// Exit if error while opening file
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error opening file: %v\n", err)
 		os.Exit(1)
 	}
+	// Close the file when the function returns
 	defer file.Close()
 
 	var commands []string
+	// Read the file line by line with a scanner
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if line == "" || strings.HasPrefix(line, "# ") {
+		// Skip empty lines and comments
+		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
+		// Insert the line into the commands slice
 		commands = append(commands, line)
 	}
 
+	// Exit if error while reading file
 	if err := scanner.Err(); err != nil {
 		fmt.Fprintf(os.Stderr, "Error reading file: %v\n", err)
 		os.Exit(1)
@@ -57,13 +64,14 @@ func readFile(filepath string) []string {
 	return commands
 }
 
-func createFzfCommand() (*exec.Cmd) {
+func createFzfCommand() *exec.Cmd {
 	return exec.Command("fzf",
 		"--with-nth=1,2,3",
 		"--print-query",
 		"--query=^",
 		"--exact",
 		"--nth=1",
+		"--exit-0",
 		"--no-info",
 		"--no-separator",
 		"--delimiter=\t",
@@ -74,30 +82,35 @@ func createFzfCommand() (*exec.Cmd) {
 		"--prompt=  ",
 		"--bind=one:accept,zero:accept,tab:accept",
 		"--height=70%",
-		)
-	}
+	)
+}
 
-func selectCommand(aliases []string) (string, error) {
+func selectCommand(commands []string) (string, error) {
 	fzf := createFzfCommand()
 	fzf.Stderr = os.Stderr
 
-	stdin, err := fzf.StdinPipe()
+	// Create a pipe to fzf standard input
+	fzfStdin, err := fzf.StdinPipe()
 	if err != nil {
 		return "", fmt.Errorf("error creating stdin pipe: %v", err)
 	}
 
 	go func() {
-		defer stdin.Close()
-		for _, alias := range aliases {
-			fmt.Fprintln(stdin, alias)
+		// Ensures the fzf stdin pipe is closed after writing commands
+		defer fzfStdin.Close()
+		// Write each command to fzf standard input
+		for _, command := range commands {
+			fmt.Fprintln(fzfStdin, command)
 		}
 	}()
 
 	output, err := fzf.Output()
 	if err != nil {
+		// Exit if user pressed Ctrl+C
 		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 130 {
 			os.Exit(0)
 		}
+		// Else return the error
 		return "", fmt.Errorf("error running fzf: %v", err)
 	}
 
@@ -110,18 +123,21 @@ func processFzfOutput(output string) {
 		return
 	}
 
-	if len(lines) <= 2 && lines[0] != "" {
-		query := strings.TrimPrefix(lines[0], "^")
-		query = strings.Map(func(r rune) rune {
+	// If we have a query (first line) but no selection (second line is empty),
+	// it means no matches were found, so return the query
+	if len(lines) == 1 || lines[1] == "" {
+		queryString := strings.TrimPrefix(lines[0], "^")
+		queryString = strings.Map(func(r rune) rune {
 			if unicode.IsLetter(r) {
 				return r
 			}
 			return -1
-		}, query)
-		fmt.Print(query)
+		}, queryString)
+		fmt.Print(queryString)
 		return
 	}
 
+	// If we have a selection, process it
 	selected := lines[1]
 	fields := strings.Split(selected, "\t")
 	if len(fields) < 2 {
@@ -140,10 +156,11 @@ func main() {
 	filePath := parseFlags()
 	commands := readFile(filePath)
 
-	output, err := selectCommand(commands)
+	selectedCommand, err := selectCommand(commands)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
-	processFzfOutput(output)
+
+	processFzfOutput(selectedCommand)
 }

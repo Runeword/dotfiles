@@ -110,6 +110,7 @@ func selectCommand(commands []string) (string, error) {
 		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 130 {
 			os.Exit(0)
 		}
+		fmt.Println(string(output))
 		// Else return the error
 		return "", fmt.Errorf("error running fzf: %v", err)
 	}
@@ -117,37 +118,43 @@ func selectCommand(commands []string) (string, error) {
 	return string(output), nil
 }
 
-func processFzfOutput(output string) {
-	lines := strings.Split(output, "\n")
-	if len(lines) == 0 {
+// Remove from the fzf query all characters that are not letters (fzf search pattern included)
+func formatFzfQuery(fzfQuery string) string {
+	var str string
+	str = strings.Map(func(char rune) rune {
+		if unicode.IsLetter(char) {
+			return char
+		}
+		return -1
+	}, fzfQuery)
+	return str
+}
+
+func processFzfOutput(lines []string) {
+	// If no fzf selection, format and print the fzf query
+	if len(lines) == 1 {
+		fmt.Print(formatFzfQuery(lines[0]))
 		return
 	}
 
-	// If we have a query (first line) but no selection (second line is empty),
-	// it means no matches were found, so return the query
-	if len(lines) == 1 || lines[1] == "" {
-		queryString := strings.TrimPrefix(lines[0], "^")
-		queryString = strings.Map(func(r rune) rune {
-			if unicode.IsLetter(r) {
-				return r
-			}
-			return -1
-		}, queryString)
-		fmt.Print(queryString)
-		return
-	}
+	fzfSelection := lines[1]
 
-	// If we have a selection, process it
-	selected := lines[1]
-	fields := strings.Split(selected, "\t")
+	// Split fzf selection into fields
+	fields := strings.Split(fzfSelection, "\t")
+
+	// If fzf selection has less than 2 fields,
+	// it means there is no command
 	if len(fields) < 2 {
 		return
 	}
 
+	// Remove leading and trailing spaces from the command
 	command := strings.TrimSpace(fields[1])
+	// Add a space after the command so the user can type arguments right away
 	fmt.Print(command + " ")
 
-	if len(fields) > 3 && strings.TrimSpace(fields[len(fields)-1]) == "x" {
+	// If the last field is x then execute the command right away
+	if len(fields) > 2 && strings.TrimSpace(fields[len(fields)-1]) == "x" {
 		fmt.Print("\n")
 	}
 }
@@ -162,5 +169,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	processFzfOutput(selectedCommand)
+	if selectedCommand == "" {
+		return
+	}
+
+	// Split the fzf output into lines
+	lines := strings.Split(selectedCommand, "\n")
+	processFzfOutput(lines)
 }

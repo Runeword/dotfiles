@@ -65,7 +65,7 @@ gsc 	git stash clear                                 	git                 stash 
 gsf 	git-forgit stash_push                           	git                 stash                             push	x
 gps 	git push                                        	git
 gpl 	git pull                                        	git
-gr  	git-forgit checkout_file                        	git                 Discard (git checkout --, git restore)
+gr  	git-forgit checkout_file                        	git                 Discard (git checkout --, git restore)	x
 gr  	git restore --staged                            	git                 Unstage
 grm 	git rm -rf                                      	git                 Remove untracked
 grb 	git-forgit rebase                               	git

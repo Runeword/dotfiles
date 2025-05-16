@@ -70,8 +70,8 @@ func createFzfCommand() *exec.Cmd {
 		"--print-query",
 		"--query=^",
 		"--exact",
-		"--nth=1",
 		"--exit-0",
+		"--nth=1",
 		"--no-info",
 		"--no-separator",
 		"--delimiter=\t",
@@ -85,9 +85,14 @@ func createFzfCommand() *exec.Cmd {
 	)
 }
 
-func selectCommand(commands []string) (string, error) {
+func runFzf(commands []string) (string, error) {
 	fzf := createFzfCommand()
+
+	// Pipe any error messages from the fzf command directly to the terminal,
+	// so users can see any error messages or warnings that fzf might output
 	fzf.Stderr = os.Stderr
+
+	// 1. Write commands to fzf standard input
 
 	// Create a pipe to fzf standard input
 	fzfStdin, err := fzf.StdinPipe()
@@ -104,58 +109,66 @@ func selectCommand(commands []string) (string, error) {
 		}
 	}()
 
+	// 2. Get fzf output
 	output, err := fzf.Output()
-	if err != nil {
-		// Exit if user pressed Ctrl+C
-		if exitErr, ok := err.(*exec.ExitError); ok && exitErr.ExitCode() == 130 {
+
+	// 3. Handle fzf errors
+	if exitErr, ok := err.(*exec.ExitError); ok {
+		// If user pressed Ctrl+C
+		if exitErr.ExitCode() == 130 {
 			os.Exit(0)
 		}
-		fmt.Println(string(output))
-		// Else return the error
+		// If there was no fzf matches
+		if exitErr.ExitCode() == 1 {
+			return string(output), nil
+		}
+		// If there was an error running fzf
 		return "", fmt.Errorf("error running fzf: %v", err)
 	}
 
+	// 3. Return fzf output
 	return string(output), nil
 }
 
 // Remove from the fzf query all characters that are not letters (fzf search pattern included)
 func formatFzfQuery(fzfQuery string) string {
-	var str string
-	str = strings.Map(func(char rune) rune {
+	return strings.Map(func(char rune) rune {
 		if unicode.IsLetter(char) {
 			return char
 		}
 		return -1
 	}, fzfQuery)
-	return str
 }
 
-func processFzfOutput(lines []string) {
-	// If no fzf selection, format and print the fzf query
-	if len(lines) == 1 {
-		fmt.Print(formatFzfQuery(lines[0]))
+func formatFzfOutput(lines []string) {
+	fzfSelection := lines[1]
+	fzfQuery := lines[0]
+
+	// If no fzf selection
+	if fzfSelection == "" {
+		// Format and print the fzf query
+		fmt.Println(formatFzfQuery(fzfQuery))
 		return
 	}
 
-	fzfSelection := lines[1]
-
-	// Split fzf selection into fields
+	// Extract fields from fzf selection
 	fields := strings.Split(fzfSelection, "\t")
 
-	// If fzf selection has less than 2 fields,
-	// it means there is no command
+	// Return if no command field
 	if len(fields) < 2 {
 		return
 	}
 
 	// Remove leading and trailing spaces from the command
 	command := strings.TrimSpace(fields[1])
-	// Add a space after the command so the user can type arguments right away
-	fmt.Print(command + " ")
 
-	// If the last field is x then execute the command right away
-	if len(fields) > 2 && strings.TrimSpace(fields[len(fields)-1]) == "x" {
-		fmt.Print("\n")
+	// Add a space after the command so the user can type arguments right away
+	fmt.Println(command + " ")
+
+	// If the last field is x then execute the command
+	lastField := fields[len(fields)-1]
+	if strings.TrimSpace(lastField) == "x" {
+		fmt.Println()
 	}
 }
 
@@ -163,17 +176,14 @@ func main() {
 	filePath := parseFlags()
 	commands := readFile(filePath)
 
-	selectedCommand, err := selectCommand(commands)
+	fzfOutput, err := runFzf(commands)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
 		os.Exit(1)
 	}
 
-	if selectedCommand == "" {
-		return
-	}
-
 	// Split the fzf output into lines
-	lines := strings.Split(selectedCommand, "\n")
-	processFzfOutput(lines)
+	lines := strings.Split(fzfOutput, "\n")
+
+	formatFzfOutput(lines)
 }

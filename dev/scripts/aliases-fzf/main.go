@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"io"
 	"os"
 	"os/exec"
 	"strings"
@@ -12,37 +11,22 @@ import (
 )
 
 func main() {
-	filePath := parseFlags()
-	commands := readFile(filePath)
-
 	fzf := createFzfCommand()
 
 	// Pipe any error messages from the fzf command directly to the terminal,
 	// so users can see any error messages or warnings that fzf might output
 	fzf.Stderr = os.Stderr
 
-	// Create a pipe connected to the fzf standard input
-	fzfStdin, err := fzf.StdinPipe()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "error creating stdin pipe: %v\n", err)
-		os.Exit(1)
-	}
+	// Feed fzf
+	writeToFzfStdin(fzf, readFile())
 
-	// Write commands to the fzf standard input
-	writeToFzfStdin(fzfStdin, commands)
-
-	// Execute fzf
+	// Run fzf
 	output, err := fzf.Output()
 	if err != nil {
-		fzfOutput, fzfErr := handleFzfError(err, output)
-		if fzfErr != nil {
-			fmt.Fprintf(os.Stderr, "%v\n", fzfErr)
-			os.Exit(1)
-		}
-		output = []byte(fzfOutput)
+		output = []byte(handleFzfError(err, output))
 	}
 
-	// Split the fzf output into lines
+	// Split output
 	lines := strings.Split(string(output), "\n")
 
 	// If no fzf selection (line 1)
@@ -56,7 +40,7 @@ func main() {
 	fmt.Println(formatFzfSelection(lines[1]))
 }
 
-func parseFlags() string {
+func readFile() []string {
 	// Get filePath
 	var filePath string
 	flag.StringVar(&filePath, "f", "", "Commands file path")
@@ -67,12 +51,8 @@ func parseFlags() string {
 		os.Exit(1)
 	}
 
-	return filePath
-}
-
-func readFile(filepath string) []string {
 	// Open file at given path
-	file, err := os.Open(filepath)
+	file, err := os.Open(filePath)
 	// Exit if error while opening file
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error opening file: %v\n", err)
@@ -124,21 +104,24 @@ func createFzfCommand() *exec.Cmd {
 	)
 }
 
-func writeToFzfStdin(fzfStdin io.WriteCloser, commands []string) error {
-	// Writes all commands to the fzf standard input in a goroutine
+func writeToFzfStdin(fzf *exec.Cmd, commands []string) {
+	// Create a pipe connected to the fzf standard input
+	fzfStdin, err := fzf.StdinPipe()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error creating stdin pipe: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Write all commands to the fzf standard input in a goroutine
 	go func() {
-		// Ensures the pipe is closed after writing commands
 		defer fzfStdin.Close()
 		for _, command := range commands {
-			// Write command to the fzf standard input
 			fmt.Fprintln(fzfStdin, command)
 		}
 	}()
-
-	return nil
 }
 
-func handleFzfError(err error, output []byte) (string, error) {
+func handleFzfError(err error, output []byte) string {
 	if exitErr, ok := err.(*exec.ExitError); ok {
 		// If user pressed Ctrl+C
 		if exitErr.ExitCode() == 130 {
@@ -146,12 +129,10 @@ func handleFzfError(err error, output []byte) (string, error) {
 		}
 		// If there was no matches
 		if exitErr.ExitCode() == 1 {
-			return string(output), nil
+			return string(output)
 		}
-		// If there was an error
-		return "", fmt.Errorf("error running fzf: %v", err)
 	}
-	return "", err
+	return ""
 }
 
 // Remove from the fzf query all characters that are not letters (fzf search pattern included)

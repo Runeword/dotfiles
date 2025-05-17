@@ -94,35 +94,37 @@ func runFzf(commands []string) (string, error) {
 
 	// 1. Write commands to fzf standard input
 
-	// Create a pipe to fzf standard input
+	// Create a pipe connected to the fzf standard input
 	fzfStdin, err := fzf.StdinPipe()
 	if err != nil {
 		return "", fmt.Errorf("error creating stdin pipe: %v", err)
 	}
 
+	// Writes all commands to the fzf standard input in a goroutine
 	go func() {
-		// Ensures the fzf stdin pipe is closed after writing commands
+		// Ensures the pipe is closed after writing commands
 		defer fzfStdin.Close()
-		// Write each command to fzf standard input
 		for _, command := range commands {
+			// Write command to the fzf standard input
 			fmt.Fprintln(fzfStdin, command)
 		}
 	}()
 
-	// 2. Get fzf output
+	// 2. Execute fzf
 	output, err := fzf.Output()
 
 	// 3. Handle fzf errors
+
 	if exitErr, ok := err.(*exec.ExitError); ok {
 		// If user pressed Ctrl+C
 		if exitErr.ExitCode() == 130 {
 			os.Exit(0)
 		}
-		// If there was no fzf matches
+		// If there was no matches
 		if exitErr.ExitCode() == 1 {
 			return string(output), nil
 		}
-		// If there was an error running fzf
+		// If there was an error
 		return "", fmt.Errorf("error running fzf: %v", err)
 	}
 
@@ -140,36 +142,29 @@ func formatFzfQuery(fzfQuery string) string {
 	}, fzfQuery)
 }
 
-func formatFzfOutput(lines []string) {
-	fzfSelection := lines[1]
-	fzfQuery := lines[0]
-
-	// If no fzf selection
-	if fzfSelection == "" {
-		// Format and print the fzf query
-		fmt.Println(formatFzfQuery(fzfQuery))
-		return
-	}
+func formatFzfSelection(fzfSelection string) string {
+	var output string
 
 	// Extract fields from fzf selection
 	fields := strings.Split(fzfSelection, "\t")
 
-	// Return if no command field
+	// If no command field
 	if len(fields) < 2 {
-		return
+		output = ""
 	}
 
 	// Remove leading and trailing spaces from the command
 	command := strings.TrimSpace(fields[1])
 
 	// Add a space after the command so the user can type arguments right away
-	fmt.Println(command + " ")
+	output = command + " "
 
 	// If the last field is x then execute the command
 	lastField := fields[len(fields)-1]
 	if strings.TrimSpace(lastField) == "x" {
-		fmt.Println()
+		output = "\n"
 	}
+	return output
 }
 
 func main() {
@@ -185,5 +180,12 @@ func main() {
 	// Split the fzf output into lines
 	lines := strings.Split(fzfOutput, "\n")
 
-	formatFzfOutput(lines)
+	// If no fzf selection (line 1) then format and print the fzf query (line 0)
+	if lines[1] == "" {
+		fmt.Println(formatFzfQuery(lines[0]))
+		return
+	}
+
+	// Else format and print the fzf selection (line 1)
+	fmt.Println(formatFzfSelection(lines[1]))
 }

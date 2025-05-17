@@ -4,17 +4,56 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"strings"
 	"unicode"
 )
 
-type Alias struct {
-	Command     string
-	Description string
-	Category    string
-	Execute     bool
+func main() {
+	filePath := parseFlags()
+	commands := readFile(filePath)
+
+	fzf := createFzfCommand()
+
+	// Pipe any error messages from the fzf command directly to the terminal,
+	// so users can see any error messages or warnings that fzf might output
+	fzf.Stderr = os.Stderr
+
+	// Create a pipe connected to the fzf standard input
+	fzfStdin, err := fzf.StdinPipe()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error creating stdin pipe: %v\n", err)
+		os.Exit(1)
+	}
+
+	// Write commands to the fzf standard input
+	writeToFzfStdin(fzfStdin, commands)
+
+	// Execute fzf
+	output, err := fzf.Output()
+	if err != nil {
+		fzfOutput, fzfErr := handleFzfError(err, output)
+		if fzfErr != nil {
+			fmt.Fprintf(os.Stderr, "%v\n", fzfErr)
+			os.Exit(1)
+		}
+		output = []byte(fzfOutput)
+	}
+
+	// Split the fzf output into lines
+	lines := strings.Split(string(output), "\n")
+
+	// If no fzf selection (line 1)
+	if lines[1] == "" {
+		// Then format and print the fzf query (line 0)
+		fmt.Println(formatFzfQuery(lines[0]))
+		return
+	}
+
+	// Else format and print the fzf selection (line 1)
+	fmt.Println(formatFzfSelection(lines[1]))
 }
 
 func parseFlags() string {
@@ -85,21 +124,7 @@ func createFzfCommand() *exec.Cmd {
 	)
 }
 
-func runFzf(commands []string) (string, error) {
-	fzf := createFzfCommand()
-
-	// Pipe any error messages from the fzf command directly to the terminal,
-	// so users can see any error messages or warnings that fzf might output
-	fzf.Stderr = os.Stderr
-
-	// 1. Write commands to fzf standard input
-
-	// Create a pipe connected to the fzf standard input
-	fzfStdin, err := fzf.StdinPipe()
-	if err != nil {
-		return "", fmt.Errorf("error creating stdin pipe: %v", err)
-	}
-
+func writeToFzfStdin(fzfStdin io.WriteCloser, commands []string) error {
 	// Writes all commands to the fzf standard input in a goroutine
 	go func() {
 		// Ensures the pipe is closed after writing commands
@@ -110,11 +135,10 @@ func runFzf(commands []string) (string, error) {
 		}
 	}()
 
-	// 2. Execute fzf
-	output, err := fzf.Output()
+	return nil
+}
 
-	// 3. Handle fzf errors
-
+func handleFzfError(err error, output []byte) (string, error) {
 	if exitErr, ok := err.(*exec.ExitError); ok {
 		// If user pressed Ctrl+C
 		if exitErr.ExitCode() == 130 {
@@ -127,9 +151,7 @@ func runFzf(commands []string) (string, error) {
 		// If there was an error
 		return "", fmt.Errorf("error running fzf: %v", err)
 	}
-
-	// 3. Return fzf output
-	return string(output), nil
+	return "", err
 }
 
 // Remove from the fzf query all characters that are not letters (fzf search pattern included)
@@ -143,49 +165,25 @@ func formatFzfQuery(fzfQuery string) string {
 }
 
 func formatFzfSelection(fzfSelection string) string {
-	var output string
-
 	// Extract fields from fzf selection
 	fields := strings.Split(fzfSelection, "\t")
 
 	// If no command field
 	if len(fields) < 2 {
-		output = ""
+		return ""
 	}
 
 	// Remove leading and trailing spaces from the command
 	command := strings.TrimSpace(fields[1])
 
 	// Add a space after the command so the user can type arguments right away
-	output = command + " "
+	command += " "
 
-	// If the last field is x then execute the command
-	lastField := fields[len(fields)-1]
-	if strings.TrimSpace(lastField) == "x" {
-		output = "\n"
-	}
-	return output
-}
+	// // If the last field is x then execute the command
+	// lastField := fields[len(fields)-1]
+	// if strings.TrimSpace(lastField) == "x" {
+	// 	output = "\n"
+	// }
 
-func main() {
-	filePath := parseFlags()
-	commands := readFile(filePath)
-
-	fzfOutput, err := runFzf(commands)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "%v\n", err)
-		os.Exit(1)
-	}
-
-	// Split the fzf output into lines
-	lines := strings.Split(fzfOutput, "\n")
-
-	// If no fzf selection (line 1) then format and print the fzf query (line 0)
-	if lines[1] == "" {
-		fmt.Println(formatFzfQuery(lines[0]))
-		return
-	}
-
-	// Else format and print the fzf selection (line 1)
-	fmt.Println(formatFzfSelection(lines[1]))
+	return command
 }

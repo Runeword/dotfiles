@@ -34,12 +34,17 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
+        homePath = if pkgs.stdenv.hostPlatform.isDarwin
+          then "/Users/charles/neovim"
+          else "/home/charles/neovim";
+
         mkOutOfStoreSymlink =
           path:
           let
             pathStr = toString path;
             name = builtins.baseNameOf pathStr;
-            fullPath = "${builtins.toString /home/charles/neovim}/${pathStr}";
+            fullPath = "${homePath}/${pathStr}";
+            # fullPath = "${builtins.toString /home/charles/neovim}/${pathStr}";
             # fullPath = "${builtins.toString ./.}/${pathStr}";
           in
           pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';

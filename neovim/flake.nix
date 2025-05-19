@@ -10,6 +10,8 @@
   # ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -18,89 +20,92 @@
   # inputs.neovim.inputs.nixpkgs.follows = "nixpkgs";
 
   outputs =
-    { self, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
-      };
-
-      mkOutOfStoreSymlink = 
-        path:
-        let
-          pathStr = toString path;
-          name = builtins.baseNameOf pathStr;
-          fullPath = "${builtins.toString /home/charles/neovim}/${pathStr}";
-          # fullPath = "${builtins.toString ./.}/${pathStr}";
-        in
-        pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
-
-      neovim-override = pkgs.neovim.override {
-        # withPython3 = true;
-        # withNodeJs = true;
-        # package = pkgs.neovim-nightly;
-      };
-
-      neovim-with-dependencies = pkgs.symlinkJoin {
-        name = "neovim";
-        paths = [ neovim-override ];
-        buildInputs = [ pkgs.makeWrapper ];
-        postBuild = with pkgs; ''
-          mkdir -p $out/.config
-          ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
-
-          rm $out/bin/nvim
-          makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
-            lib.makeBinPath [
-              fzf
-              sox
-              typescript-language-server
-              bash-language-server
-              eslint
-							eslint_d
-							vue-language-server
-              pyright
-              vscode-langservers-extracted
-              yaml-language-server
-              lua-language-server
-              selene
-              marksman
-              ccls
-              nil
-              alejandra
-              nixfmt-rfc-style
-              shfmt
-              shellcheck
-              shellharden
-              terraform-ls
-              gopls
-              delve
-              rust-analyzer
-              taplo
-              black
-              isort
-              harper
-              # typos-lsp
-            ]
-          } \
-	  --set XDG_CONFIG_HOME "$out/.config"
-        '';
-      };
-    in
     {
-      apps.${system} = {
-        default = {
+      self,
+      nixpkgs,
+      flake-utils,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+        };
+
+        mkOutOfStoreSymlink =
+          path:
+          let
+            pathStr = toString path;
+            name = builtins.baseNameOf pathStr;
+            fullPath = "${builtins.toString /home/charles/neovim}/${pathStr}";
+            # fullPath = "${builtins.toString ./.}/${pathStr}";
+          in
+          pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
+
+        neovim-override = pkgs.neovim.override {
+          # withPython3 = true;
+          # withNodeJs = true;
+          # package = pkgs.neovim-nightly;
+        };
+
+        neovim-with-dependencies = pkgs.symlinkJoin {
+          name = "neovim";
+          paths = [ neovim-override ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = with pkgs; ''
+            mkdir -p $out/.config
+            ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+
+            rm $out/bin/nvim
+            makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
+              lib.makeBinPath [
+                fzf
+                sox
+                typescript-language-server
+                bash-language-server
+                eslint
+                eslint_d
+                vue-language-server
+                pyright
+                vscode-langservers-extracted
+                yaml-language-server
+                lua-language-server
+                selene
+                marksman
+                ccls
+                nil
+                alejandra
+                nixfmt-rfc-style
+                shfmt
+                shellcheck
+                shellharden
+                terraform-ls
+                gopls
+                delve
+                rust-analyzer
+                taplo
+                black
+                isort
+                harper
+                # typos-lsp
+              ]
+            } \
+            --set XDG_CONFIG_HOME "$out/.config"
+          '';
+        };
+      in
+      {
+        apps.default = {
           type = "app";
           program = "${neovim-with-dependencies}/bin/nvim";
         };
-      };
 
-      packages.${system} = {
-        default = neovim-with-dependencies;
-        runeword-neovim = neovim-with-dependencies;
-      };
-    };
+        packages.default = neovim-with-dependencies;
+        packages.runeword-neovim = neovim-with-dependencies;
+      }
+    );
 }
 
 # Run the flake :

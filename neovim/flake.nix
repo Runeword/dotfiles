@@ -15,19 +15,8 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-  # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
-  # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
-  # inputs.neovim.inputs.nixpkgs.follows = "nixpkgs";
-
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }@inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system:
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -35,11 +24,14 @@
         };
 
         isLocalFlake = self.outPath == builtins.toString ./.;
+        isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
+        useLocalConfig = isLocalFlake && !isGitHubActions;
 
-        homePath =
-          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/charles/neovim" else "/home/charles/neovim";
+        homePath = if pkgs.stdenv.hostPlatform.isDarwin
+          then "/Users/charles/neovim"
+          else "/home/charles/neovim";
 
-        mkOutOfStoreSymlink =
+        mkOutOfStoreSymlink = 
           path:
           let
             pathStr = toString path;
@@ -62,16 +54,11 @@
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = with pkgs; ''
             mkdir -p $out/.config
-            ${
-              if isLocalFlake then
-                ''
-                  ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
-                ''
-              else
-                ''
-                  cp -r ${./config}/* $out/.config/nvim/
-                ''
-            }
+            ${if useLocalConfig then ''
+              ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+            '' else ''
+              cp -r ${./config}/* $out/.config/nvim/
+            ''}
 
             rm $out/bin/nvim
             makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
@@ -124,7 +111,7 @@
 }
 
 # Run the flake :
-# nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file --extra-experimental-features 'nix-command flakes'
+# nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file
 # nix run $HOME/neovim
 
 # {

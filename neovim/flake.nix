@@ -124,7 +124,7 @@
 }
 
 # Run the flake :
-# nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file
+# nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file --extra-experimental-features 'nix-command flakes'
 # nix run $HOME/neovim
 
 # {

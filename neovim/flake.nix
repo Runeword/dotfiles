@@ -1,13 +1,13 @@
 {
   description = "My neovim flake";
 
-  # nixConfig.extra-substituters = [
-  #   "https://nix-community.cachix.org"
-  # ];
+# nixConfig.extra-substituters = [
+#   "https://nix-community.cachix.org"
+# ];
 
-  # nixConfig.extra-trusted-public-keys = [
-  #   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  # ];
+# nixConfig.extra-trusted-public-keys = [
+#   "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+# ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.flake-utils.url = "github:numtide/flake-utils";
@@ -15,30 +15,25 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-  # inputs.neovim.url = "github:neovim/neovim?dir=contrib";
-  # inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
-  # inputs.neovim.inputs.nixpkgs.follows = "nixpkgs";
+# inputs.neovim.url = "github:neovim/neovim?dir=contrib";
+# inputs.neovim.url = "github:neovim/neovim/stable?dir=contrib";
+# inputs.neovim.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      ...
-    }@inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system:
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
+        isLocalFlake = self.outPath == builtins.toString ./.;
+
         homePath = if pkgs.stdenv.hostPlatform.isDarwin
           then "/Users/charles/neovim"
           else "/home/charles/neovim";
 
-        mkOutOfStoreSymlink =
+        mkOutOfStoreSymlink = 
           path:
           let
             pathStr = toString path;
@@ -50,9 +45,9 @@
           pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
 
         neovim-override = pkgs.neovim.override {
-          # withPython3 = true;
-          # withNodeJs = true;
-          # package = pkgs.neovim-nightly;
+        # withPython3 = true;
+        # withNodeJs = true;
+        # package = pkgs.neovim-nightly;
         };
 
         neovim-with-dependencies = pkgs.symlinkJoin {
@@ -61,7 +56,11 @@
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = with pkgs; ''
             mkdir -p $out/.config
-            ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+            ${if isLocalFlake then ''
+              ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+            '' else ''
+              cp -r ${./config}/* $out/.config/nvim/
+            ''}
 
             rm $out/bin/nvim
             makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
@@ -114,7 +113,7 @@
 }
 
 # Run the flake :
-# nix run "github:Runeword/dotfiles?dir=neovim"
+# nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file
 # nix run $HOME/neovim
 
 # {

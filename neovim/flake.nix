@@ -28,7 +28,7 @@
         useLocalConfig = isLocalFlake && !isGitHubActions;
 
         homePath = if pkgs.stdenv.hostPlatform.isDarwin
-          then "/Users/charles/neovim"
+          then "/Users/zod/neovim"
           else "/home/charles/neovim";
 
         mkOutOfStoreSymlink = 

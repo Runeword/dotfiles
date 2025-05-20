@@ -57,7 +57,11 @@
             ${if useLocalConfig then ''
               ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
             '' else ''
-              cp -r ${./config}/* $out/.config/nvim/
+              echo "Copying config files from ${./config} to $out/.config/nvim"
+              ls -la ${./config}
+              cp -rv ${./config}/* $out/.config/nvim/
+              echo "Contents of $out/.config/nvim after copy:"
+              ls -la $out/.config/nvim
             ''}
 
             rm $out/bin/nvim

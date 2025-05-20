@@ -23,7 +23,8 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
-        isLocalFlake = self.outPath == builtins.toString ./.;
+        # More reliable way to detect if we're running locally
+        isLocalFlake = builtins.pathExists (builtins.toString ./. + "/.git");
         isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
         useLocalConfig = isLocalFlake && !isGitHubActions;
 
@@ -55,13 +56,11 @@
           postBuild = with pkgs; ''
             mkdir -p $out/.config
             ${if useLocalConfig then ''
+              echo "Using local config via symlink"
               ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
             '' else ''
-              echo "Copying config files from ${./config} to $out/.config/nvim"
-              ls -la ${./config}
+              echo "Using bundled config via copy"
               cp -rv ${./config}/* $out/.config/nvim/
-              echo "Contents of $out/.config/nvim after copy:"
-              ls -la $out/.config/nvim
             ''}
 
             rm $out/bin/nvim

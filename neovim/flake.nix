@@ -15,8 +15,15 @@
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -28,11 +35,10 @@
         # Check if the flake is being built inside a GitHub Actions workflow
         isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
 
-        homePath = if pkgs.stdenv.hostPlatform.isDarwin
-          then "/Users/zod/neovim"
-          else "/home/charles/neovim";
+        homePath =
+          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/zod/neovim" else "/home/charles/neovim";
 
-        mkOutOfStoreSymlink = 
+        mkOutOfStoreSymlink =
           path:
           let
             pathStr = toString path;
@@ -56,13 +62,18 @@
           # use the local config
           postBuild = with pkgs; ''
             mkdir -p $out/.config
-            ${if isGitRepo && !isGitHubActions then ''
-              echo "Using local config via symlink"
-              ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
-            '' else ''
-              echo "Using bundled config via copy"
-              cp -r ${./config} $out/.config/nvim
-            ''}
+            ${
+              if isGitRepo && !isGitHubActions then
+                ''
+                  echo "Using local config via symlink"
+                  ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+                ''
+              else
+                ''
+                  echo "Using bundled config via copy"
+                  cp -r ${./config} $out/.config/nvim
+                ''
+            }
 
             rm $out/bin/nvim
             makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${

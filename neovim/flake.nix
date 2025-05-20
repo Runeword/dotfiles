@@ -23,10 +23,10 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
-        # More reliable way to detect if we're running locally
-        isLocalFlake = builtins.pathExists (builtins.toString ./. + "/.git");
+        # Check if the flake is being built locally
+        isGitRepo = builtins.pathExists (builtins.toString ./. + "/.git");
+        # Check if the flake is being built inside a GitHub Actions workflow
         isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
-        useLocalConfig = isLocalFlake && !isGitHubActions;
 
         homePath = if pkgs.stdenv.hostPlatform.isDarwin
           then "/Users/zod/neovim"
@@ -53,9 +53,10 @@
           name = "neovim";
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
+          # use the local config
           postBuild = with pkgs; ''
             mkdir -p $out/.config
-            ${if useLocalConfig then ''
+            ${if isGitRepo && !isGitHubActions then ''
               echo "Using local config via symlink"
               ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
             '' else ''

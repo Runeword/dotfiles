@@ -17,7 +17,7 @@ ni	nix-info -m                                                                  
 nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             store             clean	x
 nc	cd /nix/store && __open_file                                                 	nix             store             list	x
 np	readlink -f result                                                           	flake           path              show	x
-nb	nix build                                                                    	flake           package           build	x
+nb	nix build --print-out-paths                                                  	flake           package           build	x
 nr	nix run                                                                      	flake           application       run	x
 fl	nix flake update                                                            	flake           lock              recreate	x
 fs	nix flake show                                                               	flake           outputs           show	x

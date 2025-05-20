@@ -54,10 +54,13 @@
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = with pkgs; ''
-            mkdir -p $out/.config
+            # Create config directory first
+            mkdir -p $out/.config/nvim
+
+            # Then handle config files
             ${if useLocalConfig then ''
               echo "Using local config via symlink"
-              ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+              ln -sf ${mkOutOfStoreSymlink "config"}/* $out/.config/nvim/
             '' else ''
               echo "Using bundled config via copy"
               cp -rv ${./config}/* $out/.config/nvim/

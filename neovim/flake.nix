@@ -105,15 +105,11 @@
         };
       in
       {
-        apps.default = {
-          type = "app";
-          program = "${neovim-with-dependencies}/bin/nvim";
-        };
+        apps.default.type = "app";
+        apps.default.program = "${neovim-with-dependencies}/bin/nvim";
 
-        apps.bundled = {
-          type = "app";
-          program = "${neovim-bundled}/bin/nvim";
-        };
+        apps.bundled.type = "app";
+        apps.bundled.program = "${neovim-bundled}/bin/nvim";
 
         packages.default = neovim-with-dependencies;
         packages.runeword-neovim = neovim-with-dependencies;

@@ -17,4 +17,4 @@ jobs:
         with:
           name: runeword-neovim
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix build --accept-flake-config ./neovim#bundled
+      - run: nix build --accept-flake-config ./neovim

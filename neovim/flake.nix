@@ -30,24 +30,22 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
-        # Check if the flake is being built locally
-        isGitRepo = builtins.pathExists (builtins.toString ./. + "/.git");
         # Check if the flake is being built inside a GitHub Actions workflow
         isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
 
-        homePath =
-          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/zod/neovim" else "/home/charles/neovim";
+        username = if pkgs.stdenv.hostPlatform.isDarwin then "zod" else "charles";
+        homePath = if pkgs.stdenv.hostPlatform.isDarwin
+          then "/Users/${username}/neovim"
+          else "/home/${username}/neovim";
 
         mkOutOfStoreSymlink =
           path:
           let
             pathStr = toString path;
-            name = builtins.baseNameOf pathStr;
+            drvName = builtins.baseNameOf pathStr;
             fullPath = "${homePath}/${pathStr}";
-            # fullPath = "${builtins.toString /home/charles/neovim}/${pathStr}";
-            # fullPath = "${builtins.toString ./.}/${pathStr}";
           in
-          pkgs.runCommandLocal name { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
+          pkgs.runCommandLocal drvName { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
 
         neovim-override = pkgs.neovim.override {
           # withPython3 = true;
@@ -63,7 +61,7 @@
           postBuild = with pkgs; ''
             mkdir -p $out/.config
             ${
-              if isGitRepo && !isGitHubActions then
+              if !isGitHubActions then
                 ''
                   echo "Using local config via symlink"
                   ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim

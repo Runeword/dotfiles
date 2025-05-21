@@ -156,7 +156,7 @@
 
         packages.default = neovim-with-dependencies;
         packages.runeword-neovim = neovim-with-dependencies;
-        packages.neovim-bundled = neovim-bundled;
+        packages.bundled = neovim-bundled;
       }
     );
 }

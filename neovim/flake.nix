@@ -79,7 +79,7 @@
           --set XDG_CONFIG_HOME "$out/.config"
         '';
 
-        neovim-with-dependencies = pkgs.symlinkJoin {
+        neovim-dev = pkgs.symlinkJoin {
           name = "neovim";
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
@@ -91,7 +91,6 @@
           '';
         };
 
-        # Version for GitHub Actions that copies config instead of symlinking
         neovim-bundled = pkgs.symlinkJoin {
           name = "neovim";
           paths = [ neovim-override ];
@@ -106,13 +105,13 @@
       in
       {
         apps.default.type = "app";
-        apps.default.program = "${neovim-with-dependencies}/bin/nvim";
+        apps.default.program = "${neovim-dev}/bin/nvim";
 
         apps.bundled.type = "app";
         apps.bundled.program = "${neovim-bundled}/bin/nvim";
 
-        packages.default = neovim-with-dependencies;
-        packages.runeword-neovim = neovim-with-dependencies;
+        packages.default = neovim-dev;
+        packages.runeword-neovim = neovim-dev;
         packages.bundled = neovim-bundled;
       }
     );
@@ -120,7 +119,7 @@
 
 # Run the flake :
 # nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file
-# nix run "github:Runeword/dotfiles?dir=neovim" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
+# nix run "github:Runeword/dotfiles?dir=neovim#bundled" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
 # nix run $HOME/neovim
 
 # {

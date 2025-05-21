@@ -83,7 +83,7 @@
     # bash-completion
 
     # ---------------------------------- Terminal
-    inputs.runeword-neovim.packages.x86_64-linux.default # Text editor
+    inputs.runeword-neovim.packages.x86_64-linux.dev # Text editor
     kitty # Terminal emulator
 
     # inputs.walker.packages.x86_64-linux.default

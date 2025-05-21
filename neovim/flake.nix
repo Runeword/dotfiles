@@ -34,9 +34,11 @@
         isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
 
         username = if pkgs.stdenv.hostPlatform.isDarwin then "zod" else "charles";
-        homePath = if pkgs.stdenv.hostPlatform.isDarwin
-          then "/Users/${username}/neovim"
-          else "/home/${username}/neovim";
+        homePath =
+          if pkgs.stdenv.hostPlatform.isDarwin then
+            "/Users/${username}/neovim"
+          else
+            "/home/${username}/neovim";
 
         mkOutOfStoreSymlink =
           path:
@@ -61,15 +63,15 @@
           postBuild = with pkgs; ''
             mkdir -p $out/.config
             ${
-              if !isGitHubActions then
-                ''
-                  echo "Using local config via symlink"
-                  ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
-                ''
-              else
+              if isGitHubActions then
                 ''
                   echo "Using bundled config via copy"
                   cp -r ${./config} $out/.config/nvim
+                ''
+              else
+                ''
+                  echo "Using local config via symlink"
+                  ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
                 ''
             }
 

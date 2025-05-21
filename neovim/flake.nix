@@ -30,10 +30,8 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
-        # Check if the flake is being built inside a GitHub Actions workflow
-        isGitHubActions = builtins.getEnv "GITHUB_ACTIONS" == "true";
-
         username = if pkgs.stdenv.hostPlatform.isDarwin then "zod" else "charles";
+
         homePath =
           if pkgs.stdenv.hostPlatform.isDarwin then
             "/Users/${username}/neovim"
@@ -59,21 +57,58 @@
           name = "neovim";
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
-          # use the local config
           postBuild = with pkgs; ''
             mkdir -p $out/.config
-            ${
-              if isGitHubActions then
-                ''
-                  echo "Using bundled config via copy"
-                  cp -r ${./config} $out/.config/nvim
-                ''
-              else
-                ''
-                  echo "Using local config via symlink"
-                  ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
-                ''
-            }
+            echo "Using local config via symlink"
+            ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+
+            rm $out/bin/nvim
+            makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
+              lib.makeBinPath [
+                fzf
+                sox
+                typescript-language-server
+                bash-language-server
+                eslint
+                eslint_d
+                vue-language-server
+                pyright
+                vscode-langservers-extracted
+                yaml-language-server
+                lua-language-server
+                selene
+                marksman
+                ccls
+                nil
+                alejandra
+                nixfmt-rfc-style
+                shfmt
+                shellcheck
+                shellharden
+                terraform-ls
+                gopls
+                delve
+                rust-analyzer
+                taplo
+                black
+                isort
+                harper
+                # typos-lsp
+              ]
+            } \
+            --set XDG_CONFIG_HOME "$out/.config"
+          '';
+        };
+
+        # Version for GitHub Actions that copies config instead of symlinking
+        neovim-bundled = pkgs.symlinkJoin {
+          name = "neovim";
+          paths = [ neovim-override ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = with pkgs; ''
+            mkdir -p $out/.config
+            echo "Using bundled config via copy"
+            cp -r ${./config} $out/.config/nvim
 
             rm $out/bin/nvim
             makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
@@ -121,6 +156,7 @@
 
         packages.default = neovim-with-dependencies;
         packages.runeword-neovim = neovim-with-dependencies;
+        packages.neovim-bundled = neovim-bundled;
       }
     );
 }

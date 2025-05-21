@@ -30,13 +30,8 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
-        username = if pkgs.stdenv.hostPlatform.isDarwin then "zod" else "charles";
-
         homePath =
-          if pkgs.stdenv.hostPlatform.isDarwin then
-            "/Users/${username}/neovim"
-          else
-            "/home/${username}/neovim";
+          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/zod/neovim" else "/home/charles/neovim";
 
         mkOutOfStoreSymlink =
           path:

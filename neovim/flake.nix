@@ -33,14 +33,7 @@
         homePath =
           if pkgs.stdenv.hostPlatform.isDarwin then "/Users/zod/neovim" else "/home/charles/neovim";
 
-        mkOutOfStoreSymlink =
-          path:
-          let
-            pathStr = toString path;
-            drvName = builtins.baseNameOf pathStr;
-            fullPath = "${homePath}/${pathStr}";
-          in
-          pkgs.runCommandLocal drvName { } ''ln -s ${pkgs.lib.escapeShellArg fullPath} $out'';
+        mkOutOfStoreSymlink = import ./lib.nix { inherit pkgs homePath; };
 
         neovim-override = pkgs.neovim.override {
           # withPython3 = true;

@@ -85,7 +85,6 @@
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
             mkdir -p $out/.config
-            echo "Using local config via symlink"
             ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
             ${wrapperSetup}
           '';
@@ -97,7 +96,6 @@
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
             mkdir -p $out/.config
-            echo "Using bundled config via copy"
             cp -r ${./config} $out/.config/nvim
             ${wrapperSetup}
           '';

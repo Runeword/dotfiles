@@ -111,8 +111,6 @@
         apps.dev.type = "app";
         apps.dev.program = "${neovim-dev}/bin/nvim";
         packages.dev = neovim-dev;
-
-        packages.runeword-neovim = neovim-dev;
       }
     );
 }

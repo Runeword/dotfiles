@@ -127,6 +127,7 @@
 
 # Run the flake :
 # nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file
+# nix run "github:Runeword/dotfiles?dir=neovim" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
 # nix run $HOME/neovim
 
 # {

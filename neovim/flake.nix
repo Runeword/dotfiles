@@ -41,7 +41,7 @@
           # package = pkgs.neovim-nightly;
         };
 
-        wrapperSetup = with pkgs; ''
+        wrapper = with pkgs; ''
           rm $out/bin/nvim
           makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
             lib.makeBinPath [
@@ -86,7 +86,7 @@
           postBuild = ''
             mkdir -p $out/.config
             ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
-            ${wrapperSetup}
+            ${wrapper}
           '';
         };
 
@@ -97,7 +97,7 @@
           postBuild = ''
             mkdir -p $out/.config
             cp -r ${./config} $out/.config/nvim
-            ${wrapperSetup}
+            ${wrapper}
           '';
         };
       in

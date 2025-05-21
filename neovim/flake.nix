@@ -91,7 +91,7 @@
           '';
         };
 
-        neovim-bundled = pkgs.symlinkJoin {
+        neovim = pkgs.symlinkJoin {
           name = "neovim";
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
@@ -105,21 +105,21 @@
       in
       {
         apps.default.type = "app";
-        apps.default.program = "${neovim-dev}/bin/nvim";
+        apps.default.program = "${neovim}/bin/nvim";
+        packages.default = neovim;
 
-        apps.bundled.type = "app";
-        apps.bundled.program = "${neovim-bundled}/bin/nvim";
+        apps.dev.type = "app";
+        apps.dev.program = "${neovim-dev}/bin/nvim";
+        packages.dev = neovim-dev;
 
-        packages.default = neovim-dev;
         packages.runeword-neovim = neovim-dev;
-        packages.bundled = neovim-bundled;
       }
     );
 }
 
 # Run the flake :
-# nix run "github:Runeword/dotfiles?dir=neovim" --no-write-lock-file
-# nix run "github:Runeword/dotfiles?dir=neovim#bundled" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
+# nix run "github:Runeword/dotfiles?dir=neovim#dev" --no-write-lock-file
+# nix run "github:Runeword/dotfiles?dir=neovim" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
 # nix run $HOME/neovim
 
 # {

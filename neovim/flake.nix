@@ -24,6 +24,17 @@
       flake-utils,
       ...
     }@inputs:
+    let
+      config = {
+        nvimConfigDir =
+          if builtins.getEnv "NVIM_CONFIG_DIR" != "" then
+            builtins.getEnv "NVIM_CONFIG_DIR"
+          else
+            builtins.getEnv "HOME" + "/neovim";
+      };
+
+      basePath = config.nvimConfigDir;
+    in
     flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -32,10 +43,7 @@
           overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
         };
 
-        homePath =
-          if pkgs.stdenv.hostPlatform.isDarwin then "/Users/zod/neovim" else "/home/charles/neovim";
-
-        mkOutOfStoreSymlink = import ./lib.nix { inherit pkgs homePath; };
+        mkOutOfStoreSymlink = import ./lib.nix { inherit pkgs basePath; };
 
         neovim-override = pkgs.neovim.override {
           # withPython3 = true;
@@ -118,7 +126,7 @@
 # Run the flake :
 # nix run "github:Runeword/dotfiles?dir=neovim#dev" --no-write-lock-file
 # nix run "github:Runeword/dotfiles?dir=neovim" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
-# nix run $HOME/neovim
+# NVIM_CONFIG_DIR=$HOME/neovim nix run $HOME/neovim#dev --impure
 
 # {
 #   description = "My own Neovim flake";

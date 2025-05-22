@@ -14,16 +14,17 @@ ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER                          
 ns	sudo nixos-rebuild boot --flake $HOME/nixos#$USER                            	nixos           config            build/boot	x
 nv	nixos-version                                                                	nixos           version	x
 ni	nix-info -m                                                                  	nixos           info	x
-nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             store             clean	x
+nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             garbage           clean	x
+nl	sudo nix-collect-garbage --dry-run --delete-old                              	nix             garbage           list	x
 nc	cd /nix/store && __open_file                                                 	nix             store             list	x
 np	readlink -f result                                                           	flake           path              show	x
 nb	nix build --print-out-paths                                                  	flake           package           build	x
 nr	nix run                                                                      	flake           application       run	x
-fl	nix flake update                                                            	flake           lock              recreate	x
+fl	nix flake update                                                             	flake           lock              recreate	x
 fs	nix flake show                                                               	flake           outputs           show	x
-fp	nix path-info --json | jq                                                    	flake           references        show	x
-fd	nix store delete $(nix path-info --json | jq -r '.[].path')                  	flake           references        delete	x
-fr	nix-store --query --referrers $(nix path-info --json | jq -r '.[].path')     	flake           referrers         show	x
+fp	nix path-info . --json | jq                                                  	flake           references        show	x
+fd	nix store delete $(nix path-info . --json | jq -r '.[].path')                	flake           references        delete	x
+fr	nix-store --query --referrers $(nix path-info . --json | jq -r '.[].path')   	flake           referrers         show	x
 fu	__update_flake_inputs .                                                      	flake           inputs            update	x
 fm	nix flake metadata                                                           	flake           metadata	x
 ft	__use_flake_template $HOME/templates                                         	flake           templates         use	x
@@ -32,7 +33,7 @@ gi  	git init                                        	git                 repo  
 gf  	onefetch                                        	git                 repo                info	x
 gl  	git-forgit log                                  	git                 commit              list	x
 ga  	git-forgit add                                  	git                 file                stage	x
-xga  	git add --intent-to-add File                     	git                 file                track
+xga  	git add --intent-to-add File                    	git                 file                track
 gt  	git status                                      	git                 file                list	x
 gkb 	git-forgit checkout_branch                      	git                 branch              switch	x
 gb  	git branch --list                               	git                 branch              list	x
@@ -63,8 +64,8 @@ gsy 	git stash apply                                 	git                 stash 
 gsl 	git-forgit stash_show                           	git                 stash                             list	x
 gsc 	git stash clear                                 	git                 stash                       delete all
 gsf 	git-forgit stash_push                           	git                 stash                             push	x
-gps 	git push                                        	git
-gpl 	git pull                                        	git
+gps 	git push                                        	git	x
+gpl 	git pull                                        	git	x
 gr  	git-forgit checkout_file                        	git                 Discard (git checkout --, git restore)	x
 gr  	git restore --staged                            	git                 Unstage
 grm 	git rm -rf                                      	git                 Remove untracked

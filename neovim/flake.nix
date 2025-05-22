@@ -1,15 +1,17 @@
 {
   description = "My neovim flake";
 
+  # Enable binary cache from nix-community to download pre-built packages,
+  # such as neovim-nightly-overlay, instead of building them locally.
   nixConfig.extra-substituters = [
     "https://nix-community.cachix.org"
   ];
-
   nixConfig.extra-trusted-public-keys = [
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  # Required to creates outputs for all supported systems
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";

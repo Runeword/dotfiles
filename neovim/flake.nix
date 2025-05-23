@@ -26,11 +26,11 @@
     }@inputs:
     let
       config = {
-        nvimConfigDir =
-          if builtins.getEnv "NVIM_CONFIG_DIR" != "" then
-            builtins.getEnv "NVIM_CONFIG_DIR"
-          else
-            builtins.getEnv "HOME" + "/neovim";
+        nvimConfigDir = builtins.getEnv "NVIM_CONFIG_DIR";
+          # if builtins.getEnv "NVIM_CONFIG_DIR" != "" then
+          #   builtins.getEnv "NVIM_CONFIG_DIR"
+          # else
+          #   builtins.getEnv "HOME" + "/neovim";
       };
 
       basePath = config.nvimConfigDir;

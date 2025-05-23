@@ -93,7 +93,6 @@
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
-            mkdir -p $out/.config
             ${pkgs.lib.mkLink "config" ".config/nvim"}
             ${wrapper}
           '';

@@ -103,8 +103,7 @@
           paths = [ neovim-override ];
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
-            mkdir -p $out/.config
-            cp -r ${./config} $out/.config/nvim
+            ${pkgs.lib.mkCopy ./config ".config/nvim"}
             ${wrapper}
           '';
         };

@@ -29,17 +29,20 @@
         flakeDir = builtins.getEnv "NVIM_CONFIG_DIR";
       };
 
-      basePath = config.flakeDir;
+      baseStr = config.flakeDir;
     in
     flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ inputs.neovim-nightly-overlay.overlays.default ];
+          overlays = [
+            (import ./overlays/lib.nix {
+              inherit baseStr self;
+            })
+            inputs.neovim-nightly-overlay.overlays.default
+          ];
         };
-
-        mkOutOfStoreSymlink = import ./lib.nix { inherit pkgs basePath; };
 
         neovim-override = pkgs.neovim.override {
           # withPython3 = true;
@@ -91,7 +94,7 @@
           buildInputs = [ pkgs.makeWrapper ];
           postBuild = ''
             mkdir -p $out/.config
-            ln -sf ${mkOutOfStoreSymlink "config"} $out/.config/nvim
+            ${pkgs.lib.mkLink "config" ".config/nvim"}
             ${wrapper}
           '';
         };

@@ -6,6 +6,7 @@
 !.github
 !terminal
 !dev
+!README.md
 !.bashrc
 !.ssh/config
 .ssh/*

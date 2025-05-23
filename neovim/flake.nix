@@ -26,14 +26,10 @@
     }@inputs:
     let
       config = {
-        nvimConfigDir = builtins.getEnv "NVIM_CONFIG_DIR";
-          # if builtins.getEnv "NVIM_CONFIG_DIR" != "" then
-          #   builtins.getEnv "NVIM_CONFIG_DIR"
-          # else
-          #   builtins.getEnv "HOME" + "/neovim";
+        flakeDir = builtins.getEnv "NVIM_CONFIG_DIR";
       };
 
-      basePath = config.nvimConfigDir;
+      basePath = config.flakeDir;
     in
     flake-utils.lib.eachDefaultSystem (
       system:

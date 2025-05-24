@@ -25,105 +25,114 @@
       ...
     }@inputs:
     let
-      config = {
-        flakeDir = builtins.getEnv "NVIM_CONFIG_DIR";
-      };
+      mkNeovimConfig =
+        {
+          flakeDir ? null,
+        }:
+        let
+          config = {
+            flakeDir = if flakeDir != null then flakeDir else builtins.getEnv "NVIM_CONFIG_DIR";
+          };
 
-      baseStr = config.flakeDir;
+          baseStr = config.flakeDir;
+        in
+        flake-utils.lib.eachDefaultSystem (
+          system:
+          let
+            pkgs = import nixpkgs {
+              inherit system;
+              overlays = [
+                (import ./overlays/lib.nix {
+                  inherit baseStr self;
+                })
+                inputs.neovim-nightly-overlay.overlays.default
+              ];
+            };
+
+            neovim-override = pkgs.neovim.override {
+              # withPython3 = true;
+              # withNodeJs = true;
+              # package = pkgs.neovim-nightly;
+            };
+
+            wrapper = with pkgs; ''
+              rm $out/bin/nvim
+              makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
+                lib.makeBinPath [
+                  fzf
+                  sox
+                  typescript-language-server
+                  bash-language-server
+                  eslint
+                  eslint_d
+                  vue-language-server
+                  pyright
+                  vscode-langservers-extracted
+                  yaml-language-server
+                  lua-language-server
+                  selene
+                  marksman
+                  ccls
+                  nil
+                  alejandra
+                  nixfmt-rfc-style
+                  shfmt
+                  shellcheck
+                  shellharden
+                  terraform-ls
+                  gopls
+                  delve
+                  rust-analyzer
+                  taplo
+                  black
+                  isort
+                  harper
+                  # typos-lsp
+                ]
+              } \
+              --set XDG_CONFIG_HOME "$out/.config"
+            '';
+
+            neovim-dev = pkgs.symlinkJoin {
+              name = "neovim";
+              paths = [ neovim-override ];
+              buildInputs = [ pkgs.makeWrapper ];
+              postBuild = ''
+                ${pkgs.lib.mkLink "config" ".config/nvim"}
+                ${wrapper}
+              '';
+            };
+
+            neovim = pkgs.symlinkJoin {
+              name = "neovim";
+              paths = [ neovim-override ];
+              buildInputs = [ pkgs.makeWrapper ];
+              postBuild = ''
+                ${pkgs.lib.mkCopy ./config ".config/nvim"}
+                ${wrapper}
+              '';
+            };
+          in
+          {
+            apps.default.type = "app";
+            apps.default.program = "${neovim}/bin/nvim";
+            packages.default = neovim;
+
+            apps.dev.type = "app";
+            apps.dev.program = "${neovim-dev}/bin/nvim";
+            packages.dev = neovim-dev;
+          }
+        );
+
+      defaultConfig = mkNeovimConfig { };
     in
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [
-            (import ./overlays/lib.nix {
-              inherit baseStr self;
-            })
-            inputs.neovim-nightly-overlay.overlays.default
-          ];
-        };
-
-        neovim-override = pkgs.neovim.override {
-          # withPython3 = true;
-          # withNodeJs = true;
-          # package = pkgs.neovim-nightly;
-        };
-
-        wrapper = with pkgs; ''
-          rm $out/bin/nvim
-          makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
-            lib.makeBinPath [
-              fzf
-              sox
-              typescript-language-server
-              bash-language-server
-              eslint
-              eslint_d
-              vue-language-server
-              pyright
-              vscode-langservers-extracted
-              yaml-language-server
-              lua-language-server
-              selene
-              marksman
-              ccls
-              nil
-              alejandra
-              nixfmt-rfc-style
-              shfmt
-              shellcheck
-              shellharden
-              terraform-ls
-              gopls
-              delve
-              rust-analyzer
-              taplo
-              black
-              isort
-              harper
-              # typos-lsp
-            ]
-          } \
-          --set XDG_CONFIG_HOME "$out/.config"
-        '';
-
-        neovim-dev = pkgs.symlinkJoin {
-          name = "neovim";
-          paths = [ neovim-override ];
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            ${pkgs.lib.mkLink "config" ".config/nvim"}
-            ${wrapper}
-          '';
-        };
-
-        neovim = pkgs.symlinkJoin {
-          name = "neovim";
-          paths = [ neovim-override ];
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            ${pkgs.lib.mkCopy ./config ".config/nvim"}
-            ${wrapper}
-          '';
-        };
-      in
-      {
-        apps.default.type = "app";
-        apps.default.program = "${neovim}/bin/nvim";
-        packages.default = neovim;
-
-        apps.dev.type = "app";
-        apps.dev.program = "${neovim-dev}/bin/nvim";
-        packages.dev = neovim-dev;
-      }
-    );
+    defaultConfig
+    // {
+      lib = {
+        mkNeovimConfig = mkNeovimConfig;
+      };
+    };
 }
-
-# Run the flake :
-# nix run "github:Runeword/dotfiles?dir=neovim#dev" --no-write-lock-file
-# nix run "github:Runeword/dotfiles?dir=neovim" --option substituters "https://runeword-neovim.cachix.org" --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
-# NVIM_CONFIG_DIR=$HOME/neovim nix run $HOME/neovim#dev --impure
 
 # {
 #   description = "My own Neovim flake";

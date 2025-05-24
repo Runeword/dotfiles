@@ -84,7 +84,7 @@
 
     # ---------------------------------- Terminal
     # inputs.runeword-neovim.packages.x86_64-linux.dev
-    (inputs.runeword-neovim.lib.mkNeovimConfig { flakeDir = "/home/charles/neovim"; }).packages.x86_64-linux.dev
+    (inputs.runeword-neovim.lib.mkConfig { path = "/home/charles/neovim"; }).packages.x86_64-linux.dev
     kitty # Terminal emulator
 
     # inputs.walker.packages.x86_64-linux.default

@@ -61,7 +61,7 @@
   # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
-    inputs.runeword-terminal.packages.x86_64-linux.default
+    inputs.runeword-terminal.packages.${pkgs.system}.default
     python311
     gcc
 
@@ -83,11 +83,9 @@
     # bash-completion
 
     # ---------------------------------- Terminal
-    # inputs.runeword-neovim.packages.x86_64-linux.dev
-    (inputs.runeword-neovim.lib.mkConfig { path = "/home/charles/neovim"; }).packages.x86_64-linux.dev
+    # inputs.runeword-neovim.packages.${pkgs.system}.dev
+    (inputs.runeword-neovim.lib.mkConfig { path = "/home/charles/neovim"; }).packages.${pkgs.system}.dev
     kitty # Terminal emulator
-
-    # inputs.walker.packages.x86_64-linux.default
 
     # Secrets
     # doppler

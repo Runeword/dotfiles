@@ -25,16 +25,16 @@
       ...
     }@inputs:
     let
-      mkNeovimConfig =
+      mkConfig =
         {
-          flakeDir ? null,
+          path ? null,
         }:
         let
           config = {
-            flakeDir = if flakeDir != null then flakeDir else builtins.getEnv "NVIM_CONFIG_DIR";
+            path = if path != null then path else builtins.getEnv "NVIM_CONFIG_DIR";
           };
 
-          baseStr = config.flakeDir;
+          baseStr = config.path;
         in
         flake-utils.lib.eachDefaultSystem (
           system:
@@ -124,12 +124,12 @@
           }
         );
 
-      defaultConfig = mkNeovimConfig { };
+      defaultConfig = mkConfig { };
     in
     defaultConfig
     // {
       lib = {
-        mkNeovimConfig = mkNeovimConfig;
+        mkConfig = mkConfig;
       };
     };
 }

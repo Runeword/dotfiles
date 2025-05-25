@@ -5,7 +5,7 @@
 * Development mode :
   ```shell
   cloneit https://github.com/Runeword/dotfiles/tree/main/neovim && \
-  NVIM_CONFIG_DIR="$PWD/neovim" nix run "github:Runeword/dotfiles?dir=neovim#dev" --impure
+  cd neovim && NVIM_CONFIG_DIR="$PWD" nix run .#dev --impure
   ```
 
 * Bundled mode :
@@ -16,7 +16,7 @@
   --option trusted-public-keys "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
   ```
 
-#### home-manager
+#### Home Manager
 
 * Development mode :
 

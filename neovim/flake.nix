@@ -29,16 +29,15 @@
         {
           path ? null,
         }:
-        let
-          config = {
-            path = if path != null then path else builtins.getEnv "NVIM_CONFIG_DIR";
-          };
-
-          baseStr = config.path;
-        in
         flake-utils.lib.eachDefaultSystem (
           system:
           let
+            config = {
+              path = if path != null then path else builtins.getEnv "NVIM_CONFIG_DIR";
+            };
+
+            baseStr = config.path;
+
             pkgs = import nixpkgs {
               inherit system;
               overlays = [

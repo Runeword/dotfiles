@@ -27,15 +27,11 @@
     let
       mkConfig =
         {
-          path ? null,
+          configPath ? builtins.getEnv "NVIM_CONFIG_DIR",
         }:
         flake-utils.lib.eachDefaultSystem (
           system:
           let
-            config = {
-              path = if path != null then path else builtins.getEnv "NVIM_CONFIG_DIR";
-            };
-
             pkgs = import nixpkgs {
               inherit system;
               overlays = [
@@ -93,7 +89,7 @@
               buildInputs = [ pkgs.makeWrapper ];
               postBuild = ''
                 mkdir -p $out/.config
-                ln -sf ${config.path} $out/.config/nvim
+                ln -sf ${configPath} $out/.config/nvim
                 ${wrapper}
               '';
             };

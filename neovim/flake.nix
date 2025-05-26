@@ -36,14 +36,9 @@
               path = if path != null then path else builtins.getEnv "NVIM_CONFIG_DIR";
             };
 
-            baseStr = config.path;
-
             pkgs = import nixpkgs {
               inherit system;
               overlays = [
-                (import ./overlays/lib.nix {
-                  inherit baseStr self;
-                })
                 inputs.neovim-nightly-overlay.overlays.default
               ];
             };
@@ -97,7 +92,8 @@
               paths = [ neovim-override ];
               buildInputs = [ pkgs.makeWrapper ];
               postBuild = ''
-                ${pkgs.lib.mkLink "config" ".config/nvim"}
+                mkdir -p $out/.config
+                ln -sf ${config.path} $out/.config/nvim
                 ${wrapper}
               '';
             };
@@ -107,7 +103,8 @@
               paths = [ neovim-override ];
               buildInputs = [ pkgs.makeWrapper ];
               postBuild = ''
-                ${pkgs.lib.mkCopy ./config ".config/nvim"}
+                mkdir -p $out/.config
+                cp -r ${./config} $out/.config/nvim
                 ${wrapper}
               '';
             };

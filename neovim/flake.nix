@@ -119,11 +119,10 @@
             packages.dev = neovim-dev;
           }
         );
-
-      defaultConfig = mkConfig { };
     in
-    defaultConfig
-    // {
+    {
+      apps = (mkConfig { }).apps;
+      packages = (mkConfig { }).packages;
       lib = {
         mkConfig = mkConfig;
       };

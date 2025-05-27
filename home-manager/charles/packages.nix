@@ -61,7 +61,6 @@
   # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
   home.packages = with pkgs; [
-    inputs.runeword-terminal.packages.${pkgs.system}.default
     python311
     gcc
 
@@ -83,12 +82,8 @@
     # bash-completion
 
     # ---------------------------------- Terminal
-    # (inputs.runeword-neovim.lib.mkConfig { configPath = "/home/charles/neovim/config"; }).packages.${pkgs.system}.dev
-    # inputs.runeword-neovim.lib.neovim-dev { configPath = "/home/charles/neovim/config"; }
-    # (inputs.runeword-neovim.lib.neovim-dev { configPath = "/home/charles/neovim/config"; }).${pkgs.system}
-    # (inputs.runeword-neovim.packages.${pkgs.system}.custom "/home/charles/neovim/config")
-    (inputs.runeword-neovim.packages.${pkgs.system}.custom { configPath = "/home/charles/neovim/config"; })
-    # inputs.runeword-neovim.lib.neovim-dev { configPath = "/home/charles/neovim/config"; }
+    inputs.runeword-terminal.packages.${pkgs.system}.default
+    (inputs.runeword-neovim.packages.${pkgs.system}.custom "/home/charles/neovim/config")
     kitty # Terminal emulator
 
     # Secrets

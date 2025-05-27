@@ -78,18 +78,16 @@
           --set XDG_CONFIG_HOME "$out/.config"
         '';
 
-        mkCustomNeovim =
-          configPath:
-          pkgs.symlinkJoin {
-            name = "neovim";
-            paths = [ neovim-override ];
-            buildInputs = [ pkgs.makeWrapper ];
-            postBuild = ''
-              mkdir -p $out/.config
-              ln -sf ${configPath} $out/.config/nvim
-              ${wrapper}
-            '';
-          };
+        neovim-dev = { configPath ? builtins.getEnv "NVIM_CONFIG_DIR" }: pkgs.symlinkJoin {
+          name = "neovim";
+          paths = [ neovim-override ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            mkdir -p $out/.config
+            ln -sf ${configPath} $out/.config/nvim
+            ${wrapper}
+          '';
+        };
 
         neovim = pkgs.symlinkJoin {
           name = "neovim";
@@ -101,8 +99,6 @@
             ${wrapper}
           '';
         };
-
-        neovim-dev = mkCustomNeovim (builtins.getEnv "NVIM_CONFIG_DIR");
       in
       {
         apps.default.type = "app";
@@ -110,10 +106,9 @@
         packages.default = neovim;
 
         apps.dev.type = "app";
-        apps.dev.program = "${neovim-dev}/bin/nvim";
-        packages.dev = neovim-dev;
-
-        packages.custom = mkCustomNeovim;
+        apps.dev.program = "${neovim-dev {}}/bin/nvim";
+        packages.dev = neovim-dev {};
+        packages.custom = neovim-dev;
       }
     );
 }

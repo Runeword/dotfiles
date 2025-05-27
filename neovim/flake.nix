@@ -24,105 +24,98 @@
       flake-utils,
       ...
     }@inputs:
-    let
-      mkConfig =
-        {
-          configPath ? builtins.getEnv "NVIM_CONFIG_DIR",
-        }:
-        flake-utils.lib.eachDefaultSystem (
-          system:
-          let
-            pkgs = import nixpkgs {
-              inherit system;
-              overlays = [
-                inputs.neovim-nightly-overlay.overlays.default
-              ];
-            };
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.neovim-nightly-overlay.overlays.default
+          ];
+        };
 
-            neovim-override = pkgs.neovim.override {
-              # withPython3 = true;
-              # withNodeJs = true;
-              # package = pkgs.neovim-nightly;
-            };
+        neovim-override = pkgs.neovim.override {
+          # withPython3 = true;
+          # withNodeJs = true;
+          # package = pkgs.neovim-nightly;
+        };
 
-            wrapper = with pkgs; ''
-              rm $out/bin/nvim
-              makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
-                lib.makeBinPath [
-                  fzf
-                  sox
-                  typescript-language-server
-                  bash-language-server
-                  eslint
-                  eslint_d
-                  vue-language-server
-                  pyright
-                  vscode-langservers-extracted
-                  yaml-language-server
-                  lua-language-server
-                  selene
-                  marksman
-                  ccls
-                  nil
-                  alejandra
-                  nixfmt-rfc-style
-                  shfmt
-                  shellcheck
-                  shellharden
-                  terraform-ls
-                  gopls
-                  delve
-                  rust-analyzer
-                  taplo
-                  black
-                  isort
-                  harper
-                  # typos-lsp
-                ]
-              } \
-              --set XDG_CONFIG_HOME "$out/.config"
-            '';
+        wrapper = with pkgs; ''
+          rm $out/bin/nvim
+          makeWrapper ${neovim-override}/bin/nvim $out/bin/nvim --prefix PATH : ${
+            lib.makeBinPath [
+              fzf
+              sox
+              typescript-language-server
+              bash-language-server
+              eslint
+              eslint_d
+              vue-language-server
+              pyright
+              vscode-langservers-extracted
+              yaml-language-server
+              lua-language-server
+              selene
+              marksman
+              ccls
+              nil
+              alejandra
+              nixfmt-rfc-style
+              shfmt
+              shellcheck
+              shellharden
+              terraform-ls
+              gopls
+              delve
+              rust-analyzer
+              taplo
+              black
+              isort
+              harper
+              # typos-lsp
+            ]
+          } \
+          --set XDG_CONFIG_HOME "$out/.config"
+        '';
 
-            neovim-dev = pkgs.symlinkJoin {
-              name = "neovim";
-              paths = [ neovim-override ];
-              buildInputs = [ pkgs.makeWrapper ];
-              postBuild = ''
-                mkdir -p $out/.config
-                ln -sf ${configPath} $out/.config/nvim
-                ${wrapper}
-              '';
-            };
-
-            neovim = pkgs.symlinkJoin {
-              name = "neovim";
-              paths = [ neovim-override ];
-              buildInputs = [ pkgs.makeWrapper ];
-              postBuild = ''
-                mkdir -p $out/.config
-                cp -r ${./config} $out/.config/nvim
-                ${wrapper}
-              '';
-            };
-          in
+        neovim-dev =
           {
-            apps.default.type = "app";
-            apps.default.program = "${neovim}/bin/nvim";
-            packages.default = neovim;
+            configPath ? builtins.getEnv "NVIM_CONFIG_DIR",
+          }:
+          pkgs.symlinkJoin {
+            name = "neovim";
+            paths = [ neovim-override ];
+            buildInputs = [ pkgs.makeWrapper ];
+            postBuild = ''
+              mkdir -p $out/.config
+              ln -sf ${configPath} $out/.config/nvim
+              ${wrapper}
+            '';
+          };
 
-            apps.dev.type = "app";
-            apps.dev.program = "${neovim-dev}/bin/nvim";
-            packages.dev = neovim-dev;
-          }
-        );
-    in
-    {
-      apps = (mkConfig { }).apps;
-      packages = (mkConfig { }).packages;
-      lib = {
-        mkConfig = mkConfig;
-      };
-    };
+        neovim = pkgs.symlinkJoin {
+          name = "neovim";
+          paths = [ neovim-override ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            mkdir -p $out/.config
+            cp -r ${./config} $out/.config/nvim
+            ${wrapper}
+          '';
+        };
+      in
+      {
+        apps.default.type = "app";
+        apps.default.program = "${neovim}/bin/nvim";
+        packages.default = neovim;
+
+        apps.dev.type = "app";
+        apps.dev.program = "${neovim-dev { }}/bin/nvim";
+        packages.dev = neovim-dev { };
+
+        lib.neovim-dev = neovim-dev;
+      }
+    );
 }
 
 # {

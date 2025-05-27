@@ -4,8 +4,8 @@
 
 * Development mode :
   ```shell
-  cloneit https://github.com/Runeword/dotfiles/tree/main/neovim && \
-  cd neovim && NVIM_CONFIG_DIR="$PWD/config" nix run .#dev --impure
+  git clone git@github.com:Runeword/dotfiles.git && \
+  cd dotfiles/neovim && NVIM_CONFIG_DIR="$PWD/config" nix run .#dev --impure
   ```
 
 * Bundled mode :

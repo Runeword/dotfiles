@@ -86,9 +86,7 @@
             buildInputs = [ pkgs.makeWrapper ];
             postBuild = ''
               mkdir -p $out/.config
-              ln -sf ${
-                if configPath == null then builtins.getEnv "NVIM_CONFIG_DIR" else configPath
-              } $out/.config/nvim
+              ln -sf ${configPath} $out/.config/nvim
               ${wrapper}
             '';
           };
@@ -110,8 +108,8 @@
         packages.default = neovim;
 
         apps.dev.type = "app";
-        apps.dev.program = "${neovim-dev null}/bin/nvim";
-        packages.dev = neovim-dev null;
+        apps.dev.program = "${neovim-dev (builtins.getEnv "NVIM_CONFIG_DIR")}/bin/nvim";
+        packages.dev = neovim-dev (builtins.getEnv "NVIM_CONFIG_DIR");
         packages.custom = neovim-dev;
       }
     );

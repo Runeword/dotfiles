@@ -83,7 +83,7 @@
     # bash-completion
 
     # ---------------------------------- Terminal
-    (inputs.runeword-neovim.lib.mkConfig { path = "/home/charles/neovim"; }).packages.${pkgs.system}.dev
+    (inputs.runeword-neovim.lib.mkConfig { configPath = "/home/charles/neovim/config"; }).packages.${pkgs.system}.dev
     # inputs.runeword-neovim.packages.${pkgs.system}.dev
     kitty # Terminal emulator
 

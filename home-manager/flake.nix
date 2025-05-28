@@ -1,10 +1,10 @@
 {
-  nixConfig.extra-substituters = [
-    "https://runeword-neovim.cachix.org"
-  ];
-  nixConfig.extra-trusted-public-keys = [
-    "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
-  ];
+  # nixConfig.extra-substituters = [
+  #   "https://runeword-neovim.cachix.org"
+  # ];
+  # nixConfig.extra-trusted-public-keys = [
+  #   "runeword-neovim.cachix.org-1:Vvtv02wnOz9tp/qKztc9JJaBc9gXDpURCAvHiAlBKZ4="
+  # ];
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 

@@ -111,8 +111,10 @@
 
         apps.dev.type = "app";
         apps.dev.program = "${neovim-dev { }}/bin/nvim";
-        packages.dev = neovim-dev { };
-        packages.options = neovim-dev;
+        packages.dev = {
+          default = neovim-dev { };
+          options = neovim-dev;
+        };
       }
     );
 }

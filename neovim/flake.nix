@@ -79,7 +79,9 @@
         '';
 
         neovim-dev =
-          configPath:
+          {
+            configPath ? builtins.getEnv "NVIM_CONFIG_DIR",
+          }:
           pkgs.symlinkJoin {
             name = "neovim";
             paths = [ neovim-override ];
@@ -108,9 +110,9 @@
         packages.default = neovim;
 
         apps.dev.type = "app";
-        apps.dev.program = "${neovim-dev (builtins.getEnv "NVIM_CONFIG_DIR")}/bin/nvim";
-        packages.dev = neovim-dev (builtins.getEnv "NVIM_CONFIG_DIR");
-        packages.custom = neovim-dev;
+        apps.dev.program = "${neovim-dev { }}/bin/nvim";
+        packages.dev = neovim-dev { };
+        packages.options = neovim-dev;
       }
     );
 }

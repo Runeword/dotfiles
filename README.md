@@ -28,7 +28,7 @@
   `home.nix`
   ```nix
   home.packages = [
-    (inputs.runeword-neovim.lib.mkConfig { path = "<your-neovim-config-dir>"; }).packages.${pkgs.system}.dev
+    (inputs.runeword-neovim.packages.${pkgs.system}.custom "${config.home.homeDirectory}/neovim/config")
   ];
   ```
 

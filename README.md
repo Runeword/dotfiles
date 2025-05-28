@@ -5,7 +5,7 @@
 * Development mode :
   ```shell
   git clone git@github.com:Runeword/dotfiles.git && \
-  cd dotfiles/neovim && NVIM_CONFIG_DIR="$PWD/config" nix run .#dev --impure
+  cd dotfiles/neovim && NVIM_CONFIG_DIR="$PWD/config" nix run .#dev.default --impure
   ```
 
 * Bundled mode :
@@ -28,7 +28,7 @@
   `home.nix`
   ```nix
   home.packages = [
-    (inputs.runeword-neovim.packages.${pkgs.system}.custom "${config.home.homeDirectory}/neovim/config")
+    (inputs.runeword-neovim.packages.${pkgs.system}.dev.options { configPath = "${config.home.homeDirectory}/neovim/config"; })
   ];
   ```
 
@@ -44,6 +44,6 @@
   `home.nix`
   ```nix
   home.packages = [
-    inputs.runeword-neovim.packages.${pkgs.system}.dev
+    inputs.runeword-neovim.packages.${pkgs.system}.default
   ];
   ```

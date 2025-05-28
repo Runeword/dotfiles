@@ -83,7 +83,9 @@
 
     # ---------------------------------- Terminal
     inputs.runeword-terminal.packages.${pkgs.system}.default
-    (inputs.runeword-neovim.packages.${pkgs.system}.options { configPath = "${config.home.homeDirectory}/neovim/config"; })
+    (inputs.runeword-neovim.packages.${pkgs.system}.dev.options {
+      configPath = "${config.home.homeDirectory}/neovim/config";
+    })
     kitty # Terminal emulator
 
     # Secrets

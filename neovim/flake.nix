@@ -80,7 +80,7 @@
 
         neovim-dev =
           {
-            configPath,
+            configPath ? builtins.getEnv "NVIM_CONFIG_DIR",
           }:
           pkgs.symlinkJoin {
             name = "nvim";
@@ -110,9 +110,9 @@
         packages.default = neovim;
 
         apps.dev.type = "app";
-        apps.dev.program = "${neovim-dev { configPath = builtins.getEnv "NVIM_CONFIG_DIR"; }}/bin/nvim";
+        apps.dev.program = "${neovim-dev { }}/bin/nvim";
         packages.dev = {
-          default = neovim-dev { configPath = builtins.getEnv "NVIM_CONFIG_DIR"; };
+          default = neovim-dev { };
           options = neovim-dev;
         };
       }

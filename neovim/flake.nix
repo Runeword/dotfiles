@@ -105,16 +105,16 @@
         };
       in
       {
+        # Bundled mode
         apps.default.type = "app";
         apps.default.program = "${neovim}/bin/nvim";
         packages.default = neovim;
 
+        # Dev mode
         apps.dev.type = "app";
         apps.dev.program = "${neovim-dev { }}/bin/nvim";
-        packages.dev = {
-          default = neovim-dev { };
-          options = neovim-dev;
-        };
+        packages.dev.default = neovim-dev { };
+        packages.dev.options = neovim-dev;
       }
     );
 }

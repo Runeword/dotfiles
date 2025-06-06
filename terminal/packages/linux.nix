@@ -8,4 +8,5 @@ pkgs.lib.optionals (system == "x86_64-linux" || system == "aarch64-linux") (with
   evtest # input device testing
   libinput # input device handling
   ventoy-full # USB boot utility
+  dmidecode
 ])

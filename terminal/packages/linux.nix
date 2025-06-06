@@ -9,4 +9,5 @@ pkgs.lib.optionals (system == "x86_64-linux" || system == "aarch64-linux") (with
   libinput # input device handling
   ventoy-full # USB boot utility
   dmidecode
+  cloneit
 ])

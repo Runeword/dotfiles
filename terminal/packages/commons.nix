@@ -44,7 +44,6 @@ with pkgs; [
 
   # Archivers
   ouch
-  xarchiver
   unzip
 
   # Versioning

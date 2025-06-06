@@ -34,7 +34,12 @@
 
         extraPackages =
           (import ./packages/commons.nix { inherit pkgs; })
-          ++ (import ./packages/linux.nix { inherit pkgs system; })
+          ++ (
+            if pkgs.stdenv.isDarwin then
+              (import ./packages/darwin.nix { inherit pkgs system; })
+            else
+              (import ./packages/linux.nix { inherit pkgs system; })
+          )
           ++ [
             (import ./packages/wrappers/zsh.nix { inherit pkgs; })
             (import ./packages/wrappers/tmux.nix { inherit pkgs; })

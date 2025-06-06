@@ -55,7 +55,6 @@ with pkgs; [
   # Containers
   lazydocker
   docker-compose
-  distrobox
   terraform
 
   # Files

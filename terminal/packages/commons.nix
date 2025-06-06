@@ -7,7 +7,6 @@ with pkgs; [
   navi # cheat sheet
   starship # prompt
   ueberzugpp # images support for terminal
-  dmidecode
   cloneit
   nix-prefetch-docker
   gmailctl

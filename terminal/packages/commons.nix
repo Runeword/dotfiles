@@ -76,6 +76,5 @@ with pkgs; [
 
   # Disk
   ncdu
-  qdirstat # Disk usage viewer
   erdtree # Disk usage
 ] 

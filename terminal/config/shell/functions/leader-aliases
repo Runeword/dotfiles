@@ -14,6 +14,7 @@ ns	sudo nixos-rebuild switch --flake $HOME/nixos#$USER                          
 ns	sudo nixos-rebuild boot --flake $HOME/nixos#$USER                            	nixos           config            build/boot	x
 nv	nixos-version                                                                	nixos           version	x
 ni	nix-info -m                                                                  	nixos           info	x
+ns	nix shell nixpkgs#Package                                                    	nix             package           install temporary
 nd	sudo nix-collect-garbage --verbose --delete-old                              	nix             garbage           clean	x
 nl	sudo nix-collect-garbage --dry-run --delete-old                              	nix             garbage           list	x
 nc	cd /nix/store && __open_file                                                 	nix             store             list	x

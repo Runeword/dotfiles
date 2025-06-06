@@ -20,7 +20,7 @@
           config.allowUnfree = true;
           overlays = [
             (import ./overlays/lib.nix {
-              rootStr = "/home/charles/terminal";
+              rootStr = builtins.getEnv "TERM_CONFIG_DIR";
               inherit self;
             })
           ];

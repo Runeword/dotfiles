@@ -12,4 +12,5 @@ pkgs.lib.optionals (system == "x86_64-linux" || system == "aarch64-linux") (with
   cloneit
   xarchiver
   git-graph
+  distrobox
 ])

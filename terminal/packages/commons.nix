@@ -48,7 +48,6 @@ with pkgs; [
 
   # Versioning
   lazygit
-  git-graph
   gitleaks
   git # versioning
   zsh-forgit # fuzzy git

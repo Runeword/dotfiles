@@ -27,39 +27,40 @@
         };
 
         extraFonts = [
-          pkgs.nerd-fonts.sauce-code-pro
-          pkgs.nerd-fonts.monaspace
-          pkgs.nerd-fonts.caskaydia-mono
+          # pkgs.nerd-fonts.sauce-code-pro
+          # pkgs.nerd-fonts.monaspace
+          # pkgs.nerd-fonts.caskaydia-mono
         ];
 
         extraPackages =
-          (import ./packages/commons.nix { inherit pkgs; })
-          ++ (
-            if pkgs.stdenv.isDarwin then
-              (import ./packages/darwin.nix { inherit pkgs system; })
-            else
-              (import ./packages/linux.nix { inherit pkgs system; })
-          )
-          ++ [
+          # (import ./packages/commons.nix { inherit pkgs; })
+          # ++ (
+          #   if pkgs.stdenv.isDarwin then
+          #     (import ./packages/darwin.nix { inherit pkgs system; })
+          #   else
+          #     (import ./packages/linux.nix { inherit pkgs system; })
+          # )
+          # ++ [
+          [
             (import ./packages/wrappers/zsh.nix { inherit pkgs; })
-            (import ./packages/wrappers/tmux.nix { inherit pkgs; })
-            (import ./packages/wrappers/bash.nix { inherit pkgs; })
+            # (import ./packages/wrappers/tmux.nix { inherit pkgs; })
+            # (import ./packages/wrappers/bash.nix { inherit pkgs; })
           ];
 
         alacritty = import ./packages/wrappers/alacritty.nix {
           inherit pkgs extraPackages extraFonts;
         };
 
-        zsh = pkgs.symlinkJoin {
-          name = "zsh";
-          paths = extraPackages;
-        };
+        # zsh = pkgs.symlinkJoin {
+        #   name = "zsh";
+        #   paths = extraPackages;
+        # };
 
       in
       {
         packages = {
           default = alacritty;
-          zsh = zsh;
+          # zsh = zsh;
         };
 
         apps = {
@@ -67,10 +68,10 @@
             type = "app";
             program = "${alacritty}/bin/alacritty";
           };
-          zsh = {
-            type = "app";
-            program = "${zsh}/bin/zsh";
-          };
+          # zsh = {
+          #   type = "app";
+          #   program = "${zsh}/bin/zsh";
+          # };
         };
       }
     );

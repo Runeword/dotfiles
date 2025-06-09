@@ -329,8 +329,8 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --no-cmd zsh)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
 
 if [[ ${options[zle]} = on ]]; then
-  . "/usr/share/fzf/completion.zsh"
-  . "/usr/share/fzf/key-bindings.zsh"
+  . "$(fzf-share)/completion.zsh"
+  . "$(fzf-share)/key-bindings.zsh"
 fi
 
 # handle_interrupt() {

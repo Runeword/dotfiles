@@ -41,6 +41,6 @@ command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --no-cmd bash)"
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook bash)"
 
 if [[ :$SHELLOPTS: =~ :(vi|emacs): ]]; then
-  . "/usr/share/fzf/completion.bash"
-  . "/usr/share/fzf/key-bindings.bash"
+  . "$(fzf-share)/completion.bash"
+  . "$(fzf-share)/key-bindings.bash"
 fi

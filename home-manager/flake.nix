@@ -18,7 +18,7 @@
   # inputs.neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   ## inputs.neovim-nightly-overlay.inputs.nixpkgs.url = "github:nixos/nixpkgs?rev=fad51abd42ca17a60fc1d4cb9382e2d79ae31836";
 
-  inputs.runeword-neovim.url = "github:Runeword/dotfiles?dir=neovim";
+  inputs.runeword-neovim.url = "github:Runeword/neovim";
   # inputs.runeword-neovim.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.runeword-terminal.url = "github:Runeword/dotfiles?dir=terminal";

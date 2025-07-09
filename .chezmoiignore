@@ -1,6 +1,9 @@
 *
 
 !.config
+{{ if eq .chezmoi.os "darwin" }}
+!.config/aerospace
+{{ end }}
 !.leaderrc
 !.ssh
 !.github

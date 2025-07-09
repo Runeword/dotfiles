@@ -1,7 +1,3 @@
-[".config/zmk-config"]
-type = "git-repo"
-url = "git@github.com:Runeword/zmk-config.git"
-refreshPeriod = "168h"
 [".local/share/password-store"]
 type = "git-repo"
 url = "git@github.com:Runeword/password-store.git"

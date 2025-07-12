@@ -18,15 +18,11 @@
 .config/kritadisplayrc
 .config/mimeapps.list
 {{ end }}
-!.leaderrc
 !.ssh
-!terminal
 !dev
 !README.md
-!.bashrc
 !.ssh/config
 .ssh/*
 !home-manager
 !nixos
 !templates
-!neovim

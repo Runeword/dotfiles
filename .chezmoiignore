@@ -14,6 +14,9 @@
 .config/bluetuith
 .config/swappy
 .config/waybar
+.config/kritarc
+.config/kritadisplayrc
+.config/mimeapps.list
 {{ end }}
 !.leaderrc
 !.ssh

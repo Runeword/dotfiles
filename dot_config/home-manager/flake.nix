@@ -41,7 +41,6 @@
           inherit system;
           config.allowUnfree = true;
           overlays = [
-            inputs.hyprpanel.overlay
             #   inputs.neovim-nightly-overlay.overlay
           ];
         };

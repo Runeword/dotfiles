@@ -68,8 +68,8 @@
     direnv
     nix-direnv
     ffuf
+    delta
 
-    # claude-code
     # rquickshare
 
     # Recovery

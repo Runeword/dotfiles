@@ -10,42 +10,41 @@
 [interactive]
   diffFilter = delta --color-only
 [delta]
-  light = true
-  right-arrow = >
-    # -- git
-  blame-format = " ({commit:>7}) {author:<18} {timestamp:^13} "
-  commit-decoration-style = none
-  commit-style = bold white white
-    # -- grep
-  grep-file-style = white
-  grep-line-number-style = white
-    # -- diff
-  keep-plus-minus-markers = true
+  syntax-theme = monochrome
+  file-decoration-style = none
+  hunk-header-style = "omit"
   line-numbers = true
-  line-numbers-minus-style = white
-  line-numbers-plus-style = white
-  line-numbers-left-style = white
-  line-numbers-left-format = "{nm:>1}┊"
-  line-numbers-right-style = white
-  line-numbers-right-format = "{np:>1}┊"
-  line-numbers-zero-style = white
-  minus-emph-style = white white underline
-  minus-empty-line-marker-style = syntax white
-  minus-style = syntax white
-  plus-emph-style = white white underline
-  plus-empty-line-marker-style = syntax white
-  plus-style = syntax white
-  whitespace-error-style = white ghostwhite
-  zero-style = syntax
-    # -- decorations
-  file-decoration-style = white overline
-  file-added-label = [+]
-  file-copied-label = [*]
-  file-modified-label = [~]
-  file-removed-label = [-]
-  file-renamed-label = [>]
-  file-style = white bold
-  hunk-header-decoration-style = none
-  hunk-header-file-style = white
-  hunk-header-line-number-style = white
-  hunk-header-style = file line-number white
+  ; hunk-header-file-style = none
+  ; right-arrow = >
+  ;   # -- git
+  ; blame-format = " ({commit:>7}) {author:<18} {timestamp:^13} "
+  ; commit-decoration-style = none
+  ; commit-style = bold white white
+  ;   # -- grep
+  ; grep-file-style = white
+  ; grep-line-number-style = white
+  ;   # -- diff
+  keep-plus-minus-markers = false
+  line-numbers-minus-style ="white red"
+  line-numbers-plus-style = "white #265240"
+  ; line-numbers-left-style = "white"
+  ; line-numbers-right-style = "red on green"
+  ; line-numbers-zero-style = white
+  ; minus-emph-style = white white underline
+  ; minus-empty-line-marker-style = syntax white
+  ; minus-style = syntax white
+  ; plus-emph-style = white white underline
+  ; plus-empty-line-marker-style = syntax white
+  ; plus-style = "syntax bold '#28422f'"
+  ; whitespace-error-style = white ghostwhite
+  ; zero-style = syntax
+  ;   # -- decorations
+  ; file-decoration-style = white overline
+  ; file-added-label = [+]
+  ; file-copied-label = [*]
+  ; file-modified-label = [~]
+  ; file-removed-label = [-]
+  ; file-renamed-label = [>]
+  file-style = white italic bold
+  line-numbers-left-format = ""
+  line-numbers-right-format = "{np:>1} "

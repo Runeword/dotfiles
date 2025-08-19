@@ -160,11 +160,13 @@ func formatFzfSelection(fzfSelection string) string {
 	// Add a space after the command so the user can type arguments right away
 	command += " "
 
-	// // If the last field is x then execute the command
-	// lastField := fields[len(fields)-1]
-	// if strings.TrimSpace(lastField) == "x" {
-	// 	output = "\n"
-	// }
+	// If the last field is x then execute the command
+	if len(fields) > 2 {
+		lastField := strings.TrimSpace(fields[len(fields)-1])
+		if lastField == "x" {
+			command += "\n"
+		}
+	}
 
 	return command
 }

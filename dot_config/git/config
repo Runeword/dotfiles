@@ -49,7 +49,7 @@
     file-renamed-label = renamed
 
     # styles
-    file-style = "bold #ffffff"
+    file-style = "italic bold #ffffff"
     file-decoration-style = "none"
     line-numbers-style = "#4B586E"
     line-numbers-left-style = " #4B586E"
@@ -57,10 +57,19 @@
     line-numbers-zero-style = " #4B586e"
     line-numbers-minus-style =" #4b586e"
     line-numbers-plus-style = " #4b586e"
-    minus-style = "#ffffff #7A2A37"
-    plus-style = "#ffffff #225C2A"
-    minus-emph-style = "#ffffff #B05A6B"
-    plus-emph-style = "#ffffff #3DA263"
+    minus-style = "#ffffff #664046"
+    plus-style = "#ffffff #405744"
+    ; minus-style = "#ffffff #68484D"
+    ; plus-style = "#ffffff #47574A"
+    ; minus-emph-style = " #ffffff #7A2A37"
+    ; plus-emph-style = " #ffffff #225C2A"
+    ; minus-style = "#ffffff #7A2A37"
+    ; plus-style = "#ffffff #225C2A"
+    ; minus-emph-style = "#ffffff #B05A6B"
+    ; plus-emph-style = "#ffffff #3DA263"
+    minus-emph-style = "#ffffff #a84d5f"
+    plus-emph-style = "#ffffff #2f8f53"
+
     hunk-header-style = omit
 
     commit-style = "italic white"

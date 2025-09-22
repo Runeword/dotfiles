@@ -1,0 +1,4 @@
+remotes:
+  - git_url: https://github.com/Runeword/lefthook
+    configs:
+      - precommit-auto-msg.yml

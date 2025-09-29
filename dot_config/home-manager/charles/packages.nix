@@ -92,7 +92,6 @@
 
     # Secrets
     # doppler
-    # bitwarden-cli
     # rbw
     bws
     infisical

@@ -1,0 +1,16 @@
+.git
+flake-inputs
+.nix-defexpr
+.nix-profile
+./.config/figma-linux/Cache
+./.config/Slack/Cache
+./.config/Slack/Service Worker
+./.config/google-chrome
+./.local/share/navi/cheats
+./.local/share/containers/storage/overlay
+./go/pkg
+.cache
+.tldrc
+node_modules
+./.local
+.direnv

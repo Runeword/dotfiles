@@ -72,7 +72,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # environment.etc."polkit-gnome-authentication-agent-1".source = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-  environment.etc."polkit-kde-authentication-agent-1".source = "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1";
+  environment.etc."polkit-kde-authentication-agent-1".source = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
 
   systemd.tmpfiles.rules = [
     "L+ /usr/share/fzf - - - - ${pkgs.fzf}/share/fzf"
@@ -89,7 +89,7 @@
     vim
     xarchiver
     # polkit_gnome
-    libsForQt5.polkit-kde-agent
+    kdePackages.polkit-kde-agent-1
     exfatprogs
     gparted
     udisks

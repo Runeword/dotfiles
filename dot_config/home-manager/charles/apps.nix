@@ -7,21 +7,19 @@
 }:
 let
   # https://issues.chromium.org/issues/397720842
-  pkgs-pin-google-chrome =
-    import
-      (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/6c5c5f5100281f8f4ff23f13edd17d645178c87c.tar.gz";
-        sha256 = "sha256:0wadw34slm7qh4ig3snwkls2sgkyz1yl5x9wqdzvyr8254arlspx";
-      })
-      {
-        config.allowUnfree = true;
-        system = pkgs.system;
-      };
+  # pkgs-pin-google-chrome =
+  #   import
+  #     (builtins.fetchTarball {
+  #       url = "https://github.com/NixOS/nixpkgs/archive/6c5c5f5100281f8f4ff23f13edd17d645178c87c.tar.gz";
+  #       sha256 = "sha256:0wadw34slm7qh4ig3snwkls2sgkyz1yl5x9wqdzvyr8254arlspx";
+  #     })
+  #     {
+  #       config.allowUnfree = true;
+  #       system = pkgs.system;
+  #     };
 in
 {
   home.packages = with pkgs; [
-    whatsie
-
     # ---------------------------------- Editors
     vscode
     windsurf
@@ -33,7 +31,8 @@ in
     postman
 
     # ---------------------------------- Browsers
-    pkgs-pin-google-chrome.google-chrome
+    # pkgs-pin-google-chrome.google-chrome
+    google-chrome
     firefox
     tor-browser
 
@@ -44,7 +43,7 @@ in
 
     # ---------------------------------- Viewer
     libreoffice
-    libsForQt5.okular
+    kdePackages.okular
     sioyek # PDF viewer
     fstl # .stl file viewer
     # mpvScripts.uosc

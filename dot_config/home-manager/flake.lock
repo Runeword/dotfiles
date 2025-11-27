@@ -293,11 +293,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1763791591,
-        "narHash": "sha256-5b2//WFI46KG3PulvKLYr9u0ZiL8yU9RxiRaffad0h4=",
+        "lastModified": 1764105572,
+        "narHash": "sha256-IYblV8d0jYXJuXQhTa3tCzZMjIizVmE+8hgVQMk1DFc=",
         "owner": "Runeword",
         "repo": "neovim",
-        "rev": "b14ca8f4b54b5d1bb9bc85141dccf37675eb3811",
+        "rev": "570744fb6ebb8cfcf1ff8bdfb416b02ed88cfe0b",
         "type": "github"
       },
       "original": {

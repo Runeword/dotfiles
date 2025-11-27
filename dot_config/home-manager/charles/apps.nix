@@ -19,9 +19,14 @@ let
   #     };
 in
 {
+  programs.vscode.enable = true;
+  programs.vscode.profiles.default.extensions = with pkgs.vscode-extensions; [
+    esbenp.prettier-vscode
+    eamodio.gitlens
+  ];
+
   home.packages = with pkgs; [
     # ---------------------------------- Editors
-    vscode
     windsurf
     code-cursor
     android-studio

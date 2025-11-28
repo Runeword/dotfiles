@@ -57,7 +57,7 @@
 
     # Screen capture
     # wl-screenrec # Screen recorder
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast # Screenshot
+    inputs.hyprland-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast # Screenshot
     grim # Grimblast dependency
     satty # Screenshot annotation
     slurp # Region selector

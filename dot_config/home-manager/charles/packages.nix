@@ -65,8 +65,8 @@
     gcc
 
     git
-    direnv
-    nix-direnv
+    # direnv
+    # nix-direnv
     ffuf
     delta
 

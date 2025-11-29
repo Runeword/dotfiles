@@ -68,7 +68,7 @@
     # direnv
     # nix-direnv
     ffuf
-    delta
+    # delta
 
     # rquickshare
 

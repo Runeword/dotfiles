@@ -11,6 +11,7 @@
     ./packages.nix
     ./apps.nix
     ./desktop.nix
+    inputs.runeword-terminal.homeManagerModules.default
     # inputs.ags.homeManagerModules.default
     # inputs.walker.homeManagerModules.default
   ];
@@ -61,6 +62,11 @@
   xdg.mime.enable = true;
 
   programs.rofi.enable = true;
+
+  programs.terminal = {
+    enable = true;
+    configPath = "${config.home.homeDirectory}/terminal/config";
+  };
 
   programs = {
     home-manager.enable = true;

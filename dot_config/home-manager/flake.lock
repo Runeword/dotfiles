@@ -313,11 +313,11 @@
         "nixpkgs-24-05": "nixpkgs-24-05"
       },
       "locked": {
-        "lastModified": 1764625662,
-        "narHash": "sha256-2E/eCkZvwQ2tKKEGOBzwH/EbIb/8j0yqVB7yVxuUbE4=",
+        "lastModified": 1765921482,
+        "narHash": "sha256-SRBqELpSCrZCNDmrma7FHsCr5r44W0Yc2XJmNScwc7A=",
         "owner": "Runeword",
         "repo": "terminal",
-        "rev": "f06acd48426dc92a0b5c927f8221747d2d08c344",
+        "rev": "7ff8eb3d990862030ba21a0c6d630f2f26b44869",
         "type": "github"
       },
       "original": {

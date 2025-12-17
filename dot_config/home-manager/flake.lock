@@ -313,17 +313,14 @@
         "nixpkgs-24-05": "nixpkgs-24-05"
       },
       "locked": {
-        "lastModified": 1765921482,
-        "narHash": "sha256-SRBqELpSCrZCNDmrma7FHsCr5r44W0Yc2XJmNScwc7A=",
-        "owner": "Runeword",
-        "repo": "terminal",
-        "rev": "7ff8eb3d990862030ba21a0c6d630f2f26b44869",
-        "type": "github"
+        "lastModified": 1766004782,
+        "narHash": "sha256-CS+6iS52cKHIbequacNkeqwMFTN78iahbEsWKzbH8jM=",
+        "path": "/home/charles/terminal",
+        "type": "path"
       },
       "original": {
-        "owner": "Runeword",
-        "repo": "terminal",
-        "type": "github"
+        "path": "/home/charles/terminal",
+        "type": "path"
       }
     },
     "systems": {

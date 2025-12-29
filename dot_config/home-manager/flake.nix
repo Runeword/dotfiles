@@ -22,6 +22,7 @@
   # inputs.runeword-neovim.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.runeword-terminal.url = "github:Runeword/terminal";
+  # inputs.runeword-terminal.url = "path:/home/charles/terminal";
   # inputs.runeword-terminal.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";

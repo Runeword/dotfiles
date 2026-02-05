@@ -38,7 +38,6 @@ in
     # ---------------------------------- Browsers
     # pkgs-pin-google-chrome.google-chrome
     google-chrome
-    firefox
     tor-browser
 
     # ---------------------------------- Media

@@ -12,6 +12,7 @@
     ./apps.nix
     ./desktop.nix
     inputs.runeword-terminal.homeManagerModules.default
+    inputs.runeword-firefox.homeManagerModules.default
     # inputs.ags.homeManagerModules.default
     # inputs.walker.homeManagerModules.default
   ];
@@ -66,6 +67,11 @@
   programs.terminal = {
     enable = true;
     configPath = "${config.home.homeDirectory}/terminal/config";
+  };
+
+  programs.firefox-custom = {
+    enable = true;
+    configPath = "${config.home.homeDirectory}/firefox/config";
   };
 
   programs = {

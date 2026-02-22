@@ -71,7 +71,6 @@
 
   programs.firefox-custom = {
     enable = true;
-    configPath = "${config.home.homeDirectory}/firefox/config";
   };
 
   programs = {

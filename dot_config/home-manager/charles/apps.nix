@@ -54,7 +54,7 @@ in
 
     # ---------------------------------- Graphic
     inkscape
-    krita
+    # krita
     # obs-studio
     # davinci-resolve
     # realesrgan-ncnn-vulkan

@@ -72,7 +72,8 @@
   nixpkgs.config.allowUnfree = true;
 
   # environment.etc."polkit-gnome-authentication-agent-1".source = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-  environment.etc."polkit-kde-authentication-agent-1".source = "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
+  environment.etc."polkit-kde-authentication-agent-1".source =
+    "${pkgs.kdePackages.polkit-kde-agent-1}/libexec/polkit-kde-authentication-agent-1";
 
   systemd.tmpfiles.rules = [
     "L+ /usr/share/fzf - - - - ${pkgs.fzf}/share/fzf"
@@ -139,6 +140,19 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
+  # User service to play continuous silence (fixes IDT 92HD95 codec crackling)
+  systemd.user.services.keep-audio-alive = {
+    description = "Play silent audio to keep sound device active";
+    wantedBy = [ "pipewire.service" ];
+    after = [ "pipewire.service" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.pulseaudio}/bin/pacat --playback /dev/zero --rate=48000 --channels=2 --format=s16le --latency-msec=500";
+      Restart = "always";
+      RestartSec = 5;
+    };
+  };
+
   location.provider = "manual";
   location.longitude = 2.352222;
   location.latitude = 48.856613;
@@ -149,8 +163,10 @@
   boot.initrd.secrets."/crypto_keyfile.bin" = null;
 
   # Enable swap on luks
-  boot.initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".keyFile = "/crypto_keyfile.bin";
-  boot.initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".device = "/dev/disk/by-uuid/4609397c-29de-4fbc-88d8-e42b0736ec6e";
+  boot.initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".keyFile =
+    "/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-4609397c-29de-4fbc-88d8-e42b0736ec6e".device =
+    "/dev/disk/by-uuid/4609397c-29de-4fbc-88d8-e42b0736ec6e";
 
   # network
   networking.hostName = "nixos";

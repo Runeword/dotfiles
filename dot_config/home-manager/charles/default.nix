@@ -11,7 +11,7 @@
     ./packages.nix
     ./apps.nix
     ./desktop.nix
-    inputs.runeword-terminal.homeManagerModules.default
+    inputs.runeword-terminal.homeModules.default
     inputs.runeword-firefox.homeManagerModules.default
     # inputs.ags.homeManagerModules.default
     # inputs.walker.homeManagerModules.default
@@ -35,6 +35,7 @@
   # gtk.iconTheme.name = "adwaita-icon-theme";
   gtk.iconTheme.package = pkgs.hicolor-icon-theme;
   gtk.iconTheme.name = "hicolor";
+  gtk.gtk4.theme = null; # Use GTK4/libadwaita native theming
 
   # programs.walker = {
   #   enable = true;

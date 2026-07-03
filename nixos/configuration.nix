@@ -96,6 +96,7 @@
     udisks
     udiskie
     jmtpfs
+    simple-scan
   ];
 
   # # zsh
@@ -212,6 +213,10 @@
   services.printing.drivers = [ pkgs.epson-escpr ];
   # pkgs.gutenprint pkgs.canon-cups-ufr2
 
+  # scanning
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.sane-airscan ];
+
   # audio
   security.rtkit.enable = true;
   services.pipewire.enable = true;
@@ -221,6 +226,40 @@
     "10-disable-camera" = {
       "wireplumber.profiles" = {
         main."monitor.libcamera" = "disabled";
+      };
+    };
+    "51-alsa-tweaks" = {
+      "monitor.alsa.rules" = [
+        {
+          matches = [
+            [
+              "node.name"
+              "~"
+              "alsa_output.*"
+            ]
+          ];
+          actions = {
+            update-props = {
+              "api.alsa.period-size" = 2048;
+              "api.alsa.period-num" = 4;
+              "api.alsa.headroom" = 8192;
+              "api.alsa.disable-batch" = true;
+              "api.alsa.start-delay" = 2048;
+              "session.suspend-timeout-seconds" = 0;
+            };
+          };
+        }
+      ];
+    };
+  };
+
+  services.pipewire.extraConfig.pipewire = {
+    "99-fix-crackling" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.quantum" = 8192;
+        "default.clock.min-quantum" = 4096;
+        "default.clock.max-quantum" = 16384;
       };
     };
   };
@@ -237,6 +276,8 @@
     "network"
     "wheel"
     "docker"
+    "scanner"
+    "lp"
   ];
 
   users.users.zod.isNormalUser = true;

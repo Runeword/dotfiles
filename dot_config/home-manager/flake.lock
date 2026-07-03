@@ -26,11 +26,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774820934,
-        "narHash": "sha256-R8Zb13O9HY5e1IFVxOk7Ou++7NHtNpaXCmO8lUN3cNA=",
+        "lastModified": 1779138618,
+        "narHash": "sha256-tG3U/kFyGYOOV1AgJ9GUWcdz/ndFiQeMuQZH3jfeGJE=",
         "owner": "Runeword",
         "repo": "claude",
-        "rev": "4b0e1c68a49fba458a10f0924f9bf44bf8095557",
+        "rev": "90cb8981bb2c3a823e17c4063cc77fd43daf2634",
         "type": "github"
       },
       "original": {
@@ -247,11 +247,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777137112,
-        "narHash": "sha256-YVHb1f1Mmy1xNK2c2/fD/rB8TVAntA0YvCdwy+C4xtE=",
+        "lastModified": 1779140609,
+        "narHash": "sha256-N/qQRSHz69DZbIvryjQ9gNWgCVOkuRcf959Nl6CE0Ys=",
         "owner": "Runeword",
         "repo": "lefthook",
-        "rev": "e64854cf4776d11c1d59250a3757300350bbfe90",
+        "rev": "723ecfd8d1b9177da0a1b38f9b9ab177d2a229dc",
         "type": "github"
       },
       "original": {
@@ -317,32 +317,16 @@
     },
     "nixpkgs-24-05": {
       "locked": {
-        "lastModified": 1735563628,
-        "narHash": "sha256-OnSAY7XDSx7CtDoqNh8jwVwh4xNL/2HaJxGjryLWzX8=",
+        "lastModified": 1735564410,
+        "narHash": "sha256-HB/FA0+1gpSs8+/boEavrGJH+Eq08/R2wWNph1sM1Dg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b134951a4c9f3c995fd7be05f3243f8ecd65d798",
+        "rev": "1e7a8f391f1a490460760065fa0630b5520f9cf8",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-25-11": {
-      "locked": {
-        "lastModified": 1772598333,
-        "narHash": "sha256-YaHht/C35INEX3DeJQNWjNaTcPjYmBwwjFJ2jdtr+5U=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "fabb8c9deee281e50b1065002c9828f2cf7b2239",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
+        "ref": "nixpkgs-24.05-darwin",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -397,17 +381,38 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1775710090,
-        "narHash": "sha256-ar3rofg+awPB8QXDaFJhJ2jJhu+KqN/PRCXeyuXR76E=",
+        "lastModified": 1781607440,
+        "narHash": "sha256-rxO+uc/KFbSJp+pgyXRuAX6QlG9hJdnt0BXpEQRXY+U=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4c1018dae018162ec878d42fec712642d214fdfa",
+        "rev": "3e41b24abd260e8f71dbe2f5737d24122f972158",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "permeance": {
+      "inputs": {
+        "nixpkgs": [
+          "runeword-terminal",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781041905,
+        "narHash": "sha256-9jNZ8Zf7gD4R1PZr3RCLPQuSOBBvHHuIwEhRqtitPCY=",
+        "owner": "Runeword",
+        "repo": "permeance",
+        "rev": "f93573875a0ee59813cf4904c73ad62cf370f42e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Runeword",
+        "repo": "permeance",
         "type": "github"
       }
     },
@@ -428,8 +433,8 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1777227968,
-        "narHash": "sha256-fYQzf0UtEG8/I/hsS9kefhXGCMaJFEVh+ewG0f4LYQY=",
+        "lastModified": 1781650462,
+        "narHash": "sha256-mqnw9gtNVtxlsktR5FNUxyuz1f4cVBS/4umfcok02YM=",
         "path": "/home/charles/firefox",
         "type": "path"
       },
@@ -465,11 +470,11 @@
         "lefthook": "lefthook_3",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-24-05": "nixpkgs-24-05",
-        "nixpkgs-25-11": "nixpkgs-25-11"
+        "permeance": "permeance"
       },
       "locked": {
-        "lastModified": 1777264183,
-        "narHash": "sha256-bg4pj9vY6mtwo+S6VT7GQenZVbDpUSIKSpNeZSiLIM8=",
+        "lastModified": 1782250255,
+        "narHash": "sha256-HEVzEVYXiYW64BLFQYd+QoTPPyDh0L8KCpQ7LhIax7M=",
         "path": "/home/charles/terminal",
         "type": "path"
       },

@@ -67,7 +67,7 @@
 
   programs.terminal = {
     enable = true;
-    configPath = "${config.home.homeDirectory}/terminal/config";
+    configPath = "${config.home.homeDirectory}/terminal/sources";
   };
 
   programs.firefox-custom = {

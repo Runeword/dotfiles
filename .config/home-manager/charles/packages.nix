@@ -1,10 +1,9 @@
 {
   pkgs,
   inputs,
-  lib,
   config,
   ...
-# }: {
+  # }: {
 }:
 # let
 # termium = pkgs.stdenv.mkDerivation {
@@ -60,43 +59,67 @@
   # home.file."${config.home.sessionVariables.XDG_DATA_HOME}/fzf".source = "${pkgs.fzf}/share/fzf";
   # home.file."${config.home.sessionVariables.XDG_BIN_HOME}/pinentry".source = "${pkgs.pinentry-curses}/bin/pinentry";
 
-  home.packages = with pkgs; [
-    python311
-    gcc
+  home.packages =
+    with pkgs;
+    [
+      python311
+      gcc
 
-    git
-    # direnv
-    # nix-direnv
-    ffuf
-    # delta
+      git
+      # direnv
+      # nix-direnv
+      ffuf
+      # delta
 
-    # rquickshare
+      # rquickshare
 
-    # Recovery
-    testdisk-qt # GUI Recovery tool
-    extundelete # Recover deleted files from an ext3 or ext4 partition
-    foremost # Recover files based on their headers and footers
-    exiftool # Meta information reader/writer
-    onlyoffice-desktopeditors
+      # Recovery
+      testdisk-qt # GUI Recovery tool
+      extundelete # Recover deleted files from an ext3 or ext4 partition
+      foremost # Recover files based on their headers and footers
+      exiftool # Meta information reader/writer
+      onlyoffice-desktopeditors
 
-    # bash-completion
+      # bash-completion
 
-    # ---------------------------------- Terminal
-    (inputs.runeword-neovim.packages.${pkgs.stdenv.hostPlatform.system}.dev.options {
-      configPath = "${config.home.homeDirectory}/neovim/config";
-    })
-    kitty # Terminal emulator
+      # ---------------------------------- Terminal
+      (inputs.runeword-neovim.packages.${pkgs.stdenv.hostPlatform.system}.dev.options {
+        configPath = "${config.home.homeDirectory}/neovim/config";
+      })
+      kitty # Terminal emulator
 
-    # Secrets
-    # doppler
-    # rbw
-    bws
-    infisical
+      # Secrets
+      # doppler
+      # rbw
+      bws
+      infisical
 
-    # Secrets
-    pass-wayland
-    gnupg
-    pinentry-curses
-    # gpg-tui
-  ];
+      # Secrets
+      pass-wayland
+      gnupg
+      pinentry-curses
+      # gpg-tui
+
+    ]
+    # ---------------------------------- lefthook toolchain
+    # Runs the ~/.dotfiles pre-commit hooks (~/lefthook-generated.yml) from any
+    # terminal, and any repository scaffolded with `nix run
+    # github:Runeword/lefthook`. Derived from the flake's own hook definitions —
+    # keep these lanes in sync with the generated config, not with a hand-written
+    # package list.
+    ++ inputs.lefthook.lib.${pkgs.stdenv.hostPlatform.system}.toolchain {
+      # rust and zig are deliberately absent: their formatters pull whole
+      # toolchains (~3.3 GiB). Repos in those languages get the hooks through
+      # a dev shell instead.
+      lanes = [
+        "go"
+        "lua"
+        "nix"
+        "shell"
+        "toml"
+        "yaml"
+      ];
+      gitleaks = true;
+      autoCommit = true;
+    };
 }

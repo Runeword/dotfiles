@@ -1,0 +1,57 @@
+min_version: 2.1.1
+pre-commit:
+  jobs:
+    - group:
+        jobs:
+          - group:
+              jobs:
+                - glob: '*.nix'
+                  name: format-nix
+                  run: nixfmt {staged_files}
+                  stage_fixed: true
+                - glob: '*.nix'
+                  name: lint-nix
+                  run: lint-nix {staged_files}
+              piped: true
+            name: nix
+          - group:
+              jobs:
+                - glob: '*.sh'
+                  name: shfmt
+                  run: shfmt --write --indent 2 --case-indent --language-dialect posix --simplify {staged_files}
+                  stage_fixed: true
+                - glob: '*.sh'
+                  name: shellharden
+                  run: shellharden --replace {staged_files}
+                  stage_fixed: true
+                - glob: '*.sh'
+                  name: lint-shell
+                  run: shellcheck {staged_files}
+              piped: true
+            name: shell
+          - group:
+              jobs:
+                - glob: '*.toml'
+                  name: format-toml
+                  run: RUST_LOG=warn taplo format {staged_files}
+                  stage_fixed: true
+              piped: true
+            name: toml
+          - group:
+              jobs:
+                - glob: '*.{yml,yaml}'
+                  name: format-yaml
+                  run: yamlfmt {staged_files}
+                  stage_fixed: true
+              piped: true
+            name: yaml
+          - name: security-gitleaks
+            run: gitleaks git --pre-commit --redact --staged --verbose --no-banner --log-level=warn
+        parallel: true
+      name: main
+    - name: auto-commit
+      run: auto-commit
+      skip:
+        - merge
+        - rebase
+  piped: true

@@ -30,6 +30,10 @@
   # inputs.runeword-firefox.url = "github:Runeword/firefox";
   # inputs.runeword-firefox.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.lefthook.url = "path:/home/charles/lefthook";
+  # inputs.lefthook.url = "github:Runeword/lefthook";
+  inputs.lefthook.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
   # inputs.ags.url = "github:Aylur/ags";
 
@@ -37,7 +41,7 @@
   # inputs.nixified-ai.url = "github:nixified-ai/flake";
 
   outputs =
-    { self, ... }@inputs:
+    inputs:
     let
       system = "x86_64-linux";
     in

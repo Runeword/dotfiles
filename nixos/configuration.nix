@@ -26,10 +26,11 @@
   nix.settings.keep-outputs = true;
   nix.settings.keep-derivations = true;
   nix.settings.accept-flake-config = true;
+  nix.settings.use-xdg-base-directories = true;
+  nix.settings.download-buffer-size = 512 * 1024 * 1024;
 
   nix.settings.trusted-users = [
     "root"
-    "charles"
   ];
 
   nix.settings.substituters = [ "https://hyprland.cachix.org" ];

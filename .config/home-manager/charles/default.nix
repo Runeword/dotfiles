@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   inputs,
   ...
 }:
@@ -11,6 +10,7 @@
     ./packages.nix
     ./apps.nix
     ./desktop.nix
+    ./dotfiles.nix
     inputs.runeword-terminal.homeModules.default
     inputs.runeword-firefox.homeManagerModules.default
     # inputs.ags.homeManagerModules.default

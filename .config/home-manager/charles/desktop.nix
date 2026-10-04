@@ -36,7 +36,7 @@
     appimage-run
     hyprpicker # Color picker
 
-    hyprpanel
+    inputs.hyprpanel.packages.${pkgs.stdenv.hostPlatform.system}.default
     hyprlock # Screen locker
     fnott # Notification daemon
     # deadd-notification-center
